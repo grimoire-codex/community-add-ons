@@ -1,0 +1,74 @@
+id: drivethrurpg
+name: DriveThruRPG
+version: 1.0.0
+kind: scraper
+target: book
+homepage: https://www.drivethrurpg.com
+description: Book metadata (authors, artists, publisher, page count, genres, ISBN) from DriveThruRPG.
+attribution: Data from DriveThruRPG (drivethrurpg.com)
+grimoire_min_version: 1.5.5
+
+source:
+  # DriveThruRPG's storefront sits behind a bot challenge, but its OneBookShelf
+  # API host is a documented, unauthenticated JSON API — so this reads the API
+  # rather than scraping pages. `keyword` + matchWeight gives relevance-ordered
+  # candidates; the interpreter then re-ranks them locally by title similarity,
+  # because raw store relevance favours popular products over exact matches.
+  url: https://api.drivethrurpg.com/api/vBeta/products?keyword={query}&order[matchWeight]=desc&pageSize=40
+  format: json
+  # Per-query URL, so each distinct search is cached separately. Kept short:
+  # unlike a whole-catalogue file, this is a live search endpoint.
+  cache_ttl: 3600
+  user_agent: "Grimoire/{version} (+https://github.com/hunter-read/grimoire)"
+
+records:
+  root: "$"
+  # Gift certificates are storefront artefacts, not books.
+  skip_when: { field: isGiftCert, equals: true }
+
+# Search returns trimmed summaries — no authors, genres, or full description,
+# and a placeholder release date. Once the user picks a result, fetch the full
+# record from the per-product endpoint and map that instead.
+detail:
+  url: https://api.drivethrurpg.com/api/vBeta/products/{identity}
+
+search:
+  fields:
+    - { field: description.name, weight: 1.0, strategy: fuzzy }
+    - { field: publisher.name, weight: 0.2, strategy: fuzzy }
+  min_score: 0.4
+  limit: 15
+  label: { template: "{description.name} — {publisher.name}" }
+  # productId is a stable primary key, so a chosen result stays findable.
+  identity: { from: productId }
+  url: { template: "https://www.drivethrurpg.com/en/product/{identity}" }
+  # Lets a user paste a product URL (or the bare id) instead of searching —
+  # useful here because the catalogue is huge and search returns near-misses.
+  identity_pattern: "/product/(\\d+)"
+
+map:
+  title: { from: description.name }
+  # Store copy is HTML; strip_html reduces it to the plain text the field holds.
+  description: { from: description.description, transform: strip_html }
+  authors: { from: authors }
+  artists: { from: artists }
+  publisher: { from: publisher.name }
+  # The publisher's own site, not the store listing. Several entries can be
+  # present; take the first non-empty one.
+  publisher_url: { from: publisher.descriptions.url, first: true }
+  isbn: { from: isbn }
+  # `filters` is one flat list mixing genre, format, language, and merchandising
+  # branches. Only the genre subtree is a genre: parentId 10 is the top-level
+  # genre group and 100 its sub-genres. Without this, "PDF", "English", and
+  # "Staff Picks" would all land in the user's genre list.
+  genres:
+    from: filters
+    select: { field: parentId, in: [10, 100] }
+    pluck:
+      from: descriptions.name
+      select: { field: languageCode, equals: en }
+      first: true
+  # dateAvailable is an ISO timestamp; year takes its leading four digits.
+  year: { from: dateAvailable }
+  urls:
+    - { label: "DriveThruRPG", template: "https://www.drivethrurpg.com/en/product/{productId}" }

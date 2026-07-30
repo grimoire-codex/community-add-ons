@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/grimoire-codex/community-add-ons/main/schema/index.schema.json",
+  "title": "Grimoire add-on index",
+  "description": "Generated catalogue of every add-on in this repo. Built by CI — do not hand-edit.",
+  "type": "object",
+  "required": ["version", "addons"],
+  "additionalProperties": false,
+  "properties": {
+    "version": { "const": 1 },
+    "generated": { "type": "string", "format": "date-time" },
+    "addons": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "kind", "version", "path", "sha256"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+          "name": { "type": "string" },
+          "kind": { "enum": ["scraper"] },
+          "target": { "enum": ["game-system", "book"] },
+          "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+          "description": { "type": "string" },
+          "homepage": { "type": "string" },
+          "path": {
+            "type": "string",
+            "description": "Repo-relative path to the add-on manifest."
+          },
+          "requires_script": {
+            "type": "boolean",
+            "description": "True when the add-on ships a Python script. Drives the install-time trust prompt."
+          },
+          "script_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "description": "Present only when requires_script is true."
+          },
+          "grimoire_min_version": {
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "description": "Digest of the manifest file, verified on install."
+          }
+        }
+      }
+    }
+  }
+}

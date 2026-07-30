@@ -1,0 +1,63 @@
+id: ttrpg-wiki
+name: TTRPG Wiki
+version: 1.0.0
+kind: scraper
+target: game-system
+homepage: https://ttrpgwiki.com
+description: System metadata (publisher, year, family, dice, licence, genre) for 227 tabletop RPGs.
+attribution: Data from TTRPG Wiki (ttrpgwiki.com)
+grimoire_min_version: 1.5.5
+
+source:
+  # The site publishes its whole catalogue as one static JSON document, so a
+  # single daily fetch serves every lookup and no page scraping is needed.
+  url: https://ttrpgwiki.com/data/systems.json
+  format: json
+  cache_ttl: 86400
+  user_agent: "Grimoire/{version} (+https://github.com/hunter-read/grimoire)"
+
+records:
+  # The document is a bare top-level array.
+  root: "$"
+  # A couple of entries are staged but not published on the site; the site's own
+  # UI hides them, so we skip them too.
+  skip_when: { field: hidden, equals: true }
+
+search:
+  fields:
+    - { field: name, weight: 1.0, strategy: fuzzy }
+    # Edition is a weak signal: it disambiguates "Pathfinder 2nd Edition" from
+    # "Pathfinder", but must not outweigh the name itself.
+    - { field: edition, weight: 0.3, strategy: fuzzy }
+  min_score: 0.55
+  limit: 10
+  label: { template: "{name} ({edition})" }
+  # Records carry no slug. The site derives one from the name, and a plain
+  # slugify reproduces it for all but a few duplicated-edition titles. It is
+  # only used to build the human-facing source link.
+  identity: { template: "{name}", transform: slugify }
+  url: { template: "https://ttrpgwiki.com/systems/{identity}" }
+  # Lets a user paste a system URL (or the bare slug) instead of searching.
+  identity_pattern: "/systems/([a-z0-9-]+)"
+
+map:
+  # `tagline` is a one-line summary — the closest thing to a description the
+  # source has. `coreMechanic`/`bestFor` are longer but read as review copy
+  # rather than a neutral description, so they are deliberately not mapped.
+  description: { from: tagline }
+  publishers: { from: publisher, as: link_list }
+  year: { from: year }
+  license: { from: license }
+  system_family: { from: family }
+  edition: { from: edition }
+  # Source genres are lowercase tokens ("fantasy", "post-apocalyptic").
+  genres: { from: genre, transform: titlecase }
+  # `dice` is free-form prose ("d6 dice pool", "d4–d12", "Diceless"), not a
+  # delimited list — kept whole rather than split into meaningless fragments.
+  dice_materials: { from: dice }
+  tags: { from: tags }
+  urls:
+    - { label: "Official site", from: officialUrl, when_present: true }
+    # The source's store links carry its affiliate_id; strip_query drops it so
+    # a user's own library doesn't end up full of someone else's referral tags.
+    - { label: "DriveThruRPG", from: dtrpgUrl, when_present: true, transform: strip_query }

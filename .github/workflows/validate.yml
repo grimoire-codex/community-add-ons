@@ -1,0 +1,24 @@
+name: Validate add-ons
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install pyyaml jsonschema
+
+      # On a PR the committed index must already match the add-ons, so a
+      # contributor can see exactly what their change produces.
+      - name: Validate add-ons and check index is current
+        run: python3 scripts/build_index.py --check

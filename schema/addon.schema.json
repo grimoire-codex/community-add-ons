@@ -1,0 +1,435 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/grimoire-codex/community-add-ons/main/schema/addon.schema.json",
+  "title": "Grimoire add-on manifest",
+  "description": "A single Grimoire community add-on. See docs/format.md for the authoring reference.",
+  "type": "object",
+  "required": ["id", "name", "version", "kind"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Stable unique identifier. Must match the containing directory name."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version. Bump on every change so installs can detect updates."
+    },
+    "kind": {
+      "enum": ["scraper"]
+    },
+    "target": {
+      "enum": ["game-system", "book"],
+      "default": "game-system",
+      "description": "Which Grimoire entity this add-on populates. Determines which map fields are valid."
+    },
+    "description": {
+      "type": "string"
+    },
+    "homepage": {
+      "type": "string",
+      "format": "uri"
+    },
+    "attribution": {
+      "type": "string",
+      "description": "Credit line shown in the UI next to fetched data."
+    },
+    "grimoire_min_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "source": {
+      "type": "object",
+      "description": "Where the data comes from. Omit when the add-on uses a script.",
+      "required": ["url", "format"],
+      "additionalProperties": false,
+      "properties": {
+        "url": {
+          "type": "string",
+          "description": "The JSON endpoint. Contains {query} for a per-query search endpoint; omit it for a whole-catalogue file fetched once and cached."
+        },
+        "format": {
+          "enum": ["json"]
+        },
+        "cache_ttl": {
+          "type": "integer",
+          "minimum": 0,
+          "default": 3600,
+          "description": "Seconds to reuse a cached response before re-fetching."
+        },
+        "user_agent": {
+          "type": "string",
+          "description": "{version} is substituted with the running Grimoire version."
+        }
+      }
+    },
+    "script": {
+      "type": "object",
+      "description": "Python escape hatch for sources YAML cannot express. Requires explicit user approval to run.",
+      "required": ["entry"],
+      "additionalProperties": false,
+      "properties": {
+        "entry": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]+\\.py$",
+          "description": "Script filename, relative to the add-on directory."
+        },
+        "timeout": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 300,
+          "default": 60
+        }
+      }
+    },
+    "records": {
+      "type": "object",
+      "description": "How to find the list of records inside the fetched document.",
+      "additionalProperties": false,
+      "properties": {
+        "root": {
+          "type": "string",
+          "default": "$",
+          "description": "'$' for a bare top-level array, or a dotted path such as 'data.systems'."
+        },
+        "skip_when": {
+          "type": "object",
+          "required": ["field", "equals"],
+          "additionalProperties": false,
+          "properties": {
+            "field": {
+              "type": "string"
+            },
+            "equals": {}
+          }
+        }
+      }
+    },
+    "detail": {
+      "type": "object",
+      "description": "A second request for the chosen record's full data, when search returns trimmed summaries. When present, `map` runs against this response.",
+      "required": ["url"],
+      "additionalProperties": false,
+      "properties": {
+        "url": {
+          "type": "string",
+          "pattern": "\\{identity\\}",
+          "description": "Per-item endpoint. Must contain the {identity} placeholder."
+        },
+        "root": {
+          "type": "string",
+          "default": "$"
+        }
+      }
+    },
+    "search": {
+      "type": "object",
+      "description": "How an incoming query is matched against records.",
+      "required": ["fields"],
+      "additionalProperties": false,
+      "properties": {
+        "fields": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["field"],
+            "additionalProperties": false,
+            "properties": {
+              "field": {
+                "type": "string"
+              },
+              "weight": {
+                "type": "number",
+                "minimum": 0,
+                "default": 1.0
+              },
+              "strategy": {
+                "enum": ["fuzzy", "exact", "contains"],
+                "default": "fuzzy"
+              }
+            }
+          }
+        },
+        "min_score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "default": 0.5
+        },
+        "limit": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50,
+          "default": 10
+        },
+        "label": {
+          "$ref": "#/$defs/valueSpec"
+        },
+        "identity": {
+          "$ref": "#/$defs/valueSpec"
+        },
+        "url": {
+          "$ref": "#/$defs/valueSpec"
+        },
+        "identity_pattern": {
+          "type": "string",
+          "maxLength": 200,
+          "description": "Regex with exactly one capture group, extracting an identity from a pasted source URL. Enables the \"paste a link or ID\" input. Keep it simple — nested quantifiers are rejected."
+        }
+      }
+    },
+    "map": {
+      "type": "object",
+      "description": "Maps source fields onto Grimoire fields. Which keys are valid depends on `target`; Grimoire rejects a manifest that maps a field its target does not have.",
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "$ref": "#/$defs/mapping"
+        },
+        "year": {
+          "$ref": "#/$defs/mapping"
+        },
+        "license": {
+          "$ref": "#/$defs/mapping"
+        },
+        "genres": {
+          "$ref": "#/$defs/mapping"
+        },
+        "tags": {
+          "$ref": "#/$defs/mapping"
+        },
+        "urls": {
+          "$ref": "#/$defs/mapping"
+        },
+        "publishers": {
+          "$ref": "#/$defs/mapping"
+        },
+        "system_family": {
+          "$ref": "#/$defs/mapping"
+        },
+        "parent_system": {
+          "$ref": "#/$defs/mapping"
+        },
+        "edition": {
+          "$ref": "#/$defs/mapping"
+        },
+        "dice_materials": {
+          "$ref": "#/$defs/mapping"
+        },
+        "character_builder_urls": {
+          "$ref": "#/$defs/mapping"
+        },
+        "title": {
+          "$ref": "#/$defs/mapping"
+        },
+        "authors": {
+          "$ref": "#/$defs/mapping"
+        },
+        "artists": {
+          "$ref": "#/$defs/mapping"
+        },
+        "publisher": {
+          "$ref": "#/$defs/mapping"
+        },
+        "publisher_url": {
+          "$ref": "#/$defs/mapping"
+        },
+        "isbn": {
+          "$ref": "#/$defs/mapping"
+        },
+        "version": {
+          "$ref": "#/$defs/mapping"
+        },
+        "language": {
+          "$ref": "#/$defs/mapping"
+        },
+        "month": {
+          "$ref": "#/$defs/mapping"
+        },
+        "day": {
+          "$ref": "#/$defs/mapping"
+        }
+      }
+    }
+  },
+  "anyOf": [
+    {
+      "required": ["source"]
+    },
+    {
+      "required": ["script"]
+    }
+  ],
+  "$defs": {
+    "valueSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "from": {
+          "type": "string"
+        },
+        "template": {
+          "type": "string",
+          "description": "Literal text with {field} placeholders. '{identity}' refers to the resolved identity value."
+        },
+        "transform": {
+          "$ref": "#/$defs/transform"
+        }
+      },
+      "anyOf": [
+        {
+          "required": ["from"]
+        },
+        {
+          "required": ["template"]
+        }
+      ]
+    },
+    "transform": {
+      "description": "A named transform, or a list applied in order.",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/transformName"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/transformName"
+          },
+          "minItems": 1
+        }
+      ]
+    },
+    "transformName": {
+      "enum": [
+        "slugify",
+        "titlecase",
+        "upper",
+        "lower",
+        "trim",
+        "upper_dice",
+        "strip_query",
+        "strip_html"
+      ]
+    },
+    "mapping": {
+      "description": "A single mapping, or a list of them (used to build multi-entry link lists).",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/mappingEntry"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/mappingEntry"
+          },
+          "minItems": 1
+        }
+      ]
+    },
+    "mappingEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "from": {
+          "type": "string"
+        },
+        "template": {
+          "type": "string"
+        },
+        "label": {
+          "type": "string",
+          "description": "Entry label, for link-list targets (urls, character_builder_urls)."
+        },
+        "split": {
+          "type": "string",
+          "description": "Split a scalar string on this separator to produce a list."
+        },
+        "when_present": {
+          "type": "boolean",
+          "default": false,
+          "description": "Skip this entry entirely when the source value is missing or empty."
+        },
+        "as": {
+          "enum": ["link_list"],
+          "description": "'link_list' wraps scalars as [{name, url}] for the publishers field."
+        },
+        "transform": {
+          "$ref": "#/$defs/transform"
+        },
+        "select": {
+          "$ref": "#/$defs/select"
+        },
+        "pluck": {
+          "$ref": "#/$defs/pluck"
+        },
+        "first": {
+          "type": "boolean",
+          "default": false,
+          "description": "Keep only the first value when the path yields several."
+        }
+      },
+      "anyOf": [
+        {
+          "required": ["from"]
+        },
+        {
+          "required": ["template"]
+        }
+      ]
+    },
+    "select": {
+      "type": "object",
+      "description": "Narrow a list of objects to those matching on a field \u2014 e.g. one entry per language, or one branch of a flat taxonomy.",
+      "required": ["field"],
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "type": "string"
+        },
+        "equals": {},
+        "in": {
+          "type": "array",
+          "items": {},
+          "minItems": 1
+        }
+      },
+      "anyOf": [
+        {
+          "required": ["equals"]
+        },
+        {
+          "required": ["in"]
+        }
+      ]
+    },
+    "pluck": {
+      "type": "object",
+      "description": "Read one value out of each object kept by an outer `select`. Use when the source nests a second repeated list inside each entry.",
+      "required": ["from"],
+      "additionalProperties": false,
+      "properties": {
+        "from": {
+          "type": "string"
+        },
+        "select": {
+          "$ref": "#/$defs/select"
+        },
+        "first": {
+          "type": "boolean",
+          "default": false
+        },
+        "transform": {
+          "$ref": "#/$defs/transform"
+        }
+      }
+    }
+  }
+}

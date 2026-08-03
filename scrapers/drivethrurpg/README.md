@@ -16,7 +16,7 @@ the largest storefront for tabletop RPG PDFs.
 | `isbn` | `isbn` | Often empty for digital-only products |
 | `genres` | `filters` | Genre branch only — see below |
 | `year` | `dateAvailable` | Release year |
-| `urls` | derived | A link back to the product page |
+| `urls` | derived | A link back to the product page (no affiliate code) |
 
 Not mapped: price, ratings, file size, page count, and format options. Price and
 ratings are volatile storefront data with no Grimoire field; page count and file

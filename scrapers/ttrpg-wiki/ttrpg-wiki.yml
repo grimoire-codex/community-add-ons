@@ -57,6 +57,9 @@ map:
   dice_materials: { from: dice }
   tags: { from: tags }
   urls:
+    # A link back to the page this metadata came from, so the user can revisit
+    # the source later. {identity} is the resolved slug.
+    - { label: "TTRPG Wiki", template: "https://ttrpgwiki.com/systems/{identity}" }
     - { label: "Official site", from: officialUrl, when_present: true }
     # The source's store links carry its affiliate_id; strip_query drops it so
     # a user's own library doesn't end up full of someone else's referral tags.

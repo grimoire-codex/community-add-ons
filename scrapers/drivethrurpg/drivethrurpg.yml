@@ -71,4 +71,6 @@ map:
   # dateAvailable is an ISO timestamp; year takes its leading four digits.
   year: { from: dateAvailable }
   urls:
-    - { label: "DriveThruRPG", template: "https://www.drivethrurpg.com/en/product/{productId}" }
+    # A link back to the product page this metadata came from. Deliberately
+    # carries no affiliate code.
+    - { label: "DriveThruRPG", template: "https://www.drivethrurpg.com/en/product/{identity}" }

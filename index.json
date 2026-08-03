@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated": "2026-07-30T20:13:14Z",
+  "generated": "2026-07-30T21:36:07Z",
   "addons": [
     {
       "id": "drivethrurpg",
@@ -10,7 +10,7 @@
       "version": "1.0.0",
       "path": "scrapers/drivethrurpg/drivethrurpg.yml",
       "requires_script": false,
-      "sha256": "65f867c2ce0a5fff1128b3a88390620883c3bad3fdf5aaa44e2fbd668889c9ec",
+      "sha256": "b9bb186309bf2e44ab20e9c6e4a87810ef85ddbb1f60db4872106f7928761a23",
       "description": "Book metadata (authors, artists, publisher, page count, genres, ISBN) from DriveThruRPG.",
       "homepage": "https://www.drivethrurpg.com",
       "grimoire_min_version": "1.5.5"
@@ -23,7 +23,7 @@
       "version": "1.0.0",
       "path": "scrapers/ttrpg-wiki/ttrpg-wiki.yml",
       "requires_script": false,
-      "sha256": "88103ce369a83142de2987c84a8d7a48995d110c352e9de6a99667ebb30d3a42",
+      "sha256": "47ef86ef97e0498b36167f1e6abad30ab78182041617a7ee5355bfbd99b788e8",
       "description": "System metadata (publisher, year, family, dice, licence, genre) for 227 tabletop RPGs.",
       "homepage": "https://ttrpgwiki.com",
       "grimoire_min_version": "1.5.5"

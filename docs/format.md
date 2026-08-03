@@ -115,8 +115,10 @@ search:
   record when the user picks it. Use a real id field if the source has one.
 - `label` — what the user sees in the candidate list. Include whatever
   distinguishes near-duplicates (edition, publisher, year).
-- `url` — optional "view source" link. `{identity}` refers to the resolved
-  identity value; any other `{field}` reads from the record.
+- `url` — optional "view source" link shown in the dialog. `{identity}` refers to
+  the resolved identity value; any other `{field}` reads from the record. This is
+  display-only — to *save* a link back to the source, map it under `urls` too
+  (see below).
 - `identity_pattern` — optional regex enabling **"paste a link or ID"**. See below.
 
 ### Letting users paste a link
@@ -169,6 +171,28 @@ Mappable targets depend on `target`:
 | `description`, `publishers`, `year`, `license`, `system_family`, `parent_system`, `edition`, `genres`, `dice_materials`, `tags`, `urls`, `character_builder_urls` | `title`, `description`, `authors`, `artists`, `publisher`, `publisher_url`, `urls`, `genres`, `isbn`, `version`, `language`, `license`, `year`, `month`, `day`, `tags` |
 
 Note `publishers` (a system's list) versus `publisher` (a book's single name).
+
+### Linking back to the source
+
+`search.url` only powers the "view source" link in the dialog — it is not
+written anywhere. If the user should keep a link to the page the metadata came
+from, map it explicitly:
+
+```yaml
+map:
+  urls:
+    - { label: "My Source", template: "https://example.com/items/{identity}" }
+```
+
+`{identity}` is available in `map` templates as well as in `search`, so this
+works even when the identity is derived rather than a field on the record. A
+template whose placeholders all resolve to nothing is dropped rather than
+producing a URL with a hole in it.
+
+**Link fields merge rather than replace.** Grimoire unions `urls` and
+`character_builder_urls` with whatever the user already has, de-duplicating by
+URL, so mapping a source link adds it without wiping their own. You do not need
+to preserve existing links yourself — just map the ones your source knows about.
 
 Grimoire coerces each mapped value to the shape its field expects — scalars for
 text fields, lists for `genres`/`dice_materials`/`tags`, `{name, url}` objects

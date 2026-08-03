@@ -16,7 +16,7 @@ community-maintained comparison site covering 227 tabletop RPG systems.
 | `genres` | `genre` | Title-cased from lowercase source tokens |
 | `dice_materials` | `dice` | Free-form (`d20`, `d6 dice pool`, `Diceless`) |
 | `tags` | `tags` | Descriptive play-style tags |
-| `urls` | `officialUrl`, `dtrpgUrl` | Added only when present |
+| `urls` | derived, `officialUrl`, `dtrpgUrl` | A link back to the wiki page, plus the official site and store link when present |
 
 Not mapped: `complexity`, `accessibility`, `runnability`, `cost`,
 `coreMechanic`, `bestFor`, `highlights`, `considerations`, `languages`. These

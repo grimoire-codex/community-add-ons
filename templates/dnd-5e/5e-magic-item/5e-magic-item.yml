@@ -1,0 +1,8 @@
+id: 5e-magic-item
+name: Magic Item
+version: 1.0.0
+kind: note-template
+system: D&D 5e
+category: Items
+description: A magic item with rarity, attunement, properties, and charges.
+grimoire_min_version: 1.5.6

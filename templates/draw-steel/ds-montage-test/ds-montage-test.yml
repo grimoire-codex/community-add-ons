@@ -1,0 +1,8 @@
+id: ds-montage-test
+name: Montage Test
+version: 1.0.0
+kind: note-template
+system: Draw Steel
+category: Encounters
+description: A Draw Steel montage test with objective, challenges, and success/failure outcomes.
+grimoire_min_version: 1.5.6

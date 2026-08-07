@@ -1,0 +1,8 @@
+id: ds-negotiation
+name: Negotiation
+version: 1.0.0
+kind: note-template
+system: Draw Steel
+category: Encounters
+description: A Draw Steel negotiation with interest, patience, motivations, and pitfalls.
+grimoire_min_version: 1.5.6

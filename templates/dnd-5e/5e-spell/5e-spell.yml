@@ -1,0 +1,8 @@
+id: 5e-spell
+name: Spell
+version: 1.0.0
+kind: note-template
+system: D&D 5e
+category: Spells
+description: A 5e spell with level, school, casting time, range, components, duration, and effect.
+grimoire_min_version: 1.5.6

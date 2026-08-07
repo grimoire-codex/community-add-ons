@@ -27,7 +27,7 @@ except ImportError:
     sys.exit("jsonschema is required: pip install jsonschema")
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-ADDON_DIRS = ("scrapers", "plugins")
+ADDON_DIRS = ("scrapers", "plugins", "templates")
 INDEX_PATH = ROOT / "index.json"
 
 
@@ -36,18 +36,33 @@ def sha256(path: pathlib.Path) -> str:
 
 
 def discover() -> list[pathlib.Path]:
-    """Every add-on manifest, as <dir>/<name>/<name>.yml."""
+    """Every add-on manifest, as <...>/<name>/<name>.yml.
+
+    Add-ons may be nested in grouping folders, so templates can be filed by
+    system (``templates/draw-steel/ds-encounter/ds-encounter.yml``) rather than
+    all sitting flat. A directory holding ``<its own name>.yml`` is an add-on;
+    anything else is treated as a grouping folder and descended into.
+    """
     found = []
+
+    def walk(directory: pathlib.Path) -> None:
+        manifest = directory / f"{directory.name}.yml"
+        if manifest.is_file():
+            found.append(manifest)
+            return
+        children = sorted(p for p in directory.iterdir() if p.is_dir())
+        if not children:
+            print(f"  ! {directory.relative_to(ROOT)}: expected {manifest.name}")
+            return
+        for child in children:
+            walk(child)
+
     for group in ADDON_DIRS:
         base = ROOT / group
         if not base.is_dir():
             continue
-        for addon_dir in sorted(p for p in base.iterdir() if p.is_dir()):
-            manifest = addon_dir / f"{addon_dir.name}.yml"
-            if manifest.is_file():
-                found.append(manifest)
-            else:
-                print(f"  ! {addon_dir.relative_to(ROOT)}: expected {manifest.name}")
+        for entry in sorted(p for p in base.iterdir() if p.is_dir()):
+            walk(entry)
     return found
 
 
@@ -84,12 +99,15 @@ def build() -> tuple[dict, list[str]]:
             "id": data["id"],
             "name": data["name"],
             "kind": data["kind"],
-            "target": data.get("target", "game-system"),
             "version": data["version"],
             "path": rel,
             "requires_script": "script" in data,
             "sha256": sha256(manifest_path),
         }
+        # `target` selects which fields a scraper may write; a note-template has
+        # no mapping step, so emitting it there would be meaningless noise.
+        if data["kind"] != "note-template":
+            entry["target"] = data.get("target", "game-system")
         for optional in ("description", "homepage", "grimoire_min_version"):
             if optional in data:
                 entry[optional] = data[optional]
@@ -100,6 +118,19 @@ def build() -> tuple[dict, list[str]]:
                 errors.append(f"{rel}: script '{data['script']['entry']}' not found")
                 continue
             entry["script_sha256"] = sha256(script_path)
+
+        if data["kind"] == "note-template":
+            # The markdown body is the whole payload of a template add-on, so it
+            # is digested and verified on install exactly like a script is.
+            body_name = data.get("body", f"{data['id']}.md")
+            body_path = manifest_path.parent / body_name
+            if not body_path.is_file():
+                errors.append(f"{rel}: template body '{body_name}' not found")
+                continue
+            entry["body_sha256"] = sha256(body_path)
+            for optional in ("system", "category"):
+                if optional in data:
+                    entry[optional] = data[optional]
 
         addons.append(entry)
 

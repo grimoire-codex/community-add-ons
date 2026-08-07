@@ -1,0 +1,8 @@
+id: 5e-npc
+name: NPC
+version: 1.0.0
+kind: note-template
+system: D&D 5e
+category: Characters
+description: A non-player character with statblock, motivation, and plot hooks.
+grimoire_min_version: 1.5.6

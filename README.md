@@ -4,12 +4,13 @@ Community-maintained add-ons for [Grimoire](https://github.com/hunter-read/grimo
 the self-hosted TTRPG library manager.
 
 This is the single home for everything the community contributes to Grimoire.
-Today that means **scrapers**; the layout leaves room for plugins, wiki
-templates, and character-sheet modules as those land.
+Today that means **scrapers** and **note templates**; the layout leaves room for
+plugins and character-sheet modules as those land.
 
 | Directory | What lives there |
 | --- | --- |
 | [`scrapers/`](scrapers/) | Metadata scrapers — look a game system up on an external source and pre-fill its fields |
+| [`templates/`](templates/) | Note templates — ready-made starting points for campaign wiki pages |
 | [`plugins/`](plugins/) | Reserved for future add-on kinds |
 | [`schema/`](schema/) | JSON Schemas that every add-on and the index are validated against |
 | [`docs/`](docs/) | Authoring reference |
@@ -39,16 +40,39 @@ See [`docs/scripts.md`](docs/scripts.md) for the security model.
 
 ## Available add-ons
 
-| Add-on | Kind | Target | Scripts? | Description |
-| --- | --- | --- | --- | --- |
-| [TTRPG Wiki](scrapers/ttrpg-wiki/) | scraper | game system | No | System metadata from [ttrpgwiki.com](https://ttrpgwiki.com) |
-| [DriveThruRPG](scrapers/drivethrurpg/) | scraper | book | No | Book metadata from [drivethrurpg.com](https://www.drivethrurpg.com) |
+### Scrapers
+
+| Add-on | Target | Scripts? | Description |
+| --- | --- | --- | --- |
+| [TTRPG Wiki](scrapers/ttrpg-wiki/) | game system | No | System metadata from [ttrpgwiki.com](https://ttrpgwiki.com) |
+| [DriveThruRPG](scrapers/drivethrurpg/) | book | No | Book metadata from [drivethrurpg.com](https://www.drivethrurpg.com) |
+
+### Note templates
+
+Starting points for campaign wiki pages — see [`templates/`](templates/) for the
+full list.
+
+| Add-on | System | Category |
+| --- | --- | --- |
+| [NPC](templates/dnd-5e/5e-npc/) | D&D 5e | Characters |
+| [Magic Item](templates/dnd-5e/5e-magic-item/) | D&D 5e | Items |
+| [Spell](templates/dnd-5e/5e-spell/) | D&D 5e | Spells |
+| [Encounter](templates/draw-steel/ds-encounter/) | Draw Steel | Encounters |
+| [Montage Test](templates/draw-steel/ds-montage-test/) | Draw Steel | Encounters |
+| [Negotiation](templates/draw-steel/ds-negotiation/) | Draw Steel | Encounters |
+
+Note templates fetch nothing and run nothing — they are markdown files Grimoire
+copies into a campaign wiki, so they carry none of the trust considerations a
+scraper does.
 
 ## Contributing
 
-1. Read [`docs/format.md`](docs/format.md) — the authoring reference.
+1. Read the authoring reference for what you're adding —
+   [`docs/format.md`](docs/format.md) for scrapers,
+   [`docs/note-templates.md`](docs/note-templates.md) for note templates.
 2. Add your add-on under the right directory, in its own folder named after its
-   `id` (e.g. `scrapers/my-source/my-source.yml`).
+   `id` (e.g. `scrapers/my-source/my-source.yml`,
+   `templates/<system>/my-template/my-template.yml`).
 3. Open a PR. CI validates every add-on against
    [`schema/addon.schema.json`](schema/addon.schema.json) and regenerates
    `index.json`, so **don't hand-edit `index.json`** — it's a build artifact.

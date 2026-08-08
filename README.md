@@ -52,8 +52,12 @@ See [`docs/scripts.md`](docs/scripts.md) for the security model.
 Starting points for campaign wiki pages — see [`templates/`](templates/) for the
 full list.
 
-| Add-on | System | Category |
+| Template | System | Category |
 | --- | --- | --- |
+| [Session Recap](templates/generic/session-recap/) | — | Sessions |
+| [Location](templates/generic/location/) | — | Locations |
+| [Faction](templates/generic/faction/) | — | Factions |
+| [Quest Hook](templates/generic/quest-hook/) | — | Quests |
 | [NPC](templates/dnd-5e/5e-npc/) | D&D 5e | Characters |
 | [Magic Item](templates/dnd-5e/5e-magic-item/) | D&D 5e | Items |
 | [Spell](templates/dnd-5e/5e-spell/) | D&D 5e | Spells |
@@ -61,9 +65,11 @@ full list.
 | [Montage Test](templates/draw-steel/ds-montage-test/) | Draw Steel | Encounters |
 | [Negotiation](templates/draw-steel/ds-negotiation/) | Draw Steel | Encounters |
 
-Note templates fetch nothing and run nothing — they are markdown files Grimoire
-copies into a campaign wiki, so they carry none of the trust considerations a
-scraper does.
+Note templates are **not add-ons** — nobody installs them into a server. A GM
+browses this catalogue from inside their campaign wiki and downloads a copy into
+that campaign, so they carry none of the trust considerations a scraper does:
+nothing is fetched at runtime and nothing executes. They are indexed separately
+in [`templates/index.json`](templates/index.json).
 
 ## Contributing
 
@@ -74,8 +80,11 @@ scraper does.
    `id` (e.g. `scrapers/my-source/my-source.yml`,
    `templates/<system>/my-template/my-template.yml`).
 3. Open a PR. CI validates every add-on against
-   [`schema/addon.schema.json`](schema/addon.schema.json) and regenerates
-   `index.json`, so **don't hand-edit `index.json`** — it's a build artifact.
+   [`schema/addon.schema.json`](schema/addon.schema.json) and every note
+   template against
+   [`schema/note-template.schema.json`](schema/note-template.schema.json), then
+   regenerates both index files — so **don't hand-edit `index.json` or
+   `templates/index.json`**; they're build artifacts.
 
 ### What makes a good scraper
 

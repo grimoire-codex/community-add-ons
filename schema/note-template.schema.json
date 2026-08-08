@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/grimoire-codex/community-add-ons/main/schema/note-template.schema.json",
+  "title": "Grimoire note template",
+  "description": "A starting point for a campaign wiki page. See docs/note-templates.md for the authoring reference.",
+  "type": "object",
+  "required": ["id", "name", "version", "kind"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Stable unique identifier. Must match the containing directory name."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Display name in the template browser."
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$",
+      "description": "Semantic version. Bump on every change."
+    },
+    "kind": {
+      "const": "note-template"
+    },
+    "system": {
+      "type": "string",
+      "description": "The game system this template is written for, e.g. 'D&D 5e'. Omit for a system-agnostic template."
+    },
+    "category": {
+      "type": "string",
+      "description": "Groups the template in the browser, e.g. 'Characters', 'Items', 'Spells', 'Encounters'."
+    },
+    "description": {
+      "type": "string",
+      "description": "One line, shown under the name."
+    },
+    "body": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_-]+\\.md$",
+      "description": "The markdown file, relative to the template directory. Defaults to '<id>.md'."
+    },
+    "homepage": {
+      "type": "string",
+      "format": "uri"
+    },
+    "attribution": {
+      "type": "string",
+      "description": "Credit line, for a template adapted from a published source."
+    },
+    "grimoire_min_version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    }
+  }
+}

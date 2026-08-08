@@ -1,0 +1,156 @@
+{
+  "version": 1,
+  "generated": "2026-08-08T03:03:53Z",
+  "folders": [
+    {
+      "path": "dnd-5e",
+      "name": "Dungeons & Dragons 5e"
+    },
+    {
+      "path": "draw-steel",
+      "name": "Draw Steel"
+    },
+    {
+      "path": "generic",
+      "name": "Generic"
+    }
+  ],
+  "templates": [
+    {
+      "id": "5e-magic-item",
+      "name": "Magic Item",
+      "version": "1.0.0",
+      "folder": "dnd-5e",
+      "path": "templates/dnd-5e/5e-magic-item/5e-magic-item.yml",
+      "body_path": "templates/dnd-5e/5e-magic-item/5e-magic-item.md",
+      "sha256": "b859494ca28d1945003aebe36ce7f2e671ef16fd561955459d74317d27994e9d",
+      "body_sha256": "5a00ccd5be2effe4b36c21af0809d279042a5daa3a1afdc2481661ae8798a7f9",
+      "system": "D&D 5e",
+      "category": "Items",
+      "description": "A magic item with rarity, attunement, properties, and charges.",
+      "grimoire_min_version": "1.5.6"
+    },
+    {
+      "id": "5e-npc",
+      "name": "NPC",
+      "version": "1.0.0",
+      "folder": "dnd-5e",
+      "path": "templates/dnd-5e/5e-npc/5e-npc.yml",
+      "body_path": "templates/dnd-5e/5e-npc/5e-npc.md",
+      "sha256": "f59376482e11abc7b797c95993f1fec1e9b3b862dcad97970513fa6f98b99e2c",
+      "body_sha256": "a78f81a8c4229cc77c400c733b3355b97b5c6c038d761aa1be054141a38ee23c",
+      "system": "D&D 5e",
+      "category": "Characters",
+      "description": "A non-player character with statblock, motivation, and plot hooks.",
+      "grimoire_min_version": "1.5.6"
+    },
+    {
+      "id": "5e-spell",
+      "name": "Spell",
+      "version": "1.0.0",
+      "folder": "dnd-5e",
+      "path": "templates/dnd-5e/5e-spell/5e-spell.yml",
+      "body_path": "templates/dnd-5e/5e-spell/5e-spell.md",
+      "sha256": "d24553a6918c9fb432381d87934ed925d16bf47f79a3ca953e841626f754b0c3",
+      "body_sha256": "fab5d363fce1b9882810fabf3a4f7ef7babea0d4481f8956ef40e4c6520fc645",
+      "system": "D&D 5e",
+      "category": "Spells",
+      "description": "A 5e spell with level, school, casting time, range, components, duration, and effect.",
+      "grimoire_min_version": "1.5.6"
+    },
+    {
+      "id": "ds-encounter",
+      "name": "Encounter",
+      "version": "1.0.0",
+      "folder": "draw-steel",
+      "path": "templates/draw-steel/ds-encounter/ds-encounter.yml",
+      "body_path": "templates/draw-steel/ds-encounter/ds-encounter.md",
+      "sha256": "04ff8c67e09e197f619d9cdfe9fe20e26772c77e713e07312a1741c3bbb362ac",
+      "body_sha256": "6168a1c50837bd20919df85692d68878bf997ed3a53947a2f1a1dbd3ca961f6d",
+      "system": "Draw Steel",
+      "category": "Encounters",
+      "description": "A Draw Steel combat encounter with victories, terrain, enemy roster, and objectives.",
+      "grimoire_min_version": "1.5.6"
+    },
+    {
+      "id": "ds-montage-test",
+      "name": "Montage Test",
+      "version": "1.0.0",
+      "folder": "draw-steel",
+      "path": "templates/draw-steel/ds-montage-test/ds-montage-test.yml",
+      "body_path": "templates/draw-steel/ds-montage-test/ds-montage-test.md",
+      "sha256": "2d54143c0a6893c4ae8b75bdec080bd322571239cc73f56b0a013fa67c20a22b",
+      "body_sha256": "beb5312c0538dc7abcf91a4a2993dbf69969e15b07de40e7957c0d4cf3a54705",
+      "system": "Draw Steel",
+      "category": "Encounters",
+      "description": "A Draw Steel montage test with objective, challenges, and success/failure outcomes.",
+      "grimoire_min_version": "1.5.6"
+    },
+    {
+      "id": "ds-negotiation",
+      "name": "Negotiation",
+      "version": "1.0.0",
+      "folder": "draw-steel",
+      "path": "templates/draw-steel/ds-negotiation/ds-negotiation.yml",
+      "body_path": "templates/draw-steel/ds-negotiation/ds-negotiation.md",
+      "sha256": "1e0dbf0e89b5f57e16b9d0ad2567096aaa69e383deeb69d1a78230d3dc5380c2",
+      "body_sha256": "2cdf167a0b9e7934fd8e8db9f36bd99b5510f9bb90f99d63720c57bc723eac89",
+      "system": "Draw Steel",
+      "category": "Encounters",
+      "description": "A Draw Steel negotiation with interest, patience, motivations, and pitfalls.",
+      "grimoire_min_version": "1.5.6"
+    },
+    {
+      "id": "faction",
+      "name": "Faction",
+      "version": "1.0.0",
+      "folder": "generic",
+      "path": "templates/generic/faction/faction.yml",
+      "body_path": "templates/generic/faction/faction.md",
+      "sha256": "f7914312129537e48e063282781c32128a0bc4fcbf6d29a1893150b40a703cd5",
+      "body_sha256": "856c8b30039ef44440beabc0298e9720f63eb9e32de5a5ede01f01d7bd4c9798",
+      "category": "Factions",
+      "description": "An organisation with goals, assets, and relationships.",
+      "grimoire_min_version": "1.5.6"
+    },
+    {
+      "id": "location",
+      "name": "Location",
+      "version": "1.0.0",
+      "folder": "generic",
+      "path": "templates/generic/location/location.yml",
+      "body_path": "templates/generic/location/location.md",
+      "sha256": "91716694a14307b32ea09703aa19c732c91ff640034804267dfb85e62f2d7977",
+      "body_sha256": "243e47f1ca5416e7d270fd4a59268a523437a5284d1fe21d78eb7f244e8737d1",
+      "category": "Locations",
+      "description": "A place the party can visit, with sights, people, and hooks.",
+      "grimoire_min_version": "1.5.6"
+    },
+    {
+      "id": "quest-hook",
+      "name": "Quest Hook",
+      "version": "1.0.0",
+      "folder": "generic",
+      "path": "templates/generic/quest-hook/quest-hook.yml",
+      "body_path": "templates/generic/quest-hook/quest-hook.md",
+      "sha256": "e10857acddaf97f1e3a18a75fd515c733e97a7fba543c514d16836592c93acfd",
+      "body_sha256": "45141cb5b730e957870a328f2b9356f97cf02e17f16af26349e464aa354da052",
+      "category": "Quests",
+      "description": "An adventure hook with the pitch, stakes, and rewards.",
+      "grimoire_min_version": "1.5.6"
+    },
+    {
+      "id": "session-recap",
+      "name": "Session Recap",
+      "version": "1.0.0",
+      "folder": "generic",
+      "path": "templates/generic/session-recap/session-recap.yml",
+      "body_path": "templates/generic/session-recap/session-recap.md",
+      "sha256": "453189ba06a3675e9ff4c8a35adaaa5672187ae5c44ddf3d2d46e705421702a4",
+      "body_sha256": "3ee7204c8d8d26f8d7e47f2970533bf10cae4f7910e8305547197e2b9ab628c8",
+      "category": "Sessions",
+      "description": "A recap of what happened, who was there, and what comes next.",
+      "grimoire_min_version": "1.5.6"
+    }
+  ]
+}

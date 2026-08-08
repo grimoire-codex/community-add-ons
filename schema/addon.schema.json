@@ -22,26 +22,12 @@
       "description": "Semantic version. Bump on every change so installs can detect updates."
     },
     "kind": {
-      "enum": ["scraper", "note-template"],
-      "description": "'scraper' fetches metadata from an external source. 'note-template' ships a markdown wiki page a GM can drop into a campaign."
+      "enum": ["scraper"]
     },
     "target": {
       "enum": ["game-system", "book"],
       "default": "game-system",
-      "description": "Which Grimoire entity a scraper populates. Determines which map fields are valid. Not used by note-template add-ons."
-    },
-    "system": {
-      "type": "string",
-      "description": "note-template only. The game system the template is written for, e.g. 'D&D 5e'. Omit for a system-agnostic template."
-    },
-    "category": {
-      "type": "string",
-      "description": "note-template only. Groups the template in the browser, e.g. 'Characters', 'Items', 'Spells', 'Encounters'."
-    },
-    "body": {
-      "type": "string",
-      "pattern": "^[A-Za-z0-9_-]+\\.md$",
-      "description": "note-template only. The markdown file, relative to the add-on directory. Defaults to '<id>.md'."
+      "description": "Which Grimoire entity this add-on populates. Determines which map fields are valid."
     },
     "description": {
       "type": "string"
@@ -273,52 +259,12 @@
       }
     }
   },
-  "allOf": [
+  "anyOf": [
     {
-      "$comment": "A scraper needs somewhere to get its data from; a note-template carries its content in a sibling markdown file and needs neither.",
-      "if": {
-        "properties": { "kind": { "const": "scraper" } },
-        "required": ["kind"]
-      },
-      "then": {
-        "anyOf": [{ "required": ["source"] }, { "required": ["script"] }]
-      }
+      "required": ["source"]
     },
     {
-      "$comment": "The scraper-only fetch/map machinery is meaningless on a note-template, so reject it there rather than silently ignoring it.",
-      "if": {
-        "properties": { "kind": { "const": "note-template" } },
-        "required": ["kind"]
-      },
-      "then": {
-        "not": {
-          "anyOf": [
-            { "required": ["source"] },
-            { "required": ["script"] },
-            { "required": ["records"] },
-            { "required": ["detail"] },
-            { "required": ["search"] },
-            { "required": ["map"] },
-            { "required": ["target"] }
-          ]
-        }
-      }
-    },
-    {
-      "$comment": "system/category/body describe a note template and have no meaning on a scraper.",
-      "if": {
-        "properties": { "kind": { "const": "scraper" } },
-        "required": ["kind"]
-      },
-      "then": {
-        "not": {
-          "anyOf": [
-            { "required": ["system"] },
-            { "required": ["category"] },
-            { "required": ["body"] }
-          ]
-        }
-      }
+      "required": ["script"]
     }
   ],
   "$defs": {

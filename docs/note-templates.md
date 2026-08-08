@@ -1,8 +1,13 @@
 # Note template reference
 
 A **note template** is a starting point for a campaign wiki page. Unlike a
-scraper it fetches nothing and runs nothing — it is a markdown file Grimoire
-copies into a campaign wiki as a new page.
+scraper it fetches nothing and runs nothing — it is a markdown file a GM
+downloads into their campaign and creates pages from.
+
+Templates are **not add-ons**: nobody installs them into a server. Grimoire's
+wiki reads [`templates/index.json`](../templates/index.json) — generated from
+this directory by CI — and a GM downloads the ones they want into a single
+campaign, where they can then edit them freely.
 
 ```
 templates/<system>/my-template/
@@ -18,8 +23,9 @@ manifest's `system` and `category`, never by directory. A template inside
 `dnd-5e/` still has to declare `system: D&D 5e`. Use a new folder for a system
 that doesn't have one yet.
 
-Both files are validated by [`schema/addon.schema.json`](../schema/addon.schema.json)
-and digested into `index.json` by CI.
+Both files are validated by
+[`schema/note-template.schema.json`](../schema/note-template.schema.json) and
+digested into [`templates/index.json`](../templates/index.json) by CI.
 
 ## The manifest
 
@@ -34,16 +40,15 @@ description: One line, shown under the name.
 grimoire_min_version: 1.5.6
 ```
 
-`kind: note-template` is what distinguishes this from a scraper. The
-scraper-only keys (`source`, `script`, `records`, `detail`, `search`, `map`,
-`target`) are rejected on a template, and `system` / `category` / `body` are
-rejected on a scraper.
+`kind` is always `note-template` — templates have their own schema, so the
+scraper keys (`source`, `script`, `records`, `search`, `map`, …) are not part of
+this format at all.
 
 | Key | Required | Notes |
 | --- | --- | --- |
 | `id` | yes | Must match the directory name |
 | `name` | yes | Shown in the browser |
-| `version` | yes | Semver; bump on every change so installs detect updates |
+| `version` | yes | Semver; bump on every change |
 | `kind` | yes | Always `note-template` |
 | `system` | no | Free text, e.g. `D&D 5e`. Omit for system-agnostic |
 | `category` | no | Groups templates in the browser. Defaults to `General` |
@@ -79,7 +84,7 @@ and `page_type`. Everything else is ignored.
 
 - **`title`** — the page's starting name. The GM renames it after importing, and
   Grimoire makes the slug unique, so a plain noun (`Spell`, `NPC`) beats a
-  placeholder like `NPC — {{name}}`.
+  placeholder like `NPC — {{name}}` (there is no placeholder substitution).
 - **`icon`** — a Grimoire campaign icon name (`sparkles`, `user`, `gem`,
   `swords`, `scroll`, …). An unknown name falls back to the default page icon.
 - **`visibility`** — `gm` (default), `group`, or `members`. Prefer `gm` for
@@ -102,5 +107,5 @@ and `page_type`. Everything else is ignored.
 
 1. Create `templates/<system>/<id>/` with the manifest and markdown file.
 2. Add a row to [`templates/README.md`](../templates/README.md).
-3. Open a PR. CI validates the manifest and regenerates `index.json` — don't
-   hand-edit it.
+3. Open a PR. CI validates the manifest and regenerates
+   [`templates/index.json`](../templates/index.json) — don't hand-edit it.

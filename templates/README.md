@@ -31,6 +31,10 @@ reference.
 
 | Template | System | Category | Description |
 | --- | --- | --- | --- |
+| [Session Recap](generic/session-recap/) | — | Sessions | What happened, decisions, loose threads |
+| [Location](generic/location/) | — | Locations | First impression, notable places, hooks, secrets |
+| [Faction](generic/faction/) | — | Factions | Goals, members, assets, relationships, clocks |
+| [Quest Hook](generic/quest-hook/) | — | Quests | The pitch, the truth, stakes, obstacles, rewards |
 | [NPC](dnd-5e/5e-npc/) | D&D 5e | Characters | Statblock, motivation, and plot hooks |
 | [Magic Item](dnd-5e/5e-magic-item/) | D&D 5e | Items | Rarity, attunement, properties, charges |
 | [Spell](dnd-5e/5e-spell/) | D&D 5e | Spells | Level, school, casting time, range, effect |

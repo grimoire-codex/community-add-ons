@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/grimoire-codex/community-add-ons/main/schema/note-template-index.schema.json",
+  "title": "Grimoire note-template catalogue",
+  "description": "Generated catalogue of every note template in this repo. Built by CI — do not hand-edit.",
+  "type": "object",
+  "required": ["version", "templates"],
+  "additionalProperties": false,
+  "properties": {
+    "version": { "const": 1 },
+    "generated": { "type": "string", "format": "date-time" },
+    "folders": {
+      "type": "array",
+      "description": "Display names for the folders templates are filed under, so the browser can render the repo's tree.",
+      "items": {
+        "type": "object",
+        "required": ["path", "name"],
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Folder path relative to templates/, e.g. 'draw-steel'."
+          },
+          "name": { "type": "string" }
+        }
+      }
+    },
+    "templates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "version", "folder", "path", "body_path", "sha256", "body_sha256"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+          "name": { "type": "string" },
+          "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+          "folder": {
+            "type": "string",
+            "description": "Folder path relative to templates/. Empty for a template at the top level."
+          },
+          "system": { "type": "string" },
+          "category": { "type": "string" },
+          "description": { "type": "string" },
+          "grimoire_min_version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+          "path": {
+            "type": "string",
+            "description": "Repo-relative path to the template manifest."
+          },
+          "body_path": {
+            "type": "string",
+            "description": "Repo-relative path to the markdown body."
+          },
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "body_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "description": "Digest of the markdown body, verified on download."
+          }
+        }
+      }
+    }
+  }
+}

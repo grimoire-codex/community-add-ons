@@ -18,15 +18,8 @@
         "properties": {
           "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
           "name": { "type": "string" },
-          "kind": { "enum": ["scraper", "note-template"] },
+          "kind": { "enum": ["scraper"] },
           "target": { "enum": ["game-system", "book"] },
-          "system": { "type": "string" },
-          "category": { "type": "string" },
-          "body_sha256": {
-            "type": "string",
-            "pattern": "^[a-f0-9]{64}$",
-            "description": "Digest of the template's markdown file. Present only on note-template add-ons."
-          },
           "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
           "description": { "type": "string" },
           "homepage": { "type": "string" },

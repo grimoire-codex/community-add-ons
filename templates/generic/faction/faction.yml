@@ -1,0 +1,7 @@
+id: faction
+name: Faction
+version: 1.0.0
+kind: note-template
+category: Factions
+description: An organisation with goals, assets, and relationships.
+grimoire_min_version: 1.5.6

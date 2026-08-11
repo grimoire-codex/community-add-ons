@@ -45,6 +45,28 @@ search:
   # Stays on {edition} rather than {editionLabel}: the label field is populated
   # on 4 of 236 records, and a missing placeholder collapses to "Pathfinder ()"
   # rather than dropping the parens.
+  #
+  # TODO: superseded editions render an awkward label. Where a system's editions
+  # are split across records, upstream bakes the edition into `name` and puts
+  # something unrelated in `edition`:
+  #
+  #     name "Dungeons & Dragons 4th Edition" + edition "Core Rulebooks"
+  #       -> "Dungeons & Dragons 4th Edition (Core Rulebooks)"
+  #     name "Cairn 1st Edition"              + edition "1st Edition"
+  #       -> "Cairn 1st Edition (1st Edition)"
+  #
+  # Both should read "<system> (<edition>)" — e.g. "Dungeons & Dragons
+  # (4th Edition)". This is cosmetic only: the records resolve, map, and link
+  # correctly, and their `editionLabel` ("4e", "1e") is already searchable.
+  #
+  # Not fixable from this file. `_render` substitutes whole field values, so
+  # there is no way to express "name minus its trailing edition phrase", and the
+  # transform allowlist is a closed set of argument-free string functions (no
+  # regex or expressions, deliberately, since these definitions are untrusted).
+  # Upstream has no base-name field to build from either — `baseName`/`system`/
+  # `line` are all absent. Fixing it needs either a new `strip_edition`
+  # transform in backend/addons/transforms.py, or upstream splitting the edition
+  # out of `name`. The latter is the real defect and worth reporting.
   label: { template: "{name} ({edition})" }
   # Records carry no slug. The site derives one from the name, and a plain
   # slugify reproduces it for all but a few duplicated-edition titles. It is

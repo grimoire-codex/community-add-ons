@@ -1,10 +1,10 @@
 id: ttrpg-wiki
 name: TTRPG Wiki
-version: 1.0.0
+version: 1.0.1
 kind: scraper
 target: game-system
 homepage: https://ttrpgwiki.com
-description: System metadata (publisher, year, family, dice, licence, genre) for 227 tabletop RPGs.
+description: System metadata (publisher, year, family, dice, licence, genre) for 236 tabletop RPGs.
 attribution: Data from TTRPG Wiki (ttrpgwiki.com)
 grimoire_min_version: 1.5.5
 
@@ -19,9 +19,12 @@ source:
 records:
   # The document is a bare top-level array.
   root: "$"
-  # A couple of entries are staged but not published on the site; the site's own
-  # UI hides them, so we skip them too.
-  skip_when: { field: hidden, equals: true }
+  # NOTE: deliberately no skip_when on `hidden`. Upstream sets that flag on
+  # superseded editions as well as on staged records — the only two records
+  # carrying it are D&D 4th Edition and Cairn 1st Edition, both real published
+  # systems a user may own books for. Skipping them made those editions
+  # impossible to select. Nothing else in the feed marks a record as staged, so
+  # we surface everything and accept the occasional preview entry.
 
 search:
   fields:
@@ -29,8 +32,19 @@ search:
     # Edition is a weak signal: it disambiguates "Pathfinder 2nd Edition" from
     # "Pathfinder", but must not outweigh the name itself.
     - { field: edition, weight: 0.3, strategy: fuzzy }
+    # The short marketing label ("5.5e", "4e", "1e"), present only on the four
+    # records belonging to a split edition line. Helps break ties between two
+    # editions of one system. NOTE: a bare "4e" query still will not match on
+    # its own — score_record averages across all fields, so a 2-char query is
+    # swamped by the fuzzy ratio against the much longer name. Fixing that
+    # properly needs a short-query rule in the scorer, not a bigger weight
+    # here; weighting this above `name` would skew the other 232 records.
+    - { field: editionLabel, weight: 0.3, strategy: fuzzy }
   min_score: 0.55
   limit: 10
+  # Stays on {edition} rather than {editionLabel}: the label field is populated
+  # on 4 of 236 records, and a missing placeholder collapses to "Pathfinder ()"
+  # rather than dropping the parens.
   label: { template: "{name} ({edition})" }
   # Records carry no slug. The site derives one from the name, and a plain
   # slugify reproduces it for all but a few duplicated-edition titles. It is

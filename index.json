@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated": "2026-08-08T03:03:53Z",
+  "generated": "2026-08-11T20:27:06Z",
   "addons": [
     {
       "id": "drivethrurpg",
@@ -20,11 +20,11 @@
       "name": "TTRPG Wiki",
       "kind": "scraper",
       "target": "game-system",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "path": "scrapers/ttrpg-wiki/ttrpg-wiki.yml",
       "requires_script": false,
-      "sha256": "47ef86ef97e0498b36167f1e6abad30ab78182041617a7ee5355bfbd99b788e8",
-      "description": "System metadata (publisher, year, family, dice, licence, genre) for 227 tabletop RPGs.",
+      "sha256": "89ccb30bba5886749378147cb572459d5b17c8f4da9a564d7bf2e710bc5329ba",
+      "description": "System metadata (publisher, year, family, dice, licence, genre) for 234 tabletop RPGs.",
       "homepage": "https://ttrpgwiki.com",
       "grimoire_min_version": "1.5.5"
     }

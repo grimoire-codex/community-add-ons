@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/grimoire-codex/community-add-ons/main/schema/theme.schema.json",
+  "title": "Grimoire colour theme",
+  "description": "A set of colour tokens overriding Grimoire's palette. Themes are data, never executed, and are installed per user rather than server-wide.",
+  "type": "object",
+  "required": ["id", "name", "version", "mode", "tokens"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Stable identifier. Must match the theme's directory name."
+    },
+    "name": { "type": "string", "maxLength": 120 },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "author": { "type": "string", "maxLength": 120 },
+    "description": { "type": "string", "maxLength": 500 },
+    "homepage": { "type": "string", "format": "uri" },
+    "grimoire_min_version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "mode": {
+      "enum": ["light", "dark"],
+      "description": "Which built-in palette this theme is a variation of. Grimoire uses it for anything the theme does not override."
+    },
+    "tokens": {
+      "type": "object",
+      "description": "Colour tokens. Only the names listed here are recognised — Grimoire drops anything else, and any value that is not a plain colour. Every token is optional: unset ones fall back to the built-in palette for `mode`.",
+      "additionalProperties": false,
+      "propertyNames": { "pattern": "^[a-z0-9-]+$" },
+      "patternProperties": {
+        "^(bg-deep|bg-panel|bg-card|bg-card-hover|bg-input|border|border-light|accent|accent-dim|accent-bright|accent-alt|on-accent|text|text-dim|text-muted|red|green|blue|danger|danger-fill|on-danger|on-media|on-media-border|warning|success|tag-bg|tag-border|mark-bg|invite-bg|overlay|shadow|scrim|scrim-strong|type-book|type-map|type-token|type-audio|type-file)$": {
+          "type": "string",
+          "maxLength": 64,
+          "pattern": "^(#[0-9a-fA-F]{3,8}|rgba?\\([\\d.,%/ ]+\\)|hsla?\\([\\d.,%/deg ]+\\)|transparent|currentcolor|inherit)$",
+          "description": "A plain colour: hex, rgb()/rgba(), hsl()/hsla(), or a keyword. Anything else is rejected — a token value goes straight into a stylesheet."
+        }
+      }
+    }
+  }
+}

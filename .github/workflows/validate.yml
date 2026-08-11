@@ -1,4 +1,4 @@
-name: Validate add-ons and templates
+name: Validate add-ons, templates, and themes
 
 on:
   push:
@@ -18,7 +18,8 @@ jobs:
       - name: Install dependencies
         run: pip install pyyaml jsonschema
 
-      # On a PR the committed indexes must already match the add-ons and note
-      # templates, so a contributor sees exactly what their change produces.
-      - name: Validate add-ons and templates, and check indexes are current
+      # On a PR the committed indexes must already match the add-ons, note
+      # templates, and themes, so a contributor sees exactly what their change
+      # produces.
+      - name: Validate add-ons, templates, and themes, and check indexes are current
         run: python3 scripts/build_index.py --check

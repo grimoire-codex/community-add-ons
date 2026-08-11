@@ -4,15 +4,16 @@ Community-maintained add-ons for [Grimoire](https://github.com/hunter-read/grimo
 the self-hosted TTRPG library manager.
 
 This is the single home for everything the community contributes to Grimoire.
-Today that means **scrapers** and **note templates**; the layout leaves room for
-plugins and character-sheet modules as those land.
+Today that means **scrapers**, **note templates**, and **themes**; the layout
+leaves room for plugins and character-sheet modules as those land.
 
 | Directory | What lives there |
 | --- | --- |
 | [`scrapers/`](scrapers/) | Metadata scrapers — look a game system up on an external source and pre-fill its fields |
 | [`templates/`](templates/) | Note templates — ready-made starting points for campaign wiki pages |
+| [`themes/`](themes/) | Themes — colour schemes a user installs for their own account |
 | [`plugins/`](plugins/) | Reserved for future add-on kinds |
-| [`schema/`](schema/) | JSON Schemas that every add-on and the index are validated against |
+| [`schema/`](schema/) | JSON Schemas that every add-on, template, theme, and index are validated against |
 | [`docs/`](docs/) | Authoring reference |
 
 ## Installing an add-on
@@ -64,6 +65,15 @@ full list.
 | [Encounter](templates/draw-steel/ds-encounter/) | Draw Steel | Encounters |
 | [Montage Test](templates/draw-steel/ds-montage-test/) | Draw Steel | Encounters |
 | [Negotiation](templates/draw-steel/ds-negotiation/) | Draw Steel | Encounters |
+
+### Themes
+
+Colour schemes a user installs for their own account — see [`themes/`](themes/)
+for the authoring reference.
+
+| Theme | Mode | Description |
+| --- | --- | --- |
+| [High Contrast](themes/high-contrast/) | dark | Pure black surfaces and white text; every pairing clears WCAG AAA |
 
 Note templates are **not add-ons** — nobody installs them into a server. A GM
 browses this catalogue from inside their campaign wiki and downloads a copy into

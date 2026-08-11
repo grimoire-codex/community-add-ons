@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "generated": "2026-08-11T22:47:29Z",
+  "themes": [
+    {
+      "id": "high-contrast",
+      "name": "High Contrast",
+      "version": "1.0.0",
+      "mode": "dark",
+      "path": "themes/high-contrast/high-contrast.json",
+      "sha256": "7c9f4025cba8930184f67df069e880bde7748ab08d4ac1f21adb7642ba3a3121",
+      "author": "Grimoire",
+      "description": "Maximum legibility: pure black surfaces, white body text, and bright accents. Every foreground clears WCAG AAA (7:1) against every background, and the low-contrast greys of the default theme are removed. Raises luminance contrast only \u2014 it does not address colourblindness, which needs more than a change of colour.",
+      "homepage": "https://github.com/grimoire-codex/community-add-ons",
+      "grimoire_min_version": "1.5.6"
+    }
+  ]
+}

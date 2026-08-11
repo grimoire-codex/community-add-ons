@@ -36,8 +36,10 @@ except ImportError:
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 ADDON_DIRS = ("scrapers", "plugins")
 TEMPLATE_DIR = ROOT / "templates"
+THEME_DIR = ROOT / "themes"
 INDEX_PATH = ROOT / "index.json"
 TEMPLATE_INDEX_PATH = TEMPLATE_DIR / "index.json"
+THEME_INDEX_PATH = THEME_DIR / "index.json"
 # Optional per-folder metadata (display name), not an add-on itself.
 FOLDER_META = "_folder.yml"
 
@@ -259,6 +261,87 @@ def build_templates() -> tuple[dict, list[str]]:
     return index, errors
 
 
+def discover_themes() -> list[pathlib.Path]:
+    """Every theme file, as themes/<id>/<id>.json."""
+    if not THEME_DIR.is_dir():
+        return []
+    found = []
+    for entry in sorted(THEME_DIR.iterdir()):
+        if not entry.is_dir() or entry.name.startswith("."):
+            continue
+        candidate = entry / f"{entry.name}.json"
+        if candidate.is_file():
+            found.append(candidate)
+    return found
+
+
+def build_themes() -> tuple[dict, list[str]]:
+    """Validate every theme and build the catalogue Grimoire browses.
+
+    Themes are neither add-ons nor templates: nobody installs one into a
+    server, and nothing executes. A user browses this catalogue and downloads a
+    copy into their own account, so the index carries the file's digest and
+    Grimoire verifies it on download.
+    """
+    schema = json.loads((ROOT / "schema" / "theme.schema.json").read_text())
+    validator = jsonschema.Draft202012Validator(schema)
+    errors: list[str] = []
+    themes = []
+
+    for theme_path in discover_themes():
+        rel = theme_path.relative_to(ROOT).as_posix()
+        try:
+            data = json.loads(theme_path.read_text())
+        except json.JSONDecodeError as exc:
+            errors.append(f"{rel}: invalid JSON: {exc}")
+            continue
+
+        schema_errors = sorted(validator.iter_errors(data), key=lambda e: list(e.path))
+        if schema_errors:
+            for err in schema_errors:
+                loc = "/".join(str(p) for p in err.path) or "(root)"
+                errors.append(f"{rel}: {loc}: {err.message}")
+            continue
+
+        if data["id"] != theme_path.parent.name:
+            errors.append(
+                f"{rel}: id '{data['id']}' does not match directory "
+                f"'{theme_path.parent.name}'"
+            )
+            continue
+
+        if not data.get("tokens"):
+            errors.append(f"{rel}: a theme must set at least one token")
+            continue
+
+        entry = {
+            "id": data["id"],
+            "name": data["name"],
+            "version": data["version"],
+            "mode": data["mode"],
+            "path": rel,
+            "sha256": sha256(theme_path),
+        }
+        for optional in ("author", "description", "homepage", "grimoire_min_version"):
+            if data.get(optional):
+                entry[optional] = data[optional]
+        themes.append(entry)
+
+    index = {
+        "version": 1,
+        "generated": dt.datetime.now(dt.timezone.utc)
+        .isoformat(timespec="seconds")
+        .replace("+00:00", "Z"),
+        "themes": sorted(themes, key=lambda t: t["id"]),
+    }
+
+    index_schema = json.loads((ROOT / "schema" / "theme-index.schema.json").read_text())
+    for err in jsonschema.Draft202012Validator(index_schema).iter_errors(index):
+        errors.append(f"themes/index.json: {err.message}")
+
+    return index, errors
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -270,7 +353,8 @@ def main() -> int:
 
     index, errors = build()
     template_index, template_errors = build_templates()
-    errors = errors + template_errors
+    theme_index, theme_errors = build_themes()
+    errors = errors + template_errors + theme_errors
     if errors:
         print("Validation failed:")
         for err in errors:
@@ -278,13 +362,15 @@ def main() -> int:
         return 1
 
     print(
-        f"Validated {len(index['addons'])} add-on(s) and "
-        f"{len(template_index['templates'])} note template(s)."
+        f"Validated {len(index['addons'])} add-on(s), "
+        f"{len(template_index['templates'])} note template(s), and "
+        f"{len(theme_index['themes'])} theme(s)."
     )
 
     targets = [
         (INDEX_PATH, index, "addons"),
         (TEMPLATE_INDEX_PATH, template_index, "templates"),
+        (THEME_INDEX_PATH, theme_index, "themes"),
     ]
 
     if args.check:

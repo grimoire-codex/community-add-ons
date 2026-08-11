@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/grimoire-codex/community-add-ons/main/schema/theme-index.schema.json",
+  "title": "Grimoire theme catalogue",
+  "description": "Generated catalogue of every theme in this repo. Built by CI — do not hand-edit.",
+  "type": "object",
+  "required": ["version", "themes"],
+  "additionalProperties": false,
+  "properties": {
+    "version": { "const": 1 },
+    "generated": { "type": "string", "format": "date-time" },
+    "themes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "version", "mode", "path", "sha256"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+          "name": { "type": "string" },
+          "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+          "mode": { "enum": ["light", "dark"] },
+          "author": { "type": "string" },
+          "description": { "type": "string" },
+          "homepage": { "type": "string" },
+          "grimoire_min_version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+          "path": {
+            "type": "string",
+            "description": "Repo-relative path to the theme file, resolved against this index's own URL and pinned to the same host."
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "description": "Digest of the theme file, verified on download."
+          }
+        }
+      }
+    }
+  }
+}

@@ -2,14 +2,13 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://raw.githubusercontent.com/grimoire-codex/community-add-ons/main/schema/theme.schema.json",
   "title": "Grimoire colour theme",
-  "description": "A set of colour tokens overriding Grimoire's palette. Themes are data, never executed, and are installed per user rather than server-wide.",
+  "description": "A set of colour tokens overriding Grimoire's palette. A theme may pair a light and a dark palette so one entry covers System mode. Themes are data, never executed, and are installed per user rather than server-wide.",
   "type": "object",
   "required": [
     "id",
     "name",
     "version",
-    "mode",
-    "tokens"
+    "mode"
   ],
   "additionalProperties": false,
   "properties": {
@@ -71,6 +70,58 @@
           "description": "A plain colour: hex, rgb()/rgba(), hsl()/hsla(), or a keyword. Anything else is rejected — a token value goes straight into a stylesheet."
         }
       }
+    },
+    "variants": {
+      "type": "object",
+      "description": "A light and/or dark palette in one theme, so a single entry covers System mode. Takes precedence over `tokens` when present; a theme may ship either shape, and one shipping only one mode still applies in the other.",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "light": {
+          "type": "object",
+          "description": "One colour mode's token set. Same rules as `tokens`.",
+          "additionalProperties": false,
+          "propertyNames": {
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "patternProperties": {
+            "^(bg-deep|bg-panel|bg-card|bg-card-hover|bg-input|border|border-light|accent|accent-dim|accent-bright|accent-alt|on-accent|text|text-dim|text-muted|red|green|blue|danger|danger-fill|on-danger|on-media|on-media-border|warning|success|tag-bg|tag-border|mark-bg|invite-bg|overlay|shadow|scrim|scrim-strong|type-book|type-map|type-token|type-audio|type-file)$": {
+              "type": "string",
+              "maxLength": 64,
+              "pattern": "^(#[0-9a-fA-F]{3,8}|rgba?\\([\\d.,%/ ]+\\)|hsla?\\([\\d.,%/deg ]+\\)|transparent|currentcolor|inherit)$",
+              "description": "A plain colour: hex, rgb()/rgba(), hsl()/hsla(), or a keyword. Anything else is rejected — a token value goes straight into a stylesheet."
+            }
+          }
+        },
+        "dark": {
+          "type": "object",
+          "description": "One colour mode's token set. Same rules as `tokens`.",
+          "additionalProperties": false,
+          "propertyNames": {
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "patternProperties": {
+            "^(bg-deep|bg-panel|bg-card|bg-card-hover|bg-input|border|border-light|accent|accent-dim|accent-bright|accent-alt|on-accent|text|text-dim|text-muted|red|green|blue|danger|danger-fill|on-danger|on-media|on-media-border|warning|success|tag-bg|tag-border|mark-bg|invite-bg|overlay|shadow|scrim|scrim-strong|type-book|type-map|type-token|type-audio|type-file)$": {
+              "type": "string",
+              "maxLength": 64,
+              "pattern": "^(#[0-9a-fA-F]{3,8}|rgba?\\([\\d.,%/ ]+\\)|hsla?\\([\\d.,%/deg ]+\\)|transparent|currentcolor|inherit)$",
+              "description": "A plain colour: hex, rgb()/rgba(), hsl()/hsla(), or a keyword. Anything else is rejected — a token value goes straight into a stylesheet."
+            }
+          }
+        }
+      }
     }
-  }
+  },
+  "anyOf": [
+    {
+      "required": [
+        "tokens"
+      ]
+    },
+    {
+      "required": [
+        "variants"
+      ]
+    }
+  ]
 }

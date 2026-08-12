@@ -41,6 +41,28 @@ A map of colour tokens overriding Grimoire's palette:
 Every token is optional and anything you leave out falls back to that palette,
 so a theme can be three colours or all of them.
 
+## Pairing light and dark
+
+A theme can ship both palettes in one file, so it appears once in the picker and
+**System** mode works with it:
+
+```json
+{
+  "id": "midnight",
+  "name": "Midnight",
+  "version": "1.0.0",
+  "mode": "dark",
+  "variants": {
+    "dark":  { "bg-deep": "#000000", "text": "#ffffff" },
+    "light": { "bg-deep": "#ffffff", "text": "#000000" }
+  }
+}
+```
+
+`variants` replaces `tokens` when present; `mode` then names the primary one,
+used when the app cannot tell which to prefer. Shipping only one mode is still
+fine — it just applies in both, rather than switching itself off.
+
 `app_mode` is optional and says which side of the product the theme was made
 for — `grimoire` (TTRPG, the default) or `codex` (wargaming). It is a preference
 the picker sorts by, not a restriction: a theme that reads well is usable in
@@ -92,5 +114,4 @@ cannot add.
 
 | Theme | Mode | Description |
 | --- | --- | --- |
-| [High Contrast](high-contrast/) | dark | Pure black surfaces and white text; every pairing clears WCAG AAA. |
-| [High Contrast Light](high-contrast-light/) | light | Pure white surfaces and black text; every pairing clears WCAG AAA. |
+| [High Contrast](high-contrast/) | light & dark | Pure black or pure white surfaces at full-strength contrast; every pairing clears WCAG AAA, and it follows System. |

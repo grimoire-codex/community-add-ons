@@ -311,15 +311,23 @@ def build_themes() -> tuple[dict, list[str]]:
             )
             continue
 
-        if not data.get("tokens"):
-            errors.append(f"{rel}: a theme must set at least one token")
-            continue
+        # A theme ships either a flat `tokens` map or a `variants` block with a
+        # palette per colour mode. Normalise to the list of modes it covers, so
+        # the catalogue can show one row reading "light & dark".
+        variants = data.get("variants") or {}
+        modes = [m for m in ("light", "dark") if variants.get(m)]
+        if not modes:
+            if not data.get("tokens"):
+                errors.append(f"{rel}: a theme must set at least one token")
+                continue
+            modes = [data["mode"]]
 
         entry = {
             "id": data["id"],
             "name": data["name"],
             "version": data["version"],
             "mode": data["mode"],
+            "modes": modes,
             "path": rel,
             "sha256": sha256(theme_path),
         }

@@ -48,6 +48,17 @@
               "dark"
             ]
           },
+          "modes": {
+            "type": "array",
+            "description": "Colour modes this theme ships a palette for, so the picker can show one row reading 'light & dark'.",
+            "items": {
+              "enum": [
+                "light",
+                "dark"
+              ]
+            },
+            "minItems": 1
+          },
           "app_mode": {
             "enum": [
               "grimoire",

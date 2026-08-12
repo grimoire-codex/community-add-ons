@@ -73,7 +73,7 @@ for the authoring reference.
 
 | Theme | Mode | Description |
 | --- | --- | --- |
-| [High Contrast](themes/high-contrast/) | dark | Pure black surfaces and white text; every pairing clears WCAG AAA |
+| [High Contrast](themes/high-contrast/) | light & dark | Pure black or white surfaces at full-strength contrast; every pairing clears WCAG AAA |
 
 Note templates are **not add-ons** — nobody installs them into a server. A GM
 browses this catalogue from inside their campaign wiki and downloads a copy into

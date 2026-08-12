@@ -1,30 +1,21 @@
 {
   "version": 1,
-  "generated": "2026-08-12T00:59:44Z",
+  "generated": "2026-08-12T03:19:48Z",
   "themes": [
     {
       "id": "high-contrast",
       "name": "High Contrast",
       "version": "1.0.0",
       "mode": "dark",
+      "modes": [
+        "light",
+        "dark"
+      ],
       "path": "themes/high-contrast/high-contrast.json",
-      "sha256": "e79bc91851fb610c25363bff63bba5fd1f704622a3a4fabdec3ad82051d3697b",
+      "sha256": "feb4a247a06b0191644cfe46d36ed0912d63be0f3d1ebf53ee1ada46c7709efa",
       "app_mode": "grimoire",
       "author": "Grimoire",
-      "description": "Maximum legibility: pure black surfaces, white body text, and bright accents. Every foreground clears WCAG AAA (7:1) against every background, and the low-contrast greys of the default theme are removed. Raises luminance contrast only \u2014 it does not address colourblindness, which needs more than a change of colour.",
-      "homepage": "https://github.com/grimoire-codex/community-add-ons",
-      "grimoire_min_version": "1.5.6"
-    },
-    {
-      "id": "high-contrast-light",
-      "name": "High Contrast Light",
-      "version": "1.0.0",
-      "mode": "light",
-      "path": "themes/high-contrast-light/high-contrast-light.json",
-      "sha256": "6a945a94b58a25b461a21f5162dc966f2652a3cedd8abebfe2436b03ea425a90",
-      "app_mode": "grimoire",
-      "author": "Grimoire",
-      "description": "Maximum legibility on a light background: pure white surfaces, black body text, and deeply saturated accents. Every foreground clears WCAG AAA (7:1) against every background. Raises luminance contrast only \u2014 it does not address colourblindness, which needs more than a change of colour.",
+      "description": "Maximum legibility in both light and dark: pure black or pure white surfaces, full-strength text, and saturated accents. Every foreground clears WCAG AAA (7:1) against every background, and the low-contrast greys of the default theme are gone. Follows System, so it tracks your OS setting. Raises luminance contrast only \u2014 it does not address colourblindness, which needs more than a change of colour.",
       "homepage": "https://github.com/grimoire-codex/community-add-ons",
       "grimoire_min_version": "1.5.6"
     }

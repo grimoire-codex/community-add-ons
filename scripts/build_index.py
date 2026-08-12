@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Validate this repo's contents and regenerate its two index files.
+"""Validate this repo's contents and regenerate its three index files.
 
   index.json            add-ons (scrapers) — installed by an admin
   templates/index.json  note templates — browsed and downloaded by a GM
+  themes/index.json     colour themes — installed per user
 
 Run with --check to verify the committed indexes are up to date (what CI does
 on a PR); run with no arguments to rewrite them.
@@ -322,7 +323,7 @@ def build_themes() -> tuple[dict, list[str]]:
             "path": rel,
             "sha256": sha256(theme_path),
         }
-        for optional in ("author", "description", "homepage", "grimoire_min_version"):
+        for optional in ("app_mode", "author", "description", "homepage", "grimoire_min_version"):
             if data.get(optional):
                 entry[optional] = data[optional]
         themes.append(entry)

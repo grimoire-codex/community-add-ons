@@ -1,0 +1,60 @@
+{
+  "id": "high-contrast-light",
+  "name": "High Contrast Light",
+  "version": "1.0.0",
+  "mode": "light",
+  "app_mode": "grimoire",
+  "author": "Grimoire",
+  "description": "Maximum legibility on a light background: pure white surfaces, black body text, and deeply saturated accents. Every foreground clears WCAG AAA (7:1) against every background. Raises luminance contrast only — it does not address colourblindness, which needs more than a change of colour.",
+  "homepage": "https://github.com/grimoire-codex/community-add-ons",
+  "grimoire_min_version": "1.5.6",
+  "tokens": {
+    "bg-deep": "#ffffff",
+    "bg-panel": "#ffffff",
+    "bg-card": "#ffffff",
+    "bg-card-hover": "#ebebeb",
+    "bg-input": "#ffffff",
+
+    "border": "#595959",
+    "border-light": "#333333",
+
+    "accent": "#6b4a00",
+    "accent-dim": "#523900",
+    "accent-bright": "#725000",
+    "accent-alt": "#8a3b00",
+    "on-accent": "#ffffff",
+
+    "text": "#000000",
+    "text-dim": "#1a1a1a",
+    "text-muted": "#333333",
+
+    "red": "#a30000",
+    "green": "#005c2e",
+    "blue": "#00457a",
+
+    "danger": "#a30000",
+    "danger-fill": "#a30000",
+    "on-danger": "#ffffff",
+    "warning": "#7a3d00",
+    "success": "#005c2e",
+
+    "on-media": "#ffffff",
+    "on-media-border": "rgba(255, 255, 255, 0.6)",
+
+    "tag-bg": "#ebebeb",
+    "tag-border": "#333333",
+    "mark-bg": "rgba(255, 214, 0, 0.55)",
+    "invite-bg": "rgba(107, 74, 0, 0.12)",
+
+    "overlay": "rgba(0, 0, 0, 0.7)",
+    "shadow": "rgba(0, 0, 0, 0.45)",
+    "scrim": "rgba(0, 0, 0, 0.8)",
+    "scrim-strong": "rgba(0, 0, 0, 0.92)",
+
+    "type-book": "#4b0082",
+    "type-map": "#00457a",
+    "type-token": "#005c2e",
+    "type-audio": "#8a3b00",
+    "type-file": "#6b4a00"
+  }
+}

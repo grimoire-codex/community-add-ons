@@ -41,6 +41,11 @@ A map of colour tokens overriding Grimoire's palette:
 Every token is optional and anything you leave out falls back to that palette,
 so a theme can be three colours or all of them.
 
+`app_mode` is optional and says which side of the product the theme was made
+for — `grimoire` (TTRPG, the default) or `codex` (wargaming). It is a preference
+the picker sorts by, not a restriction: a theme that reads well is usable in
+either, so set it only if your palette is genuinely tuned to one.
+
 ## Tokens
 
 Surfaces, in back-to-front order: `bg-deep` (the page), `bg-panel`, `bg-card`,
@@ -88,3 +93,4 @@ cannot add.
 | Theme | Mode | Description |
 | --- | --- | --- |
 | [High Contrast](high-contrast/) | dark | Pure black surfaces and white text; every pairing clears WCAG AAA. |
+| [High Contrast Light](high-contrast-light/) | light | Pure white surfaces and black text; every pairing clears WCAG AAA. |

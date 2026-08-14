@@ -47,6 +47,10 @@ See [`docs/scripts.md`](docs/scripts.md) for the security model.
 | --- | --- | --- | --- |
 | [TTRPG Wiki](scrapers/ttrpg-wiki/) | game system | No | System metadata from [ttrpgwiki.com](https://ttrpgwiki.com) |
 | [DriveThruRPG](scrapers/drivethrurpg/) | book | No | Book metadata from [drivethrurpg.com](https://www.drivethrurpg.com) |
+| [RPGGeek](scrapers/rpggeek/) | book | Yes¹ | Book metadata from [rpggeek.com](https://rpggeek.com) |
+| [RPGGeek (System)](scrapers/rpggeek-system/) | game system | Yes¹ | System metadata from [rpggeek.com](https://rpggeek.com) — requires `rpggeek` |
+
+¹ Requires a free BGG API token — see the scraper README for setup.
 
 ### Note templates
 

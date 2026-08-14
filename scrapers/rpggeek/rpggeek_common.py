@@ -155,7 +155,28 @@ def extract_dice(mechanic):
 
     m = _DICE_PAREN.match(stripped)
     if not m:
-        # Not a dice mechanic - discard it.
+        # Check for other physical supplies supported by Grimoire
+        lower = stripped.lower()
+        if "jenga" in lower or "dexterity-based" in lower:
+            return "Tumbling Tower (Jenga Tower)"
+        if "candle" in lower:
+            return "Candles"
+        if "poker chip" in lower:
+            return "Poker Chips"
+        if "timer" in lower:
+            return "Timers"
+        if "phone" in lower:
+            return "Phone"
+            
+        # Check for card types
+        if "tarot" in lower:
+            return "Tarot Cards"
+        if "playing card" in lower or "standard deck" in lower or "french-suited" in lower:
+            return "Playing Cards"
+        if "card" in lower or "deck" in lower:
+            return "Custom Deck"
+            
+        # Not a dice or supported mechanic - discard it.
         return None
 
     inner = m.group(1)
@@ -279,7 +300,7 @@ def fetch(identity, item_type, token, addon_dir):
     # Only keep mechanics that are actually dice-related, and strip the verbose
     # label down to short notation ("D20", "D6", "Diceless").
     mechanics_raw = _links(item, "rpgmechanic")
-    dice = [d for d in (extract_dice(m) for m in mechanics_raw) if d]
+    dice = sorted(list(set(d for d in (extract_dice(m) for m in mechanics_raw) if d)))
 
     fields = {
         "description": strip_html(description_raw),

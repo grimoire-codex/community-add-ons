@@ -50,7 +50,7 @@ installed for this one to work.
 
 RPGGeek's mechanic tags are verbose - "Dice (Primarily d20)", "Skill Based
 (buy or gain skills)", and so on. This scraper filters them down to dice-related
-entries only and shortens the label to match Grimoire's convention:
+entries or specific physical supplies, and shortens the label to match Grimoire's convention:
 
 | RPGGeek mechanic | `dice_materials` value |
 | --- | --- |
@@ -58,6 +58,14 @@ entries only and shortens the label to match Grimoire's convention:
 | Dice (Primarily d6) | D6 |
 | Dice (d6 Pool) | D6 |
 | Dice (Primarily d100/percentile) | D100 |
+| Dexterity-based (e.g. Jenga tower) | Tumbling Tower (Jenga Tower) |
+| Matches for "candle" | Candles |
+| Matches for "poker chip" | Poker Chips |
+| Matches for "timer" | Timers |
+| Matches for "phone" | Phone |
+| Matches for "tarot" | Tarot Cards |
+| Matches for "playing card", "standard deck", "french-suited" | Playing Cards |
+| Matches for "card" or "deck" | Custom Deck |
 | Class Based (...), Skill Based (...), etc. | *(not mapped)* |
 
 ## Authentication

@@ -17,7 +17,7 @@ scraper: `rpggeek`.
 | Grimoire field | Source | Notes |
 | --- | --- | --- |
 | `description` | Description field | HTML stripped to plain text |
-| `publishers` | Publishers | All listed publishers |
+| `publishers` | Publishers | All listed publishers, including their website URLs |
 | `year` | Year published | |
 | `genres` | RPG genres | e.g. "Fantasy (High Fantasy)", "Science Fiction" |
 | `dice_materials` | Mechanics | e.g. "D20", "D6", "Candles", "Playing Cards" |

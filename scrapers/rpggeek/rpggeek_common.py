@@ -265,6 +265,32 @@ def _links(element, link_type):
     ]
 
 
+def _links_with_id(element, link_type):
+    """Return a list of (id, value) tuples for all <link type="…"> children."""
+    return [
+        (link.get("id"), link.get("value"))
+        for link in element.findall("link")
+        if link.get("type") == link_type and link.get("value")
+    ]
+
+
+def _fetch_publisher_url(pub_id):
+    if not pub_id:
+        return ""
+    url = f"https://api.geekdo.com/api/geekitems?objecttype=rpgpublisher&objectid={pub_id}"
+    req = urllib.request.Request(url, headers={"User-Agent": "Grimoire/1.0 (+https://github.com/hunter-read/grimoire)"})
+    try:
+        with urllib.request.urlopen(req, timeout=5) as response:
+            data = json.loads(response.read().decode("utf-8"))
+            website = data.get("item", {}).get("website", {})
+            
+            # The API can return {"url": False} if empty, so we must be careful
+            url = website.get("url", "")
+            return url if isinstance(url, str) else ""
+    except Exception:
+        return ""
+
+
 # ── Search ───────────────────────────────────────────────────────────────────
 
 def search(query, item_type, token, limit=15):
@@ -334,7 +360,9 @@ def fetch(identity, item_type, token, addon_dir):
     year_raw = _attr(item, "yearpublished")
     year = int(year_raw) if year_raw and year_raw.isdigit() else None
 
-    publishers = _links(item, "rpgpublisher")
+    publishers_raw = _links_with_id(item, "rpgpublisher")
+    publishers_data = [{"name": name, "url": _fetch_publisher_url(pub_id)} for pub_id, name in publishers_raw]
+    
     designers = _links(item, "rpgdesigner")
     artists = _links(item, "rpgartist")
     genres = _links(item, "rpggenre")
@@ -355,10 +383,11 @@ def fetch(identity, item_type, token, addon_dir):
         "dice_materials": dice,
         "system_family": system_family,
         "edition": edition,
-        "publishers": [{"name": p, "url": ""} for p in publishers],
+        "publishers": publishers_data,
         # book-specific fields
         "title": title,
-        "publisher": publishers[0] if publishers else None,
+        "publisher": publishers_raw[0][1] if publishers_raw else None,
+        "publisher_url": publishers_data[0]["url"] if publishers_data else None,
         "authors": designers,
         "artists": artists,
     }

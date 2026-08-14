@@ -86,21 +86,6 @@ https://rpggeek.com/rpg/79109/dragonbane
 
 A bare numeric ID works too (`79109`).
 
-## vs. TTRPG Wiki
-
-Both this scraper and `ttrpg-wiki` target the `game-system` type. They cover
-different things - use whichever has the data you need:
-
-| | TTRPG Wiki | RPGGeek (System) |
-| --- | --- | --- |
-| Catalogue size | ~236 curated systems | Very large |
-| Licence field | ✓ | - |
-| Edition field | ✓ | - (baked into name) |
-| Dice field | Free-form prose | Short notation (D20, D6) |
-| Publishers | ✓ | ✓ |
-| Genres | ✓ | ✓ |
-| Auth required | No | Yes (BGG token) |
-
 ## Source terms
 
 This uses the BGG XML API v2 with authentication, at a modest request rate with

@@ -192,6 +192,49 @@ def extract_dice(mechanic):
     return None
 
 
+def extract_edition(name, family):
+    """
+    Attempt to extract the edition by finding the difference between the full
+    name and the system family (e.g. 'Dungeons & Dragons (5th Edition)' vs
+    'Dungeons & Dragons' -> '5th Edition').
+    
+    If that fails, falls back to scanning for common edition patterns.
+    """
+    if not name:
+        return None
+        
+    if family and family.lower() in name.lower():
+        pattern = re.compile(re.escape(family), re.IGNORECASE)
+        diff = pattern.sub("", name).strip()
+        
+        # Clean up any wrapping parens
+        if diff.startswith("(") and diff.endswith(")"):
+            diff = diff[1:-1].strip()
+            
+        # Clean up leading dashes or colons
+        diff = diff.lstrip(" :-").strip()
+        
+        # Clean up double spaces
+        diff = " ".join(diff.split())
+        
+        if diff:
+            return diff
+
+    # Fallback: scan for common edition keywords
+    patterns = [
+        re.compile(r"\b(\d+(?:\.\d+)?e)\b", re.IGNORECASE),
+        re.compile(r"\b(\d+(?:st|nd|rd|th)?(?:\s+\w+)?\s+(?:edition|ed\.?))\b", re.IGNORECASE),
+        re.compile(r"\b((?:revised|anniversary|adventure|starter|core)\s+edition)\b", re.IGNORECASE)
+    ]
+    
+    for p in patterns:
+        m = p.search(name)
+        if m:
+            return m.group(1).strip()
+            
+    return None
+
+
 # ── Fuzzy ranking ────────────────────────────────────────────────────────────
 
 def fuzzy_score(a, b):
@@ -302,12 +345,16 @@ def fetch(identity, item_type, token, addon_dir):
     mechanics_raw = _links(item, "rpgmechanic")
     dice = sorted(list(set(d for d in (extract_dice(m) for m in mechanics_raw) if d)))
 
+    system_family = families[0] if families else None
+    edition = extract_edition(title, system_family)
+
     fields = {
         "description": strip_html(description_raw),
         "year": year,
         "genres": genres,
         "dice_materials": dice,
-        "system_family": families[0] if families else None,
+        "system_family": system_family,
+        "edition": edition,
         "publishers": [{"name": p, "url": ""} for p in publishers],
         # book-specific fields
         "title": title,

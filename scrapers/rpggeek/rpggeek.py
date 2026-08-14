@@ -31,7 +31,7 @@ def fetch(identity, addon_dir):
     fields, url = common.fetch(identity, "rpgitem", token, addon_dir)
 
     # Drop fields that don't belong on the book target.
-    for key in ("dice_materials", "system_family", "publishers"):
+    for key in ("dice_materials", "system_family", "edition", "publishers"):
         fields.pop(key, None)
 
     return {"fields": fields, "url": url}

@@ -20,14 +20,15 @@ scraper: `rpggeek`.
 | `publishers` | Publishers | All listed publishers |
 | `year` | Year published | |
 | `genres` | RPG genres | e.g. "Fantasy (High Fantasy)", "Science Fiction" |
-| `dice_materials` | Mechanics (dice only) | e.g. "D20", "D6", "Diceless" |
+| `dice_materials` | Mechanics | e.g. "D20", "D6", "Candles", "Playing Cards" |
 | `system_family` | RPG family | e.g. "Dungeons & Dragons" |
+| `edition` | Computed | Extracted from the difference between the item name and the family name |
 | `urls` | Derived | Link back to the RPGGeek system page |
 
-Not mapped: `license`, `edition`. There's no licence field in the BGG API - it's
-a catalogue, not a licence registry. Edition is typically baked into the system
-name on RPGGeek (e.g. "Dungeons & Dragons 5th Edition") rather than a separate
-field.
+Not mapped: `license`. There's no licence field in the BGG API - it's
+a catalogue, not a licence registry. Edition is computed since it is typically
+baked into the system name on RPGGeek (e.g. "Dungeons & Dragons 5th Edition") rather
+than a separate field.
 
 ## How it works
 

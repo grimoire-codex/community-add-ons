@@ -148,14 +148,10 @@ def extract_dice(mechanic):
         "Dice (Primarily 2d6)"         -> "2D6"
         "Dice (d6 Pool)"               -> "D6"
         "Dice (Primarily d100/percentile)" -> "D100"
-        "Diceless"                     -> "Diceless"
         "Class Based (Pilot, ...)"     -> None
         "Skill Based (...)"            -> None
     """
     stripped = mechanic.strip()
-
-    if stripped.lower() == "diceless":
-        return "Diceless"
 
     m = _DICE_PAREN.match(stripped)
     if not m:

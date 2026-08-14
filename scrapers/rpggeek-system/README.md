@@ -58,7 +58,6 @@ entries only and shortens the label to match Grimoire's convention:
 | Dice (Primarily d6) | D6 |
 | Dice (d6 Pool) | D6 |
 | Dice (Primarily d100/percentile) | D100 |
-| Diceless | Diceless |
 | Class Based (...), Skill Based (...), etc. | *(not mapped)* |
 
 ## Authentication

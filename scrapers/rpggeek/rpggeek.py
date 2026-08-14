@@ -1,9 +1,9 @@
 """
-rpggeek.py - book scraper entry-point for the rpggeek add-on.
+rpggeek.py - book scraper entry-point.
 
-Reads from stdin, writes to stdout, per the Grimoire script contract.
-The actual work lives in rpggeek_common.py - this file just wires up the
-action dispatch and handles top-level error formatting.
+The BGG XML API is messy, so we offload all the heavy lifting to `rpggeek_common.py`.
+This file just wires up the search/fetch actions for books and handles the top-level
+error wrapping so Grimoire doesn't choke on a raw stack trace.
 """
 
 import json
@@ -19,9 +19,8 @@ def search(query, addon_dir):
 
 
 def fetch(identity, addon_dir):
-    # Accept a full RPGGeek URL or a bare numeric ID.
-    # e.g. "https://rpggeek.com/rpgitem/386173/dragonbane-mirth-and-mayhem-roleplaying"
-    #   or just "386173"
+    # Grimoire users might paste a full URL or just the ID. 
+    # We handle both so they don't have to manually strip the URL.
     import re
     m = re.search(r"/rpgitem/(\d+)", identity)
     if m:
@@ -30,7 +29,9 @@ def fetch(identity, addon_dir):
     token = common.get_token()
     fields, url = common.fetch(identity, "rpgitem", token, addon_dir)
 
-    # Drop fields that don't belong on the book target.
+    # Grimoire's schema strictly rejects payloads containing fields the target 
+    # doesn't support. Since we share the fetch logic with game-systems, we have 
+    # to scrub the system-specific fields here before returning.
     for key in ("dice_materials", "system_family", "edition", "publishers"):
         fields.pop(key, None)
 

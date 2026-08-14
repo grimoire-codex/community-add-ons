@@ -1,9 +1,8 @@
 """
-rpggeek_system.py - game-system scraper entry-point for the rpggeek-system add-on.
+rpggeek_system.py - game-system scraper entry-point.
 
-Reads from stdin, writes to stdout, per the Grimoire script contract.
-The actual work lives in rpggeek_common.py (in the sibling rpggeek/ directory) -
-this file resolves the import path and wires up the action dispatch.
+Just like the book scraper, we farm out the heavy XML parsing to `rpggeek_common.py`.
+This file just resolves the messy import path and sets up the system-specific fetching.
 """
 
 import json
@@ -13,11 +12,9 @@ import sys
 
 
 def _load_common(addon_dir):
-    """
-    rpggeek_common.py lives in the rpggeek/ sibling directory, not here.
-    We resolve it relative to addon_dir so both add-ons can share the
-    implementation without duplicating ~200 lines of XML parsing.
-    """
+    # FIXME: We have to hack the sys.path here to share the XML parsing logic 
+    # across both scrapers without duplicating 200 lines of code. Not ideal, 
+    # but it avoids a maintenance nightmare if the BGG API changes.
     common_dir = os.path.join(os.path.dirname(addon_dir.rstrip("/\\")), "rpggeek")
     if common_dir not in sys.path:
         sys.path.insert(0, common_dir)
@@ -33,8 +30,8 @@ def search(query, addon_dir):
 
 
 def fetch(identity, addon_dir):
-    # Accept a full RPGGeek URL or a bare numeric ID.
-    # e.g. "https://rpggeek.com/rpg/79109/dragonbane" or just "79109"
+    # Grimoire users might paste a full URL or just the ID. 
+    # We handle both so they don't have to manually strip the URL.
     m = re.search(r"/rpg/(\d+)", identity)
     if m:
         identity = m.group(1)
@@ -43,7 +40,8 @@ def fetch(identity, addon_dir):
     token = common.get_token()
     fields, url = common.fetch(identity, "rpg", token, addon_dir)
 
-    # Drop fields that belong to the book target only.
+    # Grimoire's schema strictly rejects payloads containing fields the target 
+    # doesn't support. We scrub the book-specific fields here before returning.
     for key in ("title", "publisher", "authors", "artists"):
         fields.pop(key, None)
 

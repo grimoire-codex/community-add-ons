@@ -2,14 +2,11 @@
 rpggeek_common.py - shared implementation for the rpggeek and rpggeek-system scrapers.
 
 Both scrapers hit the BGG XML API v2 (https://rpggeek.com/xmlapi2/). The API is
-XML-only, which is why this module exists - the YAML declarative format only speaks
-JSON, so we drop down to a script and parse the XML ourselves.
-
-Standard library only: urllib.request, xml.etree.ElementTree, html.parser, difflib.
-No third-party dependencies.
+XML-only, which is why this module exists - our YAML declarative format only speaks
+JSON, so we drop down to a Python script to chew through the XML ourselves.
 
 NOTE: The BGG API has required a Bearer Token since July 2025. Set BGG_API_TOKEN
-in your environment before use. See the README for how to get one.
+in your environment before use, otherwise we get bounced immediately.
 """
 
 import difflib
@@ -28,7 +25,11 @@ from html.parser import HTMLParser
 # ── HTTP ─────────────────────────────────────────────────────────────────────
 
 def get_token():
-    """Read BGG_API_TOKEN from the environment. Fail fast with a useful message."""
+    """
+    Fail fast if the BGG_API_TOKEN environment variable isn't set.
+    The API bounces unauthenticated requests immediately, so there's no point
+    trying to parse XML if we don't have the key.
+    """
     token = os.environ.get("BGG_API_TOKEN", "").strip()
     if not token:
         raise RuntimeError(
@@ -40,11 +41,13 @@ def get_token():
     return token
 
 
-def bgg_get(url, token):
+def _fetch_with_retries(url, token):
     """
-    Fetch a URL from the BGG API with auth. Handles the quirky HTTP 202 response
-    BGG returns when it's still building a result - retries up to 3 times with a
-    short delay before giving up.
+    Fetch a URL from the BGG API with auth headers.
+    
+    BGG has a quirky habit of returning HTTP 202 (Accepted) if a record isn't
+    cached on their end and needs to be queued. We sleep and retry a few times
+    to wait it out, otherwise we'd throw errors on perfectly valid IDs.
     """
     req = urllib.request.Request(
         url,
@@ -66,8 +69,8 @@ def bgg_get(url, token):
         if status == 200:
             return body
         if status == 202:
-            # BGG queues some requests and returns 202 while processing. Give it
-            # a moment and try again - three retries is almost always enough.
+            # BGG sometimes queues heavy requests and kicks back a 202 Accepted while processing. 
+            # We just sleep and retry. Three attempts is usually enough to wait out the queue.
             if attempt < 3:
                 time.sleep(2)
                 continue
@@ -88,8 +91,11 @@ def bgg_get(url, token):
 
 # ── Text ─────────────────────────────────────────────────────────────────────
 
-class _HTMLStripper(HTMLParser):
-    """Minimal HTML-to-text converter using the standard library."""
+class _MessyHTMLScrubber(HTMLParser):
+    """
+    Minimal HTML-to-text converter using just the standard library.
+    We don't want to drag in BeautifulSoup just for stripping BGG's messy description blocks.
+    """
 
     def __init__(self):
         super().__init__()
@@ -99,7 +105,8 @@ class _HTMLStripper(HTMLParser):
     def handle_starttag(self, tag, attrs):
         if tag in ("script", "style"):
             self._in_skip += 1
-        # Treat block-level tags as paragraph breaks.
+        # BGG's HTML can be a bit of a mess. Treat block-level tags as paragraph breaks 
+        # so we don't end up with mashed together text when stripping tags.
         if tag in ("p", "br", "li", "h1", "h2", "h3", "h4", "h5", "h6", "hr"):
             self._parts.append("\n")
 
@@ -121,11 +128,14 @@ class _HTMLStripper(HTMLParser):
         return html.unescape(text).strip()
 
 
-def strip_html(text):
-    """Strip HTML tags and decode entities. Returns plain text."""
+def _scrub_html(text):
+    """
+    Feed messy BGG description HTML through our minimal parser to get 
+    clean, readable plain text out the other side.
+    """
     if not text:
         return ""
-    parser = _HTMLStripper()
+    parser = _MessyHTMLScrubber()
     parser.feed(text)
     return parser.get_text()
 
@@ -140,16 +150,9 @@ _DICE_TOKEN = re.compile(r"\d*d\d+", re.IGNORECASE)
 
 def extract_dice(mechanic):
     """
-    Convert a verbose RPGGeek rpgmechanic label into a short dice notation,
-    or return None if it isn't a dice mechanic at all.
-
-    Examples:
-        "Dice (Primarily d20)"         -> "D20"
-        "Dice (Primarily 2d6)"         -> "2D6"
-        "Dice (d6 Pool)"               -> "D6"
-        "Dice (Primarily d100/percentile)" -> "D100"
-        "Class Based (Pilot, ...)"     -> None
-        "Skill Based (...)"            -> None
+    Sifts through BGG's noisy mechanic labels ("Dice (Primarily d20)", etc) 
+    and distills them down to clean notations ("D20"). If it's a physical supply 
+    we track (Jenga towers, cards), we map it. If it's something weird, we drop it.
     """
     stripped = mechanic.strip()
 
@@ -180,7 +183,8 @@ def extract_dice(mechanic):
         return None
 
     inner = m.group(1)
-    # Strip the common "Primarily " prefix BGG uses.
+    # BGG labels their dice mechanics with verbose, messy strings like "Dice (Primarily d20)".
+    # We strip the common prefix here so we don't clutter the UI.
     inner = re.sub(r"^Primarily\s+", "", inner, flags=re.IGNORECASE)
 
     # Pull the first dice token out of whatever remains ("d20", "2d6", etc.).
@@ -188,17 +192,17 @@ def extract_dice(mechanic):
     if token:
         return token.group(0).upper()
 
-    # The parens had something in them but no recognisable dice notation - skip.
+    # We just want the raw dice notation (e.g. "d20", "2d6"). If the parens didn't 
+    # hold anything recognisable, we just throw it out.
     return None
 
 
 def extract_edition(name, family):
     """
-    Attempt to extract the edition by finding the difference between the full
-    name and the system family (e.g. 'Dungeons & Dragons (5th Edition)' vs
-    'Dungeons & Dragons' -> '5th Edition').
-    
-    If that fails, falls back to scanning for common edition patterns.
+    BGG bakes editions directly into the system name (e.g. "Dungeons & Dragons 5th Edition").
+    We try to smartly isolate the edition by subtracting the system family from the name.
+    If that trick fails (because they don't share text), we fall back to sweeping for 
+    common edition regex patterns.
     """
     if not name:
         return None
@@ -237,18 +241,20 @@ def extract_edition(name, family):
 
 # ── Fuzzy ranking ────────────────────────────────────────────────────────────
 
-def fuzzy_score(a, b):
-    """Simple fuzzy ratio between two strings. 1.0 is a perfect match."""
+def _score_fuzzy_match(a, b):
+    """
+    Simple fuzzy ratio scoring so we don't need to import external libraries like thefuzz.
+    Perfect for ranking API search results that might have slightly mangled titles.
+    """
     return difflib.SequenceMatcher(None, a.lower(), b.lower()).ratio()
 
 
 # ── BGG XML helpers ──────────────────────────────────────────────────────────
 
-def _attr(element, path, attrib="value", default=None):
+def _grab_attr(element, path, attrib="value", default=None):
     """
-    Find a child element by path and return one of its attribute values.
-    BGG's XML stores almost everything in `value` attributes rather than
-    element text, which is a bit quirky but consistent.
+    BGG's XML is quirky - it stores almost everything in `value` attributes 
+    rather than element text. This grabs a child node and pulls that value safely.
     """
     node = element.find(path)
     if node is None:
@@ -256,8 +262,11 @@ def _attr(element, path, attrib="value", default=None):
     return node.get(attrib, default)
 
 
-def _links(element, link_type):
-    """Return a list of `value` attributes for all <link type="…"> children."""
+def _grab_links(element, link_type):
+    """
+    Grabs all the values for a specific `<link type="...">` tag. 
+    BGG uses these for everything from genres to mechanics.
+    """
     return [
         link.get("value")
         for link in element.findall("link")
@@ -265,8 +274,11 @@ def _links(element, link_type):
     ]
 
 
-def _links_with_id(element, link_type):
-    """Return a list of (id, value) tuples for all <link type="…"> children."""
+def _grab_links_with_id(element, link_type):
+    """
+    Same as _grab_links, but pulls the internal BGG ID as well.
+    Useful when we actually need to make follow-up queries against specific entities.
+    """
     return [
         (link.get("id"), link.get("value"))
         for link in element.findall("link")
@@ -278,7 +290,7 @@ def _links_with_id(element, link_type):
 # This is explicitly unsupported by BGG and is without a doubt the least stable 
 # part of this codebase. If this script suddenly breaks one day, start looking here. 
 # Not ideal.
-def _fetch_publisher_url(pub_id):
+def _fetch_unsupported_publisher_url(pub_id):
     if not pub_id:
         return ""
     url = f"https://api.geekdo.com/api/geekitems?objecttype=rpgpublisher&objectid={pub_id}"
@@ -299,25 +311,23 @@ def _fetch_publisher_url(pub_id):
 
 def search(query, item_type, token, limit=15):
     """
-    Search RPGGeek for items of the given type. Returns a list of candidate
-    dicts ready to hand back to Grimoire as search results.
-
-    item_type should be "rpgitem" (books) or "rpg" (game systems).
+    Hits the BGG search endpoint and scores the results against the user's query.
+    We cap it at 15 items to keep the Grimoire search UI snappy.
     """
     encoded = urllib.parse.quote(query)
     url = f"https://rpggeek.com/xmlapi2/search?query={encoded}&type={item_type}"
 
-    raw = bgg_get(url, token)
+    raw = _fetch_with_retries(url, token)
     root = ET.fromstring(raw)
 
     candidates = []
     for item in root.findall("item"):
         item_id = item.get("id")
-        name = _attr(item, "name")
-        year = _attr(item, "yearpublished") or ""
+        name = _grab_attr(item, "name")
+        year = _grab_attr(item, "yearpublished") or ""
         if not item_id or not name:
             continue
-        score = fuzzy_score(query, name)
+        score = _score_fuzzy_match(query, name)
         year_label = f" ({year})" if year else ""
         candidates.append({
             "identity": item_id,
@@ -333,16 +343,16 @@ def search(query, item_type, token, limit=15):
 
 def fetch(identity, item_type, token, addon_dir):
     """
-    Fetch the full record for a single RPGGeek item. Returns a Grimoire-shaped
-    `fields` dict. Caches the raw response in addon_dir/cache/ for 24 hours to
-    avoid hammering the API on repeated opens of the same item.
+    Pulls down the massive XML blob for a specific item, extracts everything 
+    Grimoire cares about, and shapes it into our expected dictionary format.
+    Caches the raw XML to avoid hammering BGG if the user re-opens the same item.
     """
     cache_path = _cache_path(addon_dir, item_type, identity)
     raw = _cache_read(cache_path)
 
     if raw is None:
         url = f"https://rpggeek.com/xmlapi2/thing?id={identity}&type={item_type}"
-        raw = bgg_get(url, token)
+        raw = _fetch_with_retries(url, token)
         _cache_write(cache_path, raw)
 
     root = ET.fromstring(raw)
@@ -361,27 +371,28 @@ def fetch(identity, item_type, token, addon_dir):
     if desc_node is not None and desc_node.text:
         description_raw = desc_node.text
 
-    year_raw = _attr(item, "yearpublished")
+    year_raw = _grab_attr(item, "yearpublished")
     year = int(year_raw) if year_raw and year_raw.isdigit() else None
 
-    publishers_raw = _links_with_id(item, "rpgpublisher")
-    publishers_data = [{"name": name, "url": _fetch_publisher_url(pub_id)} for pub_id, name in publishers_raw]
+    publishers_raw = _grab_links_with_id(item, "rpgpublisher")
+    publishers_data = [{"name": name, "url": _fetch_unsupported_publisher_url(pub_id)} for pub_id, name in publishers_raw]
     
-    designers = _links(item, "rpgdesigner")
-    artists = _links(item, "rpgartist")
-    genres = _links(item, "rpggenre")
-    families = _links(item, "rpgfamily")
+    designers = _grab_links(item, "rpgdesigner")
+    artists = _grab_links(item, "rpgartist")
+    genres = _grab_links(item, "rpggenre")
+    families = _grab_links(item, "rpgfamily")
 
-    # Only keep mechanics that are actually dice-related, and strip the verbose
-    # label down to short notation ("D20", "D6", "Diceless").
-    mechanics_raw = _links(item, "rpgmechanic")
+    # BGG spits out every single mechanic. We only care about dice-related ones here.
+    # We also strip the verbose labels down to clean, short notation ("D20", "D6", "Diceless")
+    # before returning them.
+    mechanics_raw = _grab_links(item, "rpgmechanic")
     dice = sorted(list(set(d for d in (extract_dice(m) for m in mechanics_raw) if d)))
 
     system_family = families[0] if families else None
     edition = extract_edition(title, system_family)
 
     fields = {
-        "description": strip_html(description_raw),
+        "description": _scrub_html(description_raw),
         "year": year,
         "genres": genres,
         "dice_materials": dice,
@@ -419,7 +430,10 @@ def _cache_path(addon_dir, item_type, identity):
 
 
 def _cache_read(path):
-    """Return cached bytes if the file exists and is less than TTL seconds old."""
+    """
+    Returns the cached XML blob if it exists and hasn't gone stale. 
+    Saves us waiting on BGG's slow endpoints.
+    """
     try:
         age = time.time() - os.path.getmtime(path)
         if age < _CACHE_TTL:

@@ -273,7 +273,11 @@ def _links_with_id(element, link_type):
         if link.get("type") == link_type and link.get("value")
     ]
 
-
+# FIXME: We're pulling the publisher website from the undocumented BGG JSON API 
+# since the XML API doesn't expose it and the frontend is an Angular app.
+# This is explicitly unsupported by BGG and is without a doubt the least stable 
+# part of this codebase. If this script suddenly breaks one day, start looking here. 
+# Not ideal.
 def _fetch_publisher_url(pub_id):
     if not pub_id:
         return ""

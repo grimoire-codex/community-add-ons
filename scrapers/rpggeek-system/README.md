@@ -7,17 +7,12 @@ individual product. Think "Dragonbane" the system, not the Dragonbane core set b
 For individual books and supplements (`/rpgitem/` URLs), there's a companion
 scraper: `rpggeek`.
 
-> **Requires `rpggeek` to be installed.** This scraper shares its implementation
-> with the `rpggeek` book scraper - `rpggeek_common.py` lives in the `rpggeek/`
-> directory and is imported at runtime. Install `rpggeek` first, or this one
-> won't work.
-
 ## What it fills in
 
 | Grimoire field | Source | Notes |
 | --- | --- | --- |
 | `description` | Description field | HTML stripped to plain text |
-| `publishers` | Publishers | All listed publishers, including their website URLs |
+| `publishers` | Publishers | All listed publishers |
 | `year` | Year published | |
 | `genres` | RPG genres | e.g. "Fantasy (High Fantasy)", "Science Fiction" |
 | `dice_materials` | Mechanics | e.g. "D20", "D6", "Candles", "Playing Cards" |
@@ -40,12 +35,8 @@ Two requests per lookup:
 
 1. **Search** - `GET /xmlapi2/search?query=…&type=rpg` returns matching system
    entries. Grimoire re-ranks them locally by title similarity.
-2. **Detail** - `GET /xmlapi2/thing?id=…&type=rpg` for the system you pick.
+2. **Detail** - `GET /xmlapi2/family?id=…&type=rpg` for the system you pick.
    Detail responses are cached locally for 24 hours.
-
-The actual implementation is shared with the `rpggeek` book scraper via
-`rpggeek_common.py` in the sibling `rpggeek/` directory. Both add-ons need to be
-installed for this one to work.
 
 ## Dice field
 
@@ -107,5 +98,3 @@ contributors and publishers. This definition grants no rights to it.
 - **No licence field.** RPGGeek isn't a licence registry. Use `ttrpg-wiki` if
   licence data matters to you.
 - **BGG token required.** It's free and one-time, but it is a setup step.
-- **Both add-ons must be installed.** `rpggeek-system` imports its implementation
-  from the sibling `rpggeek/` directory. Install `rpggeek` first.

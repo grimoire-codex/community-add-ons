@@ -16,7 +16,6 @@ than the Dragonbane core set), there's a companion scraper: `rpggeek-system`.
 | `authors` | Designers | All credited designers |
 | `artists` | Artists | All credited artists |
 | `publisher` | Publishers | First listed publisher |
-| `publisher_url` | Derived | Fetched from the publisher's detail page |
 | `genres` | RPG genres | e.g. "Fantasy (High Fantasy)", "Science Fiction" |
 | `year` | Year published | |
 | `urls` | Derived | Link back to the RPGGeek item page |

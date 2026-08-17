@@ -8,6 +8,11 @@ description: Book metadata (title, authors, artists, publisher, genres, year) fr
 attribution: Data from RPGGeek (rpggeek.com)
 grimoire_min_version: 1.5.5
 
+search:
+  identity_pattern: 'rpggeek\.com/rpgitem/(\d+)'
+  fields:
+    - field: name
+
 script:
   entry: rpggeek.py
   # Two requests per lookup (search + detail), both against rpggeek.com. 60s is

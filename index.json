@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated": "2026-08-17T17:44:11Z",
+  "generated": "2026-08-17T19:07:51Z",
   "addons": [
     {
       "id": "drivethrurpg",
@@ -23,11 +23,11 @@
       "version": "1.0.0",
       "path": "scrapers/rpggeek/rpggeek.yml",
       "requires_script": true,
-      "sha256": "0058c0c1b3d83b357b2e26500577d8f7d9e342efd83f48e84f03990268e17b8a",
+      "sha256": "b56a1e26700fd1d7cab68f38def8b1dad689112fe2562b6cf5fb1fa7eee4765e",
       "description": "Book metadata (title, authors, artists, publisher, genres, year) from RPGGeek.",
       "homepage": "https://rpggeek.com",
       "grimoire_min_version": "1.5.5",
-      "script_sha256": "b84618316a4448e0adbae0a66b1fd7188828768ce36d57acb59faf833fb52327"
+      "script_sha256": "91b2e50b7326f44be8abe853fdd11787533f9377719bbdcb8724dee6ab69f1f0"
     },
     {
       "id": "rpggeek-system",
@@ -37,11 +37,11 @@
       "version": "1.0.0",
       "path": "scrapers/rpggeek-system/rpggeek-system.yml",
       "requires_script": true,
-      "sha256": "ac6030c46ef54798939f48b3a99413e9978cc827af7fa0dec94cb61e391ca0fb",
+      "sha256": "3a8ca5db81f4161d6ad4dc148fbfd35a56798e533fea37b502bbeeae151c8d46",
       "description": "Game-system metadata (publishers, year, genres, dice, system family) from RPGGeek.",
       "homepage": "https://rpggeek.com",
       "grimoire_min_version": "1.5.5",
-      "script_sha256": "ee84ca0c8e0cce594fc7f2a183b529cebd9a29a54781e7ac66aee96f11d7f733"
+      "script_sha256": "bd270c22fbead9317204173e0243717019cdc9f450f7b32493dba7122dfbd797"
     },
     {
       "id": "ttrpg-wiki",

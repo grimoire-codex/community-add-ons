@@ -169,7 +169,7 @@ def _common_fetch(identity, item_type, token, cache_dir):
 
     # Only write to the cache if we actually got a valid item back!
     # Otherwise, if BGG hiccups or we send a bad request, we permanently cache the failure.
-    if cache_path and not os.path.exists(cache_path):
+    if cache_path:
         _cache_write(cache_path, raw)
 
     name_node = item.find("name[@type='primary']")

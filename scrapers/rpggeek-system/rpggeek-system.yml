@@ -8,6 +8,11 @@ description: Game-system metadata (publishers, year, genres, dice, system family
 attribution: Data from RPGGeek (rpggeek.com)
 grimoire_min_version: 1.5.5
 
+search:
+  identity_pattern: 'rpggeek\.com/rpg/(\d+)'
+  fields:
+    - field: name
+
 script:
   entry: rpggeek_system.py
   # Two requests per lookup (search + detail), both against rpggeek.com. 60s is

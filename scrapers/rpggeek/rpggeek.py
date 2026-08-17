@@ -399,7 +399,7 @@ def _common_fetch(identity, item_type, token, cache_dir):
 
     # Only write to the cache if we actually got a valid item back!
     # Otherwise, if BGG hiccups or we send a bad request, we permanently cache the failure.
-    if cache_path and not os.path.exists(cache_path):
+    if cache_path:
         _cache_write(cache_path, raw)
 
     name_node = item.find("name[@type='primary']")
@@ -476,12 +476,7 @@ def search(query, addon_dir):
 
 
 def fetch(identity, addon_dir):
-    # Grimoire users might paste a full URL or just the ID. 
-    # We handle both so they don't have to manually strip the URL.
-    import re
-    m = re.search(r"/rpgitem/(\d+)", identity)
-    if m:
-        identity = m.group(1)
+    identity = str(identity).strip()
 
     token = get_token()
     fields, url = _common_fetch(identity, "rpgitem", token, addon_dir)

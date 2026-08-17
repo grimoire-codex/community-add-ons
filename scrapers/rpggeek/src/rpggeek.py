@@ -20,12 +20,7 @@ def search(query, addon_dir):
 
 
 def fetch(identity, addon_dir):
-    # Grimoire users might paste a full URL or just the ID. 
-    # We handle both so they don't have to manually strip the URL.
-    import re
-    m = re.search(r"/rpgitem/(\d+)", identity)
-    if m:
-        identity = m.group(1)
+    identity = str(identity).strip()
 
     token = get_token()
     fields, url = _common_fetch(identity, "rpgitem", token, addon_dir)

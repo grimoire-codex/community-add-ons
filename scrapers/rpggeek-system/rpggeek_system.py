@@ -11,11 +11,9 @@ import re
 import sys
 
 
-def _load_common(addon_dir):
-    # FIXME: We have to hack the sys.path here to share the XML parsing logic 
-    # across both scrapers without duplicating 200 lines of code. Not ideal, 
-    # but it avoids a maintenance nightmare if the BGG API changes.
-    common_dir = os.path.join(os.path.dirname(addon_dir.rstrip("/\\")), "rpggeek")
+def _load_common():
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    common_dir = os.path.join(os.path.dirname(current_dir), "rpggeek")
     if common_dir not in sys.path:
         sys.path.insert(0, common_dir)
     import rpggeek_common
@@ -23,7 +21,7 @@ def _load_common(addon_dir):
 
 
 def search(query, addon_dir):
-    common = _load_common(addon_dir)
+    common = _load_common()
     token = common.get_token()
     candidates = common.search(query, "rpg", token)
     return {"results": candidates}
@@ -36,7 +34,7 @@ def fetch(identity, addon_dir):
     if m:
         identity = m.group(1)
 
-    common = _load_common(addon_dir)
+    common = _load_common()
     token = common.get_token()
     fields, url = common.fetch(identity, "rpg", token, addon_dir)
 

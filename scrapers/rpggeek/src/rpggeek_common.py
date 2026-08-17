@@ -309,7 +309,7 @@ def _fetch_unsupported_publisher_url(pub_id):
 
 # ── Search ───────────────────────────────────────────────────────────────────
 
-def search(query, item_type, token, limit=15):
+def _common_search(query, item_type, token, limit=15):
     """
     Hits the BGG search endpoint and scores the results against the user's query.
     We cap it at 15 items to keep the Grimoire search UI snappy.
@@ -341,13 +341,13 @@ def search(query, item_type, token, limit=15):
 
 # ── Fetch ────────────────────────────────────────────────────────────────────
 
-def fetch(identity, item_type, token, addon_dir):
+def _common_fetch(identity, item_type, token, cache_dir):
     """
     Pulls down the massive XML blob for a specific item, extracts everything 
     Grimoire cares about, and shapes it into our expected dictionary format.
     Caches the raw XML to avoid hammering BGG if the user re-opens the same item.
     """
-    cache_path = _cache_path(addon_dir, item_type, identity)
+    cache_path = _cache_path(cache_dir, item_type, identity)
     raw = _cache_read(cache_path)
 
     if raw is None:

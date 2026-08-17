@@ -351,7 +351,12 @@ def _common_fetch(identity, item_type, token, cache_dir):
     raw = _cache_read(cache_path)
 
     if raw is None:
-        url = f"https://rpggeek.com/xmlapi2/thing?id={identity}&type={item_type}"
+        if item_type == "rpg":
+            # RPG systems (like D&D 5e) aren't classified as "things" by BGG, they are "families"
+            url = f"https://rpggeek.com/xmlapi2/family?id={identity}&type={item_type}"
+        else:
+            url = f"https://rpggeek.com/xmlapi2/thing?id={identity}&type={item_type}"
+            
         raw = _fetch_with_retries(url, token)
         _cache_write(cache_path, raw)
 

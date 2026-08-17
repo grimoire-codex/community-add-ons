@@ -10,7 +10,7 @@ import json
 import os
 import sys
 
-from rpggeek_common import get_token, _common_search, _common_fetch
+from api import get_token, _common_search, _common_fetch
 
 
 def search(query, addon_dir):

@@ -1,92 +1,7 @@
-"""
-rpggeek_common.py - shared implementation for the rpggeek and rpggeek-system scrapers.
-
-Both scrapers hit the BGG XML API v2 (https://rpggeek.com/xmlapi2/). The API is
-XML-only, which is why this module exists - our YAML declarative format only speaks
-JSON, so we drop down to a Python script to chew through the XML ourselves.
-
-NOTE: The BGG API has required a Bearer Token since July 2025. Set BGG_API_TOKEN
-in your environment before use, otherwise we get bounced immediately.
-"""
-
 import difflib
 import html
-import json
-import os
 import re
-import time
-import urllib.error
-import urllib.parse
-import urllib.request
-import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
-
-
-# ── HTTP ─────────────────────────────────────────────────────────────────────
-
-def get_token():
-    """
-    Fail fast if the BGG_API_TOKEN environment variable isn't set.
-    The API bounces unauthenticated requests immediately, so there's no point
-    trying to parse XML if we don't have the key.
-    """
-    token = os.environ.get("BGG_API_TOKEN", "").strip()
-    if not token:
-        raise RuntimeError(
-            "BGG_API_TOKEN is not set. To use the RPGGeek scraper you need a free "
-            "API token from BoardGameGeek - register an application at "
-            "https://boardgamegeek.com/account/api and set the token as the "
-            "BGG_API_TOKEN environment variable on your Grimoire server."
-        )
-    return token
-
-
-def _fetch_with_retries(url, token):
-    """
-    Fetch a URL from the BGG API with auth headers.
-    
-    BGG has a quirky habit of returning HTTP 202 (Accepted) if a record isn't
-    cached on their end and needs to be queued. We sleep and retry a few times
-    to wait it out, otherwise we'd throw errors on perfectly valid IDs.
-    """
-    req = urllib.request.Request(
-        url,
-        headers={
-            "Authorization": f"Bearer {token}",
-            "User-Agent": "Grimoire/1 (+https://github.com/hunter-read/grimoire)",
-        },
-    )
-
-    for attempt in range(4):
-        try:
-            with urllib.request.urlopen(req, timeout=15) as resp:
-                status = resp.status
-                body = resp.read()
-        except urllib.error.HTTPError as exc:
-            status = exc.code
-            body = b""
-
-        if status == 200:
-            return body
-        if status == 202:
-            # BGG sometimes queues heavy requests and kicks back a 202 Accepted while processing. 
-            # We just sleep and retry. Three attempts is usually enough to wait out the queue.
-            if attempt < 3:
-                time.sleep(2)
-                continue
-            raise RuntimeError(
-                "RPGGeek API returned 202 (still processing) after 3 retries. "
-                "Try again in a few seconds."
-            )
-        if status in (401, 403):
-            raise RuntimeError(
-                f"RPGGeek API returned {status}. Check that BGG_API_TOKEN is correct "
-                "and hasn't expired."
-            )
-        raise RuntimeError(f"RPGGeek API returned HTTP {status} for: {url}")
-
-    # Shouldn't be reachable, but keeps type checkers happy.
-    raise RuntimeError("Unexpected state in bgg_get retry loop.")
 
 
 # ── Text ─────────────────────────────────────────────────────────────────────
@@ -176,7 +91,7 @@ def extract_dice(mechanic):
             return "Tarot Cards"
         if "playing card" in lower or "standard deck" in lower or "french-suited" in lower:
             return "Playing Cards"
-        if "card" in lower or "deck" in lower:
+        if re.search(r"\b(card|cards|deck|decks)\b", lower):
             return "Custom Deck"
             
         # Not a dice or supported mechanic - discard it.
@@ -285,26 +200,118 @@ def _grab_links_with_id(element, link_type):
         if link.get("type") == link_type and link.get("value")
     ]
 
-# FIXME: We're pulling the publisher website from the undocumented BGG JSON API 
-# since the XML API doesn't expose it and the frontend is an Angular app.
-# This is explicitly unsupported by BGG and is without a doubt the least stable 
-# part of this codebase. If this script suddenly breaks one day, start looking here. 
-# Not ideal.
-def _fetch_unsupported_publisher_url(pub_id):
-    if not pub_id:
-        return ""
-    url = f"https://api.geekdo.com/api/geekitems?objecttype=rpgpublisher&objectid={pub_id}"
-    req = urllib.request.Request(url, headers={"User-Agent": "Grimoire/1.0 (+https://github.com/hunter-read/grimoire)"})
+
+# --- END OF PARSE LIBRARY ---
+
+import os
+import time
+import urllib.error
+import urllib.parse
+import urllib.request
+import xml.etree.ElementTree as ET
+
+
+
+# ── HTTP ─────────────────────────────────────────────────────────────────────
+
+def get_token():
+    """
+    Fail fast if the BGG_API_TOKEN environment variable isn't set.
+    The API bounces unauthenticated requests immediately, so there's no point
+    trying to parse XML if we don't have the key.
+    """
+    token = os.environ.get("BGG_API_TOKEN", "").strip()
+    if not token:
+        raise RuntimeError(
+            "BGG_API_TOKEN is not set. To use the RPGGeek scraper you need a free "
+            "API token from BoardGameGeek - register an application at "
+            "https://boardgamegeek.com/account/api and set the token as the "
+            "BGG_API_TOKEN environment variable on your Grimoire server."
+        )
+    return token
+
+
+def _fetch_with_retries(url, token):
+    """
+    Fetch a URL from the BGG API with auth headers.
+    
+    BGG has a quirky habit of returning HTTP 202 (Accepted) if a record isn't
+    cached on their end and needs to be queued. We sleep and retry a few times
+    to wait it out, otherwise we'd throw errors on perfectly valid IDs.
+    """
+    req = urllib.request.Request(
+        url,
+        headers={
+            "Authorization": f"Bearer {token}",
+            "User-Agent": "Grimoire/1 (+https://github.com/hunter-read/grimoire)",
+        },
+    )
+
+    for attempt in range(4):
+        try:
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                status = resp.status
+                body = resp.read()
+        except urllib.error.HTTPError as exc:
+            status = exc.code
+            body = b""
+
+        if status == 200:
+            return body
+        if status == 202:
+            # BGG sometimes queues heavy requests and kicks back a 202 Accepted while processing. 
+            # We just sleep and retry. Three attempts is usually enough to wait out the queue.
+            if attempt < 3:
+                time.sleep(2)
+                continue
+            raise RuntimeError(
+                "RPGGeek API returned 202 (still processing) after 3 retries. "
+                "Try again in a few seconds."
+            )
+        if status in (401, 403):
+            raise RuntimeError(
+                f"RPGGeek API returned {status}. Check that BGG_API_TOKEN is correct "
+                "and hasn't expired."
+            )
+        raise RuntimeError(f"RPGGeek API returned HTTP {status} for: {url}")
+
+    # Shouldn't be reachable, but keeps type checkers happy.
+    raise RuntimeError("Unexpected state in bgg_get retry loop.")
+
+
+# ── Cache ─────────────────────────────────────────────────────────────────────
+
+_CACHE_TTL = 86400  # 24 hours
+
+
+def _cache_path(addon_dir, item_type, identity):
+    cache_dir = os.path.join(addon_dir, "cache")
+    os.makedirs(cache_dir, exist_ok=True)
+    return os.path.join(cache_dir, f"{item_type}_{identity}.xml")
+
+
+def _cache_read(path):
+    """
+    Returns the cached XML blob if it exists and hasn't gone stale. 
+    Saves us waiting on BGG's slow endpoints.
+    """
     try:
-        with urllib.request.urlopen(req, timeout=5) as response:
-            data = json.loads(response.read().decode("utf-8"))
-            website = data.get("item", {}).get("website", {})
-            
-            # The API can return {"url": False} if empty, so we must be careful
-            url = website.get("url", "")
-            return url if isinstance(url, str) else ""
-    except Exception:
-        return ""
+        age = time.time() - os.path.getmtime(path)
+        if age < _CACHE_TTL:
+            with open(path, "rb") as f:
+                return f.read()
+    except OSError:
+        pass
+    return None
+
+
+def _cache_write(path, data):
+    try:
+        with open(path, "wb") as f:
+            f.write(data)
+    except OSError:
+        # Cache write failures are non-fatal - we already have the data.
+        pass
 
 
 # ── Search ───────────────────────────────────────────────────────────────────
@@ -382,7 +389,7 @@ def _common_fetch(identity, item_type, token, cache_dir):
     year = int(year_raw) if year_raw and year_raw.isdigit() else None
 
     publishers_raw = _grab_links_with_id(item, "rpgpublisher")
-    publishers_data = [{"name": name, "url": _fetch_unsupported_publisher_url(pub_id)} for pub_id, name in publishers_raw]
+    publishers_data = [name for pub_id, name in publishers_raw]
     
     designers = _grab_links(item, "rpgdesigner")
     artists = _grab_links(item, "rpgartist")
@@ -409,7 +416,6 @@ def _common_fetch(identity, item_type, token, cache_dir):
         # book-specific fields
         "title": title,
         "publisher": publishers_raw[0][1] if publishers_raw else None,
-        "publisher_url": publishers_data[0]["url"] if publishers_data else None,
         "authors": designers,
         "artists": artists,
     }
@@ -424,43 +430,7 @@ def _item_url(identity, item_type):
     slug = {"rpgitem": "rpgitem", "rpg": "rpg"}.get(item_type, "rpgitem")
     return f"https://rpggeek.com/{slug}/{identity}"
 
-
-# ── Cache ─────────────────────────────────────────────────────────────────────
-
-_CACHE_TTL = 86400  # 24 hours
-
-
-def _cache_path(addon_dir, item_type, identity):
-    cache_dir = os.path.join(addon_dir, "cache")
-    os.makedirs(cache_dir, exist_ok=True)
-    return os.path.join(cache_dir, f"{item_type}_{identity}.xml")
-
-
-def _cache_read(path):
-    """
-    Returns the cached XML blob if it exists and hasn't gone stale. 
-    Saves us waiting on BGG's slow endpoints.
-    """
-    try:
-        age = time.time() - os.path.getmtime(path)
-        if age < _CACHE_TTL:
-            with open(path, "rb") as f:
-                return f.read()
-    except OSError:
-        pass
-    return None
-
-
-def _cache_write(path, data):
-    try:
-        with open(path, "wb") as f:
-            f.write(data)
-    except OSError:
-        # Cache write failures are non-fatal - we already have the data.
-        pass
-
-
-# --- END OF COMMON LIBRARY ---
+# --- END OF API LIBRARY ---
 
 """
 rpggeek.py - book scraper entry-point.

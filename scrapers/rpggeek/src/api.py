@@ -5,7 +5,7 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 
-from parse import _MessyHTMLScrubber, _scrub_html, extract_dice, extract_edition, _score_fuzzy_match, _grab_attr, _grab_links, _grab_links_with_id
+from parse import _MessyHTMLScrubber, _scrub_html, extract_all_dice_and_materials, extract_edition, _score_fuzzy_match, _grab_attr, _grab_links, _grab_links_with_id
 
 # ── HTTP ─────────────────────────────────────────────────────────────────────
 
@@ -191,11 +191,8 @@ def _common_fetch(identity, item_type, token, cache_dir):
     genres = _grab_links(item, "rpggenre")
     families = _grab_links(item, "rpgfamily")
 
-    # BGG spits out every single mechanic. We only care about dice-related ones here.
-    # We also strip the verbose labels down to clean, short notation ("D20", "D6", "Diceless")
-    # before returning them.
     mechanics_raw = _grab_links(item, "rpgmechanic")
-    dice = sorted(list(set(d for d in (extract_dice(m) for m in mechanics_raw) if d)))
+    dice = extract_all_dice_and_materials(mechanics_raw)
 
     system_family = families[0] if families else None
     edition = extract_edition(title, system_family)

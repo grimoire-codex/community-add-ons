@@ -75,6 +75,11 @@ def extract_dice(mechanic):
     if not m:
         # Check for other physical supplies supported by Grimoire
         lower = stripped.lower()
+        
+        # Prevent "Unusual Randomizer (not using dice or cards)" from falsely triggering the cards check
+        if "not using dice or cards" in lower:
+            return None
+            
         if "jenga" in lower or "dexterity-based" in lower:
             return "Tumbling Tower (Jenga Tower)"
         if "candle" in lower:
@@ -110,6 +115,26 @@ def extract_dice(mechanic):
     # We just want the raw dice notation (e.g. "d20", "2d6"). If the parens didn't 
     # hold anything recognisable, we just throw it out.
     return None
+
+
+def extract_all_dice_and_materials(mechanics_raw):
+    """
+    Takes a list of raw BGG mechanic strings, passes them through extract_dice,
+    and returns a clean, sorted list of mapped supplies.
+    Aggressively strips out any phantom dice or cards if the system explicitly
+    declares it doesn't use them.
+    """
+    dice = sorted(list(set(d for d in (extract_dice(m) for m in mechanics_raw) if d)))
+    
+    if any("not using dice or cards" in m.lower() for m in mechanics_raw):
+        dice = [
+            d for d in dice 
+            if not re.search(r"^\d*D\d+$", d) 
+            and "Card" not in d 
+            and "Deck" not in d
+        ]
+        
+    return dice
 
 
 def extract_edition(name, family):

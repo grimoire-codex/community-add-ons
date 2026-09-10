@@ -347,7 +347,7 @@ def _common_search(query, item_type, token, limit=15):
     We cap it at 15 items to keep the Grimoire search UI snappy.
     """
     encoded = urllib.parse.quote(query)
-    url = f"https://rpggeek.com/xmlapi2/search?query={encoded}&type={item_type}"
+    url = f"https://boardgamegeek.com/xmlapi2/search?query={encoded}&type={item_type}"
 
     raw = _fetch_with_retries(url, token)
     root = ET.fromstring(raw)
@@ -385,9 +385,9 @@ def _common_fetch(identity, item_type, token, cache_dir):
     if raw is None:
         if item_type == "rpg":
             # RPG systems (like D&D 5e) aren't classified as "things" by BGG, they are "families"
-            url = f"https://rpggeek.com/xmlapi2/family?id={identity}&type={item_type}"
+            url = f"https://boardgamegeek.com/xmlapi2/family?id={identity}&type={item_type}"
         else:
-            url = f"https://rpggeek.com/xmlapi2/thing?id={identity}&type={item_type}"
+            url = f"https://boardgamegeek.com/xmlapi2/thing?id={identity}&type={item_type}"
             
         raw = _fetch_with_retries(url, token)
 

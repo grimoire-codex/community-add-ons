@@ -7,6 +7,9 @@ import xml.etree.ElementTree as ET
 
 from parse import _MessyHTMLScrubber, _scrub_html, extract_all_dice_and_materials, extract_edition, _score_fuzzy_match, _grab_attr, _grab_links, _grab_links_with_id
 
+# We previously had an issue where this was set to rpggeek.com/xmlapi2 and
+# bgg blocked access from thsi domain. As such having the constant up here helps to
+# make fixes for similar issues easier.
 API_BASE_URL = "https://boardgamegeek.com/xmlapi2"
 
 # ── HTTP ─────────────────────────────────────────────────────────────────────

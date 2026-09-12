@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated": "2026-09-12T14:19:11Z",
+  "generated": "2026-09-12T14:20:13Z",
   "addons": [
     {
       "id": "drivethrurpg",
@@ -21,30 +21,30 @@
       "name": "RPGGeek",
       "kind": "scraper",
       "target": "book",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "path": "scrapers/rpggeek/rpggeek.yml",
       "requires_script": true,
-      "sha256": "ce7f6e8b985ad34869ec083ebb3a4cfb62496b0e1b9e438541f87f86fc56285e",
+      "sha256": "394542ce5d4107a18f494687536e2442778eae143581299265c379206a485577",
       "description": "Book metadata (title, authors, artists, publisher, genres, year) from RPGGeek.",
       "homepage": "https://rpggeek.com",
       "author": "vandie",
-      "grimoire_min_version": "1.5.5",
-      "script_sha256": "945e9754e579beef9d44eedf8ea30dabe86cd1e587e7f8f794a5835cbf6de29d"
+      "grimoire_min_version": "1.5.6",
+      "script_sha256": "699e55af4b84a42a8a5832ebcdb55e43a4f40fc00c712da13fe1643785aff559"
     },
     {
       "id": "rpggeek-system",
       "name": "RPGGeek (System)",
       "kind": "scraper",
       "target": "game-system",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "path": "scrapers/rpggeek-system/rpggeek-system.yml",
       "requires_script": true,
-      "sha256": "ddc73a48b25981fa5a52727d44411d97f2c45a6ac04641e5ebde1235af2e7d74",
+      "sha256": "28a0201fe8a3bf5e935108c84dc590b5d02f1352a36dcca70da63051105166b4",
       "description": "Game-system metadata (publishers, year, genres, dice, system family) from RPGGeek.",
       "homepage": "https://rpggeek.com",
       "author": "vandie",
-      "grimoire_min_version": "1.5.5",
-      "script_sha256": "2c4510959169e44fa8fa7721ce0b9e486594eebcf03691909854dc02c4e6a4dd"
+      "grimoire_min_version": "1.5.6",
+      "script_sha256": "f721957060525ce2bb3cdb66d93a89b9cc9384fac01b161ac5f53db0f76d5730"
     },
     {
       "id": "ttrpg-wiki",

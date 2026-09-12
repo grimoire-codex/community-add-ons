@@ -7,6 +7,8 @@ import xml.etree.ElementTree as ET
 
 from parse import _MessyHTMLScrubber, _scrub_html, extract_all_dice_and_materials, extract_edition, _score_fuzzy_match, _grab_attr, _grab_links, _grab_links_with_id
 
+API_BASE_URL = "https://boardgamegeek.com/xmlapi2"
+
 # ── HTTP ─────────────────────────────────────────────────────────────────────
 
 def get_token():
@@ -117,7 +119,7 @@ def _common_search(query, item_type, token, limit=15):
     We cap it at 15 items to keep the Grimoire search UI snappy.
     """
     encoded = urllib.parse.quote(query)
-    url = f"https://boardgamegeek.com/xmlapi2/search?query={encoded}&type={item_type}"
+    url = f"{API_BASE_URL}/search?query={encoded}&type={item_type}"
 
     raw = _fetch_with_retries(url, token)
     root = ET.fromstring(raw)
@@ -155,9 +157,9 @@ def _common_fetch(identity, item_type, token, cache_dir):
     if raw is None:
         if item_type == "rpg":
             # RPG systems (like D&D 5e) aren't classified as "things" by BGG, they are "families"
-            url = f"https://boardgamegeek.com/xmlapi2/family?id={identity}&type={item_type}"
+            url = f"{API_BASE_URL}/family?id={identity}&type={item_type}"
         else:
-            url = f"https://boardgamegeek.com/xmlapi2/thing?id={identity}&type={item_type}"
+            url = f"{API_BASE_URL}/thing?id={identity}&type={item_type}"
             
         raw = _fetch_with_retries(url, token)
 

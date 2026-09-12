@@ -1,0 +1,73 @@
+name: Build RPGGeek Scripts
+
+on:
+  push:
+    paths:
+      - 'scrapers/rpggeek/src/**'
+      - 'scripts/build_rpggeek.py'
+    branches:
+      - main
+  pull_request:
+    paths:
+      - 'scrapers/rpggeek/src/**'
+      - 'scripts/build_rpggeek.py'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+          
+      - name: Run build script
+        run: python scripts/build_rpggeek.py
+        
+      - name: Commit and push changes
+        if: github.event_name == 'push'
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add scrapers/rpggeek/rpggeek.py scrapers/rpggeek-system/rpggeek_system.py
+          
+          if git diff --staged --quiet; then
+            echo "No changes to the compiled scripts. Skipping commit."
+          else
+            BUMP_ARGS=""
+            if git diff HEAD~1 HEAD -- scrapers/rpggeek/rpggeek.yml | grep -q '^+version:'; then
+              echo "RPGGeek version manually bumped. Skipping auto-bump."
+            else
+              BUMP_ARGS="$BUMP_ARGS scrapers/rpggeek/rpggeek.yml"
+            fi
+            
+            if git diff HEAD~1 HEAD -- scrapers/rpggeek-system/rpggeek-system.yml | grep -q '^+version:'; then
+              echo "RPGGeek System version manually bumped. Skipping auto-bump."
+            else
+              BUMP_ARGS="$BUMP_ARGS scrapers/rpggeek-system/rpggeek-system.yml"
+            fi
+            
+            if [ -n "$BUMP_ARGS" ]; then
+              python scripts/bump_version.py $BUMP_ARGS
+              git add scrapers/rpggeek/rpggeek.yml scrapers/rpggeek-system/rpggeek-system.yml
+            fi
+            
+            # Since we potentially changed scripts and versions, regenerate the index
+            python scripts/build_index.py
+            git add index.json
+            
+            git commit -m "chore: auto-build RPGGeek scripts, bump version, and update index"
+            
+            git push || {
+              git pull --rebase
+              git push
+            }
+          fi

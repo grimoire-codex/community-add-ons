@@ -1,0 +1,53 @@
+name: Build Index
+
+on:
+  push:
+    paths:
+      - '**/*.yml'
+      - '**/*.yaml'
+      - 'scrapers/**/*.py'
+      - 'scripts/build_index.py'
+    branches:
+      - main
+  pull_request:
+    paths:
+      - '**/*.yml'
+      - '**/*.yaml'
+      - 'scrapers/**/*.py'
+      - 'scripts/build_index.py'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+          
+      - name: Regenerate index
+        run: python scripts/build_index.py
+        
+      - name: Commit and push changes
+        if: github.event_name == 'push'
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.json
+          
+          if git diff --staged --quiet; then
+            echo "No changes to the index. Skipping commit."
+          else
+            git commit -m "chore: auto-regenerate index.json"
+            git push || {
+              # Handle potential race condition if another workflow pushed
+              git pull --rebase
+              git push
+            }
+          fi

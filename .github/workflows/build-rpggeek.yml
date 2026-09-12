@@ -29,6 +29,9 @@ jobs:
         with:
           python-version: '3.x'
           
+      - name: Install dependencies
+        run: pip install pyyaml jsonschema
+          
       - name: Run build script
         run: python scripts/build_rpggeek.py
         

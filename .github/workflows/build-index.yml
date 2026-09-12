@@ -31,6 +31,9 @@ jobs:
         with:
           python-version: '3.x'
           
+      - name: Install dependencies
+        run: pip install pyyaml jsonschema
+          
       - name: Regenerate index
         run: python scripts/build_index.py
         

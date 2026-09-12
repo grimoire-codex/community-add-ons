@@ -59,7 +59,7 @@ jobs:
             fi
             
             if [ -n "$BUMP_ARGS" ]; then
-              python scripts/bump_version.py $BUMP_ARGS
+              python scripts/bump_version.py --patch $BUMP_ARGS
               git add scrapers/rpggeek/rpggeek.yml scrapers/rpggeek-system/rpggeek-system.yml
             fi
             

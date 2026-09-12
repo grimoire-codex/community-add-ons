@@ -7,7 +7,7 @@ homepage: https://rpggeek.com
 description: Book metadata (title, authors, artists, publisher, genres, year) from RPGGeek.
 author: vandie
 attribution: Data from RPGGeek (rpggeek.com)
-grimoire_min_version: 1.5.6
+grimoire_min_version: 1.5.5
 
 search:
   identity_pattern: 'rpggeek\.com/rpgitem/(\d+)'

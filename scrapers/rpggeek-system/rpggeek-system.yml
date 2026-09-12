@@ -7,7 +7,7 @@ homepage: https://rpggeek.com
 description: Game-system metadata (publishers, year, genres, dice, system family) from RPGGeek.
 author: vandie
 attribution: Data from RPGGeek (rpggeek.com)
-grimoire_min_version: 1.5.6
+grimoire_min_version: 1.5.5
 
 search:
   identity_pattern: 'rpggeek\.com/rpg/(\d+)'

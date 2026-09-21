@@ -1,7 +1,22 @@
 {
   "version": 1,
-  "generated": "2026-09-13T10:39:51Z",
+  "generated": "2026-09-21T21:41:49Z",
   "addons": [
+    {
+      "id": "bundleofholding",
+      "name": "Bundle of Holding",
+      "kind": "library",
+      "target": "owned-resource",
+      "version": "1.0.0",
+      "path": "library/bundleofholding/bundleofholding.yml",
+      "requires_script": true,
+      "sha256": "f7f2801b93ad359e886f124f05817bd70c89b418026d1ddf75ffec40f31a738c",
+      "description": "Track owned RPG bundles from Bundle of Holding",
+      "homepage": "https://bundleofholding.com",
+      "author": "elijah",
+      "grimoire_min_version": "1.5.6",
+      "script_sha256": "c6736bb4981fb732c4e838eb01b7f473696e0f9f5de9cbe211e6efaf9366594e"
+    },
     {
       "id": "drivethrurpg",
       "name": "DriveThruRPG",

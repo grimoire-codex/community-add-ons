@@ -1,0 +1,12 @@
+id: bundleofholding
+name: Bundle of Holding
+version: 1.0.0
+kind: library
+target: owned-resource
+homepage: https://bundleofholding.com
+description: Track owned RPG bundles from Bundle of Holding
+author: elijah
+grimoire_min_version: 1.5.6
+
+script:
+  entry: bundleofholding.py

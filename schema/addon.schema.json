@@ -26,10 +26,10 @@
       "description": "Semantic version. Bump on every change so installs can detect updates."
     },
     "kind": {
-      "enum": ["scraper"]
+      "enum": ["scraper", "library"]
     },
     "target": {
-      "enum": ["game-system", "book"],
+      "enum": ["game-system", "book", "owned-resource"],
       "default": "game-system",
       "description": "Which Grimoire entity this add-on populates. Determines which map fields are valid."
     },

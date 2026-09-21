@@ -22,8 +22,8 @@
         "properties": {
           "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
           "name": { "type": "string" },
-          "kind": { "enum": ["scraper"] },
-          "target": { "enum": ["game-system", "book"] },
+"kind": { "enum": ["scraper", "library"] },
+            "target": { "enum": ["game-system", "book", "owned-resource"] },
           "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
           "description": { "type": "string" },
           "homepage": { "type": "string" },

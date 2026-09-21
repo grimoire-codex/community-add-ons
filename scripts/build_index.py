@@ -35,7 +35,7 @@ except ImportError:
     sys.exit("jsonschema is required: pip install jsonschema")
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-ADDON_DIRS = ("scrapers", "plugins")
+ADDON_DIRS = ("scrapers", "plugins", "library")
 TEMPLATE_DIR = ROOT / "templates"
 THEME_DIR = ROOT / "themes"
 INDEX_PATH = ROOT / "index.json"

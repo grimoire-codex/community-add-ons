@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated": "2026-09-13T10:39:51Z",
+  "generated": "2026-09-22T13:49:28Z",
   "addons": [
     {
       "id": "drivethrurpg",
@@ -37,7 +37,7 @@
       "homepage": "https://rpggeek.com",
       "author": "vandie",
       "grimoire_min_version": "1.5.5",
-      "script_sha256": "945e9754e579beef9d44eedf8ea30dabe86cd1e587e7f8f794a5835cbf6de29d",
+      "script_sha256": "d17f5e268349ac1f1cca851752f1920af1d4036e6d0330dd79a573898c4ba30c",
       "changelog": [
         {
           "version": "1.0.1",
@@ -66,7 +66,7 @@
       "homepage": "https://rpggeek.com",
       "author": "vandie",
       "grimoire_min_version": "1.5.5",
-      "script_sha256": "2c4510959169e44fa8fa7721ce0b9e486594eebcf03691909854dc02c4e6a4dd",
+      "script_sha256": "46ecc86e21c5628fc0abb1c895655dd9dd2618d7ab52271cf2314e93b543c4af",
       "changelog": [
         {
           "version": "1.0.1",

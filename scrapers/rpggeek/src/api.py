@@ -20,7 +20,7 @@ def get_token():
         raise RuntimeError(
             "BGG_API_TOKEN is not set. To use the RPGGeek scraper you need a free "
             "API token from BoardGameGeek - register an application at "
-            "https://boardgamegeek.com/account/api and set the token as the "
+            "https://boardgamegeek.com/applications and set the token as the "
             "BGG_API_TOKEN environment variable on your Grimoire server."
         )
     return token

@@ -42,7 +42,7 @@ Two requests per lookup:
 ## Authentication
 
 The BGG API has required a Bearer Token since mid-2025. You'll need to register a
-free application at https://boardgamegeek.com/account/api and set the token as an
+free application at https://boardgamegeek.com/applications and set the token as an
 environment variable on your Grimoire server:
 
 ```

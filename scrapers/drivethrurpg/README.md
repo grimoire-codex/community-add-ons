@@ -14,6 +14,7 @@ the largest storefront for tabletop RPG PDFs.
 | `publisher` | `publisher.name` | |
 | `publisher_url` | `publisher.descriptions.url` | The publisher's own site, not the store page |
 | `isbn` | `isbn` | Often empty for digital-only products |
+| `product_code` | `sku` | The store page's **Publisher Stock #**, e.g. `PZO2102E`. Empty when the publisher listed none. Needs Grimoire 1.7.2 |
 | `genres` | `filters` | Genre branch only — see below |
 | `year` | `dateAvailable` | Release year |
 | `urls` | derived | A link back to the product page (no affiliate code) |

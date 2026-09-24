@@ -1,21 +1,27 @@
 {
   "version": 1,
-  "generated": "2026-09-22T13:49:28Z",
+  "generated": "2026-09-22T19:54:01Z",
   "addons": [
     {
       "id": "drivethrurpg",
       "name": "DriveThruRPG",
       "kind": "scraper",
       "target": "book",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "path": "scrapers/drivethrurpg/drivethrurpg.yml",
       "requires_script": false,
-      "sha256": "7578ab5be1523ecd02457a3daffc3b3c1a5680ece2cfade79a7b97f0d27f7a64",
-      "description": "Book metadata (authors, artists, publisher, page count, genres, ISBN) from DriveThruRPG.",
+      "sha256": "835c05822cce6005513606c61d152041391015dd67694494b145339c9d40f6d7",
+      "description": "Book metadata (authors, artists, publisher, page count, genres, ISBN, product code) from DriveThruRPG.",
       "homepage": "https://www.drivethrurpg.com",
       "author": "hunter-read",
-      "grimoire_min_version": "1.5.5",
+      "grimoire_min_version": "1.7.2",
       "changelog": [
+        {
+          "version": "1.1.0",
+          "changes": [
+            "Fill in the product code from the store's Publisher Stock # (needs Grimoire 1.7.2)"
+          ]
+        },
         {
           "version": "1.0.0",
           "changes": [

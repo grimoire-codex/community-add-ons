@@ -191,9 +191,16 @@ Mappable targets depend on `target`:
 
 | `target: game-system` | `target: book` |
 | --- | --- |
-| `description`, `publishers`, `year`, `license`, `system_family`, `parent_system`, `edition`, `genres`, `dice_materials`, `tags`, `urls`, `character_builder_urls` | `title`, `description`, `authors`, `artists`, `publisher`, `publisher_url`, `urls`, `genres`, `isbn`, `version`, `language`, `license`, `year`, `month`, `day`, `tags` |
+| `description`, `publishers`, `year`, `license`, `system_family`, `parent_system`, `edition`, `genres`, `dice_materials`, `tags`, `urls`, `character_builder_urls` | `title`, `description`, `authors`, `artists`, `publisher`, `publisher_url`, `urls`, `genres`, `isbn`, `product_code`, `version`, `language`, `license`, `year`, `month`, `day`, `tags` |
 
 Note `publishers` (a system's list) versus `publisher` (a book's single name).
+
+A field newer than some Grimoire releases (`product_code` arrived in 1.7.2)
+needs `grimoire_min_version` set to the release that added it: an older build
+rejects a manifest mapping a field it does not know. Grimoire 1.7.2 and later
+hold back an update whose `grimoire_min_version` is above their own version;
+earlier builds do not check it, so an update like that fails there and has to
+wait until those installs have upgraded.
 
 ### Linking back to the source
 

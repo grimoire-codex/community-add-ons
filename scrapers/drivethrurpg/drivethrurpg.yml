@@ -1,13 +1,15 @@
 id: drivethrurpg
 name: DriveThruRPG
-version: 1.0.0
+version: 1.1.0
 kind: scraper
 target: book
 homepage: https://www.drivethrurpg.com
-description: Book metadata (authors, artists, publisher, page count, genres, ISBN) from DriveThruRPG.
+description: Book metadata (authors, artists, publisher, page count, genres, ISBN, product code) from DriveThruRPG.
 author: hunter-read
 attribution: Data from DriveThruRPG (drivethrurpg.com)
-grimoire_min_version: 1.5.5
+# 1.7.2 is the first Grimoire with a book `product_code` field. Older builds
+# reject a manifest that maps it, so they must not be offered this version.
+grimoire_min_version: 1.7.2
 
 source:
   # DriveThruRPG's storefront sits behind a bot challenge, but its OneBookShelf
@@ -58,6 +60,9 @@ map:
   # present; take the first non-empty one.
   publisher_url: { from: publisher.descriptions.url, first: true }
   isbn: { from: isbn }
+  # The store page's "Publisher Stock #" - the publisher's own catalogue
+  # number (PZO2102E, CAT35000). Empty for products listed without one.
+  product_code: { from: sku }
   # `filters` is one flat list mixing genre, format, language, and merchandising
   # branches. Only the genre subtree is a genre: parentId 10 is the top-level
   # genre group and 100 its sub-genres. Without this, "PDF", "English", and

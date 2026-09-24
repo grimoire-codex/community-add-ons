@@ -1,3 +1,6 @@
+- version: 1.1.0
+  changes:
+    - "Fill in the product code from the store's Publisher Stock # (needs Grimoire 1.7.2)"
 - version: 1.0.0
   changes:
     - Initial release of the DriveThruRPG scraper

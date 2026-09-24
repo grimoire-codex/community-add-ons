@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated": "2026-09-22T19:54:01Z",
+  "generated": "2026-09-24T15:46:09Z",
   "addons": [
     {
       "id": "drivethrurpg",
@@ -26,6 +26,29 @@
           "version": "1.0.0",
           "changes": [
             "Initial release of the DriveThruRPG scraper"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nobleknight",
+      "name": "Noble Knight Games",
+      "kind": "scraper",
+      "target": "book",
+      "version": "1.0.0",
+      "path": "scrapers/nobleknight/nobleknight.yml",
+      "requires_script": true,
+      "sha256": "8ef66cfca1ced0d8230ec1b1ba3d0f429c45ebd1a44f9ce2eb6990d035db1b6b",
+      "description": "Book metadata (title, authors, publisher, genres, year, product code) from Noble Knight Games.",
+      "homepage": "https://www.nobleknight.com",
+      "author": "hunter-read",
+      "grimoire_min_version": "1.7.2",
+      "script_sha256": "02d57ba88c8587bdbe71f6e9312ca744241df6b26a6c465ee9ff15e5c996b16d",
+      "changelog": [
+        {
+          "version": "1.0.0",
+          "changes": [
+            "Initial release of the Noble Knight Games scraper"
           ]
         }
       ]

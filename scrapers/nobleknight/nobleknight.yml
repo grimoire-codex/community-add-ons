@@ -1,0 +1,25 @@
+id: nobleknight
+name: Noble Knight Games
+version: 1.0.0
+kind: scraper
+target: book
+homepage: https://www.nobleknight.com
+description: Book metadata (title, authors, publisher, genres, year, product code) from Noble Knight Games.
+author: hunter-read
+attribution: Data from Noble Knight Games (nobleknight.com)
+# 1.7.2 is the first Grimoire with a book `product_code` field.
+grimoire_min_version: 1.7.2
+
+search:
+  # The script does its own searching and ranking; the schema still requires
+  # at least one search field.
+  fields:
+    - field: title
+  # Lets a user paste a product URL (or the bare id) instead of searching.
+  identity_pattern: 'nobleknight\.com/P/(\d+)'
+
+script:
+  entry: nobleknight.py
+  # One search request (cached an hour) and one product page request (cached
+  # a day) per lookup. Both normally finish in well under a second.
+  timeout: 60

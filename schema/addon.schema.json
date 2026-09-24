@@ -253,6 +253,9 @@
         "isbn": {
           "$ref": "#/$defs/mapping"
         },
+        "product_code": {
+          "$ref": "#/$defs/mapping"
+        },
         "version": {
           "$ref": "#/$defs/mapping"
         },

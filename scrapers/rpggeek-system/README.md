@@ -63,7 +63,7 @@ entries or specific physical supplies, and shortens the label to match Grimoire'
 ## Authentication
 
 The BGG API has required a Bearer Token since mid-2025. Register a free application
-at https://boardgamegeek.com/account/api and set the token on your Grimoire server:
+at https://boardgamegeek.com/applications and set the token on your Grimoire server:
 
 ```
 BGG_API_TOKEN=your_token_here

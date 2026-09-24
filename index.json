@@ -1,25 +1,54 @@
 {
   "version": 1,
-  "generated": "2026-09-13T10:39:51Z",
+  "generated": "2026-09-24T15:46:09Z",
   "addons": [
     {
       "id": "drivethrurpg",
       "name": "DriveThruRPG",
       "kind": "scraper",
       "target": "book",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "path": "scrapers/drivethrurpg/drivethrurpg.yml",
       "requires_script": false,
-      "sha256": "7578ab5be1523ecd02457a3daffc3b3c1a5680ece2cfade79a7b97f0d27f7a64",
-      "description": "Book metadata (authors, artists, publisher, page count, genres, ISBN) from DriveThruRPG.",
+      "sha256": "835c05822cce6005513606c61d152041391015dd67694494b145339c9d40f6d7",
+      "description": "Book metadata (authors, artists, publisher, page count, genres, ISBN, product code) from DriveThruRPG.",
       "homepage": "https://www.drivethrurpg.com",
       "author": "hunter-read",
-      "grimoire_min_version": "1.5.5",
+      "grimoire_min_version": "1.7.2",
       "changelog": [
+        {
+          "version": "1.1.0",
+          "changes": [
+            "Fill in the product code from the store's Publisher Stock # (needs Grimoire 1.7.2)"
+          ]
+        },
         {
           "version": "1.0.0",
           "changes": [
             "Initial release of the DriveThruRPG scraper"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nobleknight",
+      "name": "Noble Knight Games",
+      "kind": "scraper",
+      "target": "book",
+      "version": "1.0.0",
+      "path": "scrapers/nobleknight/nobleknight.yml",
+      "requires_script": true,
+      "sha256": "8ef66cfca1ced0d8230ec1b1ba3d0f429c45ebd1a44f9ce2eb6990d035db1b6b",
+      "description": "Book metadata (title, authors, publisher, genres, year, product code) from Noble Knight Games.",
+      "homepage": "https://www.nobleknight.com",
+      "author": "hunter-read",
+      "grimoire_min_version": "1.7.2",
+      "script_sha256": "02d57ba88c8587bdbe71f6e9312ca744241df6b26a6c465ee9ff15e5c996b16d",
+      "changelog": [
+        {
+          "version": "1.0.0",
+          "changes": [
+            "Initial release of the Noble Knight Games scraper"
           ]
         }
       ]
@@ -37,7 +66,7 @@
       "homepage": "https://rpggeek.com",
       "author": "vandie",
       "grimoire_min_version": "1.5.5",
-      "script_sha256": "945e9754e579beef9d44eedf8ea30dabe86cd1e587e7f8f794a5835cbf6de29d",
+      "script_sha256": "d17f5e268349ac1f1cca851752f1920af1d4036e6d0330dd79a573898c4ba30c",
       "changelog": [
         {
           "version": "1.0.1",
@@ -66,7 +95,7 @@
       "homepage": "https://rpggeek.com",
       "author": "vandie",
       "grimoire_min_version": "1.5.5",
-      "script_sha256": "2c4510959169e44fa8fa7721ce0b9e486594eebcf03691909854dc02c4e6a4dd",
+      "script_sha256": "46ecc86e21c5628fc0abb1c895655dd9dd2618d7ab52271cf2314e93b543c4af",
       "changelog": [
         {
           "version": "1.0.1",

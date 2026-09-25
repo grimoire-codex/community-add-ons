@@ -143,6 +143,73 @@
             "type": "string",
             "description": "An expression; the field is drawn only when it is true. A condition that cannot be evaluated shows the field, because hiding part of a sheet over a broken expression would cost the player access to their own data."
           },
+          "default_from": {
+            "type": "string",
+            "description": "An expression giving this field's value until the player sets one - e.g. ref(species, 'speed'). The player can always type over it, and reset it back. May read fields but not computed values, which are worked out after it. An empty result falls back to 'default'."
+          },
+          "on_pick": {
+            "type": "array",
+            "maxItems": 20,
+            "description": "content_ref only. What picking an entry does to other fields. Everything a pick adds is recorded, so changing the pick takes it back off. The player can still edit the result freely.",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "oneOf": [
+                {
+                  "required": [
+                    "grant"
+                  ],
+                  "description": "Add values from the picked entry. Into a multiselect: 'from' names a list property. Into a content_list: 'ref' names an entry id, falling back to 'name' as a freeform entry when the catalog has no such entry."
+                },
+                {
+                  "required": [
+                    "choose"
+                  ],
+                  "description": "Ask the player to choose 'count' values from the entry's 'from' list, into a multiselect."
+                }
+              ],
+              "properties": {
+                "grant": {
+                  "type": "string",
+                  "description": "The field to add to."
+                },
+                "choose": {
+                  "type": "string",
+                  "description": "The multiselect field to choose into."
+                },
+                "from": {
+                  "type": "string",
+                  "description": "The picked entry's property to read values or options from."
+                },
+                "ref": {
+                  "type": "string",
+                  "description": "The picked entry's property holding an entry id to grant."
+                },
+                "name": {
+                  "type": "string",
+                  "description": "The picked entry's property holding a name to grant when the id is not installed."
+                },
+                "count": {
+                  "description": "How many to choose: a number, or the name of the picked entry's property holding it.",
+                  "oneOf": [
+                    {
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 20
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                "label": {
+                  "type": "string",
+                  "maxLength": 200,
+                  "description": "The prompt shown for a choice."
+                }
+              }
+            }
+          },
           "columns": {
             "type": "array",
             "minItems": 1,
@@ -207,6 +274,33 @@
           },
           "empty_text": {
             "type": "string"
+          },
+          "display_columns": {
+            "type": "array",
+            "maxItems": 12,
+            "description": "content_list only. Draw the list as a table of these properties of each picked entry - a spell's level, casting time and range - rather than a name and a one-line summary.",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "object",
+                  "required": [
+                    "key"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "key": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    }
+                  }
+                }
+              ]
+            }
           }
         }
       }
@@ -385,6 +479,10 @@
       "type": "string",
       "maxLength": 255,
       "description": "A sibling .css file holding the stylesheet, instead of inlining it. Defaults to '<id>.css' when that file exists."
+    },
+    "name_field": {
+      "type": "string",
+      "description": "A text field that holds the character's name. It starts as the name given when the character is created, and editing either one updates the other."
     }
   }
 }

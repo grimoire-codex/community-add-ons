@@ -5,7 +5,19 @@
     "hit_die": 12,
     "primary_ability": "Strength",
     "saving_throws": "Strength, Constitution",
-    "description": "A fierce warrior who can enter a battle rage."
+    "description": "A fierce warrior who can enter a battle rage.",
+    "spellcasting": "",
+    "caster_type": "",
+    "caster_from_level": 0,
+    "skill_choices": 2,
+    "skill_options": [
+      "Animal Handling",
+      "Athletics",
+      "Intimidation",
+      "Nature",
+      "Perception",
+      "Survival"
+    ]
   },
   {
     "_id": "bard",
@@ -13,7 +25,31 @@
     "hit_die": 8,
     "primary_ability": "Charisma",
     "saving_throws": "Dexterity, Charisma",
-    "description": "An inspiring magician whose power echoes the music of creation."
+    "description": "An inspiring magician whose power echoes the music of creation.",
+    "spellcasting": "charisma",
+    "caster_type": "full",
+    "caster_from_level": 1,
+    "skill_choices": 3,
+    "skill_options": [
+      "Acrobatics",
+      "Animal Handling",
+      "Arcana",
+      "Athletics",
+      "Deception",
+      "History",
+      "Insight",
+      "Intimidation",
+      "Investigation",
+      "Medicine",
+      "Nature",
+      "Perception",
+      "Performance",
+      "Persuasion",
+      "Religion",
+      "Sleight of Hand",
+      "Stealth",
+      "Survival"
+    ]
   },
   {
     "_id": "cleric",
@@ -21,7 +57,18 @@
     "hit_die": 8,
     "primary_ability": "Wisdom",
     "saving_throws": "Wisdom, Charisma",
-    "description": "A priestly champion who wields divine magic in service of a higher power."
+    "description": "A priestly champion who wields divine magic in service of a higher power.",
+    "spellcasting": "wisdom",
+    "caster_type": "full",
+    "caster_from_level": 1,
+    "skill_choices": 2,
+    "skill_options": [
+      "History",
+      "Insight",
+      "Medicine",
+      "Persuasion",
+      "Religion"
+    ]
   },
   {
     "_id": "druid",
@@ -29,7 +76,21 @@
     "hit_die": 8,
     "primary_ability": "Wisdom",
     "saving_throws": "Intelligence, Wisdom",
-    "description": "A priest of the Old Faith, wielding the powers of nature."
+    "description": "A priest of the Old Faith, wielding the powers of nature.",
+    "spellcasting": "wisdom",
+    "caster_type": "full",
+    "caster_from_level": 1,
+    "skill_choices": 2,
+    "skill_options": [
+      "Animal Handling",
+      "Arcana",
+      "Insight",
+      "Medicine",
+      "Nature",
+      "Perception",
+      "Religion",
+      "Survival"
+    ]
   },
   {
     "_id": "fighter",
@@ -37,7 +98,22 @@
     "hit_die": 10,
     "primary_ability": "Strength or Dexterity",
     "saving_throws": "Strength, Constitution",
-    "description": "A master of martial combat, skilled with a variety of weapons and armour."
+    "description": "A master of martial combat, skilled with a variety of weapons and armour.",
+    "spellcasting": "",
+    "caster_type": "",
+    "caster_from_level": 0,
+    "skill_choices": 2,
+    "skill_options": [
+      "Acrobatics",
+      "Animal Handling",
+      "Athletics",
+      "History",
+      "Insight",
+      "Intimidation",
+      "Perception",
+      "Persuasion",
+      "Survival"
+    ]
   },
   {
     "_id": "monk",
@@ -45,7 +121,19 @@
     "hit_die": 8,
     "primary_ability": "Dexterity and Wisdom",
     "saving_throws": "Strength, Dexterity",
-    "description": "A master of martial arts, harnessing inner power."
+    "description": "A master of martial arts, harnessing inner power.",
+    "spellcasting": "",
+    "caster_type": "",
+    "caster_from_level": 0,
+    "skill_choices": 2,
+    "skill_options": [
+      "Acrobatics",
+      "Athletics",
+      "History",
+      "Insight",
+      "Religion",
+      "Stealth"
+    ]
   },
   {
     "_id": "paladin",
@@ -53,7 +141,19 @@
     "hit_die": 10,
     "primary_ability": "Strength and Charisma",
     "saving_throws": "Wisdom, Charisma",
-    "description": "A holy warrior bound to a sacred oath."
+    "description": "A holy warrior bound to a sacred oath.",
+    "spellcasting": "charisma",
+    "caster_type": "half",
+    "caster_from_level": 1,
+    "skill_choices": 2,
+    "skill_options": [
+      "Athletics",
+      "Insight",
+      "Intimidation",
+      "Medicine",
+      "Persuasion",
+      "Religion"
+    ]
   },
   {
     "_id": "ranger",
@@ -61,7 +161,21 @@
     "hit_die": 10,
     "primary_ability": "Dexterity and Wisdom",
     "saving_throws": "Strength, Dexterity",
-    "description": "A warrior who combats threats on the edges of civilisation."
+    "description": "A warrior who combats threats on the edges of civilisation.",
+    "spellcasting": "wisdom",
+    "caster_type": "half",
+    "caster_from_level": 1,
+    "skill_choices": 3,
+    "skill_options": [
+      "Animal Handling",
+      "Athletics",
+      "Insight",
+      "Investigation",
+      "Nature",
+      "Perception",
+      "Stealth",
+      "Survival"
+    ]
   },
   {
     "_id": "rogue",
@@ -69,7 +183,23 @@
     "hit_die": 8,
     "primary_ability": "Dexterity",
     "saving_throws": "Dexterity, Intelligence",
-    "description": "A scoundrel who uses stealth and trickery to overcome obstacles."
+    "description": "A scoundrel who uses stealth and trickery to overcome obstacles.",
+    "spellcasting": "",
+    "caster_type": "",
+    "caster_from_level": 0,
+    "skill_choices": 4,
+    "skill_options": [
+      "Acrobatics",
+      "Athletics",
+      "Deception",
+      "Insight",
+      "Intimidation",
+      "Investigation",
+      "Perception",
+      "Persuasion",
+      "Sleight of Hand",
+      "Stealth"
+    ]
   },
   {
     "_id": "sorcerer",
@@ -77,7 +207,19 @@
     "hit_die": 6,
     "primary_ability": "Charisma",
     "saving_throws": "Constitution, Charisma",
-    "description": "A spellcaster who draws on inherent magic from a gift or bloodline."
+    "description": "A spellcaster who draws on inherent magic from a gift or bloodline.",
+    "spellcasting": "charisma",
+    "caster_type": "full",
+    "caster_from_level": 1,
+    "skill_choices": 2,
+    "skill_options": [
+      "Arcana",
+      "Deception",
+      "Insight",
+      "Intimidation",
+      "Persuasion",
+      "Religion"
+    ]
   },
   {
     "_id": "warlock",
@@ -85,7 +227,20 @@
     "hit_die": 8,
     "primary_ability": "Charisma",
     "saving_throws": "Wisdom, Charisma",
-    "description": "A wielder of magic derived from a bargain with an extraplanar entity."
+    "description": "A wielder of magic derived from a bargain with an extraplanar entity.",
+    "spellcasting": "charisma",
+    "caster_type": "pact",
+    "caster_from_level": 1,
+    "skill_choices": 2,
+    "skill_options": [
+      "Arcana",
+      "Deception",
+      "History",
+      "Intimidation",
+      "Investigation",
+      "Nature",
+      "Religion"
+    ]
   },
   {
     "_id": "wizard",
@@ -93,6 +248,19 @@
     "hit_die": 6,
     "primary_ability": "Intelligence",
     "saving_throws": "Intelligence, Wisdom",
-    "description": "A scholarly magic-user capable of manipulating the structures of reality."
+    "description": "A scholarly magic-user capable of manipulating the structures of reality.",
+    "spellcasting": "intelligence",
+    "caster_type": "full",
+    "caster_from_level": 1,
+    "skill_choices": 2,
+    "skill_options": [
+      "Arcana",
+      "History",
+      "Insight",
+      "Investigation",
+      "Medicine",
+      "Nature",
+      "Religion"
+    ]
   }
 ]

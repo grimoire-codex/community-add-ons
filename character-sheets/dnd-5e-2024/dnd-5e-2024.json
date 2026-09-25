@@ -2,7 +2,7 @@
   "$schema": "../../schema/character-sheet.schema.json",
   "id": "dnd-5e-2024",
   "name": "D&D 5th Edition (2024)",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "system": "Dungeons & Dragons 5th Edition (2024)",
   "description": "A character sheet for the 2024 revision of D&D 5th Edition, with the SRD 5.2 catalogue of classes, species, backgrounds, feats and spells.",
   "author": "hunter-read",
@@ -46,6 +46,86 @@
         "description": {
           "type": "textarea",
           "label": "Description"
+        },
+        "spellcasting": {
+          "type": "select",
+          "label": "Spellcasting Ability",
+          "options": [
+            {
+              "value": "",
+              "label": "None"
+            },
+            {
+              "value": "intelligence",
+              "label": "Intelligence"
+            },
+            {
+              "value": "wisdom",
+              "label": "Wisdom"
+            },
+            {
+              "value": "charisma",
+              "label": "Charisma"
+            }
+          ]
+        },
+        "caster_type": {
+          "type": "select",
+          "label": "Caster Type",
+          "options": [
+            {
+              "value": "",
+              "label": "None"
+            },
+            {
+              "value": "full",
+              "label": "Full"
+            },
+            {
+              "value": "half",
+              "label": "Half"
+            },
+            {
+              "value": "pact",
+              "label": "Pact Magic"
+            }
+          ]
+        },
+        "caster_from_level": {
+          "type": "number",
+          "label": "Spellcasting From Level",
+          "min": 0,
+          "max": 20
+        },
+        "skill_choices": {
+          "type": "number",
+          "label": "Skill Choices",
+          "min": 0,
+          "max": 18
+        },
+        "skill_options": {
+          "type": "multiselect",
+          "label": "Skill Options",
+          "options": [
+            "Acrobatics",
+            "Animal Handling",
+            "Arcana",
+            "Athletics",
+            "Deception",
+            "History",
+            "Insight",
+            "Intimidation",
+            "Investigation",
+            "Medicine",
+            "Nature",
+            "Perception",
+            "Performance",
+            "Persuasion",
+            "Religion",
+            "Sleight of Hand",
+            "Stealth",
+            "Survival"
+          ]
         }
       }
     },
@@ -114,12 +194,36 @@
           "label": "Origin Feat"
         },
         "skill_proficiencies": {
-          "type": "text",
-          "label": "Skill Proficiencies"
+          "type": "multiselect",
+          "label": "Skill Proficiencies",
+          "options": [
+            "Acrobatics",
+            "Animal Handling",
+            "Arcana",
+            "Athletics",
+            "Deception",
+            "History",
+            "Insight",
+            "Intimidation",
+            "Investigation",
+            "Medicine",
+            "Nature",
+            "Perception",
+            "Performance",
+            "Persuasion",
+            "Religion",
+            "Sleight of Hand",
+            "Stealth",
+            "Survival"
+          ]
         },
         "description": {
           "type": "textarea",
           "label": "Description"
+        },
+        "feat_id": {
+          "type": "text",
+          "label": "Origin Feat Id"
         }
       }
     },
@@ -240,6 +344,12 @@
       "max": 20,
       "default": 1
     },
+    "xp": {
+      "type": "number",
+      "label": "XP",
+      "min": 0,
+      "default": 0
+    },
     "species": {
       "type": "content_ref",
       "label": "Species",
@@ -248,12 +358,35 @@
     "background": {
       "type": "content_ref",
       "label": "Background",
-      "content_type": "background"
+      "content_type": "background",
+      "on_pick": [
+        {
+          "grant": "skill_profs",
+          "from": "skill_proficiencies"
+        },
+        {
+          "grant": "feats",
+          "ref": "feat_id",
+          "name": "feat"
+        }
+      ]
     },
     "klass": {
       "type": "content_ref",
       "label": "Class",
-      "content_type": "class"
+      "content_type": "class",
+      "on_pick": [
+        {
+          "choose": "skill_profs",
+          "count": "skill_choices",
+          "from": "skill_options",
+          "label": "Choose class skill proficiencies"
+        }
+      ]
+    },
+    "subclass": {
+      "type": "text",
+      "label": "Subclass"
     },
     "alignment": {
       "type": "select",
@@ -272,75 +405,143 @@
     },
     "strength": {
       "type": "number",
-      "label": "Strength",
+      "label": "Strength (base)",
       "min": 1,
       "max": 30,
       "default": 10
+    },
+    "strength_bonus": {
+      "type": "number",
+      "label": "Strength background bonus",
+      "min": 0,
+      "max": 2,
+      "default": 0
     },
     "strength_save_prof": {
       "type": "checkbox",
-      "label": "STR save proficiency"
+      "label": "STR save proficiency",
+      "default_from": "contains(ref(klass, 'saving_throws'), 'strength')"
     },
     "dexterity": {
       "type": "number",
-      "label": "Dexterity",
+      "label": "Dexterity (base)",
       "min": 1,
       "max": 30,
       "default": 10
+    },
+    "dexterity_bonus": {
+      "type": "number",
+      "label": "Dexterity background bonus",
+      "min": 0,
+      "max": 2,
+      "default": 0
     },
     "dexterity_save_prof": {
       "type": "checkbox",
-      "label": "DEX save proficiency"
+      "label": "DEX save proficiency",
+      "default_from": "contains(ref(klass, 'saving_throws'), 'dexterity')"
     },
     "constitution": {
       "type": "number",
-      "label": "Constitution",
+      "label": "Constitution (base)",
       "min": 1,
       "max": 30,
       "default": 10
+    },
+    "constitution_bonus": {
+      "type": "number",
+      "label": "Constitution background bonus",
+      "min": 0,
+      "max": 2,
+      "default": 0
     },
     "constitution_save_prof": {
       "type": "checkbox",
-      "label": "CON save proficiency"
+      "label": "CON save proficiency",
+      "default_from": "contains(ref(klass, 'saving_throws'), 'constitution')"
     },
     "intelligence": {
       "type": "number",
-      "label": "Intelligence",
+      "label": "Intelligence (base)",
       "min": 1,
       "max": 30,
       "default": 10
+    },
+    "intelligence_bonus": {
+      "type": "number",
+      "label": "Intelligence background bonus",
+      "min": 0,
+      "max": 2,
+      "default": 0
     },
     "intelligence_save_prof": {
       "type": "checkbox",
-      "label": "INT save proficiency"
+      "label": "INT save proficiency",
+      "default_from": "contains(ref(klass, 'saving_throws'), 'intelligence')"
     },
     "wisdom": {
       "type": "number",
-      "label": "Wisdom",
+      "label": "Wisdom (base)",
       "min": 1,
       "max": 30,
       "default": 10
+    },
+    "wisdom_bonus": {
+      "type": "number",
+      "label": "Wisdom background bonus",
+      "min": 0,
+      "max": 2,
+      "default": 0
     },
     "wisdom_save_prof": {
       "type": "checkbox",
-      "label": "WIS save proficiency"
+      "label": "WIS save proficiency",
+      "default_from": "contains(ref(klass, 'saving_throws'), 'wisdom')"
     },
     "charisma": {
       "type": "number",
-      "label": "Charisma",
+      "label": "Charisma (base)",
       "min": 1,
       "max": 30,
       "default": 10
     },
+    "charisma_bonus": {
+      "type": "number",
+      "label": "Charisma background bonus",
+      "min": 0,
+      "max": 2,
+      "default": 0
+    },
     "charisma_save_prof": {
       "type": "checkbox",
-      "label": "CHA save proficiency"
+      "label": "CHA save proficiency",
+      "default_from": "contains(ref(klass, 'saving_throws'), 'charisma')"
+    },
+    "ability_method": {
+      "type": "select",
+      "label": "Ability score method",
+      "default": "manual",
+      "options": [
+        {
+          "value": "manual",
+          "label": "Rolled or manual"
+        },
+        {
+          "value": "standard_array",
+          "label": "Standard array"
+        },
+        {
+          "value": "point_buy",
+          "label": "Point buy"
+        }
+      ]
     },
     "hp_max": {
       "type": "number",
       "label": "HP Maximum",
       "min": 0,
-      "default": 8
+      "default": 8,
+      "default_from": "ref(klass, 'hit_die') ? ref(klass, 'hit_die') + floor((constitution - 10) / 2) + (level - 1) * (floor(ref(klass, 'hit_die') / 2) + 1 + floor((constitution - 10) / 2)) : ''"
     },
     "hp_current": {
       "type": "number",
@@ -356,7 +557,38 @@
     },
     "hit_dice": {
       "type": "text",
-      "label": "Hit Dice"
+      "label": "Hit Dice",
+      "default_from": "ref(klass, 'hit_die') ? concat(level, 'd', ref(klass, 'hit_die')) : ''"
+    },
+    "hit_dice_spent": {
+      "type": "number",
+      "label": "Hit Dice Spent",
+      "min": 0,
+      "default": 0
+    },
+    "death_success_1": {
+      "type": "checkbox",
+      "label": "Death save success 1"
+    },
+    "death_success_2": {
+      "type": "checkbox",
+      "label": "Death save success 2"
+    },
+    "death_success_3": {
+      "type": "checkbox",
+      "label": "Death save success 3"
+    },
+    "death_failure_1": {
+      "type": "checkbox",
+      "label": "Death save failure 1"
+    },
+    "death_failure_2": {
+      "type": "checkbox",
+      "label": "Death save failure 2"
+    },
+    "death_failure_3": {
+      "type": "checkbox",
+      "label": "Death save failure 3"
     },
     "armor_bonus": {
       "type": "number",
@@ -364,11 +596,22 @@
       "default": 0,
       "placeholder": "Armour, shield and other bonuses"
     },
+    "shield": {
+      "type": "checkbox",
+      "label": "Shield"
+    },
     "speed": {
       "type": "number",
       "label": "Speed",
       "min": 0,
-      "default": 30
+      "default": 30,
+      "default_from": "ref(species, 'speed')"
+    },
+    "size": {
+      "type": "text",
+      "label": "Size",
+      "default": "Medium",
+      "default_from": "ref(species, 'size')"
     },
     "heroic_inspiration": {
       "type": "checkbox",
@@ -398,9 +641,34 @@
         "Survival"
       ]
     },
+    "skill_expertise": {
+      "type": "multiselect",
+      "label": "Skill Expertise",
+      "options": [
+        "Acrobatics",
+        "Animal Handling",
+        "Arcana",
+        "Athletics",
+        "Deception",
+        "History",
+        "Insight",
+        "Intimidation",
+        "Investigation",
+        "Medicine",
+        "Nature",
+        "Perception",
+        "Performance",
+        "Persuasion",
+        "Religion",
+        "Sleight of Hand",
+        "Stealth",
+        "Survival"
+      ]
+    },
     "is_caster": {
       "type": "checkbox",
-      "label": "Spellcaster"
+      "label": "Spellcaster",
+      "default_from": "ref(klass, 'spellcasting') != ''"
     },
     "spell_ability": {
       "type": "select",
@@ -419,11 +687,138 @@
           "value": "charisma",
           "label": "Charisma"
         }
-      ]
+      ],
+      "default_from": "ref(klass, 'spellcasting')"
+    },
+    "slots_1_total": {
+      "type": "number",
+      "label": "Level 1 slots",
+      "min": 0,
+      "max": 9,
+      "default": 0
+    },
+    "slots_1_used": {
+      "type": "number",
+      "label": "Level 1 slots expended",
+      "min": 0,
+      "max": 9,
+      "default": 0
+    },
+    "slots_2_total": {
+      "type": "number",
+      "label": "Level 2 slots",
+      "min": 0,
+      "max": 9,
+      "default": 0
+    },
+    "slots_2_used": {
+      "type": "number",
+      "label": "Level 2 slots expended",
+      "min": 0,
+      "max": 9,
+      "default": 0
+    },
+    "slots_3_total": {
+      "type": "number",
+      "label": "Level 3 slots",
+      "min": 0,
+      "max": 9,
+      "default": 0
+    },
+    "slots_3_used": {
+      "type": "number",
+      "label": "Level 3 slots expended",
+      "min": 0,
+      "max": 9,
+      "default": 0
+    },
+    "slots_4_total": {
+      "type": "number",
+      "label": "Level 4 slots",
+      "min": 0,
+      "max": 9,
+      "default": 0
+    },
+    "slots_4_used": {
+      "type": "number",
+      "label": "Level 4 slots expended",
+      "min": 0,
+      "max": 9,
+      "default": 0
+    },
+    "slots_5_total": {
+      "type": "number",
+      "label": "Level 5 slots",
+      "min": 0,
+      "max": 9,
+      "default": 0
+    },
+    "slots_5_used": {
+      "type": "number",
+      "label": "Level 5 slots expended",
+      "min": 0,
+      "max": 9,
+      "default": 0
+    },
+    "slots_6_total": {
+      "type": "number",
+      "label": "Level 6 slots",
+      "min": 0,
+      "max": 9,
+      "default": 0
+    },
+    "slots_6_used": {
+      "type": "number",
+      "label": "Level 6 slots expended",
+      "min": 0,
+      "max": 9,
+      "default": 0
+    },
+    "slots_7_total": {
+      "type": "number",
+      "label": "Level 7 slots",
+      "min": 0,
+      "max": 9,
+      "default": 0
+    },
+    "slots_7_used": {
+      "type": "number",
+      "label": "Level 7 slots expended",
+      "min": 0,
+      "max": 9,
+      "default": 0
+    },
+    "slots_8_total": {
+      "type": "number",
+      "label": "Level 8 slots",
+      "min": 0,
+      "max": 9,
+      "default": 0
+    },
+    "slots_8_used": {
+      "type": "number",
+      "label": "Level 8 slots expended",
+      "min": 0,
+      "max": 9,
+      "default": 0
+    },
+    "slots_9_total": {
+      "type": "number",
+      "label": "Level 9 slots",
+      "min": 0,
+      "max": 9,
+      "default": 0
+    },
+    "slots_9_used": {
+      "type": "number",
+      "label": "Level 9 slots expended",
+      "min": 0,
+      "max": 9,
+      "default": 0
     },
     "spells": {
       "type": "content_list",
-      "label": "Spells",
+      "label": "Cantrips & Prepared Spells",
       "content_type": "spell",
       "allow_freeform": true,
       "visible_if": "is_caster",
@@ -432,7 +827,13 @@
           "type": "checkbox",
           "label": "Prep"
         }
-      }
+      },
+      "display_columns": [
+        "level",
+        "casting_time",
+        "range",
+        "components"
+      ]
     },
     "feats": {
       "type": "content_list",
@@ -475,32 +876,127 @@
     },
     "attacks": {
       "type": "list",
-      "label": "Attacks",
+      "label": "Weapons & Damage Cantrips",
       "columns": [
         {
           "key": "name",
           "type": "text",
-          "label": "Attack",
+          "label": "Name",
           "flex": 3
         },
         {
           "key": "bonus",
           "type": "text",
-          "label": "Bonus",
+          "label": "Atk Bonus / DC",
           "flex": 1
         },
         {
           "key": "damage",
           "type": "text",
-          "label": "Damage",
+          "label": "Damage & Type",
+          "flex": 2
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
           "flex": 2
         }
       ]
     },
     "features": {
       "type": "textarea",
-      "label": "Features & Traits",
+      "label": "Class Features",
       "rows": 8
+    },
+    "species_traits": {
+      "type": "textarea",
+      "label": "Species Traits",
+      "rows": 6,
+      "default_from": "ref(species, 'traits')"
+    },
+    "armor_light": {
+      "type": "checkbox",
+      "label": "Light armour"
+    },
+    "armor_medium": {
+      "type": "checkbox",
+      "label": "Medium armour"
+    },
+    "armor_heavy": {
+      "type": "checkbox",
+      "label": "Heavy armour"
+    },
+    "armor_shields": {
+      "type": "checkbox",
+      "label": "Shields"
+    },
+    "weapon_training": {
+      "type": "textarea",
+      "label": "Weapons",
+      "rows": 2
+    },
+    "tool_training": {
+      "type": "textarea",
+      "label": "Tools",
+      "rows": 2
+    },
+    "languages": {
+      "type": "textarea",
+      "label": "Languages",
+      "rows": 2
+    },
+    "appearance": {
+      "type": "textarea",
+      "label": "Appearance",
+      "rows": 4
+    },
+    "backstory": {
+      "type": "textarea",
+      "label": "Backstory & Personality",
+      "rows": 8
+    },
+    "attunement_1": {
+      "type": "text",
+      "label": "Attuned item 1"
+    },
+    "attunement_2": {
+      "type": "text",
+      "label": "Attuned item 2"
+    },
+    "attunement_3": {
+      "type": "text",
+      "label": "Attuned item 3"
+    },
+    "cp": {
+      "type": "number",
+      "label": "CP",
+      "min": 0,
+      "default": 0
+    },
+    "sp": {
+      "type": "number",
+      "label": "SP",
+      "min": 0,
+      "default": 0
+    },
+    "ep": {
+      "type": "number",
+      "label": "EP",
+      "min": 0,
+      "default": 0
+    },
+    "gp": {
+      "type": "number",
+      "label": "GP",
+      "min": 0,
+      "default": 0
+    },
+    "pp": {
+      "type": "number",
+      "label": "PP",
+      "min": 0,
+      "default": 0
     },
     "notes": {
       "type": "textarea",
@@ -513,72 +1009,172 @@
       "formula": "2 + floor((level - 1) / 4)",
       "label": "Proficiency Bonus"
     },
+    "strength_score": {
+      "formula": "strength + strength_bonus",
+      "label": "Strength Score"
+    },
     "strength_mod": {
-      "formula": "floor((strength - 10) / 2)",
+      "formula": "floor((strength_score - 10) / 2)",
       "label": "STR Modifier"
     },
     "strength_save": {
       "formula": "signed(strength_mod + (strength_save_prof ? proficiency : 0))",
       "label": "STR Save"
     },
+    "dexterity_score": {
+      "formula": "dexterity + dexterity_bonus",
+      "label": "Dexterity Score"
+    },
     "dexterity_mod": {
-      "formula": "floor((dexterity - 10) / 2)",
+      "formula": "floor((dexterity_score - 10) / 2)",
       "label": "DEX Modifier"
     },
     "dexterity_save": {
       "formula": "signed(dexterity_mod + (dexterity_save_prof ? proficiency : 0))",
       "label": "DEX Save"
     },
+    "constitution_score": {
+      "formula": "constitution + constitution_bonus",
+      "label": "Constitution Score"
+    },
     "constitution_mod": {
-      "formula": "floor((constitution - 10) / 2)",
+      "formula": "floor((constitution_score - 10) / 2)",
       "label": "CON Modifier"
     },
     "constitution_save": {
       "formula": "signed(constitution_mod + (constitution_save_prof ? proficiency : 0))",
       "label": "CON Save"
     },
+    "intelligence_score": {
+      "formula": "intelligence + intelligence_bonus",
+      "label": "Intelligence Score"
+    },
     "intelligence_mod": {
-      "formula": "floor((intelligence - 10) / 2)",
+      "formula": "floor((intelligence_score - 10) / 2)",
       "label": "INT Modifier"
     },
     "intelligence_save": {
       "formula": "signed(intelligence_mod + (intelligence_save_prof ? proficiency : 0))",
       "label": "INT Save"
     },
+    "wisdom_score": {
+      "formula": "wisdom + wisdom_bonus",
+      "label": "Wisdom Score"
+    },
     "wisdom_mod": {
-      "formula": "floor((wisdom - 10) / 2)",
+      "formula": "floor((wisdom_score - 10) / 2)",
       "label": "WIS Modifier"
     },
     "wisdom_save": {
       "formula": "signed(wisdom_mod + (wisdom_save_prof ? proficiency : 0))",
       "label": "WIS Save"
     },
+    "charisma_score": {
+      "formula": "charisma + charisma_bonus",
+      "label": "Charisma Score"
+    },
     "charisma_mod": {
-      "formula": "floor((charisma - 10) / 2)",
+      "formula": "floor((charisma_score - 10) / 2)",
       "label": "CHA Modifier"
     },
     "charisma_save": {
       "formula": "signed(charisma_mod + (charisma_save_prof ? proficiency : 0))",
       "label": "CHA Save"
     },
+    "skill_acrobatics": {
+      "formula": "signed(dexterity_mod + (contains(skill_expertise, 'Acrobatics') ? 2 * proficiency : (contains(skill_profs, 'Acrobatics') ? proficiency : 0)))",
+      "label": "Acrobatics"
+    },
+    "skill_animal_handling": {
+      "formula": "signed(wisdom_mod + (contains(skill_expertise, 'Animal Handling') ? 2 * proficiency : (contains(skill_profs, 'Animal Handling') ? proficiency : 0)))",
+      "label": "Animal Handling"
+    },
+    "skill_arcana": {
+      "formula": "signed(intelligence_mod + (contains(skill_expertise, 'Arcana') ? 2 * proficiency : (contains(skill_profs, 'Arcana') ? proficiency : 0)))",
+      "label": "Arcana"
+    },
+    "skill_athletics": {
+      "formula": "signed(strength_mod + (contains(skill_expertise, 'Athletics') ? 2 * proficiency : (contains(skill_profs, 'Athletics') ? proficiency : 0)))",
+      "label": "Athletics"
+    },
+    "skill_deception": {
+      "formula": "signed(charisma_mod + (contains(skill_expertise, 'Deception') ? 2 * proficiency : (contains(skill_profs, 'Deception') ? proficiency : 0)))",
+      "label": "Deception"
+    },
+    "skill_history": {
+      "formula": "signed(intelligence_mod + (contains(skill_expertise, 'History') ? 2 * proficiency : (contains(skill_profs, 'History') ? proficiency : 0)))",
+      "label": "History"
+    },
+    "skill_insight": {
+      "formula": "signed(wisdom_mod + (contains(skill_expertise, 'Insight') ? 2 * proficiency : (contains(skill_profs, 'Insight') ? proficiency : 0)))",
+      "label": "Insight"
+    },
+    "skill_intimidation": {
+      "formula": "signed(charisma_mod + (contains(skill_expertise, 'Intimidation') ? 2 * proficiency : (contains(skill_profs, 'Intimidation') ? proficiency : 0)))",
+      "label": "Intimidation"
+    },
+    "skill_investigation": {
+      "formula": "signed(intelligence_mod + (contains(skill_expertise, 'Investigation') ? 2 * proficiency : (contains(skill_profs, 'Investigation') ? proficiency : 0)))",
+      "label": "Investigation"
+    },
+    "skill_medicine": {
+      "formula": "signed(wisdom_mod + (contains(skill_expertise, 'Medicine') ? 2 * proficiency : (contains(skill_profs, 'Medicine') ? proficiency : 0)))",
+      "label": "Medicine"
+    },
+    "skill_nature": {
+      "formula": "signed(intelligence_mod + (contains(skill_expertise, 'Nature') ? 2 * proficiency : (contains(skill_profs, 'Nature') ? proficiency : 0)))",
+      "label": "Nature"
+    },
+    "skill_perception": {
+      "formula": "signed(wisdom_mod + (contains(skill_expertise, 'Perception') ? 2 * proficiency : (contains(skill_profs, 'Perception') ? proficiency : 0)))",
+      "label": "Perception"
+    },
+    "skill_performance": {
+      "formula": "signed(charisma_mod + (contains(skill_expertise, 'Performance') ? 2 * proficiency : (contains(skill_profs, 'Performance') ? proficiency : 0)))",
+      "label": "Performance"
+    },
+    "skill_persuasion": {
+      "formula": "signed(charisma_mod + (contains(skill_expertise, 'Persuasion') ? 2 * proficiency : (contains(skill_profs, 'Persuasion') ? proficiency : 0)))",
+      "label": "Persuasion"
+    },
+    "skill_religion": {
+      "formula": "signed(intelligence_mod + (contains(skill_expertise, 'Religion') ? 2 * proficiency : (contains(skill_profs, 'Religion') ? proficiency : 0)))",
+      "label": "Religion"
+    },
+    "skill_sleight_of_hand": {
+      "formula": "signed(dexterity_mod + (contains(skill_expertise, 'Sleight of Hand') ? 2 * proficiency : (contains(skill_profs, 'Sleight of Hand') ? proficiency : 0)))",
+      "label": "Sleight of Hand"
+    },
+    "skill_stealth": {
+      "formula": "signed(dexterity_mod + (contains(skill_expertise, 'Stealth') ? 2 * proficiency : (contains(skill_profs, 'Stealth') ? proficiency : 0)))",
+      "label": "Stealth"
+    },
+    "skill_survival": {
+      "formula": "signed(wisdom_mod + (contains(skill_expertise, 'Survival') ? 2 * proficiency : (contains(skill_profs, 'Survival') ? proficiency : 0)))",
+      "label": "Survival"
+    },
     "initiative": {
       "formula": "signed(dexterity_mod)",
       "label": "Initiative"
     },
     "armor_class": {
-      "formula": "10 + dexterity_mod + armor_bonus",
+      "formula": "10 + dexterity_mod + armor_bonus + (shield ? 2 : 0)",
       "label": "Armour Class"
     },
     "passive_perception": {
-      "formula": "10 + wisdom_mod + (contains(skill_profs, 'Perception') ? proficiency : 0)",
+      "formula": "10 + wisdom_mod + (contains(skill_expertise, 'Perception') ? 2 * proficiency : (contains(skill_profs, 'Perception') ? proficiency : 0))",
       "label": "Passive Perception"
     },
+    "spell_mod": {
+      "formula": "spell_ability == 'intelligence' ? intelligence_mod : (spell_ability == 'wisdom' ? wisdom_mod : (spell_ability == 'charisma' ? charisma_mod : 0))",
+      "label": "Spellcasting Modifier"
+    },
     "spell_save_dc": {
-      "formula": "8 + proficiency + (spell_ability == 'intelligence' ? intelligence_mod : (spell_ability == 'wisdom' ? wisdom_mod : charisma_mod))",
+      "formula": "8 + proficiency + spell_mod",
       "label": "Spell Save DC"
     },
     "spell_attack": {
-      "formula": "signed(proficiency + (spell_ability == 'intelligence' ? intelligence_mod : (spell_ability == 'wisdom' ? wisdom_mod : charisma_mod)))",
+      "formula": "signed(proficiency + spell_mod)",
       "label": "Spell Attack"
     },
     "prepared_count": {
@@ -590,10 +1186,33 @@
       "label": "Weight Carried"
     },
     "carry_capacity": {
-      "formula": "strength * 15",
+      "formula": "strength_score * 15",
       "label": "Carrying Capacity"
+    },
+    "point_buy_total": {
+      "formula": "(strength - 8) + max(0, strength - 13) + (dexterity - 8) + max(0, dexterity - 13) + (constitution - 8) + max(0, constitution - 13) + (intelligence - 8) + max(0, intelligence - 13) + (wisdom - 8) + max(0, wisdom - 13) + (charisma - 8) + max(0, charisma - 13)",
+      "label": "Point Buy Total"
     }
   },
   "layout_file": "dnd-5e-2024.html",
-  "styles_file": "dnd-5e-2024.css"
+  "styles_file": "dnd-5e-2024.css",
+  "name_field": "hero_name",
+  "validators": [
+    {
+      "rule": "ability_method != 'standard_array' or (((strength == 15) + (dexterity == 15) + (constitution == 15) + (intelligence == 15) + (wisdom == 15) + (charisma == 15) == 1) and ((strength == 14) + (dexterity == 14) + (constitution == 14) + (intelligence == 14) + (wisdom == 14) + (charisma == 14) == 1) and ((strength == 13) + (dexterity == 13) + (constitution == 13) + (intelligence == 13) + (wisdom == 13) + (charisma == 13) == 1) and ((strength == 12) + (dexterity == 12) + (constitution == 12) + (intelligence == 12) + (wisdom == 12) + (charisma == 12) == 1) and ((strength == 10) + (dexterity == 10) + (constitution == 10) + (intelligence == 10) + (wisdom == 10) + (charisma == 10) == 1) and ((strength == 8) + (dexterity == 8) + (constitution == 8) + (intelligence == 8) + (wisdom == 8) + (charisma == 8) == 1))",
+      "message": "The standard array is 15, 14, 13, 12, 10 and 8, each used once."
+    },
+    {
+      "rule": "ability_method != 'point_buy' or (point_buy_total <= 27 and min(strength, dexterity, constitution, intelligence, wisdom, charisma) >= 8 and max(strength, dexterity, constitution, intelligence, wisdom, charisma) <= 15)",
+      "message": "Point buy allows 27 points, with each base score from 8 to 15."
+    },
+    {
+      "rule": "strength_bonus + dexterity_bonus + constitution_bonus + intelligence_bonus + wisdom_bonus + charisma_bonus <= 3",
+      "message": "A background grants +2 and +1, or +1 to three abilities - 3 in total."
+    },
+    {
+      "rule": "ref(background, 'ability_scores') == '' or ((strength_bonus == 0 or contains(ref(background, 'ability_scores'), 'strength')) and (dexterity_bonus == 0 or contains(ref(background, 'ability_scores'), 'dexterity')) and (constitution_bonus == 0 or contains(ref(background, 'ability_scores'), 'constitution')) and (intelligence_bonus == 0 or contains(ref(background, 'ability_scores'), 'intelligence')) and (wisdom_bonus == 0 or contains(ref(background, 'ability_scores'), 'wisdom')) and (charisma_bonus == 0 or contains(ref(background, 'ability_scores'), 'charisma')))",
+      "message": "A background bonus is on an ability your background does not list."
+    }
+  ]
 }

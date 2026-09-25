@@ -5,10 +5,7 @@
   templates/index.json  note templates — browsed and downloaded by a GM
   themes/index.json     colour themes — installed per user
   character-sheets/index.json  character sheets — installed per user
-
-Content packs under `content-packs/` have no index: an admin installs one by
-copying its directory into the server's content directory, so there is nothing
-for Grimoire to browse. They are validated here all the same.
+  content-packs/index.json     content packs — installed server-wide by an admin
 
 Run with --check to verify the committed indexes are up to date (what CI does
 on a PR); run with no arguments to rewrite them.
@@ -49,6 +46,7 @@ THEME_INDEX_PATH = THEME_DIR / "index.json"
 SHEET_DIR = ROOT / "character-sheets"
 PACK_DIR = ROOT / "content-packs"
 SHEET_INDEX_PATH = SHEET_DIR / "index.json"
+PACK_INDEX_PATH = PACK_DIR / "index.json"
 # Optional per-folder metadata (display name), not an add-on itself.
 FOLDER_META = "_folder.yml"
 
@@ -509,23 +507,31 @@ def build_sheets() -> tuple[dict, list[str]]:
     return index, errors
 
 
-def check_content_packs() -> list[str]:
-    """Validate every content pack, without building an index.
+def build_content_packs() -> tuple[dict, list[str]]:
+    """Validate every content pack and build the catalogue Grimoire browses.
 
-    A pack is installed by copying its directory onto a server, not downloaded
-    from a catalogue, so there is no index and no digest to publish. What there
-    is to check is that the metadata parses, that each content file is a list of
-    objects carrying a unique `_id`, and that licensed content credits its
-    source — the same rules Grimoire's loader applies, applied here so a bad
-    pack fails in CI rather than on someone's server.
+    A pack is several files - `_meta.json` plus one per content type - so its
+    index entry carries a digest per file rather than one for the pack. Grimoire
+    downloads each and checks it, the same rule a sheet and its sibling
+    layout/stylesheet follow.
+
+    This used to validate only, on the reasoning that an admin installs a pack
+    by copying a directory onto the server. That left the SRD sitting in this
+    repo with no way to reach anyone, so packs are published like everything
+    else here.
     """
+    index: dict = {
+        "$schema": "../schema/content-pack-index.schema.json",
+        "version": 1,
+        "generated": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+        "packs": [],
+    }
+    errors: list[str] = []
     if not PACK_DIR.is_dir():
-        return []
+        return index, errors
 
     schema = json.loads((ROOT / "schema" / "content-pack.schema.json").read_text())
     validator = jsonschema.Draft202012Validator(schema)
-    errors: list[str] = []
-    count = 0
 
     for directory in sorted(p for p in PACK_DIR.iterdir() if p.is_dir()):
         meta_path = directory / "_meta.json"
@@ -547,6 +553,17 @@ def check_content_packs() -> list[str]:
                 f"directory {directory.name!r}"
             )
 
+        files = [
+            {
+                "name": "_meta.json",
+                "path": rel,
+                "sha256": sha256(meta_path),
+                "bytes": meta_path.stat().st_size,
+            }
+        ]
+        content_types: list[str] = []
+        total = 0
+
         for content_file in sorted(directory.glob("*.json")):
             if content_file.name == "_meta.json":
                 continue
@@ -559,23 +576,52 @@ def check_content_packs() -> list[str]:
             if not isinstance(entries, list):
                 errors.append(f"{crel}: must be an array of entries")
                 continue
+
             seen: set[str] = set()
-            for index, entry in enumerate(entries):
+            for position, entry in enumerate(entries):
                 if not isinstance(entry, dict):
-                    errors.append(f"{crel}: entry {index} is not an object")
+                    errors.append(f"{crel}: entry {position} is not an object")
                     continue
                 entry_id = entry.get("_id")
                 if not isinstance(entry_id, str) or not entry_id.strip():
-                    errors.append(f"{crel}: entry {index} has no '_id'")
+                    errors.append(f"{crel}: entry {position} has no '_id'")
                     continue
                 if entry_id in seen:
                     errors.append(f"{crel}: defines {entry_id!r} twice")
                 seen.add(entry_id)
-            count += len(entries)
 
-    if count:
-        print(f"Validated {count} content pack entr{'y' if count == 1 else 'ies'}.")
-    return errors
+            content_types.append(content_file.stem)
+            total += len(entries)
+            files.append(
+                {
+                    "name": content_file.name,
+                    "path": crel,
+                    "sha256": sha256(content_file),
+                    "bytes": content_file.stat().st_size,
+                }
+            )
+
+        entry = {
+            "pack_id": meta.get("pack_id", directory.name),
+            "schema_id": meta.get("schema_id", ""),
+            "name": meta.get("name", directory.name),
+            "files": files,
+            "entry_count": total,
+            "content_types": content_types,
+        }
+        for key in ("version", "description", "license", "license_url",
+                    "attribution", "source_url"):
+            if meta.get(key):
+                entry[key] = meta[key]
+        index["packs"].append(entry)
+
+    index_schema = json.loads(
+        (ROOT / "schema" / "content-pack-index.schema.json").read_text()
+    )
+    for err in jsonschema.Draft202012Validator(index_schema).iter_errors(index):
+        errors.append(f"content-packs/index.json: {err.message}")
+
+    return index, errors
 
 
 def main() -> int:
@@ -591,7 +637,7 @@ def main() -> int:
     template_index, template_errors = build_templates()
     theme_index, theme_errors = build_themes()
     sheet_index, sheet_errors = build_sheets()
-    pack_errors = check_content_packs()
+    pack_index, pack_errors = build_content_packs()
     errors = errors + template_errors + theme_errors + sheet_errors + pack_errors
     if errors:
         print("Validation failed:")
@@ -603,7 +649,8 @@ def main() -> int:
         f"Validated {len(index['addons'])} add-on(s), "
         f"{len(template_index['templates'])} note template(s), "
         f"{len(theme_index['themes'])} theme(s), and "
-        f"{len(sheet_index['sheets'])} character sheet(s)."
+        f"{len(sheet_index['sheets'])} character sheet(s), and "
+        f"{len(pack_index['packs'])} content pack(s)."
     )
 
     targets = [
@@ -611,6 +658,7 @@ def main() -> int:
         (TEMPLATE_INDEX_PATH, template_index, "templates"),
         (THEME_INDEX_PATH, theme_index, "themes"),
         (SHEET_INDEX_PATH, sheet_index, "sheets"),
+        (PACK_INDEX_PATH, pack_index, "packs"),
     ]
 
     if args.check:

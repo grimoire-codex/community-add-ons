@@ -4,10 +4,15 @@ Catalog content for a character sheet — the spells, classes, species, feats an
 backgrounds a character picks from. A sheet describes the *shape* of a spell;
 a pack supplies the spells.
 
-Unlike everything else in this repo, a pack is **not** downloaded from an index.
-An admin copies its directory into the server's `DATA_PATH/character-content/`,
-and it is loaded on startup. From there, a GM imports it into their campaign's
-**ruleset** in a click, and the table plays with it.
+A pack is published in `content-packs/index.json` like everything else here, and
+an admin installs one from **Characters → Manage sheets → Rulesets → Browse
+content packs**. Grimoire writes it into the server's
+`DATA_PATH/character-content/`, checking each file against the digest the index
+published. Copying a directory there by hand still works and is loaded on
+startup - the filesystem is the source of truth either way.
+
+From there a GM imports the pack into their campaign's **ruleset** in a click,
+and the table plays with it.
 
 ```
 content-packs/
@@ -19,7 +24,8 @@ content-packs/
 ```
 
 Run `python3 scripts/build_index.py` after editing one; it validates every pack
-even though it writes no index for them, and CI runs the same check.
+and regenerates `content-packs/index.json`, and CI checks that the committed
+index is current.
 
 ## `_meta.json`
 
@@ -62,6 +68,11 @@ within that file:
 The remaining keys are whatever the sheet's content type declares. Fields the
 sheet does not declare are dropped on load rather than rejected, so a pack can
 carry extra detail for a sheet that has not caught up.
+
+That cuts both ways: a property the sheet's rules *read* - a class's
+`skill_options`, a background's `feat_id` - must be declared by the sheet, or
+it is dropped before any rule sees it. Add the property to the pack and the
+declaration to the sheet together.
 
 An entry may override the pack's `source` with its own `_source`.
 

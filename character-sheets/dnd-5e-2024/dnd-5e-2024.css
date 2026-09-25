@@ -1,277 +1,450 @@
-/* D&D 5e (2024) sheet styling.
-   Follows the published sheet's shape — a narrow ability rail on the left, the
-   combat stats as a row of shields across the top right — using Grimoire's own
-   palette tokens so it still obeys the reader's theme. */
+/* D&D 5e (2024) character sheet.
+   After the published sheet, in Grimoire's colours: bordered boxes with small
+   uppercase captions, each ability's modifier in a circle beside its score,
+   saves and skills as ruled lines beneath it. Fixed-size boxes follow the print;
+   lists, which grow, get the full width instead. Every colour is an app token,
+   so a theme restyles the sheet along with everything else. */
 
 .sheet-5e {
-  display: grid;
-  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--text);
 }
 
-/* --- nameplate ---------------------------------------------------------- */
-
-.nameplate {
-  display: grid;
-  grid-template-columns: minmax(200px, 1fr) 2fr;
-  gap: 16px;
-  align-items: end;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 14px 16px;
-  background: var(--bg-card);
-}
-
-.nameplate-main input {
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.nameplate-meta {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+/* Each page spaces its own sections: with pages, those sit inside the page
+   panel rather than directly in the sheet. */
+.gc-tabpanel {
+  display: flex;
+  flex-direction: column;
   gap: 10px;
 }
 
-.field-label {
+/* --- shared ---------------------------------------------------------------- */
+
+.box {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-card);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.tiny {
   display: block;
   font-size: 10px;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.07em;
   color: var(--text-muted);
-  margin-bottom: 3px;
+  white-space: nowrap;
 }
 
-/* --- two-column body ---------------------------------------------------- */
-
-.sheet-body {
-  display: grid;
-  grid-template-columns: 216px 1fr;
-  gap: 16px;
-  align-items: start;
-}
-
-.rail,
-.main {
-  display: grid;
-  gap: 14px;
-  align-content: start;
-}
-
-/* --- abilities ---------------------------------------------------------- */
-
-.ability-stack {
-  display: grid;
-  gap: 8px;
-}
-
-.ability-box {
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 8px 6px 6px;
+.box-title {
   text-align: center;
-  background: var(--bg-card);
+  font-weight: 700;
+  color: var(--text-dim);
 }
 
-.ability-name {
-  display: block;
-  font-size: 9px;
+.box-heading {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  text-align: center;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
 }
 
-/* The modifier is what gets rolled, so it is the big number; the score sits
-   under it in a small box, as on the printed sheet. */
-.ability-mod {
+.big {
   display: block;
+  text-align: center;
   font-size: 26px;
   font-weight: 700;
-  line-height: 1.1;
-  color: var(--gold);
-}
-
-.ability-box input {
-  text-align: center;
-  font-size: 13px;
-  padding: 3px;
-  max-width: 64px;
-  margin: 2px auto 0;
-}
-
-/* --- panels ------------------------------------------------------------- */
-
-.panel {
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 12px 14px;
-  background: var(--bg-card);
-}
-
-.panel-title {
-  margin: 0 0 10px;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 5px;
-}
-
-.line-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 12px;
-}
-
-.line-table td {
-  padding: 3px 2px;
-  border-bottom: 1px solid var(--border);
-}
-
-.line-table .tick {
-  width: 20px;
-}
-
-.line-table .num {
-  width: 34px;
-  text-align: right;
-  font-weight: 600;
-  color: var(--gold);
-}
-
-.passive {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.passive-value {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--gold);
-}
-
-.passive-label {
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
-}
-
-/* --- combat row --------------------------------------------------------- */
-
-.combat-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-  gap: 12px;
-}
-
-.shield-stat {
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 12px 8px;
-  text-align: center;
-  background: var(--bg-card);
-}
-
-.shield-value {
-  display: block;
-  font-size: 28px;
-  font-weight: 700;
-  line-height: 1.1;
-  color: var(--gold);
-}
-
-.shield-label {
-  display: block;
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
-  margin-top: 2px;
-}
-
-/* --- hit points --------------------------------------------------------- */
-
-.hp-panel {
-  display: grid;
-  grid-template-columns: minmax(140px, 1fr) 2fr;
-  gap: 14px;
-  align-items: center;
-}
-
-.hp-current input {
-  font-size: 24px;
-  font-weight: 700;
-  text-align: center;
-}
-
-.hp-side {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-  gap: 10px;
-}
-
-/* --- spellcasting ------------------------------------------------------- */
-
-.spell-head {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 12px;
-  margin-bottom: 12px;
-  align-items: end;
-}
-
-.mini-stat {
-  text-align: center;
-}
-
-.mini-value {
-  display: block;
-  font-size: 19px;
-  font-weight: 700;
+  line-height: 1.15;
   color: var(--gold);
 }
 
 .hint {
-  font-size: 11px;
+  margin: 0;
   color: var(--text-muted);
-  margin: 8px 0 0;
+  font-size: 13px;
 }
 
-/* --- secondary details -------------------------------------------------- */
+.pip-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  cursor: pointer;
+}
 
-.extras {
+/* --- top bar --------------------------------------------------------------- */
+
+.topbar {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(0, 1.6fr);
+  gap: 10px;
+}
+
+.name-row input {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Two pickers to a row, so a name like "Dragonborn" fits on one line. */
+.identity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 12px;
+}
+
+.topstats {
+  display: grid;
+  grid-template-columns: minmax(80px, 0.8fr) minmax(90px, 0.8fr) minmax(190px, 2fr) minmax(110px, 1fr) minmax(110px, 1fr);
+  gap: 10px;
+}
+
+.level,
+.armour,
+.hitdice,
+.death {
+  align-items: stretch;
+  text-align: center;
+  justify-content: center;
+}
+
+.armour {
+  border-radius: 10px 10px 36px 36px;
+  align-items: center;
+}
+
+.hp {
+  justify-content: center;
+}
+
+/* Hit points get the room they need: current large, temp and max beside it. */
+.hp-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 4px 8px;
+  align-items: center;
+  text-align: center;
+}
+
+.hp-current input {
+  font-size: 22px;
+  font-weight: 700;
+  padding: 4px;
+}
+
+.pips {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+/* --- page one -------------------------------------------------------------- */
+
+.page-one {
+  display: grid;
+  grid-template-columns: minmax(420px, 1fr) minmax(0, 1.5fr);
+  gap: 10px;
+  align-items: start;
+}
+
+.abilities {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  align-items: start;
+}
+
+.abilities-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.training {
+  grid-column: 1 / -1;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.legend {
+  text-align: center;
+  white-space: normal;
+}
+
+.ability {
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 10px 14px;
   background: var(--bg-card);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ability-name {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.ability-core {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* The modifier in a circle, the score in a tab beside it: the printed sheet's
+   emphasis, since the modifier is the number actually rolled. */
+.ability-mod {
+  width: 62px;
+  height: 62px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.mod-value {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--gold);
+}
+
+.ability-score {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.score-value {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Capped, so on a wide screen the two small boxes stay small. */
+.ability-parts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px 8px;
+  text-align: center;
+  width: 100%;
+  max-width: 180px;
+  margin: 0 auto;
+}
+
+.ability-parts input {
+  padding: 3px;
+  font-size: 13px;
+}
+
+.lines {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Fixed cells, so a row keeps its columns even when one draws nothing. */
+.line {
+  display: grid;
+  grid-template-columns: 20px 20px 34px minmax(0, 1fr);
+  gap: 4px;
+  align-items: center;
+  font-size: 12px;
+  padding: 4px 0;
+  border-top: 1px solid var(--border);
+}
+
+.c-prof,
+.c-exp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The expertise box a shade quieter than proficiency's: most skills have none. */
+.expertise {
+  opacity: 0.7;
+}
+
+.c-value {
+  text-align: right;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.c-name {
+  overflow-wrap: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.save .c-name {
+  font-weight: 700;
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.stat {
+  justify-content: space-between;
+}
+
+.stat input {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 3px;
+}
+
+.armour-training {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  align-items: center;
+}
+
+/* --- page two -------------------------------------------------------------- */
+
+.page-two {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr);
+  gap: 10px;
+  align-items: start;
+}
+
+.p2-main,
+.p2-side {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.caster-toggle {
+  flex-direction: row;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.casting {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(0, 2fr);
+  gap: 12px;
+  align-items: center;
+}
+
+.casting-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  text-align: center;
+}
+
+.slots-key {
+  text-align: center;
+}
+
+/* Three by three, like the printed sheet, rather than nine tall rows. */
+.slots {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px 14px;
+}
+
+.slot {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 44px 44px;
+  gap: 6px;
+  align-items: center;
+}
+
+.slot input {
+  padding: 3px;
+}
+
+.coins {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+  text-align: center;
+}
+
+.coins input {
+  padding: 3px;
 }
 
 .extras summary {
   cursor: pointer;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
   color: var(--text-muted);
+  font-size: 12px;
 }
 
-.extras-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 12px;
-  margin: 12px 0;
-}
+/* --- narrower screens ------------------------------------------------------ */
 
-/* One column on a phone: a 216px rail beside anything is unreadable there. */
-@media (max-width: 760px) {
-  .sheet-body,
-  .nameplate,
-  .hp-panel {
-    grid-template-columns: 1fr;
+@media (max-width: 1200px) {
+  .topbar {
+    grid-template-columns: minmax(0, 1fr);
   }
+  .page-one {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
 
-  .ability-stack {
-    grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+@media (max-width: 760px) {
+  .topstats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .hp {
+    grid-column: 1 / -1;
+  }
+  .page-two,
+  .casting {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .slots {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .stat-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .abilities,
+  .identity-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

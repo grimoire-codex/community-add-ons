@@ -13,7 +13,7 @@ sheets**; the layout leaves room for plugins as those land.
 | [`templates/`](templates/) | Note templates — ready-made starting points for campaign wiki pages |
 | [`themes/`](themes/) | Themes — colour schemes a user installs for their own account |
 | [`character-sheets/`](character-sheets/) | Character sheets — schema-driven sheets a user installs for their own account |
-| [`content-packs/`](content-packs/) | Content packs — the spells, classes and feats a character sheet draws from, installed server-wide |
+| [`content-packs/`](content-packs/) | Content packs — the spells, classes and feats a character sheet draws from, installed server-wide by an admin |
 | [`plugins/`](plugins/) | Reserved for future add-on kinds |
 | [`schema/`](schema/) | JSON Schemas that every add-on, template, theme, sheet, pack, and index are validated against |
 | [`docs/`](docs/) | Authoring reference |

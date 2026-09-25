@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/grimoire-codex/community-add-ons/main/schema/content-pack-index.schema.json",
+  "title": "Grimoire content pack catalogue",
+  "description": "Generated catalogue of every content pack in this repo. Built by CI — do not hand-edit.",
+  "type": "object",
+  "required": ["version", "packs"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "const": 1 },
+    "generated": { "type": "string", "format": "date-time" },
+    "packs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["pack_id", "schema_id", "name", "files"],
+        "additionalProperties": false,
+        "properties": {
+          "pack_id": { "type": "string", "pattern": "^[a-z0-9]+([-_][a-z0-9]+)*$" },
+          "schema_id": { "type": "string", "pattern": "^[a-z0-9]+([-_][a-z0-9]+)*$" },
+          "name": { "type": "string" },
+          "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+          "description": { "type": "string" },
+          "license": { "type": "string" },
+          "license_url": { "type": "string" },
+          "attribution": {
+            "type": "string",
+            "maxLength": 4000,
+            "description": "Credit for the upstream game, shown verbatim beside the pack."
+          },
+          "source_url": { "type": "string" },
+          "entry_count": { "type": "integer", "minimum": 0 },
+          "content_types": {
+            "type": "array",
+            "description": "Which content types this pack supplies, for showing what is in it before installing.",
+            "items": { "type": "string" }
+          },
+          "files": {
+            "type": "array",
+            "description": "Every file in the pack, each verified against its own digest on download.",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["name", "path", "sha256"],
+              "additionalProperties": false,
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "The file's name within the pack directory, e.g. '_meta.json' or 'spell.json'."
+                },
+                "path": {
+                  "type": "string",
+                  "description": "Repo-relative path, resolved against this index's own URL and pinned to the same host."
+                },
+                "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+                "bytes": { "type": "integer", "minimum": 0 }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

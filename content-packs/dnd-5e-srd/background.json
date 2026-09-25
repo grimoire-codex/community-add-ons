@@ -4,111 +4,167 @@
     "name": "Acolyte",
     "ability_scores": "Intelligence, Wisdom, Charisma",
     "feat": "Magic Initiate (Cleric)",
-    "skill_proficiencies": "Insight, Religion",
-    "description": "You devoted yourself to service in a temple."
+    "skill_proficiencies": [
+      "Insight",
+      "Religion"
+    ],
+    "description": "You devoted yourself to service in a temple.",
+    "feat_id": "magic-initiate"
   },
   {
     "_id": "artisan",
     "name": "Artisan",
     "ability_scores": "Strength, Dexterity, Intelligence",
     "feat": "Crafter",
-    "skill_proficiencies": "Investigation, Persuasion",
-    "description": "You began mopping floors in an artisan's workshop."
+    "skill_proficiencies": [
+      "Investigation",
+      "Persuasion"
+    ],
+    "description": "You began mopping floors in an artisan's workshop.",
+    "feat_id": "crafter"
   },
   {
     "_id": "charlatan",
     "name": "Charlatan",
     "ability_scores": "Dexterity, Constitution, Charisma",
     "feat": "Skilled",
-    "skill_proficiencies": "Deception, Sleight of Hand",
-    "description": "You have always had a way with people."
+    "skill_proficiencies": [
+      "Deception",
+      "Sleight of Hand"
+    ],
+    "description": "You have always had a way with people.",
+    "feat_id": "skilled"
   },
   {
     "_id": "criminal",
     "name": "Criminal",
     "ability_scores": "Dexterity, Constitution, Intelligence",
     "feat": "Alert",
-    "skill_proficiencies": "Sleight of Hand, Stealth",
-    "description": "You learned your skills in the shadow of the law."
+    "skill_proficiencies": [
+      "Sleight of Hand",
+      "Stealth"
+    ],
+    "description": "You learned your skills in the shadow of the law.",
+    "feat_id": "alert"
   },
   {
     "_id": "entertainer",
     "name": "Entertainer",
     "ability_scores": "Strength, Dexterity, Charisma",
     "feat": "Musician",
-    "skill_proficiencies": "Acrobatics, Performance",
-    "description": "You spent much of your youth following travelling entertainers."
+    "skill_proficiencies": [
+      "Acrobatics",
+      "Performance"
+    ],
+    "description": "You spent much of your youth following travelling entertainers.",
+    "feat_id": "musician"
   },
   {
     "_id": "farmer",
     "name": "Farmer",
     "ability_scores": "Strength, Constitution, Wisdom",
     "feat": "Tough",
-    "skill_proficiencies": "Animal Handling, Nature",
-    "description": "You grew up close to the land."
+    "skill_proficiencies": [
+      "Animal Handling",
+      "Nature"
+    ],
+    "description": "You grew up close to the land.",
+    "feat_id": "tough"
   },
   {
     "_id": "guard",
     "name": "Guard",
     "ability_scores": "Strength, Intelligence, Wisdom",
     "feat": "Alert",
-    "skill_proficiencies": "Athletics, Perception",
-    "description": "Your feet ache when you remember the countless hours you spent at your post."
+    "skill_proficiencies": [
+      "Athletics",
+      "Perception"
+    ],
+    "description": "Your feet ache when you remember the countless hours you spent at your post.",
+    "feat_id": "alert"
   },
   {
     "_id": "guide",
     "name": "Guide",
     "ability_scores": "Dexterity, Constitution, Wisdom",
     "feat": "Magic Initiate (Druid)",
-    "skill_proficiencies": "Stealth, Survival",
-    "description": "You came of age in the outdoors, far from settled lands."
+    "skill_proficiencies": [
+      "Stealth",
+      "Survival"
+    ],
+    "description": "You came of age in the outdoors, far from settled lands.",
+    "feat_id": "magic-initiate"
   },
   {
     "_id": "hermit",
     "name": "Hermit",
     "ability_scores": "Constitution, Wisdom, Charisma",
     "feat": "Healer",
-    "skill_proficiencies": "Medicine, Religion",
-    "description": "You spent your early years secluded from society."
+    "skill_proficiencies": [
+      "Medicine",
+      "Religion"
+    ],
+    "description": "You spent your early years secluded from society.",
+    "feat_id": "healer"
   },
   {
     "_id": "merchant",
     "name": "Merchant",
     "ability_scores": "Constitution, Intelligence, Charisma",
     "feat": "Lucky",
-    "skill_proficiencies": "Animal Handling, Persuasion",
-    "description": "You were apprenticed to a trader or caravan master."
+    "skill_proficiencies": [
+      "Animal Handling",
+      "Persuasion"
+    ],
+    "description": "You were apprenticed to a trader or caravan master.",
+    "feat_id": "lucky"
   },
   {
     "_id": "noble",
     "name": "Noble",
     "ability_scores": "Strength, Intelligence, Charisma",
     "feat": "Skilled",
-    "skill_proficiencies": "History, Persuasion",
-    "description": "You grew up in a castle, in a family of wealth and power."
+    "skill_proficiencies": [
+      "History",
+      "Persuasion"
+    ],
+    "description": "You grew up in a castle, in a family of wealth and power.",
+    "feat_id": "skilled"
   },
   {
     "_id": "sage",
     "name": "Sage",
     "ability_scores": "Constitution, Intelligence, Wisdom",
     "feat": "Magic Initiate (Wizard)",
-    "skill_proficiencies": "Arcana, History",
-    "description": "You spent years learning the lore of the multiverse."
+    "skill_proficiencies": [
+      "Arcana",
+      "History"
+    ],
+    "description": "You spent years learning the lore of the multiverse.",
+    "feat_id": "magic-initiate"
   },
   {
     "_id": "sailor",
     "name": "Sailor",
     "ability_scores": "Strength, Dexterity, Wisdom",
     "feat": "Tavern Brawler",
-    "skill_proficiencies": "Acrobatics, Perception",
-    "description": "You lived as a seafarer, aware of the moods of the sea."
+    "skill_proficiencies": [
+      "Acrobatics",
+      "Perception"
+    ],
+    "description": "You lived as a seafarer, aware of the moods of the sea.",
+    "feat_id": "tavern-brawler"
   },
   {
     "_id": "soldier",
     "name": "Soldier",
     "ability_scores": "Strength, Dexterity, Constitution",
     "feat": "Savage Attacker",
-    "skill_proficiencies": "Athletics, Intimidation",
-    "description": "You began training for war as soon as you reached adulthood."
+    "skill_proficiencies": [
+      "Athletics",
+      "Intimidation"
+    ],
+    "description": "You began training for war as soon as you reached adulthood.",
+    "feat_id": "savage-attacker"
   }
 ]

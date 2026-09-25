@@ -1,0 +1,64 @@
+{
+  "$schema": "../schema/content-pack-index.schema.json",
+  "version": 1,
+  "generated": "2026-09-25T18:52:15+00:00",
+  "packs": [
+    {
+      "pack_id": "dnd-5e-srd",
+      "schema_id": "dnd-5e-2024",
+      "name": "D&D 5e SRD 5.2",
+      "files": [
+        {
+          "name": "_meta.json",
+          "path": "content-packs/dnd-5e-srd/_meta.json",
+          "sha256": "0cc746d817f7f043afa8d1c0e965a6056deafbce6b8acf67e062a5fc772f20fc",
+          "bytes": 735
+        },
+        {
+          "name": "background.json",
+          "path": "content-packs/dnd-5e-srd/background.json",
+          "sha256": "7a12de496fb35f6e7875d7511a5ca3119a7e632b983a5faba193acaa9bc8ee8e",
+          "bytes": 4408
+        },
+        {
+          "name": "class.json",
+          "path": "content-packs/dnd-5e-srd/class.json",
+          "sha256": "f3e35cb3cf05d6a4ee8fbcd85d98c1ebe276e254ad3c0b6ffe6573a9a4094bbb",
+          "bytes": 6314
+        },
+        {
+          "name": "feat.json",
+          "path": "content-packs/dnd-5e-srd/feat.json",
+          "sha256": "147f40da3b3f9ffcae032b71d08884ce2afc9d0195d7c96cec887a8241b10025",
+          "bytes": 3344
+        },
+        {
+          "name": "species.json",
+          "path": "content-packs/dnd-5e-srd/species.json",
+          "sha256": "0c05f081097f075cbba9910ceac06fcfdd3c540eb4ed8544cc494a81fc33b75f",
+          "bytes": 2521
+        },
+        {
+          "name": "spell.json",
+          "path": "content-packs/dnd-5e-srd/spell.json",
+          "sha256": "e9bc408038d745b43f15fa43575aef8871606903c4c6478fc527a1b01365bdfe",
+          "bytes": 24796
+        }
+      ],
+      "entry_count": 109,
+      "content_types": [
+        "background",
+        "class",
+        "feat",
+        "species",
+        "spell"
+      ],
+      "version": "1.0.0",
+      "description": "Classes, species, backgrounds, origin feats and the commonly used spells from the System Reference Document 5.2.",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "This work includes material from the System Reference Document 5.2 (\u201cSRD 5.2\u201d) by Wizards of the Coast LLC, available at https://www.dndbeyond.com/srd. The SRD 5.2 is licensed under the Creative Commons Attribution 4.0 International License, available at https://creativecommons.org/licenses/by/4.0/legalcode.",
+      "source_url": "https://www.dndbeyond.com/srd"
+    }
+  ]
+}

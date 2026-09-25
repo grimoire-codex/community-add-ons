@@ -68,8 +68,15 @@ character over one out-of-range score would lose the player's work.
 
 A small expression language over the other fields: arithmetic, comparisons,
 `and`/`or`/`not`, `a ? b : c`, and a closed function table — `floor`, `ceil`,
-`round`, `abs`, `min`, `max`, `sum`, `len`, `if`, `clamp`, and `signed` (which
-formats `3` as `+3`, the way a sheet prints a modifier).
+`round`, `abs`, `min`, `max`, `sum`, `len`, `if`, `clamp`, `signed` (which
+formats `3` as `+3`, the way a sheet prints a modifier), and `concat` (which
+joins values as text: `concat(level, 'd', 8)` is `5d8`; `+` stays arithmetic).
+`ref(field, 'property')` reads a property of the entry picked into a field, and
+reads as empty when nothing is picked.
+
+The player can override any computed value - a Grimoire rule, not something a
+sheet opts into - and whatever depends on it follows. So write the formula for
+the ordinary case and let the table handle the exceptions.
 
 Formulas are **parsed, never executed**. There is no `eval` anywhere in the
 engine, so a formula cannot do anything but arithmetic.
@@ -87,6 +94,90 @@ declare them in whatever order reads best:
 
 A formula naming a field that does not exist is rejected when the sheet is
 installed, not when it is drawn.
+
+### The character's name
+
+`"name_field": "hero_name"` names the text field that holds the character's
+name. It starts as the name the player gave when creating the character, and
+editing either updates the other, so the character list and the sheet agree.
+
+### Lists of picked entries
+
+A `content_list` draws each entry as a row the player can open to read the
+whole entry - a feat's description, a spell's full text. `display_columns`
+draws it as a table of the entries' own properties instead of a name and a
+summary line:
+
+```json
+"spells": { "type": "content_list", "content_type": "spell",
+            "display_columns": ["level", "casting_time", "range", "components"] }
+```
+
+### Values that start from a choice
+
+`default_from` gives a field its value until the player sets one:
+
+```json
+"speed": { "type": "number", "default": 30, "default_from": "ref(species, 'speed')" }
+```
+
+The field stays an ordinary editable field. Picking a species fills it in; the
+player can type over it, and reset it back. An empty result falls back to
+`default`, so with no species picked - or no content installed at all - it is
+30. It can read fields but not computed values, which are worked out after it.
+
+Use this, not a computed value, for anything the player might reasonably set
+themselves: it keeps the field on the sheet as something they can type in.
+
+### What a pick does
+
+A `content_ref` may carry `on_pick` rules, which run when the player picks an
+entry:
+
+```json
+"background": {
+  "type": "content_ref", "content_type": "background",
+  "on_pick": [
+    { "grant": "skill_profs", "from": "skill_proficiencies" },
+    { "grant": "feats", "ref": "feat_id", "name": "feat" }
+  ]
+},
+"klass": {
+  "type": "content_ref", "content_type": "class",
+  "on_pick": [
+    { "choose": "skill_profs", "count": "skill_choices", "from": "skill_options",
+      "label": "Choose class skill proficiencies" }
+  ]
+}
+```
+
+- **`grant`** adds values from the picked entry. Into a `multiselect`, `from`
+  names a list property. Into a `content_list`, `ref` names an entry id; if the
+  catalog has no such entry, `name` is added as a freeform entry instead.
+- **`choose`** asks the player to pick `count` values (a number, or a property
+  holding one) from the entry's `from` list. They can always put it off.
+
+Everything a pick adds is remembered, so changing the pick takes it back off -
+but only what it added, never something the player gave themselves. The rules
+read properties of the picked entry, so **the content type must declare every
+property a rule reads**; an undeclared one is dropped when the pack loads, and
+the rule would quietly do nothing. Grimoire refuses to install a sheet whose
+rule names a property its content type does not declare, so this is caught at
+install rather than at the table.
+
+### What belongs in a sheet
+
+A sheet holds a character's **record** and its **arithmetic**. It does not run
+the game's character creation procedure - careers, lifepaths, priority tables,
+random rolls. Those stay at the table with the book, and the sheet holds what
+they produced.
+
+Everything a sheet works out is a suggestion the player can override, and every
+sheet must work with no content installed: `ref()` reads as empty, a
+`default_from` falls back to its `default`, and a pick with nothing behind it
+does nothing. If a game needs something these cannot express, the answer is a
+general capability in Grimoire that other games could use too - open an issue
+rather than working around it.
 
 ### Layout
 
@@ -118,12 +209,20 @@ parts go:
 | Directive | What it draws |
 | --- | --- |
 | `<g-field name="x"/>` | The editable control for field `x` |
-| `<g-computed name="x"/>` | A derived value, read-only |
+| `<g-computed name="x"/>` | A calculated value, which the player can click to override |
 | `<g-label name="x"/>` | That field's label text alone |
-| `<g-value name="x"/>` | That value alone, with no control |
+| `<g-value name="x"/>` | That value alone, as plain text. A calculated value or a text or number field can still be clicked to set |
 | `<g-section title="...">` | A titled group, and a styling hook |
 | `<g-if test="...">` | Its contents, when the expression is true |
 | `<g-repeat over="...">` | Its contents once per row of a list field |
+| `<g-tabs>` + `<g-tab title="...">` | Pages - only the chosen one is drawn. A `<g-tab>` takes `visible_if` |
+| `<g-option field="x" value="v"/>` | One checkbox for one option of multiselect `x`, so each can sit where the sheet wants it. Takes `class` for styling |
+
+`<g-field variant="compact">` draws a number as a plain numeric box without the
+browser's spinner, which otherwise takes most of a narrow box - a hit point,
+coin or ability-bonus cell. Keep each cell of a repeated row in its own element
+(`<span class="...">`), so a row keeps its columns even if one cell draws
+nothing.
 
 Put the CSS in `<id>.css` beside it. Inline `styles` still works for a rule or
 two, but a real sheet's stylesheet belongs in a file:

@@ -1,0 +1,394 @@
+[
+ {
+  "_id": "aiuvarin",
+  "name": "Aiuvarin",
+  "ancestry": "Versatile",
+  "rarity": "Common",
+  "traits": "Aiuvarin",
+  "description": "You gain the elf trait, the aiuvarin trait, and low-light vision. In addition, when you gain an ancestry feat, you can choose from aiuvarin and elf feats in addition to those from your ancestry."
+ },
+ {
+  "_id": "ancient-elf",
+  "name": "Ancient Elf",
+  "ancestry": "Elf",
+  "rarity": "Common",
+  "traits": "",
+  "description": "Choose a class other than your own. You gain the multiclass dedication feat for that class, even though you don't meet its level prerequisite. You must still meet its other prerequisites to gain the feat."
+ },
+ {
+  "_id": "ancient-blooded-dwarf",
+  "name": "Ancient-Blooded Dwarf",
+  "ancestry": "Dwarf",
+  "rarity": "Common",
+  "traits": "",
+  "description": "Dwarven heroes of old could shrug off their enemies' magic, and some of that resistance manifests in you. You gain the Call on Ancient Blood reaction."
+ },
+ {
+  "_id": "arctic-elf",
+  "name": "Arctic Elf",
+  "ancestry": "Elf",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You dwell deep in the frozen north and have gained incredible resilience against cold environments, granting you cold resistance equal to half your level (minimum 1). You treat environmental cold effects as if they were one step less extreme (incredible cold becomes extreme, extreme cold becomes severe, and so on)."
+ },
+ {
+  "_id": "badlands-orc",
+  "name": "Badlands Orc",
+  "ancestry": "Orc",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You can Hustle twice as long while exploring before you have to stop, and you treat environmental heat effects as if they were one step less extreme (incredible heat becomes extreme, extreme heat becomes severe, and so on)."
+ },
+ {
+  "_id": "battle-ready-orc",
+  "name": "Battle-Ready Orc",
+  "ancestry": "Orc",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You become trained in Intimidation, and you gain the Intimidating Glare skill feat."
+ },
+ {
+  "_id": "cactus-leshy",
+  "name": "Cactus Leshy",
+  "ancestry": "Leshy",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You gain a spine unarmed attack that deals 1d6 piercing damage. Your spines are in the brawling group and have the finesse and unarmed traits."
+ },
+ {
+  "_id": "cavern-elf",
+  "name": "Cavern Elf",
+  "ancestry": "Elf",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You gain darkvision."
+ },
+ {
+  "_id": "chameleon-gnome",
+  "name": "Chameleon Gnome",
+  "ancestry": "Gnome",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You can slowly change the vibrancy and the exact color, and the coloration can be different across your body, allowing you to create patterns or other colorful designs. It takes a single action for minor localized shifts and up to an hour for dramatic shifts throughout your body. While you're asleep, the colors shift on their own in tune with your dreams, giving you an unusual coloration each morning. When you're in an area where your coloration is roughly similar to the environment (for instance, forest green in a forest), you can use the single action to make minor localized shifts designed to help you blend into your surroundings. This grants you a +2 circumstance bonus to Stealth checks until your surroundings shift in coloration or pattern."
+ },
+ {
+  "_id": "changeling",
+  "name": "Changeling",
+  "ancestry": "Versatile",
+  "rarity": "Uncommon",
+  "traits": "Changeling",
+  "description": "You gain the changeling trait. You also gain low-light vision, or you gain darkvision if your ancestry already has low-light vision. You can select from changeling feats and feats from your other parent's ancestry whenever you gain an ancestry feat."
+ },
+ {
+  "_id": "charhide-goblin",
+  "name": "Charhide Goblin",
+  "ancestry": "Goblin",
+  "rarity": "Common",
+  "traits": "",
+  "description": "Your ancestors have always had a connection to fire and a thicker skin, which allows you to resist burning. You gain fire resistance equal to half your level (minimum 1). You can also recover from being on fire more easily. Your flat check to remove persistent fire damage is DC 10 instead of DC 15, which is reduced to DC 5 Flat if another creature uses a particularly appropriate action to help."
+ },
+ {
+  "_id": "death-warden-dwarf",
+  "name": "Death Warden Dwarf",
+  "ancestry": "Dwarf",
+  "rarity": "Common",
+  "traits": "",
+  "description": "If you roll a success on a saving throw against an effect that has the void trait or was created by an undead creature, you get a critical success instead."
+ },
+ {
+  "_id": "deep-orc",
+  "name": "Deep Orc",
+  "ancestry": "Orc",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You gain the Terrain Expertise skill feat for underground terrain and the Combat Climber skill feat."
+ },
+ {
+  "_id": "dromaar",
+  "name": "Dromaar",
+  "ancestry": "Versatile",
+  "rarity": "Common",
+  "traits": "Dromaar",
+  "description": "You gain the orc trait, the dromaar trait, and low-light vision. When you gain an ancestry feat, you can choose from dromaar and orc feats in addition to those from your ancestry."
+ },
+ {
+  "_id": "fey-touched-gnome",
+  "name": "Fey-Touched Gnome",
+  "ancestry": "Gnome",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You gain the fey trait, in addition to the gnome and humanoid traits. Choose one cantrip from the primal spell list. You can cast this spell as a primal innate spell at will. A cantrip is heightened to a spell rank equal to half your level rounded up."
+ },
+ {
+  "_id": "forge-dwarf",
+  "name": "Forge Dwarf",
+  "ancestry": "Dwarf",
+  "rarity": "Common",
+  "traits": "",
+  "description": "This grants you fire resistance equal to half your level (minimum 1), and you treat environmental heat effects as if they were one step less extreme (incredible heat becomes extreme, extreme heat becomes severe, and so on)."
+ },
+ {
+  "_id": "fruit-leshy",
+  "name": "Fruit Leshy",
+  "ancestry": "Leshy",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You or an ally can remove this fruit as an Interact action. If a living creature that can derive sustenance from fruit consumes it as an Interact action within the next hour, they regain ceil(@actor.level/2))d8 vitality healing Hit Points, plus an additional 1d8 Hit Points for every 2 of your levels beyond 1st. This effect has the healing and vitality traits."
+ },
+ {
+  "_id": "fungus-leshy",
+  "name": "Fungus Leshy",
+  "ancestry": "Leshy",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You gain darkvision. You lose the plant trait and gain the fungus trait."
+ },
+ {
+  "_id": "gourd-leshy",
+  "name": "Gourd Leshy",
+  "ancestry": "Leshy",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You have a large gourd for a skull, and since you don't have a physical brain, you can use the space inside your head. You can store a collection of up to 1 Bulk of objects within your head. The DC of checks to Steal objects from inside your head increases by 4. Additionally, if you store only one object within your head, you can draw it effortlessly into your hand as part of another action to use the object. Drawing the item grants this other action the manipulate trait."
+ },
+ {
+  "_id": "grave-orc",
+  "name": "Grave Orc",
+  "ancestry": "Orc",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You gain resistance to void damage equal to half your level (minimum 1). You also gain a +1 circumstance bonus to saving throws against effects with the death or void trait."
+ },
+ {
+  "_id": "gutsy-halfling",
+  "name": "Gutsy Halfling",
+  "ancestry": "Halfling",
+  "rarity": "Common",
+  "traits": "",
+  "description": "Your family line is known for keeping a level head and staving off fear when the chips were down. When you roll a success on a saving throw against an emotion effect, you get a critical success instead."
+ },
+ {
+  "_id": "hillock-halfling",
+  "name": "Hillock Halfling",
+  "ancestry": "Halfling",
+  "rarity": "Common",
+  "traits": "",
+  "description": "When you regain Hit Points overnight, add your level to the Hit Points regained. When anyone uses the Medicine skill to Treat your Wounds, you can eat a snack to add your level to the Hit Points you regain from their treatment."
+ },
+ {
+  "_id": "hold-scarred-orc",
+  "name": "Hold-Scarred Orc",
+  "ancestry": "Orc",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You gain 12 Hit Points from your ancestry instead of 10. You also gain the Diehard feat."
+ },
+ {
+  "_id": "irongut-goblin",
+  "name": "Irongut Goblin",
+  "ancestry": "Goblin",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You can subsist on food that most folks would consider spoiled. You can keep yourself fed with poor meals in a settlement as long as garbage is readily available, without using the Subsist downtime activity. You can eat and drink things when you are Sickened.\n\nYou gain a +2 circumstance bonus to saving throws against afflictions, against gaining the sickened condition, and to remove the sickened condition. When you roll a success on a Fortitude save affected by this bonus, you get a critical success instead. All these benefits apply only when the affliction or condition resulted from something you ingested."
+ },
+ {
+  "_id": "jinxed-halfling",
+  "name": "Jinxed Halfling",
+  "ancestry": "Halfling",
+  "rarity": "Uncommon",
+  "traits": "",
+  "description": "You were born with a strange blessing: bereft of the typical halfling luck, you can instead manipulate the fortunes of others. You can never take the Halfling Luck feat, and you gain the Jinx action."
+ },
+ {
+  "_id": "leaf-leshy",
+  "name": "Leaf Leshy",
+  "ancestry": "Leshy",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You take no damage from falling, regardless of the distance you fall."
+ },
+ {
+  "_id": "lotus-leshy",
+  "name": "Lotus Leshy",
+  "ancestry": "Leshy",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You can walk on the surface of still water and other non-damaging liquids, moving at half your normal Speed. You can also attempt to Balance to move across the surface of flowing water, using the DC of a Swim check to move through the water. When you do this, you can't move faster than half your Speed, and if you fail or critically fail, you fall into the water rather than the normal effects."
+ },
+ {
+  "_id": "nephilim",
+  "name": "Nephilim",
+  "ancestry": "Versatile",
+  "rarity": "Uncommon",
+  "traits": "Nephilim",
+  "description": "You gain the nephilim trait, in addition to the traits from your ancestry. You gain low-light vision, or you gain darkvision if your ancestry already has low-light vision. You can choose from nephilim feats and feats from your ancestry whenever you gain an ancestry feat."
+ },
+ {
+  "_id": "nomadic-halfling",
+  "name": "Nomadic Halfling",
+  "ancestry": "Halfling",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You gain two additional languages of your choice, chosen from among the common and uncommon languages available to you, and every time you take the Multilingual feat, you gain another new language."
+ },
+ {
+  "_id": "rainfall-orc",
+  "name": "Rainfall Orc",
+  "ancestry": "Orc",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You've learned to move adeptly through jungle terrain and resist the various ailments common in humid environs. You gain a +2 circumstance bonus to Athletics checks to Climb or Swim and a +1 circumstance bonus to saving throws against diseases."
+ },
+ {
+  "_id": "razortooth-goblin",
+  "name": "Razortooth Goblin",
+  "ancestry": "Goblin",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You gain a jaws unarmed attack that deals 1d6 piercing damage. Your jaws are in the brawling group and have the finesse and unarmed traits."
+ },
+ {
+  "_id": "rock-dwarf",
+  "name": "Rock Dwarf",
+  "ancestry": "Dwarf",
+  "rarity": "Common",
+  "traits": "",
+  "description": "This makes you solid as a rock when you plant your feet. You gain a +2 circumstance bonus to your Fortitude or Reflex DC against attempts to Reposition, Shove, or Trip you. This bonus also applies to saving throws against spells or effects that attempt to force you to move or knock you Prone.\n\nIn addition, if any effect would force you to move 10 feet or more, you are moved only half the distance."
+ },
+ {
+  "_id": "root-leshy",
+  "name": "Root Leshy",
+  "ancestry": "Leshy",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You gain 10 Hit Points from your ancestry instead of 8. You can go without sunlight for 2 weeks before you begin to starve. You gain a +2 circumstance bonus to your Fortitude or Reflex DC against attempts to Reposition, Shove, or Trip you. This bonus also applies to saving throws against spells or effects that attempt to move you or knock you Prone."
+ },
+ {
+  "_id": "seaweed-leshy",
+  "name": "Seaweed Leshy",
+  "ancestry": "Leshy",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You gain a swim Speed of 20 feet, and you can always breathe underwater. However, your land Speed is reduced by 5 feet (to 20 feet for most seaweed leshies)."
+ },
+ {
+  "_id": "seer-elf",
+  "name": "Seer Elf",
+  "ancestry": "Elf",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You can cast the Detect Magic cantrip as an arcane innate spell at will. A cantrip is heightened to a spell rank equal to half your level rounded up.\n\nIn addition, you gain a +1 circumstance bonus to checks to Identify Magic and to Decipher Writing of a magical nature. These skill actions typically use the Arcana, Nature, Occultism, or Religion skill."
+ },
+ {
+  "_id": "sensate-gnome",
+  "name": "Sensate Gnome",
+  "ancestry": "Gnome",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You gain a special sense: imprecise scent with a range of 30 feet. This means you can use your sense of smell to determine the exact location of a creature. The GM will usually double the range if you're downwind from the creature or halve the range if you're upwind.\n\nIn addition, you gain a +2 circumstance bonus to Perception checks whenever you're trying to locate an undetected creature that is within the range of your scent."
+ },
+ {
+  "_id": "skilled-human",
+  "name": "Skilled Human",
+  "ancestry": "Human",
+  "rarity": "Common",
+  "traits": "",
+  "description": "Your ingenuity allows you to train in a wide variety of skills. You become trained in one skill of your choice. At 5th level, you become an expert in the chosen skill."
+ },
+ {
+  "_id": "snow-goblin",
+  "name": "Snow Goblin",
+  "ancestry": "Goblin",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You gain cold resistance equal to half your level (minimum 1). You treat environmental cold effects as if they were one step less extreme (incredible cold becomes extreme, extreme cold becomes severe, and so on)."
+ },
+ {
+  "_id": "strong-blooded-dwarf",
+  "name": "Strong-Blooded Dwarf",
+  "ancestry": "Dwarf",
+  "rarity": "Common",
+  "traits": "",
+  "description": "Your blood runs hearty and strong, and you can shake off toxins. You gain poison resistance equal to half your level (minimum 1), and each of your successful saving throws against a poison affliction reduces its stage by 2, or by 1 for a virulent poison. Each critical success against an ongoing poison reduces its stage by 3, or by 2 for a virulent poison."
+ },
+ {
+  "_id": "twilight-halfling",
+  "name": "Twilight Halfling",
+  "ancestry": "Halfling",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You gain low-light vision."
+ },
+ {
+  "_id": "umbral-gnome",
+  "name": "Umbral Gnome",
+  "ancestry": "Gnome",
+  "rarity": "Common",
+  "traits": "",
+  "description": "Whether from a connection to dark or shadowy fey, from the underground gnomes known as drathnelar, or from another source, you can see in complete darkness. You gain darkvision."
+ },
+ {
+  "_id": "unbreakable-goblin",
+  "name": "Unbreakable Goblin",
+  "ancestry": "Goblin",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You gain 10 Hit Points from your ancestry instead of 6. When you fall, reduce the falling damage you take as though you had fallen half the distance."
+ },
+ {
+  "_id": "versatile-human",
+  "name": "Versatile Human",
+  "ancestry": "Human",
+  "rarity": "Common",
+  "traits": "",
+  "description": "Select a general feat of your choice for which you meet the prerequisites (as with your ancestry feat, you can select this general feat at any point during character creation)."
+ },
+ {
+  "_id": "vine-leshy",
+  "name": "Vine Leshy",
+  "ancestry": "Leshy",
+  "rarity": "Common",
+  "traits": "",
+  "description": "Your prehensile vines grant you unmatched skill at climbing. You do not need to have any hands free to Climb. Additionally, if you roll a success on an Athletics check to Climb, you get a critical success instead."
+ },
+ {
+  "_id": "wellspring-gnome",
+  "name": "Wellspring Gnome",
+  "ancestry": "Gnome",
+  "rarity": "Common",
+  "traits": "",
+  "description": "Choose arcane, divine, or occult. You gain one cantrip from that magical tradition's spell list. You can cast this spell as an innate spell at will, as a spell of your chosen tradition. A cantrip is heightened to a spell rank equal to half your level rounded up. Whenever you gain a primal innate spell from a gnome ancestry feat, change its tradition from primal to your chosen tradition."
+ },
+ {
+  "_id": "whisper-elf",
+  "name": "Whisper Elf",
+  "ancestry": "Elf",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You gain a +2 circumstance bonus when using the Seek action to find Hidden or Undetected creatures within 30 feet of you. When you target an opponent that is Concealed from you or hidden from you, reduce the DC of the flat check to 3 for a concealed target or 9 for a hidden one. This benefit doesn't apply if you can't hear or if the creature is incapable of making sound (for example, if it's affected by a Silence spell)."
+ },
+ {
+  "_id": "wildwood-halfling",
+  "name": "Wildwood Halfling",
+  "ancestry": "Halfling",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You ignore any difficult terrain caused by plants and fungi, such as bushes, vines, and undergrowth."
+ },
+ {
+  "_id": "winter-orc",
+  "name": "Winter Orc",
+  "ancestry": "Orc",
+  "rarity": "Common",
+  "traits": "",
+  "description": "You become trained in Survival, and you treat environmental cold effects as if they were one step less extreme (incredible cold becomes extreme, extreme cold becomes severe, and so on)."
+ },
+ {
+  "_id": "woodland-elf",
+  "name": "Woodland Elf",
+  "ancestry": "Elf",
+  "rarity": "Common",
+  "traits": "",
+  "description": "When Climbing trees, vines, and other foliage, you move at half your Speed on a success and at full Speed on a critical success (and you move at full Speed on a success if you have Quick Climb). This doesn't affect you if you're using a climb Speed.\n\nYou can always use the Take Cover action when you are within forest terrain to gain cover, even if you're not next to an obstacle you can Take Cover behind."
+ }
+]

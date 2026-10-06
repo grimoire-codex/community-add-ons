@@ -1,0 +1,1684 @@
+{
+  "$schema": "../../schema/character-sheet.schema.json",
+  "id": "call-of-cthulhu-7e",
+  "name": "Call of Cthulhu 7th Edition",
+  "version": "1.0.0",
+  "system": "Call of Cthulhu 7th Edition",
+  "description": "An investigator sheet for Call of Cthulhu 7th Edition: eight characteristics and percentile skills with their half and fifth values, hit points, magic points, Sanity and Luck, damage bonus, Build and Move, and the occupation and personal-interest points a new investigator spends.",
+  "author": "hunter-read",
+  "homepage": "https://www.chaosium.com/fan-material-policy/",
+  "license": "Chaosium Fan Material Policy",
+  "license_url": "https://www.chaosium.com/fan-material-policy/",
+  "attribution": "This character sheet uses trademarks and/or copyrights owned by Chaosium Inc/Moon Design Publications LLC, which are used under Chaosium Inc's Fan Material Policy. We are expressly prohibited from charging you to use or access this content. This character sheet is not published, endorsed, or specifically approved by Chaosium Inc. For more information about Chaosium Inc's products, please visit www.chaosium.com.",
+  "content_types": {
+    "occupation": {
+      "label": "Occupation",
+      "label_plural": "Occupations",
+      "identity_field": "name",
+      "sort_default": [
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "description"
+      ],
+      "filter_fields": [],
+      "compact_display": "Credit Rating {credit_rating}",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "credit_rating": {
+          "type": "text",
+          "label": "Credit Rating"
+        },
+        "skill_points": {
+          "type": "text",
+          "label": "Occupation Skill Points"
+        },
+        "occupation_skills": {
+          "type": "multiselect",
+          "label": "Occupation Skills",
+          "options": [
+            "Accounting",
+            "Anthropology",
+            "Appraise",
+            "Archaeology",
+            "Charm",
+            "Climb",
+            "Credit Rating",
+            "Cthulhu Mythos",
+            "Disguise",
+            "Dodge",
+            "Drive Auto",
+            "Electrical Repair",
+            "Fast Talk",
+            "Fighting (Brawl)",
+            "Firearms (Handgun)",
+            "Firearms (Rifle/Shotgun)",
+            "First Aid",
+            "History",
+            "Intimidate",
+            "Jump",
+            "Language (Own)",
+            "Law",
+            "Library Use",
+            "Listen",
+            "Locksmith",
+            "Mechanical Repair",
+            "Medicine",
+            "Natural World",
+            "Navigate",
+            "Occult",
+            "Operate Heavy Machinery",
+            "Persuade",
+            "Psychoanalysis",
+            "Psychology",
+            "Ride",
+            "Sleight of Hand",
+            "Spot Hidden",
+            "Stealth",
+            "Survival",
+            "Swim",
+            "Throw",
+            "Track"
+          ]
+        },
+        "other_skills": {
+          "type": "text",
+          "label": "Other Occupation Skills"
+        },
+        "contacts": {
+          "type": "text",
+          "label": "Suggested Contacts"
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Description",
+          "rows": 3
+        }
+      }
+    },
+    "weapon": {
+      "label": "Weapon",
+      "label_plural": "Weapons",
+      "identity_field": "name",
+      "sort_default": [
+        "skill",
+        "name"
+      ],
+      "search_fields": [
+        "name"
+      ],
+      "filter_fields": [
+        "skill"
+      ],
+      "compact_display": "{skill} · {damage}",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "skill": {
+          "type": "text",
+          "label": "Skill"
+        },
+        "damage": {
+          "type": "text",
+          "label": "Damage"
+        },
+        "range": {
+          "type": "text",
+          "label": "Range"
+        },
+        "attacks": {
+          "type": "text",
+          "label": "Attacks"
+        },
+        "ammo": {
+          "type": "text",
+          "label": "Ammo"
+        },
+        "malfunction": {
+          "type": "text",
+          "label": "Malfunction"
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Notes",
+          "rows": 3
+        }
+      }
+    }
+  },
+  "fields": {
+    "investigator_name": {
+      "type": "text",
+      "label": "Investigator Name"
+    },
+    "player": {
+      "type": "text",
+      "label": "Player"
+    },
+    "occupation": {
+      "type": "content_ref",
+      "label": "Occupation",
+      "content_type": "occupation",
+      "on_pick": [
+        {
+          "grant": "occupation_skills",
+          "from": "occupation_skills"
+        }
+      ]
+    },
+    "age": {
+      "type": "number",
+      "label": "Age",
+      "min": 15,
+      "max": 99,
+      "default": 25
+    },
+    "pronouns": {
+      "type": "text",
+      "label": "Pronouns"
+    },
+    "residence": {
+      "type": "text",
+      "label": "Residence"
+    },
+    "birthplace": {
+      "type": "text",
+      "label": "Birthplace"
+    },
+    "strength": {
+      "type": "number",
+      "label": "Strength",
+      "min": 0,
+      "max": 99,
+      "default": 50
+    },
+    "constitution": {
+      "type": "number",
+      "label": "Constitution",
+      "min": 0,
+      "max": 99,
+      "default": 50
+    },
+    "size": {
+      "type": "number",
+      "label": "Size",
+      "min": 0,
+      "max": 99,
+      "default": 50
+    },
+    "dexterity": {
+      "type": "number",
+      "label": "Dexterity",
+      "min": 0,
+      "max": 99,
+      "default": 50
+    },
+    "appearance": {
+      "type": "number",
+      "label": "Appearance",
+      "min": 0,
+      "max": 99,
+      "default": 50
+    },
+    "intelligence": {
+      "type": "number",
+      "label": "Intelligence",
+      "min": 0,
+      "max": 99,
+      "default": 50
+    },
+    "power": {
+      "type": "number",
+      "label": "Power",
+      "min": 0,
+      "max": 99,
+      "default": 50
+    },
+    "education": {
+      "type": "number",
+      "label": "Education",
+      "min": 0,
+      "max": 99,
+      "default": 50
+    },
+    "hp_max": {
+      "type": "number",
+      "label": "Max Hit Points",
+      "min": 0,
+      "default": 10,
+      "default_from": "floor((constitution + size) / 10)"
+    },
+    "hp_current": {
+      "type": "number",
+      "label": "Hit Points",
+      "min": 0,
+      "default": 10,
+      "default_from": "hp_max"
+    },
+    "major_wound": {
+      "type": "checkbox",
+      "label": "Major Wound"
+    },
+    "dying": {
+      "type": "checkbox",
+      "label": "Dying"
+    },
+    "unconscious": {
+      "type": "checkbox",
+      "label": "Unconscious"
+    },
+    "mp_max": {
+      "type": "number",
+      "label": "Max Magic Points",
+      "min": 0,
+      "default": 10,
+      "default_from": "floor(power / 5)"
+    },
+    "mp_current": {
+      "type": "number",
+      "label": "Magic Points",
+      "min": 0,
+      "default": 10,
+      "default_from": "mp_max"
+    },
+    "sanity_start": {
+      "type": "number",
+      "label": "Starting Sanity",
+      "min": 0,
+      "max": 99,
+      "default": 50,
+      "default_from": "power"
+    },
+    "sanity_current": {
+      "type": "number",
+      "label": "Sanity",
+      "min": 0,
+      "max": 99,
+      "default": 50,
+      "default_from": "sanity_start"
+    },
+    "temporary_insanity": {
+      "type": "checkbox",
+      "label": "Temporary Insanity"
+    },
+    "indefinite_insanity": {
+      "type": "checkbox",
+      "label": "Indefinite Insanity"
+    },
+    "luck": {
+      "type": "number",
+      "label": "Luck",
+      "min": 0,
+      "max": 99,
+      "default": 50
+    },
+    "occupation_skills": {
+      "type": "multiselect",
+      "label": "Occupation Skills",
+      "options": [
+        "Accounting",
+        "Anthropology",
+        "Appraise",
+        "Archaeology",
+        "Charm",
+        "Climb",
+        "Credit Rating",
+        "Cthulhu Mythos",
+        "Disguise",
+        "Dodge",
+        "Drive Auto",
+        "Electrical Repair",
+        "Fast Talk",
+        "Fighting (Brawl)",
+        "Firearms (Handgun)",
+        "Firearms (Rifle/Shotgun)",
+        "First Aid",
+        "History",
+        "Intimidate",
+        "Jump",
+        "Language (Own)",
+        "Law",
+        "Library Use",
+        "Listen",
+        "Locksmith",
+        "Mechanical Repair",
+        "Medicine",
+        "Natural World",
+        "Navigate",
+        "Occult",
+        "Operate Heavy Machinery",
+        "Persuade",
+        "Psychoanalysis",
+        "Psychology",
+        "Ride",
+        "Sleight of Hand",
+        "Spot Hidden",
+        "Stealth",
+        "Survival",
+        "Swim",
+        "Throw",
+        "Track"
+      ]
+    },
+    "improvement_checks": {
+      "type": "multiselect",
+      "label": "Improvement Checks",
+      "options": [
+        "Accounting",
+        "Anthropology",
+        "Appraise",
+        "Archaeology",
+        "Charm",
+        "Climb",
+        "Credit Rating",
+        "Cthulhu Mythos",
+        "Disguise",
+        "Dodge",
+        "Drive Auto",
+        "Electrical Repair",
+        "Fast Talk",
+        "Fighting (Brawl)",
+        "Firearms (Handgun)",
+        "Firearms (Rifle/Shotgun)",
+        "First Aid",
+        "History",
+        "Intimidate",
+        "Jump",
+        "Language (Own)",
+        "Law",
+        "Library Use",
+        "Listen",
+        "Locksmith",
+        "Mechanical Repair",
+        "Medicine",
+        "Natural World",
+        "Navigate",
+        "Occult",
+        "Operate Heavy Machinery",
+        "Persuade",
+        "Psychoanalysis",
+        "Psychology",
+        "Ride",
+        "Sleight of Hand",
+        "Spot Hidden",
+        "Stealth",
+        "Survival",
+        "Swim",
+        "Throw",
+        "Track",
+        "art_craft_1",
+        "art_craft_2",
+        "science_1",
+        "science_2",
+        "language_other_1",
+        "language_other_2",
+        "fighting_other",
+        "firearms_other",
+        "pilot",
+        "other_skill_1",
+        "other_skill_2",
+        "other_skill_3"
+      ]
+    },
+    "occupation_points": {
+      "type": "number",
+      "label": "Occupation Skill Points",
+      "min": 0,
+      "default": 200,
+      "default_from": "education * 4"
+    },
+    "creation_done": {
+      "type": "checkbox",
+      "label": "Creation finished - stop checking skill points"
+    },
+    "sk_accounting": {
+      "type": "number",
+      "label": "Accounting",
+      "min": 0,
+      "max": 99,
+      "default": 5
+    },
+    "sk_anthropology": {
+      "type": "number",
+      "label": "Anthropology",
+      "min": 0,
+      "max": 99,
+      "default": 1
+    },
+    "sk_appraise": {
+      "type": "number",
+      "label": "Appraise",
+      "min": 0,
+      "max": 99,
+      "default": 5
+    },
+    "sk_archaeology": {
+      "type": "number",
+      "label": "Archaeology",
+      "min": 0,
+      "max": 99,
+      "default": 1
+    },
+    "sk_charm": {
+      "type": "number",
+      "label": "Charm",
+      "min": 0,
+      "max": 99,
+      "default": 15
+    },
+    "sk_climb": {
+      "type": "number",
+      "label": "Climb",
+      "min": 0,
+      "max": 99,
+      "default": 20
+    },
+    "sk_credit_rating": {
+      "type": "number",
+      "label": "Credit Rating",
+      "min": 0,
+      "max": 99,
+      "default": 0
+    },
+    "sk_cthulhu_mythos": {
+      "type": "number",
+      "label": "Cthulhu Mythos",
+      "min": 0,
+      "max": 99,
+      "default": 0
+    },
+    "sk_disguise": {
+      "type": "number",
+      "label": "Disguise",
+      "min": 0,
+      "max": 99,
+      "default": 5
+    },
+    "sk_dodge": {
+      "type": "number",
+      "label": "Dodge",
+      "min": 0,
+      "max": 99,
+      "default": 0,
+      "default_from": "floor(dexterity / 2)"
+    },
+    "sk_drive_auto": {
+      "type": "number",
+      "label": "Drive Auto",
+      "min": 0,
+      "max": 99,
+      "default": 20
+    },
+    "sk_electrical_repair": {
+      "type": "number",
+      "label": "Electrical Repair",
+      "min": 0,
+      "max": 99,
+      "default": 10
+    },
+    "sk_fast_talk": {
+      "type": "number",
+      "label": "Fast Talk",
+      "min": 0,
+      "max": 99,
+      "default": 5
+    },
+    "sk_fighting_brawl": {
+      "type": "number",
+      "label": "Fighting (Brawl)",
+      "min": 0,
+      "max": 99,
+      "default": 25
+    },
+    "sk_firearms_handgun": {
+      "type": "number",
+      "label": "Firearms (Handgun)",
+      "min": 0,
+      "max": 99,
+      "default": 20
+    },
+    "sk_firearms_rifle_shotgun": {
+      "type": "number",
+      "label": "Firearms (Rifle/Shotgun)",
+      "min": 0,
+      "max": 99,
+      "default": 25
+    },
+    "sk_first_aid": {
+      "type": "number",
+      "label": "First Aid",
+      "min": 0,
+      "max": 99,
+      "default": 30
+    },
+    "sk_history": {
+      "type": "number",
+      "label": "History",
+      "min": 0,
+      "max": 99,
+      "default": 5
+    },
+    "sk_intimidate": {
+      "type": "number",
+      "label": "Intimidate",
+      "min": 0,
+      "max": 99,
+      "default": 15
+    },
+    "sk_jump": {
+      "type": "number",
+      "label": "Jump",
+      "min": 0,
+      "max": 99,
+      "default": 20
+    },
+    "sk_language_own": {
+      "type": "number",
+      "label": "Language (Own)",
+      "min": 0,
+      "max": 99,
+      "default": 0,
+      "default_from": "education"
+    },
+    "sk_law": {
+      "type": "number",
+      "label": "Law",
+      "min": 0,
+      "max": 99,
+      "default": 5
+    },
+    "sk_library_use": {
+      "type": "number",
+      "label": "Library Use",
+      "min": 0,
+      "max": 99,
+      "default": 20
+    },
+    "sk_listen": {
+      "type": "number",
+      "label": "Listen",
+      "min": 0,
+      "max": 99,
+      "default": 20
+    },
+    "sk_locksmith": {
+      "type": "number",
+      "label": "Locksmith",
+      "min": 0,
+      "max": 99,
+      "default": 1
+    },
+    "sk_mechanical_repair": {
+      "type": "number",
+      "label": "Mechanical Repair",
+      "min": 0,
+      "max": 99,
+      "default": 10
+    },
+    "sk_medicine": {
+      "type": "number",
+      "label": "Medicine",
+      "min": 0,
+      "max": 99,
+      "default": 1
+    },
+    "sk_natural_world": {
+      "type": "number",
+      "label": "Natural World",
+      "min": 0,
+      "max": 99,
+      "default": 10
+    },
+    "sk_navigate": {
+      "type": "number",
+      "label": "Navigate",
+      "min": 0,
+      "max": 99,
+      "default": 10
+    },
+    "sk_occult": {
+      "type": "number",
+      "label": "Occult",
+      "min": 0,
+      "max": 99,
+      "default": 5
+    },
+    "sk_operate_heavy_machinery": {
+      "type": "number",
+      "label": "Operate Heavy Machinery",
+      "min": 0,
+      "max": 99,
+      "default": 1
+    },
+    "sk_persuade": {
+      "type": "number",
+      "label": "Persuade",
+      "min": 0,
+      "max": 99,
+      "default": 10
+    },
+    "sk_psychoanalysis": {
+      "type": "number",
+      "label": "Psychoanalysis",
+      "min": 0,
+      "max": 99,
+      "default": 1
+    },
+    "sk_psychology": {
+      "type": "number",
+      "label": "Psychology",
+      "min": 0,
+      "max": 99,
+      "default": 10
+    },
+    "sk_ride": {
+      "type": "number",
+      "label": "Ride",
+      "min": 0,
+      "max": 99,
+      "default": 5
+    },
+    "sk_sleight_of_hand": {
+      "type": "number",
+      "label": "Sleight of Hand",
+      "min": 0,
+      "max": 99,
+      "default": 10
+    },
+    "sk_spot_hidden": {
+      "type": "number",
+      "label": "Spot Hidden",
+      "min": 0,
+      "max": 99,
+      "default": 25
+    },
+    "sk_stealth": {
+      "type": "number",
+      "label": "Stealth",
+      "min": 0,
+      "max": 99,
+      "default": 20
+    },
+    "sk_survival": {
+      "type": "number",
+      "label": "Survival",
+      "min": 0,
+      "max": 99,
+      "default": 10
+    },
+    "sk_swim": {
+      "type": "number",
+      "label": "Swim",
+      "min": 0,
+      "max": 99,
+      "default": 20
+    },
+    "sk_throw": {
+      "type": "number",
+      "label": "Throw",
+      "min": 0,
+      "max": 99,
+      "default": 20
+    },
+    "sk_track": {
+      "type": "number",
+      "label": "Track",
+      "min": 0,
+      "max": 99,
+      "default": 10
+    },
+    "art_craft_1_name": {
+      "type": "text",
+      "label": "Art/Craft speciality",
+      "placeholder": "Art/Craft"
+    },
+    "art_craft_1_base": {
+      "type": "number",
+      "label": "Art/Craft base",
+      "min": 0,
+      "max": 99,
+      "default": 5
+    },
+    "art_craft_1": {
+      "type": "number",
+      "label": "Art/Craft",
+      "min": 0,
+      "max": 99,
+      "default": 5
+    },
+    "art_craft_1_occ": {
+      "type": "checkbox",
+      "label": "Art/Craft is an occupation skill"
+    },
+    "art_craft_2_name": {
+      "type": "text",
+      "label": "Art/Craft speciality",
+      "placeholder": "Art/Craft"
+    },
+    "art_craft_2_base": {
+      "type": "number",
+      "label": "Art/Craft base",
+      "min": 0,
+      "max": 99,
+      "default": 5
+    },
+    "art_craft_2": {
+      "type": "number",
+      "label": "Art/Craft",
+      "min": 0,
+      "max": 99,
+      "default": 5
+    },
+    "art_craft_2_occ": {
+      "type": "checkbox",
+      "label": "Art/Craft is an occupation skill"
+    },
+    "science_1_name": {
+      "type": "text",
+      "label": "Science speciality",
+      "placeholder": "Science"
+    },
+    "science_1_base": {
+      "type": "number",
+      "label": "Science base",
+      "min": 0,
+      "max": 99,
+      "default": 1
+    },
+    "science_1": {
+      "type": "number",
+      "label": "Science",
+      "min": 0,
+      "max": 99,
+      "default": 1
+    },
+    "science_1_occ": {
+      "type": "checkbox",
+      "label": "Science is an occupation skill"
+    },
+    "science_2_name": {
+      "type": "text",
+      "label": "Science speciality",
+      "placeholder": "Science"
+    },
+    "science_2_base": {
+      "type": "number",
+      "label": "Science base",
+      "min": 0,
+      "max": 99,
+      "default": 1
+    },
+    "science_2": {
+      "type": "number",
+      "label": "Science",
+      "min": 0,
+      "max": 99,
+      "default": 1
+    },
+    "science_2_occ": {
+      "type": "checkbox",
+      "label": "Science is an occupation skill"
+    },
+    "language_other_1_name": {
+      "type": "text",
+      "label": "Language (Other) speciality",
+      "placeholder": "Language (Other)"
+    },
+    "language_other_1_base": {
+      "type": "number",
+      "label": "Language (Other) base",
+      "min": 0,
+      "max": 99,
+      "default": 1
+    },
+    "language_other_1": {
+      "type": "number",
+      "label": "Language (Other)",
+      "min": 0,
+      "max": 99,
+      "default": 1
+    },
+    "language_other_1_occ": {
+      "type": "checkbox",
+      "label": "Language (Other) is an occupation skill"
+    },
+    "language_other_2_name": {
+      "type": "text",
+      "label": "Language (Other) speciality",
+      "placeholder": "Language (Other)"
+    },
+    "language_other_2_base": {
+      "type": "number",
+      "label": "Language (Other) base",
+      "min": 0,
+      "max": 99,
+      "default": 1
+    },
+    "language_other_2": {
+      "type": "number",
+      "label": "Language (Other)",
+      "min": 0,
+      "max": 99,
+      "default": 1
+    },
+    "language_other_2_occ": {
+      "type": "checkbox",
+      "label": "Language (Other) is an occupation skill"
+    },
+    "fighting_other_name": {
+      "type": "text",
+      "label": "Fighting speciality",
+      "placeholder": "Fighting"
+    },
+    "fighting_other_base": {
+      "type": "number",
+      "label": "Fighting base",
+      "min": 0,
+      "max": 99,
+      "default": 0
+    },
+    "fighting_other": {
+      "type": "number",
+      "label": "Fighting",
+      "min": 0,
+      "max": 99,
+      "default": 0
+    },
+    "fighting_other_occ": {
+      "type": "checkbox",
+      "label": "Fighting is an occupation skill"
+    },
+    "firearms_other_name": {
+      "type": "text",
+      "label": "Firearms speciality",
+      "placeholder": "Firearms"
+    },
+    "firearms_other_base": {
+      "type": "number",
+      "label": "Firearms base",
+      "min": 0,
+      "max": 99,
+      "default": 0
+    },
+    "firearms_other": {
+      "type": "number",
+      "label": "Firearms",
+      "min": 0,
+      "max": 99,
+      "default": 0
+    },
+    "firearms_other_occ": {
+      "type": "checkbox",
+      "label": "Firearms is an occupation skill"
+    },
+    "pilot_name": {
+      "type": "text",
+      "label": "Pilot speciality",
+      "placeholder": "Pilot"
+    },
+    "pilot_base": {
+      "type": "number",
+      "label": "Pilot base",
+      "min": 0,
+      "max": 99,
+      "default": 1
+    },
+    "pilot": {
+      "type": "number",
+      "label": "Pilot",
+      "min": 0,
+      "max": 99,
+      "default": 1
+    },
+    "pilot_occ": {
+      "type": "checkbox",
+      "label": "Pilot is an occupation skill"
+    },
+    "other_skill_1_name": {
+      "type": "text",
+      "label": "Other speciality",
+      "placeholder": "Other"
+    },
+    "other_skill_1_base": {
+      "type": "number",
+      "label": "Other base",
+      "min": 0,
+      "max": 99,
+      "default": 0
+    },
+    "other_skill_1": {
+      "type": "number",
+      "label": "Other",
+      "min": 0,
+      "max": 99,
+      "default": 0
+    },
+    "other_skill_1_occ": {
+      "type": "checkbox",
+      "label": "Other is an occupation skill"
+    },
+    "other_skill_2_name": {
+      "type": "text",
+      "label": "Other speciality",
+      "placeholder": "Other"
+    },
+    "other_skill_2_base": {
+      "type": "number",
+      "label": "Other base",
+      "min": 0,
+      "max": 99,
+      "default": 0
+    },
+    "other_skill_2": {
+      "type": "number",
+      "label": "Other",
+      "min": 0,
+      "max": 99,
+      "default": 0
+    },
+    "other_skill_2_occ": {
+      "type": "checkbox",
+      "label": "Other is an occupation skill"
+    },
+    "other_skill_3_name": {
+      "type": "text",
+      "label": "Other speciality",
+      "placeholder": "Other"
+    },
+    "other_skill_3_base": {
+      "type": "number",
+      "label": "Other base",
+      "min": 0,
+      "max": 99,
+      "default": 0
+    },
+    "other_skill_3": {
+      "type": "number",
+      "label": "Other",
+      "min": 0,
+      "max": 99,
+      "default": 0
+    },
+    "other_skill_3_occ": {
+      "type": "checkbox",
+      "label": "Other is an occupation skill"
+    },
+    "weapons": {
+      "type": "content_list",
+      "label": "Weapons",
+      "content_type": "weapon",
+      "allow_freeform": true,
+      "per_entry_fields": {
+        "ammo_left": {
+          "type": "number",
+          "label": "Ammo",
+          "min": 0
+        }
+      },
+      "display_columns": [
+        "skill",
+        "damage",
+        "range",
+        "attacks",
+        "ammo",
+        "malfunction"
+      ]
+    },
+    "spending_level": {
+      "type": "text",
+      "label": "Spending Level"
+    },
+    "cash": {
+      "type": "text",
+      "label": "Cash"
+    },
+    "assets": {
+      "type": "textarea",
+      "label": "Assets",
+      "rows": 3
+    },
+    "gear": {
+      "type": "list",
+      "label": "Gear & Possessions",
+      "columns": [
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Item",
+          "flex": 4
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 3
+        }
+      ]
+    },
+    "personal_description": {
+      "type": "textarea",
+      "label": "Personal Description",
+      "rows": 3
+    },
+    "ideology": {
+      "type": "textarea",
+      "label": "Ideology / Beliefs",
+      "rows": 3
+    },
+    "significant_people": {
+      "type": "textarea",
+      "label": "Significant People",
+      "rows": 3
+    },
+    "meaningful_locations": {
+      "type": "textarea",
+      "label": "Meaningful Locations",
+      "rows": 3
+    },
+    "treasured_possessions": {
+      "type": "textarea",
+      "label": "Treasured Possessions",
+      "rows": 3
+    },
+    "traits": {
+      "type": "textarea",
+      "label": "Traits",
+      "rows": 3
+    },
+    "injuries": {
+      "type": "textarea",
+      "label": "Injuries & Scars",
+      "rows": 3
+    },
+    "phobias": {
+      "type": "textarea",
+      "label": "Phobias & Manias",
+      "rows": 3
+    },
+    "tomes": {
+      "type": "textarea",
+      "label": "Arcane Tomes, Spells & Artifacts",
+      "rows": 3
+    },
+    "encounters": {
+      "type": "textarea",
+      "label": "Encounters with Strange Entities",
+      "rows": 3
+    },
+    "fellow_investigators": {
+      "type": "textarea",
+      "label": "Fellow Investigators",
+      "rows": 4
+    },
+    "notes": {
+      "type": "textarea",
+      "label": "Notes",
+      "rows": 6
+    }
+  },
+  "computed": {
+    "strength_half": {
+      "formula": "floor(strength / 2)",
+      "label": "STR half"
+    },
+    "strength_fifth": {
+      "formula": "floor(strength / 5)",
+      "label": "STR fifth"
+    },
+    "constitution_half": {
+      "formula": "floor(constitution / 2)",
+      "label": "CON half"
+    },
+    "constitution_fifth": {
+      "formula": "floor(constitution / 5)",
+      "label": "CON fifth"
+    },
+    "size_half": {
+      "formula": "floor(size / 2)",
+      "label": "SIZ half"
+    },
+    "size_fifth": {
+      "formula": "floor(size / 5)",
+      "label": "SIZ fifth"
+    },
+    "dexterity_half": {
+      "formula": "floor(dexterity / 2)",
+      "label": "DEX half"
+    },
+    "dexterity_fifth": {
+      "formula": "floor(dexterity / 5)",
+      "label": "DEX fifth"
+    },
+    "appearance_half": {
+      "formula": "floor(appearance / 2)",
+      "label": "APP half"
+    },
+    "appearance_fifth": {
+      "formula": "floor(appearance / 5)",
+      "label": "APP fifth"
+    },
+    "intelligence_half": {
+      "formula": "floor(intelligence / 2)",
+      "label": "INT half"
+    },
+    "intelligence_fifth": {
+      "formula": "floor(intelligence / 5)",
+      "label": "INT fifth"
+    },
+    "power_half": {
+      "formula": "floor(power / 2)",
+      "label": "POW half"
+    },
+    "power_fifth": {
+      "formula": "floor(power / 5)",
+      "label": "POW fifth"
+    },
+    "education_half": {
+      "formula": "floor(education / 2)",
+      "label": "EDU half"
+    },
+    "education_fifth": {
+      "formula": "floor(education / 5)",
+      "label": "EDU fifth"
+    },
+    "sk_accounting_half": {
+      "formula": "floor(sk_accounting / 2)",
+      "label": "Accounting half"
+    },
+    "sk_accounting_fifth": {
+      "formula": "floor(sk_accounting / 5)",
+      "label": "Accounting fifth"
+    },
+    "sk_anthropology_half": {
+      "formula": "floor(sk_anthropology / 2)",
+      "label": "Anthropology half"
+    },
+    "sk_anthropology_fifth": {
+      "formula": "floor(sk_anthropology / 5)",
+      "label": "Anthropology fifth"
+    },
+    "sk_appraise_half": {
+      "formula": "floor(sk_appraise / 2)",
+      "label": "Appraise half"
+    },
+    "sk_appraise_fifth": {
+      "formula": "floor(sk_appraise / 5)",
+      "label": "Appraise fifth"
+    },
+    "sk_archaeology_half": {
+      "formula": "floor(sk_archaeology / 2)",
+      "label": "Archaeology half"
+    },
+    "sk_archaeology_fifth": {
+      "formula": "floor(sk_archaeology / 5)",
+      "label": "Archaeology fifth"
+    },
+    "sk_charm_half": {
+      "formula": "floor(sk_charm / 2)",
+      "label": "Charm half"
+    },
+    "sk_charm_fifth": {
+      "formula": "floor(sk_charm / 5)",
+      "label": "Charm fifth"
+    },
+    "sk_climb_half": {
+      "formula": "floor(sk_climb / 2)",
+      "label": "Climb half"
+    },
+    "sk_climb_fifth": {
+      "formula": "floor(sk_climb / 5)",
+      "label": "Climb fifth"
+    },
+    "sk_credit_rating_half": {
+      "formula": "floor(sk_credit_rating / 2)",
+      "label": "Credit Rating half"
+    },
+    "sk_credit_rating_fifth": {
+      "formula": "floor(sk_credit_rating / 5)",
+      "label": "Credit Rating fifth"
+    },
+    "sk_cthulhu_mythos_half": {
+      "formula": "floor(sk_cthulhu_mythos / 2)",
+      "label": "Cthulhu Mythos half"
+    },
+    "sk_cthulhu_mythos_fifth": {
+      "formula": "floor(sk_cthulhu_mythos / 5)",
+      "label": "Cthulhu Mythos fifth"
+    },
+    "sk_disguise_half": {
+      "formula": "floor(sk_disguise / 2)",
+      "label": "Disguise half"
+    },
+    "sk_disguise_fifth": {
+      "formula": "floor(sk_disguise / 5)",
+      "label": "Disguise fifth"
+    },
+    "sk_dodge_half": {
+      "formula": "floor(sk_dodge / 2)",
+      "label": "Dodge half"
+    },
+    "sk_dodge_fifth": {
+      "formula": "floor(sk_dodge / 5)",
+      "label": "Dodge fifth"
+    },
+    "sk_drive_auto_half": {
+      "formula": "floor(sk_drive_auto / 2)",
+      "label": "Drive Auto half"
+    },
+    "sk_drive_auto_fifth": {
+      "formula": "floor(sk_drive_auto / 5)",
+      "label": "Drive Auto fifth"
+    },
+    "sk_electrical_repair_half": {
+      "formula": "floor(sk_electrical_repair / 2)",
+      "label": "Electrical Repair half"
+    },
+    "sk_electrical_repair_fifth": {
+      "formula": "floor(sk_electrical_repair / 5)",
+      "label": "Electrical Repair fifth"
+    },
+    "sk_fast_talk_half": {
+      "formula": "floor(sk_fast_talk / 2)",
+      "label": "Fast Talk half"
+    },
+    "sk_fast_talk_fifth": {
+      "formula": "floor(sk_fast_talk / 5)",
+      "label": "Fast Talk fifth"
+    },
+    "sk_fighting_brawl_half": {
+      "formula": "floor(sk_fighting_brawl / 2)",
+      "label": "Fighting (Brawl) half"
+    },
+    "sk_fighting_brawl_fifth": {
+      "formula": "floor(sk_fighting_brawl / 5)",
+      "label": "Fighting (Brawl) fifth"
+    },
+    "sk_firearms_handgun_half": {
+      "formula": "floor(sk_firearms_handgun / 2)",
+      "label": "Firearms (Handgun) half"
+    },
+    "sk_firearms_handgun_fifth": {
+      "formula": "floor(sk_firearms_handgun / 5)",
+      "label": "Firearms (Handgun) fifth"
+    },
+    "sk_firearms_rifle_shotgun_half": {
+      "formula": "floor(sk_firearms_rifle_shotgun / 2)",
+      "label": "Firearms (Rifle/Shotgun) half"
+    },
+    "sk_firearms_rifle_shotgun_fifth": {
+      "formula": "floor(sk_firearms_rifle_shotgun / 5)",
+      "label": "Firearms (Rifle/Shotgun) fifth"
+    },
+    "sk_first_aid_half": {
+      "formula": "floor(sk_first_aid / 2)",
+      "label": "First Aid half"
+    },
+    "sk_first_aid_fifth": {
+      "formula": "floor(sk_first_aid / 5)",
+      "label": "First Aid fifth"
+    },
+    "sk_history_half": {
+      "formula": "floor(sk_history / 2)",
+      "label": "History half"
+    },
+    "sk_history_fifth": {
+      "formula": "floor(sk_history / 5)",
+      "label": "History fifth"
+    },
+    "sk_intimidate_half": {
+      "formula": "floor(sk_intimidate / 2)",
+      "label": "Intimidate half"
+    },
+    "sk_intimidate_fifth": {
+      "formula": "floor(sk_intimidate / 5)",
+      "label": "Intimidate fifth"
+    },
+    "sk_jump_half": {
+      "formula": "floor(sk_jump / 2)",
+      "label": "Jump half"
+    },
+    "sk_jump_fifth": {
+      "formula": "floor(sk_jump / 5)",
+      "label": "Jump fifth"
+    },
+    "sk_language_own_half": {
+      "formula": "floor(sk_language_own / 2)",
+      "label": "Language (Own) half"
+    },
+    "sk_language_own_fifth": {
+      "formula": "floor(sk_language_own / 5)",
+      "label": "Language (Own) fifth"
+    },
+    "sk_law_half": {
+      "formula": "floor(sk_law / 2)",
+      "label": "Law half"
+    },
+    "sk_law_fifth": {
+      "formula": "floor(sk_law / 5)",
+      "label": "Law fifth"
+    },
+    "sk_library_use_half": {
+      "formula": "floor(sk_library_use / 2)",
+      "label": "Library Use half"
+    },
+    "sk_library_use_fifth": {
+      "formula": "floor(sk_library_use / 5)",
+      "label": "Library Use fifth"
+    },
+    "sk_listen_half": {
+      "formula": "floor(sk_listen / 2)",
+      "label": "Listen half"
+    },
+    "sk_listen_fifth": {
+      "formula": "floor(sk_listen / 5)",
+      "label": "Listen fifth"
+    },
+    "sk_locksmith_half": {
+      "formula": "floor(sk_locksmith / 2)",
+      "label": "Locksmith half"
+    },
+    "sk_locksmith_fifth": {
+      "formula": "floor(sk_locksmith / 5)",
+      "label": "Locksmith fifth"
+    },
+    "sk_mechanical_repair_half": {
+      "formula": "floor(sk_mechanical_repair / 2)",
+      "label": "Mechanical Repair half"
+    },
+    "sk_mechanical_repair_fifth": {
+      "formula": "floor(sk_mechanical_repair / 5)",
+      "label": "Mechanical Repair fifth"
+    },
+    "sk_medicine_half": {
+      "formula": "floor(sk_medicine / 2)",
+      "label": "Medicine half"
+    },
+    "sk_medicine_fifth": {
+      "formula": "floor(sk_medicine / 5)",
+      "label": "Medicine fifth"
+    },
+    "sk_natural_world_half": {
+      "formula": "floor(sk_natural_world / 2)",
+      "label": "Natural World half"
+    },
+    "sk_natural_world_fifth": {
+      "formula": "floor(sk_natural_world / 5)",
+      "label": "Natural World fifth"
+    },
+    "sk_navigate_half": {
+      "formula": "floor(sk_navigate / 2)",
+      "label": "Navigate half"
+    },
+    "sk_navigate_fifth": {
+      "formula": "floor(sk_navigate / 5)",
+      "label": "Navigate fifth"
+    },
+    "sk_occult_half": {
+      "formula": "floor(sk_occult / 2)",
+      "label": "Occult half"
+    },
+    "sk_occult_fifth": {
+      "formula": "floor(sk_occult / 5)",
+      "label": "Occult fifth"
+    },
+    "sk_operate_heavy_machinery_half": {
+      "formula": "floor(sk_operate_heavy_machinery / 2)",
+      "label": "Operate Heavy Machinery half"
+    },
+    "sk_operate_heavy_machinery_fifth": {
+      "formula": "floor(sk_operate_heavy_machinery / 5)",
+      "label": "Operate Heavy Machinery fifth"
+    },
+    "sk_persuade_half": {
+      "formula": "floor(sk_persuade / 2)",
+      "label": "Persuade half"
+    },
+    "sk_persuade_fifth": {
+      "formula": "floor(sk_persuade / 5)",
+      "label": "Persuade fifth"
+    },
+    "sk_psychoanalysis_half": {
+      "formula": "floor(sk_psychoanalysis / 2)",
+      "label": "Psychoanalysis half"
+    },
+    "sk_psychoanalysis_fifth": {
+      "formula": "floor(sk_psychoanalysis / 5)",
+      "label": "Psychoanalysis fifth"
+    },
+    "sk_psychology_half": {
+      "formula": "floor(sk_psychology / 2)",
+      "label": "Psychology half"
+    },
+    "sk_psychology_fifth": {
+      "formula": "floor(sk_psychology / 5)",
+      "label": "Psychology fifth"
+    },
+    "sk_ride_half": {
+      "formula": "floor(sk_ride / 2)",
+      "label": "Ride half"
+    },
+    "sk_ride_fifth": {
+      "formula": "floor(sk_ride / 5)",
+      "label": "Ride fifth"
+    },
+    "sk_sleight_of_hand_half": {
+      "formula": "floor(sk_sleight_of_hand / 2)",
+      "label": "Sleight of Hand half"
+    },
+    "sk_sleight_of_hand_fifth": {
+      "formula": "floor(sk_sleight_of_hand / 5)",
+      "label": "Sleight of Hand fifth"
+    },
+    "sk_spot_hidden_half": {
+      "formula": "floor(sk_spot_hidden / 2)",
+      "label": "Spot Hidden half"
+    },
+    "sk_spot_hidden_fifth": {
+      "formula": "floor(sk_spot_hidden / 5)",
+      "label": "Spot Hidden fifth"
+    },
+    "sk_stealth_half": {
+      "formula": "floor(sk_stealth / 2)",
+      "label": "Stealth half"
+    },
+    "sk_stealth_fifth": {
+      "formula": "floor(sk_stealth / 5)",
+      "label": "Stealth fifth"
+    },
+    "sk_survival_half": {
+      "formula": "floor(sk_survival / 2)",
+      "label": "Survival half"
+    },
+    "sk_survival_fifth": {
+      "formula": "floor(sk_survival / 5)",
+      "label": "Survival fifth"
+    },
+    "sk_swim_half": {
+      "formula": "floor(sk_swim / 2)",
+      "label": "Swim half"
+    },
+    "sk_swim_fifth": {
+      "formula": "floor(sk_swim / 5)",
+      "label": "Swim fifth"
+    },
+    "sk_throw_half": {
+      "formula": "floor(sk_throw / 2)",
+      "label": "Throw half"
+    },
+    "sk_throw_fifth": {
+      "formula": "floor(sk_throw / 5)",
+      "label": "Throw fifth"
+    },
+    "sk_track_half": {
+      "formula": "floor(sk_track / 2)",
+      "label": "Track half"
+    },
+    "sk_track_fifth": {
+      "formula": "floor(sk_track / 5)",
+      "label": "Track fifth"
+    },
+    "art_craft_1_half": {
+      "formula": "floor(art_craft_1 / 2)",
+      "label": "Art/Craft half"
+    },
+    "art_craft_1_fifth": {
+      "formula": "floor(art_craft_1 / 5)",
+      "label": "Art/Craft fifth"
+    },
+    "art_craft_2_half": {
+      "formula": "floor(art_craft_2 / 2)",
+      "label": "Art/Craft half"
+    },
+    "art_craft_2_fifth": {
+      "formula": "floor(art_craft_2 / 5)",
+      "label": "Art/Craft fifth"
+    },
+    "science_1_half": {
+      "formula": "floor(science_1 / 2)",
+      "label": "Science half"
+    },
+    "science_1_fifth": {
+      "formula": "floor(science_1 / 5)",
+      "label": "Science fifth"
+    },
+    "science_2_half": {
+      "formula": "floor(science_2 / 2)",
+      "label": "Science half"
+    },
+    "science_2_fifth": {
+      "formula": "floor(science_2 / 5)",
+      "label": "Science fifth"
+    },
+    "language_other_1_half": {
+      "formula": "floor(language_other_1 / 2)",
+      "label": "Language (Other) half"
+    },
+    "language_other_1_fifth": {
+      "formula": "floor(language_other_1 / 5)",
+      "label": "Language (Other) fifth"
+    },
+    "language_other_2_half": {
+      "formula": "floor(language_other_2 / 2)",
+      "label": "Language (Other) half"
+    },
+    "language_other_2_fifth": {
+      "formula": "floor(language_other_2 / 5)",
+      "label": "Language (Other) fifth"
+    },
+    "fighting_other_half": {
+      "formula": "floor(fighting_other / 2)",
+      "label": "Fighting half"
+    },
+    "fighting_other_fifth": {
+      "formula": "floor(fighting_other / 5)",
+      "label": "Fighting fifth"
+    },
+    "firearms_other_half": {
+      "formula": "floor(firearms_other / 2)",
+      "label": "Firearms half"
+    },
+    "firearms_other_fifth": {
+      "formula": "floor(firearms_other / 5)",
+      "label": "Firearms fifth"
+    },
+    "pilot_half": {
+      "formula": "floor(pilot / 2)",
+      "label": "Pilot half"
+    },
+    "pilot_fifth": {
+      "formula": "floor(pilot / 5)",
+      "label": "Pilot fifth"
+    },
+    "other_skill_1_half": {
+      "formula": "floor(other_skill_1 / 2)",
+      "label": "Other half"
+    },
+    "other_skill_1_fifth": {
+      "formula": "floor(other_skill_1 / 5)",
+      "label": "Other fifth"
+    },
+    "other_skill_2_half": {
+      "formula": "floor(other_skill_2 / 2)",
+      "label": "Other half"
+    },
+    "other_skill_2_fifth": {
+      "formula": "floor(other_skill_2 / 5)",
+      "label": "Other fifth"
+    },
+    "other_skill_3_half": {
+      "formula": "floor(other_skill_3 / 2)",
+      "label": "Other half"
+    },
+    "other_skill_3_fifth": {
+      "formula": "floor(other_skill_3 / 5)",
+      "label": "Other fifth"
+    },
+    "occupation_points_spent": {
+      "formula": "(contains(occupation_skills, 'Accounting') ? max(0, sk_accounting - 5) : 0) + (contains(occupation_skills, 'Anthropology') ? max(0, sk_anthropology - 1) : 0) + (contains(occupation_skills, 'Appraise') ? max(0, sk_appraise - 5) : 0) + (contains(occupation_skills, 'Archaeology') ? max(0, sk_archaeology - 1) : 0) + (contains(occupation_skills, 'Charm') ? max(0, sk_charm - 15) : 0) + (contains(occupation_skills, 'Climb') ? max(0, sk_climb - 20) : 0) + max(0, sk_credit_rating - 0) + (contains(occupation_skills, 'Disguise') ? max(0, sk_disguise - 5) : 0) + (contains(occupation_skills, 'Dodge') ? max(0, sk_dodge - floor(dexterity / 2)) : 0) + (contains(occupation_skills, 'Drive Auto') ? max(0, sk_drive_auto - 20) : 0) + (contains(occupation_skills, 'Electrical Repair') ? max(0, sk_electrical_repair - 10) : 0) + (contains(occupation_skills, 'Fast Talk') ? max(0, sk_fast_talk - 5) : 0) + (contains(occupation_skills, 'Fighting (Brawl)') ? max(0, sk_fighting_brawl - 25) : 0) + (contains(occupation_skills, 'Firearms (Handgun)') ? max(0, sk_firearms_handgun - 20) : 0) + (contains(occupation_skills, 'Firearms (Rifle/Shotgun)') ? max(0, sk_firearms_rifle_shotgun - 25) : 0) + (contains(occupation_skills, 'First Aid') ? max(0, sk_first_aid - 30) : 0) + (contains(occupation_skills, 'History') ? max(0, sk_history - 5) : 0) + (contains(occupation_skills, 'Intimidate') ? max(0, sk_intimidate - 15) : 0) + (contains(occupation_skills, 'Jump') ? max(0, sk_jump - 20) : 0) + (contains(occupation_skills, 'Language (Own)') ? max(0, sk_language_own - education) : 0) + (contains(occupation_skills, 'Law') ? max(0, sk_law - 5) : 0) + (contains(occupation_skills, 'Library Use') ? max(0, sk_library_use - 20) : 0) + (contains(occupation_skills, 'Listen') ? max(0, sk_listen - 20) : 0) + (contains(occupation_skills, 'Locksmith') ? max(0, sk_locksmith - 1) : 0) + (contains(occupation_skills, 'Mechanical Repair') ? max(0, sk_mechanical_repair - 10) : 0) + (contains(occupation_skills, 'Medicine') ? max(0, sk_medicine - 1) : 0) + (contains(occupation_skills, 'Natural World') ? max(0, sk_natural_world - 10) : 0) + (contains(occupation_skills, 'Navigate') ? max(0, sk_navigate - 10) : 0) + (contains(occupation_skills, 'Occult') ? max(0, sk_occult - 5) : 0) + (contains(occupation_skills, 'Operate Heavy Machinery') ? max(0, sk_operate_heavy_machinery - 1) : 0) + (contains(occupation_skills, 'Persuade') ? max(0, sk_persuade - 10) : 0) + (contains(occupation_skills, 'Psychoanalysis') ? max(0, sk_psychoanalysis - 1) : 0) + (contains(occupation_skills, 'Psychology') ? max(0, sk_psychology - 10) : 0) + (contains(occupation_skills, 'Ride') ? max(0, sk_ride - 5) : 0) + (contains(occupation_skills, 'Sleight of Hand') ? max(0, sk_sleight_of_hand - 10) : 0) + (contains(occupation_skills, 'Spot Hidden') ? max(0, sk_spot_hidden - 25) : 0) + (contains(occupation_skills, 'Stealth') ? max(0, sk_stealth - 20) : 0) + (contains(occupation_skills, 'Survival') ? max(0, sk_survival - 10) : 0) + (contains(occupation_skills, 'Swim') ? max(0, sk_swim - 20) : 0) + (contains(occupation_skills, 'Throw') ? max(0, sk_throw - 20) : 0) + (contains(occupation_skills, 'Track') ? max(0, sk_track - 10) : 0) + (art_craft_1_occ ? max(0, art_craft_1 - art_craft_1_base) : 0) + (art_craft_2_occ ? max(0, art_craft_2 - art_craft_2_base) : 0) + (science_1_occ ? max(0, science_1 - science_1_base) : 0) + (science_2_occ ? max(0, science_2 - science_2_base) : 0) + (language_other_1_occ ? max(0, language_other_1 - language_other_1_base) : 0) + (language_other_2_occ ? max(0, language_other_2 - language_other_2_base) : 0) + (fighting_other_occ ? max(0, fighting_other - fighting_other_base) : 0) + (firearms_other_occ ? max(0, firearms_other - firearms_other_base) : 0) + (pilot_occ ? max(0, pilot - pilot_base) : 0) + (other_skill_1_occ ? max(0, other_skill_1 - other_skill_1_base) : 0) + (other_skill_2_occ ? max(0, other_skill_2 - other_skill_2_base) : 0) + (other_skill_3_occ ? max(0, other_skill_3 - other_skill_3_base) : 0)",
+      "label": "Occupation Points Spent"
+    },
+    "personal_points": {
+      "formula": "intelligence * 2",
+      "label": "Personal Interest Points"
+    },
+    "personal_points_spent": {
+      "formula": "(max(0, sk_accounting - 5) + max(0, sk_anthropology - 1) + max(0, sk_appraise - 5) + max(0, sk_archaeology - 1) + max(0, sk_charm - 15) + max(0, sk_climb - 20) + max(0, sk_credit_rating - 0) + max(0, sk_disguise - 5) + max(0, sk_dodge - floor(dexterity / 2)) + max(0, sk_drive_auto - 20) + max(0, sk_electrical_repair - 10) + max(0, sk_fast_talk - 5) + max(0, sk_fighting_brawl - 25) + max(0, sk_firearms_handgun - 20) + max(0, sk_firearms_rifle_shotgun - 25) + max(0, sk_first_aid - 30) + max(0, sk_history - 5) + max(0, sk_intimidate - 15) + max(0, sk_jump - 20) + max(0, sk_language_own - education) + max(0, sk_law - 5) + max(0, sk_library_use - 20) + max(0, sk_listen - 20) + max(0, sk_locksmith - 1) + max(0, sk_mechanical_repair - 10) + max(0, sk_medicine - 1) + max(0, sk_natural_world - 10) + max(0, sk_navigate - 10) + max(0, sk_occult - 5) + max(0, sk_operate_heavy_machinery - 1) + max(0, sk_persuade - 10) + max(0, sk_psychoanalysis - 1) + max(0, sk_psychology - 10) + max(0, sk_ride - 5) + max(0, sk_sleight_of_hand - 10) + max(0, sk_spot_hidden - 25) + max(0, sk_stealth - 20) + max(0, sk_survival - 10) + max(0, sk_swim - 20) + max(0, sk_throw - 20) + max(0, sk_track - 10) + max(0, art_craft_1 - art_craft_1_base) + max(0, art_craft_2 - art_craft_2_base) + max(0, science_1 - science_1_base) + max(0, science_2 - science_2_base) + max(0, language_other_1 - language_other_1_base) + max(0, language_other_2 - language_other_2_base) + max(0, fighting_other - fighting_other_base) + max(0, firearms_other - firearms_other_base) + max(0, pilot - pilot_base) + max(0, other_skill_1 - other_skill_1_base) + max(0, other_skill_2 - other_skill_2_base) + max(0, other_skill_3 - other_skill_3_base)) - occupation_points_spent",
+      "label": "Personal Interest Points Spent"
+    },
+    "damage_bonus": {
+      "formula": "(strength + size) <= 64 ? '-2' : ((strength + size) <= 84 ? '-1' : ((strength + size) <= 124 ? 'None' : ((strength + size) <= 164 ? '+1D4' : ((strength + size) <= 204 ? '+1D6' : concat('+', floor(((strength + size) - 205) / 80) + 2, 'D6')))))",
+      "label": "Damage Bonus"
+    },
+    "build": {
+      "formula": "(strength + size) <= 64 ? -2 : ((strength + size) <= 84 ? -1 : ((strength + size) <= 124 ? 0 : ((strength + size) <= 164 ? 1 : ((strength + size) <= 204 ? 2 : floor(((strength + size) - 205) / 80) + 3))))",
+      "label": "Build"
+    },
+    "move": {
+      "formula": "((dexterity < size and strength < size) ? 7 : ((dexterity > size and strength > size) ? 9 : 8)) - (age >= 40 ? min(5, floor((age - 30) / 10)) : 0)",
+      "label": "Move Rate"
+    },
+    "sanity_max": {
+      "formula": "99 - sk_cthulhu_mythos",
+      "label": "Maximum Sanity"
+    },
+    "luck_half": {
+      "formula": "floor(luck / 2)",
+      "label": "Luck half"
+    },
+    "luck_fifth": {
+      "formula": "floor(luck / 5)",
+      "label": "Luck fifth"
+    },
+    "sanity_fifth": {
+      "formula": "floor(sanity_current / 5)",
+      "label": "One-fifth Sanity"
+    }
+  },
+  "name_field": "investigator_name",
+  "validators": [
+    {
+      "rule": "creation_done or occupation_points_spent <= occupation_points",
+      "message": "More occupation skill points spent than the occupation gives."
+    },
+    {
+      "rule": "creation_done or personal_points_spent <= personal_points",
+      "message": "More personal interest points spent than INT × 2."
+    },
+    {
+      "rule": "sanity_current <= sanity_max",
+      "message": "Sanity is above 99 minus Cthulhu Mythos."
+    },
+    {
+      "rule": "hp_current <= hp_max",
+      "message": "Hit points are above the maximum."
+    }
+  ],
+  "layout_file": "call-of-cthulhu-7e.html",
+  "styles_file": "call-of-cthulhu-7e.css"
+}

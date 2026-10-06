@@ -1,242 +1,367 @@
-/* Draw Steel hero sheet styling.
-   Bolder and squarer than the D&D sheet, matching Draw Steel's own look, and
-   built from Grimoire's palette tokens so it follows the reader's theme. */
+/* Draw Steel hero sheet.
+   The D&D sheet's vocabulary - bordered boxes with small uppercase captions -
+   around Draw Steel's shape: a strip of five characteristics, stamina with its
+   winded and dead marks, recoveries as boxes to tick, and the class's heroic
+   resource beside them. Every colour is an app token, so a theme restyles the
+   sheet along with everything else. */
 
 .sheet-ds {
-  display: grid;
-  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--text);
 }
 
-.field-label {
-  display: block;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
-  margin-bottom: 3px;
+.gc-tabpanel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-/* --- banner ------------------------------------------------------------- */
+/* An opened ability or feature keeps its paragraphs: the text is plain, with
+   blank lines between paragraphs, and would otherwise run together. */
+.gc-field-readonly > div {
+  white-space: pre-line;
+}
 
-.banner {
-  display: grid;
-  grid-template-columns: minmax(200px, 1fr) 2fr;
-  gap: 16px;
-  align-items: end;
+/* --- shared ---------------------------------------------------------------- */
+
+.box {
   border: 1px solid var(--border);
-  border-left: 4px solid var(--gold);
-  border-radius: 4px;
-  padding: 14px 16px;
+  border-radius: 10px;
   background: var(--bg-card);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
 }
 
-.banner-name input {
+.tiny {
+  display: block;
+  margin: 0;
+  font-size: 10px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.box-title {
+  text-align: center;
+  font-weight: 700;
+  color: var(--text-dim);
+}
+
+.box-heading {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+}
+
+.count {
+  color: var(--gold);
+  margin-left: 4px;
+}
+
+.big {
+  display: block;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--gold);
+}
+
+.big.small {
   font-size: 20px;
+}
+
+.hint {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.pair,
+.trio {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px 8px;
+  align-items: center;
+  text-align: center;
+}
+
+
+.trio {
+  grid-template-columns: minmax(64px, 1.4fr) minmax(0, 1fr) minmax(0, 1fr);
+}
+
+/* --- top bar --------------------------------------------------------------- */
+
+.topbar {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(0, 1.7fr);
+  gap: 10px;
+}
+
+.name-row input {
+  font-size: 18px;
   font-weight: 700;
 }
 
-.banner-meta {
+.identity-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 12px;
+}
+
+.topstats {
+  display: grid;
+  grid-template-columns: minmax(130px, 1fr) minmax(210px, 1.7fr) minmax(190px, 1.5fr) minmax(110px, 1fr);
   gap: 10px;
 }
 
-/* --- characteristics ---------------------------------------------------- */
+.level,
+.stamina,
+.resource,
+.recoveries {
+  text-align: center;
+  justify-content: center;
+}
 
-.characteristics {
+.stamina-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(108px, 1fr));
-  gap: 10px;
-}
-
-.char-box {
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 10px 8px;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: 4px 8px;
+  align-items: center;
   text-align: center;
-  background: var(--bg-card);
 }
 
-.char-name {
-  display: block;
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--text-muted);
-  margin-bottom: 4px;
-}
-
-.char-box input {
-  text-align: center;
+.stamina-current input,
+.resource-now input {
   font-size: 22px;
   font-weight: 700;
   padding: 4px;
 }
 
-/* --- vitals ------------------------------------------------------------- */
-
-.vitals-row {
-  display: grid;
-  grid-template-columns: minmax(200px, 1.3fr) minmax(140px, 0.8fr) 2fr;
-  gap: 12px;
-  align-items: stretch;
-}
-
-.stamina,
-.resource {
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 12px 14px;
-  background: var(--bg-card);
-}
-
-.stamina-line {
+.marks {
   display: flex;
-  align-items: baseline;
+  justify-content: space-between;
   gap: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
 }
 
-.stamina-line input {
-  font-size: 30px;
+.marks b {
+  color: var(--text);
+}
+
+.state {
   font-weight: 700;
-  text-align: center;
-  max-width: 110px;
-}
-
-.stamina-max {
-  font-size: 17px;
-  color: var(--text-muted);
-}
-
-.stamina-marks {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 8px;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-muted);
-}
-
-.stamina-marks .state {
   color: var(--gold);
-  font-weight: 700;
 }
 
-.resource {
+/* The resource's name is the box's caption, and editable like any value. */
+.resource .box-title input {
   text-align: center;
-}
-
-.resource input {
-  font-size: 30px;
+  font-size: 11px;
   font-weight: 700;
-  text-align: center;
-}
-
-.resource-hint {
-  display: block;
-  font-size: 9px;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
-  margin-top: 4px;
+  letter-spacing: 0.07em;
+  padding: 2px;
 }
 
-.tile-grid {
+.recoveries .gc-pips {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* --- characteristics ------------------------------------------------------- */
+
+.characteristics {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));
-  gap: 8px;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) minmax(0, 1.4fr);
+  gap: 10px;
 }
 
-.tile {
+.char {
   border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 8px 4px;
-  text-align: center;
+  border-radius: 12px;
   background: var(--bg-card);
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
 }
 
-.tile-value {
+.char-name {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.char-value {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--gold);
+}
+
+.char input {
+  max-width: 70px;
+  text-align: center;
+  padding: 3px;
+}
+
+.potencies {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  width: 100%;
+  text-align: center;
+}
+
+.potencies b {
   display: block;
   font-size: 20px;
-  font-weight: 700;
   color: var(--gold);
-  line-height: 1.15;
 }
 
-.tile-label {
-  display: block;
-  font-size: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
-}
+/* --- page one -------------------------------------------------------------- */
 
-/* --- panels ------------------------------------------------------------- */
-
-.columns {
+.page-one {
   display: grid;
-  grid-template-columns: minmax(200px, 1fr) 2fr;
-  gap: 16px;
+  grid-template-columns: minmax(300px, 1fr) minmax(0, 2.2fr);
+  gap: 10px;
   align-items: start;
 }
 
 .side,
-.wide {
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.stat-grid {
   display: grid;
-  gap: 14px;
-  align-content: start;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2px 8px;
+  text-align: center;
+  align-items: center;
 }
 
-.panel {
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 12px 14px;
-  background: var(--bg-card);
+.stat-grid input {
+  text-align: center;
+  padding: 3px;
 }
 
-.panel-title {
-  margin: 0 0 10px;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 5px;
+.kit-grid {
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 4px 8px;
+  align-items: center;
 }
 
-.count {
-  color: var(--gold);
-  font-weight: 700;
+.kit-grid input {
+  padding: 3px;
 }
 
-.extras {
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 10px 14px;
-  background: var(--bg-card);
+.options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px 10px;
+  font-size: 12px;
 }
 
-.extras summary {
+.conditions {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.opt {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   cursor: pointer;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.extras-grid {
+.skill-list .tiny {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2px;
+  margin-bottom: 2px;
+}
+
+/* --- pages two and three --------------------------------------------------- */
+
+.page-two {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 12px;
-  margin-top: 12px;
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+  gap: 10px;
+  align-items: start;
+}
+
+.p2-main,
+.p2-side {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+/* --- narrower screens ------------------------------------------------------ */
+
+@media (max-width: 1200px) {
+  .topbar,
+  .page-one {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 @media (max-width: 760px) {
-  .banner,
-  .columns,
-  .vitals-row {
-    grid-template-columns: 1fr;
+  .topstats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .stamina {
+    grid-column: 1 / -1;
+  }
+  .characteristics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .potency {
+    grid-column: span 3;
+  }
+  .page-two {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .identity-grid,
+  .options {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

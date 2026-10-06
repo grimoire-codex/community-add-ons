@@ -154,6 +154,19 @@ entry:
 - **`grant`** adds values from the picked entry. Into a `multiselect`, `from`
   names a list property. Into a `content_list`, `ref` names an entry id; if the
   catalog has no such entry, `name` is added as a freeform entry instead.
+- **`grant`** into a `content_list` can also add several entries at once:
+  `from` lists entry ids (a list, or comma-separated text), `names` lists what
+  each is added as if the catalog lacks it, in the same order, and `carry`
+  copies values from the pick onto those freeform entries - a species granting
+  its traits, each marked with the species it came from:
+
+  ```json
+  { "grant": "species_traits", "from": "trait_ids", "names": "traits",
+    "carry": { "species": "name" } }
+  ```
+
+  Store an id list in a pack as comma-separated text if the sheet declares it
+  as `text`: a real list declared as text is stringified when the pack loads.
 - **`choose`** asks the player to pick `count` values (a number, or a property
   holding one) from the entry's `from` list. They can always put it off.
 
@@ -217,6 +230,8 @@ parts go:
 | `<g-repeat over="...">` | Its contents once per row of a list field |
 | `<g-tabs>` + `<g-tab title="...">` | Pages - only the chosen one is drawn. A `<g-tab>` takes `visible_if` |
 | `<g-option field="x" value="v"/>` | One checkbox for one option of multiselect `x`, so each can sit where the sheet wants it. Takes `class` for styling |
+| `<g-tier value="v" fields="a b" labels="—\|Prof\|Exp" titles="None\|Proficient\|Expertise"/>` | One dropdown for which rung of a ladder of multiselects holds `v`. Closed it shows the short `labels`; open, the full `titles`. Choosing a rung adds `v` to every list up to it and removes it above |
+| `<g-pips count="x" value="y"/>` | `count` boxes - a number, or a field or computed name - with the first `y` ticked. Ticking one uses everything up to it. For spell slots, stress, a feature's uses |
 
 `<g-field variant="compact">` draws a number as a plain numeric box without the
 browser's spinner, which otherwise takes most of a narrow box - a hit point,
@@ -274,6 +289,9 @@ person can check it:
 
 **A sheet's structure is not its content.** Field names and layout are generally
 fine; pages of rules text are generally not. When a game has no open licence,
-ship the structure and leave the content to the player.
+ship the structure and leave the content to the player. The Call of Cthulhu
+sheet is that case: Chaosium's Fan Material Policy permits fan-made character
+sheets with its notice, but not its rules text, so the sheet has no content pack
+and a table adds its own occupations and weapons to a ruleset.
 
 Do not include artwork, page scans, or logos from any published book.

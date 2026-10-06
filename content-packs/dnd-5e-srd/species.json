@@ -2,18 +2,20 @@
   {
     "_id": "human",
     "name": "Human",
-    "size": "Medium",
+    "size": "Medium or Small",
     "speed": 30,
     "traits": "Resourceful, Skillful, Versatile",
-    "description": "Humans are the most adaptable and ambitious of the common peoples."
+    "description": "Humans are the most adaptable and ambitious of the common peoples.",
+    "trait_ids": "human-resourceful, human-skillful, human-versatile"
   },
   {
     "_id": "elf",
     "name": "Elf",
     "size": "Medium",
     "speed": 30,
-    "traits": "Darkvision, Fey Ancestry, Keen Senses, Trance",
-    "description": "Elves are a magical people of otherworldly grace, living in the world but not entirely part of it."
+    "traits": "Darkvision, Elven Lineage, Fey Ancestry, Keen Senses, Trance",
+    "description": "Elves are a magical people of otherworldly grace, living in the world but not entirely part of it.",
+    "trait_ids": "elf-darkvision, elf-elven-lineage, elf-fey-ancestry, elf-keen-senses, elf-trance"
   },
   {
     "_id": "dwarf",
@@ -21,7 +23,8 @@
     "size": "Medium",
     "speed": 30,
     "traits": "Darkvision, Dwarven Resilience, Dwarven Toughness, Stonecunning",
-    "description": "Bold and hardy, dwarves are known as skilled warriors, miners, and workers of stone and metal."
+    "description": "Bold and hardy, dwarves are known as skilled warriors, miners, and workers of stone and metal.",
+    "trait_ids": "dwarf-darkvision, dwarf-dwarven-resilience, dwarf-dwarven-toughness, dwarf-stonecunning"
   },
   {
     "_id": "halfling",
@@ -29,23 +32,26 @@
     "size": "Small",
     "speed": 30,
     "traits": "Brave, Halfling Nimbleness, Luck, Naturally Stealthy",
-    "description": "The comforts of home are the goals of most halflings' lives."
+    "description": "The comforts of home are the goals of most halflings' lives.",
+    "trait_ids": "halfling-brave, halfling-halfling-nimbleness, halfling-luck, halfling-naturally-stealthy"
   },
   {
     "_id": "dragonborn",
     "name": "Dragonborn",
     "size": "Medium",
     "speed": 30,
-    "traits": "Breath Weapon, Damage Resistance, Darkvision, Draconic Flight",
-    "description": "Dragonborn look very much like dragons standing erect in humanoid form."
+    "traits": "Draconic Ancestry, Breath Weapon, Damage Resistance, Darkvision, Draconic Flight",
+    "description": "Dragonborn look very much like dragons standing erect in humanoid form.",
+    "trait_ids": "dragonborn-draconic-ancestry, dragonborn-breath-weapon, dragonborn-damage-resistance, dragonborn-darkvision, dragonborn-draconic-flight"
   },
   {
     "_id": "gnome",
     "name": "Gnome",
     "size": "Small",
     "speed": 30,
-    "traits": "Darkvision, Gnomish Cunning",
-    "description": "A gnome's energy and enthusiasm for living shines through every inch of their tiny body."
+    "traits": "Darkvision, Gnomish Cunning, Gnomish Lineage",
+    "description": "A gnome's energy and enthusiasm for living shines through every inch of their tiny body.",
+    "trait_ids": "gnome-darkvision, gnome-gnomish-cunning, gnome-gnomish-lineage"
   },
   {
     "_id": "orc",
@@ -53,23 +59,17 @@
     "size": "Medium",
     "speed": 30,
     "traits": "Adrenaline Rush, Darkvision, Relentless Endurance",
-    "description": "Orcs trace their ancestry to Gruumsh, and carry his gifts of endurance and ferocity."
+    "description": "Orcs trace their ancestry to Gruumsh, and carry his gifts of endurance and ferocity.",
+    "trait_ids": "orc-adrenaline-rush, orc-darkvision, orc-relentless-endurance"
   },
   {
     "_id": "tiefling",
     "name": "Tiefling",
-    "size": "Medium",
+    "size": "Medium or Small",
     "speed": 30,
     "traits": "Darkvision, Fiendish Legacy, Otherworldly Presence",
-    "description": "Tieflings carry a fiendish legacy in their blood."
-  },
-  {
-    "_id": "aasimar",
-    "name": "Aasimar",
-    "size": "Medium",
-    "speed": 30,
-    "traits": "Celestial Resistance, Darkvision, Healing Hands, Light Bearer",
-    "description": "Aasimar carry a spark of the Upper Planes within them."
+    "description": "Tieflings carry a fiendish legacy in their blood.",
+    "trait_ids": "tiefling-darkvision, tiefling-fiendish-legacy, tiefling-otherworldly-presence"
   },
   {
     "_id": "goliath",
@@ -77,6 +77,7 @@
     "size": "Medium",
     "speed": 35,
     "traits": "Giant Ancestry, Large Form, Powerful Build",
-    "description": "Goliaths carry the supernatural might of their giant ancestors."
+    "description": "Goliaths carry the supernatural might of their giant ancestors.",
+    "trait_ids": "goliath-giant-ancestry, goliath-large-form, goliath-powerful-build"
   }
 ]

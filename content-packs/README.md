@@ -76,7 +76,37 @@ declaration to the sheet together.
 
 An entry may override the pack's `source` with its own `_source`.
 
+**Ids must be unique across the whole pack**, not only within one file. A
+character stores a pick as the id alone, so an ancestry trait and the ability it
+grants cannot both be `human-detect-the-supernatural`.
+
 ## Licensing
+
+**Everything in a pack must be covered by the licence it names.** The 5e pack
+is SRD 5.2 only - nine species, four backgrounds, the SRD feats and spells -
+because it carries the SRD's CC BY 4.0 attribution. Content from a rulebook
+outside the SRD cannot go in it however familiar it is: the Player's Handbook's
+other backgrounds, feats and species are not open content. Check each entry
+against the source document, not against memory; an earlier version of this
+pack got that wrong, and Grimoire's test suite now checks the pack against the
+SRD's lists.
+
+The Draw Steel pack is MCDM's text, converted from [Forge Steel](https://forgesteel.net/)'s
+data under the Draw Steel Creator License. Forge Steel's GPL-3.0 covers its code,
+not MCDM's text, so it is credited rather than licensed from. The pack takes only
+the core book, *Draw Steel: Heroes* - Forge Steel also carries third-party and
+community books the Creator License does not cover.
+
+The Pathfinder pack is converted from the Foundry VTT pf2e system, which records
+each item's book and licence. It takes only items from *Pathfinder Player Core*
+marked ORC, and carries Paizo's attribution for that book verbatim. Anything
+Player Core points at from an OGL book - the dwarf's Clan Dagger is from the
+Core Rulebook - is left out rather than brought in with it. It is **rules text
+only**: Paizo keeps its world (deities, places, planes, organisations) as
+Reserved Material, so colour text and anything naming the setting is stripped.
+
+Text fields hold **plain text**: separate paragraphs with a blank line, and do not
+use markdown or HTML, which show as typed.
 
 This matters more here than anywhere else in the repo: a pack is rules content,
 in bulk, and most of it is not redistributable. **Check what the game actually

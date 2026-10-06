@@ -2,53 +2,15 @@
   "$schema": "../../schema/character-sheet.schema.json",
   "id": "pathfinder-2e",
   "name": "Pathfinder 2e",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "system": "Pathfinder Second Edition",
-  "description": "A character sheet for Pathfinder 2e: proficiency ranks that add your level once trained, three saves, bulk-based encumbrance, and rank-based spellcasting.",
+  "description": "A character sheet for Pathfinder 2e: proficiency ranks that add your level once trained, three saves, bulk-based encumbrance, and rank-based spellcasting. Picking an ancestry, background or class fills in what it gives; every value can still be set by hand.",
   "author": "hunter-read",
   "homepage": "https://paizo.com/orclicense",
   "license": "ORC",
   "license_url": "https://paizo.com/orclicense",
   "attribution": "This product is based on the Pathfinder Second Edition rules, published by Paizo Inc. under the ORC License. Pathfinder is a trademark of Paizo Inc. See https://paizo.com/orclicense.",
   "content_types": {
-    "class": {
-      "label": "Class",
-      "label_plural": "Classes",
-      "identity_field": "name",
-      "sort_default": [
-        "name"
-      ],
-      "search_fields": [
-        "name",
-        "description"
-      ],
-      "filter_fields": [
-        "key_ability"
-      ],
-      "compact_display": "{name} — {key_ability}, {hp_per_level} HP/level",
-      "fields": {
-        "name": {
-          "type": "text",
-          "label": "Name"
-        },
-        "key_ability": {
-          "type": "text",
-          "label": "Key Ability"
-        },
-        "hp_per_level": {
-          "type": "number",
-          "label": "HP per Level"
-        },
-        "perception": {
-          "type": "text",
-          "label": "Perception"
-        },
-        "description": {
-          "type": "textarea",
-          "label": "Description"
-        }
-      }
-    },
     "ancestry": {
       "label": "Ancestry",
       "label_plural": "Ancestries",
@@ -61,9 +23,10 @@
         "description"
       ],
       "filter_fields": [
+        "rarity",
         "size"
       ],
-      "compact_display": "{name} — {size}, {hp} HP",
+      "compact_display": "{hp} HP, {size}, {speed} feet",
       "fields": {
         "name": {
           "type": "text",
@@ -71,7 +34,7 @@
         },
         "hp": {
           "type": "number",
-          "label": "Ancestry HP"
+          "label": "Hit Points"
         },
         "size": {
           "type": "text",
@@ -83,7 +46,367 @@
         },
         "boosts": {
           "type": "text",
-          "label": "Ability Boosts"
+          "label": "Attribute Boosts"
+        },
+        "flaws": {
+          "type": "text",
+          "label": "Attribute Flaw"
+        },
+        "languages": {
+          "type": "text",
+          "label": "Languages"
+        },
+        "vision": {
+          "type": "text",
+          "label": "Senses"
+        },
+        "rarity": {
+          "type": "text",
+          "label": "Rarity"
+        },
+        "feature_ids": {
+          "type": "text",
+          "label": "Feature Ids"
+        },
+        "feature_names": {
+          "type": "text",
+          "label": "Features"
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Description"
+        }
+      }
+    },
+    "heritage": {
+      "label": "Heritage",
+      "label_plural": "Heritages",
+      "identity_field": "name",
+      "sort_default": [
+        "ancestry",
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "description"
+      ],
+      "filter_fields": [
+        "ancestry",
+        "rarity"
+      ],
+      "compact_display": "{ancestry}",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "ancestry": {
+          "type": "text",
+          "label": "Ancestry"
+        },
+        "rarity": {
+          "type": "text",
+          "label": "Rarity"
+        },
+        "traits": {
+          "type": "text",
+          "label": "Traits"
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Description"
+        }
+      }
+    },
+    "background": {
+      "label": "Background",
+      "label_plural": "Backgrounds",
+      "identity_field": "name",
+      "sort_default": [
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "description"
+      ],
+      "filter_fields": [
+        "rarity"
+      ],
+      "compact_display": "{boosts}",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "boosts": {
+          "type": "text",
+          "label": "Attribute Boosts"
+        },
+        "skills": {
+          "type": "multiselect",
+          "label": "Trained Skills",
+          "options": [
+            "Acrobatics",
+            "Arcana",
+            "Athletics",
+            "Crafting",
+            "Deception",
+            "Diplomacy",
+            "Intimidation",
+            "Medicine",
+            "Nature",
+            "Occultism",
+            "Performance",
+            "Religion",
+            "Society",
+            "Stealth",
+            "Survival",
+            "Thievery"
+          ]
+        },
+        "either_skills": {
+          "type": "multiselect",
+          "label": "One of These Skills",
+          "options": [
+            "Acrobatics",
+            "Arcana",
+            "Athletics",
+            "Crafting",
+            "Deception",
+            "Diplomacy",
+            "Intimidation",
+            "Medicine",
+            "Nature",
+            "Occultism",
+            "Performance",
+            "Religion",
+            "Society",
+            "Stealth",
+            "Survival",
+            "Thievery"
+          ]
+        },
+        "lore": {
+          "type": "text",
+          "label": "Lore"
+        },
+        "feat": {
+          "type": "text",
+          "label": "Skill Feat"
+        },
+        "feat_id": {
+          "type": "text",
+          "label": "Skill Feat Id"
+        },
+        "rarity": {
+          "type": "text",
+          "label": "Rarity"
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Description"
+        }
+      }
+    },
+    "class": {
+      "label": "Class",
+      "label_plural": "Classes",
+      "identity_field": "name",
+      "sort_default": [
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "description"
+      ],
+      "filter_fields": [
+        "key_ability",
+        "tradition"
+      ],
+      "compact_display": "{key_ability}, {hp_per_level} HP a level",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "hp_per_level": {
+          "type": "number",
+          "label": "Hit Points per Level"
+        },
+        "key_ability": {
+          "type": "text",
+          "label": "Key Attribute"
+        },
+        "perception": {
+          "type": "number",
+          "label": "Perception Proficiency"
+        },
+        "fortitude": {
+          "type": "number",
+          "label": "Fortitude Proficiency"
+        },
+        "reflex": {
+          "type": "number",
+          "label": "Reflex Proficiency"
+        },
+        "will": {
+          "type": "number",
+          "label": "Will Proficiency"
+        },
+        "unarmored": {
+          "type": "number",
+          "label": "Unarmored Proficiency"
+        },
+        "light_armor": {
+          "type": "number",
+          "label": "Light Armor Proficiency"
+        },
+        "medium_armor": {
+          "type": "number",
+          "label": "Medium Armor Proficiency"
+        },
+        "heavy_armor": {
+          "type": "number",
+          "label": "Heavy Armor Proficiency"
+        },
+        "armor": {
+          "type": "text",
+          "label": "Armor"
+        },
+        "weapons": {
+          "type": "text",
+          "label": "Weapons"
+        },
+        "trained_skills": {
+          "type": "multiselect",
+          "label": "Trained Skills",
+          "options": [
+            "Acrobatics",
+            "Arcana",
+            "Athletics",
+            "Crafting",
+            "Deception",
+            "Diplomacy",
+            "Intimidation",
+            "Medicine",
+            "Nature",
+            "Occultism",
+            "Performance",
+            "Religion",
+            "Society",
+            "Stealth",
+            "Survival",
+            "Thievery"
+          ]
+        },
+        "either_skills": {
+          "type": "multiselect",
+          "label": "One of These Skills",
+          "options": [
+            "Acrobatics",
+            "Arcana",
+            "Athletics",
+            "Crafting",
+            "Deception",
+            "Diplomacy",
+            "Intimidation",
+            "Medicine",
+            "Nature",
+            "Occultism",
+            "Performance",
+            "Religion",
+            "Society",
+            "Stealth",
+            "Survival",
+            "Thievery"
+          ]
+        },
+        "additional_skills": {
+          "type": "number",
+          "label": "Additional Skills"
+        },
+        "skill_options": {
+          "type": "multiselect",
+          "label": "Skill Options",
+          "options": [
+            "Acrobatics",
+            "Arcana",
+            "Athletics",
+            "Crafting",
+            "Deception",
+            "Diplomacy",
+            "Intimidation",
+            "Medicine",
+            "Nature",
+            "Occultism",
+            "Performance",
+            "Religion",
+            "Society",
+            "Stealth",
+            "Survival",
+            "Thievery"
+          ]
+        },
+        "tradition": {
+          "type": "text",
+          "label": "Spell Tradition"
+        },
+        "spellcaster": {
+          "type": "checkbox",
+          "label": "Spellcaster"
+        },
+        "feature_ids": {
+          "type": "text",
+          "label": "Level 1 Feature Ids"
+        },
+        "feature_names": {
+          "type": "text",
+          "label": "Level 1 Features"
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Description"
+        }
+      }
+    },
+    "feature": {
+      "label": "Feature",
+      "label_plural": "Features",
+      "identity_field": "name",
+      "sort_default": [
+        "origin",
+        "level",
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "description"
+      ],
+      "filter_fields": [
+        "origin",
+        "level"
+      ],
+      "compact_display": "{origin} {level}",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "origin": {
+          "type": "text",
+          "label": "Class"
+        },
+        "level": {
+          "type": "number",
+          "label": "Level"
+        },
+        "actions": {
+          "type": "text",
+          "label": "Actions"
+        },
+        "traits": {
+          "type": "text",
+          "label": "Traits"
         },
         "description": {
           "type": "textarea",
@@ -105,11 +428,12 @@
         "description"
       ],
       "filter_fields": [
-        "level",
         "category",
-        "traits"
+        "level",
+        "traits",
+        "rarity"
       ],
-      "compact_display": "{name} — {category} {level}",
+      "compact_display": "{category} {level} · {traits}",
       "fields": {
         "name": {
           "type": "text",
@@ -121,11 +445,19 @@
         },
         "category": {
           "type": "text",
-          "label": "Category"
+          "label": "Type"
+        },
+        "actions": {
+          "type": "text",
+          "label": "Actions"
         },
         "traits": {
           "type": "text",
           "label": "Traits"
+        },
+        "rarity": {
+          "type": "text",
+          "label": "Rarity"
         },
         "prerequisites": {
           "type": "text",
@@ -152,10 +484,11 @@
       ],
       "filter_fields": [
         "rank",
-        "tradition",
-        "traits"
+        "traditions",
+        "traits",
+        "rarity"
       ],
-      "compact_display": "{name} — rank {rank}",
+      "compact_display": "Rank {rank} · {traditions}",
       "fields": {
         "name": {
           "type": "text",
@@ -163,17 +496,19 @@
         },
         "rank": {
           "type": "number",
-          "label": "Rank",
-          "min": 0,
-          "max": 10
+          "label": "Rank"
         },
-        "tradition": {
+        "traditions": {
           "type": "text",
           "label": "Traditions"
         },
         "traits": {
           "type": "text",
           "label": "Traits"
+        },
+        "rarity": {
+          "type": "text",
+          "label": "Rarity"
         },
         "cast": {
           "type": "text",
@@ -183,21 +518,21 @@
           "type": "text",
           "label": "Range"
         },
+        "area": {
+          "type": "text",
+          "label": "Area"
+        },
         "targets": {
           "type": "text",
           "label": "Targets"
         },
-        "saving_throw": {
+        "defense": {
           "type": "text",
-          "label": "Saving Throw"
+          "label": "Defense"
         },
         "duration": {
           "type": "text",
           "label": "Duration"
-        },
-        "heightened": {
-          "type": "textarea",
-          "label": "Heightened"
         },
         "description": {
           "type": "textarea",
@@ -211,6 +546,10 @@
       "type": "text",
       "label": "Character Name"
     },
+    "player": {
+      "type": "text",
+      "label": "Player"
+    },
     "level": {
       "type": "number",
       "label": "Level",
@@ -218,23 +557,88 @@
       "max": 20,
       "default": 1
     },
+    "xp": {
+      "type": "number",
+      "label": "XP",
+      "min": 0,
+      "default": 0
+    },
     "ancestry": {
       "type": "content_ref",
       "label": "Ancestry",
-      "content_type": "ancestry"
+      "content_type": "ancestry",
+      "on_pick": [
+        {
+          "grant": "features",
+          "from": "feature_ids",
+          "names": "feature_names",
+          "carry": {
+            "origin": "name"
+          }
+        }
+      ]
     },
     "heritage": {
-      "type": "text",
-      "label": "Heritage"
+      "type": "content_ref",
+      "label": "Heritage",
+      "content_type": "heritage"
     },
     "background": {
-      "type": "text",
-      "label": "Background"
+      "type": "content_ref",
+      "label": "Background",
+      "content_type": "background",
+      "on_pick": [
+        {
+          "grant": "skills_trained",
+          "from": "skills"
+        },
+        {
+          "choose": "skills_trained",
+          "count": 1,
+          "from": "either_skills",
+          "label": "Choose your background's skill"
+        },
+        {
+          "grant": "feats",
+          "ref": "feat_id",
+          "name": "feat"
+        }
+      ]
     },
     "klass": {
       "type": "content_ref",
       "label": "Class",
-      "content_type": "class"
+      "content_type": "class",
+      "on_pick": [
+        {
+          "grant": "skills_trained",
+          "from": "trained_skills"
+        },
+        {
+          "choose": "skills_trained",
+          "count": 1,
+          "from": "either_skills",
+          "label": "Choose your class's skill"
+        },
+        {
+          "choose": "skills_trained",
+          "count": "additional_skills",
+          "from": "skill_options",
+          "label": "Choose more trained skills - one more for each point of Intelligence modifier"
+        },
+        {
+          "grant": "features",
+          "from": "feature_ids",
+          "names": "feature_names",
+          "carry": {
+            "origin": "name"
+          }
+        }
+      ]
+    },
+    "deity": {
+      "type": "text",
+      "label": "Deity"
     },
     "size": {
       "type": "select",
@@ -244,8 +648,11 @@
         "Small",
         "Medium",
         "Large",
-        "Huge"
-      ]
+        "Huge",
+        "Gargantuan"
+      ],
+      "default": "Medium",
+      "default_from": "ref(ancestry, 'size')"
     },
     "strength": {
       "type": "number",
@@ -299,13 +706,15 @@
       "type": "number",
       "label": "Max HP",
       "min": 0,
-      "default": 10
+      "default": 10,
+      "default_from": "ref(klass, 'hp_per_level') ? ref(ancestry, 'hp') + (ref(klass, 'hp_per_level') + constitution) * level : ''"
     },
     "hp_current": {
       "type": "number",
       "label": "Current HP",
       "min": 0,
-      "default": 10
+      "default": 10,
+      "default_from": "hp_max"
     },
     "hp_temp": {
       "type": "number",
@@ -327,6 +736,13 @@
       "max": 3,
       "default": 0
     },
+    "doomed": {
+      "type": "number",
+      "label": "Doomed",
+      "min": 0,
+      "max": 3,
+      "default": 0
+    },
     "hero_points": {
       "type": "number",
       "label": "Hero Points",
@@ -338,11 +754,45 @@
       "type": "number",
       "label": "Speed",
       "min": 0,
-      "default": 25
+      "default": 25,
+      "default_from": "ref(ancestry, 'speed')"
+    },
+    "senses": {
+      "type": "text",
+      "label": "Senses",
+      "default_from": "ref(ancestry, 'vision')"
+    },
+    "languages": {
+      "type": "text",
+      "label": "Languages",
+      "default_from": "ref(ancestry, 'languages')"
+    },
+    "armor_category": {
+      "type": "select",
+      "label": "Armor Worn",
+      "default": "unarmored",
+      "options": [
+        {
+          "value": "unarmored",
+          "label": "Unarmored"
+        },
+        {
+          "value": "light",
+          "label": "Light"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "heavy",
+          "label": "Heavy"
+        }
+      ]
     },
     "ac_prof": {
       "type": "select",
-      "label": "Armour Proficiency",
+      "label": "Armor Proficiency",
       "options": [
         {
           "value": 0,
@@ -365,7 +815,8 @@
           "label": "Legendary"
         }
       ],
-      "default": 2
+      "default": 2,
+      "default_from": "ref(klass, 'unarmored') == '' ? '' : (armor_category == 'heavy' ? ref(klass, 'heavy_armor') : (armor_category == 'medium' ? ref(klass, 'medium_armor') : (armor_category == 'light' ? ref(klass, 'light_armor') : ref(klass, 'unarmored'))))"
     },
     "ac_item_bonus": {
       "type": "number",
@@ -378,6 +829,16 @@
       "label": "Dex Cap",
       "min": 0,
       "default": 5
+    },
+    "shield_raised": {
+      "type": "checkbox",
+      "label": "Shield Raised"
+    },
+    "shield_bonus": {
+      "type": "number",
+      "label": "Shield Bonus",
+      "min": 0,
+      "default": 2
     },
     "fortitude_prof": {
       "type": "select",
@@ -404,7 +865,8 @@
           "label": "Legendary"
         }
       ],
-      "default": 2
+      "default": 2,
+      "default_from": "ref(klass, 'fortitude')"
     },
     "reflex_prof": {
       "type": "select",
@@ -431,7 +893,8 @@
           "label": "Legendary"
         }
       ],
-      "default": 2
+      "default": 2,
+      "default_from": "ref(klass, 'reflex')"
     },
     "will_prof": {
       "type": "select",
@@ -458,7 +921,8 @@
           "label": "Legendary"
         }
       ],
-      "default": 2
+      "default": 2,
+      "default_from": "ref(klass, 'will')"
     },
     "perception_prof": {
       "type": "select",
@@ -485,7 +949,8 @@
           "label": "Legendary"
         }
       ],
-      "default": 2
+      "default": 2,
+      "default_from": "ref(klass, 'perception')"
     },
     "class_dc_prof": {
       "type": "select",
@@ -542,11 +1007,247 @@
           "value": "charisma",
           "label": "Charisma"
         }
+      ],
+      "default_from": "(contains(ref(klass, 'key_ability'), 'Strength') ? 'strength' : (contains(ref(klass, 'key_ability'), 'Dexterity') ? 'dexterity' : (contains(ref(klass, 'key_ability'), 'Constitution') ? 'constitution' : (contains(ref(klass, 'key_ability'), 'Intelligence') ? 'intelligence' : (contains(ref(klass, 'key_ability'), 'Wisdom') ? 'wisdom' : (contains(ref(klass, 'key_ability'), 'Charisma') ? 'charisma' : ''))))))"
+    },
+    "weapon_proficiencies": {
+      "type": "text",
+      "label": "Weapon Proficiencies",
+      "default_from": "ref(klass, 'weapons')"
+    },
+    "armor_proficiencies": {
+      "type": "text",
+      "label": "Armor Proficiencies",
+      "default_from": "ref(klass, 'armor')"
+    },
+    "skills_trained": {
+      "type": "multiselect",
+      "label": "Trained Skills",
+      "options": [
+        "Acrobatics",
+        "Arcana",
+        "Athletics",
+        "Crafting",
+        "Deception",
+        "Diplomacy",
+        "Intimidation",
+        "Medicine",
+        "Nature",
+        "Occultism",
+        "Performance",
+        "Religion",
+        "Society",
+        "Stealth",
+        "Survival",
+        "Thievery"
       ]
+    },
+    "skills_expert": {
+      "type": "multiselect",
+      "label": "Expert Skills",
+      "options": [
+        "Acrobatics",
+        "Arcana",
+        "Athletics",
+        "Crafting",
+        "Deception",
+        "Diplomacy",
+        "Intimidation",
+        "Medicine",
+        "Nature",
+        "Occultism",
+        "Performance",
+        "Religion",
+        "Society",
+        "Stealth",
+        "Survival",
+        "Thievery"
+      ]
+    },
+    "skills_master": {
+      "type": "multiselect",
+      "label": "Master Skills",
+      "options": [
+        "Acrobatics",
+        "Arcana",
+        "Athletics",
+        "Crafting",
+        "Deception",
+        "Diplomacy",
+        "Intimidation",
+        "Medicine",
+        "Nature",
+        "Occultism",
+        "Performance",
+        "Religion",
+        "Society",
+        "Stealth",
+        "Survival",
+        "Thievery"
+      ]
+    },
+    "skills_legendary": {
+      "type": "multiselect",
+      "label": "Legendary Skills",
+      "options": [
+        "Acrobatics",
+        "Arcana",
+        "Athletics",
+        "Crafting",
+        "Deception",
+        "Diplomacy",
+        "Intimidation",
+        "Medicine",
+        "Nature",
+        "Occultism",
+        "Performance",
+        "Religion",
+        "Society",
+        "Stealth",
+        "Survival",
+        "Thievery"
+      ]
+    },
+    "lore_1_name": {
+      "type": "text",
+      "label": "Lore",
+      "placeholder": "Scribing Lore",
+      "default_from": "ref(background, 'lore')"
+    },
+    "lore_1_prof": {
+      "type": "select",
+      "label": "Lore Proficiency",
+      "options": [
+        {
+          "value": 0,
+          "label": "Untrained"
+        },
+        {
+          "value": 2,
+          "label": "Trained"
+        },
+        {
+          "value": 4,
+          "label": "Expert"
+        },
+        {
+          "value": 6,
+          "label": "Master"
+        },
+        {
+          "value": 8,
+          "label": "Legendary"
+        }
+      ],
+      "default": 0,
+      "default_from": "ref(background, 'lore') != '' ? 2 : ''"
+    },
+    "lore_2_name": {
+      "type": "text",
+      "label": "Lore",
+      "placeholder": "Second lore"
+    },
+    "lore_2_prof": {
+      "type": "select",
+      "label": "Lore Proficiency",
+      "options": [
+        {
+          "value": 0,
+          "label": "Untrained"
+        },
+        {
+          "value": 2,
+          "label": "Trained"
+        },
+        {
+          "value": 4,
+          "label": "Expert"
+        },
+        {
+          "value": 6,
+          "label": "Master"
+        },
+        {
+          "value": 8,
+          "label": "Legendary"
+        }
+      ],
+      "default": 0
+    },
+    "strikes": {
+      "type": "list",
+      "label": "Strikes",
+      "columns": [
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Weapon",
+          "flex": 3
+        },
+        {
+          "key": "bonus",
+          "type": "text",
+          "label": "Attack",
+          "flex": 1
+        },
+        {
+          "key": "damage",
+          "type": "text",
+          "label": "Damage",
+          "flex": 2
+        },
+        {
+          "key": "traits",
+          "type": "text",
+          "label": "Traits",
+          "flex": 3
+        }
+      ]
+    },
+    "conditions": {
+      "type": "multiselect",
+      "label": "Conditions",
+      "options": [
+        "Blinded",
+        "Clumsy",
+        "Concealed",
+        "Confused",
+        "Controlled",
+        "Dazzled",
+        "Deafened",
+        "Drained",
+        "Encumbered",
+        "Enfeebled",
+        "Fascinated",
+        "Fatigued",
+        "Fleeing",
+        "Frightened",
+        "Grabbed",
+        "Hidden",
+        "Immobilized",
+        "Invisible",
+        "Off-Guard",
+        "Paralyzed",
+        "Petrified",
+        "Prone",
+        "Quickened",
+        "Restrained",
+        "Sickened",
+        "Slowed",
+        "Stunned",
+        "Stupefied",
+        "Unconscious"
+      ]
+    },
+    "condition_values": {
+      "type": "text",
+      "label": "Condition Values",
+      "placeholder": "Frightened 2, Clumsy 1"
     },
     "is_caster": {
       "type": "checkbox",
-      "label": "Spellcaster"
+      "label": "Spellcaster",
+      "default_from": "ref(klass, 'spellcaster')"
     },
     "spell_tradition": {
       "type": "select",
@@ -557,7 +1258,8 @@
         "Divine",
         "Occult",
         "Primal"
-      ]
+      ],
+      "default_from": "ref(klass, 'tradition')"
     },
     "spell_prof": {
       "type": "select",
@@ -587,103 +1289,211 @@
       ],
       "default": 2
     },
+    "caster_level": {
+      "type": "number",
+      "label": "Caster Level",
+      "min": 0,
+      "max": 20,
+      "default": 0,
+      "default_from": "ref(klass, 'spellcaster') ? level : ''"
+    },
+    "cantrips_total": {
+      "type": "number",
+      "label": "Cantrips",
+      "min": 0,
+      "default": 0,
+      "default_from": "caster_level > 0 ? 5 : ''"
+    },
+    "slots_1_total": {
+      "type": "number",
+      "label": "Rank 1 slots",
+      "min": 0,
+      "max": 9,
+      "default": 0,
+      "default_from": "caster_level >= 2 ? 3 : (caster_level == 1 ? 2 : 0)"
+    },
+    "slots_1_used": {
+      "type": "number",
+      "label": "Rank 1 slots used",
+      "min": 0,
+      "default": 0
+    },
+    "slots_2_total": {
+      "type": "number",
+      "label": "Rank 2 slots",
+      "min": 0,
+      "max": 9,
+      "default": 0,
+      "default_from": "caster_level >= 4 ? 3 : (caster_level == 3 ? 2 : 0)"
+    },
+    "slots_2_used": {
+      "type": "number",
+      "label": "Rank 2 slots used",
+      "min": 0,
+      "default": 0
+    },
+    "slots_3_total": {
+      "type": "number",
+      "label": "Rank 3 slots",
+      "min": 0,
+      "max": 9,
+      "default": 0,
+      "default_from": "caster_level >= 6 ? 3 : (caster_level == 5 ? 2 : 0)"
+    },
+    "slots_3_used": {
+      "type": "number",
+      "label": "Rank 3 slots used",
+      "min": 0,
+      "default": 0
+    },
+    "slots_4_total": {
+      "type": "number",
+      "label": "Rank 4 slots",
+      "min": 0,
+      "max": 9,
+      "default": 0,
+      "default_from": "caster_level >= 8 ? 3 : (caster_level == 7 ? 2 : 0)"
+    },
+    "slots_4_used": {
+      "type": "number",
+      "label": "Rank 4 slots used",
+      "min": 0,
+      "default": 0
+    },
+    "slots_5_total": {
+      "type": "number",
+      "label": "Rank 5 slots",
+      "min": 0,
+      "max": 9,
+      "default": 0,
+      "default_from": "caster_level >= 10 ? 3 : (caster_level == 9 ? 2 : 0)"
+    },
+    "slots_5_used": {
+      "type": "number",
+      "label": "Rank 5 slots used",
+      "min": 0,
+      "default": 0
+    },
+    "slots_6_total": {
+      "type": "number",
+      "label": "Rank 6 slots",
+      "min": 0,
+      "max": 9,
+      "default": 0,
+      "default_from": "caster_level >= 12 ? 3 : (caster_level == 11 ? 2 : 0)"
+    },
+    "slots_6_used": {
+      "type": "number",
+      "label": "Rank 6 slots used",
+      "min": 0,
+      "default": 0
+    },
+    "slots_7_total": {
+      "type": "number",
+      "label": "Rank 7 slots",
+      "min": 0,
+      "max": 9,
+      "default": 0,
+      "default_from": "caster_level >= 14 ? 3 : (caster_level == 13 ? 2 : 0)"
+    },
+    "slots_7_used": {
+      "type": "number",
+      "label": "Rank 7 slots used",
+      "min": 0,
+      "default": 0
+    },
+    "slots_8_total": {
+      "type": "number",
+      "label": "Rank 8 slots",
+      "min": 0,
+      "max": 9,
+      "default": 0,
+      "default_from": "caster_level >= 16 ? 3 : (caster_level == 15 ? 2 : 0)"
+    },
+    "slots_8_used": {
+      "type": "number",
+      "label": "Rank 8 slots used",
+      "min": 0,
+      "default": 0
+    },
+    "slots_9_total": {
+      "type": "number",
+      "label": "Rank 9 slots",
+      "min": 0,
+      "max": 9,
+      "default": 0,
+      "default_from": "caster_level >= 18 ? 3 : (caster_level == 17 ? 2 : 0)"
+    },
+    "slots_9_used": {
+      "type": "number",
+      "label": "Rank 9 slots used",
+      "min": 0,
+      "default": 0
+    },
+    "slots_10_total": {
+      "type": "number",
+      "label": "Rank 10 slots",
+      "min": 0,
+      "max": 9,
+      "default": 0,
+      "default_from": "caster_level >= 19 ? 1 : 0"
+    },
+    "slots_10_used": {
+      "type": "number",
+      "label": "Rank 10 slots used",
+      "min": 0,
+      "default": 0
+    },
+    "focus_max": {
+      "type": "number",
+      "label": "Focus Points",
+      "min": 0,
+      "max": 3,
+      "default": 0
+    },
+    "focus_used": {
+      "type": "number",
+      "label": "Focus Points Spent",
+      "min": 0,
+      "default": 0
+    },
     "spells": {
       "type": "content_list",
       "label": "Spells",
       "content_type": "spell",
       "allow_freeform": true,
-      "visible_if": "is_caster",
       "per_entry_fields": {
         "prepared": {
           "type": "checkbox",
           "label": "Prep"
         }
-      }
+      },
+      "display_columns": [
+        "rank",
+        "cast",
+        "range",
+        "defense"
+      ]
     },
     "feats": {
       "type": "content_list",
       "label": "Feats",
       "content_type": "feat",
-      "allow_freeform": true
+      "allow_freeform": true,
+      "display_columns": [
+        "category",
+        "level",
+        "actions"
+      ]
     },
-    "skills": {
-      "type": "list",
-      "label": "Skills",
-      "columns": [
-        {
-          "key": "name",
-          "type": "text",
-          "label": "Skill",
-          "flex": 3
-        },
-        {
-          "key": "prof",
-          "type": "select",
-          "label": "Proficiency",
-          "options": [
-            {
-              "value": 0,
-              "label": "Untrained"
-            },
-            {
-              "value": 2,
-              "label": "Trained"
-            },
-            {
-              "value": 4,
-              "label": "Expert"
-            },
-            {
-              "value": 6,
-              "label": "Master"
-            },
-            {
-              "value": 8,
-              "label": "Legendary"
-            }
-          ],
-          "default": 0,
-          "flex": 2
-        },
-        {
-          "key": "ability",
-          "type": "select",
-          "label": "Ability",
-          "options": [
-            {
-              "value": "strength",
-              "label": "STR"
-            },
-            {
-              "value": "dexterity",
-              "label": "DEX"
-            },
-            {
-              "value": "constitution",
-              "label": "CON"
-            },
-            {
-              "value": "intelligence",
-              "label": "INT"
-            },
-            {
-              "value": "wisdom",
-              "label": "WIS"
-            },
-            {
-              "value": "charisma",
-              "label": "CHA"
-            }
-          ],
-          "flex": 1
-        },
-        {
-          "key": "item",
-          "type": "number",
-          "label": "Item",
-          "default": 0,
-          "flex": 1
-        }
+    "features": {
+      "type": "content_list",
+      "label": "Class & Ancestry Features",
+      "content_type": "feature",
+      "allow_freeform": true,
+      "display_columns": [
+        "level",
+        "actions"
       ]
     },
     "equipment": {
@@ -719,6 +1529,30 @@
         }
       ]
     },
+    "copper": {
+      "type": "number",
+      "label": "CP",
+      "min": 0,
+      "default": 0
+    },
+    "silver": {
+      "type": "number",
+      "label": "SP",
+      "min": 0,
+      "default": 0
+    },
+    "gold": {
+      "type": "number",
+      "label": "GP",
+      "min": 0,
+      "default": 15
+    },
+    "platinum": {
+      "type": "number",
+      "label": "PP",
+      "min": 0,
+      "default": 0
+    },
     "notes": {
       "type": "textarea",
       "label": "Notes",
@@ -727,8 +1561,8 @@
   },
   "computed": {
     "armor_class": {
-      "formula": "10 + min(dexterity, ac_dex_cap) + ac_item_bonus + (ac_prof > 0 ? level + ac_prof : 0)",
-      "label": "Armour Class"
+      "formula": "10 + min(dexterity, ac_dex_cap) + ac_item_bonus + (ac_prof > 0 ? level + ac_prof : 0) + (shield_raised ? shield_bonus : 0)",
+      "label": "Armor Class"
     },
     "fortitude": {
       "formula": "signed(constitution + (fortitude_prof > 0 ? level + fortitude_prof : 0))",
@@ -773,8 +1607,123 @@
     "prepared_count": {
       "formula": "count_refs(spells, 'prepared')",
       "label": "Prepared"
+    },
+    "skill_acrobatics": {
+      "formula": "signed(dexterity + ((contains(skills_legendary, 'Acrobatics') ? 8 : (contains(skills_master, 'Acrobatics') ? 6 : (contains(skills_expert, 'Acrobatics') ? 4 : (contains(skills_trained, 'Acrobatics') ? 2 : 0)))) > 0 ? level + (contains(skills_legendary, 'Acrobatics') ? 8 : (contains(skills_master, 'Acrobatics') ? 6 : (contains(skills_expert, 'Acrobatics') ? 4 : (contains(skills_trained, 'Acrobatics') ? 2 : 0)))) : 0))",
+      "label": "Acrobatics"
+    },
+    "skill_arcana": {
+      "formula": "signed(intelligence + ((contains(skills_legendary, 'Arcana') ? 8 : (contains(skills_master, 'Arcana') ? 6 : (contains(skills_expert, 'Arcana') ? 4 : (contains(skills_trained, 'Arcana') ? 2 : 0)))) > 0 ? level + (contains(skills_legendary, 'Arcana') ? 8 : (contains(skills_master, 'Arcana') ? 6 : (contains(skills_expert, 'Arcana') ? 4 : (contains(skills_trained, 'Arcana') ? 2 : 0)))) : 0))",
+      "label": "Arcana"
+    },
+    "skill_athletics": {
+      "formula": "signed(strength + ((contains(skills_legendary, 'Athletics') ? 8 : (contains(skills_master, 'Athletics') ? 6 : (contains(skills_expert, 'Athletics') ? 4 : (contains(skills_trained, 'Athletics') ? 2 : 0)))) > 0 ? level + (contains(skills_legendary, 'Athletics') ? 8 : (contains(skills_master, 'Athletics') ? 6 : (contains(skills_expert, 'Athletics') ? 4 : (contains(skills_trained, 'Athletics') ? 2 : 0)))) : 0))",
+      "label": "Athletics"
+    },
+    "skill_crafting": {
+      "formula": "signed(intelligence + ((contains(skills_legendary, 'Crafting') ? 8 : (contains(skills_master, 'Crafting') ? 6 : (contains(skills_expert, 'Crafting') ? 4 : (contains(skills_trained, 'Crafting') ? 2 : 0)))) > 0 ? level + (contains(skills_legendary, 'Crafting') ? 8 : (contains(skills_master, 'Crafting') ? 6 : (contains(skills_expert, 'Crafting') ? 4 : (contains(skills_trained, 'Crafting') ? 2 : 0)))) : 0))",
+      "label": "Crafting"
+    },
+    "skill_deception": {
+      "formula": "signed(charisma + ((contains(skills_legendary, 'Deception') ? 8 : (contains(skills_master, 'Deception') ? 6 : (contains(skills_expert, 'Deception') ? 4 : (contains(skills_trained, 'Deception') ? 2 : 0)))) > 0 ? level + (contains(skills_legendary, 'Deception') ? 8 : (contains(skills_master, 'Deception') ? 6 : (contains(skills_expert, 'Deception') ? 4 : (contains(skills_trained, 'Deception') ? 2 : 0)))) : 0))",
+      "label": "Deception"
+    },
+    "skill_diplomacy": {
+      "formula": "signed(charisma + ((contains(skills_legendary, 'Diplomacy') ? 8 : (contains(skills_master, 'Diplomacy') ? 6 : (contains(skills_expert, 'Diplomacy') ? 4 : (contains(skills_trained, 'Diplomacy') ? 2 : 0)))) > 0 ? level + (contains(skills_legendary, 'Diplomacy') ? 8 : (contains(skills_master, 'Diplomacy') ? 6 : (contains(skills_expert, 'Diplomacy') ? 4 : (contains(skills_trained, 'Diplomacy') ? 2 : 0)))) : 0))",
+      "label": "Diplomacy"
+    },
+    "skill_intimidation": {
+      "formula": "signed(charisma + ((contains(skills_legendary, 'Intimidation') ? 8 : (contains(skills_master, 'Intimidation') ? 6 : (contains(skills_expert, 'Intimidation') ? 4 : (contains(skills_trained, 'Intimidation') ? 2 : 0)))) > 0 ? level + (contains(skills_legendary, 'Intimidation') ? 8 : (contains(skills_master, 'Intimidation') ? 6 : (contains(skills_expert, 'Intimidation') ? 4 : (contains(skills_trained, 'Intimidation') ? 2 : 0)))) : 0))",
+      "label": "Intimidation"
+    },
+    "skill_medicine": {
+      "formula": "signed(wisdom + ((contains(skills_legendary, 'Medicine') ? 8 : (contains(skills_master, 'Medicine') ? 6 : (contains(skills_expert, 'Medicine') ? 4 : (contains(skills_trained, 'Medicine') ? 2 : 0)))) > 0 ? level + (contains(skills_legendary, 'Medicine') ? 8 : (contains(skills_master, 'Medicine') ? 6 : (contains(skills_expert, 'Medicine') ? 4 : (contains(skills_trained, 'Medicine') ? 2 : 0)))) : 0))",
+      "label": "Medicine"
+    },
+    "skill_nature": {
+      "formula": "signed(wisdom + ((contains(skills_legendary, 'Nature') ? 8 : (contains(skills_master, 'Nature') ? 6 : (contains(skills_expert, 'Nature') ? 4 : (contains(skills_trained, 'Nature') ? 2 : 0)))) > 0 ? level + (contains(skills_legendary, 'Nature') ? 8 : (contains(skills_master, 'Nature') ? 6 : (contains(skills_expert, 'Nature') ? 4 : (contains(skills_trained, 'Nature') ? 2 : 0)))) : 0))",
+      "label": "Nature"
+    },
+    "skill_occultism": {
+      "formula": "signed(intelligence + ((contains(skills_legendary, 'Occultism') ? 8 : (contains(skills_master, 'Occultism') ? 6 : (contains(skills_expert, 'Occultism') ? 4 : (contains(skills_trained, 'Occultism') ? 2 : 0)))) > 0 ? level + (contains(skills_legendary, 'Occultism') ? 8 : (contains(skills_master, 'Occultism') ? 6 : (contains(skills_expert, 'Occultism') ? 4 : (contains(skills_trained, 'Occultism') ? 2 : 0)))) : 0))",
+      "label": "Occultism"
+    },
+    "skill_performance": {
+      "formula": "signed(charisma + ((contains(skills_legendary, 'Performance') ? 8 : (contains(skills_master, 'Performance') ? 6 : (contains(skills_expert, 'Performance') ? 4 : (contains(skills_trained, 'Performance') ? 2 : 0)))) > 0 ? level + (contains(skills_legendary, 'Performance') ? 8 : (contains(skills_master, 'Performance') ? 6 : (contains(skills_expert, 'Performance') ? 4 : (contains(skills_trained, 'Performance') ? 2 : 0)))) : 0))",
+      "label": "Performance"
+    },
+    "skill_religion": {
+      "formula": "signed(wisdom + ((contains(skills_legendary, 'Religion') ? 8 : (contains(skills_master, 'Religion') ? 6 : (contains(skills_expert, 'Religion') ? 4 : (contains(skills_trained, 'Religion') ? 2 : 0)))) > 0 ? level + (contains(skills_legendary, 'Religion') ? 8 : (contains(skills_master, 'Religion') ? 6 : (contains(skills_expert, 'Religion') ? 4 : (contains(skills_trained, 'Religion') ? 2 : 0)))) : 0))",
+      "label": "Religion"
+    },
+    "skill_society": {
+      "formula": "signed(intelligence + ((contains(skills_legendary, 'Society') ? 8 : (contains(skills_master, 'Society') ? 6 : (contains(skills_expert, 'Society') ? 4 : (contains(skills_trained, 'Society') ? 2 : 0)))) > 0 ? level + (contains(skills_legendary, 'Society') ? 8 : (contains(skills_master, 'Society') ? 6 : (contains(skills_expert, 'Society') ? 4 : (contains(skills_trained, 'Society') ? 2 : 0)))) : 0))",
+      "label": "Society"
+    },
+    "skill_stealth": {
+      "formula": "signed(dexterity + ((contains(skills_legendary, 'Stealth') ? 8 : (contains(skills_master, 'Stealth') ? 6 : (contains(skills_expert, 'Stealth') ? 4 : (contains(skills_trained, 'Stealth') ? 2 : 0)))) > 0 ? level + (contains(skills_legendary, 'Stealth') ? 8 : (contains(skills_master, 'Stealth') ? 6 : (contains(skills_expert, 'Stealth') ? 4 : (contains(skills_trained, 'Stealth') ? 2 : 0)))) : 0))",
+      "label": "Stealth"
+    },
+    "skill_survival": {
+      "formula": "signed(wisdom + ((contains(skills_legendary, 'Survival') ? 8 : (contains(skills_master, 'Survival') ? 6 : (contains(skills_expert, 'Survival') ? 4 : (contains(skills_trained, 'Survival') ? 2 : 0)))) > 0 ? level + (contains(skills_legendary, 'Survival') ? 8 : (contains(skills_master, 'Survival') ? 6 : (contains(skills_expert, 'Survival') ? 4 : (contains(skills_trained, 'Survival') ? 2 : 0)))) : 0))",
+      "label": "Survival"
+    },
+    "skill_thievery": {
+      "formula": "signed(dexterity + ((contains(skills_legendary, 'Thievery') ? 8 : (contains(skills_master, 'Thievery') ? 6 : (contains(skills_expert, 'Thievery') ? 4 : (contains(skills_trained, 'Thievery') ? 2 : 0)))) > 0 ? level + (contains(skills_legendary, 'Thievery') ? 8 : (contains(skills_master, 'Thievery') ? 6 : (contains(skills_expert, 'Thievery') ? 4 : (contains(skills_trained, 'Thievery') ? 2 : 0)))) : 0))",
+      "label": "Thievery"
+    },
+    "lore_1": {
+      "formula": "signed(intelligence + (lore_1_prof > 0 ? level + lore_1_prof : 0))",
+      "label": "Lore"
+    },
+    "lore_2": {
+      "formula": "signed(intelligence + (lore_2_prof > 0 ? level + lore_2_prof : 0))",
+      "label": "Lore"
+    },
+    "focus_left": {
+      "formula": "max(0, focus_max - focus_used)",
+      "label": "Focus Points Left"
+    },
+    "feat_count": {
+      "formula": "count_refs(feats)",
+      "label": "Feats"
+    },
+    "strength_display": {
+      "formula": "signed(strength)",
+      "label": "Strength"
+    },
+    "dexterity_display": {
+      "formula": "signed(dexterity)",
+      "label": "Dexterity"
+    },
+    "constitution_display": {
+      "formula": "signed(constitution)",
+      "label": "Constitution"
+    },
+    "intelligence_display": {
+      "formula": "signed(intelligence)",
+      "label": "Intelligence"
+    },
+    "wisdom_display": {
+      "formula": "signed(wisdom)",
+      "label": "Wisdom"
+    },
+    "charisma_display": {
+      "formula": "signed(charisma)",
+      "label": "Charisma"
     }
   },
+  "name_field": "hero_name",
+  "validators": [
+    {
+      "rule": "ref(heritage, 'ancestry') == '' or ref(heritage, 'ancestry') == 'Versatile' or ref(ancestry, 'name') == '' or ref(heritage, 'ancestry') == ref(ancestry, 'name')",
+      "message": "This heritage belongs to a different ancestry."
+    },
+    {
+      "rule": "level > 1 or (strength <= 4 and dexterity <= 4 and constitution <= 4 and intelligence <= 4 and wisdom <= 4 and charisma <= 4)",
+      "message": "At 1st level no attribute modifier can be above +4."
+    }
+  ],
   "layout_file": "pathfinder-2e.html",
   "styles_file": "pathfinder-2e.css"
 }

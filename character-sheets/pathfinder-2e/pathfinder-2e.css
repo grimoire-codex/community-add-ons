@@ -1,238 +1,431 @@
-/* Pathfinder 2e sheet styling.
-   Denser than the D&D sheet, as PF2e's own is: proficiency ranks sit under the
-   values they feed, so the arithmetic stays visible rather than hidden behind
-   a derived number. */
+/* Pathfinder 2e character sheet.
+   The same vocabulary as the other sheets - bordered boxes with small
+   uppercase captions - around Pathfinder's shape: six attribute modifiers in a
+   strip, Perception and the three saves each with their rank, and skills as
+   ruled lines with a rank dropdown. Every colour is an app token, so a theme
+   restyles the sheet along with everything else. */
 
 .sheet-pf2 {
-  display: grid;
-  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--text);
 }
 
-.field-label {
+.gc-tabpanel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* An opened feat or spell keeps its paragraphs: the text is plain, with blank
+   lines between paragraphs, and would otherwise run together. */
+.gc-field-readonly > div {
+  white-space: pre-line;
+}
+
+/* --- shared ---------------------------------------------------------------- */
+
+.box {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-card);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.tiny {
   display: block;
+  margin: 0;
   font-size: 10px;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.07em;
   color: var(--text-muted);
-  margin-bottom: 3px;
+  white-space: nowrap;
 }
 
-/* --- headline ----------------------------------------------------------- */
-
-.headline {
-  display: grid;
-  grid-template-columns: minmax(200px, 1fr) 2fr;
-  gap: 16px;
-  align-items: end;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 14px 16px;
-  background: var(--bg-card);
+.tiny.inline {
+  display: inline;
+  margin-left: 4px;
 }
 
-.headline-name input {
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.headline-meta {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-  gap: 10px;
-}
-
-/* --- abilities ---------------------------------------------------------- */
-
-.abilities {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
-  gap: 8px;
-}
-
-.ability {
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 8px 6px;
+.box-title {
   text-align: center;
-  background: var(--bg-card);
+  font-weight: 700;
+  color: var(--text-dim);
 }
 
-.ability-name {
-  display: block;
-  font-size: 9px;
+.box-heading {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--text-muted);
-  margin-bottom: 3px;
-}
-
-.ability input {
+  letter-spacing: 0.08em;
   text-align: center;
-  font-size: 20px;
-  font-weight: 700;
-  padding: 3px;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
 }
 
-/* --- defences ----------------------------------------------------------- */
+.count {
+  color: var(--gold);
+  margin-left: 4px;
+}
 
-.defences {
+.big {
+  display: block;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--gold);
+}
+
+.big.small {
+  font-size: 20px;
+}
+
+.hint {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.opt {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.pair,
+.trio {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(126px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px 8px;
+  align-items: center;
+  text-align: center;
+}
+
+.trio {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* --- top bar --------------------------------------------------------------- */
+
+.topbar {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(0, 1.7fr);
   gap: 10px;
 }
 
-.defence {
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 10px 8px;
+.name-row input {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.identity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 12px;
+}
+
+.topstats {
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) minmax(110px, 0.9fr) minmax(230px, 2fr) minmax(120px, 1fr);
+  gap: 10px;
+}
+
+.level,
+.armour,
+.perception,
+.hp {
+  justify-content: center;
   text-align: center;
+}
+
+.level .gc-pips {
+  justify-content: center;
+}
+
+.armour {
+  border-radius: 10px 10px 36px 36px;
+  align-items: center;
+}
+
+.shield {
+  font-size: 12px;
+}
+
+.hp-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: 4px 8px;
+  align-items: center;
+  text-align: center;
+}
+
+.hp-current input {
+  font-size: 22px;
+  font-weight: 700;
+  padding: 4px;
+}
+
+.dying {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 4px 6px;
+  align-items: center;
+  text-align: left;
+}
+
+/* Dying gets a row to itself: its boxes are the count. */
+.dying .gc-pips {
+  grid-column: 2 / -1;
+}
+
+/* --- attributes ------------------------------------------------------------ */
+
+.attributes {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.attr {
+  border: 1px solid var(--border);
+  border-radius: 12px;
   background: var(--bg-card);
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
 }
 
-/* AC is the one a player reads constantly, so it is marked out. */
-.defence.ac {
-  border-color: var(--gold-dim);
+.attr-name {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
-.defence-value {
-  display: block;
-  font-size: 25px;
+.attr-value {
+  font-size: 26px;
   font-weight: 700;
   line-height: 1.1;
   color: var(--gold);
 }
 
-.defence-label {
-  display: block;
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: var(--text-muted);
-  margin-bottom: 6px;
-}
-
-.defence-prof select {
-  font-size: 11px;
-  padding: 3px 4px;
-}
-
-/* --- hit points --------------------------------------------------------- */
-
-.hp-band {
-  display: grid;
-  grid-template-columns: minmax(180px, 1fr) 2.2fr;
-  gap: 14px;
-  align-items: center;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 12px 14px;
-  background: var(--bg-card);
-}
-
-.hp-line {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-}
-
-.hp-line input {
-  font-size: 26px;
-  font-weight: 700;
+.attr input {
+  max-width: 70px;
   text-align: center;
-  max-width: 110px;
+  padding: 3px;
 }
 
-.hp-max {
-  font-size: 16px;
-  color: var(--text-muted);
-}
+/* --- page one -------------------------------------------------------------- */
 
-.hp-conditions {
+.page-one {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(84px, 1fr));
+  grid-template-columns: minmax(300px, 1fr) minmax(0, 1.8fr);
   gap: 10px;
+  align-items: start;
 }
 
-/* --- panels ------------------------------------------------------------- */
+.side,
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
 
-.columns {
+.lines {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* The rank dropdown, the modifier, then the skill: fixed cells, so a row keeps
+   its columns. */
+.line {
   display: grid;
-  gap: 16px;
+  grid-template-columns: 44px 34px minmax(0, 1fr);
+  gap: 6px;
+  align-items: center;
+  font-size: 13px;
+  padding: 4px 0;
+  border-top: 1px solid var(--border);
 }
 
-.wide {
+.skills {
   display: grid;
-  gap: 14px;
-  align-content: start;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 18px;
 }
 
-.panel {
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 12px 14px;
-  background: var(--bg-card);
+/* A lore's rank is a full select, so its row gives the first cell more room. */
+.line.lore {
+  grid-template-columns: 110px 34px minmax(0, 1fr);
 }
 
-.panel-title {
-  margin: 0 0 10px;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: var(--text-muted);
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 5px;
+.c-tier .gc-tier {
+  width: 100%;
 }
 
-.spell-head {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 12px;
-  margin-bottom: 12px;
-  align-items: end;
-}
-
-.mini {
-  text-align: center;
-}
-
-.mini-value {
-  display: block;
-  font-size: 19px;
+.c-value {
+  text-align: right;
   font-weight: 700;
   color: var(--gold);
 }
 
-.hint {
-  font-size: 11px;
-  color: var(--text-muted);
-  margin: 8px 0 0;
+.c-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.extras {
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 10px 14px;
-  background: var(--bg-card);
-}
-
-.extras summary {
-  cursor: pointer;
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: var(--text-muted);
-}
-
-.extras-grid {
+.save-line {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: 44px minmax(0, 1fr) 120px;
+  gap: 8px;
+  align-items: center;
+  padding: 4px 0;
+  border-top: 1px solid var(--border);
+  font-weight: 700;
+}
+
+.big-ish {
+  font-size: 18px;
+}
+
+.dc-row {
+  display: grid;
+  grid-template-columns: 60px minmax(0, 1fr) minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px 8px;
+  align-items: center;
+}
+
+.options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px 10px;
+  font-size: 12px;
+}
+
+/* --- spells ---------------------------------------------------------------- */
+
+.caster-toggle {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.casting {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
   gap: 12px;
-  margin-top: 12px;
+  align-items: center;
+}
+
+.casting-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px 8px;
+  text-align: center;
+}
+
+.slots {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px 18px;
+}
+
+.slot {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) 64px;
+  gap: 6px;
+  align-items: center;
+}
+
+.slot.focus {
+  margin-top: 8px;
+  grid-template-columns: 110px minmax(0, 1fr) 64px;
+}
+
+/* --- gear ------------------------------------------------------------------ */
+
+.page-two {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr);
+  gap: 10px;
+  align-items: start;
+}
+
+.p2-main,
+.p2-side {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.coins {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px 6px;
+  text-align: center;
+}
+
+/* --- narrower screens ------------------------------------------------------ */
+
+@media (max-width: 1200px) {
+  .topbar,
+  .page-one {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 @media (max-width: 760px) {
-  .headline,
-  .hp-band {
-    grid-template-columns: 1fr;
+  .topstats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .hp {
+    grid-column: 1 / -1;
+  }
+  .slots {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .attributes {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .skills,
+  .casting,
+  .page-two {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .identity-grid,
+  .options {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

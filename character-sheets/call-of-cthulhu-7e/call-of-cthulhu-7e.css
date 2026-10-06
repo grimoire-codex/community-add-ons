@@ -1,0 +1,325 @@
+/* Call of Cthulhu 7th Edition investigator sheet.
+   The same vocabulary as the other sheets - bordered boxes with small
+   uppercase captions - around the investigator sheet's shape: characteristics
+   and their half and fifth values in a block, the four pools that run down
+   in play (hit points, Sanity, Luck, magic points), and skills in columns of
+   ruled lines. Every colour is an app token, so a theme restyles the sheet. */
+
+.sheet-coc {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--text);
+}
+
+.gc-tabpanel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gc-field-readonly > div {
+  white-space: pre-line;
+}
+
+/* --- shared ---------------------------------------------------------------- */
+
+.box {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-card);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.tiny {
+  display: block;
+  margin: 0;
+  font-size: 10px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.tiny.inline {
+  display: inline;
+}
+
+.box-title {
+  text-align: center;
+  font-weight: 700;
+  color: var(--text-dim);
+}
+
+.box-heading {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+}
+
+.big {
+  display: block;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--gold);
+}
+
+.big.small {
+  font-size: 18px;
+}
+
+.big-input input {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.hint {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.opt {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.pair,
+.trio {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px 8px;
+  align-items: center;
+  text-align: center;
+}
+
+.trio {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* A value's half and fifth, as the printed sheet stacks them beside it. */
+.hf {
+  display: inline-grid;
+  grid-template-rows: auto auto;
+  font-size: 10px;
+  line-height: 1.1;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.hf.center {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  font-size: 12px;
+}
+
+/* --- top ------------------------------------------------------------------- */
+
+.topbar {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(0, 1.3fr);
+  gap: 10px;
+}
+
+.name-row input {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.identity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 12px;
+}
+
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px 12px;
+}
+
+.char {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) 26px;
+  gap: 6px;
+  align-items: center;
+}
+
+.c-name {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--gold);
+}
+
+.vitals {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.vital {
+  text-align: center;
+  justify-content: center;
+}
+
+.flags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
+  justify-content: center;
+}
+
+/* --- skills ---------------------------------------------------------------- */
+
+.skills {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* Down each column, then across, as the printed sheet reads: 54 lines in
+     three columns of 18. */
+  grid-template-rows: repeat(18, auto);
+  grid-auto-flow: column;
+  column-gap: 18px;
+}
+
+/* Improvement box, name, occupation box, value, half and fifth. */
+.skill {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr) 18px 52px 22px;
+  gap: 6px;
+  align-items: center;
+  font-size: 12px;
+  padding: 3px 0;
+  border-top: 1px solid var(--border);
+}
+
+.s-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.base {
+  color: var(--text-muted);
+  font-size: 10px;
+}
+
+.slot-name {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 4px;
+  align-items: center;
+}
+
+.slot-name input {
+  padding: 2px 4px;
+  font-size: 12px;
+}
+
+.skill input {
+  padding: 2px;
+}
+
+.extras summary {
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.bases {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px 12px;
+  margin-top: 6px;
+}
+
+.points-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2px 10px;
+  text-align: center;
+  align-items: center;
+}
+
+/* --- other pages ----------------------------------------------------------- */
+
+.story {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.page-two {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr);
+  gap: 10px;
+  align-items: start;
+}
+
+.p2-main,
+.p2-side {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+/* --- narrower screens ------------------------------------------------------ */
+
+@media (max-width: 1200px) {
+  .topbar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .vitals {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .skills {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(27, auto);
+  }
+}
+
+@media (max-width: 760px) {
+  .vitals,
+  .char-grid,
+  .bases {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .skills {
+    grid-template-rows: none;
+    grid-auto-flow: row;
+  }
+  .skills,
+  .story,
+  .page-two,
+  .points-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .identity-grid,
+  .vitals {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

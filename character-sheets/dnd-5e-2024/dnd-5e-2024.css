@@ -105,7 +105,7 @@
 
 .topstats {
   display: grid;
-  grid-template-columns: minmax(80px, 0.8fr) minmax(90px, 0.8fr) minmax(190px, 2fr) minmax(110px, 1fr) minmax(110px, 1fr);
+  grid-template-columns: minmax(80px, 0.7fr) minmax(90px, 0.8fr) minmax(230px, 2.2fr) minmax(120px, 1.1fr) minmax(110px, 1fr);
   gap: 10px;
 }
 
@@ -127,10 +127,11 @@
   justify-content: center;
 }
 
-/* Hit points get the room they need: current large, temp and max beside it. */
+/* Hit points get the room they need: current large, temp and max beside it.
+   Max gets a little extra for the marker that says it follows your class. */
 .hp-grid {
   display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1.3fr);
   gap: 4px 8px;
   align-items: center;
   text-align: center;
@@ -180,11 +181,6 @@
   flex-direction: column;
   gap: 10px;
   min-width: 0;
-}
-
-.legend {
-  text-align: center;
-  white-space: normal;
 }
 
 .ability {
@@ -272,10 +268,11 @@
   margin: 0;
 }
 
-/* Fixed cells, so a row keeps its columns even when one draws nothing. */
+/* Fixed cells, so a row keeps its columns even when one draws nothing. The
+   first holds a skill's proficiency dropdown, or a save's checkbox. */
 .line {
   display: grid;
-  grid-template-columns: 20px 20px 34px minmax(0, 1fr);
+  grid-template-columns: 54px 30px minmax(0, 1fr);
   gap: 4px;
   align-items: center;
   font-size: 12px;
@@ -283,16 +280,14 @@
   border-top: 1px solid var(--border);
 }
 
-.c-prof,
-.c-exp {
+.c-tier {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* The expertise box a shade quieter than proficiency's: most skills have none. */
-.expertise {
-  opacity: 0.7;
+.c-tier .gc-tier {
+  width: 100%;
 }
 
 .c-value {
@@ -384,11 +379,19 @@
   gap: 8px 14px;
 }
 
+/* Label, the boxes to tick, then the total the boxes come from. */
 .slot {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 44px 44px;
+  /* The total's column holds its box and the marker that says it follows
+     your class; at 40px the marker left the box too narrow to read. */
+  grid-template-columns: 52px minmax(0, 1fr) 64px;
   gap: 6px;
   align-items: center;
+}
+
+.pact {
+  margin-top: 8px;
+  grid-template-columns: 110px minmax(0, 1fr) 64px;
 }
 
 .slot input {

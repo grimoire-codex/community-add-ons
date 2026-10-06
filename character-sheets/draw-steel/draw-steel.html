@@ -1,139 +1,313 @@
 <!-- Draw Steel hero sheet.
-     Follows the published sheet: the five characteristics in a row across the
-     top (they are bonuses, not scores, so they read as a strip rather than a
-     column), stamina given the prominence the rules give it, and the heroic
-     resource called out beside it. -->
+     Three pages: the hero in play (characteristics, stamina, the heroic
+     resource, abilities), what the hero is made of (ancestry traits, class
+     features, perks, titles), and their story and belongings. The five
+     characteristics are bonuses used directly, so they read as one strip
+     rather than a column of scores. Every derived value - stamina from class,
+     level and kit, speed from ancestry and kit - can be clicked and set by
+     hand. -->
 <div class="sheet-ds">
+<g-tabs>
 
-  <header class="banner">
-    <div class="banner-name">
-      <span class="field-label">Hero</span>
-      <g-field name="hero_name" label="" />
+<g-tab title="Hero">
+
+  <header class="topbar">
+    <div class="identity box">
+      <div class="name-row"><span class="tiny">Hero</span><g-field name="hero_name" label="" /></div>
+      <div class="identity-grid">
+        <div><span class="tiny">Ancestry</span><g-field name="ancestry" label="" /></div>
+        <div><span class="tiny">Culture</span><g-field name="culture" label="" /></div>
+        <div><span class="tiny">Career</span><g-field name="career" label="" /></div>
+        <div><span class="tiny">Class</span><g-field name="klass" label="" /></div>
+        <div><span class="tiny">Subclass</span><g-field name="subclass" label="" /></div>
+        <div><span class="tiny">Kit</span><g-field name="kit" label="" /></div>
+      </div>
     </div>
-    <div class="banner-meta">
-      <div><span class="field-label">Class</span><g-field name="klass" label="" /></div>
-      <div><span class="field-label">Subclass</span><g-field name="subclass" label="" /></div>
-      <div><span class="field-label">Level</span><g-field name="level" label="" /></div>
-      <div><span class="field-label">Ancestry</span><g-field name="ancestry" label="" /></div>
-      <div><span class="field-label">Career</span><g-field name="career" label="" /></div>
-      <div><span class="field-label">Kit</span><g-field name="kit" label="" /></div>
+
+    <div class="topstats">
+      <div class="level box">
+        <div class="pair">
+          <span class="tiny">Level</span><span class="tiny">Echelon</span>
+          <g-field name="level" label="" variant="compact" />
+          <span class="big small"><g-value name="echelon" /></span>
+          <span class="tiny">Victories</span><span class="tiny">XP</span>
+          <g-field name="victories" label="" variant="compact" />
+          <g-field name="xp" label="" variant="compact" />
+        </div>
+      </div>
+      <div class="stamina box">
+        <span class="tiny box-title">Stamina</span>
+        <div class="stamina-grid">
+          <span class="tiny">Current</span><span class="tiny">Temp</span><span class="tiny">Max</span>
+          <div class="stamina-current"><g-field name="stamina_current" label="" variant="compact" /></div>
+          <g-field name="stamina_temp" label="" variant="compact" />
+          <g-field name="stamina_max" label="" variant="compact" />
+        </div>
+        <div class="marks">
+          <span>Winded <b><g-value name="winded" /></b></span>
+          <span>Dead <b><g-value name="dying_at" /></b></span>
+          <span class="state"><g-value name="is_winded" /></span>
+        </div>
+      </div>
+      <div class="recoveries box">
+        <span class="tiny box-title">Recoveries</span>
+        <g-pips count="recoveries_max" value="recoveries_used" label="Recovery" />
+        <div class="trio">
+          <span class="tiny">Max</span><span class="tiny">Left</span><span class="tiny">Value</span>
+          <g-field name="recoveries_max" label="" variant="compact" />
+          <span class="big small"><g-value name="recoveries_left" /></span>
+          <span class="big small"><g-value name="recovery_value" /></span>
+        </div>
+      </div>
+      <div class="resource box">
+        <span class="tiny box-title"><g-field name="resource_name" label="" /></span>
+        <div class="resource-now"><g-field name="heroic_resource" label="" variant="compact" /></div>
+        <span class="tiny box-title">Surges</span><g-field name="surges" label="" variant="compact" />
+      </div>
     </div>
   </header>
 
-  <!-- Characteristics are bonuses used directly, so they read as one strip. -->
   <section class="characteristics">
-    <div class="char-box">
-      <span class="char-name">Might</span>
-      <g-field name="might" label="" />
-    </div>
-    <div class="char-box">
-      <span class="char-name">Agility</span>
-      <g-field name="agility" label="" />
-    </div>
-    <div class="char-box">
-      <span class="char-name">Reason</span>
-      <g-field name="reason" label="" />
-    </div>
-    <div class="char-box">
-      <span class="char-name">Intuition</span>
-      <g-field name="intuition" label="" />
-    </div>
-    <div class="char-box">
-      <span class="char-name">Presence</span>
-      <g-field name="presence" label="" />
-    </div>
+      <section class="char">
+        <h3 class="char-name">Might</h3>
+        <span class="char-value"><g-value name="might_display" /></span>
+        <g-field name="might" label="" variant="compact" />
+      </section>
+      <section class="char">
+        <h3 class="char-name">Agility</h3>
+        <span class="char-value"><g-value name="agility_display" /></span>
+        <g-field name="agility" label="" variant="compact" />
+      </section>
+      <section class="char">
+        <h3 class="char-name">Reason</h3>
+        <span class="char-value"><g-value name="reason_display" /></span>
+        <g-field name="reason" label="" variant="compact" />
+      </section>
+      <section class="char">
+        <h3 class="char-name">Intuition</h3>
+        <span class="char-value"><g-value name="intuition_display" /></span>
+        <g-field name="intuition" label="" variant="compact" />
+      </section>
+      <section class="char">
+        <h3 class="char-name">Presence</h3>
+        <span class="char-value"><g-value name="presence_display" /></span>
+        <g-field name="presence" label="" variant="compact" />
+      </section>
+    <section class="char potency">
+      <h3 class="char-name">Potency</h3>
+      <div class="potencies">
+        <span><span class="tiny">Weak</span><b><g-value name="potency_weak" /></b></span>
+        <span><span class="tiny">Average</span><b><g-value name="potency_average" /></b></span>
+        <span><span class="tiny">Strong</span><b><g-value name="potency_strong" /></b></span>
+      </div>
+    </section>
   </section>
 
-  <section class="vitals-row">
-    <div class="stamina">
-      <span class="field-label">Stamina</span>
-      <div class="stamina-line">
-        <g-field name="stamina_current" label="" />
-        <span class="stamina-max">/ <g-value name="stamina_max" /></span>
-      </div>
-      <div class="stamina-marks">
-        <span>Winded at <g-value name="winded" /></span>
-        <span>Dying at <g-value name="dying_at" /></span>
-        <span class="state"><g-value name="is_winded" /></span>
-      </div>
-    </div>
-
-    <div class="resource">
-      <span class="field-label"><g-value name="resource_name" /></span>
-      <g-field name="heroic_resource" label="" />
-      <span class="resource-hint">Heroic resource</span>
-    </div>
-
-    <div class="tile-grid">
-      <div class="tile">
-        <span class="tile-value"><g-value name="recoveries_left" /></span>
-        <span class="tile-label">Recoveries</span>
-      </div>
-      <div class="tile">
-        <span class="tile-value"><g-value name="recovery_value" /></span>
-        <span class="tile-label">Recovery</span>
-      </div>
-      <div class="tile">
-        <span class="tile-value"><g-value name="speed" /></span>
-        <span class="tile-label">Speed</span>
-      </div>
-      <div class="tile">
-        <span class="tile-value"><g-value name="stability" /></span>
-        <span class="tile-label">Stability</span>
-      </div>
-      <div class="tile">
-        <span class="tile-value"><g-value name="victories" /></span>
-        <span class="tile-label">Victories</span>
-      </div>
-      <div class="tile">
-        <span class="tile-value"><g-value name="renown" /></span>
-        <span class="tile-label">Renown</span>
-      </div>
-    </div>
-  </section>
-
-  <div class="columns">
+  <div class="page-one">
     <aside class="side">
-      <section class="panel">
-        <h3 class="panel-title">Skills</h3>
-        <g-field name="skills" label="" />
+      <section class="box">
+        <h3 class="box-heading">Movement</h3>
+        <div class="stat-grid">
+          <span class="tiny">Speed</span><span class="tiny">Size</span><span class="tiny">Stability</span><span class="tiny">Disengage</span>
+          <g-field name="speed" label="" variant="compact" />
+          <g-field name="size" label="" />
+          <g-field name="stability" label="" variant="compact" />
+          <g-field name="disengage" label="" variant="compact" />
+        </div>
       </section>
-      <section class="panel">
-        <h3 class="panel-title">Complication</h3>
-        <g-field name="complication" label="" />
+      <section class="box">
+        <h3 class="box-heading">Kit Bonuses</h3>
+        <div class="kit-grid">
+          <span></span><span class="tiny">Damage</span><span class="tiny">Distance</span>
+          <span class="tiny">Melee</span><g-field name="melee_damage_bonus" label="" /><g-field name="melee_distance_bonus" label="" variant="compact" />
+          <span class="tiny">Ranged</span><g-field name="ranged_damage_bonus" label="" /><g-field name="ranged_distance_bonus" label="" variant="compact" />
+        </div>
       </section>
-      <section class="panel">
-        <h3 class="panel-title">Equipment</h3>
-        <g-field name="equipment" label="" />
+      <section class="box">
+        <h3 class="box-heading">Conditions</h3>
+        <ul class="options conditions">
+          <li><label class="opt"><g-option field="conditions" value="Bleeding" label="Bleeding" />Bleeding</label></li>
+          <li><label class="opt"><g-option field="conditions" value="Dazed" label="Dazed" />Dazed</label></li>
+          <li><label class="opt"><g-option field="conditions" value="Frightened" label="Frightened" />Frightened</label></li>
+          <li><label class="opt"><g-option field="conditions" value="Grabbed" label="Grabbed" />Grabbed</label></li>
+          <li><label class="opt"><g-option field="conditions" value="Prone" label="Prone" />Prone</label></li>
+          <li><label class="opt"><g-option field="conditions" value="Restrained" label="Restrained" />Restrained</label></li>
+          <li><label class="opt"><g-option field="conditions" value="Slowed" label="Slowed" />Slowed</label></li>
+          <li><label class="opt"><g-option field="conditions" value="Taunted" label="Taunted" />Taunted</label></li>
+          <li><label class="opt"><g-option field="conditions" value="Weakened" label="Weakened" />Weakened</label></li>
+        </ul>
+      </section>
+      <section class="box">
+        <h3 class="box-heading">Skills <span class="count"><g-value name="skill_count" /></span></h3>
+        <div class="skills">
+          <div class="skill-list">
+            <h4 class="tiny">Crafting</h4>
+            <ul class="options">
+              <li><label class="opt"><g-option field="skills" value="Alchemy" label="Alchemy" />Alchemy</label></li>
+              <li><label class="opt"><g-option field="skills" value="Architecture" label="Architecture" />Architecture</label></li>
+              <li><label class="opt"><g-option field="skills" value="Blacksmithing" label="Blacksmithing" />Blacksmithing</label></li>
+              <li><label class="opt"><g-option field="skills" value="Carpentry" label="Carpentry" />Carpentry</label></li>
+              <li><label class="opt"><g-option field="skills" value="Cooking" label="Cooking" />Cooking</label></li>
+              <li><label class="opt"><g-option field="skills" value="Fletching" label="Fletching" />Fletching</label></li>
+              <li><label class="opt"><g-option field="skills" value="Forgery" label="Forgery" />Forgery</label></li>
+              <li><label class="opt"><g-option field="skills" value="Jewelry" label="Jewelry" />Jewelry</label></li>
+              <li><label class="opt"><g-option field="skills" value="Mechanics" label="Mechanics" />Mechanics</label></li>
+              <li><label class="opt"><g-option field="skills" value="Tailoring" label="Tailoring" />Tailoring</label></li>
+            </ul>
+          </div>
+          <div class="skill-list">
+            <h4 class="tiny">Exploration</h4>
+            <ul class="options">
+              <li><label class="opt"><g-option field="skills" value="Climb" label="Climb" />Climb</label></li>
+              <li><label class="opt"><g-option field="skills" value="Drive" label="Drive" />Drive</label></li>
+              <li><label class="opt"><g-option field="skills" value="Endurance" label="Endurance" />Endurance</label></li>
+              <li><label class="opt"><g-option field="skills" value="Gymnastics" label="Gymnastics" />Gymnastics</label></li>
+              <li><label class="opt"><g-option field="skills" value="Heal" label="Heal" />Heal</label></li>
+              <li><label class="opt"><g-option field="skills" value="Jump" label="Jump" />Jump</label></li>
+              <li><label class="opt"><g-option field="skills" value="Lift" label="Lift" />Lift</label></li>
+              <li><label class="opt"><g-option field="skills" value="Navigate" label="Navigate" />Navigate</label></li>
+              <li><label class="opt"><g-option field="skills" value="Ride" label="Ride" />Ride</label></li>
+              <li><label class="opt"><g-option field="skills" value="Swim" label="Swim" />Swim</label></li>
+            </ul>
+          </div>
+          <div class="skill-list">
+            <h4 class="tiny">Interpersonal</h4>
+            <ul class="options">
+              <li><label class="opt"><g-option field="skills" value="Brag" label="Brag" />Brag</label></li>
+              <li><label class="opt"><g-option field="skills" value="Empathize" label="Empathize" />Empathize</label></li>
+              <li><label class="opt"><g-option field="skills" value="Flirt" label="Flirt" />Flirt</label></li>
+              <li><label class="opt"><g-option field="skills" value="Gamble" label="Gamble" />Gamble</label></li>
+              <li><label class="opt"><g-option field="skills" value="Handle Animals" label="Handle Animals" />Handle Animals</label></li>
+              <li><label class="opt"><g-option field="skills" value="Interrogate" label="Interrogate" />Interrogate</label></li>
+              <li><label class="opt"><g-option field="skills" value="Intimidate" label="Intimidate" />Intimidate</label></li>
+              <li><label class="opt"><g-option field="skills" value="Lead" label="Lead" />Lead</label></li>
+              <li><label class="opt"><g-option field="skills" value="Lie" label="Lie" />Lie</label></li>
+              <li><label class="opt"><g-option field="skills" value="Music" label="Music" />Music</label></li>
+              <li><label class="opt"><g-option field="skills" value="Perform" label="Perform" />Perform</label></li>
+              <li><label class="opt"><g-option field="skills" value="Persuade" label="Persuade" />Persuade</label></li>
+              <li><label class="opt"><g-option field="skills" value="Read Person" label="Read Person" />Read Person</label></li>
+            </ul>
+          </div>
+          <div class="skill-list">
+            <h4 class="tiny">Intrigue</h4>
+            <ul class="options">
+              <li><label class="opt"><g-option field="skills" value="Alertness" label="Alertness" />Alertness</label></li>
+              <li><label class="opt"><g-option field="skills" value="Conceal Object" label="Conceal Object" />Conceal Object</label></li>
+              <li><label class="opt"><g-option field="skills" value="Disguise" label="Disguise" />Disguise</label></li>
+              <li><label class="opt"><g-option field="skills" value="Eavesdrop" label="Eavesdrop" />Eavesdrop</label></li>
+              <li><label class="opt"><g-option field="skills" value="Escape Artist" label="Escape Artist" />Escape Artist</label></li>
+              <li><label class="opt"><g-option field="skills" value="Hide" label="Hide" />Hide</label></li>
+              <li><label class="opt"><g-option field="skills" value="Pick Lock" label="Pick Lock" />Pick Lock</label></li>
+              <li><label class="opt"><g-option field="skills" value="Pick Pocket" label="Pick Pocket" />Pick Pocket</label></li>
+              <li><label class="opt"><g-option field="skills" value="Sabotage" label="Sabotage" />Sabotage</label></li>
+              <li><label class="opt"><g-option field="skills" value="Search" label="Search" />Search</label></li>
+              <li><label class="opt"><g-option field="skills" value="Sneak" label="Sneak" />Sneak</label></li>
+              <li><label class="opt"><g-option field="skills" value="Track" label="Track" />Track</label></li>
+            </ul>
+          </div>
+          <div class="skill-list">
+            <h4 class="tiny">Lore</h4>
+            <ul class="options">
+              <li><label class="opt"><g-option field="skills" value="Criminal Underworld" label="Criminal Underworld" />Criminal Underworld</label></li>
+              <li><label class="opt"><g-option field="skills" value="Culture" label="Culture" />Culture</label></li>
+              <li><label class="opt"><g-option field="skills" value="History" label="History" />History</label></li>
+              <li><label class="opt"><g-option field="skills" value="Magic" label="Magic" />Magic</label></li>
+              <li><label class="opt"><g-option field="skills" value="Monsters" label="Monsters" />Monsters</label></li>
+              <li><label class="opt"><g-option field="skills" value="Nature" label="Nature" />Nature</label></li>
+              <li><label class="opt"><g-option field="skills" value="Psionics" label="Psionics" />Psionics</label></li>
+              <li><label class="opt"><g-option field="skills" value="Religion" label="Religion" />Religion</label></li>
+              <li><label class="opt"><g-option field="skills" value="Rumors" label="Rumors" />Rumors</label></li>
+              <li><label class="opt"><g-option field="skills" value="Society" label="Society" />Society</label></li>
+              <li><label class="opt"><g-option field="skills" value="Strategy" label="Strategy" />Strategy</label></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <section class="box">
+        <h3 class="box-heading">Languages</h3>
+        <g-field name="languages" label="" />
       </section>
     </aside>
 
-    <main class="wide">
-      <section class="panel">
-        <h3 class="panel-title">
-          Abilities <span class="count"><g-value name="ability_count" /></span>
-        </h3>
+    <main class="main">
+      <section class="box">
+        <h3 class="box-heading">Abilities <span class="count"><g-value name="ability_count" /></span></h3>
         <g-field name="abilities" label="" />
-      </section>
-      <section class="panel">
-        <h3 class="panel-title">Notes</h3>
-        <g-field name="notes" label="" />
       </section>
     </main>
   </div>
 
-  <details class="extras">
-    <summary>Other details</summary>
-    <div class="extras-grid">
-      <g-field name="stamina_max" />
-      <g-field name="recoveries_max" />
-      <g-field name="recoveries_used" />
-      <g-field name="resource_name" />
-      <g-field name="size" />
-      <g-field name="speed" />
-      <g-field name="stability" />
-      <g-field name="victories" />
-      <g-field name="renown" />
+</g-tab>
+
+<g-tab title="Features">
+
+  <div class="page-two">
+    <div class="p2-main">
+      <section class="box">
+        <h3 class="box-heading">Class Features</h3>
+        <g-field name="features" label="" />
+      </section>
+      <section class="box">
+        <h3 class="box-heading">Domains</h3>
+        <g-field name="domains" label="" />
+      </section>
     </div>
-  </details>
+    <div class="p2-side">
+      <section class="box">
+        <h3 class="box-heading">Ancestry Traits</h3>
+        <p class="hint">Ancestry points spent <b><g-value name="ancestry_points_spent" /></b> of <b><g-value name="ancestry_points" /></b></p>
+        <g-field name="ancestry_traits" label="" />
+      </section>
+      <section class="box">
+        <h3 class="box-heading">Perks</h3>
+        <g-field name="perks" label="" />
+      </section>
+      <section class="box">
+        <h3 class="box-heading">Titles</h3>
+        <g-field name="titles" label="" />
+      </section>
+    </div>
+  </div>
+
+</g-tab>
+
+<g-tab title="Story &amp; Gear">
+
+  <div class="page-two">
+    <div class="p2-main">
+      <section class="box">
+        <h3 class="box-heading">Equipment</h3>
+        <g-field name="equipment" label="" />
+      </section>
+      <section class="box">
+        <h3 class="box-heading">Projects</h3>
+        <g-field name="projects" label="" />
+      </section>
+      <section class="box">
+        <h3 class="box-heading">Notes</h3>
+        <g-field name="notes" label="" />
+      </section>
+    </div>
+    <div class="p2-side">
+      <section class="box">
+        <h3 class="box-heading">Complication</h3>
+        <g-field name="complication" label="" />
+      </section>
+      <section class="box">
+        <h3 class="box-heading">Inciting Incident</h3>
+        <g-field name="inciting_incident" label="" />
+      </section>
+      <section class="box">
+        <div class="pair">
+          <span class="tiny">Renown</span><span class="tiny">Wealth</span>
+          <g-field name="renown" label="" variant="compact" />
+          <g-field name="wealth" label="" variant="compact" />
+        </div>
+      </section>
+    </div>
+  </div>
+
+</g-tab>
+
+</g-tabs>
 </div>

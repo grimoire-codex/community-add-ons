@@ -1,0 +1,202 @@
+[
+ {
+  "_id": "censor-exorcist",
+  "name": "Exorcist",
+  "class": "Censor",
+  "description": "You specialize in hunting your order’s hidden enemies, knowing that an open mind is an unguarded fortress.",
+  "feature_ids": "censor-exorcist-1-skill, censor-exorcist-1-judgment-order-benefit",
+  "feature_names": "Skill, Judgment Order Benefit"
+ },
+ {
+  "_id": "censor-oracle",
+  "name": "Oracle",
+  "class": "Censor",
+  "description": "Corruption has deep tendrils that can be missed, leading you to specialize in uncovering clandestine threats to your order.",
+  "feature_ids": "censor-oracle-1-skill, censor-oracle-1-judgment-order-benefit",
+  "feature_names": "Skill, Judgment Order Benefit"
+ },
+ {
+  "_id": "censor-paragon",
+  "name": "Paragon",
+  "class": "Censor",
+  "description": "Without a strong example and a firm hand, the weak will be corrupted. You specialize in setting an example for your order.",
+  "feature_ids": "censor-paragon-1-skill, censor-paragon-1-judgment-order-benefit",
+  "feature_names": "Skill, Judgment Order Benefit"
+ },
+ {
+  "_id": "elementalist-earth",
+  "name": "Earth",
+  "class": "Elementalist",
+  "description": "Earth is the element of permanence. Earth abilities bolster your body and grant the power to permanently create and shape physical terrain.",
+  "feature_ids": "elementalist-earth-1-earth-acolyte-of-earth, elementalist-earth-1-motivate-earth, elementalist-earth-1-skin-like-castle-walls",
+  "feature_names": "Earth: Acolyte of Earth, Motivate Earth, Skin Like Castle Walls"
+ },
+ {
+  "_id": "elementalist-fire",
+  "name": "Fire",
+  "class": "Elementalist",
+  "description": "Fire is the element of destruction. Fire abilities devastate enemies and melt objects to slag.",
+  "feature_ids": "elementalist-fire-1-acolyte-of-fire, elementalist-fire-1-return-to-formlessness, elementalist-fire-1-explosive-assistance",
+  "feature_names": "Acolyte of Fire, Return to Formlessness, Explosive Assistance"
+ },
+ {
+  "_id": "elementalist-green",
+  "name": "Green",
+  "class": "Elementalist",
+  "description": "Green is the element of creation and growth. Green abilities make and manipulate plants, fungi, and other forms of life to hamper foes and nourish your allies.",
+  "feature_ids": "elementalist-green-1-acolyte-of-the-green, elementalist-green-1-it-is-the-soul-which-hears, elementalist-green-1-breath-of-dawn-remembered",
+  "feature_names": "Acolyte of the Green, It Is the Soul Which Hears, Breath of Dawn Remembered"
+ },
+ {
+  "_id": "elementalist-void",
+  "name": "Void",
+  "class": "Elementalist",
+  "description": "Void is the element of the mystery. Void abilities warp space and reality, allowing you to teleport, create illusions, and make things incorporeal.",
+  "feature_ids": "elementalist-void-1-acolyte-of-the-void, elementalist-void-1-a-beyonding-of-vision, elementalist-void-1-shared-void-sense, elementalist-void-1-subtle-relocation",
+  "feature_names": "Acolyte of the Void, A Beyonding of Vision, Shared Void Sense, Subtle Relocation"
+ },
+ {
+  "_id": "fury-berserker",
+  "name": "Berserker",
+  "class": "Fury",
+  "description": "You channel your rage into expressions of physical might, acting as a living version of the forces that reshape the world.",
+  "feature_ids": "fury-berserker-1-skill, fury-berserker-1-kit, fury-berserker-1-primordial-strength, fury-berserker-1-lines-of-force, fury-berserker-1-growing-ferocity",
+  "feature_names": "Skill, Kit, Primordial Strength, Lines of Force, Growing Ferocity"
+ },
+ {
+  "_id": "fury-reaver",
+  "name": "Reaver",
+  "class": "Fury",
+  "description": "You channel your rage into instinct and cunning, challenging the false order of civilization.",
+  "feature_ids": "fury-reaver-1-skill, fury-reaver-1-kit, fury-reaver-1-primordial-cunning, fury-reaver-1-unearthly-reflexes, fury-reaver-1-growing-ferocity",
+  "feature_names": "Skill, Kit, Primordial Cunning, Unearthly Reflexes, Growing Ferocity"
+ },
+ {
+  "_id": "fury-stormwight",
+  "name": "Stormwight",
+  "class": "Fury",
+  "description": "You channel your rage into the form of animals and primordial storms.",
+  "feature_ids": "fury-stormwight-1-skill, fury-stormwight-1-beast-shape, fury-stormwight-1-relentless-hunter, fury-stormwight-1-furious-change, fury-stormwight-1-aspect-of-the-wild",
+  "feature_names": "Skill, Beast Shape, Relentless Hunter, Furious Change, Aspect of the Wild"
+ },
+ {
+  "_id": "null-chronokinetic",
+  "name": "Chronokinetic",
+  "class": "Null",
+  "description": "Your training unmoors you from temporal reality, allowing you to use the flow of time as another dimension that all things move through.",
+  "feature_ids": "null-chronokinetic-1-lore-skill, null-chronokinetic-1-chronokinetic-mastery",
+  "feature_names": "Lore Skill, Chronokinetic Mastery"
+ },
+ {
+  "_id": "null-cryokinetic",
+  "name": "Cryokinetic",
+  "class": "Null",
+  "description": "You can tap into absolute cold, the most essential energy of myriad manifolds, and manifest its effects in your body.",
+  "feature_ids": "null-cryokinetic-1-crafting-skill, null-cryokinetic-1-cryokinetic-mastery",
+  "feature_names": "Crafting Skill, Cryokinetic Mastery"
+ },
+ {
+  "_id": "null-metakinetic",
+  "name": "Metakinetic",
+  "class": "Null",
+  "description": "You learn to see through the illusions of the universe to more fully understand your body and its psionic potential.",
+  "feature_ids": "null-metakinetic-1-exploration-skill, null-metakinetic-1-metakinetic-mastery",
+  "feature_names": "Exploration Skill, Metakinetic Mastery"
+ },
+ {
+  "_id": "shadow-college-of-black-ash",
+  "name": "College of Black Ash",
+  "class": "Shadow",
+  "description": "The College of Black Ash founded the art of being a shadow. Its graduates use Black Ash sorcery to teleport around the battlefield in clouds of soot, and to manipulate and create darkness. Graduates of the college are unmatched in mobility.",
+  "feature_ids": "shadow-college-of-black-ash-1-skill, shadow-college-of-black-ash-1-black-ash-teleport, shadow-college-of-black-ash-1-in-all-this-confusion",
+  "feature_names": "Skill, Black Ash Teleport, In All This Confusion"
+ },
+ {
+  "_id": "shadow-college-of-caustic-alchemy",
+  "name": "College of Caustic Alchemy",
+  "class": "Shadow",
+  "description": "The College of Caustic Alchemy teaches its students recipes for the acids, bombs, and poisons used in their grim work. Graduates of the college are exceptional assassins.",
+  "feature_ids": "shadow-college-of-caustic-alchemy-1-skill, shadow-college-of-caustic-alchemy-1-coat-the-blade, shadow-college-of-caustic-alchemy-1-smoke-bomb, shadow-college-of-caustic-alchemy-1-defensive-roll",
+  "feature_names": "Skill, Coat The Blade, Smoke Bomb, Defensive Roll"
+ },
+ {
+  "_id": "shadow-college-of-the-harlequin-mask",
+  "name": "College of the Harlequin Mask",
+  "class": "Shadow",
+  "description": "Graduates of the College of the Harlequin Mask learn illusion magic, which they use to infiltrate enemy strongholds and create orchestrated chaos in combat.",
+  "feature_ids": "shadow-college-of-the-harlequin-mask-1-skill, shadow-college-of-the-harlequin-mask-1-im-no-threat, shadow-college-of-the-harlequin-mask-1-clever-trick",
+  "feature_names": "Skill, I’m No Threat, Clever Trick"
+ },
+ {
+  "_id": "tactician-insurgent",
+  "name": "Insurgent",
+  "class": "Tactician",
+  "description": "Doing your duty, playing fair, and dying honorably in battle is your opponent’s job. You’ll do whatever it takes to keep your allies alive.",
+  "feature_ids": "tactician-insurgent-1-intrigue-skill, tactician-insurgent-1-covert-operations, tactician-insurgent-1-advanced-tactics",
+  "feature_names": "Intrigue Skill, Covert Operations, Advanced Tactics"
+ },
+ {
+  "_id": "tactician-mastermind",
+  "name": "Mastermind",
+  "class": "Tactician",
+  "description": "You have an encyclopedic knowledge of warfare, viewing the battlefield as a game board and seeking victory by thinking steps ahead of your opponents.",
+  "feature_ids": "tactician-mastermind-1-lore-skill, tactician-mastermind-1-studied-commander, tactician-mastermind-1-overwatch",
+  "feature_names": "Lore Skill, Studied Commander, Overwatch"
+ },
+ {
+  "_id": "tactician-vanguard",
+  "name": "Vanguard",
+  "class": "Tactician",
+  "description": "You have learned the stratagems of ancient heroes, letting you lead from the front lines and seek victory through sheer force of will and personality.",
+  "feature_ids": "tactician-vanguard-1-interpersonal-skill, tactician-vanguard-1-commanding-presence, tactician-vanguard-1-parry",
+  "feature_names": "Interpersonal Skill, Commanding Presence, Parry"
+ },
+ {
+  "_id": "talent-chronopathy",
+  "name": "Chronopathy",
+  "class": "Talent",
+  "description": "Chronopathy abilities allow you to view future and past events, and to manipulate time to aid allies and hinder foes.",
+  "feature_ids": "talent-chronopathy-1-accelerate, talent-chronopathy-1-again",
+  "feature_names": "Accelerate, Again"
+ },
+ {
+  "_id": "talent-telekinesis",
+  "name": "Telekinesis",
+  "class": "Talent",
+  "description": "Telekinesis abilities allow you to physically manipulate creatures and objects.",
+  "feature_ids": "talent-telekinesis-1-minor-telekinesis, talent-telekinesis-1-repel",
+  "feature_names": "Minor Telekinesis, Repel"
+ },
+ {
+  "_id": "talent-telepathy",
+  "name": "Telepathy",
+  "class": "Talent",
+  "description": "Telepathy abilities allow you to communicate with, read, and influence the minds of other creatures.",
+  "feature_ids": "talent-telepathy-1-feedback-loop, talent-telepathy-1-remote-assistance",
+  "feature_names": "Feedback Loop, Remote Assistance"
+ },
+ {
+  "_id": "troubadour-auteur",
+  "name": "Auteur",
+  "class": "Troubadour",
+  "description": "You seek drama from story and recount, using your magic to manipulate the sequence of events unfolding before you.",
+  "feature_ids": "troubadour-auteur-1-skill, troubadour-auteur-1-blocking, troubadour-auteur-1-dramatic-monologue, troubadour-auteur-1-turnabout-is-fair-play",
+  "feature_names": "Skill, Blocking, Dramatic Monologue, Turnabout Is Fair Play"
+ },
+ {
+  "_id": "troubadour-duelist",
+  "name": "Duelist",
+  "class": "Troubadour",
+  "description": "Drama infuses your every movement done in tandem with another. You perform dances of death, putting trust in your opponent to return your passion in kind.",
+  "feature_ids": "troubadour-duelist-1-skill, troubadour-duelist-1-acrobatics, troubadour-duelist-1-star-power, troubadour-duelist-1-riposte",
+  "feature_names": "Skill, Acrobatics, Star Power, Riposte"
+ },
+ {
+  "_id": "troubadour-virtuoso",
+  "name": "Virtuoso",
+  "class": "Troubadour",
+  "description": "You find drama in music and song, weaving magic between vibrations and filling the audience with your pathos.",
+  "feature_ids": "troubadour-virtuoso-1-skill, troubadour-virtuoso-1-power-chord, troubadour-virtuoso-1-thunder-mother, troubadour-virtuoso-1-ballad-of-the-beast, troubadour-virtuoso-1-harmonize",
+  "feature_names": "Skill, Power Chord, “Thunder Mother”, “Ballad of the Beast”, Harmonize"
+ }
+]

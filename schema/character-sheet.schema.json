@@ -179,7 +179,7 @@
                 },
                 "from": {
                   "type": "string",
-                  "description": "The picked entry's property to read values or options from."
+                  "description": "The picked entry's property to read values or options from. For a grant into a content_list, a list (or comma-separated text) of entry ids to add."
                 },
                 "ref": {
                   "type": "string",
@@ -206,6 +206,17 @@
                   "type": "string",
                   "maxLength": 200,
                   "description": "The prompt shown for a choice."
+                },
+                "names": {
+                  "type": "string",
+                  "description": "With a content_list `from`: the property listing each entry's name, in the same order - what each is added as when the catalog does not have its id."
+                },
+                "carry": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "description": "Values copied from the picked entry onto each granted freeform entry, as {target field: picked property} - the species' name as each trait's source."
                 }
               }
             }

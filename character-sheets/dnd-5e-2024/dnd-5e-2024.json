@@ -2,7 +2,7 @@
   "$schema": "../../schema/character-sheet.schema.json",
   "id": "dnd-5e-2024",
   "name": "D&D 5th Edition (2024)",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "system": "Dungeons & Dragons 5th Edition (2024)",
   "description": "A character sheet for the 2024 revision of D&D 5th Edition, with the SRD 5.2 catalogue of classes, species, backgrounds, feats and spells.",
   "author": "hunter-read",
@@ -164,6 +164,10 @@
         "description": {
           "type": "textarea",
           "label": "Description"
+        },
+        "trait_ids": {
+          "type": "text",
+          "label": "Trait Ids"
         }
       }
     },
@@ -326,6 +330,75 @@
           "label": "Description"
         }
       }
+    },
+    "trait": {
+      "label": "Species Trait",
+      "label_plural": "Species Traits",
+      "identity_field": "name",
+      "sort_default": [
+        "species",
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "description"
+      ],
+      "filter_fields": [
+        "species"
+      ],
+      "compact_display": "{species}",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "species": {
+          "type": "text",
+          "label": "Species"
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Description"
+        }
+      }
+    },
+    "feature": {
+      "label": "Class Feature",
+      "label_plural": "Class Features",
+      "identity_field": "name",
+      "sort_default": [
+        "class",
+        "level",
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "description"
+      ],
+      "filter_fields": [
+        "class"
+      ],
+      "compact_display": "{class} {level}",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "class": {
+          "type": "text",
+          "label": "Class"
+        },
+        "level": {
+          "type": "number",
+          "label": "Level",
+          "min": 1,
+          "max": 20
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Description"
+        }
+      }
     }
   },
   "fields": {
@@ -353,7 +426,17 @@
     "species": {
       "type": "content_ref",
       "label": "Species",
-      "content_type": "species"
+      "content_type": "species",
+      "on_pick": [
+        {
+          "grant": "species_traits",
+          "from": "trait_ids",
+          "names": "traits",
+          "carry": {
+            "species": "name"
+          }
+        }
+      ]
     },
     "background": {
       "type": "content_ref",
@@ -517,25 +600,6 @@
       "label": "CHA save proficiency",
       "default_from": "contains(ref(klass, 'saving_throws'), 'charisma')"
     },
-    "ability_method": {
-      "type": "select",
-      "label": "Ability score method",
-      "default": "manual",
-      "options": [
-        {
-          "value": "manual",
-          "label": "Rolled or manual"
-        },
-        {
-          "value": "standard_array",
-          "label": "Standard array"
-        },
-        {
-          "value": "point_buy",
-          "label": "Point buy"
-        }
-      ]
-    },
     "hp_max": {
       "type": "number",
       "label": "HP Maximum",
@@ -558,13 +622,13 @@
     "hit_dice": {
       "type": "text",
       "label": "Hit Dice",
-      "default_from": "ref(klass, 'hit_die') ? concat(level, 'd', ref(klass, 'hit_die')) : ''"
+      "default_from": "ref(klass, 'hit_die') ? concat(level, 'd', ref(klass, 'hit_die')) : ''",
+      "placeholder": "e.g. 5d10 + 2d6"
     },
     "hit_dice_spent": {
-      "type": "number",
+      "type": "text",
       "label": "Hit Dice Spent",
-      "min": 0,
-      "default": 0
+      "placeholder": "e.g. 1d10 + 1d6"
     },
     "death_success_1": {
       "type": "checkbox",
@@ -690,12 +754,21 @@
       ],
       "default_from": "ref(klass, 'spellcasting')"
     },
+    "caster_level": {
+      "type": "number",
+      "label": "Caster Level",
+      "min": 0,
+      "max": 20,
+      "default": 0,
+      "default_from": "ref(klass, 'caster_type') == 'full' ? level : (ref(klass, 'caster_type') == 'half' ? ceil(level / 2) : 0)"
+    },
     "slots_1_total": {
       "type": "number",
       "label": "Level 1 slots",
       "min": 0,
       "max": 9,
-      "default": 0
+      "default": 0,
+      "default_from": "caster_level >= 3 ? 4 : (caster_level == 2 ? 3 : (caster_level == 1 ? 2 : 0))"
     },
     "slots_1_used": {
       "type": "number",
@@ -709,7 +782,8 @@
       "label": "Level 2 slots",
       "min": 0,
       "max": 9,
-      "default": 0
+      "default": 0,
+      "default_from": "caster_level >= 4 ? 3 : (caster_level == 3 ? 2 : 0)"
     },
     "slots_2_used": {
       "type": "number",
@@ -723,7 +797,8 @@
       "label": "Level 3 slots",
       "min": 0,
       "max": 9,
-      "default": 0
+      "default": 0,
+      "default_from": "caster_level >= 6 ? 3 : (caster_level == 5 ? 2 : 0)"
     },
     "slots_3_used": {
       "type": "number",
@@ -737,7 +812,8 @@
       "label": "Level 4 slots",
       "min": 0,
       "max": 9,
-      "default": 0
+      "default": 0,
+      "default_from": "caster_level >= 9 ? 3 : (caster_level == 8 ? 2 : (caster_level == 7 ? 1 : 0))"
     },
     "slots_4_used": {
       "type": "number",
@@ -751,7 +827,8 @@
       "label": "Level 5 slots",
       "min": 0,
       "max": 9,
-      "default": 0
+      "default": 0,
+      "default_from": "caster_level >= 18 ? 3 : (caster_level >= 10 ? 2 : (caster_level == 9 ? 1 : 0))"
     },
     "slots_5_used": {
       "type": "number",
@@ -765,7 +842,8 @@
       "label": "Level 6 slots",
       "min": 0,
       "max": 9,
-      "default": 0
+      "default": 0,
+      "default_from": "caster_level >= 19 ? 2 : (caster_level >= 11 ? 1 : 0)"
     },
     "slots_6_used": {
       "type": "number",
@@ -779,7 +857,8 @@
       "label": "Level 7 slots",
       "min": 0,
       "max": 9,
-      "default": 0
+      "default": 0,
+      "default_from": "caster_level >= 20 ? 2 : (caster_level >= 13 ? 1 : 0)"
     },
     "slots_7_used": {
       "type": "number",
@@ -793,7 +872,8 @@
       "label": "Level 8 slots",
       "min": 0,
       "max": 9,
-      "default": 0
+      "default": 0,
+      "default_from": "caster_level >= 15 ? 1 : 0"
     },
     "slots_8_used": {
       "type": "number",
@@ -807,11 +887,35 @@
       "label": "Level 9 slots",
       "min": 0,
       "max": 9,
-      "default": 0
+      "default": 0,
+      "default_from": "caster_level >= 17 ? 1 : 0"
     },
     "slots_9_used": {
       "type": "number",
       "label": "Level 9 slots expended",
+      "min": 0,
+      "max": 9,
+      "default": 0
+    },
+    "pact_slots_total": {
+      "type": "number",
+      "label": "Pact Magic slots",
+      "min": 0,
+      "max": 9,
+      "default": 0,
+      "default_from": "ref(klass, 'caster_type') == 'pact' ? (level >= 17 ? 4 : (level >= 11 ? 3 : (level >= 2 ? 2 : 1))) : 0"
+    },
+    "pact_slot_level": {
+      "type": "number",
+      "label": "Pact Magic slot level",
+      "min": 0,
+      "max": 5,
+      "default": 0,
+      "default_from": "ref(klass, 'caster_type') == 'pact' ? min(5, ceil(level / 2)) : 0"
+    },
+    "pact_slots_used": {
+      "type": "number",
+      "label": "Pact Magic slots expended",
       "min": 0,
       "max": 9,
       "default": 0
@@ -821,11 +925,32 @@
       "label": "Cantrips & Prepared Spells",
       "content_type": "spell",
       "allow_freeform": true,
-      "visible_if": "is_caster",
       "per_entry_fields": {
+        "ability": {
+          "type": "select",
+          "label": "Ability",
+          "options": [
+            {
+              "value": "",
+              "label": "Class"
+            },
+            {
+              "value": "intelligence",
+              "label": "Int"
+            },
+            {
+              "value": "wisdom",
+              "label": "Wis"
+            },
+            {
+              "value": "charisma",
+              "label": "Cha"
+            }
+          ]
+        },
         "prepared": {
           "type": "checkbox",
-          "label": "Prep"
+          "label": "Prepared"
         }
       },
       "display_columns": [
@@ -905,15 +1030,16 @@
       ]
     },
     "features": {
-      "type": "textarea",
+      "type": "content_list",
       "label": "Class Features",
-      "rows": 8
+      "content_type": "feature",
+      "allow_freeform": true
     },
     "species_traits": {
-      "type": "textarea",
+      "type": "content_list",
       "label": "Species Traits",
-      "rows": 6,
-      "default_from": "ref(species, 'traits')"
+      "content_type": "trait",
+      "allow_freeform": true
     },
     "armor_light": {
       "type": "checkbox",
@@ -1188,24 +1314,12 @@
     "carry_capacity": {
       "formula": "strength_score * 15",
       "label": "Carrying Capacity"
-    },
-    "point_buy_total": {
-      "formula": "(strength - 8) + max(0, strength - 13) + (dexterity - 8) + max(0, dexterity - 13) + (constitution - 8) + max(0, constitution - 13) + (intelligence - 8) + max(0, intelligence - 13) + (wisdom - 8) + max(0, wisdom - 13) + (charisma - 8) + max(0, charisma - 13)",
-      "label": "Point Buy Total"
     }
   },
   "layout_file": "dnd-5e-2024.html",
   "styles_file": "dnd-5e-2024.css",
   "name_field": "hero_name",
   "validators": [
-    {
-      "rule": "ability_method != 'standard_array' or (((strength == 15) + (dexterity == 15) + (constitution == 15) + (intelligence == 15) + (wisdom == 15) + (charisma == 15) == 1) and ((strength == 14) + (dexterity == 14) + (constitution == 14) + (intelligence == 14) + (wisdom == 14) + (charisma == 14) == 1) and ((strength == 13) + (dexterity == 13) + (constitution == 13) + (intelligence == 13) + (wisdom == 13) + (charisma == 13) == 1) and ((strength == 12) + (dexterity == 12) + (constitution == 12) + (intelligence == 12) + (wisdom == 12) + (charisma == 12) == 1) and ((strength == 10) + (dexterity == 10) + (constitution == 10) + (intelligence == 10) + (wisdom == 10) + (charisma == 10) == 1) and ((strength == 8) + (dexterity == 8) + (constitution == 8) + (intelligence == 8) + (wisdom == 8) + (charisma == 8) == 1))",
-      "message": "The standard array is 15, 14, 13, 12, 10 and 8, each used once."
-    },
-    {
-      "rule": "ability_method != 'point_buy' or (point_buy_total <= 27 and min(strength, dexterity, constitution, intelligence, wisdom, charisma) >= 8 and max(strength, dexterity, constitution, intelligence, wisdom, charisma) <= 15)",
-      "message": "Point buy allows 27 points, with each base score from 8 to 15."
-    },
     {
       "rule": "strength_bonus + dexterity_bonus + constitution_bonus + intelligence_bonus + wisdom_bonus + charisma_bonus <= 3",
       "message": "A background grants +2 and +1, or +1 to three abilities - 3 in total."

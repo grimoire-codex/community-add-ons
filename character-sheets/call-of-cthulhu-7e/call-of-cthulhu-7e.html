@@ -1,0 +1,217 @@
+<!-- Call of Cthulhu 7th Edition investigator sheet.
+     After the printed investigator sheet: the eight characteristics and the
+     values derived from them across the top, then every skill as a line with
+     its improvement box, whether it is an occupation skill, its value, and the
+     half and fifth used for Hard and Extreme successes. Every derived value -
+     hit points, magic points, starting Sanity, damage bonus, Build, Move - can
+     be clicked and set by hand. -->
+<div class="sheet-coc">
+<g-tabs>
+
+<g-tab title="Investigator">
+
+  <header class="topbar">
+    <div class="identity box">
+      <div class="name-row"><span class="tiny">Investigator</span><g-field name="investigator_name" label="" /></div>
+      <div class="identity-grid">
+        <div><span class="tiny">Occupation</span><g-field name="occupation" label="" /></div>
+        <div><span class="tiny">Player</span><g-field name="player" label="" /></div>
+        <div><span class="tiny">Age</span><g-field name="age" label="" variant="compact" /></div>
+        <div><span class="tiny">Pronouns</span><g-field name="pronouns" label="" /></div>
+        <div><span class="tiny">Residence</span><g-field name="residence" label="" /></div>
+        <div><span class="tiny">Birthplace</span><g-field name="birthplace" label="" /></div>
+      </div>
+    </div>
+    <section class="characteristics box">
+      <h3 class="box-heading">Characteristics</h3>
+      <div class="char-grid">
+      <div class="char"><span class="c-name">STR</span><g-field name="strength" label="" variant="compact" /><span class="hf"><g-value name="strength_half" /><g-value name="strength_fifth" /></span></div>
+      <div class="char"><span class="c-name">CON</span><g-field name="constitution" label="" variant="compact" /><span class="hf"><g-value name="constitution_half" /><g-value name="constitution_fifth" /></span></div>
+      <div class="char"><span class="c-name">SIZ</span><g-field name="size" label="" variant="compact" /><span class="hf"><g-value name="size_half" /><g-value name="size_fifth" /></span></div>
+      <div class="char"><span class="c-name">DEX</span><g-field name="dexterity" label="" variant="compact" /><span class="hf"><g-value name="dexterity_half" /><g-value name="dexterity_fifth" /></span></div>
+      <div class="char"><span class="c-name">APP</span><g-field name="appearance" label="" variant="compact" /><span class="hf"><g-value name="appearance_half" /><g-value name="appearance_fifth" /></span></div>
+      <div class="char"><span class="c-name">INT</span><g-field name="intelligence" label="" variant="compact" /><span class="hf"><g-value name="intelligence_half" /><g-value name="intelligence_fifth" /></span></div>
+      <div class="char"><span class="c-name">POW</span><g-field name="power" label="" variant="compact" /><span class="hf"><g-value name="power_half" /><g-value name="power_fifth" /></span></div>
+      <div class="char"><span class="c-name">EDU</span><g-field name="education" label="" variant="compact" /><span class="hf"><g-value name="education_half" /><g-value name="education_fifth" /></span></div>
+      </div>
+    </section>
+  </header>
+
+  <section class="vitals">
+    <div class="box vital">
+      <span class="tiny box-title">Hit Points</span>
+      <div class="pair"><span class="tiny">Current</span><span class="tiny">Max</span>
+        <div class="big-input"><g-field name="hp_current" label="" variant="compact" /></div><g-field name="hp_max" label="" variant="compact" /></div>
+      <div class="flags">
+        <label class="opt"><g-field name="major_wound" label="" />Major wound</label>
+        <label class="opt"><g-field name="dying" label="" />Dying</label>
+        <label class="opt"><g-field name="unconscious" label="" />Unconscious</label>
+      </div>
+    </div>
+    <div class="box vital sanity">
+      <span class="tiny box-title">Sanity</span>
+      <div class="trio"><span class="tiny">Current</span><span class="tiny">Start</span><span class="tiny">Max</span>
+        <div class="big-input"><g-field name="sanity_current" label="" variant="compact" /></div><g-field name="sanity_start" label="" variant="compact" />
+        <span class="big small"><g-value name="sanity_max" /></span></div>
+      <p class="hint">One-fifth of Sanity <b><g-value name="sanity_fifth" /></b></p>
+      <div class="flags">
+        <label class="opt"><g-field name="temporary_insanity" label="" />Temporary insanity</label>
+        <label class="opt"><g-field name="indefinite_insanity" label="" />Indefinite insanity</label>
+      </div>
+    </div>
+    <div class="box vital">
+      <span class="tiny box-title">Luck</span>
+      <div class="big-input"><g-field name="luck" label="" variant="compact" /></div>
+      <span class="hf center"><span>Half <b><g-value name="luck_half" /></b></span><span>Fifth <b><g-value name="luck_fifth" /></b></span></span>
+    </div>
+    <div class="box vital">
+      <span class="tiny box-title">Magic Points</span>
+      <div class="pair"><span class="tiny">Current</span><span class="tiny">Max</span>
+        <div class="big-input"><g-field name="mp_current" label="" variant="compact" /></div><g-field name="mp_max" label="" variant="compact" /></div>
+    </div>
+    <div class="box vital combat-stats">
+      <span class="tiny box-title">Combat</span>
+      <div class="trio"><span class="tiny">Dmg Bonus</span><span class="tiny">Build</span><span class="tiny">Move</span>
+        <span class="big small"><g-value name="damage_bonus" /></span>
+        <span class="big small"><g-value name="build" /></span>
+        <span class="big small"><g-value name="move" /></span></div>
+    </div>
+  </section>
+
+  <section class="box">
+    <h3 class="box-heading">Investigator Skills</h3>
+    <p class="hint key">First box: improvement check. Second box: occupation skill. Then the value, its half and its fifth.</p>
+    <ul class="skills">
+          <li class="skill"><g-option field="improvement_checks" value="Accounting" label="Improvement check for Accounting" /><span class="s-name">Accounting <span class="base">05%</span></span><span class="occ"><g-option field="occupation_skills" value="Accounting" label="Accounting is an occupation skill" /></span><g-field name="sk_accounting" label="" variant="compact" /><span class="hf"><g-value name="sk_accounting_half" /><g-value name="sk_accounting_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Anthropology" label="Improvement check for Anthropology" /><span class="s-name">Anthropology <span class="base">01%</span></span><span class="occ"><g-option field="occupation_skills" value="Anthropology" label="Anthropology is an occupation skill" /></span><g-field name="sk_anthropology" label="" variant="compact" /><span class="hf"><g-value name="sk_anthropology_half" /><g-value name="sk_anthropology_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Appraise" label="Improvement check for Appraise" /><span class="s-name">Appraise <span class="base">05%</span></span><span class="occ"><g-option field="occupation_skills" value="Appraise" label="Appraise is an occupation skill" /></span><g-field name="sk_appraise" label="" variant="compact" /><span class="hf"><g-value name="sk_appraise_half" /><g-value name="sk_appraise_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Archaeology" label="Improvement check for Archaeology" /><span class="s-name">Archaeology <span class="base">01%</span></span><span class="occ"><g-option field="occupation_skills" value="Archaeology" label="Archaeology is an occupation skill" /></span><g-field name="sk_archaeology" label="" variant="compact" /><span class="hf"><g-value name="sk_archaeology_half" /><g-value name="sk_archaeology_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="art_craft_1" label="Improvement check for Art/Craft" /><span class="s-name slot-name"><span class="tiny inline">Art/Craft</span><g-field name="art_craft_1_name" label="" /></span><span class="occ"><g-field name="art_craft_1_occ" label="" /></span><g-field name="art_craft_1" label="" variant="compact" /><span class="hf"><g-value name="art_craft_1_half" /><g-value name="art_craft_1_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="art_craft_2" label="Improvement check for Art/Craft" /><span class="s-name slot-name"><span class="tiny inline">Art/Craft</span><g-field name="art_craft_2_name" label="" /></span><span class="occ"><g-field name="art_craft_2_occ" label="" /></span><g-field name="art_craft_2" label="" variant="compact" /><span class="hf"><g-value name="art_craft_2_half" /><g-value name="art_craft_2_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Charm" label="Improvement check for Charm" /><span class="s-name">Charm <span class="base">15%</span></span><span class="occ"><g-option field="occupation_skills" value="Charm" label="Charm is an occupation skill" /></span><g-field name="sk_charm" label="" variant="compact" /><span class="hf"><g-value name="sk_charm_half" /><g-value name="sk_charm_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Climb" label="Improvement check for Climb" /><span class="s-name">Climb <span class="base">20%</span></span><span class="occ"><g-option field="occupation_skills" value="Climb" label="Climb is an occupation skill" /></span><g-field name="sk_climb" label="" variant="compact" /><span class="hf"><g-value name="sk_climb_half" /><g-value name="sk_climb_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Credit Rating" label="Improvement check for Credit Rating" /><span class="s-name">Credit Rating <span class="base">00%</span></span><span class="occ"></span><g-field name="sk_credit_rating" label="" variant="compact" /><span class="hf"><g-value name="sk_credit_rating_half" /><g-value name="sk_credit_rating_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Cthulhu Mythos" label="Improvement check for Cthulhu Mythos" /><span class="s-name">Cthulhu Mythos <span class="base">00%</span></span><span class="occ"></span><g-field name="sk_cthulhu_mythos" label="" variant="compact" /><span class="hf"><g-value name="sk_cthulhu_mythos_half" /><g-value name="sk_cthulhu_mythos_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Disguise" label="Improvement check for Disguise" /><span class="s-name">Disguise <span class="base">05%</span></span><span class="occ"><g-option field="occupation_skills" value="Disguise" label="Disguise is an occupation skill" /></span><g-field name="sk_disguise" label="" variant="compact" /><span class="hf"><g-value name="sk_disguise_half" /><g-value name="sk_disguise_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Dodge" label="Improvement check for Dodge" /><span class="s-name">Dodge <span class="base">½DEX</span></span><span class="occ"><g-option field="occupation_skills" value="Dodge" label="Dodge is an occupation skill" /></span><g-field name="sk_dodge" label="" variant="compact" /><span class="hf"><g-value name="sk_dodge_half" /><g-value name="sk_dodge_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Drive Auto" label="Improvement check for Drive Auto" /><span class="s-name">Drive Auto <span class="base">20%</span></span><span class="occ"><g-option field="occupation_skills" value="Drive Auto" label="Drive Auto is an occupation skill" /></span><g-field name="sk_drive_auto" label="" variant="compact" /><span class="hf"><g-value name="sk_drive_auto_half" /><g-value name="sk_drive_auto_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Electrical Repair" label="Improvement check for Electrical Repair" /><span class="s-name">Electrical Repair <span class="base">10%</span></span><span class="occ"><g-option field="occupation_skills" value="Electrical Repair" label="Electrical Repair is an occupation skill" /></span><g-field name="sk_electrical_repair" label="" variant="compact" /><span class="hf"><g-value name="sk_electrical_repair_half" /><g-value name="sk_electrical_repair_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Fast Talk" label="Improvement check for Fast Talk" /><span class="s-name">Fast Talk <span class="base">05%</span></span><span class="occ"><g-option field="occupation_skills" value="Fast Talk" label="Fast Talk is an occupation skill" /></span><g-field name="sk_fast_talk" label="" variant="compact" /><span class="hf"><g-value name="sk_fast_talk_half" /><g-value name="sk_fast_talk_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Fighting (Brawl)" label="Improvement check for Fighting (Brawl)" /><span class="s-name">Fighting (Brawl) <span class="base">25%</span></span><span class="occ"><g-option field="occupation_skills" value="Fighting (Brawl)" label="Fighting (Brawl) is an occupation skill" /></span><g-field name="sk_fighting_brawl" label="" variant="compact" /><span class="hf"><g-value name="sk_fighting_brawl_half" /><g-value name="sk_fighting_brawl_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="fighting_other" label="Improvement check for Fighting" /><span class="s-name slot-name"><span class="tiny inline">Fighting</span><g-field name="fighting_other_name" label="" /></span><span class="occ"><g-field name="fighting_other_occ" label="" /></span><g-field name="fighting_other" label="" variant="compact" /><span class="hf"><g-value name="fighting_other_half" /><g-value name="fighting_other_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Firearms (Handgun)" label="Improvement check for Firearms (Handgun)" /><span class="s-name">Firearms (Handgun) <span class="base">20%</span></span><span class="occ"><g-option field="occupation_skills" value="Firearms (Handgun)" label="Firearms (Handgun) is an occupation skill" /></span><g-field name="sk_firearms_handgun" label="" variant="compact" /><span class="hf"><g-value name="sk_firearms_handgun_half" /><g-value name="sk_firearms_handgun_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Firearms (Rifle/Shotgun)" label="Improvement check for Firearms (Rifle/Shotgun)" /><span class="s-name">Firearms (Rifle/Shotgun) <span class="base">25%</span></span><span class="occ"><g-option field="occupation_skills" value="Firearms (Rifle/Shotgun)" label="Firearms (Rifle/Shotgun) is an occupation skill" /></span><g-field name="sk_firearms_rifle_shotgun" label="" variant="compact" /><span class="hf"><g-value name="sk_firearms_rifle_shotgun_half" /><g-value name="sk_firearms_rifle_shotgun_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="firearms_other" label="Improvement check for Firearms" /><span class="s-name slot-name"><span class="tiny inline">Firearms</span><g-field name="firearms_other_name" label="" /></span><span class="occ"><g-field name="firearms_other_occ" label="" /></span><g-field name="firearms_other" label="" variant="compact" /><span class="hf"><g-value name="firearms_other_half" /><g-value name="firearms_other_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="First Aid" label="Improvement check for First Aid" /><span class="s-name">First Aid <span class="base">30%</span></span><span class="occ"><g-option field="occupation_skills" value="First Aid" label="First Aid is an occupation skill" /></span><g-field name="sk_first_aid" label="" variant="compact" /><span class="hf"><g-value name="sk_first_aid_half" /><g-value name="sk_first_aid_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="History" label="Improvement check for History" /><span class="s-name">History <span class="base">05%</span></span><span class="occ"><g-option field="occupation_skills" value="History" label="History is an occupation skill" /></span><g-field name="sk_history" label="" variant="compact" /><span class="hf"><g-value name="sk_history_half" /><g-value name="sk_history_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Intimidate" label="Improvement check for Intimidate" /><span class="s-name">Intimidate <span class="base">15%</span></span><span class="occ"><g-option field="occupation_skills" value="Intimidate" label="Intimidate is an occupation skill" /></span><g-field name="sk_intimidate" label="" variant="compact" /><span class="hf"><g-value name="sk_intimidate_half" /><g-value name="sk_intimidate_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Jump" label="Improvement check for Jump" /><span class="s-name">Jump <span class="base">20%</span></span><span class="occ"><g-option field="occupation_skills" value="Jump" label="Jump is an occupation skill" /></span><g-field name="sk_jump" label="" variant="compact" /><span class="hf"><g-value name="sk_jump_half" /><g-value name="sk_jump_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="language_other_1" label="Improvement check for Language (Other)" /><span class="s-name slot-name"><span class="tiny inline">Language (Other)</span><g-field name="language_other_1_name" label="" /></span><span class="occ"><g-field name="language_other_1_occ" label="" /></span><g-field name="language_other_1" label="" variant="compact" /><span class="hf"><g-value name="language_other_1_half" /><g-value name="language_other_1_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="language_other_2" label="Improvement check for Language (Other)" /><span class="s-name slot-name"><span class="tiny inline">Language (Other)</span><g-field name="language_other_2_name" label="" /></span><span class="occ"><g-field name="language_other_2_occ" label="" /></span><g-field name="language_other_2" label="" variant="compact" /><span class="hf"><g-value name="language_other_2_half" /><g-value name="language_other_2_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Language (Own)" label="Improvement check for Language (Own)" /><span class="s-name">Language (Own) <span class="base">EDU</span></span><span class="occ"><g-option field="occupation_skills" value="Language (Own)" label="Language (Own) is an occupation skill" /></span><g-field name="sk_language_own" label="" variant="compact" /><span class="hf"><g-value name="sk_language_own_half" /><g-value name="sk_language_own_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Law" label="Improvement check for Law" /><span class="s-name">Law <span class="base">05%</span></span><span class="occ"><g-option field="occupation_skills" value="Law" label="Law is an occupation skill" /></span><g-field name="sk_law" label="" variant="compact" /><span class="hf"><g-value name="sk_law_half" /><g-value name="sk_law_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Library Use" label="Improvement check for Library Use" /><span class="s-name">Library Use <span class="base">20%</span></span><span class="occ"><g-option field="occupation_skills" value="Library Use" label="Library Use is an occupation skill" /></span><g-field name="sk_library_use" label="" variant="compact" /><span class="hf"><g-value name="sk_library_use_half" /><g-value name="sk_library_use_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Listen" label="Improvement check for Listen" /><span class="s-name">Listen <span class="base">20%</span></span><span class="occ"><g-option field="occupation_skills" value="Listen" label="Listen is an occupation skill" /></span><g-field name="sk_listen" label="" variant="compact" /><span class="hf"><g-value name="sk_listen_half" /><g-value name="sk_listen_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Locksmith" label="Improvement check for Locksmith" /><span class="s-name">Locksmith <span class="base">01%</span></span><span class="occ"><g-option field="occupation_skills" value="Locksmith" label="Locksmith is an occupation skill" /></span><g-field name="sk_locksmith" label="" variant="compact" /><span class="hf"><g-value name="sk_locksmith_half" /><g-value name="sk_locksmith_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Mechanical Repair" label="Improvement check for Mechanical Repair" /><span class="s-name">Mechanical Repair <span class="base">10%</span></span><span class="occ"><g-option field="occupation_skills" value="Mechanical Repair" label="Mechanical Repair is an occupation skill" /></span><g-field name="sk_mechanical_repair" label="" variant="compact" /><span class="hf"><g-value name="sk_mechanical_repair_half" /><g-value name="sk_mechanical_repair_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Medicine" label="Improvement check for Medicine" /><span class="s-name">Medicine <span class="base">01%</span></span><span class="occ"><g-option field="occupation_skills" value="Medicine" label="Medicine is an occupation skill" /></span><g-field name="sk_medicine" label="" variant="compact" /><span class="hf"><g-value name="sk_medicine_half" /><g-value name="sk_medicine_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Natural World" label="Improvement check for Natural World" /><span class="s-name">Natural World <span class="base">10%</span></span><span class="occ"><g-option field="occupation_skills" value="Natural World" label="Natural World is an occupation skill" /></span><g-field name="sk_natural_world" label="" variant="compact" /><span class="hf"><g-value name="sk_natural_world_half" /><g-value name="sk_natural_world_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Navigate" label="Improvement check for Navigate" /><span class="s-name">Navigate <span class="base">10%</span></span><span class="occ"><g-option field="occupation_skills" value="Navigate" label="Navigate is an occupation skill" /></span><g-field name="sk_navigate" label="" variant="compact" /><span class="hf"><g-value name="sk_navigate_half" /><g-value name="sk_navigate_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Occult" label="Improvement check for Occult" /><span class="s-name">Occult <span class="base">05%</span></span><span class="occ"><g-option field="occupation_skills" value="Occult" label="Occult is an occupation skill" /></span><g-field name="sk_occult" label="" variant="compact" /><span class="hf"><g-value name="sk_occult_half" /><g-value name="sk_occult_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Operate Heavy Machinery" label="Improvement check for Operate Heavy Machinery" /><span class="s-name">Operate Heavy Machinery <span class="base">01%</span></span><span class="occ"><g-option field="occupation_skills" value="Operate Heavy Machinery" label="Operate Heavy Machinery is an occupation skill" /></span><g-field name="sk_operate_heavy_machinery" label="" variant="compact" /><span class="hf"><g-value name="sk_operate_heavy_machinery_half" /><g-value name="sk_operate_heavy_machinery_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="other_skill_1" label="Improvement check for Other" /><span class="s-name slot-name"><span class="tiny inline">Other</span><g-field name="other_skill_1_name" label="" /></span><span class="occ"><g-field name="other_skill_1_occ" label="" /></span><g-field name="other_skill_1" label="" variant="compact" /><span class="hf"><g-value name="other_skill_1_half" /><g-value name="other_skill_1_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="other_skill_2" label="Improvement check for Other" /><span class="s-name slot-name"><span class="tiny inline">Other</span><g-field name="other_skill_2_name" label="" /></span><span class="occ"><g-field name="other_skill_2_occ" label="" /></span><g-field name="other_skill_2" label="" variant="compact" /><span class="hf"><g-value name="other_skill_2_half" /><g-value name="other_skill_2_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="other_skill_3" label="Improvement check for Other" /><span class="s-name slot-name"><span class="tiny inline">Other</span><g-field name="other_skill_3_name" label="" /></span><span class="occ"><g-field name="other_skill_3_occ" label="" /></span><g-field name="other_skill_3" label="" variant="compact" /><span class="hf"><g-value name="other_skill_3_half" /><g-value name="other_skill_3_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Persuade" label="Improvement check for Persuade" /><span class="s-name">Persuade <span class="base">10%</span></span><span class="occ"><g-option field="occupation_skills" value="Persuade" label="Persuade is an occupation skill" /></span><g-field name="sk_persuade" label="" variant="compact" /><span class="hf"><g-value name="sk_persuade_half" /><g-value name="sk_persuade_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="pilot" label="Improvement check for Pilot" /><span class="s-name slot-name"><span class="tiny inline">Pilot</span><g-field name="pilot_name" label="" /></span><span class="occ"><g-field name="pilot_occ" label="" /></span><g-field name="pilot" label="" variant="compact" /><span class="hf"><g-value name="pilot_half" /><g-value name="pilot_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Psychoanalysis" label="Improvement check for Psychoanalysis" /><span class="s-name">Psychoanalysis <span class="base">01%</span></span><span class="occ"><g-option field="occupation_skills" value="Psychoanalysis" label="Psychoanalysis is an occupation skill" /></span><g-field name="sk_psychoanalysis" label="" variant="compact" /><span class="hf"><g-value name="sk_psychoanalysis_half" /><g-value name="sk_psychoanalysis_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Psychology" label="Improvement check for Psychology" /><span class="s-name">Psychology <span class="base">10%</span></span><span class="occ"><g-option field="occupation_skills" value="Psychology" label="Psychology is an occupation skill" /></span><g-field name="sk_psychology" label="" variant="compact" /><span class="hf"><g-value name="sk_psychology_half" /><g-value name="sk_psychology_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Ride" label="Improvement check for Ride" /><span class="s-name">Ride <span class="base">05%</span></span><span class="occ"><g-option field="occupation_skills" value="Ride" label="Ride is an occupation skill" /></span><g-field name="sk_ride" label="" variant="compact" /><span class="hf"><g-value name="sk_ride_half" /><g-value name="sk_ride_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="science_1" label="Improvement check for Science" /><span class="s-name slot-name"><span class="tiny inline">Science</span><g-field name="science_1_name" label="" /></span><span class="occ"><g-field name="science_1_occ" label="" /></span><g-field name="science_1" label="" variant="compact" /><span class="hf"><g-value name="science_1_half" /><g-value name="science_1_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="science_2" label="Improvement check for Science" /><span class="s-name slot-name"><span class="tiny inline">Science</span><g-field name="science_2_name" label="" /></span><span class="occ"><g-field name="science_2_occ" label="" /></span><g-field name="science_2" label="" variant="compact" /><span class="hf"><g-value name="science_2_half" /><g-value name="science_2_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Sleight of Hand" label="Improvement check for Sleight of Hand" /><span class="s-name">Sleight of Hand <span class="base">10%</span></span><span class="occ"><g-option field="occupation_skills" value="Sleight of Hand" label="Sleight of Hand is an occupation skill" /></span><g-field name="sk_sleight_of_hand" label="" variant="compact" /><span class="hf"><g-value name="sk_sleight_of_hand_half" /><g-value name="sk_sleight_of_hand_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Spot Hidden" label="Improvement check for Spot Hidden" /><span class="s-name">Spot Hidden <span class="base">25%</span></span><span class="occ"><g-option field="occupation_skills" value="Spot Hidden" label="Spot Hidden is an occupation skill" /></span><g-field name="sk_spot_hidden" label="" variant="compact" /><span class="hf"><g-value name="sk_spot_hidden_half" /><g-value name="sk_spot_hidden_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Stealth" label="Improvement check for Stealth" /><span class="s-name">Stealth <span class="base">20%</span></span><span class="occ"><g-option field="occupation_skills" value="Stealth" label="Stealth is an occupation skill" /></span><g-field name="sk_stealth" label="" variant="compact" /><span class="hf"><g-value name="sk_stealth_half" /><g-value name="sk_stealth_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Survival" label="Improvement check for Survival" /><span class="s-name">Survival <span class="base">10%</span></span><span class="occ"><g-option field="occupation_skills" value="Survival" label="Survival is an occupation skill" /></span><g-field name="sk_survival" label="" variant="compact" /><span class="hf"><g-value name="sk_survival_half" /><g-value name="sk_survival_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Swim" label="Improvement check for Swim" /><span class="s-name">Swim <span class="base">20%</span></span><span class="occ"><g-option field="occupation_skills" value="Swim" label="Swim is an occupation skill" /></span><g-field name="sk_swim" label="" variant="compact" /><span class="hf"><g-value name="sk_swim_half" /><g-value name="sk_swim_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Throw" label="Improvement check for Throw" /><span class="s-name">Throw <span class="base">20%</span></span><span class="occ"><g-option field="occupation_skills" value="Throw" label="Throw is an occupation skill" /></span><g-field name="sk_throw" label="" variant="compact" /><span class="hf"><g-value name="sk_throw_half" /><g-value name="sk_throw_fifth" /></span></li>
+          <li class="skill"><g-option field="improvement_checks" value="Track" label="Improvement check for Track" /><span class="s-name">Track <span class="base">10%</span></span><span class="occ"><g-option field="occupation_skills" value="Track" label="Track is an occupation skill" /></span><g-field name="sk_track" label="" variant="compact" /><span class="hf"><g-value name="sk_track_half" /><g-value name="sk_track_fifth" /></span></li>
+    </ul>
+    <details class="extras">
+      <summary>Base values of the specialisation lines</summary>
+      <div class="bases">
+        <div><span class="tiny">Art/Craft (art craft 1)</span><g-field name="art_craft_1_base" label="" variant="compact" /></div>
+        <div><span class="tiny">Art/Craft (art craft 2)</span><g-field name="art_craft_2_base" label="" variant="compact" /></div>
+        <div><span class="tiny">Science (science 1)</span><g-field name="science_1_base" label="" variant="compact" /></div>
+        <div><span class="tiny">Science (science 2)</span><g-field name="science_2_base" label="" variant="compact" /></div>
+        <div><span class="tiny">Language (Other) (language other 1)</span><g-field name="language_other_1_base" label="" variant="compact" /></div>
+        <div><span class="tiny">Language (Other) (language other 2)</span><g-field name="language_other_2_base" label="" variant="compact" /></div>
+        <div><span class="tiny">Fighting (fighting other)</span><g-field name="fighting_other_base" label="" variant="compact" /></div>
+        <div><span class="tiny">Firearms (firearms other)</span><g-field name="firearms_other_base" label="" variant="compact" /></div>
+        <div><span class="tiny">Pilot (pilot)</span><g-field name="pilot_base" label="" variant="compact" /></div>
+        <div><span class="tiny">Other (other skill 1)</span><g-field name="other_skill_1_base" label="" variant="compact" /></div>
+        <div><span class="tiny">Other (other skill 2)</span><g-field name="other_skill_2_base" label="" variant="compact" /></div>
+        <div><span class="tiny">Other (other skill 3)</span><g-field name="other_skill_3_base" label="" variant="compact" /></div>
+      </div>
+    </details>
+  </section>
+
+  <section class="box points">
+    <h3 class="box-heading">Skill Points</h3>
+    <div class="points-grid">
+      <span class="tiny">Occupation</span><span class="tiny">Spent</span><span class="tiny">Personal Interest</span><span class="tiny">Spent</span>
+      <g-field name="occupation_points" label="" variant="compact" />
+      <span class="big small"><g-value name="occupation_points_spent" /></span>
+      <span class="big small"><g-value name="personal_points" /></span>
+      <span class="big small"><g-value name="personal_points_spent" /></span>
+    </div>
+    <label class="opt"><g-field name="creation_done" label="" />Creation finished - stop checking skill points</label>
+  </section>
+
+  <section class="box">
+    <h3 class="box-heading">Weapons</h3>
+    <p class="hint">Roll against the weapon's skill above: its half for a Hard success, its fifth for an Extreme one. Unarmed is Fighting (Brawl), 1D3 plus damage bonus.</p>
+    <g-field name="weapons" label="" />
+  </section>
+
+</g-tab>
+
+<g-tab title="Backstory">
+
+  <div class="story">
+      <section class="box"><h3 class="box-heading">Personal Description</h3><g-field name="personal_description" label="" /></section>
+      <section class="box"><h3 class="box-heading">Ideology / Beliefs</h3><g-field name="ideology" label="" /></section>
+      <section class="box"><h3 class="box-heading">Significant People</h3><g-field name="significant_people" label="" /></section>
+      <section class="box"><h3 class="box-heading">Meaningful Locations</h3><g-field name="meaningful_locations" label="" /></section>
+      <section class="box"><h3 class="box-heading">Treasured Possessions</h3><g-field name="treasured_possessions" label="" /></section>
+      <section class="box"><h3 class="box-heading">Traits</h3><g-field name="traits" label="" /></section>
+      <section class="box"><h3 class="box-heading">Injuries &amp; Scars</h3><g-field name="injuries" label="" /></section>
+      <section class="box"><h3 class="box-heading">Phobias &amp; Manias</h3><g-field name="phobias" label="" /></section>
+      <section class="box"><h3 class="box-heading">Arcane Tomes, Spells &amp; Artifacts</h3><g-field name="tomes" label="" /></section>
+      <section class="box"><h3 class="box-heading">Encounters with Strange Entities</h3><g-field name="encounters" label="" /></section>
+  </div>
+
+</g-tab>
+
+<g-tab title="Gear &amp; Notes">
+
+  <div class="page-two">
+    <div class="p2-main">
+      <section class="box"><h3 class="box-heading">Gear &amp; Possessions</h3><g-field name="gear" label="" /></section>
+      <section class="box"><h3 class="box-heading">Fellow Investigators</h3><g-field name="fellow_investigators" label="" /></section>
+      <section class="box"><h3 class="box-heading">Notes</h3><g-field name="notes" label="" /></section>
+    </div>
+    <div class="p2-side">
+      <section class="box">
+        <h3 class="box-heading">Cash &amp; Assets</h3>
+        <span class="tiny">Spending Level</span><g-field name="spending_level" label="" />
+        <span class="tiny">Cash</span><g-field name="cash" label="" />
+        <span class="tiny">Assets</span><g-field name="assets" label="" />
+      </section>
+    </div>
+  </div>
+
+</g-tab>
+
+</g-tabs>
+</div>

@@ -7,39 +7,11 @@
     "description": "You gain a bonus to Initiative equal to your Proficiency Bonus, and you can swap Initiative with a willing ally."
   },
   {
-    "_id": "crafter",
-    "name": "Crafter",
-    "category": "Origin",
-    "prerequisite": "",
-    "description": "You gain tool proficiencies, a discount on nonmagical items, and can craft faster."
-  },
-  {
-    "_id": "healer",
-    "name": "Healer",
-    "category": "Origin",
-    "prerequisite": "",
-    "description": "You can use a Healer's Kit to restore hit points, and your healing rolls treat a 1 as a 2."
-  },
-  {
-    "_id": "lucky",
-    "name": "Lucky",
-    "category": "Origin",
-    "prerequisite": "",
-    "description": "You have Luck Points equal to your Proficiency Bonus, spent to gain Advantage or impose Disadvantage."
-  },
-  {
     "_id": "magic-initiate",
     "name": "Magic Initiate",
     "category": "Origin",
     "prerequisite": "",
     "description": "You learn two cantrips and one level 1 spell from a chosen class's spell list."
-  },
-  {
-    "_id": "musician",
-    "name": "Musician",
-    "category": "Origin",
-    "prerequisite": "",
-    "description": "You gain musical instrument proficiencies and can grant Heroic Inspiration after a rest."
   },
   {
     "_id": "savage-attacker",
@@ -56,20 +28,6 @@
     "description": "You gain proficiency in any combination of three skills or tools."
   },
   {
-    "_id": "tavern-brawler",
-    "name": "Tavern Brawler",
-    "category": "Origin",
-    "prerequisite": "",
-    "description": "Your Unarmed Strike damage increases, and you can push a target as a bonus effect."
-  },
-  {
-    "_id": "tough",
-    "name": "Tough",
-    "category": "Origin",
-    "prerequisite": "",
-    "description": "Your hit point maximum increases by twice your character level."
-  },
-  {
     "_id": "ability-score-improvement",
     "name": "Ability Score Improvement",
     "category": "General",
@@ -84,24 +42,80 @@
     "description": "You have Advantage on attacks against creatures you are grappling."
   },
   {
-    "_id": "great-weapon-master",
-    "name": "Great Weapon Master",
-    "category": "General",
-    "prerequisite": "Level 4+, Strength 13+",
-    "description": "Heavy weapon crits and kills grant a bonus attack; you can trade accuracy for damage."
+    "_id": "archery",
+    "name": "Archery",
+    "category": "Fighting Style",
+    "prerequisite": "Fighting Style Feature",
+    "description": "You gain a +2 bonus to attack rolls you make with Ranged weapons."
   },
   {
-    "_id": "sharpshooter",
-    "name": "Sharpshooter",
-    "category": "General",
-    "prerequisite": "Level 4+, Dexterity 13+",
-    "description": "Your ranged attacks ignore cover and suffer no long-range Disadvantage."
+    "_id": "defense",
+    "name": "Defense",
+    "category": "Fighting Style",
+    "prerequisite": "Fighting Style Feature",
+    "description": "While wearing Light, Medium, or Heavy armor, you gain a +1 bonus to Armor Class."
   },
   {
-    "_id": "war-caster",
-    "name": "War Caster",
-    "category": "General",
-    "prerequisite": "Level 4+, spellcasting ability",
-    "description": "You have Advantage on Concentration saves and can cast as an Opportunity Attack."
+    "_id": "great-weapon-fighting",
+    "name": "Great Weapon Fighting",
+    "category": "Fighting Style",
+    "prerequisite": "Fighting Style Feature",
+    "description": "When you roll damage for a Melee weapon attack with a Two-Handed or Versatile weapon held in two hands, treat any 1 or 2 on a damage die as a 3."
+  },
+  {
+    "_id": "two-weapon-fighting",
+    "name": "Two-Weapon Fighting",
+    "category": "Fighting Style",
+    "prerequisite": "Fighting Style Feature",
+    "description": "When you make an extra attack from wielding a Light weapon, you can add your ability modifier to that attack's damage if you aren't already."
+  },
+  {
+    "_id": "boon-of-combat-prowess",
+    "name": "Boon of Combat Prowess",
+    "category": "Epic Boon",
+    "prerequisite": "Level 19+",
+    "description": "Increase one ability score by 1 (max 30). When you miss with an attack roll you can hit instead, once until the start of your next turn."
+  },
+  {
+    "_id": "boon-of-dimensional-travel",
+    "name": "Boon of Dimensional Travel",
+    "category": "Epic Boon",
+    "prerequisite": "Level 19+",
+    "description": "Increase one ability score by 1 (max 30). Immediately after the Attack or Magic action, you can teleport up to 30 feet to a space you can see."
+  },
+  {
+    "_id": "boon-of-fate",
+    "name": "Boon of Fate",
+    "category": "Epic Boon",
+    "prerequisite": "Level 19+",
+    "description": "Increase one ability score by 1 (max 30). When a creature within 60 feet succeeds or fails a D20 Test, roll 2d4 as a bonus or penalty; once until you roll Initiative or rest."
+  },
+  {
+    "_id": "boon-of-irresistible-offense",
+    "name": "Boon of Irresistible Offense",
+    "category": "Epic Boon",
+    "prerequisite": "Level 19+",
+    "description": "Increase Strength or Dexterity by 1 (max 30). Your Bludgeoning, Piercing, and Slashing damage ignores Resistance, and a natural 20 deals extra damage equal to that score."
+  },
+  {
+    "_id": "boon-of-spell-recall",
+    "name": "Boon of Spell Recall",
+    "category": "Epic Boon",
+    "prerequisite": "Level 19+, Spellcasting Feature",
+    "description": "Increase Intelligence, Wisdom, or Charisma by 1 (max 30). When you cast with a level 1-4 slot, roll 1d4; on the slot's level, the slot isn't expended."
+  },
+  {
+    "_id": "boon-of-the-night-spirit",
+    "name": "Boon of the Night Spirit",
+    "category": "Epic Boon",
+    "prerequisite": "Level 19+",
+    "description": "Increase one ability score by 1 (max 30). In Dim Light or Darkness you can turn Invisible as a Bonus Action, and have Resistance to all damage except Psychic and Radiant."
+  },
+  {
+    "_id": "boon-of-truesight",
+    "name": "Boon of Truesight",
+    "category": "Epic Boon",
+    "prerequisite": "Level 19+",
+    "description": "Increase one ability score by 1 (max 30). You have Truesight with a range of 60 feet."
   }
 ]

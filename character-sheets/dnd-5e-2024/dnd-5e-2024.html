@@ -41,7 +41,7 @@
       <div class="hitdice box">
         <span class="tiny box-title">Hit Dice</span>
         <span class="tiny">Max</span><g-field name="hit_dice" label="" />
-        <span class="tiny">Spent</span><g-field name="hit_dice_spent" label="" variant="compact" />
+        <span class="tiny">Spent</span><g-field name="hit_dice_spent" label="" />
       </div>
       <div class="death box">
         <span class="tiny box-title">Death Saves</span>
@@ -59,7 +59,6 @@
         <section class="proficiency box">
           <span class="tiny box-title">Proficiency Bonus</span>
           <span class="big">+<g-value name="proficiency" /></span>
-          <span class="tiny legend">Skill boxes: proficient, then expertise</span>
         </section>
         <section class="ability">
           <h3 class="ability-name">Strength</h3>
@@ -73,8 +72,8 @@
             <g-field name="strength_bonus" label="" variant="compact" />
           </div>
           <ul class="lines">
-          <li class="line save"><span class="c-prof"><g-field name="strength_save_prof" label="" /></span><span class="c-exp"></span><span class="c-value"><g-value name="strength_save" /></span><span class="c-name">Saving Throw</span></li>
-          <li class="line"><span class="c-prof"><g-option field="skill_profs" value="Athletics" label="Athletics proficiency" /></span><span class="c-exp"><g-option class="expertise" field="skill_expertise" value="Athletics" label="Athletics expertise" /></span><span class="c-value"><g-value name="skill_athletics" /></span><span class="c-name">Athletics</span></li>
+          <li class="line save"><span class="c-tier"><g-field name="strength_save_prof" label="" /></span><span class="c-value"><g-value name="strength_save" /></span><span class="c-name">Saving Throw</span></li>
+          <li class="line"><span class="c-tier"><g-tier value="Athletics" fields="skill_profs skill_expertise" labels="—|Prof|Exp" titles="Not proficient|Proficient|Expertise" label="Athletics" /></span><span class="c-value"><g-value name="skill_athletics" /></span><span class="c-name">Athletics</span></li>
           </ul>
         </section>
         <section class="ability">
@@ -89,10 +88,10 @@
             <g-field name="dexterity_bonus" label="" variant="compact" />
           </div>
           <ul class="lines">
-          <li class="line save"><span class="c-prof"><g-field name="dexterity_save_prof" label="" /></span><span class="c-exp"></span><span class="c-value"><g-value name="dexterity_save" /></span><span class="c-name">Saving Throw</span></li>
-          <li class="line"><span class="c-prof"><g-option field="skill_profs" value="Acrobatics" label="Acrobatics proficiency" /></span><span class="c-exp"><g-option class="expertise" field="skill_expertise" value="Acrobatics" label="Acrobatics expertise" /></span><span class="c-value"><g-value name="skill_acrobatics" /></span><span class="c-name">Acrobatics</span></li>
-          <li class="line"><span class="c-prof"><g-option field="skill_profs" value="Sleight of Hand" label="Sleight of Hand proficiency" /></span><span class="c-exp"><g-option class="expertise" field="skill_expertise" value="Sleight of Hand" label="Sleight of Hand expertise" /></span><span class="c-value"><g-value name="skill_sleight_of_hand" /></span><span class="c-name">Sleight of Hand</span></li>
-          <li class="line"><span class="c-prof"><g-option field="skill_profs" value="Stealth" label="Stealth proficiency" /></span><span class="c-exp"><g-option class="expertise" field="skill_expertise" value="Stealth" label="Stealth expertise" /></span><span class="c-value"><g-value name="skill_stealth" /></span><span class="c-name">Stealth</span></li>
+          <li class="line save"><span class="c-tier"><g-field name="dexterity_save_prof" label="" /></span><span class="c-value"><g-value name="dexterity_save" /></span><span class="c-name">Saving Throw</span></li>
+          <li class="line"><span class="c-tier"><g-tier value="Acrobatics" fields="skill_profs skill_expertise" labels="—|Prof|Exp" titles="Not proficient|Proficient|Expertise" label="Acrobatics" /></span><span class="c-value"><g-value name="skill_acrobatics" /></span><span class="c-name">Acrobatics</span></li>
+          <li class="line"><span class="c-tier"><g-tier value="Sleight of Hand" fields="skill_profs skill_expertise" labels="—|Prof|Exp" titles="Not proficient|Proficient|Expertise" label="Sleight of Hand" /></span><span class="c-value"><g-value name="skill_sleight_of_hand" /></span><span class="c-name">Sleight of Hand</span></li>
+          <li class="line"><span class="c-tier"><g-tier value="Stealth" fields="skill_profs skill_expertise" labels="—|Prof|Exp" titles="Not proficient|Proficient|Expertise" label="Stealth" /></span><span class="c-value"><g-value name="skill_stealth" /></span><span class="c-name">Stealth</span></li>
           </ul>
         </section>
         <section class="ability">
@@ -107,7 +106,7 @@
             <g-field name="constitution_bonus" label="" variant="compact" />
           </div>
           <ul class="lines">
-          <li class="line save"><span class="c-prof"><g-field name="constitution_save_prof" label="" /></span><span class="c-exp"></span><span class="c-value"><g-value name="constitution_save" /></span><span class="c-name">Saving Throw</span></li>
+          <li class="line save"><span class="c-tier"><g-field name="constitution_save_prof" label="" /></span><span class="c-value"><g-value name="constitution_save" /></span><span class="c-name">Saving Throw</span></li>
           </ul>
         </section>
         <section class="inspiration box">
@@ -127,12 +126,12 @@
             <g-field name="intelligence_bonus" label="" variant="compact" />
           </div>
           <ul class="lines">
-          <li class="line save"><span class="c-prof"><g-field name="intelligence_save_prof" label="" /></span><span class="c-exp"></span><span class="c-value"><g-value name="intelligence_save" /></span><span class="c-name">Saving Throw</span></li>
-          <li class="line"><span class="c-prof"><g-option field="skill_profs" value="Arcana" label="Arcana proficiency" /></span><span class="c-exp"><g-option class="expertise" field="skill_expertise" value="Arcana" label="Arcana expertise" /></span><span class="c-value"><g-value name="skill_arcana" /></span><span class="c-name">Arcana</span></li>
-          <li class="line"><span class="c-prof"><g-option field="skill_profs" value="History" label="History proficiency" /></span><span class="c-exp"><g-option class="expertise" field="skill_expertise" value="History" label="History expertise" /></span><span class="c-value"><g-value name="skill_history" /></span><span class="c-name">History</span></li>
-          <li class="line"><span class="c-prof"><g-option field="skill_profs" value="Investigation" label="Investigation proficiency" /></span><span class="c-exp"><g-option class="expertise" field="skill_expertise" value="Investigation" label="Investigation expertise" /></span><span class="c-value"><g-value name="skill_investigation" /></span><span class="c-name">Investigation</span></li>
-          <li class="line"><span class="c-prof"><g-option field="skill_profs" value="Nature" label="Nature proficiency" /></span><span class="c-exp"><g-option class="expertise" field="skill_expertise" value="Nature" label="Nature expertise" /></span><span class="c-value"><g-value name="skill_nature" /></span><span class="c-name">Nature</span></li>
-          <li class="line"><span class="c-prof"><g-option field="skill_profs" value="Religion" label="Religion proficiency" /></span><span class="c-exp"><g-option class="expertise" field="skill_expertise" value="Religion" label="Religion expertise" /></span><span class="c-value"><g-value name="skill_religion" /></span><span class="c-name">Religion</span></li>
+          <li class="line save"><span class="c-tier"><g-field name="intelligence_save_prof" label="" /></span><span class="c-value"><g-value name="intelligence_save" /></span><span class="c-name">Saving Throw</span></li>
+          <li class="line"><span class="c-tier"><g-tier value="Arcana" fields="skill_profs skill_expertise" labels="—|Prof|Exp" titles="Not proficient|Proficient|Expertise" label="Arcana" /></span><span class="c-value"><g-value name="skill_arcana" /></span><span class="c-name">Arcana</span></li>
+          <li class="line"><span class="c-tier"><g-tier value="History" fields="skill_profs skill_expertise" labels="—|Prof|Exp" titles="Not proficient|Proficient|Expertise" label="History" /></span><span class="c-value"><g-value name="skill_history" /></span><span class="c-name">History</span></li>
+          <li class="line"><span class="c-tier"><g-tier value="Investigation" fields="skill_profs skill_expertise" labels="—|Prof|Exp" titles="Not proficient|Proficient|Expertise" label="Investigation" /></span><span class="c-value"><g-value name="skill_investigation" /></span><span class="c-name">Investigation</span></li>
+          <li class="line"><span class="c-tier"><g-tier value="Nature" fields="skill_profs skill_expertise" labels="—|Prof|Exp" titles="Not proficient|Proficient|Expertise" label="Nature" /></span><span class="c-value"><g-value name="skill_nature" /></span><span class="c-name">Nature</span></li>
+          <li class="line"><span class="c-tier"><g-tier value="Religion" fields="skill_profs skill_expertise" labels="—|Prof|Exp" titles="Not proficient|Proficient|Expertise" label="Religion" /></span><span class="c-value"><g-value name="skill_religion" /></span><span class="c-name">Religion</span></li>
           </ul>
         </section>
         <section class="ability">
@@ -147,12 +146,12 @@
             <g-field name="wisdom_bonus" label="" variant="compact" />
           </div>
           <ul class="lines">
-          <li class="line save"><span class="c-prof"><g-field name="wisdom_save_prof" label="" /></span><span class="c-exp"></span><span class="c-value"><g-value name="wisdom_save" /></span><span class="c-name">Saving Throw</span></li>
-          <li class="line"><span class="c-prof"><g-option field="skill_profs" value="Animal Handling" label="Animal Handling proficiency" /></span><span class="c-exp"><g-option class="expertise" field="skill_expertise" value="Animal Handling" label="Animal Handling expertise" /></span><span class="c-value"><g-value name="skill_animal_handling" /></span><span class="c-name">Animal Handling</span></li>
-          <li class="line"><span class="c-prof"><g-option field="skill_profs" value="Insight" label="Insight proficiency" /></span><span class="c-exp"><g-option class="expertise" field="skill_expertise" value="Insight" label="Insight expertise" /></span><span class="c-value"><g-value name="skill_insight" /></span><span class="c-name">Insight</span></li>
-          <li class="line"><span class="c-prof"><g-option field="skill_profs" value="Medicine" label="Medicine proficiency" /></span><span class="c-exp"><g-option class="expertise" field="skill_expertise" value="Medicine" label="Medicine expertise" /></span><span class="c-value"><g-value name="skill_medicine" /></span><span class="c-name">Medicine</span></li>
-          <li class="line"><span class="c-prof"><g-option field="skill_profs" value="Perception" label="Perception proficiency" /></span><span class="c-exp"><g-option class="expertise" field="skill_expertise" value="Perception" label="Perception expertise" /></span><span class="c-value"><g-value name="skill_perception" /></span><span class="c-name">Perception</span></li>
-          <li class="line"><span class="c-prof"><g-option field="skill_profs" value="Survival" label="Survival proficiency" /></span><span class="c-exp"><g-option class="expertise" field="skill_expertise" value="Survival" label="Survival expertise" /></span><span class="c-value"><g-value name="skill_survival" /></span><span class="c-name">Survival</span></li>
+          <li class="line save"><span class="c-tier"><g-field name="wisdom_save_prof" label="" /></span><span class="c-value"><g-value name="wisdom_save" /></span><span class="c-name">Saving Throw</span></li>
+          <li class="line"><span class="c-tier"><g-tier value="Animal Handling" fields="skill_profs skill_expertise" labels="—|Prof|Exp" titles="Not proficient|Proficient|Expertise" label="Animal Handling" /></span><span class="c-value"><g-value name="skill_animal_handling" /></span><span class="c-name">Animal Handling</span></li>
+          <li class="line"><span class="c-tier"><g-tier value="Insight" fields="skill_profs skill_expertise" labels="—|Prof|Exp" titles="Not proficient|Proficient|Expertise" label="Insight" /></span><span class="c-value"><g-value name="skill_insight" /></span><span class="c-name">Insight</span></li>
+          <li class="line"><span class="c-tier"><g-tier value="Medicine" fields="skill_profs skill_expertise" labels="—|Prof|Exp" titles="Not proficient|Proficient|Expertise" label="Medicine" /></span><span class="c-value"><g-value name="skill_medicine" /></span><span class="c-name">Medicine</span></li>
+          <li class="line"><span class="c-tier"><g-tier value="Perception" fields="skill_profs skill_expertise" labels="—|Prof|Exp" titles="Not proficient|Proficient|Expertise" label="Perception" /></span><span class="c-value"><g-value name="skill_perception" /></span><span class="c-name">Perception</span></li>
+          <li class="line"><span class="c-tier"><g-tier value="Survival" fields="skill_profs skill_expertise" labels="—|Prof|Exp" titles="Not proficient|Proficient|Expertise" label="Survival" /></span><span class="c-value"><g-value name="skill_survival" /></span><span class="c-name">Survival</span></li>
           </ul>
         </section>
         <section class="ability">
@@ -167,33 +166,14 @@
             <g-field name="charisma_bonus" label="" variant="compact" />
           </div>
           <ul class="lines">
-          <li class="line save"><span class="c-prof"><g-field name="charisma_save_prof" label="" /></span><span class="c-exp"></span><span class="c-value"><g-value name="charisma_save" /></span><span class="c-name">Saving Throw</span></li>
-          <li class="line"><span class="c-prof"><g-option field="skill_profs" value="Deception" label="Deception proficiency" /></span><span class="c-exp"><g-option class="expertise" field="skill_expertise" value="Deception" label="Deception expertise" /></span><span class="c-value"><g-value name="skill_deception" /></span><span class="c-name">Deception</span></li>
-          <li class="line"><span class="c-prof"><g-option field="skill_profs" value="Intimidation" label="Intimidation proficiency" /></span><span class="c-exp"><g-option class="expertise" field="skill_expertise" value="Intimidation" label="Intimidation expertise" /></span><span class="c-value"><g-value name="skill_intimidation" /></span><span class="c-name">Intimidation</span></li>
-          <li class="line"><span class="c-prof"><g-option field="skill_profs" value="Performance" label="Performance proficiency" /></span><span class="c-exp"><g-option class="expertise" field="skill_expertise" value="Performance" label="Performance expertise" /></span><span class="c-value"><g-value name="skill_performance" /></span><span class="c-name">Performance</span></li>
-          <li class="line"><span class="c-prof"><g-option field="skill_profs" value="Persuasion" label="Persuasion proficiency" /></span><span class="c-exp"><g-option class="expertise" field="skill_expertise" value="Persuasion" label="Persuasion expertise" /></span><span class="c-value"><g-value name="skill_persuasion" /></span><span class="c-name">Persuasion</span></li>
+          <li class="line save"><span class="c-tier"><g-field name="charisma_save_prof" label="" /></span><span class="c-value"><g-value name="charisma_save" /></span><span class="c-name">Saving Throw</span></li>
+          <li class="line"><span class="c-tier"><g-tier value="Deception" fields="skill_profs skill_expertise" labels="—|Prof|Exp" titles="Not proficient|Proficient|Expertise" label="Deception" /></span><span class="c-value"><g-value name="skill_deception" /></span><span class="c-name">Deception</span></li>
+          <li class="line"><span class="c-tier"><g-tier value="Intimidation" fields="skill_profs skill_expertise" labels="—|Prof|Exp" titles="Not proficient|Proficient|Expertise" label="Intimidation" /></span><span class="c-value"><g-value name="skill_intimidation" /></span><span class="c-name">Intimidation</span></li>
+          <li class="line"><span class="c-tier"><g-tier value="Performance" fields="skill_profs skill_expertise" labels="—|Prof|Exp" titles="Not proficient|Proficient|Expertise" label="Performance" /></span><span class="c-value"><g-value name="skill_performance" /></span><span class="c-name">Performance</span></li>
+          <li class="line"><span class="c-tier"><g-tier value="Persuasion" fields="skill_profs skill_expertise" labels="—|Prof|Exp" titles="Not proficient|Proficient|Expertise" label="Persuasion" /></span><span class="c-value"><g-value name="skill_persuasion" /></span><span class="c-name">Persuasion</span></li>
           </ul>
         </section>
-        <section class="method box">
-          <span class="tiny box-title">Ability Score Method</span>
-          <g-field name="ability_method" label="" />
-          <g-if test="ability_method == 'point_buy'">
-            <span class="tiny">Points spent: <g-value name="point_buy_total" /> of 27</span>
-          </g-if>
-        </section>
       </div>
-      <section class="training box">
-        <h3 class="box-heading">Equipment Training &amp; Proficiencies</h3>
-        <div class="armour-training">
-          <span class="tiny">Armour</span>
-          <label class="pip-label"><g-field name="armor_light" label="" />Light</label>
-          <label class="pip-label"><g-field name="armor_medium" label="" />Medium</label>
-          <label class="pip-label"><g-field name="armor_heavy" label="" />Heavy</label>
-          <label class="pip-label"><g-field name="armor_shields" label="" />Shields</label>
-        </div>
-        <span class="tiny">Weapons</span><g-field name="weapon_training" label="" />
-        <span class="tiny">Tools</span><g-field name="tool_training" label="" />
-      </section>
     </div>
 
     <div class="main">
@@ -223,6 +203,18 @@
         <h3 class="box-heading">Species Traits</h3>
         <g-field name="species_traits" label="" />
       </section>
+      <section class="training box">
+      <h3 class="box-heading">Equipment Training &amp; Proficiencies</h3>
+      <div class="armour-training">
+        <span class="tiny">Armour</span>
+        <label class="pip-label"><g-field name="armor_light" label="" />Light</label>
+        <label class="pip-label"><g-field name="armor_medium" label="" />Medium</label>
+        <label class="pip-label"><g-field name="armor_heavy" label="" />Heavy</label>
+        <label class="pip-label"><g-field name="armor_shields" label="" />Shields</label>
+      </div>
+      <span class="tiny">Weapons</span><g-field name="weapon_training" label="" />
+      <span class="tiny">Tools</span><g-field name="tool_training" label="" />
+    </section>
     </div>
   </div>
 
@@ -246,29 +238,32 @@
 
         <section class="box">
           <h3 class="box-heading">Spell Slots</h3>
-          <p class="tiny slots-key">Each level: total, then expended</p>
+          <p class="tiny slots-key">Tick a box when you cast. The number is the total, set from your class and caster level (<g-value name="caster_level" />).</p>
           <div class="slots">
-            <div class="slot"><span class="tiny">Level 1</span><g-field name="slots_1_total" label="" variant="compact" /><g-field name="slots_1_used" label="" variant="compact" /></div>
-            <div class="slot"><span class="tiny">Level 2</span><g-field name="slots_2_total" label="" variant="compact" /><g-field name="slots_2_used" label="" variant="compact" /></div>
-            <div class="slot"><span class="tiny">Level 3</span><g-field name="slots_3_total" label="" variant="compact" /><g-field name="slots_3_used" label="" variant="compact" /></div>
-            <div class="slot"><span class="tiny">Level 4</span><g-field name="slots_4_total" label="" variant="compact" /><g-field name="slots_4_used" label="" variant="compact" /></div>
-            <div class="slot"><span class="tiny">Level 5</span><g-field name="slots_5_total" label="" variant="compact" /><g-field name="slots_5_used" label="" variant="compact" /></div>
-            <div class="slot"><span class="tiny">Level 6</span><g-field name="slots_6_total" label="" variant="compact" /><g-field name="slots_6_used" label="" variant="compact" /></div>
-            <div class="slot"><span class="tiny">Level 7</span><g-field name="slots_7_total" label="" variant="compact" /><g-field name="slots_7_used" label="" variant="compact" /></div>
-            <div class="slot"><span class="tiny">Level 8</span><g-field name="slots_8_total" label="" variant="compact" /><g-field name="slots_8_used" label="" variant="compact" /></div>
-            <div class="slot"><span class="tiny">Level 9</span><g-field name="slots_9_total" label="" variant="compact" /><g-field name="slots_9_used" label="" variant="compact" /></div>
+            <div class="slot"><span class="tiny">Level 1</span><g-pips count="slots_1_total" value="slots_1_used" label="Level 1 slot" /><g-field name="slots_1_total" label="" variant="compact" /></div>
+            <div class="slot"><span class="tiny">Level 2</span><g-pips count="slots_2_total" value="slots_2_used" label="Level 2 slot" /><g-field name="slots_2_total" label="" variant="compact" /></div>
+            <div class="slot"><span class="tiny">Level 3</span><g-pips count="slots_3_total" value="slots_3_used" label="Level 3 slot" /><g-field name="slots_3_total" label="" variant="compact" /></div>
+            <div class="slot"><span class="tiny">Level 4</span><g-pips count="slots_4_total" value="slots_4_used" label="Level 4 slot" /><g-field name="slots_4_total" label="" variant="compact" /></div>
+            <div class="slot"><span class="tiny">Level 5</span><g-pips count="slots_5_total" value="slots_5_used" label="Level 5 slot" /><g-field name="slots_5_total" label="" variant="compact" /></div>
+            <div class="slot"><span class="tiny">Level 6</span><g-pips count="slots_6_total" value="slots_6_used" label="Level 6 slot" /><g-field name="slots_6_total" label="" variant="compact" /></div>
+            <div class="slot"><span class="tiny">Level 7</span><g-pips count="slots_7_total" value="slots_7_used" label="Level 7 slot" /><g-field name="slots_7_total" label="" variant="compact" /></div>
+            <div class="slot"><span class="tiny">Level 8</span><g-pips count="slots_8_total" value="slots_8_used" label="Level 8 slot" /><g-field name="slots_8_total" label="" variant="compact" /></div>
+            <div class="slot"><span class="tiny">Level 9</span><g-pips count="slots_9_total" value="slots_9_used" label="Level 9 slot" /><g-field name="slots_9_total" label="" variant="compact" /></div>
           </div>
-        </section>
-
-        <section class="box">
-          <h3 class="box-heading">Cantrips &amp; Prepared Spells</h3>
-          <g-field name="spells" label="" />
-          <span class="tiny">Prepared: <g-value name="prepared_count" /></span>
+          <g-if test="pact_slots_total > 0">
+            <div class="slot pact"><span class="tiny">Pact, level <g-value name="pact_slot_level" /></span><g-pips count="pact_slots_total" value="pact_slots_used" label="Pact slot" /><g-field name="pact_slots_total" label="" variant="compact" /></div>
+          </g-if>
         </section>
       </g-if>
       <g-if test="not is_caster">
-        <p class="hint">Not a spellcaster. Tick Spellcaster above to use the spellcasting sections.</p>
+        <p class="hint">Not a spellcaster - spells from a feat or species can still go in the list below. Tick Spellcaster above for spellcasting and slots.</p>
       </g-if>
+
+      <section class="box">
+        <h3 class="box-heading">Cantrips &amp; Prepared Spells</h3>
+        <g-field name="spells" label="" />
+        <span class="tiny">Prepared: <g-value name="prepared_count" /></span>
+      </section>
 
       <section class="box">
         <h3 class="box-heading">Equipment</h3>

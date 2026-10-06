@@ -2,9 +2,9 @@
   "$schema": "../../schema/character-sheet.schema.json",
   "id": "dnd-5e-2024",
   "name": "D&D 5th Edition (2024)",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "system": "Dungeons & Dragons 5th Edition (2024)",
-  "description": "A character sheet for the 2024 revision of D&D 5th Edition, with the SRD 5.2 catalogue of classes, species, backgrounds, feats and spells.",
+  "description": "A character sheet for the 2024 revision of D&D 5th Edition, with the SRD 5.2 catalogue of classes and their features, species, backgrounds, feats, spells, equipment and magic items.",
   "author": "hunter-read",
   "homepage": "https://www.dndbeyond.com/srd",
   "license": "CC-BY-4.0",
@@ -126,6 +126,14 @@
             "Stealth",
             "Survival"
           ]
+        },
+        "feature_ids": {
+          "type": "text",
+          "label": "Level 1 Feature Ids"
+        },
+        "feature_names": {
+          "type": "text",
+          "label": "Level 1 Features"
         }
       }
     },
@@ -277,6 +285,7 @@
       "search_fields": [
         "name",
         "school",
+        "classes",
         "description"
       ],
       "filter_fields": [
@@ -328,6 +337,10 @@
         "description": {
           "type": "textarea",
           "label": "Description"
+        },
+        "classes": {
+          "type": "text",
+          "label": "Spell Lists"
         }
       }
     },
@@ -373,6 +386,7 @@
       ],
       "search_fields": [
         "name",
+        "class",
         "description"
       ],
       "filter_fields": [
@@ -393,6 +407,120 @@
           "label": "Level",
           "min": 1,
           "max": 20
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Description"
+        }
+      }
+    },
+    "item": {
+      "label": "Equipment",
+      "label_plural": "Equipment",
+      "identity_field": "name",
+      "sort_default": [
+        "category",
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "category",
+        "properties",
+        "description"
+      ],
+      "filter_fields": [
+        "category",
+        "weapon_type",
+        "mastery"
+      ],
+      "compact_display": "{category} · {cost} · {weight} lb",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "category": {
+          "type": "text",
+          "label": "Category"
+        },
+        "cost": {
+          "type": "text",
+          "label": "Cost"
+        },
+        "weight": {
+          "type": "number",
+          "label": "Weight (lb)",
+          "min": 0
+        },
+        "weapon_type": {
+          "type": "text",
+          "label": "Weapon Type"
+        },
+        "damage": {
+          "type": "text",
+          "label": "Damage"
+        },
+        "properties": {
+          "type": "text",
+          "label": "Properties"
+        },
+        "mastery": {
+          "type": "text",
+          "label": "Mastery"
+        },
+        "armor_class": {
+          "type": "text",
+          "label": "Armor Class"
+        },
+        "strength": {
+          "type": "number",
+          "label": "Strength Required",
+          "min": 0
+        },
+        "stealth": {
+          "type": "text",
+          "label": "Stealth"
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Description"
+        }
+      }
+    },
+    "magic_item": {
+      "label": "Magic Item",
+      "label_plural": "Magic Items",
+      "identity_field": "name",
+      "sort_default": [
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "item_type",
+        "description"
+      ],
+      "filter_fields": [
+        "item_type",
+        "rarity",
+        "attunement"
+      ],
+      "compact_display": "{item_type} · {rarity}",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "item_type": {
+          "type": "text",
+          "label": "Type"
+        },
+        "rarity": {
+          "type": "text",
+          "label": "Rarity"
+        },
+        "attunement": {
+          "type": "checkbox",
+          "label": "Requires Attunement"
         },
         "description": {
           "type": "textarea",
@@ -464,6 +592,14 @@
           "count": "skill_choices",
           "from": "skill_options",
           "label": "Choose class skill proficiencies"
+        },
+        {
+          "grant": "features",
+          "from": "feature_ids",
+          "names": "feature_names",
+          "carry": {
+            "class": "name"
+          }
         }
       ]
     },
@@ -967,36 +1103,40 @@
       "allow_freeform": true
     },
     "equipment": {
-      "type": "list",
+      "type": "content_list",
       "label": "Equipment",
-      "columns": [
-        {
-          "key": "name",
-          "type": "text",
-          "label": "Item",
-          "flex": 3
-        },
-        {
-          "key": "qty",
+      "content_type": "item",
+      "allow_freeform": true,
+      "per_entry_fields": {
+        "qty": {
           "type": "number",
           "label": "Qty",
-          "default": 1,
-          "min": 0,
-          "flex": 1
+          "min": 0
         },
-        {
-          "key": "weight",
-          "type": "number",
-          "label": "Lb",
-          "default": 0,
-          "min": 0,
-          "flex": 1
-        },
-        {
-          "key": "equipped",
+        "equipped": {
           "type": "checkbox",
           "label": "Eq."
         }
+      },
+      "display_columns": [
+        "category",
+        "weight"
+      ]
+    },
+    "magic_items": {
+      "type": "content_list",
+      "label": "Magic Items",
+      "content_type": "magic_item",
+      "allow_freeform": true,
+      "per_entry_fields": {
+        "attuned": {
+          "type": "checkbox",
+          "label": "Attuned"
+        }
+      },
+      "display_columns": [
+        "item_type",
+        "rarity"
       ]
     },
     "attacks": {
@@ -1081,18 +1221,6 @@
       "type": "textarea",
       "label": "Backstory & Personality",
       "rows": 8
-    },
-    "attunement_1": {
-      "type": "text",
-      "label": "Attuned item 1"
-    },
-    "attunement_2": {
-      "type": "text",
-      "label": "Attuned item 2"
-    },
-    "attunement_3": {
-      "type": "text",
-      "label": "Attuned item 3"
     },
     "cp": {
       "type": "number",
@@ -1308,12 +1436,16 @@
       "label": "Spells Prepared"
     },
     "carried_weight": {
-      "formula": "sum_where(equipment, 'weight')",
+      "formula": "sum_qty(equipment, 'weight')",
       "label": "Weight Carried"
     },
     "carry_capacity": {
       "formula": "strength_score * 15",
       "label": "Carrying Capacity"
+    },
+    "attuned_count": {
+      "formula": "count_refs(magic_items, 'attuned')",
+      "label": "Attuned Items"
     }
   },
   "layout_file": "dnd-5e-2024.html",
@@ -1327,6 +1459,10 @@
     {
       "rule": "ref(background, 'ability_scores') == '' or ((strength_bonus == 0 or contains(ref(background, 'ability_scores'), 'strength')) and (dexterity_bonus == 0 or contains(ref(background, 'ability_scores'), 'dexterity')) and (constitution_bonus == 0 or contains(ref(background, 'ability_scores'), 'constitution')) and (intelligence_bonus == 0 or contains(ref(background, 'ability_scores'), 'intelligence')) and (wisdom_bonus == 0 or contains(ref(background, 'ability_scores'), 'wisdom')) and (charisma_bonus == 0 or contains(ref(background, 'ability_scores'), 'charisma')))",
       "message": "A background bonus is on an ability your background does not list."
+    },
+    {
+      "rule": "attuned_count <= 3",
+      "message": "More than three magic items are attuned - a creature can attune to no more than three at once."
     }
   ]
 }

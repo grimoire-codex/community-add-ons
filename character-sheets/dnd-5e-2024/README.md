@@ -12,9 +12,24 @@ layout that follows the shape of the published sheet.
   Perception picks up your Perception proficiency automatically
 - **Spellcasting** that only appears for casters: pick the ability and the save
   DC and attack bonus follow
-- **Equipment** with carried weight against a `Strength × 15` capacity
+- **Equipment** picked from the catalogue or typed in, each with a quantity,
+  and carried weight - counting quantity - against a `Strength × 15` capacity
+- **Magic items**, with a warning if more than three are attuned
 - **Attacks**, feats, and a catalogue of classes, species, backgrounds, feats
   and spells
+- **Picking a class** adds its level 1 features
+
+## With the SRD 5.2 pack
+
+The [`dnd-5e-srd`](../../content-packs/dnd-5e-srd/) pack carries the SRD's
+classes and every class and subclass feature, species and their traits,
+backgrounds, feats, all of its spells, its equipment (weapons with damage,
+properties and mastery; armour with its AC, Strength and Stealth) and its
+magic items.
+
+Version 2 replaces the free-text equipment list with one that draws from the
+catalogue, and the three attunement lines with an **Attuned** tick on each
+magic item.
 
 ## Licence
 

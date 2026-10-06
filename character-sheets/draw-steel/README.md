@@ -1,30 +1,42 @@
 # Draw Steel
 
-A hero sheet for MCDM's **Draw Steel**, with a custom HTML layout.
+A hero sheet for MCDM's **Draw Steel**, with a custom HTML layout after MCDM's
+printed character sheet.
 
-Version 2 changes two fields a version 1 hero may have filled in: **career** and
-**complication** were free text and are now picks from the pack, so re-pick them
-after updating.
+Version 3 follows the printed sheet's layout. It replaces the equipment list with
+the printed sheet's **trinkets**, **leveled treasures** and **consumables**, and
+splits conditions into **end of turn** and **save ends**. Version 2 changed
+**career** and **complication** from free text into picks from the pack.
 
 ## What it covers
 
-Three pages: **Hero** (what you play with), **Features** (what the hero is made
-of) and **Story & Gear**.
+Four pages in the printed sheet's order:
 
-- **Five characteristics** - Might, Agility, Reason, Intuition, Presence - used
-  directly as bonuses, with your weak, average and strong **potency** from the
-  highest of them
-- **Stamina** with the values the rules key off: winded at half your maximum,
-  dead at the negative of that, and a recovery value of a third
-- **Recoveries** as boxes to tick off, a **heroic resource** named by your class,
-  surges, victories, XP, renown and wealth
-- **Speed, size, stability and disengage**, and your kit's melee and ranged
-  damage and distance bonuses
-- **Conditions** and **skills** as boxes, skills grouped by their five lists
-- **Abilities** with cost, action, keywords, distance, target and power-roll
-  tiers (≤11 / 12-16 / 17+); **features**, **ancestry traits**, **domains**,
-  **perks** and **titles** as lists whose rows open to their full text
-- Equipment, projects, complication, inciting incident and notes
+- **Hero** - name, ancestry, class, career and subclass; **victories** as a track
+  of fifteen boxes beside your level and echelon; wealth, renown and XP. The
+  **five characteristics** in their frames, with size, speed, disengage and
+  stability beneath. **Stamina** in its shield with the values the rules key
+  off - winded at half your maximum, dying from 0 to the negative of that - and
+  which one you are in. **Recoveries** as a ring of what is left, boxes to tick
+  off and the recovery value (a third of your stamina); the **heroic resource**
+  named by your class; **surges** with their damage (your highest
+  characteristic). **Equipment and modifiers**: your kit, its weapon and armor,
+  its own speed, disengage, stamina, stability and distance bonuses, and its
+  melee and ranged damage bonuses by tier (≤11 / 12-16 / 17+). **Conditions**
+  with an end-of-turn and a save-ends box each, and the number a save needs.
+  **Potency** (weak, average, strong from your highest characteristic), the
+  printed sheet's hero token and turn reference, and **class features** and
+  domains
+- **Background** - culture with its environment, organization and upbringing,
+  and languages; career with its benefits and inciting incident; complication;
+  **skills** as boxes, grouped by their five lists; ancestry traits (totalled
+  against your ancestry points) and perks
+- **Abilities** - drawn as the printed sheet's cards: the action's name, its
+  cost, its type, target, distance and keywords. Each opens to its power roll
+  tiers and effect
+- **Treasure & Projects** - titles, trinkets, **leveled treasures** with a
+  warning past the three you can carry safely, consumables, and **projects**
+  with their assigned hero or follower, characteristic and goal
 
 ## With the Draw Steel: Heroes pack
 
@@ -38,7 +50,7 @@ fill the sheet in:
 | Career | Asks for its skills |
 | Class | Adds its level 1 features and asks for its skills; sets stamina, recoveries, the heroic resource's name, and 2 in its primary characteristics |
 | Subclass | Adds its level 1 features |
-| Kit | Adds its abilities; adds its stamina (per echelon), speed, stability, disengage and damage bonuses |
+| Kit | Adds its abilities; fills in its weapon and armor and its stamina (per echelon), speed, stability, disengage, distance and damage bonuses, each editable and added to your totals |
 
 Maximum stamina is the class's starting stamina, plus its per-level stamina for
 each level after the first, plus the kit's stamina for each echelon. Purchased

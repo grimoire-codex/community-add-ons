@@ -72,7 +72,9 @@ A small expression language over the other fields: arithmetic, comparisons,
 formats `3` as `+3`, the way a sheet prints a modifier), and `concat` (which
 joins values as text: `concat(level, 'd', 8)` is `5d8`; `+` stays arithmetic).
 `ref(field, 'property')` reads a property of the entry picked into a field, and
-reads as empty when nothing is picked.
+reads as empty when nothing is picked. `sum_qty(gear, 'mass')` totals a column
+times each row's quantity - carried weight, cargo - counting a row with no
+quantity once.
 
 The player can override any computed value - a Grimoire rule, not something a
 sheet opts into - and whatever depends on it follows. So write the formula for
@@ -289,9 +291,16 @@ person can check it:
 
 **A sheet's structure is not its content.** Field names and layout are generally
 fine; pages of rules text are generally not. When a game has no open licence,
-ship the structure and leave the content to the player. The Call of Cthulhu
-sheet is that case: Chaosium's Fan Material Policy permits fan-made character
-sheets with its notice, but not its rules text, so the sheet has no content pack
-and a table adds its own occupations and weapons to a ruleset.
+ship the structure and leave the content to the player. The Traveller sheet is
+that case: Mongoose's Fair Use Policy permits non-commercial spreadsheets that
+automate the rules, with its notice, but not its rules text, so the sheet has no
+content pack and every list is the player's to fill.
+
+**Check what a fan policy says about software and about the publisher's look.**
+Some policies permit fan character sheets, including web-based ones that
+calculate values, but exclude downloadable apps; some forbid imitating the
+publisher's own sheet - its "trade dress" - so a sheet follows the printed one's
+content and order but not its fonts, textures or page frame. Chaosium's Fan
+Material Policy does both; see the Call of Cthulhu sheet's README.
 
 Do not include artwork, page scans, or logos from any published book.

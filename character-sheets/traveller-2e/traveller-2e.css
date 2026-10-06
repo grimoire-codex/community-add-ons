@@ -1,0 +1,606 @@
+/* Traveller (Mongoose 2nd Edition) traveller sheet.
+   Spare and technical, after the game's black-and-white books: each section
+   is headed by a solid bar, numbers are set in a monospace face so columns of
+   DMs line up, and the skills read as the dense two-column table the
+   spreadsheet keeps. The bars invert the app's own text and card colours, so a
+   light or dark theme restyles the sheet with everything else. */
+
+.sheet-trav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--text);
+  --num: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.gc-tabpanel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* --- masthead ---------------------------------------------------------------- */
+
+.masthead {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  padding: 10px 14px;
+  background: var(--text);
+  color: var(--bg-card);
+  border-radius: 4px;
+}
+
+.mast-name {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.mast-upp {
+  font-family: var(--num);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.mast-meta {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+/* --- shared ---------------------------------------------------------------- */
+
+.box {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--bg-card);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 12px 12px;
+  min-width: 0;
+}
+
+.bar {
+  margin: 0 -12px 2px;
+  padding: 5px 12px;
+  background: var(--text);
+  color: var(--bg-card);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 3px 3px 0 0;
+}
+
+.sub {
+  margin: 6px 0 0;
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.tiny {
+  display: block;
+  margin: 0;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hint {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.hint b {
+  color: var(--text);
+  font-family: var(--num);
+}
+
+.big {
+  display: block;
+  font-family: var(--num);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--gold);
+}
+
+.state {
+  font-size: 15px;
+  color: var(--gold);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px 10px;
+  align-items: end;
+}
+
+.grid.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid.five {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  text-align: center;
+}
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.cell.wide {
+  grid-column: span 2;
+}
+
+.cell.full {
+  grid-column: 1 / -1;
+}
+
+.cell.tick {
+  align-items: flex-start;
+}
+
+.cell.line {
+  margin-bottom: 4px;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+
+.two-col.wide-left {
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+}
+
+.three-col {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+
+/* A compact number box carries a number, so set it like one. */
+.sheet-trav input[type="number"],
+.sk-total,
+.sk-dm,
+.num,
+.char-total,
+.char-dm {
+  font-family: var(--num);
+}
+
+/* --- profile --------------------------------------------------------------- */
+
+.profile-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.profile-grid .name {
+  grid-column: span 3;
+}
+
+.profile-grid .name input {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.homeworld-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+/* --- characteristics ------------------------------------------------------- */
+
+.char-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.chars {
+  display: grid;
+  gap: 4px;
+}
+
+.char {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) 46px 54px 54px 54px 56px;
+  gap: 6px;
+  align-items: center;
+}
+
+.char.head {
+  align-items: end;
+}
+
+.char.head .tiny {
+  text-align: center;
+}
+
+.char-abbr {
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.char-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.char-total {
+  font-size: 22px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--gold);
+}
+
+.char-dm {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 2px 0;
+}
+
+.char input {
+  text-align: center;
+  padding: 3px;
+}
+
+.upp {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 4px 0 0;
+  padding-top: 6px;
+  border-top: 1px solid var(--border);
+}
+
+.upp b,
+.upp-inline {
+  font-family: var(--num);
+  font-size: 20px;
+  letter-spacing: 0.2em;
+}
+
+.psi-talents {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 76px 52px 48px;
+  gap: 4px 6px;
+  align-items: center;
+}
+
+/* --- skills ---------------------------------------------------------------- */
+
+.skill-columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.sk-row {
+  display: grid;
+  grid-template-columns: minmax(96px, 1fr) 62px 44px 34px repeat(6, 32px);
+  gap: 3px;
+  align-items: center;
+  padding: 1px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+}
+
+.sk-row.head {
+  border-bottom: 2px solid var(--text);
+  padding-bottom: 3px;
+}
+
+.sk-row.head .tiny {
+  text-align: center;
+}
+
+.sk-row.head .tiny:first-child {
+  text-align: left;
+}
+
+/* A skill with specialities starts a group: a rule above, the name in bold. */
+.sk-row.parent .sk-name {
+  font-weight: 700;
+}
+
+.sk-name.spec {
+  padding-left: 14px;
+  color: var(--text-dim);
+}
+
+.sk-name {
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sk-name input {
+  padding: 1px 4px;
+  font-size: 12px;
+}
+
+.sk-name.custom {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 3px;
+}
+
+.sk-row select {
+  padding: 1px 2px;
+  font-size: 12px;
+}
+
+.sk-row input[type="number"] {
+  padding: 1px 2px;
+  font-size: 12px;
+  text-align: center;
+}
+
+.sk-total {
+  font-weight: 700;
+  text-align: center;
+  color: var(--gold);
+}
+
+.sk-dm {
+  text-align: center;
+  color: var(--text-dim);
+}
+
+.sk-row.joat {
+  grid-template-columns: minmax(96px, 1fr) 62px 80px 34px;
+  border-bottom: none;
+  border-top: 2px solid var(--text);
+  margin-top: 6px;
+  padding-top: 4px;
+}
+
+/* --- combat ---------------------------------------------------------------- */
+
+.weapons {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.wpn-row {
+  display: grid;
+  grid-template-columns: minmax(0, 2.4fr) minmax(0, 1fr) minmax(0, 2.2fr) 50px minmax(0, 1fr) minmax(0, 1fr) minmax(0, 2fr);
+  gap: 6px;
+  align-items: center;
+}
+
+.wpn-row.head {
+  border-bottom: 2px solid var(--text);
+  padding-bottom: 3px;
+}
+
+.attack-dms {
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  align-items: start;
+}
+
+.attack-dms .sk-total {
+  text-align: left;
+}
+
+.wpn-row .sk-total {
+  font-size: 16px;
+}
+
+/* --- vehicles and spacecraft ----------------------------------------------- */
+
+.vehicle-title .vname input {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.vehicle-top {
+  display: grid;
+  grid-template-columns: minmax(0, 2.2fr) minmax(220px, 1fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.vehicle-stats {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.armour-grid {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) minmax(0, 1fr);
+  gap: 4px 8px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.systems {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.ship-head {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.components {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.comp {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr) auto auto;
+  gap: 6px;
+  align-items: center;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}
+
+.comp-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.comp select,
+.comp input[type="number"] {
+  max-width: 72px;
+}
+
+.pairs {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 64px minmax(0, 1fr) 64px;
+  gap: 4px 8px;
+  align-items: center;
+  font-size: 13px;
+}
+
+.power {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 72px 72px;
+  gap: 4px 8px;
+  align-items: center;
+  font-size: 13px;
+}
+
+.power .num {
+  text-align: center;
+}
+
+/* --- background ------------------------------------------------------------ */
+
+.descriptors {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 64px minmax(0, 1fr);
+  gap: 4px 8px;
+  align-items: center;
+  font-size: 12px;
+}
+
+.d-left {
+  text-align: right;
+}
+
+.relation {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr) auto;
+  gap: 4px 8px;
+  align-items: center;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+.rel-text {
+  grid-column: 2 / -1;
+}
+
+.alive {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+/* --- narrower screens ------------------------------------------------------ */
+
+@media (max-width: 1400px) {
+  .skill-columns,
+  .three-col {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .char-top {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .char-top > section:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 900px) {
+  .two-col,
+  .two-col.wide-left,
+  .char-top,
+  .vehicle-top {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .profile-grid,
+  .homeworld-grid,
+  .vehicle-stats,
+  .ship-head {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .profile-grid .name {
+    grid-column: 1 / -1;
+  }
+  .wpn-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .wpn-row.head {
+    display: none;
+  }
+}
+
+/* The skills table keeps its columns and scrolls rather than wrapping a row. */
+@media (max-width: 640px) {
+  .skills {
+    overflow-x: auto;
+  }
+  .sk-row {
+    min-width: 520px;
+  }
+  .char {
+    grid-template-columns: 36px 0 40px 48px 48px 48px 48px;
+  }
+  .char-label {
+    visibility: hidden;
+  }
+}

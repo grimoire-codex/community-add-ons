@@ -2,7 +2,7 @@
   "$schema": "../../schema/character-sheet.schema.json",
   "id": "call-of-cthulhu-7e",
   "name": "Call of Cthulhu 7th Edition",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "system": "Call of Cthulhu 7th Edition",
   "description": "An investigator sheet for Call of Cthulhu 7th Edition: eight characteristics and percentile skills with their half and fifth values, hit points, magic points, Sanity and Luck, damage bonus, Build and Move, and the occupation and personal-interest points a new investigator spends.",
   "author": "hunter-read",
@@ -47,12 +47,14 @@
             "Archaeology",
             "Charm",
             "Climb",
+            "Computer Use",
             "Credit Rating",
             "Cthulhu Mythos",
             "Disguise",
             "Dodge",
             "Drive Auto",
             "Electrical Repair",
+            "Electronics",
             "Fast Talk",
             "Fighting (Brawl)",
             "Firearms (Handgun)",
@@ -313,10 +315,18 @@
     },
     "luck": {
       "type": "number",
-      "label": "Luck",
+      "label": "Starting Luck",
       "min": 0,
       "max": 99,
       "default": 50
+    },
+    "luck_current": {
+      "type": "number",
+      "label": "Current Luck",
+      "min": 0,
+      "max": 99,
+      "default": 50,
+      "default_from": "luck"
     },
     "occupation_skills": {
       "type": "multiselect",
@@ -328,12 +338,14 @@
         "Archaeology",
         "Charm",
         "Climb",
+        "Computer Use",
         "Credit Rating",
         "Cthulhu Mythos",
         "Disguise",
         "Dodge",
         "Drive Auto",
         "Electrical Repair",
+        "Electronics",
         "Fast Talk",
         "Fighting (Brawl)",
         "Firearms (Handgun)",
@@ -376,12 +388,14 @@
         "Archaeology",
         "Charm",
         "Climb",
+        "Computer Use",
         "Credit Rating",
         "Cthulhu Mythos",
         "Disguise",
         "Dodge",
         "Drive Auto",
         "Electrical Repair",
+        "Electronics",
         "Fast Talk",
         "Fighting (Brawl)",
         "Firearms (Handgun)",
@@ -479,6 +493,13 @@
       "max": 99,
       "default": 20
     },
+    "sk_computer_use": {
+      "type": "number",
+      "label": "Computer Use",
+      "min": 0,
+      "max": 99,
+      "default": 5
+    },
     "sk_credit_rating": {
       "type": "number",
       "label": "Credit Rating",
@@ -521,6 +542,13 @@
       "min": 0,
       "max": 99,
       "default": 10
+    },
+    "sk_electronics": {
+      "type": "number",
+      "label": "Electronics",
+      "min": 0,
+      "max": 99,
+      "default": 1
     },
     "sk_fast_talk": {
       "type": "number",
@@ -1061,6 +1089,11 @@
         }
       ]
     },
+    "my_story": {
+      "type": "textarea",
+      "label": "My Story",
+      "rows": 6
+    },
     "personal_description": {
       "type": "textarea",
       "label": "Personal Description",
@@ -1112,9 +1145,23 @@
       "rows": 3
     },
     "fellow_investigators": {
-      "type": "textarea",
+      "type": "list",
       "label": "Fellow Investigators",
-      "rows": 4
+      "columns": [
+        {
+          "key": "character",
+          "type": "text",
+          "label": "Character",
+          "flex": 3
+        },
+        {
+          "key": "player",
+          "type": "text",
+          "label": "Player",
+          "flex": 2
+        }
+      ],
+      "add_label": "Add an investigator"
     },
     "notes": {
       "type": "textarea",
@@ -1235,6 +1282,14 @@
       "formula": "floor(sk_climb / 5)",
       "label": "Climb fifth"
     },
+    "sk_computer_use_half": {
+      "formula": "floor(sk_computer_use / 2)",
+      "label": "Computer Use half"
+    },
+    "sk_computer_use_fifth": {
+      "formula": "floor(sk_computer_use / 5)",
+      "label": "Computer Use fifth"
+    },
     "sk_credit_rating_half": {
       "formula": "floor(sk_credit_rating / 2)",
       "label": "Credit Rating half"
@@ -1282,6 +1337,14 @@
     "sk_electrical_repair_fifth": {
       "formula": "floor(sk_electrical_repair / 5)",
       "label": "Electrical Repair fifth"
+    },
+    "sk_electronics_half": {
+      "formula": "floor(sk_electronics / 2)",
+      "label": "Electronics half"
+    },
+    "sk_electronics_fifth": {
+      "formula": "floor(sk_electronics / 5)",
+      "label": "Electronics fifth"
     },
     "sk_fast_talk_half": {
       "formula": "floor(sk_fast_talk / 2)",
@@ -1620,7 +1683,7 @@
       "label": "Other fifth"
     },
     "occupation_points_spent": {
-      "formula": "(contains(occupation_skills, 'Accounting') ? max(0, sk_accounting - 5) : 0) + (contains(occupation_skills, 'Anthropology') ? max(0, sk_anthropology - 1) : 0) + (contains(occupation_skills, 'Appraise') ? max(0, sk_appraise - 5) : 0) + (contains(occupation_skills, 'Archaeology') ? max(0, sk_archaeology - 1) : 0) + (contains(occupation_skills, 'Charm') ? max(0, sk_charm - 15) : 0) + (contains(occupation_skills, 'Climb') ? max(0, sk_climb - 20) : 0) + max(0, sk_credit_rating - 0) + (contains(occupation_skills, 'Disguise') ? max(0, sk_disguise - 5) : 0) + (contains(occupation_skills, 'Dodge') ? max(0, sk_dodge - floor(dexterity / 2)) : 0) + (contains(occupation_skills, 'Drive Auto') ? max(0, sk_drive_auto - 20) : 0) + (contains(occupation_skills, 'Electrical Repair') ? max(0, sk_electrical_repair - 10) : 0) + (contains(occupation_skills, 'Fast Talk') ? max(0, sk_fast_talk - 5) : 0) + (contains(occupation_skills, 'Fighting (Brawl)') ? max(0, sk_fighting_brawl - 25) : 0) + (contains(occupation_skills, 'Firearms (Handgun)') ? max(0, sk_firearms_handgun - 20) : 0) + (contains(occupation_skills, 'Firearms (Rifle/Shotgun)') ? max(0, sk_firearms_rifle_shotgun - 25) : 0) + (contains(occupation_skills, 'First Aid') ? max(0, sk_first_aid - 30) : 0) + (contains(occupation_skills, 'History') ? max(0, sk_history - 5) : 0) + (contains(occupation_skills, 'Intimidate') ? max(0, sk_intimidate - 15) : 0) + (contains(occupation_skills, 'Jump') ? max(0, sk_jump - 20) : 0) + (contains(occupation_skills, 'Language (Own)') ? max(0, sk_language_own - education) : 0) + (contains(occupation_skills, 'Law') ? max(0, sk_law - 5) : 0) + (contains(occupation_skills, 'Library Use') ? max(0, sk_library_use - 20) : 0) + (contains(occupation_skills, 'Listen') ? max(0, sk_listen - 20) : 0) + (contains(occupation_skills, 'Locksmith') ? max(0, sk_locksmith - 1) : 0) + (contains(occupation_skills, 'Mechanical Repair') ? max(0, sk_mechanical_repair - 10) : 0) + (contains(occupation_skills, 'Medicine') ? max(0, sk_medicine - 1) : 0) + (contains(occupation_skills, 'Natural World') ? max(0, sk_natural_world - 10) : 0) + (contains(occupation_skills, 'Navigate') ? max(0, sk_navigate - 10) : 0) + (contains(occupation_skills, 'Occult') ? max(0, sk_occult - 5) : 0) + (contains(occupation_skills, 'Operate Heavy Machinery') ? max(0, sk_operate_heavy_machinery - 1) : 0) + (contains(occupation_skills, 'Persuade') ? max(0, sk_persuade - 10) : 0) + (contains(occupation_skills, 'Psychoanalysis') ? max(0, sk_psychoanalysis - 1) : 0) + (contains(occupation_skills, 'Psychology') ? max(0, sk_psychology - 10) : 0) + (contains(occupation_skills, 'Ride') ? max(0, sk_ride - 5) : 0) + (contains(occupation_skills, 'Sleight of Hand') ? max(0, sk_sleight_of_hand - 10) : 0) + (contains(occupation_skills, 'Spot Hidden') ? max(0, sk_spot_hidden - 25) : 0) + (contains(occupation_skills, 'Stealth') ? max(0, sk_stealth - 20) : 0) + (contains(occupation_skills, 'Survival') ? max(0, sk_survival - 10) : 0) + (contains(occupation_skills, 'Swim') ? max(0, sk_swim - 20) : 0) + (contains(occupation_skills, 'Throw') ? max(0, sk_throw - 20) : 0) + (contains(occupation_skills, 'Track') ? max(0, sk_track - 10) : 0) + (art_craft_1_occ ? max(0, art_craft_1 - art_craft_1_base) : 0) + (art_craft_2_occ ? max(0, art_craft_2 - art_craft_2_base) : 0) + (science_1_occ ? max(0, science_1 - science_1_base) : 0) + (science_2_occ ? max(0, science_2 - science_2_base) : 0) + (language_other_1_occ ? max(0, language_other_1 - language_other_1_base) : 0) + (language_other_2_occ ? max(0, language_other_2 - language_other_2_base) : 0) + (fighting_other_occ ? max(0, fighting_other - fighting_other_base) : 0) + (firearms_other_occ ? max(0, firearms_other - firearms_other_base) : 0) + (pilot_occ ? max(0, pilot - pilot_base) : 0) + (other_skill_1_occ ? max(0, other_skill_1 - other_skill_1_base) : 0) + (other_skill_2_occ ? max(0, other_skill_2 - other_skill_2_base) : 0) + (other_skill_3_occ ? max(0, other_skill_3 - other_skill_3_base) : 0)",
+      "formula": "(contains(occupation_skills, 'Accounting') ? max(0, sk_accounting - 5) : 0) + (contains(occupation_skills, 'Anthropology') ? max(0, sk_anthropology - 1) : 0) + (contains(occupation_skills, 'Appraise') ? max(0, sk_appraise - 5) : 0) + (contains(occupation_skills, 'Archaeology') ? max(0, sk_archaeology - 1) : 0) + (contains(occupation_skills, 'Charm') ? max(0, sk_charm - 15) : 0) + (contains(occupation_skills, 'Climb') ? max(0, sk_climb - 20) : 0) + max(0, sk_credit_rating - 0) + (contains(occupation_skills, 'Disguise') ? max(0, sk_disguise - 5) : 0) + (contains(occupation_skills, 'Dodge') ? max(0, sk_dodge - floor(dexterity / 2)) : 0) + (contains(occupation_skills, 'Drive Auto') ? max(0, sk_drive_auto - 20) : 0) + (contains(occupation_skills, 'Electrical Repair') ? max(0, sk_electrical_repair - 10) : 0) + (contains(occupation_skills, 'Fast Talk') ? max(0, sk_fast_talk - 5) : 0) + (contains(occupation_skills, 'Fighting (Brawl)') ? max(0, sk_fighting_brawl - 25) : 0) + (contains(occupation_skills, 'Firearms (Handgun)') ? max(0, sk_firearms_handgun - 20) : 0) + (contains(occupation_skills, 'Firearms (Rifle/Shotgun)') ? max(0, sk_firearms_rifle_shotgun - 25) : 0) + (contains(occupation_skills, 'First Aid') ? max(0, sk_first_aid - 30) : 0) + (contains(occupation_skills, 'History') ? max(0, sk_history - 5) : 0) + (contains(occupation_skills, 'Intimidate') ? max(0, sk_intimidate - 15) : 0) + (contains(occupation_skills, 'Jump') ? max(0, sk_jump - 20) : 0) + (contains(occupation_skills, 'Language (Own)') ? max(0, sk_language_own - education) : 0) + (contains(occupation_skills, 'Law') ? max(0, sk_law - 5) : 0) + (contains(occupation_skills, 'Library Use') ? max(0, sk_library_use - 20) : 0) + (contains(occupation_skills, 'Listen') ? max(0, sk_listen - 20) : 0) + (contains(occupation_skills, 'Locksmith') ? max(0, sk_locksmith - 1) : 0) + (contains(occupation_skills, 'Mechanical Repair') ? max(0, sk_mechanical_repair - 10) : 0) + (contains(occupation_skills, 'Medicine') ? max(0, sk_medicine - 1) : 0) + (contains(occupation_skills, 'Natural World') ? max(0, sk_natural_world - 10) : 0) + (contains(occupation_skills, 'Navigate') ? max(0, sk_navigate - 10) : 0) + (contains(occupation_skills, 'Occult') ? max(0, sk_occult - 5) : 0) + (contains(occupation_skills, 'Operate Heavy Machinery') ? max(0, sk_operate_heavy_machinery - 1) : 0) + (contains(occupation_skills, 'Persuade') ? max(0, sk_persuade - 10) : 0) + (contains(occupation_skills, 'Psychoanalysis') ? max(0, sk_psychoanalysis - 1) : 0) + (contains(occupation_skills, 'Psychology') ? max(0, sk_psychology - 10) : 0) + (contains(occupation_skills, 'Ride') ? max(0, sk_ride - 5) : 0) + (contains(occupation_skills, 'Sleight of Hand') ? max(0, sk_sleight_of_hand - 10) : 0) + (contains(occupation_skills, 'Spot Hidden') ? max(0, sk_spot_hidden - 25) : 0) + (contains(occupation_skills, 'Stealth') ? max(0, sk_stealth - 20) : 0) + (contains(occupation_skills, 'Survival') ? max(0, sk_survival - 10) : 0) + (contains(occupation_skills, 'Swim') ? max(0, sk_swim - 20) : 0) + (contains(occupation_skills, 'Throw') ? max(0, sk_throw - 20) : 0) + (contains(occupation_skills, 'Track') ? max(0, sk_track - 10) : 0) + (art_craft_1_occ ? max(0, art_craft_1 - art_craft_1_base) : 0) + (art_craft_2_occ ? max(0, art_craft_2 - art_craft_2_base) : 0) + (science_1_occ ? max(0, science_1 - science_1_base) : 0) + (science_2_occ ? max(0, science_2 - science_2_base) : 0) + (language_other_1_occ ? max(0, language_other_1 - language_other_1_base) : 0) + (language_other_2_occ ? max(0, language_other_2 - language_other_2_base) : 0) + (fighting_other_occ ? max(0, fighting_other - fighting_other_base) : 0) + (firearms_other_occ ? max(0, firearms_other - firearms_other_base) : 0) + (pilot_occ ? max(0, pilot - pilot_base) : 0) + (other_skill_1_occ ? max(0, other_skill_1 - other_skill_1_base) : 0) + (other_skill_2_occ ? max(0, other_skill_2 - other_skill_2_base) : 0) + (other_skill_3_occ ? max(0, other_skill_3 - other_skill_3_base) : 0) + (contains(occupation_skills, 'Computer Use') ? max(0, sk_computer_use - 5) : 0) + (contains(occupation_skills, 'Electronics') ? max(0, sk_electronics - 1) : 0)",
       "label": "Occupation Points Spent"
     },
     "personal_points": {
@@ -1628,7 +1691,7 @@
       "label": "Personal Interest Points"
     },
     "personal_points_spent": {
-      "formula": "(max(0, sk_accounting - 5) + max(0, sk_anthropology - 1) + max(0, sk_appraise - 5) + max(0, sk_archaeology - 1) + max(0, sk_charm - 15) + max(0, sk_climb - 20) + max(0, sk_credit_rating - 0) + max(0, sk_disguise - 5) + max(0, sk_dodge - floor(dexterity / 2)) + max(0, sk_drive_auto - 20) + max(0, sk_electrical_repair - 10) + max(0, sk_fast_talk - 5) + max(0, sk_fighting_brawl - 25) + max(0, sk_firearms_handgun - 20) + max(0, sk_firearms_rifle_shotgun - 25) + max(0, sk_first_aid - 30) + max(0, sk_history - 5) + max(0, sk_intimidate - 15) + max(0, sk_jump - 20) + max(0, sk_language_own - education) + max(0, sk_law - 5) + max(0, sk_library_use - 20) + max(0, sk_listen - 20) + max(0, sk_locksmith - 1) + max(0, sk_mechanical_repair - 10) + max(0, sk_medicine - 1) + max(0, sk_natural_world - 10) + max(0, sk_navigate - 10) + max(0, sk_occult - 5) + max(0, sk_operate_heavy_machinery - 1) + max(0, sk_persuade - 10) + max(0, sk_psychoanalysis - 1) + max(0, sk_psychology - 10) + max(0, sk_ride - 5) + max(0, sk_sleight_of_hand - 10) + max(0, sk_spot_hidden - 25) + max(0, sk_stealth - 20) + max(0, sk_survival - 10) + max(0, sk_swim - 20) + max(0, sk_throw - 20) + max(0, sk_track - 10) + max(0, art_craft_1 - art_craft_1_base) + max(0, art_craft_2 - art_craft_2_base) + max(0, science_1 - science_1_base) + max(0, science_2 - science_2_base) + max(0, language_other_1 - language_other_1_base) + max(0, language_other_2 - language_other_2_base) + max(0, fighting_other - fighting_other_base) + max(0, firearms_other - firearms_other_base) + max(0, pilot - pilot_base) + max(0, other_skill_1 - other_skill_1_base) + max(0, other_skill_2 - other_skill_2_base) + max(0, other_skill_3 - other_skill_3_base)) - occupation_points_spent",
+      "formula": "(max(0, sk_accounting - 5) + max(0, sk_anthropology - 1) + max(0, sk_appraise - 5) + max(0, sk_archaeology - 1) + max(0, sk_charm - 15) + max(0, sk_climb - 20) + max(0, sk_credit_rating - 0) + max(0, sk_disguise - 5) + max(0, sk_dodge - floor(dexterity / 2)) + max(0, sk_drive_auto - 20) + max(0, sk_electrical_repair - 10) + max(0, sk_fast_talk - 5) + max(0, sk_fighting_brawl - 25) + max(0, sk_firearms_handgun - 20) + max(0, sk_firearms_rifle_shotgun - 25) + max(0, sk_first_aid - 30) + max(0, sk_history - 5) + max(0, sk_intimidate - 15) + max(0, sk_jump - 20) + max(0, sk_language_own - education) + max(0, sk_law - 5) + max(0, sk_library_use - 20) + max(0, sk_listen - 20) + max(0, sk_locksmith - 1) + max(0, sk_mechanical_repair - 10) + max(0, sk_medicine - 1) + max(0, sk_natural_world - 10) + max(0, sk_navigate - 10) + max(0, sk_occult - 5) + max(0, sk_operate_heavy_machinery - 1) + max(0, sk_persuade - 10) + max(0, sk_psychoanalysis - 1) + max(0, sk_psychology - 10) + max(0, sk_ride - 5) + max(0, sk_sleight_of_hand - 10) + max(0, sk_spot_hidden - 25) + max(0, sk_stealth - 20) + max(0, sk_survival - 10) + max(0, sk_swim - 20) + max(0, sk_throw - 20) + max(0, sk_track - 10) + max(0, art_craft_1 - art_craft_1_base) + max(0, art_craft_2 - art_craft_2_base) + max(0, science_1 - science_1_base) + max(0, science_2 - science_2_base) + max(0, language_other_1 - language_other_1_base) + max(0, language_other_2 - language_other_2_base) + max(0, fighting_other - fighting_other_base) + max(0, firearms_other - firearms_other_base) + max(0, pilot - pilot_base) + max(0, other_skill_1 - other_skill_1_base) + max(0, other_skill_2 - other_skill_2_base) + max(0, other_skill_3 - other_skill_3_base) + max(0, sk_computer_use - 5) + max(0, sk_electronics - 1)) - occupation_points_spent",
       "label": "Personal Interest Points Spent"
     },
     "damage_bonus": {
@@ -1648,11 +1711,11 @@
       "label": "Maximum Sanity"
     },
     "luck_half": {
-      "formula": "floor(luck / 2)",
+      "formula": "floor(luck_current / 2)",
       "label": "Luck half"
     },
     "luck_fifth": {
-      "formula": "floor(luck / 5)",
+      "formula": "floor(luck_current / 5)",
       "label": "Luck fifth"
     },
     "sanity_fifth": {

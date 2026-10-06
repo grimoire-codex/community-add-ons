@@ -17,7 +17,9 @@
       "Nature",
       "Perception",
       "Survival"
-    ]
+    ],
+    "feature_ids": "barbarian-rage, barbarian-unarmored-defense, barbarian-weapon-mastery",
+    "feature_names": "Rage, Unarmored Defense, Weapon Mastery"
   },
   {
     "_id": "bard",
@@ -49,7 +51,9 @@
       "Sleight of Hand",
       "Stealth",
       "Survival"
-    ]
+    ],
+    "feature_ids": "bard-bardic-inspiration, bard-spellcasting",
+    "feature_names": "Bardic Inspiration, Spellcasting"
   },
   {
     "_id": "cleric",
@@ -68,7 +72,9 @@
       "Medicine",
       "Persuasion",
       "Religion"
-    ]
+    ],
+    "feature_ids": "cleric-divine-order, cleric-spellcasting",
+    "feature_names": "Divine Order, Spellcasting"
   },
   {
     "_id": "druid",
@@ -90,7 +96,9 @@
       "Perception",
       "Religion",
       "Survival"
-    ]
+    ],
+    "feature_ids": "druid-druidic, druid-primal-order, druid-spellcasting",
+    "feature_names": "Druidic, Primal Order, Spellcasting"
   },
   {
     "_id": "fighter",
@@ -113,7 +121,9 @@
       "Perception",
       "Persuasion",
       "Survival"
-    ]
+    ],
+    "feature_ids": "fighter-fighting-style, fighter-second-wind, fighter-weapon-mastery",
+    "feature_names": "Fighting Style, Second Wind, Weapon Mastery"
   },
   {
     "_id": "monk",
@@ -133,7 +143,9 @@
       "Insight",
       "Religion",
       "Stealth"
-    ]
+    ],
+    "feature_ids": "monk-martial-arts, monk-unarmored-defense",
+    "feature_names": "Martial Arts, Unarmored Defense"
   },
   {
     "_id": "paladin",
@@ -153,7 +165,9 @@
       "Medicine",
       "Persuasion",
       "Religion"
-    ]
+    ],
+    "feature_ids": "paladin-lay-on-hands, paladin-spellcasting, paladin-weapon-mastery",
+    "feature_names": "Lay On Hands, Spellcasting, Weapon Mastery"
   },
   {
     "_id": "ranger",
@@ -175,7 +189,9 @@
       "Perception",
       "Stealth",
       "Survival"
-    ]
+    ],
+    "feature_ids": "ranger-favored-enemy, ranger-spellcasting, ranger-weapon-mastery",
+    "feature_names": "Favored Enemy, Spellcasting, Weapon Mastery"
   },
   {
     "_id": "rogue",
@@ -199,7 +215,9 @@
       "Persuasion",
       "Sleight of Hand",
       "Stealth"
-    ]
+    ],
+    "feature_ids": "rogue-expertise, rogue-sneak-attack, rogue-thieves-cant, rogue-weapon-mastery",
+    "feature_names": "Expertise, Sneak Attack, Thieves' Cant, Weapon Mastery"
   },
   {
     "_id": "sorcerer",
@@ -219,7 +237,9 @@
       "Intimidation",
       "Persuasion",
       "Religion"
-    ]
+    ],
+    "feature_ids": "sorcerer-innate-sorcery, sorcerer-spellcasting",
+    "feature_names": "Innate Sorcery, Spellcasting"
   },
   {
     "_id": "warlock",
@@ -240,7 +260,9 @@
       "Investigation",
       "Nature",
       "Religion"
-    ]
+    ],
+    "feature_ids": "warlock-eldritch-invocations, warlock-pact-magic",
+    "feature_names": "Eldritch Invocations, Pact Magic"
   },
   {
     "_id": "wizard",
@@ -261,6 +283,8 @@
       "Medicine",
       "Nature",
       "Religion"
-    ]
+    ],
+    "feature_ids": "wizard-arcane-recovery, wizard-ritual-adept, wizard-spellcasting",
+    "feature_names": "Arcane Recovery, Ritual Adept, Spellcasting"
   }
 ]

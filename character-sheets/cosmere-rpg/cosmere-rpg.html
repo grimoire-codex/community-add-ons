@@ -1,0 +1,92 @@
+<!-- Cosmere Roleplaying Game character sheet (Mistborn campaign setting).
+     The printed sheet's content and order - identity, the three realms with
+     their attribute pairs and defense, health, focus and Investiture, the
+     eighteen skills with their ranks as boxes, the derived statistics, then
+     weapons, expertises and talents; on the second page appearance,
+     equipment and boxings, purpose, obstacle, goals, notes and connections -
+     in original styling, as Brotherwise's fan content policy asks. -->
+<div class="sheet-cosmere">
+<g-tabs>
+
+<g-tab title="Character">
+
+  <section class="identity">
+    <div class="id-player panel"><span class="cap">Player Name</span><g-field name="player_name" label="" /></div>
+    <div class="id-main panel">
+      <div class="id-cell grow"><span class="cap">Character Name</span><g-field name="hero_name" label="" /></div>
+      <div class="id-cell level"><span class="cap">Level</span><g-field name="level" label="" variant="compact" /></div>
+      <div class="id-cell grow"><span class="cap">Paths</span><g-field name="paths" label="" /></div>
+      <div class="id-cell"><span class="cap">Ancestry</span><g-field name="ancestry" label="" /></div>
+    </div>
+  </section>
+
+  <section class="realms">
+    <div class="realm"><h3 class="realm-title">Physical</h3><div class="realm-row"><div class="attr"><span class="cap">Strength</span><div class="attr-box"><g-field name="strength" label="" variant="compact" /></div></div><div class="defense"><span class="cap">Defense</span><div class="shield"><g-value name="physical_defense" /></div></div><div class="attr"><span class="cap">Speed</span><div class="attr-box"><g-field name="speed" label="" variant="compact" /></div></div></div></div>
+    <div class="realm"><h3 class="realm-title">Cognitive</h3><div class="realm-row"><div class="attr"><span class="cap">Intellect</span><div class="attr-box"><g-field name="intellect" label="" variant="compact" /></div></div><div class="defense"><span class="cap">Defense</span><div class="shield"><g-value name="cognitive_defense" /></div></div><div class="attr"><span class="cap">Willpower</span><div class="attr-box"><g-field name="willpower" label="" variant="compact" /></div></div></div></div>
+    <div class="realm"><h3 class="realm-title">Spiritual</h3><div class="realm-row"><div class="attr"><span class="cap">Awareness</span><div class="attr-box"><g-field name="awareness" label="" variant="compact" /></div></div><div class="defense"><span class="cap">Defense</span><div class="shield"><g-value name="spiritual_defense" /></div></div><div class="attr"><span class="cap">Presence</span><div class="attr-box"><g-field name="presence" label="" variant="compact" /></div></div></div></div>
+  </section>
+
+  <section class="pools">
+    <div class="pool"><div class="pool-head"><span class="cap">Health</span><span class="cap dim">Maximum</span></div><div class="pool-cells"><span class="pool-max"><g-field name="health_max" label="" variant="compact" /></span><span class="pool-cur"><span class="cap dim">Current</span><g-field name="health" label="" variant="compact" /></span></div><div class="deflect"><span class="cap">Deflect</span><div class="deflect-box"><g-field name="deflect" label="" variant="compact" /></div></div></div>
+    <div class="pool"><div class="pool-head"><span class="cap">Focus</span><span class="cap dim">Maximum</span></div><div class="pool-cells"><span class="pool-max"><g-field name="focus_max" label="" variant="compact" /></span><span class="pool-cur"><span class="cap dim">Current</span><g-field name="focus" label="" variant="compact" /></span></div></div>
+    <div class="pool"><div class="pool-head"><span class="cap">Investiture</span><span class="cap dim">Maximum</span></div><div class="pool-cells"><span class="pool-max"><g-field name="investiture_max" label="" variant="compact" /></span><span class="pool-cur"><span class="cap dim">Current</span><g-field name="investiture" label="" variant="compact" /></span></div><label class="invested"><g-field name="invested" label="" />Invested</label></div>
+  </section>
+
+  <section class="skills">
+    <div class="skill-col"><div class="skill"><span class="sk-mod"><g-value name="sk_agility_mod" /></span><span class="sk-name">Agility <span class="sk-attr">(spd)</span></span><g-pips count="5" value="sk_agility" label="Agility rank" /></div><div class="skill"><span class="sk-mod"><g-value name="sk_athletics_mod" /></span><span class="sk-name">Athletics <span class="sk-attr">(str)</span></span><g-pips count="5" value="sk_athletics" label="Athletics rank" /></div><div class="skill"><span class="sk-mod"><g-value name="sk_heavy_weaponry_mod" /></span><span class="sk-name">Heavy Weaponry <span class="sk-attr">(str)</span></span><g-pips count="5" value="sk_heavy_weaponry" label="Heavy Weaponry rank" /></div><div class="skill"><span class="sk-mod"><g-value name="sk_light_weaponry_mod" /></span><span class="sk-name">Light Weaponry <span class="sk-attr">(spd)</span></span><g-pips count="5" value="sk_light_weaponry" label="Light Weaponry rank" /></div><div class="skill"><span class="sk-mod"><g-value name="sk_stealth_mod" /></span><span class="sk-name">Stealth <span class="sk-attr">(spd)</span></span><g-pips count="5" value="sk_stealth" label="Stealth rank" /></div><div class="skill"><span class="sk-mod"><g-value name="sk_thievery_mod" /></span><span class="sk-name">Thievery <span class="sk-attr">(spd)</span></span><g-pips count="5" value="sk_thievery" label="Thievery rank" /></div><div class="skill custom"><span class="sk-mod"><g-value name="sk_custom_1_mod" /></span><span class="sk-name"><g-field name="sk_custom_1_name" label="" /><g-field name="sk_custom_1_attr" label="" /></span><g-pips count="5" value="sk_custom_1" label="Additional skill 1 rank" /></div></div>
+    <div class="skill-col"><div class="skill"><span class="sk-mod"><g-value name="sk_crafting_mod" /></span><span class="sk-name">Crafting <span class="sk-attr">(int)</span></span><g-pips count="5" value="sk_crafting" label="Crafting rank" /></div><div class="skill"><span class="sk-mod"><g-value name="sk_deduction_mod" /></span><span class="sk-name">Deduction <span class="sk-attr">(int)</span></span><g-pips count="5" value="sk_deduction" label="Deduction rank" /></div><div class="skill"><span class="sk-mod"><g-value name="sk_discipline_mod" /></span><span class="sk-name">Discipline <span class="sk-attr">(wil)</span></span><g-pips count="5" value="sk_discipline" label="Discipline rank" /></div><div class="skill"><span class="sk-mod"><g-value name="sk_intimidation_mod" /></span><span class="sk-name">Intimidation <span class="sk-attr">(wil)</span></span><g-pips count="5" value="sk_intimidation" label="Intimidation rank" /></div><div class="skill"><span class="sk-mod"><g-value name="sk_lore_mod" /></span><span class="sk-name">Lore <span class="sk-attr">(int)</span></span><g-pips count="5" value="sk_lore" label="Lore rank" /></div><div class="skill"><span class="sk-mod"><g-value name="sk_medicine_mod" /></span><span class="sk-name">Medicine <span class="sk-attr">(int)</span></span><g-pips count="5" value="sk_medicine" label="Medicine rank" /></div><div class="skill custom"><span class="sk-mod"><g-value name="sk_custom_2_mod" /></span><span class="sk-name"><g-field name="sk_custom_2_name" label="" /><g-field name="sk_custom_2_attr" label="" /></span><g-pips count="5" value="sk_custom_2" label="Additional skill 2 rank" /></div></div>
+    <div class="skill-col"><div class="skill"><span class="sk-mod"><g-value name="sk_deception_mod" /></span><span class="sk-name">Deception <span class="sk-attr">(pre)</span></span><g-pips count="5" value="sk_deception" label="Deception rank" /></div><div class="skill"><span class="sk-mod"><g-value name="sk_insight_mod" /></span><span class="sk-name">Insight <span class="sk-attr">(awa)</span></span><g-pips count="5" value="sk_insight" label="Insight rank" /></div><div class="skill"><span class="sk-mod"><g-value name="sk_leadership_mod" /></span><span class="sk-name">Leadership <span class="sk-attr">(pre)</span></span><g-pips count="5" value="sk_leadership" label="Leadership rank" /></div><div class="skill"><span class="sk-mod"><g-value name="sk_perception_mod" /></span><span class="sk-name">Perception <span class="sk-attr">(awa)</span></span><g-pips count="5" value="sk_perception" label="Perception rank" /></div><div class="skill"><span class="sk-mod"><g-value name="sk_persuasion_mod" /></span><span class="sk-name">Persuasion <span class="sk-attr">(pre)</span></span><g-pips count="5" value="sk_persuasion" label="Persuasion rank" /></div><div class="skill"><span class="sk-mod"><g-value name="sk_survival_mod" /></span><span class="sk-name">Survival <span class="sk-attr">(awa)</span></span><g-pips count="5" value="sk_survival" label="Survival rank" /></div><div class="skill custom"><span class="sk-mod"><g-value name="sk_custom_3_mod" /></span><span class="sk-name"><g-field name="sk_custom_3_name" label="" /><g-field name="sk_custom_3_attr" label="" /></span><g-pips count="5" value="sk_custom_3" label="Additional skill 3 rank" /></div></div>
+  </section>
+  <p class="hint ranks">Attribute points <g-value name="attribute_points_spent" /> of <g-value name="attribute_points" /> · skill ranks <g-value name="skill_ranks_spent" /> of <g-value name="skill_ranks" /> · at most <g-value name="max_skill_rank" /> in a skill this tier. Tick a skill's boxes for its ranks; the number beside it is its modifier.</p>
+
+  <section class="derived">
+    <div class="panel stat"><span class="cap">Lifting Capacity</span><b><g-value name="lifting_capacity" /></b><span class="cap dim">Carry <g-value name="carrying_capacity" /></span></div>
+    <div class="panel stat"><span class="cap">Movement</span><b><g-value name="movement" /></b></div>
+    <div class="panel stat"><span class="cap">Recovery Die</span><b><g-value name="recovery_die" /></b></div>
+    <div class="panel stat"><span class="cap">Senses Range</span><b><g-value name="senses_range" /></b></div>
+  </section>
+
+  <div class="lower">
+    <div class="stack">
+      <section class="panel"><h3 class="title">Conditions &amp; Injuries</h3><g-field name="conditions" label="" /></section>
+      <section class="panel"><h3 class="title">Weapons</h3><g-field name="weapons" label="" /></section>
+    </div>
+    <div class="stack">
+      <section class="panel"><h3 class="title">Expertises</h3><g-field name="expertises" label="" /></section>
+      <section class="panel"><h3 class="title">Talents</h3><g-field name="talents" label="" /></section>
+    </div>
+  </div>
+
+</g-tab>
+
+<g-tab title="Story &amp; Gear">
+
+  <section class="identity">
+    <div class="id-player panel"><span class="cap">Player Name</span><g-field name="player_name" label="" /></div>
+    <div class="id-main panel">
+      <div class="id-cell grow"><span class="cap">Character Name</span><g-field name="hero_name" label="" /></div>
+      <div class="id-cell level"><span class="cap">Level</span><g-field name="level" label="" variant="compact" /></div>
+      <div class="id-cell grow"><span class="cap">Paths</span><g-field name="paths" label="" /></div>
+      <div class="id-cell"><span class="cap">Ancestry</span><g-field name="ancestry" label="" /></div>
+    </div>
+  </section>
+
+  <div class="story">
+    <section class="panel"><h3 class="title">Character Appearance</h3><g-field name="appearance" label="" /></section>
+    <section class="panel"><h3 class="title">Armor &amp; Equipment</h3><g-field name="equipment" label="" />
+      <div class="boxings"><span class="cap">Boxings</span><g-field name="boxings" label="" variant="compact" /></div></section>
+    <section class="panel purpose">
+      <h3 class="title">Purpose</h3><g-field name="purpose" label="" />
+      <h3 class="title">Obstacle</h3><g-field name="obstacle" label="" />
+      <h3 class="title">Goals</h3><div class="goals"><div class="goal"><g-field name="goal_1" label="" /><g-pips count="3" value="goal_1_progress" label="Goal 1 progress" /></div><div class="goal"><g-field name="goal_2" label="" /><g-pips count="3" value="goal_2_progress" label="Goal 2 progress" /></div><div class="goal"><g-field name="goal_3" label="" /><g-pips count="3" value="goal_3_progress" label="Goal 3 progress" /></div><div class="goal"><g-field name="goal_4" label="" /><g-pips count="3" value="goal_4_progress" label="Goal 4 progress" /></div><div class="goal"><g-field name="goal_5" label="" /><g-pips count="3" value="goal_5_progress" label="Goal 5 progress" /></div><div class="goal"><g-field name="goal_6" label="" /><g-pips count="3" value="goal_6_progress" label="Goal 6 progress" /></div><div class="goal"><g-field name="goal_7" label="" /><g-pips count="3" value="goal_7_progress" label="Goal 7 progress" /></div><div class="goal"><g-field name="goal_8" label="" /><g-pips count="3" value="goal_8_progress" label="Goal 8 progress" /></div><div class="goal"><g-field name="goal_9" label="" /><g-pips count="3" value="goal_9_progress" label="Goal 9 progress" /></div></div>
+    </section>
+  </div>
+  <div class="story two">
+    <section class="panel"><h3 class="title">Notes</h3><g-field name="notes" label="" /></section>
+    <section class="panel"><h3 class="title">Connections</h3><g-field name="connections" label="" /></section>
+  </div>
+
+</g-tab>
+
+</g-tabs>
+</div>

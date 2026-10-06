@@ -1,0 +1,399 @@
+/* Dungeon Crawler Carl crawler sheet.
+   The printed sheet's arrangement - stats down the left, the combat sums
+   across the top, attacks beneath - in the app's own styling. There is no
+   fan content policy for the game, so nothing of the printed sheet's look is
+   reused: no banner bars, no condensed display face, no red-to-green health
+   gradient. Every colour is an app token. */
+
+.sheet-dcc {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--text);
+}
+
+.gc-tabpanel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* --- shared ---------------------------------------------------------------- */
+
+.block {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-card);
+  padding: 8px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.bar {
+  margin: 0 0 2px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  color: var(--text-dim);
+}
+
+.cap {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.three {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.pairs {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 4px 8px;
+  align-items: center;
+}
+
+.pl {
+  font-size: 13px;
+  font-weight: 600;
+  text-align: right;
+}
+
+/* --- header and stats ------------------------------------------------------ */
+
+.header-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.2fr) minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 8px 14px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-card);
+}
+
+.header-grid .name input {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.crawler {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stat {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-card);
+  padding: 6px 10px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-name {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.stat-pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 14px minmax(0, 1fr);
+  align-items: center;
+  text-align: center;
+}
+
+.stat-pair input {
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.slash {
+  font-size: 20px;
+  color: var(--text-muted);
+}
+
+.stat-caps {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  text-align: center;
+}
+
+.stat-mod {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  margin-top: 4px;
+  padding-top: 4px;
+  border-top: 1px solid var(--border);
+}
+
+.stat-mod input {
+  text-align: center;
+  font-weight: 700;
+}
+
+/* --- combat ---------------------------------------------------------------- */
+
+.combat {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.health {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-card);
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.health-label {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.health-label b {
+  color: var(--gold);
+}
+
+.health .gc-pips {
+  display: grid !important;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  justify-items: center;
+}
+
+.health .gc-pips input {
+  width: 22px !important;
+  height: 22px !important;
+}
+
+.health-scale {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  font-size: 10px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* A line of the sheet's printed arithmetic: name, d20 +, boxes, = total. */
+.formula {
+  display: grid;
+  grid-template-columns: 150px 40px minmax(60px, 1fr) 16px minmax(60px, 1fr) 16px minmax(60px, 1fr) minmax(60px, 1fr) minmax(60px, 1fr);
+  gap: 6px;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-card);
+  padding: 8px 12px;
+}
+
+.formula-name {
+  font-size: 16px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.05;
+}
+
+.op {
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.box {
+  display: block;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 5px 2px;
+  font-weight: 700;
+}
+
+.box.total {
+  color: var(--gold);
+  font-size: 16px;
+}
+
+.formula input {
+  text-align: center;
+}
+
+.mana-row {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.mana,
+.buffs,
+.debuffs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.attacks {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.attack {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.3fr) minmax(0, 1.2fr) minmax(0, 2.2fr);
+  gap: 8px;
+  align-items: center;
+}
+
+.attack.head .cap {
+  white-space: normal;
+  text-align: center;
+  line-height: 1.2;
+}
+
+.sum {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 12px minmax(0, 1fr) auto;
+  gap: 4px;
+  align-items: center;
+}
+
+.sum span {
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.sum input {
+  text-align: center;
+}
+
+.sum .total {
+  min-width: 34px;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+/* --- other pages ----------------------------------------------------------- */
+
+.hotlist {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.slot {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.slot.accessories {
+  grid-template-columns: minmax(0, 1fr);
+  border-bottom: none;
+}
+
+.slot-name {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.slot-name b {
+  color: var(--gold);
+}
+
+.pet-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+/* --- narrower screens ------------------------------------------------------ */
+
+@media (max-width: 1200px) {
+  .formula {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .formula-name {
+    grid-column: 1 / -1;
+  }
+  .op {
+    display: none;
+  }
+  .three {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .crawler,
+  .split,
+  .mana-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .header-grid,
+  .attack {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .hotlist {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .attack.head {
+    display: none;
+  }
+}

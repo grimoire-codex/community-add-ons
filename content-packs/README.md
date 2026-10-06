@@ -83,13 +83,20 @@ grants cannot both be `human-detect-the-supernatural`.
 ## Licensing
 
 **Everything in a pack must be covered by the licence it names.** The 5e pack
-is SRD 5.2 only - nine species, four backgrounds, the SRD feats and spells -
-because it carries the SRD's CC BY 4.0 attribution. Content from a rulebook
+is SRD 5.2 only - nine species, four backgrounds, the SRD feats, spells, class
+features, equipment and magic items - because it carries the SRD's CC BY 4.0
+attribution. Content from a rulebook
 outside the SRD cannot go in it however familiar it is: the Player's Handbook's
 other backgrounds, feats and species are not open content. Check each entry
 against the source document, not against memory; an earlier version of this
 pack got that wrong, and Grimoire's test suite now checks the pack against the
 SRD's lists.
+
+Its spells, class features, equipment and magic items are converted from
+[Open5e](https://github.com/open5e/open5e-api)'s SRD 5.2 data by
+`scripts/srd-5e/import_open5e.py`. Open5e expands a generic magic item into a
+copy per weapon or armour; the script folds those back into the one entry the
+SRD prints.
 
 The Draw Steel pack is MCDM's text, converted from [Forge Steel](https://forgesteel.net/)'s
 data under the Draw Steel Creator License. Forge Steel's GPL-3.0 covers its code,

@@ -270,6 +270,11 @@
         <g-field name="equipment" label="" />
         <span class="tiny">Carrying <g-value name="carried_weight" /> of <g-value name="carry_capacity" /> lb</span>
       </section>
+
+      <section class="box">
+        <h3 class="box-heading">Magic Items</h3>
+        <g-field name="magic_items" label="" />
+      </section>
     </div>
 
     <div class="p2-side">
@@ -286,11 +291,10 @@
         <h3 class="box-heading">Languages</h3>
         <g-field name="languages" label="" />
       </section>
-      <section class="box">
+      <section class="box attunement">
         <h3 class="box-heading">Magic Item Attunement</h3>
-        <g-field name="attunement_1" label="" />
-        <g-field name="attunement_2" label="" />
-        <g-field name="attunement_3" label="" />
+        <span class="big"><g-value name="attuned_count" /> / 3</span>
+        <span class="tiny">Tick Attuned beside an item in Magic Items.</span>
       </section>
       <section class="box">
         <h3 class="box-heading">Coins</h3>

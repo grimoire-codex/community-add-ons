@@ -64,7 +64,7 @@
       "type": "object",
       "description": "The editable state of a character, keyed by field name.",
       "minProperties": 1,
-      "maxProperties": 500,
+      "maxProperties": 1000,
       "propertyNames": {
         "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
       },
@@ -319,7 +319,7 @@
     "computed": {
       "type": "object",
       "description": "Values derived from fields. Read-only, recalculated on every read, never stored.",
-      "maxProperties": 500,
+      "maxProperties": 1500,
       "propertyNames": {
         "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
       },

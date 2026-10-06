@@ -1,7 +1,7 @@
 {
   "$schema": "../schema/content-pack-index.schema.json",
   "version": 1,
-  "generated": "2026-09-26T02:48:34+00:00",
+  "generated": "2026-10-06T18:31:28+00:00",
   "packs": [
     {
       "pack_id": "dnd-5e-srd",
@@ -11,8 +11,8 @@
         {
           "name": "_meta.json",
           "path": "content-packs/dnd-5e-srd/_meta.json",
-          "sha256": "fa198c2ae24bed5eb98cec32ee30712ec43d32f263dd3ec906ff4274de56ed4c",
-          "bytes": 767
+          "sha256": "27166155525589091afd1a4faa14766486e8cafd212fb3a8d62fcaae61741b1d",
+          "bytes": 817
         },
         {
           "name": "background.json",
@@ -23,14 +23,32 @@
         {
           "name": "class.json",
           "path": "content-packs/dnd-5e-srd/class.json",
-          "sha256": "f3e35cb3cf05d6a4ee8fbcd85d98c1ebe276e254ad3c0b6ffe6573a9a4094bbb",
-          "bytes": 6314
+          "sha256": "ec9f7877240a549738d532bbd7536a1b9d2a9d9e2c3befddb3c5c2ef87d05006",
+          "bytes": 8015
         },
         {
           "name": "feat.json",
           "path": "content-packs/dnd-5e-srd/feat.json",
           "sha256": "1ff029affa7acc0d162c80e93625d86ffe2c66aedccf4d234511778c7e753545",
           "bytes": 4665
+        },
+        {
+          "name": "feature.json",
+          "path": "content-packs/dnd-5e-srd/feature.json",
+          "sha256": "4fbcc48c88327464ad6631eb009cf575b2f76108252f9d3322417aeea73c7e44",
+          "bytes": 123597
+        },
+        {
+          "name": "item.json",
+          "path": "content-packs/dnd-5e-srd/item.json",
+          "sha256": "f8ca8eb28f3868836cb15b5c25818f7cf199051c5257fc2b589001cf153dcc5a",
+          "bytes": 56362
+        },
+        {
+          "name": "magic_item.json",
+          "path": "content-packs/dnd-5e-srd/magic_item.json",
+          "sha256": "b44f11927d8134c672f1cb2d9421930f193dd15d693f0f15d5c8d5c67b2851f3",
+          "bytes": 234843
         },
         {
           "name": "species.json",
@@ -41,8 +59,8 @@
         {
           "name": "spell.json",
           "path": "content-packs/dnd-5e-srd/spell.json",
-          "sha256": "e9bc408038d745b43f15fa43575aef8871606903c4c6478fc527a1b01365bdfe",
-          "bytes": 24796
+          "sha256": "55f7f99923faf7839de5290ac84e892340626a41ad0cbd6f288e530ceb28d17a",
+          "bytes": 354751
         },
         {
           "name": "trait.json",
@@ -51,17 +69,20 @@
           "bytes": 7983
         }
       ],
-      "entry_count": 133,
+      "entry_count": 1109,
       "content_types": [
         "background",
         "class",
         "feat",
+        "feature",
+        "item",
+        "magic_item",
         "species",
         "spell",
         "trait"
       ],
-      "version": "1.1.0",
-      "description": "Classes, species and their traits, backgrounds, feats and commonly used spells from the System Reference Document 5.2 - and nothing outside it.",
+      "version": "2.0.0",
+      "description": "The System Reference Document 5.2, and nothing outside it: classes and every class and subclass feature, species and their traits, backgrounds, feats, all 339 spells, equipment and magic items.",
       "license": "CC-BY-4.0",
       "license_url": "https://creativecommons.org/licenses/by/4.0/",
       "attribution": "This work includes material from the System Reference Document 5.2 (\u201cSRD 5.2\u201d) by Wizards of the Coast LLC, available at https://www.dndbeyond.com/srd. The SRD 5.2 is licensed under the Creative Commons Attribution 4.0 International License, available at https://creativecommons.org/licenses/by/4.0/legalcode.",

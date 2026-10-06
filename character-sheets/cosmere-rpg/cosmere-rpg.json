@@ -1,0 +1,773 @@
+{
+  "$schema": "../../schema/character-sheet.schema.json",
+  "id": "cosmere-rpg",
+  "name": "Cosmere RPG",
+  "version": "1.0.0",
+  "system": "Cosmere Roleplaying Game",
+  "description": "A character sheet for Brandon Sanderson's Cosmere Roleplaying Game, after the Mistborn campaign setting sheet: six attributes and the three defenses they make, health, focus and Investiture, the eighteen skills with their ranks and modifiers, lifting capacity, movement, recovery die and senses range, and purpose, obstacle and goals.",
+  "author": "hunter-read",
+  "homepage": "https://www.cosmererpg.com/fan-content-policy",
+  "license": "Cosmere RPG Fan Content Policy",
+  "license_url": "https://www.cosmererpg.com/fan-content-policy",
+  "attribution": "This is unofficial fan content, created and shared for non-commercial use. It has not been reviewed by Dragonsteel Entertainment, LLC or Brotherwise Games, LLC.",
+  "name_field": "hero_name",
+  "layout_file": "cosmere-rpg.html",
+  "styles_file": "cosmere-rpg.css",
+  "fields": {
+    "hero_name": {
+      "type": "text",
+      "label": "Character Name"
+    },
+    "level": {
+      "type": "number",
+      "label": "Level",
+      "min": 1,
+      "max": 21,
+      "default": 1
+    },
+    "player_name": {
+      "type": "text",
+      "label": "Player Name"
+    },
+    "paths": {
+      "type": "textarea",
+      "label": "Paths",
+      "rows": 2
+    },
+    "ancestry": {
+      "type": "text",
+      "label": "Ancestry"
+    },
+    "strength": {
+      "type": "number",
+      "label": "Strength",
+      "min": 0,
+      "max": 10,
+      "default": 2
+    },
+    "speed": {
+      "type": "number",
+      "label": "Speed",
+      "min": 0,
+      "max": 10,
+      "default": 2
+    },
+    "intellect": {
+      "type": "number",
+      "label": "Intellect",
+      "min": 0,
+      "max": 10,
+      "default": 2
+    },
+    "willpower": {
+      "type": "number",
+      "label": "Willpower",
+      "min": 0,
+      "max": 10,
+      "default": 2
+    },
+    "awareness": {
+      "type": "number",
+      "label": "Awareness",
+      "min": 0,
+      "max": 10,
+      "default": 2
+    },
+    "presence": {
+      "type": "number",
+      "label": "Presence",
+      "min": 0,
+      "max": 10,
+      "default": 2
+    },
+    "health_max": {
+      "type": "number",
+      "label": "Maximum Health",
+      "min": 0,
+      "default": 12,
+      "default_from": "10 + 5 * (min(level, 5) - 1) + 4 * clamp(level - 5, 0, 5) + 3 * clamp(level - 10, 0, 5) + 2 * clamp(level - 15, 0, 5) + clamp(level - 20, 0, 1) + strength * (1 + (level >= 6 ? 1 : 0) + (level >= 11 ? 1 : 0) + (level >= 16 ? 1 : 0))"
+    },
+    "health": {
+      "type": "number",
+      "label": "Current Health",
+      "min": 0,
+      "default": 12,
+      "default_from": "health_max"
+    },
+    "focus_max": {
+      "type": "number",
+      "label": "Maximum Focus",
+      "min": 0,
+      "default": 4,
+      "default_from": "2 + willpower"
+    },
+    "focus": {
+      "type": "number",
+      "label": "Current Focus",
+      "min": 0,
+      "default": 4,
+      "default_from": "focus_max"
+    },
+    "invested": {
+      "type": "checkbox",
+      "label": "Uses Investiture (Allomancy or another Invested power)"
+    },
+    "investiture_max": {
+      "type": "number",
+      "label": "Maximum Investiture",
+      "min": 0,
+      "default": 0,
+      "default_from": "invested ? 2 + max(awareness, presence) : 0"
+    },
+    "investiture": {
+      "type": "number",
+      "label": "Current Investiture",
+      "min": 0,
+      "default": 0,
+      "default_from": "investiture_max"
+    },
+    "deflect": {
+      "type": "number",
+      "label": "Deflect",
+      "min": 0,
+      "default": 0
+    },
+    "sk_agility": {
+      "type": "number",
+      "label": "Agility ranks",
+      "min": 0,
+      "max": 5,
+      "default": 0
+    },
+    "sk_athletics": {
+      "type": "number",
+      "label": "Athletics ranks",
+      "min": 0,
+      "max": 5,
+      "default": 0
+    },
+    "sk_heavy_weaponry": {
+      "type": "number",
+      "label": "Heavy Weaponry ranks",
+      "min": 0,
+      "max": 5,
+      "default": 0
+    },
+    "sk_light_weaponry": {
+      "type": "number",
+      "label": "Light Weaponry ranks",
+      "min": 0,
+      "max": 5,
+      "default": 0
+    },
+    "sk_stealth": {
+      "type": "number",
+      "label": "Stealth ranks",
+      "min": 0,
+      "max": 5,
+      "default": 0
+    },
+    "sk_thievery": {
+      "type": "number",
+      "label": "Thievery ranks",
+      "min": 0,
+      "max": 5,
+      "default": 0
+    },
+    "sk_crafting": {
+      "type": "number",
+      "label": "Crafting ranks",
+      "min": 0,
+      "max": 5,
+      "default": 0
+    },
+    "sk_deduction": {
+      "type": "number",
+      "label": "Deduction ranks",
+      "min": 0,
+      "max": 5,
+      "default": 0
+    },
+    "sk_discipline": {
+      "type": "number",
+      "label": "Discipline ranks",
+      "min": 0,
+      "max": 5,
+      "default": 0
+    },
+    "sk_intimidation": {
+      "type": "number",
+      "label": "Intimidation ranks",
+      "min": 0,
+      "max": 5,
+      "default": 0
+    },
+    "sk_lore": {
+      "type": "number",
+      "label": "Lore ranks",
+      "min": 0,
+      "max": 5,
+      "default": 0
+    },
+    "sk_medicine": {
+      "type": "number",
+      "label": "Medicine ranks",
+      "min": 0,
+      "max": 5,
+      "default": 0
+    },
+    "sk_deception": {
+      "type": "number",
+      "label": "Deception ranks",
+      "min": 0,
+      "max": 5,
+      "default": 0
+    },
+    "sk_insight": {
+      "type": "number",
+      "label": "Insight ranks",
+      "min": 0,
+      "max": 5,
+      "default": 0
+    },
+    "sk_leadership": {
+      "type": "number",
+      "label": "Leadership ranks",
+      "min": 0,
+      "max": 5,
+      "default": 0
+    },
+    "sk_perception": {
+      "type": "number",
+      "label": "Perception ranks",
+      "min": 0,
+      "max": 5,
+      "default": 0
+    },
+    "sk_persuasion": {
+      "type": "number",
+      "label": "Persuasion ranks",
+      "min": 0,
+      "max": 5,
+      "default": 0
+    },
+    "sk_survival": {
+      "type": "number",
+      "label": "Survival ranks",
+      "min": 0,
+      "max": 5,
+      "default": 0
+    },
+    "sk_custom_1_name": {
+      "type": "text",
+      "label": "Additional skill 1",
+      "placeholder": "Allomancy, a surge…"
+    },
+    "sk_custom_1_attr": {
+      "type": "select",
+      "label": "Additional skill 1 attribute",
+      "options": [
+        {
+          "value": "STR",
+          "label": "STR"
+        },
+        {
+          "value": "SPD",
+          "label": "SPD"
+        },
+        {
+          "value": "INT",
+          "label": "INT"
+        },
+        {
+          "value": "WIL",
+          "label": "WIL"
+        },
+        {
+          "value": "AWA",
+          "label": "AWA"
+        },
+        {
+          "value": "PRE",
+          "label": "PRE"
+        }
+      ]
+    },
+    "sk_custom_1": {
+      "type": "number",
+      "label": "Additional skill 1 ranks",
+      "min": 0,
+      "max": 5,
+      "default": 0
+    },
+    "sk_custom_2_name": {
+      "type": "text",
+      "label": "Additional skill 2",
+      "placeholder": "Allomancy, a surge…"
+    },
+    "sk_custom_2_attr": {
+      "type": "select",
+      "label": "Additional skill 2 attribute",
+      "options": [
+        {
+          "value": "STR",
+          "label": "STR"
+        },
+        {
+          "value": "SPD",
+          "label": "SPD"
+        },
+        {
+          "value": "INT",
+          "label": "INT"
+        },
+        {
+          "value": "WIL",
+          "label": "WIL"
+        },
+        {
+          "value": "AWA",
+          "label": "AWA"
+        },
+        {
+          "value": "PRE",
+          "label": "PRE"
+        }
+      ]
+    },
+    "sk_custom_2": {
+      "type": "number",
+      "label": "Additional skill 2 ranks",
+      "min": 0,
+      "max": 5,
+      "default": 0
+    },
+    "sk_custom_3_name": {
+      "type": "text",
+      "label": "Additional skill 3",
+      "placeholder": "Allomancy, a surge…"
+    },
+    "sk_custom_3_attr": {
+      "type": "select",
+      "label": "Additional skill 3 attribute",
+      "options": [
+        {
+          "value": "STR",
+          "label": "STR"
+        },
+        {
+          "value": "SPD",
+          "label": "SPD"
+        },
+        {
+          "value": "INT",
+          "label": "INT"
+        },
+        {
+          "value": "WIL",
+          "label": "WIL"
+        },
+        {
+          "value": "AWA",
+          "label": "AWA"
+        },
+        {
+          "value": "PRE",
+          "label": "PRE"
+        }
+      ]
+    },
+    "sk_custom_3": {
+      "type": "number",
+      "label": "Additional skill 3 ranks",
+      "min": 0,
+      "max": 5,
+      "default": 0
+    },
+    "conditions": {
+      "type": "textarea",
+      "label": "Conditions & Injuries",
+      "rows": 4
+    },
+    "expertises": {
+      "type": "textarea",
+      "label": "Expertises",
+      "rows": 4
+    },
+    "weapons": {
+      "type": "list",
+      "label": "Weapons",
+      "add_label": "Add a weapon",
+      "columns": [
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Weapon",
+          "flex": 3
+        },
+        {
+          "key": "skill",
+          "type": "text",
+          "label": "Skill",
+          "flex": 2
+        },
+        {
+          "key": "damage",
+          "type": "text",
+          "label": "Damage",
+          "flex": 2
+        },
+        {
+          "key": "range",
+          "type": "text",
+          "label": "Range",
+          "flex": 2
+        },
+        {
+          "key": "traits",
+          "type": "text",
+          "label": "Traits",
+          "flex": 3
+        }
+      ]
+    },
+    "talents": {
+      "type": "list",
+      "label": "Talents",
+      "add_label": "Add a talent",
+      "columns": [
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Talent",
+          "flex": 3
+        },
+        {
+          "key": "path",
+          "type": "text",
+          "label": "Path",
+          "flex": 2
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Effect / Notes",
+          "flex": 6
+        }
+      ]
+    },
+    "appearance": {
+      "type": "textarea",
+      "label": "Character Appearance",
+      "rows": 6
+    },
+    "equipment": {
+      "type": "list",
+      "label": "Armor & Equipment",
+      "add_label": "Add an item",
+      "columns": [
+        {
+          "key": "qty",
+          "type": "number",
+          "label": "#",
+          "min": 0,
+          "default": 1,
+          "flex": 1
+        },
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Item",
+          "flex": 4
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 4
+        }
+      ]
+    },
+    "boxings": {
+      "type": "number",
+      "label": "Boxings",
+      "min": 0,
+      "default": 0
+    },
+    "purpose": {
+      "type": "textarea",
+      "label": "Purpose",
+      "rows": 3
+    },
+    "obstacle": {
+      "type": "textarea",
+      "label": "Obstacle",
+      "rows": 3
+    },
+    "goal_1": {
+      "type": "text",
+      "label": "Goal 1"
+    },
+    "goal_1_progress": {
+      "type": "number",
+      "label": "Goal 1 progress",
+      "min": 0,
+      "max": 3,
+      "default": 0
+    },
+    "goal_2": {
+      "type": "text",
+      "label": "Goal 2"
+    },
+    "goal_2_progress": {
+      "type": "number",
+      "label": "Goal 2 progress",
+      "min": 0,
+      "max": 3,
+      "default": 0
+    },
+    "goal_3": {
+      "type": "text",
+      "label": "Goal 3"
+    },
+    "goal_3_progress": {
+      "type": "number",
+      "label": "Goal 3 progress",
+      "min": 0,
+      "max": 3,
+      "default": 0
+    },
+    "goal_4": {
+      "type": "text",
+      "label": "Goal 4"
+    },
+    "goal_4_progress": {
+      "type": "number",
+      "label": "Goal 4 progress",
+      "min": 0,
+      "max": 3,
+      "default": 0
+    },
+    "goal_5": {
+      "type": "text",
+      "label": "Goal 5"
+    },
+    "goal_5_progress": {
+      "type": "number",
+      "label": "Goal 5 progress",
+      "min": 0,
+      "max": 3,
+      "default": 0
+    },
+    "goal_6": {
+      "type": "text",
+      "label": "Goal 6"
+    },
+    "goal_6_progress": {
+      "type": "number",
+      "label": "Goal 6 progress",
+      "min": 0,
+      "max": 3,
+      "default": 0
+    },
+    "goal_7": {
+      "type": "text",
+      "label": "Goal 7"
+    },
+    "goal_7_progress": {
+      "type": "number",
+      "label": "Goal 7 progress",
+      "min": 0,
+      "max": 3,
+      "default": 0
+    },
+    "goal_8": {
+      "type": "text",
+      "label": "Goal 8"
+    },
+    "goal_8_progress": {
+      "type": "number",
+      "label": "Goal 8 progress",
+      "min": 0,
+      "max": 3,
+      "default": 0
+    },
+    "goal_9": {
+      "type": "text",
+      "label": "Goal 9"
+    },
+    "goal_9_progress": {
+      "type": "number",
+      "label": "Goal 9 progress",
+      "min": 0,
+      "max": 3,
+      "default": 0
+    },
+    "notes": {
+      "type": "textarea",
+      "label": "Notes",
+      "rows": 8
+    },
+    "connections": {
+      "type": "textarea",
+      "label": "Connections",
+      "rows": 8
+    }
+  },
+  "computed": {
+    "physical_defense": {
+      "formula": "10 + strength + speed",
+      "label": "Physical Defense"
+    },
+    "cognitive_defense": {
+      "formula": "10 + intellect + willpower",
+      "label": "Cognitive Defense"
+    },
+    "spiritual_defense": {
+      "formula": "10 + awareness + presence",
+      "label": "Spiritual Defense"
+    },
+    "lifting_capacity": {
+      "formula": "min(ceil(strength / 2), 5) == 0 ? '100 lb' : (min(ceil(strength / 2), 5) == 1 ? '200 lb' : (min(ceil(strength / 2), 5) == 2 ? '500 lb' : (min(ceil(strength / 2), 5) == 3 ? '1,000 lb' : (min(ceil(strength / 2), 5) == 4 ? '5,000 lb' : ('10,000 lb')))))",
+      "label": "Lifting Capacity"
+    },
+    "carrying_capacity": {
+      "formula": "min(ceil(strength / 2), 5) == 0 ? '50 lb' : (min(ceil(strength / 2), 5) == 1 ? '100 lb' : (min(ceil(strength / 2), 5) == 2 ? '250 lb' : (min(ceil(strength / 2), 5) == 3 ? '500 lb' : (min(ceil(strength / 2), 5) == 4 ? '2,500 lb' : ('5,000 lb')))))",
+      "label": "Carrying Capacity"
+    },
+    "movement": {
+      "formula": "min(ceil(speed / 2), 5) == 0 ? '20 ft' : (min(ceil(speed / 2), 5) == 1 ? '25 ft' : (min(ceil(speed / 2), 5) == 2 ? '30 ft' : (min(ceil(speed / 2), 5) == 3 ? '40 ft' : (min(ceil(speed / 2), 5) == 4 ? '60 ft' : ('80 ft')))))",
+      "label": "Movement"
+    },
+    "recovery_die": {
+      "formula": "min(ceil(willpower / 2), 5) == 0 ? 'd4' : (min(ceil(willpower / 2), 5) == 1 ? 'd6' : (min(ceil(willpower / 2), 5) == 2 ? 'd8' : (min(ceil(willpower / 2), 5) == 3 ? 'd10' : (min(ceil(willpower / 2), 5) == 4 ? 'd12' : ('d20')))))",
+      "label": "Recovery Die"
+    },
+    "senses_range": {
+      "formula": "min(ceil(awareness / 2), 5) == 0 ? '5 ft' : (min(ceil(awareness / 2), 5) == 1 ? '10 ft' : (min(ceil(awareness / 2), 5) == 2 ? '20 ft' : (min(ceil(awareness / 2), 5) == 3 ? '50 ft' : (min(ceil(awareness / 2), 5) == 4 ? '100 ft' : ('Unaffected by obscured senses')))))",
+      "label": "Senses Range"
+    },
+    "sk_agility_mod": {
+      "formula": "speed + sk_agility",
+      "label": "Agility (SPD)"
+    },
+    "sk_athletics_mod": {
+      "formula": "strength + sk_athletics",
+      "label": "Athletics (STR)"
+    },
+    "sk_heavy_weaponry_mod": {
+      "formula": "strength + sk_heavy_weaponry",
+      "label": "Heavy Weaponry (STR)"
+    },
+    "sk_light_weaponry_mod": {
+      "formula": "speed + sk_light_weaponry",
+      "label": "Light Weaponry (SPD)"
+    },
+    "sk_stealth_mod": {
+      "formula": "speed + sk_stealth",
+      "label": "Stealth (SPD)"
+    },
+    "sk_thievery_mod": {
+      "formula": "speed + sk_thievery",
+      "label": "Thievery (SPD)"
+    },
+    "sk_crafting_mod": {
+      "formula": "intellect + sk_crafting",
+      "label": "Crafting (INT)"
+    },
+    "sk_deduction_mod": {
+      "formula": "intellect + sk_deduction",
+      "label": "Deduction (INT)"
+    },
+    "sk_discipline_mod": {
+      "formula": "willpower + sk_discipline",
+      "label": "Discipline (WIL)"
+    },
+    "sk_intimidation_mod": {
+      "formula": "willpower + sk_intimidation",
+      "label": "Intimidation (WIL)"
+    },
+    "sk_lore_mod": {
+      "formula": "intellect + sk_lore",
+      "label": "Lore (INT)"
+    },
+    "sk_medicine_mod": {
+      "formula": "intellect + sk_medicine",
+      "label": "Medicine (INT)"
+    },
+    "sk_deception_mod": {
+      "formula": "presence + sk_deception",
+      "label": "Deception (PRE)"
+    },
+    "sk_insight_mod": {
+      "formula": "awareness + sk_insight",
+      "label": "Insight (AWA)"
+    },
+    "sk_leadership_mod": {
+      "formula": "presence + sk_leadership",
+      "label": "Leadership (PRE)"
+    },
+    "sk_perception_mod": {
+      "formula": "awareness + sk_perception",
+      "label": "Perception (AWA)"
+    },
+    "sk_persuasion_mod": {
+      "formula": "presence + sk_persuasion",
+      "label": "Persuasion (PRE)"
+    },
+    "sk_survival_mod": {
+      "formula": "awareness + sk_survival",
+      "label": "Survival (AWA)"
+    },
+    "sk_custom_1_mod": {
+      "formula": "(sk_custom_1_attr == 'STR' ? strength : (sk_custom_1_attr == 'SPD' ? speed : (sk_custom_1_attr == 'INT' ? intellect : (sk_custom_1_attr == 'WIL' ? willpower : (sk_custom_1_attr == 'AWA' ? awareness : (sk_custom_1_attr == 'PRE' ? presence : (0))))))) + sk_custom_1",
+      "label": "Additional skill 1 modifier"
+    },
+    "sk_custom_2_mod": {
+      "formula": "(sk_custom_2_attr == 'STR' ? strength : (sk_custom_2_attr == 'SPD' ? speed : (sk_custom_2_attr == 'INT' ? intellect : (sk_custom_2_attr == 'WIL' ? willpower : (sk_custom_2_attr == 'AWA' ? awareness : (sk_custom_2_attr == 'PRE' ? presence : (0))))))) + sk_custom_2",
+      "label": "Additional skill 2 modifier"
+    },
+    "sk_custom_3_mod": {
+      "formula": "(sk_custom_3_attr == 'STR' ? strength : (sk_custom_3_attr == 'SPD' ? speed : (sk_custom_3_attr == 'INT' ? intellect : (sk_custom_3_attr == 'WIL' ? willpower : (sk_custom_3_attr == 'AWA' ? awareness : (sk_custom_3_attr == 'PRE' ? presence : (0))))))) + sk_custom_3",
+      "label": "Additional skill 3 modifier"
+    },
+    "attribute_points": {
+      "formula": "12 + (level >= 3 ? 1 : 0) + (level >= 6 ? 1 : 0) + (level >= 9 ? 1 : 0) + (level >= 12 ? 1 : 0) + (level >= 15 ? 1 : 0) + (level >= 18 ? 1 : 0)",
+      "label": "Attribute Points"
+    },
+    "attribute_points_spent": {
+      "formula": "strength + speed + intellect + willpower + awareness + presence",
+      "label": "Attribute Points Spent"
+    },
+    "skill_ranks": {
+      "formula": "4 + 2 * (min(level, 20) - 1)",
+      "label": "Skill Ranks"
+    },
+    "skill_ranks_spent": {
+      "formula": "sum(sk_agility, sk_athletics, sk_heavy_weaponry, sk_light_weaponry, sk_stealth, sk_thievery, sk_crafting, sk_deduction, sk_discipline, sk_intimidation, sk_lore, sk_medicine, sk_deception, sk_insight, sk_leadership, sk_perception, sk_persuasion, sk_survival, sk_custom_1, sk_custom_2, sk_custom_3)",
+      "label": "Skill Ranks Spent"
+    },
+    "max_skill_rank": {
+      "formula": "level <= 5 ? 2 : (level <= 10 ? 3 : (level <= 15 ? 4 : 5))",
+      "label": "Highest Skill Rank"
+    }
+  },
+  "validators": [
+    {
+      "rule": "attribute_points_spent <= attribute_points",
+      "message": "More attribute points spent than the level gives."
+    },
+    {
+      "rule": "skill_ranks_spent <= skill_ranks",
+      "message": "More skill ranks spent than the level gives (level 21 may trade a talent for one)."
+    },
+    {
+      "rule": "max(sk_agility, sk_athletics, sk_heavy_weaponry, sk_light_weaponry, sk_stealth, sk_thievery, sk_crafting, sk_deduction, sk_discipline, sk_intimidation, sk_lore, sk_medicine, sk_deception, sk_insight, sk_leadership, sk_perception, sk_persuasion, sk_survival, sk_custom_1, sk_custom_2, sk_custom_3) <= max_skill_rank",
+      "message": "A skill has more ranks than this tier allows."
+    },
+    {
+      "rule": "health <= health_max and focus <= focus_max",
+      "message": "Health or focus is above its maximum."
+    }
+  ]
+}

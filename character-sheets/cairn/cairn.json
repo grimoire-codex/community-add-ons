@@ -1,0 +1,179 @@
+{
+  "$schema": "../../schema/character-sheet.schema.json",
+  "id": "cairn",
+  "name": "Cairn",
+  "version": "1.0.0",
+  "system": "Cairn",
+  "description": "A character sheet for Cairn, Yochai Gal's rules-light dark-fantasy adventure game. Three ability scores, no classes, no levels — the whole sheet fits on a card.",
+  "author": "hunter-read",
+  "homepage": "https://cairnrpg.com",
+  "license": "CC-BY-SA-4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+  "attribution": "Cairn is © Yochai Gal, licensed under CC BY-SA 4.0. See cairnrpg.com.",
+  "fields": {
+    "hero_name": {
+      "type": "text",
+      "label": "Name"
+    },
+    "background": {
+      "type": "text",
+      "label": "Background"
+    },
+    "strength": {
+      "type": "number",
+      "label": "Strength",
+      "min": 0,
+      "max": 20,
+      "default": 10
+    },
+    "dexterity": {
+      "type": "number",
+      "label": "Dexterity",
+      "min": 0,
+      "max": 20,
+      "default": 10
+    },
+    "willpower": {
+      "type": "number",
+      "label": "Willpower",
+      "min": 0,
+      "max": 20,
+      "default": 10
+    },
+    "hp": {
+      "type": "number",
+      "label": "HP",
+      "min": 0,
+      "max": 6
+    },
+    "hp_max": {
+      "type": "number",
+      "label": "Max HP",
+      "min": 0,
+      "max": 6
+    },
+    "armor": {
+      "type": "number",
+      "label": "Armour",
+      "min": 0,
+      "max": 3,
+      "default": 0
+    },
+    "deprived": {
+      "type": "checkbox",
+      "label": "Deprived"
+    },
+    "gold": {
+      "type": "number",
+      "label": "Gold",
+      "min": 0,
+      "default": 0
+    },
+    "inventory": {
+      "type": "list",
+      "label": "Inventory",
+      "add_label": "Add item",
+      "empty_text": "Ten slots. Bulky items take two.",
+      "columns": [
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Item",
+          "flex": 3
+        },
+        {
+          "key": "slots",
+          "type": "number",
+          "label": "Slots",
+          "default": 1,
+          "min": 0,
+          "max": 10,
+          "flex": 1
+        },
+        {
+          "key": "equipped",
+          "type": "checkbox",
+          "label": "Eq."
+        }
+      ]
+    },
+    "notes": {
+      "type": "textarea",
+      "label": "Notes",
+      "rows": 6
+    }
+  },
+  "computed": {
+    "hp_state": {
+      "formula": "hp <= 0 ? 'Damage carries to STR — save' : 'Protected'",
+      "label": "At 0 HP"
+    },
+    "armor_note": {
+      "formula": "armor >= 3 ? 'Maximum (3)' : signed(armor)",
+      "label": "Damage Reduction"
+    },
+    "slots_used": {
+      "formula": "sum_where(inventory, 'slots')",
+      "label": "Slots Used"
+    },
+    "is_overloaded": {
+      "formula": "slots_used > 10 ? 'Overloaded' : 'Within limits'",
+      "label": "Load"
+    }
+  },
+  "layout": [
+    {
+      "title": "Character",
+      "fields": [
+        "hero_name",
+        "background"
+      ]
+    },
+    {
+      "title": "Abilities",
+      "fields": [
+        "strength",
+        "dexterity",
+        "willpower"
+      ]
+    },
+    {
+      "title": "Hit Protection",
+      "fields": [
+        "hp",
+        "hp_max",
+        "armor",
+        "armor_note",
+        "deprived",
+        "hp_state"
+      ]
+    },
+    {
+      "title": "Possessions",
+      "fields": [
+        "gold",
+        "inventory",
+        "slots_used",
+        "is_overloaded"
+      ]
+    },
+    {
+      "title": "Notes",
+      "fields": [
+        "notes"
+      ]
+    }
+  ],
+  "validators": [
+    {
+      "rule": "sum_where(inventory, 'slots') <= 10",
+      "severity": "warning",
+      "message": "You are carrying more than ten slots — drop something or accept the penalty."
+    },
+    {
+      "rule": "hp <= hp_max",
+      "severity": "warning",
+      "message": "Current HP is above your maximum."
+    }
+  ]
+}

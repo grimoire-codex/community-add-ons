@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/grimoire-codex/community-add-ons/main/schema/character-sheet-index.schema.json",
+  "title": "Grimoire character sheet catalogue",
+  "description": "Generated catalogue of every character sheet in this repo. Built by CI — do not hand-edit.",
+  "type": "object",
+  "required": [
+    "version",
+    "sheets"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "JSON Schema reference"
+    },
+    "version": {
+      "const": 1
+    },
+    "generated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sheets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "version",
+          "path",
+          "sha256"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+([-_][a-z0-9]+)*$"
+          },
+          "name": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$"
+          },
+          "system": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "author": {
+            "type": "string",
+            "maxLength": 120,
+            "description": "Who wrote this. A GitHub username (e.g. 'hunter-read', or '@hunter-read') links to that profile in Grimoire; any other text is credited without a link."
+          },
+          "homepage": {
+            "type": "string"
+          },
+          "license": {
+            "type": "string"
+          },
+          "license_url": {
+            "type": "string"
+          },
+          "attribution": {
+            "type": "string",
+            "maxLength": 2000,
+            "description": "Credit for the upstream game, shown verbatim beside the sheet."
+          },
+          "custom_layout": {
+            "type": "boolean",
+            "description": "True when the sheet ships its own HTML layout rather than using the default sectioned one."
+          },
+          "field_count": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "grimoire_min_version": {
+            "type": "string",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$"
+          },
+          "path": {
+            "type": "string",
+            "description": "Repo-relative path to the sheet file, resolved against this index's own URL and pinned to the same host."
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "description": "Digest of the sheet file, verified on download."
+          },
+          "layout_path": {
+            "type": "string",
+            "description": "Repo-relative path to the sheet's .html layout, when it keeps one in a separate file."
+          },
+          "layout_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "description": "Digest of the layout file, verified on download."
+          },
+          "styles_path": {
+            "type": "string",
+            "description": "Repo-relative path to the sheet's .css file, when it keeps one."
+          },
+          "styles_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$",
+            "description": "Digest of the stylesheet, verified on download."
+          }
+        }
+      }
+    }
+  }
+}

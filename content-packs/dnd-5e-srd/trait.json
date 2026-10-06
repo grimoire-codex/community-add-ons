@@ -1,0 +1,200 @@
+[
+  {
+    "_id": "human-resourceful",
+    "name": "Resourceful",
+    "species": "Human",
+    "description": "You gain Heroic Inspiration whenever you finish a Long Rest."
+  },
+  {
+    "_id": "human-skillful",
+    "name": "Skillful",
+    "species": "Human",
+    "description": "You gain proficiency in one skill of your choice."
+  },
+  {
+    "_id": "human-versatile",
+    "name": "Versatile",
+    "species": "Human",
+    "description": "You gain an Origin feat of your choice; Skilled is recommended."
+  },
+  {
+    "_id": "elf-darkvision",
+    "name": "Darkvision",
+    "species": "Elf",
+    "description": "You have Darkvision with a range of 60 feet."
+  },
+  {
+    "_id": "elf-elven-lineage",
+    "name": "Elven Lineage",
+    "species": "Elf",
+    "description": "Choose Drow (Darkvision 120 feet, Dancing Lights), High Elf (Prestidigitation, swappable each Long Rest), or Wood Elf (Speed 35 feet, Druidcraft); you learn a lineage spell at levels 3 and 5, castable once per Long Rest without a slot. Intelligence, Wisdom, or Charisma is your spellcasting ability, chosen with the lineage."
+  },
+  {
+    "_id": "elf-fey-ancestry",
+    "name": "Fey Ancestry",
+    "species": "Elf",
+    "description": "You have Advantage on saving throws to avoid or end the Charmed condition."
+  },
+  {
+    "_id": "elf-keen-senses",
+    "name": "Keen Senses",
+    "species": "Elf",
+    "description": "You have proficiency in the Insight, Perception, or Survival skill."
+  },
+  {
+    "_id": "elf-trance",
+    "name": "Trance",
+    "species": "Elf",
+    "description": "You don't need to sleep, magic can't put you to sleep, and you can finish a Long Rest in 4 hours of trancelike meditation."
+  },
+  {
+    "_id": "dwarf-darkvision",
+    "name": "Darkvision",
+    "species": "Dwarf",
+    "description": "You have Darkvision with a range of 120 feet."
+  },
+  {
+    "_id": "dwarf-dwarven-resilience",
+    "name": "Dwarven Resilience",
+    "species": "Dwarf",
+    "description": "You have Resistance to Poison damage and Advantage on saving throws to avoid or end the Poisoned condition."
+  },
+  {
+    "_id": "dwarf-dwarven-toughness",
+    "name": "Dwarven Toughness",
+    "species": "Dwarf",
+    "description": "Your Hit Point maximum increases by 1, and by 1 again whenever you gain a level."
+  },
+  {
+    "_id": "dwarf-stonecunning",
+    "name": "Stonecunning",
+    "species": "Dwarf",
+    "description": "As a Bonus Action, gain Tremorsense 60 feet for 10 minutes while on or touching stone. Uses equal to your Proficiency Bonus per Long Rest."
+  },
+  {
+    "_id": "halfling-brave",
+    "name": "Brave",
+    "species": "Halfling",
+    "description": "You have Advantage on saving throws to avoid or end the Frightened condition."
+  },
+  {
+    "_id": "halfling-halfling-nimbleness",
+    "name": "Halfling Nimbleness",
+    "species": "Halfling",
+    "description": "You can move through the space of any creature a size larger than you, but can't stop in it."
+  },
+  {
+    "_id": "halfling-luck",
+    "name": "Luck",
+    "species": "Halfling",
+    "description": "When you roll a 1 on the d20 of a D20 Test, you reroll it and must use the new roll."
+  },
+  {
+    "_id": "halfling-naturally-stealthy",
+    "name": "Naturally Stealthy",
+    "species": "Halfling",
+    "description": "You can take the Hide action while obscured only by a creature at least one size larger than you."
+  },
+  {
+    "_id": "dragonborn-draconic-ancestry",
+    "name": "Draconic Ancestry",
+    "species": "Dragonborn",
+    "description": "Choose a dragon for your Breath Weapon and Damage Resistance: Black or Copper (Acid), Blue or Bronze (Lightning), Brass, Gold, or Red (Fire), Green (Poison), Silver or White (Cold)."
+  },
+  {
+    "_id": "dragonborn-breath-weapon",
+    "name": "Breath Weapon",
+    "species": "Dragonborn",
+    "description": "Replace one attack with a 15-foot Cone or 30-foot Line of your ancestry's damage: Dexterity save (DC 8 + Con modifier + Proficiency Bonus), 1d10 on a failure, half on a success; 2d10 at level 5, 3d10 at 11, 4d10 at 17. Uses equal to your Proficiency Bonus per Long Rest."
+  },
+  {
+    "_id": "dragonborn-damage-resistance",
+    "name": "Damage Resistance",
+    "species": "Dragonborn",
+    "description": "You have Resistance to the damage type of your Draconic Ancestry."
+  },
+  {
+    "_id": "dragonborn-darkvision",
+    "name": "Darkvision",
+    "species": "Dragonborn",
+    "description": "You have Darkvision with a range of 60 feet."
+  },
+  {
+    "_id": "dragonborn-draconic-flight",
+    "name": "Draconic Flight",
+    "species": "Dragonborn",
+    "description": "From level 5, as a Bonus Action you sprout spectral wings and gain a Fly Speed equal to your Speed for 10 minutes. Once per Long Rest."
+  },
+  {
+    "_id": "gnome-darkvision",
+    "name": "Darkvision",
+    "species": "Gnome",
+    "description": "You have Darkvision with a range of 60 feet."
+  },
+  {
+    "_id": "gnome-gnomish-cunning",
+    "name": "Gnomish Cunning",
+    "species": "Gnome",
+    "description": "You have Advantage on Intelligence, Wisdom, and Charisma saving throws."
+  },
+  {
+    "_id": "gnome-gnomish-lineage",
+    "name": "Gnomish Lineage",
+    "species": "Gnome",
+    "description": "Forest Gnome: Minor Illusion, and Speak with Animals always prepared, castable without a slot Proficiency Bonus times per Long Rest. Rock Gnome: Mending and Prestidigitation, and you can build Tiny clockwork devices (three at a time). Intelligence, Wisdom, or Charisma is your spellcasting ability."
+  },
+  {
+    "_id": "orc-adrenaline-rush",
+    "name": "Adrenaline Rush",
+    "species": "Orc",
+    "description": "Take the Dash action as a Bonus Action and gain Temporary Hit Points equal to your Proficiency Bonus. Uses equal to your Proficiency Bonus per Short or Long Rest."
+  },
+  {
+    "_id": "orc-darkvision",
+    "name": "Darkvision",
+    "species": "Orc",
+    "description": "You have Darkvision with a range of 120 feet."
+  },
+  {
+    "_id": "orc-relentless-endurance",
+    "name": "Relentless Endurance",
+    "species": "Orc",
+    "description": "When reduced to 0 Hit Points but not killed outright, you drop to 1 Hit Point instead. Once per Long Rest."
+  },
+  {
+    "_id": "tiefling-darkvision",
+    "name": "Darkvision",
+    "species": "Tiefling",
+    "description": "You have Darkvision with a range of 60 feet."
+  },
+  {
+    "_id": "tiefling-fiendish-legacy",
+    "name": "Fiendish Legacy",
+    "species": "Tiefling",
+    "description": "Choose Abyssal (Poison Resistance, Poison Spray), Chthonic (Necrotic Resistance, Chill Touch), or Infernal (Fire Resistance, Fire Bolt); you learn a legacy spell at levels 3 and 5, castable once per Long Rest without a slot. Intelligence, Wisdom, or Charisma is your spellcasting ability, chosen with the legacy."
+  },
+  {
+    "_id": "tiefling-otherworldly-presence",
+    "name": "Otherworldly Presence",
+    "species": "Tiefling",
+    "description": "You know the Thaumaturgy cantrip, cast with your Fiendish Legacy spellcasting ability."
+  },
+  {
+    "_id": "goliath-giant-ancestry",
+    "name": "Giant Ancestry",
+    "species": "Goliath",
+    "description": "Choose one boon, used Proficiency Bonus times per Long Rest: Cloud's Jaunt (Bonus Action teleport 30 feet), Fire's Burn (+1d10 Fire on a hit), Frost's Chill (+1d6 Cold and -10 feet Speed on a hit), Hill's Tumble (knock a Large or smaller target Prone), Stone's Endurance (Reaction: reduce damage by 1d12 + Con modifier), or Storm's Thunder (Reaction: 1d8 Thunder to an attacker within 60 feet)."
+  },
+  {
+    "_id": "goliath-large-form",
+    "name": "Large Form",
+    "species": "Goliath",
+    "description": "From level 5, as a Bonus Action become Large for 10 minutes, with Advantage on Strength checks and +10 feet Speed. Once per Long Rest."
+  },
+  {
+    "_id": "goliath-powerful-build",
+    "name": "Powerful Build",
+    "species": "Goliath",
+    "description": "You have Advantage on checks to end the Grappled condition, and count as one size larger for carrying capacity."
+  }
+]

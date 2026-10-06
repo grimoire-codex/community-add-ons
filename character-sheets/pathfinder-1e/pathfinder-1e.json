@@ -1,0 +1,2010 @@
+{
+  "$schema": "../../schema/character-sheet.schema.json",
+  "id": "pathfinder-1e",
+  "name": "Pathfinder 1st Edition",
+  "version": "1.0.0",
+  "system": "Pathfinder Roleplaying Game (First Edition)",
+  "description": "A character sheet for the first edition of the Pathfinder Roleplaying Game, after the 2009 character sheet: abilities with temporary adjustments, AC with touch and flat-footed, saves, initiative, base attack, CMB and CMD with size, every skill with class-skill, armor check penalty and size applied, carrying capacity and loads, and spell save DCs and bonus spells.",
+  "author": "hunter-read",
+  "homepage": "https://paizo.com/licenses/communityuse",
+  "license": "OGL-1.0a",
+  "license_url": "https://paizo.com/pathfinderRPG/prd/openGameLicense.html",
+  "attribution": "This character sheet uses trademarks and/or copyrights owned by Paizo Inc., used under Paizo's Community Use Policy (paizo.com/licenses/communityuse). We are expressly prohibited from charging you to use or access this content. This character sheet is not published, endorsed, or specifically approved by Paizo. For more information about Paizo Inc. and Paizo products, visit paizo.com. Game mechanics are Open Game Content from the Pathfinder Roleplaying Game Core Rulebook, © 2009, Paizo Publishing, LLC, used under the Open Game License v1.0a, whose text is in this sheet's README.",
+  "name_field": "hero_name",
+  "layout_file": "pathfinder-1e.html",
+  "styles_file": "pathfinder-1e.css",
+  "fields": {
+    "hero_name": {
+      "type": "text",
+      "label": "Character Name"
+    },
+    "alignment": {
+      "type": "text",
+      "label": "Alignment"
+    },
+    "player": {
+      "type": "text",
+      "label": "Player"
+    },
+    "class_level": {
+      "type": "text",
+      "label": "Character Level"
+    },
+    "deity": {
+      "type": "text",
+      "label": "Deity"
+    },
+    "homeland": {
+      "type": "text",
+      "label": "Homeland"
+    },
+    "race": {
+      "type": "text",
+      "label": "Race"
+    },
+    "gender": {
+      "type": "text",
+      "label": "Gender"
+    },
+    "age": {
+      "type": "text",
+      "label": "Age"
+    },
+    "height": {
+      "type": "text",
+      "label": "Height"
+    },
+    "weight": {
+      "type": "text",
+      "label": "Weight"
+    },
+    "hair": {
+      "type": "text",
+      "label": "Hair"
+    },
+    "eyes": {
+      "type": "text",
+      "label": "Eyes"
+    },
+    "size": {
+      "type": "select",
+      "label": "Size",
+      "options": [
+        "Fine",
+        "Diminutive",
+        "Tiny",
+        "Small",
+        "Medium",
+        "Large",
+        "Huge",
+        "Gargantuan",
+        "Colossal"
+      ],
+      "default": "Medium"
+    },
+    "str": {
+      "type": "number",
+      "label": "Strength",
+      "min": 0,
+      "default": 10
+    },
+    "str_temp": {
+      "type": "number",
+      "label": "Strength temporary adjustment",
+      "default": 0
+    },
+    "dex": {
+      "type": "number",
+      "label": "Dexterity",
+      "min": 0,
+      "default": 10
+    },
+    "dex_temp": {
+      "type": "number",
+      "label": "Dexterity temporary adjustment",
+      "default": 0
+    },
+    "con": {
+      "type": "number",
+      "label": "Constitution",
+      "min": 0,
+      "default": 10
+    },
+    "con_temp": {
+      "type": "number",
+      "label": "Constitution temporary adjustment",
+      "default": 0
+    },
+    "int": {
+      "type": "number",
+      "label": "Intelligence",
+      "min": 0,
+      "default": 10
+    },
+    "int_temp": {
+      "type": "number",
+      "label": "Intelligence temporary adjustment",
+      "default": 0
+    },
+    "wis": {
+      "type": "number",
+      "label": "Wisdom",
+      "min": 0,
+      "default": 10
+    },
+    "wis_temp": {
+      "type": "number",
+      "label": "Wisdom temporary adjustment",
+      "default": 0
+    },
+    "cha": {
+      "type": "number",
+      "label": "Charisma",
+      "min": 0,
+      "default": 10
+    },
+    "cha_temp": {
+      "type": "number",
+      "label": "Charisma temporary adjustment",
+      "default": 0
+    },
+    "hp_total": {
+      "type": "number",
+      "label": "Hit points",
+      "min": 0,
+      "default": 0
+    },
+    "dr": {
+      "type": "text",
+      "label": "Damage reduction"
+    },
+    "hp_current": {
+      "type": "number",
+      "label": "Current hit points",
+      "default": 0,
+      "default_from": "hp_total"
+    },
+    "nonlethal": {
+      "type": "number",
+      "label": "Nonlethal damage",
+      "min": 0,
+      "default": 0
+    },
+    "speed_base": {
+      "type": "number",
+      "label": "Base speed (ft.)",
+      "min": 0,
+      "default": 30
+    },
+    "speed_armor": {
+      "type": "number",
+      "label": "Speed with armor (ft.)",
+      "min": 0,
+      "default": 30,
+      "default_from": "speed_base"
+    },
+    "speed_fly": {
+      "type": "number",
+      "label": "Fly speed (ft.)",
+      "min": 0
+    },
+    "speed_swim": {
+      "type": "number",
+      "label": "Swim speed (ft.)",
+      "min": 0
+    },
+    "speed_climb": {
+      "type": "number",
+      "label": "Climb speed (ft.)",
+      "min": 0
+    },
+    "speed_burrow": {
+      "type": "number",
+      "label": "Burrow speed (ft.)",
+      "min": 0
+    },
+    "fly_maneuverability": {
+      "type": "text",
+      "label": "Fly maneuverability"
+    },
+    "speed_temp": {
+      "type": "textarea",
+      "label": "Speed temporary modifiers",
+      "rows": 2
+    },
+    "init_misc": {
+      "type": "number",
+      "label": "Initiative misc modifier",
+      "default": 0
+    },
+    "ac_items": {
+      "type": "list",
+      "label": "AC Items",
+      "add_label": "Add an AC item",
+      "columns": [
+        {
+          "key": "item",
+          "type": "text",
+          "label": "AC Item",
+          "flex": 3
+        },
+        {
+          "key": "bonus",
+          "type": "number",
+          "label": "Bonus",
+          "flex": 1
+        },
+        {
+          "key": "type",
+          "type": "select",
+          "label": "Type",
+          "flex": 1,
+          "options": [
+            "Armor",
+            "Shield",
+            "Other"
+          ]
+        },
+        {
+          "key": "check_penalty",
+          "type": "number",
+          "label": "Check Penalty",
+          "flex": 1,
+          "max": 0
+        },
+        {
+          "key": "spell_failure",
+          "type": "number",
+          "label": "Spell Failure %",
+          "flex": 1,
+          "min": 0,
+          "max": 100
+        },
+        {
+          "key": "weight",
+          "type": "number",
+          "label": "Weight",
+          "flex": 1,
+          "min": 0
+        },
+        {
+          "key": "properties",
+          "type": "text",
+          "label": "Properties",
+          "flex": 3
+        }
+      ]
+    },
+    "armor_bonus": {
+      "type": "number",
+      "label": "Armor bonus",
+      "default": 0,
+      "default_from": "sum_where(ac_items, 'bonus', 'type', 'Armor')"
+    },
+    "shield_bonus": {
+      "type": "number",
+      "label": "Shield bonus",
+      "default": 0,
+      "default_from": "sum_where(ac_items, 'bonus', 'type', 'Shield')"
+    },
+    "natural_armor": {
+      "type": "number",
+      "label": "Natural armor",
+      "default": 0
+    },
+    "deflection": {
+      "type": "number",
+      "label": "Deflection modifier",
+      "default": 0
+    },
+    "ac_misc": {
+      "type": "number",
+      "label": "AC misc modifier",
+      "default": 0
+    },
+    "ac_modifiers": {
+      "type": "textarea",
+      "label": "AC modifiers",
+      "rows": 2
+    },
+    "fort_base": {
+      "type": "number",
+      "label": "Fortitude base save",
+      "default": 0
+    },
+    "fort_magic": {
+      "type": "number",
+      "label": "Fortitude magic modifier",
+      "default": 0
+    },
+    "fort_misc": {
+      "type": "number",
+      "label": "Fortitude misc modifier",
+      "default": 0
+    },
+    "fort_temp": {
+      "type": "number",
+      "label": "Fortitude temporary modifier",
+      "default": 0
+    },
+    "ref_base": {
+      "type": "number",
+      "label": "Reflex base save",
+      "default": 0
+    },
+    "ref_magic": {
+      "type": "number",
+      "label": "Reflex magic modifier",
+      "default": 0
+    },
+    "ref_misc": {
+      "type": "number",
+      "label": "Reflex misc modifier",
+      "default": 0
+    },
+    "ref_temp": {
+      "type": "number",
+      "label": "Reflex temporary modifier",
+      "default": 0
+    },
+    "will_base": {
+      "type": "number",
+      "label": "Will base save",
+      "default": 0
+    },
+    "will_magic": {
+      "type": "number",
+      "label": "Will magic modifier",
+      "default": 0
+    },
+    "will_misc": {
+      "type": "number",
+      "label": "Will misc modifier",
+      "default": 0
+    },
+    "will_temp": {
+      "type": "number",
+      "label": "Will temporary modifier",
+      "default": 0
+    },
+    "save_modifiers": {
+      "type": "textarea",
+      "label": "Saving throw modifiers",
+      "rows": 3
+    },
+    "bab": {
+      "type": "number",
+      "label": "Base attack bonus",
+      "default": 0
+    },
+    "spell_resistance": {
+      "type": "number",
+      "label": "Spell resistance",
+      "min": 0,
+      "default": 0
+    },
+    "cmb_misc": {
+      "type": "number",
+      "label": "CMB misc modifier",
+      "default": 0
+    },
+    "cmd_misc": {
+      "type": "number",
+      "label": "CMD misc modifier",
+      "default": 0
+    },
+    "cmb_modifiers": {
+      "type": "textarea",
+      "label": "CMB modifiers",
+      "rows": 2
+    },
+    "weapon_1_name": {
+      "type": "text",
+      "label": "Weapon 1 weapon"
+    },
+    "weapon_1_attack": {
+      "type": "text",
+      "label": "Weapon 1 attack bonus"
+    },
+    "weapon_1_critical": {
+      "type": "text",
+      "label": "Weapon 1 critical"
+    },
+    "weapon_1_type": {
+      "type": "text",
+      "label": "Weapon 1 type"
+    },
+    "weapon_1_range": {
+      "type": "text",
+      "label": "Weapon 1 range"
+    },
+    "weapon_1_ammo": {
+      "type": "text",
+      "label": "Weapon 1 ammunition"
+    },
+    "weapon_1_damage": {
+      "type": "text",
+      "label": "Weapon 1 damage"
+    },
+    "weapon_2_name": {
+      "type": "text",
+      "label": "Weapon 2 weapon"
+    },
+    "weapon_2_attack": {
+      "type": "text",
+      "label": "Weapon 2 attack bonus"
+    },
+    "weapon_2_critical": {
+      "type": "text",
+      "label": "Weapon 2 critical"
+    },
+    "weapon_2_type": {
+      "type": "text",
+      "label": "Weapon 2 type"
+    },
+    "weapon_2_range": {
+      "type": "text",
+      "label": "Weapon 2 range"
+    },
+    "weapon_2_ammo": {
+      "type": "text",
+      "label": "Weapon 2 ammunition"
+    },
+    "weapon_2_damage": {
+      "type": "text",
+      "label": "Weapon 2 damage"
+    },
+    "weapon_3_name": {
+      "type": "text",
+      "label": "Weapon 3 weapon"
+    },
+    "weapon_3_attack": {
+      "type": "text",
+      "label": "Weapon 3 attack bonus"
+    },
+    "weapon_3_critical": {
+      "type": "text",
+      "label": "Weapon 3 critical"
+    },
+    "weapon_3_type": {
+      "type": "text",
+      "label": "Weapon 3 type"
+    },
+    "weapon_3_range": {
+      "type": "text",
+      "label": "Weapon 3 range"
+    },
+    "weapon_3_ammo": {
+      "type": "text",
+      "label": "Weapon 3 ammunition"
+    },
+    "weapon_3_damage": {
+      "type": "text",
+      "label": "Weapon 3 damage"
+    },
+    "weapon_4_name": {
+      "type": "text",
+      "label": "Weapon 4 weapon"
+    },
+    "weapon_4_attack": {
+      "type": "text",
+      "label": "Weapon 4 attack bonus"
+    },
+    "weapon_4_critical": {
+      "type": "text",
+      "label": "Weapon 4 critical"
+    },
+    "weapon_4_type": {
+      "type": "text",
+      "label": "Weapon 4 type"
+    },
+    "weapon_4_range": {
+      "type": "text",
+      "label": "Weapon 4 range"
+    },
+    "weapon_4_ammo": {
+      "type": "text",
+      "label": "Weapon 4 ammunition"
+    },
+    "weapon_4_damage": {
+      "type": "text",
+      "label": "Weapon 4 damage"
+    },
+    "weapon_5_name": {
+      "type": "text",
+      "label": "Weapon 5 weapon"
+    },
+    "weapon_5_attack": {
+      "type": "text",
+      "label": "Weapon 5 attack bonus"
+    },
+    "weapon_5_critical": {
+      "type": "text",
+      "label": "Weapon 5 critical"
+    },
+    "weapon_5_type": {
+      "type": "text",
+      "label": "Weapon 5 type"
+    },
+    "weapon_5_range": {
+      "type": "text",
+      "label": "Weapon 5 range"
+    },
+    "weapon_5_ammo": {
+      "type": "text",
+      "label": "Weapon 5 ammunition"
+    },
+    "weapon_5_damage": {
+      "type": "text",
+      "label": "Weapon 5 damage"
+    },
+    "sk_acrobatics_ranks": {
+      "type": "number",
+      "label": "Acrobatics ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_acrobatics_misc": {
+      "type": "number",
+      "label": "Acrobatics misc modifier",
+      "default": 0
+    },
+    "sk_appraise_ranks": {
+      "type": "number",
+      "label": "Appraise ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_appraise_misc": {
+      "type": "number",
+      "label": "Appraise misc modifier",
+      "default": 0
+    },
+    "sk_bluff_ranks": {
+      "type": "number",
+      "label": "Bluff ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_bluff_misc": {
+      "type": "number",
+      "label": "Bluff misc modifier",
+      "default": 0
+    },
+    "sk_climb_ranks": {
+      "type": "number",
+      "label": "Climb ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_climb_misc": {
+      "type": "number",
+      "label": "Climb misc modifier",
+      "default": 0
+    },
+    "sk_craft_1_ranks": {
+      "type": "number",
+      "label": "Craft 1 ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_craft_1_misc": {
+      "type": "number",
+      "label": "Craft 1 misc modifier",
+      "default": 0
+    },
+    "sk_craft_1_name": {
+      "type": "text",
+      "label": "Craft 1 speciality"
+    },
+    "sk_craft_2_ranks": {
+      "type": "number",
+      "label": "Craft 2 ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_craft_2_misc": {
+      "type": "number",
+      "label": "Craft 2 misc modifier",
+      "default": 0
+    },
+    "sk_craft_2_name": {
+      "type": "text",
+      "label": "Craft 2 speciality"
+    },
+    "sk_craft_3_ranks": {
+      "type": "number",
+      "label": "Craft 3 ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_craft_3_misc": {
+      "type": "number",
+      "label": "Craft 3 misc modifier",
+      "default": 0
+    },
+    "sk_craft_3_name": {
+      "type": "text",
+      "label": "Craft 3 speciality"
+    },
+    "sk_diplomacy_ranks": {
+      "type": "number",
+      "label": "Diplomacy ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_diplomacy_misc": {
+      "type": "number",
+      "label": "Diplomacy misc modifier",
+      "default": 0
+    },
+    "sk_disable_device_ranks": {
+      "type": "number",
+      "label": "Disable Device ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_disable_device_misc": {
+      "type": "number",
+      "label": "Disable Device misc modifier",
+      "default": 0
+    },
+    "sk_disguise_ranks": {
+      "type": "number",
+      "label": "Disguise ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_disguise_misc": {
+      "type": "number",
+      "label": "Disguise misc modifier",
+      "default": 0
+    },
+    "sk_escape_artist_ranks": {
+      "type": "number",
+      "label": "Escape Artist ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_escape_artist_misc": {
+      "type": "number",
+      "label": "Escape Artist misc modifier",
+      "default": 0
+    },
+    "sk_fly_ranks": {
+      "type": "number",
+      "label": "Fly ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_fly_misc": {
+      "type": "number",
+      "label": "Fly misc modifier",
+      "default": 0
+    },
+    "sk_handle_animal_ranks": {
+      "type": "number",
+      "label": "Handle Animal ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_handle_animal_misc": {
+      "type": "number",
+      "label": "Handle Animal misc modifier",
+      "default": 0
+    },
+    "sk_heal_ranks": {
+      "type": "number",
+      "label": "Heal ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_heal_misc": {
+      "type": "number",
+      "label": "Heal misc modifier",
+      "default": 0
+    },
+    "sk_intimidate_ranks": {
+      "type": "number",
+      "label": "Intimidate ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_intimidate_misc": {
+      "type": "number",
+      "label": "Intimidate misc modifier",
+      "default": 0
+    },
+    "sk_knowledge_arcana_ranks": {
+      "type": "number",
+      "label": "Knowledge (arcana) ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_knowledge_arcana_misc": {
+      "type": "number",
+      "label": "Knowledge (arcana) misc modifier",
+      "default": 0
+    },
+    "sk_knowledge_dungeoneering_ranks": {
+      "type": "number",
+      "label": "Knowledge (dungeoneering) ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_knowledge_dungeoneering_misc": {
+      "type": "number",
+      "label": "Knowledge (dungeoneering) misc modifier",
+      "default": 0
+    },
+    "sk_knowledge_engineering_ranks": {
+      "type": "number",
+      "label": "Knowledge (engineering) ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_knowledge_engineering_misc": {
+      "type": "number",
+      "label": "Knowledge (engineering) misc modifier",
+      "default": 0
+    },
+    "sk_knowledge_geography_ranks": {
+      "type": "number",
+      "label": "Knowledge (geography) ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_knowledge_geography_misc": {
+      "type": "number",
+      "label": "Knowledge (geography) misc modifier",
+      "default": 0
+    },
+    "sk_knowledge_history_ranks": {
+      "type": "number",
+      "label": "Knowledge (history) ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_knowledge_history_misc": {
+      "type": "number",
+      "label": "Knowledge (history) misc modifier",
+      "default": 0
+    },
+    "sk_knowledge_local_ranks": {
+      "type": "number",
+      "label": "Knowledge (local) ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_knowledge_local_misc": {
+      "type": "number",
+      "label": "Knowledge (local) misc modifier",
+      "default": 0
+    },
+    "sk_knowledge_nature_ranks": {
+      "type": "number",
+      "label": "Knowledge (nature) ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_knowledge_nature_misc": {
+      "type": "number",
+      "label": "Knowledge (nature) misc modifier",
+      "default": 0
+    },
+    "sk_knowledge_nobility_ranks": {
+      "type": "number",
+      "label": "Knowledge (nobility) ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_knowledge_nobility_misc": {
+      "type": "number",
+      "label": "Knowledge (nobility) misc modifier",
+      "default": 0
+    },
+    "sk_knowledge_planes_ranks": {
+      "type": "number",
+      "label": "Knowledge (planes) ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_knowledge_planes_misc": {
+      "type": "number",
+      "label": "Knowledge (planes) misc modifier",
+      "default": 0
+    },
+    "sk_knowledge_religion_ranks": {
+      "type": "number",
+      "label": "Knowledge (religion) ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_knowledge_religion_misc": {
+      "type": "number",
+      "label": "Knowledge (religion) misc modifier",
+      "default": 0
+    },
+    "sk_linguistics_ranks": {
+      "type": "number",
+      "label": "Linguistics ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_linguistics_misc": {
+      "type": "number",
+      "label": "Linguistics misc modifier",
+      "default": 0
+    },
+    "sk_perception_ranks": {
+      "type": "number",
+      "label": "Perception ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_perception_misc": {
+      "type": "number",
+      "label": "Perception misc modifier",
+      "default": 0
+    },
+    "sk_perform_1_ranks": {
+      "type": "number",
+      "label": "Perform 1 ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_perform_1_misc": {
+      "type": "number",
+      "label": "Perform 1 misc modifier",
+      "default": 0
+    },
+    "sk_perform_1_name": {
+      "type": "text",
+      "label": "Perform 1 speciality"
+    },
+    "sk_perform_2_ranks": {
+      "type": "number",
+      "label": "Perform 2 ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_perform_2_misc": {
+      "type": "number",
+      "label": "Perform 2 misc modifier",
+      "default": 0
+    },
+    "sk_perform_2_name": {
+      "type": "text",
+      "label": "Perform 2 speciality"
+    },
+    "sk_profession_1_ranks": {
+      "type": "number",
+      "label": "Profession 1 ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_profession_1_misc": {
+      "type": "number",
+      "label": "Profession 1 misc modifier",
+      "default": 0
+    },
+    "sk_profession_1_name": {
+      "type": "text",
+      "label": "Profession 1 speciality"
+    },
+    "sk_profession_2_ranks": {
+      "type": "number",
+      "label": "Profession 2 ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_profession_2_misc": {
+      "type": "number",
+      "label": "Profession 2 misc modifier",
+      "default": 0
+    },
+    "sk_profession_2_name": {
+      "type": "text",
+      "label": "Profession 2 speciality"
+    },
+    "sk_ride_ranks": {
+      "type": "number",
+      "label": "Ride ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_ride_misc": {
+      "type": "number",
+      "label": "Ride misc modifier",
+      "default": 0
+    },
+    "sk_sense_motive_ranks": {
+      "type": "number",
+      "label": "Sense Motive ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_sense_motive_misc": {
+      "type": "number",
+      "label": "Sense Motive misc modifier",
+      "default": 0
+    },
+    "sk_sleight_of_hand_ranks": {
+      "type": "number",
+      "label": "Sleight of Hand ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_sleight_of_hand_misc": {
+      "type": "number",
+      "label": "Sleight of Hand misc modifier",
+      "default": 0
+    },
+    "sk_spellcraft_ranks": {
+      "type": "number",
+      "label": "Spellcraft ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_spellcraft_misc": {
+      "type": "number",
+      "label": "Spellcraft misc modifier",
+      "default": 0
+    },
+    "sk_stealth_ranks": {
+      "type": "number",
+      "label": "Stealth ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_stealth_misc": {
+      "type": "number",
+      "label": "Stealth misc modifier",
+      "default": 0
+    },
+    "sk_survival_ranks": {
+      "type": "number",
+      "label": "Survival ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_survival_misc": {
+      "type": "number",
+      "label": "Survival misc modifier",
+      "default": 0
+    },
+    "sk_swim_ranks": {
+      "type": "number",
+      "label": "Swim ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_swim_misc": {
+      "type": "number",
+      "label": "Swim misc modifier",
+      "default": 0
+    },
+    "sk_use_magic_device_ranks": {
+      "type": "number",
+      "label": "Use Magic Device ranks",
+      "min": 0,
+      "default": 0
+    },
+    "sk_use_magic_device_misc": {
+      "type": "number",
+      "label": "Use Magic Device misc modifier",
+      "default": 0
+    },
+    "class_skills": {
+      "type": "multiselect",
+      "label": "Class skills",
+      "options": [
+        "Acrobatics",
+        "Appraise",
+        "Bluff",
+        "Climb",
+        "Craft 1",
+        "Craft 2",
+        "Craft 3",
+        "Diplomacy",
+        "Disable Device",
+        "Disguise",
+        "Escape Artist",
+        "Fly",
+        "Handle Animal",
+        "Heal",
+        "Intimidate",
+        "Knowledge (arcana)",
+        "Knowledge (dungeoneering)",
+        "Knowledge (engineering)",
+        "Knowledge (geography)",
+        "Knowledge (history)",
+        "Knowledge (local)",
+        "Knowledge (nature)",
+        "Knowledge (nobility)",
+        "Knowledge (planes)",
+        "Knowledge (religion)",
+        "Linguistics",
+        "Perception",
+        "Perform 1",
+        "Perform 2",
+        "Profession 1",
+        "Profession 2",
+        "Ride",
+        "Sense Motive",
+        "Sleight of Hand",
+        "Spellcraft",
+        "Stealth",
+        "Survival",
+        "Swim",
+        "Use Magic Device"
+      ]
+    },
+    "conditional_modifiers": {
+      "type": "textarea",
+      "label": "Conditional modifiers",
+      "rows": 3
+    },
+    "languages": {
+      "type": "textarea",
+      "label": "Languages",
+      "rows": 3
+    },
+    "gear": {
+      "type": "list",
+      "label": "Gear",
+      "add_label": "Add an item",
+      "columns": [
+        {
+          "key": "qty",
+          "type": "number",
+          "label": "#",
+          "flex": 1,
+          "min": 0,
+          "default": 1
+        },
+        {
+          "key": "item",
+          "type": "text",
+          "label": "Item",
+          "flex": 5
+        },
+        {
+          "key": "weight",
+          "type": "number",
+          "label": "Wt.",
+          "flex": 1,
+          "min": 0
+        }
+      ]
+    },
+    "cp": {
+      "type": "number",
+      "label": "CP",
+      "min": 0,
+      "default": 0
+    },
+    "sp": {
+      "type": "number",
+      "label": "SP",
+      "min": 0,
+      "default": 0
+    },
+    "gp": {
+      "type": "number",
+      "label": "GP",
+      "min": 0,
+      "default": 0
+    },
+    "pp": {
+      "type": "number",
+      "label": "PP",
+      "min": 0,
+      "default": 0
+    },
+    "feats": {
+      "type": "list",
+      "label": "Feats",
+      "add_label": "Add a feat",
+      "columns": [
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Feat",
+          "flex": 3
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 5
+        }
+      ]
+    },
+    "special_abilities": {
+      "type": "list",
+      "label": "Special Abilities",
+      "add_label": "Add an ability",
+      "columns": [
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Ability",
+          "flex": 3
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 5
+        }
+      ]
+    },
+    "xp": {
+      "type": "number",
+      "label": "Experience points",
+      "min": 0,
+      "default": 0
+    },
+    "xp_next": {
+      "type": "number",
+      "label": "Next level",
+      "min": 0
+    },
+    "casting_ability": {
+      "type": "select",
+      "label": "Spellcasting ability",
+      "options": [
+        {
+          "value": "int",
+          "label": "Intelligence"
+        },
+        {
+          "value": "wis",
+          "label": "Wisdom"
+        },
+        {
+          "value": "cha",
+          "label": "Charisma"
+        }
+      ]
+    },
+    "spells_known_0": {
+      "type": "number",
+      "label": "Level 0 spells known",
+      "min": 0
+    },
+    "spells_per_day_0": {
+      "type": "number",
+      "label": "Level 0 spells per day",
+      "min": 0
+    },
+    "spells_used_0": {
+      "type": "number",
+      "label": "Level 0 spells cast today",
+      "min": 0,
+      "default": 0
+    },
+    "spells_known_1": {
+      "type": "number",
+      "label": "Level 1 spells known",
+      "min": 0
+    },
+    "spells_per_day_1": {
+      "type": "number",
+      "label": "Level 1 spells per day",
+      "min": 0
+    },
+    "spells_used_1": {
+      "type": "number",
+      "label": "Level 1 spells cast today",
+      "min": 0,
+      "default": 0
+    },
+    "spells_known_2": {
+      "type": "number",
+      "label": "Level 2 spells known",
+      "min": 0
+    },
+    "spells_per_day_2": {
+      "type": "number",
+      "label": "Level 2 spells per day",
+      "min": 0
+    },
+    "spells_used_2": {
+      "type": "number",
+      "label": "Level 2 spells cast today",
+      "min": 0,
+      "default": 0
+    },
+    "spells_known_3": {
+      "type": "number",
+      "label": "Level 3 spells known",
+      "min": 0
+    },
+    "spells_per_day_3": {
+      "type": "number",
+      "label": "Level 3 spells per day",
+      "min": 0
+    },
+    "spells_used_3": {
+      "type": "number",
+      "label": "Level 3 spells cast today",
+      "min": 0,
+      "default": 0
+    },
+    "spells_known_4": {
+      "type": "number",
+      "label": "Level 4 spells known",
+      "min": 0
+    },
+    "spells_per_day_4": {
+      "type": "number",
+      "label": "Level 4 spells per day",
+      "min": 0
+    },
+    "spells_used_4": {
+      "type": "number",
+      "label": "Level 4 spells cast today",
+      "min": 0,
+      "default": 0
+    },
+    "spells_known_5": {
+      "type": "number",
+      "label": "Level 5 spells known",
+      "min": 0
+    },
+    "spells_per_day_5": {
+      "type": "number",
+      "label": "Level 5 spells per day",
+      "min": 0
+    },
+    "spells_used_5": {
+      "type": "number",
+      "label": "Level 5 spells cast today",
+      "min": 0,
+      "default": 0
+    },
+    "spells_known_6": {
+      "type": "number",
+      "label": "Level 6 spells known",
+      "min": 0
+    },
+    "spells_per_day_6": {
+      "type": "number",
+      "label": "Level 6 spells per day",
+      "min": 0
+    },
+    "spells_used_6": {
+      "type": "number",
+      "label": "Level 6 spells cast today",
+      "min": 0,
+      "default": 0
+    },
+    "spells_known_7": {
+      "type": "number",
+      "label": "Level 7 spells known",
+      "min": 0
+    },
+    "spells_per_day_7": {
+      "type": "number",
+      "label": "Level 7 spells per day",
+      "min": 0
+    },
+    "spells_used_7": {
+      "type": "number",
+      "label": "Level 7 spells cast today",
+      "min": 0,
+      "default": 0
+    },
+    "spells_known_8": {
+      "type": "number",
+      "label": "Level 8 spells known",
+      "min": 0
+    },
+    "spells_per_day_8": {
+      "type": "number",
+      "label": "Level 8 spells per day",
+      "min": 0
+    },
+    "spells_used_8": {
+      "type": "number",
+      "label": "Level 8 spells cast today",
+      "min": 0,
+      "default": 0
+    },
+    "spells_known_9": {
+      "type": "number",
+      "label": "Level 9 spells known",
+      "min": 0
+    },
+    "spells_per_day_9": {
+      "type": "number",
+      "label": "Level 9 spells per day",
+      "min": 0
+    },
+    "spells_used_9": {
+      "type": "number",
+      "label": "Level 9 spells cast today",
+      "min": 0,
+      "default": 0
+    },
+    "spell_conditional": {
+      "type": "textarea",
+      "label": "Spell conditional modifiers",
+      "rows": 2
+    },
+    "domains": {
+      "type": "text",
+      "label": "Domains/specialty school"
+    },
+    "spells": {
+      "type": "list",
+      "label": "Spells",
+      "add_label": "Add a spell",
+      "columns": [
+        {
+          "key": "level",
+          "type": "select",
+          "label": "Level",
+          "flex": 1,
+          "options": [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"
+          ]
+        },
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Spell",
+          "flex": 4
+        },
+        {
+          "key": "prepared",
+          "type": "number",
+          "label": "Prep.",
+          "flex": 1,
+          "min": 0
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 4
+        }
+      ]
+    }
+  },
+  "computed": {
+    "size_step": {
+      "formula": "size == 'Fine' ? 4 : (size == 'Diminutive' ? 3 : (size == 'Tiny' ? 2 : (size == 'Small' ? 1 : (size == 'Medium' ? 0 : (size == 'Large' ? -1 : (size == 'Huge' ? -2 : (size == 'Gargantuan' ? -3 : (size == 'Colossal' ? -4 : (0)))))))))",
+      "label": "Size steps from Medium"
+    },
+    "size_mod": {
+      "formula": "size == 'Fine' ? 8 : (size == 'Diminutive' ? 4 : (size == 'Tiny' ? 2 : (size == 'Small' ? 1 : (size == 'Large' ? -1 : (size == 'Huge' ? -2 : (size == 'Gargantuan' ? -4 : (size == 'Colossal' ? -8 : (0))))))))",
+      "label": "Size modifier"
+    },
+    "special_size_mod": {
+      "formula": "0 - size_mod",
+      "label": "Special size modifier (CMB/CMD)"
+    },
+    "str_mod": {
+      "formula": "floor((str - 10) / 2)",
+      "label": "Strength modifier"
+    },
+    "str_eff": {
+      "formula": "floor((str + str_temp - 10) / 2)",
+      "label": "Strength temporary modifier"
+    },
+    "dex_mod": {
+      "formula": "floor((dex - 10) / 2)",
+      "label": "Dexterity modifier"
+    },
+    "dex_eff": {
+      "formula": "floor((dex + dex_temp - 10) / 2)",
+      "label": "Dexterity temporary modifier"
+    },
+    "con_mod": {
+      "formula": "floor((con - 10) / 2)",
+      "label": "Constitution modifier"
+    },
+    "con_eff": {
+      "formula": "floor((con + con_temp - 10) / 2)",
+      "label": "Constitution temporary modifier"
+    },
+    "int_mod": {
+      "formula": "floor((int - 10) / 2)",
+      "label": "Intelligence modifier"
+    },
+    "int_eff": {
+      "formula": "floor((int + int_temp - 10) / 2)",
+      "label": "Intelligence temporary modifier"
+    },
+    "wis_mod": {
+      "formula": "floor((wis - 10) / 2)",
+      "label": "Wisdom modifier"
+    },
+    "wis_eff": {
+      "formula": "floor((wis + wis_temp - 10) / 2)",
+      "label": "Wisdom temporary modifier"
+    },
+    "cha_mod": {
+      "formula": "floor((cha - 10) / 2)",
+      "label": "Charisma modifier"
+    },
+    "cha_eff": {
+      "formula": "floor((cha + cha_temp - 10) / 2)",
+      "label": "Charisma temporary modifier"
+    },
+    "speed_base_sq": {
+      "formula": "floor(speed_base / 5)",
+      "label": "Base speed (squares)"
+    },
+    "speed_armor_sq": {
+      "formula": "floor(speed_armor / 5)",
+      "label": "Speed with armor (squares)"
+    },
+    "initiative": {
+      "formula": "dex_eff + init_misc",
+      "label": "Initiative"
+    },
+    "ac_items_bonus": {
+      "formula": "sum_where(ac_items, 'bonus')",
+      "label": "AC items: bonus"
+    },
+    "acp": {
+      "formula": "sum_where(ac_items, 'check_penalty')",
+      "label": "Armor check penalty"
+    },
+    "spell_failure": {
+      "formula": "sum_where(ac_items, 'spell_failure')",
+      "label": "Arcane spell failure %"
+    },
+    "ac_items_weight": {
+      "formula": "sum_where(ac_items, 'weight')",
+      "label": "AC items: weight"
+    },
+    "ac": {
+      "formula": "10 + armor_bonus + shield_bonus + dex_eff + size_mod + natural_armor + deflection + ac_misc",
+      "label": "Armor Class"
+    },
+    "touch": {
+      "formula": "10 + dex_eff + size_mod + deflection + ac_misc",
+      "label": "Touch AC"
+    },
+    "flat_footed": {
+      "formula": "ac - max(0, dex_eff)",
+      "label": "Flat-Footed AC"
+    },
+    "fort_ability": {
+      "formula": "con_eff",
+      "label": "Fortitude ability modifier"
+    },
+    "fort": {
+      "formula": "fort_base + con_eff + fort_magic + fort_misc + fort_temp",
+      "label": "Fortitude save"
+    },
+    "ref_ability": {
+      "formula": "dex_eff",
+      "label": "Reflex ability modifier"
+    },
+    "ref": {
+      "formula": "ref_base + dex_eff + ref_magic + ref_misc + ref_temp",
+      "label": "Reflex save"
+    },
+    "will_ability": {
+      "formula": "wis_eff",
+      "label": "Will ability modifier"
+    },
+    "will": {
+      "formula": "will_base + wis_eff + will_magic + will_misc + will_temp",
+      "label": "Will save"
+    },
+    "bab_iterative": {
+      "formula": "bab >= 16 ? concat(signed(bab), '/', signed(bab - 5), '/', signed(bab - 10), '/', signed(bab - 15)) : (bab >= 11 ? concat(signed(bab), '/', signed(bab - 5), '/', signed(bab - 10)) : (bab >= 6 ? concat(signed(bab), '/', signed(bab - 5)) : signed(bab)))",
+      "label": "Attacks"
+    },
+    "melee_attack": {
+      "formula": "signed(bab + str_eff + size_mod)",
+      "label": "Melee attack"
+    },
+    "ranged_attack": {
+      "formula": "signed(bab + dex_eff + size_mod)",
+      "label": "Ranged attack"
+    },
+    "cmb": {
+      "formula": "bab + str_eff + special_size_mod + cmb_misc",
+      "label": "CMB"
+    },
+    "cmd": {
+      "formula": "10 + bab + str_eff + dex_eff + special_size_mod + cmd_misc",
+      "label": "CMD"
+    },
+    "sk_acrobatics": {
+      "formula": "signed(dex_eff + sk_acrobatics_ranks + sk_acrobatics_misc + (contains(class_skills, 'Acrobatics') and sk_acrobatics_ranks > 0 ? 3 : 0) + acp)",
+      "label": "Acrobatics"
+    },
+    "sk_acrobatics_ability": {
+      "formula": "dex_eff",
+      "label": "Acrobatics ability modifier"
+    },
+    "sk_appraise": {
+      "formula": "signed(int_eff + sk_appraise_ranks + sk_appraise_misc + (contains(class_skills, 'Appraise') and sk_appraise_ranks > 0 ? 3 : 0))",
+      "label": "Appraise"
+    },
+    "sk_appraise_ability": {
+      "formula": "int_eff",
+      "label": "Appraise ability modifier"
+    },
+    "sk_bluff": {
+      "formula": "signed(cha_eff + sk_bluff_ranks + sk_bluff_misc + (contains(class_skills, 'Bluff') and sk_bluff_ranks > 0 ? 3 : 0))",
+      "label": "Bluff"
+    },
+    "sk_bluff_ability": {
+      "formula": "cha_eff",
+      "label": "Bluff ability modifier"
+    },
+    "sk_climb": {
+      "formula": "signed(str_eff + sk_climb_ranks + sk_climb_misc + (contains(class_skills, 'Climb') and sk_climb_ranks > 0 ? 3 : 0) + acp)",
+      "label": "Climb"
+    },
+    "sk_climb_ability": {
+      "formula": "str_eff",
+      "label": "Climb ability modifier"
+    },
+    "sk_craft_1": {
+      "formula": "signed(int_eff + sk_craft_1_ranks + sk_craft_1_misc + (contains(class_skills, 'Craft 1') and sk_craft_1_ranks > 0 ? 3 : 0))",
+      "label": "Craft 1"
+    },
+    "sk_craft_1_ability": {
+      "formula": "int_eff",
+      "label": "Craft 1 ability modifier"
+    },
+    "sk_craft_2": {
+      "formula": "signed(int_eff + sk_craft_2_ranks + sk_craft_2_misc + (contains(class_skills, 'Craft 2') and sk_craft_2_ranks > 0 ? 3 : 0))",
+      "label": "Craft 2"
+    },
+    "sk_craft_2_ability": {
+      "formula": "int_eff",
+      "label": "Craft 2 ability modifier"
+    },
+    "sk_craft_3": {
+      "formula": "signed(int_eff + sk_craft_3_ranks + sk_craft_3_misc + (contains(class_skills, 'Craft 3') and sk_craft_3_ranks > 0 ? 3 : 0))",
+      "label": "Craft 3"
+    },
+    "sk_craft_3_ability": {
+      "formula": "int_eff",
+      "label": "Craft 3 ability modifier"
+    },
+    "sk_diplomacy": {
+      "formula": "signed(cha_eff + sk_diplomacy_ranks + sk_diplomacy_misc + (contains(class_skills, 'Diplomacy') and sk_diplomacy_ranks > 0 ? 3 : 0))",
+      "label": "Diplomacy"
+    },
+    "sk_diplomacy_ability": {
+      "formula": "cha_eff",
+      "label": "Diplomacy ability modifier"
+    },
+    "sk_disable_device": {
+      "formula": "sk_disable_device_ranks == 0 ? '—' : signed(dex_eff + sk_disable_device_ranks + sk_disable_device_misc + (contains(class_skills, 'Disable Device') and sk_disable_device_ranks > 0 ? 3 : 0) + acp)",
+      "label": "Disable Device"
+    },
+    "sk_disable_device_ability": {
+      "formula": "dex_eff",
+      "label": "Disable Device ability modifier"
+    },
+    "sk_disguise": {
+      "formula": "signed(cha_eff + sk_disguise_ranks + sk_disguise_misc + (contains(class_skills, 'Disguise') and sk_disguise_ranks > 0 ? 3 : 0))",
+      "label": "Disguise"
+    },
+    "sk_disguise_ability": {
+      "formula": "cha_eff",
+      "label": "Disguise ability modifier"
+    },
+    "sk_escape_artist": {
+      "formula": "signed(dex_eff + sk_escape_artist_ranks + sk_escape_artist_misc + (contains(class_skills, 'Escape Artist') and sk_escape_artist_ranks > 0 ? 3 : 0) + acp)",
+      "label": "Escape Artist"
+    },
+    "sk_escape_artist_ability": {
+      "formula": "dex_eff",
+      "label": "Escape Artist ability modifier"
+    },
+    "sk_fly": {
+      "formula": "signed(dex_eff + sk_fly_ranks + sk_fly_misc + (contains(class_skills, 'Fly') and sk_fly_ranks > 0 ? 3 : 0) + acp + 2 * size_step)",
+      "label": "Fly"
+    },
+    "sk_fly_ability": {
+      "formula": "dex_eff",
+      "label": "Fly ability modifier"
+    },
+    "sk_handle_animal": {
+      "formula": "sk_handle_animal_ranks == 0 ? '—' : signed(cha_eff + sk_handle_animal_ranks + sk_handle_animal_misc + (contains(class_skills, 'Handle Animal') and sk_handle_animal_ranks > 0 ? 3 : 0))",
+      "label": "Handle Animal"
+    },
+    "sk_handle_animal_ability": {
+      "formula": "cha_eff",
+      "label": "Handle Animal ability modifier"
+    },
+    "sk_heal": {
+      "formula": "signed(wis_eff + sk_heal_ranks + sk_heal_misc + (contains(class_skills, 'Heal') and sk_heal_ranks > 0 ? 3 : 0))",
+      "label": "Heal"
+    },
+    "sk_heal_ability": {
+      "formula": "wis_eff",
+      "label": "Heal ability modifier"
+    },
+    "sk_intimidate": {
+      "formula": "signed(cha_eff + sk_intimidate_ranks + sk_intimidate_misc + (contains(class_skills, 'Intimidate') and sk_intimidate_ranks > 0 ? 3 : 0))",
+      "label": "Intimidate"
+    },
+    "sk_intimidate_ability": {
+      "formula": "cha_eff",
+      "label": "Intimidate ability modifier"
+    },
+    "sk_knowledge_arcana": {
+      "formula": "sk_knowledge_arcana_ranks == 0 ? '—' : signed(int_eff + sk_knowledge_arcana_ranks + sk_knowledge_arcana_misc + (contains(class_skills, 'Knowledge (arcana)') and sk_knowledge_arcana_ranks > 0 ? 3 : 0))",
+      "label": "Knowledge (arcana)"
+    },
+    "sk_knowledge_arcana_ability": {
+      "formula": "int_eff",
+      "label": "Knowledge (arcana) ability modifier"
+    },
+    "sk_knowledge_dungeoneering": {
+      "formula": "sk_knowledge_dungeoneering_ranks == 0 ? '—' : signed(int_eff + sk_knowledge_dungeoneering_ranks + sk_knowledge_dungeoneering_misc + (contains(class_skills, 'Knowledge (dungeoneering)') and sk_knowledge_dungeoneering_ranks > 0 ? 3 : 0))",
+      "label": "Knowledge (dungeoneering)"
+    },
+    "sk_knowledge_dungeoneering_ability": {
+      "formula": "int_eff",
+      "label": "Knowledge (dungeoneering) ability modifier"
+    },
+    "sk_knowledge_engineering": {
+      "formula": "sk_knowledge_engineering_ranks == 0 ? '—' : signed(int_eff + sk_knowledge_engineering_ranks + sk_knowledge_engineering_misc + (contains(class_skills, 'Knowledge (engineering)') and sk_knowledge_engineering_ranks > 0 ? 3 : 0))",
+      "label": "Knowledge (engineering)"
+    },
+    "sk_knowledge_engineering_ability": {
+      "formula": "int_eff",
+      "label": "Knowledge (engineering) ability modifier"
+    },
+    "sk_knowledge_geography": {
+      "formula": "sk_knowledge_geography_ranks == 0 ? '—' : signed(int_eff + sk_knowledge_geography_ranks + sk_knowledge_geography_misc + (contains(class_skills, 'Knowledge (geography)') and sk_knowledge_geography_ranks > 0 ? 3 : 0))",
+      "label": "Knowledge (geography)"
+    },
+    "sk_knowledge_geography_ability": {
+      "formula": "int_eff",
+      "label": "Knowledge (geography) ability modifier"
+    },
+    "sk_knowledge_history": {
+      "formula": "sk_knowledge_history_ranks == 0 ? '—' : signed(int_eff + sk_knowledge_history_ranks + sk_knowledge_history_misc + (contains(class_skills, 'Knowledge (history)') and sk_knowledge_history_ranks > 0 ? 3 : 0))",
+      "label": "Knowledge (history)"
+    },
+    "sk_knowledge_history_ability": {
+      "formula": "int_eff",
+      "label": "Knowledge (history) ability modifier"
+    },
+    "sk_knowledge_local": {
+      "formula": "sk_knowledge_local_ranks == 0 ? '—' : signed(int_eff + sk_knowledge_local_ranks + sk_knowledge_local_misc + (contains(class_skills, 'Knowledge (local)') and sk_knowledge_local_ranks > 0 ? 3 : 0))",
+      "label": "Knowledge (local)"
+    },
+    "sk_knowledge_local_ability": {
+      "formula": "int_eff",
+      "label": "Knowledge (local) ability modifier"
+    },
+    "sk_knowledge_nature": {
+      "formula": "sk_knowledge_nature_ranks == 0 ? '—' : signed(int_eff + sk_knowledge_nature_ranks + sk_knowledge_nature_misc + (contains(class_skills, 'Knowledge (nature)') and sk_knowledge_nature_ranks > 0 ? 3 : 0))",
+      "label": "Knowledge (nature)"
+    },
+    "sk_knowledge_nature_ability": {
+      "formula": "int_eff",
+      "label": "Knowledge (nature) ability modifier"
+    },
+    "sk_knowledge_nobility": {
+      "formula": "sk_knowledge_nobility_ranks == 0 ? '—' : signed(int_eff + sk_knowledge_nobility_ranks + sk_knowledge_nobility_misc + (contains(class_skills, 'Knowledge (nobility)') and sk_knowledge_nobility_ranks > 0 ? 3 : 0))",
+      "label": "Knowledge (nobility)"
+    },
+    "sk_knowledge_nobility_ability": {
+      "formula": "int_eff",
+      "label": "Knowledge (nobility) ability modifier"
+    },
+    "sk_knowledge_planes": {
+      "formula": "sk_knowledge_planes_ranks == 0 ? '—' : signed(int_eff + sk_knowledge_planes_ranks + sk_knowledge_planes_misc + (contains(class_skills, 'Knowledge (planes)') and sk_knowledge_planes_ranks > 0 ? 3 : 0))",
+      "label": "Knowledge (planes)"
+    },
+    "sk_knowledge_planes_ability": {
+      "formula": "int_eff",
+      "label": "Knowledge (planes) ability modifier"
+    },
+    "sk_knowledge_religion": {
+      "formula": "sk_knowledge_religion_ranks == 0 ? '—' : signed(int_eff + sk_knowledge_religion_ranks + sk_knowledge_religion_misc + (contains(class_skills, 'Knowledge (religion)') and sk_knowledge_religion_ranks > 0 ? 3 : 0))",
+      "label": "Knowledge (religion)"
+    },
+    "sk_knowledge_religion_ability": {
+      "formula": "int_eff",
+      "label": "Knowledge (religion) ability modifier"
+    },
+    "sk_linguistics": {
+      "formula": "sk_linguistics_ranks == 0 ? '—' : signed(int_eff + sk_linguistics_ranks + sk_linguistics_misc + (contains(class_skills, 'Linguistics') and sk_linguistics_ranks > 0 ? 3 : 0))",
+      "label": "Linguistics"
+    },
+    "sk_linguistics_ability": {
+      "formula": "int_eff",
+      "label": "Linguistics ability modifier"
+    },
+    "sk_perception": {
+      "formula": "signed(wis_eff + sk_perception_ranks + sk_perception_misc + (contains(class_skills, 'Perception') and sk_perception_ranks > 0 ? 3 : 0))",
+      "label": "Perception"
+    },
+    "sk_perception_ability": {
+      "formula": "wis_eff",
+      "label": "Perception ability modifier"
+    },
+    "sk_perform_1": {
+      "formula": "signed(cha_eff + sk_perform_1_ranks + sk_perform_1_misc + (contains(class_skills, 'Perform 1') and sk_perform_1_ranks > 0 ? 3 : 0))",
+      "label": "Perform 1"
+    },
+    "sk_perform_1_ability": {
+      "formula": "cha_eff",
+      "label": "Perform 1 ability modifier"
+    },
+    "sk_perform_2": {
+      "formula": "signed(cha_eff + sk_perform_2_ranks + sk_perform_2_misc + (contains(class_skills, 'Perform 2') and sk_perform_2_ranks > 0 ? 3 : 0))",
+      "label": "Perform 2"
+    },
+    "sk_perform_2_ability": {
+      "formula": "cha_eff",
+      "label": "Perform 2 ability modifier"
+    },
+    "sk_profession_1": {
+      "formula": "sk_profession_1_ranks == 0 ? '—' : signed(wis_eff + sk_profession_1_ranks + sk_profession_1_misc + (contains(class_skills, 'Profession 1') and sk_profession_1_ranks > 0 ? 3 : 0))",
+      "label": "Profession 1"
+    },
+    "sk_profession_1_ability": {
+      "formula": "wis_eff",
+      "label": "Profession 1 ability modifier"
+    },
+    "sk_profession_2": {
+      "formula": "sk_profession_2_ranks == 0 ? '—' : signed(wis_eff + sk_profession_2_ranks + sk_profession_2_misc + (contains(class_skills, 'Profession 2') and sk_profession_2_ranks > 0 ? 3 : 0))",
+      "label": "Profession 2"
+    },
+    "sk_profession_2_ability": {
+      "formula": "wis_eff",
+      "label": "Profession 2 ability modifier"
+    },
+    "sk_ride": {
+      "formula": "signed(dex_eff + sk_ride_ranks + sk_ride_misc + (contains(class_skills, 'Ride') and sk_ride_ranks > 0 ? 3 : 0) + acp)",
+      "label": "Ride"
+    },
+    "sk_ride_ability": {
+      "formula": "dex_eff",
+      "label": "Ride ability modifier"
+    },
+    "sk_sense_motive": {
+      "formula": "signed(wis_eff + sk_sense_motive_ranks + sk_sense_motive_misc + (contains(class_skills, 'Sense Motive') and sk_sense_motive_ranks > 0 ? 3 : 0))",
+      "label": "Sense Motive"
+    },
+    "sk_sense_motive_ability": {
+      "formula": "wis_eff",
+      "label": "Sense Motive ability modifier"
+    },
+    "sk_sleight_of_hand": {
+      "formula": "sk_sleight_of_hand_ranks == 0 ? '—' : signed(dex_eff + sk_sleight_of_hand_ranks + sk_sleight_of_hand_misc + (contains(class_skills, 'Sleight of Hand') and sk_sleight_of_hand_ranks > 0 ? 3 : 0) + acp)",
+      "label": "Sleight of Hand"
+    },
+    "sk_sleight_of_hand_ability": {
+      "formula": "dex_eff",
+      "label": "Sleight of Hand ability modifier"
+    },
+    "sk_spellcraft": {
+      "formula": "sk_spellcraft_ranks == 0 ? '—' : signed(int_eff + sk_spellcraft_ranks + sk_spellcraft_misc + (contains(class_skills, 'Spellcraft') and sk_spellcraft_ranks > 0 ? 3 : 0))",
+      "label": "Spellcraft"
+    },
+    "sk_spellcraft_ability": {
+      "formula": "int_eff",
+      "label": "Spellcraft ability modifier"
+    },
+    "sk_stealth": {
+      "formula": "signed(dex_eff + sk_stealth_ranks + sk_stealth_misc + (contains(class_skills, 'Stealth') and sk_stealth_ranks > 0 ? 3 : 0) + acp + 4 * size_step)",
+      "label": "Stealth"
+    },
+    "sk_stealth_ability": {
+      "formula": "dex_eff",
+      "label": "Stealth ability modifier"
+    },
+    "sk_survival": {
+      "formula": "signed(wis_eff + sk_survival_ranks + sk_survival_misc + (contains(class_skills, 'Survival') and sk_survival_ranks > 0 ? 3 : 0))",
+      "label": "Survival"
+    },
+    "sk_survival_ability": {
+      "formula": "wis_eff",
+      "label": "Survival ability modifier"
+    },
+    "sk_swim": {
+      "formula": "signed(str_eff + sk_swim_ranks + sk_swim_misc + (contains(class_skills, 'Swim') and sk_swim_ranks > 0 ? 3 : 0) + acp)",
+      "label": "Swim"
+    },
+    "sk_swim_ability": {
+      "formula": "str_eff",
+      "label": "Swim ability modifier"
+    },
+    "sk_use_magic_device": {
+      "formula": "sk_use_magic_device_ranks == 0 ? '—' : signed(cha_eff + sk_use_magic_device_ranks + sk_use_magic_device_misc + (contains(class_skills, 'Use Magic Device') and sk_use_magic_device_ranks > 0 ? 3 : 0))",
+      "label": "Use Magic Device"
+    },
+    "sk_use_magic_device_ability": {
+      "formula": "cha_eff",
+      "label": "Use Magic Device ability modifier"
+    },
+    "ranks_spent": {
+      "formula": "sum(sk_acrobatics_ranks, sk_appraise_ranks, sk_bluff_ranks, sk_climb_ranks, sk_craft_1_ranks, sk_craft_2_ranks, sk_craft_3_ranks, sk_diplomacy_ranks, sk_disable_device_ranks, sk_disguise_ranks, sk_escape_artist_ranks, sk_fly_ranks, sk_handle_animal_ranks, sk_heal_ranks, sk_intimidate_ranks, sk_knowledge_arcana_ranks, sk_knowledge_dungeoneering_ranks, sk_knowledge_engineering_ranks, sk_knowledge_geography_ranks, sk_knowledge_history_ranks, sk_knowledge_local_ranks, sk_knowledge_nature_ranks, sk_knowledge_nobility_ranks, sk_knowledge_planes_ranks, sk_knowledge_religion_ranks, sk_linguistics_ranks, sk_perception_ranks, sk_perform_1_ranks, sk_perform_2_ranks, sk_profession_1_ranks, sk_profession_2_ranks, sk_ride_ranks, sk_sense_motive_ranks, sk_sleight_of_hand_ranks, sk_spellcraft_ranks, sk_stealth_ranks, sk_survival_ranks, sk_swim_ranks, sk_use_magic_device_ranks)",
+      "label": "Skill ranks spent"
+    },
+    "gear_weight": {
+      "formula": "sum_qty(gear, 'weight')",
+      "label": "Gear weight"
+    },
+    "total_weight": {
+      "formula": "gear_weight + ac_items_weight",
+      "label": "Total weight"
+    },
+    "heavy_load": {
+      "formula": "(str + str_temp) <= 10 ? max(0, (str + str_temp)) * 10 : ((str + str_temp) == 11 ? 115 : ((str + str_temp) == 12 ? 130 : ((str + str_temp) == 13 ? 150 : ((str + str_temp) == 14 ? 175 : ((str + str_temp) == 15 ? 200 : ((str + str_temp) == 16 ? 230 : ((str + str_temp) == 17 ? 260 : ((str + str_temp) == 18 ? 300 : ((str + str_temp) == 19 ? 350 : ((str + str_temp) == 20 ? 400 : ((str + str_temp) == 21 ? 460 : ((str + str_temp) == 22 ? 520 : ((str + str_temp) == 23 ? 600 : ((str + str_temp) == 24 ? 700 : ((str + str_temp) == 25 ? 800 : ((str + str_temp) == 26 ? 920 : ((str + str_temp) == 27 ? 1040 : ((str + str_temp) == 28 ? 1200 : ((str + str_temp) == 29 ? 1400 : ((str + str_temp) == 30 ? 1600 : ((str + str_temp) == 31 ? 1840 : ((str + str_temp) == 32 ? 2080 : ((str + str_temp) == 33 ? 2400 : ((str + str_temp) == 34 ? 2800 : ((str + str_temp) == 35 ? 3200 : ((str + str_temp) == 36 ? 3680 : ((str + str_temp) == 37 ? 4160 : ((str + str_temp) == 38 ? 4800 : ((str + str_temp) == 39 ? 5600 : (0))))))))))))))))))))))))))))))",
+      "label": "Heavy load (lb.)"
+    },
+    "light_load": {
+      "formula": "floor(heavy_load / 3)",
+      "label": "Light load (lb.)"
+    },
+    "medium_load": {
+      "formula": "floor(heavy_load * 2 / 3)",
+      "label": "Medium load (lb.)"
+    },
+    "lift_over_head": {
+      "formula": "heavy_load",
+      "label": "Lift over head (lb.)"
+    },
+    "lift_off_ground": {
+      "formula": "heavy_load * 2",
+      "label": "Lift off ground (lb.)"
+    },
+    "drag_push": {
+      "formula": "heavy_load * 5",
+      "label": "Drag or push (lb.)"
+    },
+    "load": {
+      "formula": "total_weight <= light_load ? 'Light' : (total_weight <= medium_load ? 'Medium' : (total_weight <= heavy_load ? 'Heavy' : 'Overloaded'))",
+      "label": "Load"
+    },
+    "casting_mod": {
+      "formula": "casting_ability == 'int' ? int_eff : (casting_ability == 'wis' ? wis_eff : (casting_ability == 'cha' ? cha_eff : (0)))",
+      "label": "Spellcasting ability modifier"
+    },
+    "spell_dc_0": {
+      "formula": "casting_ability == '' ? '—' : 10 + 0 + casting_mod",
+      "label": "Level 0 spell save DC"
+    },
+    "spell_slots_0": {
+      "formula": "spells_per_day_0",
+      "label": "Level 0 spell slots"
+    },
+    "spell_dc_1": {
+      "formula": "casting_ability == '' ? '—' : 10 + 1 + casting_mod",
+      "label": "Level 1 spell save DC"
+    },
+    "bonus_spells_1": {
+      "formula": "casting_ability != '' and casting_mod >= 1 ? floor((casting_mod - 1) / 4) + 1 : 0",
+      "label": "Level 1 bonus spells"
+    },
+    "spell_slots_1": {
+      "formula": "spells_per_day_1 + bonus_spells_1",
+      "label": "Level 1 spell slots"
+    },
+    "spell_dc_2": {
+      "formula": "casting_ability == '' ? '—' : 10 + 2 + casting_mod",
+      "label": "Level 2 spell save DC"
+    },
+    "bonus_spells_2": {
+      "formula": "casting_ability != '' and casting_mod >= 2 ? floor((casting_mod - 2) / 4) + 1 : 0",
+      "label": "Level 2 bonus spells"
+    },
+    "spell_slots_2": {
+      "formula": "spells_per_day_2 + bonus_spells_2",
+      "label": "Level 2 spell slots"
+    },
+    "spell_dc_3": {
+      "formula": "casting_ability == '' ? '—' : 10 + 3 + casting_mod",
+      "label": "Level 3 spell save DC"
+    },
+    "bonus_spells_3": {
+      "formula": "casting_ability != '' and casting_mod >= 3 ? floor((casting_mod - 3) / 4) + 1 : 0",
+      "label": "Level 3 bonus spells"
+    },
+    "spell_slots_3": {
+      "formula": "spells_per_day_3 + bonus_spells_3",
+      "label": "Level 3 spell slots"
+    },
+    "spell_dc_4": {
+      "formula": "casting_ability == '' ? '—' : 10 + 4 + casting_mod",
+      "label": "Level 4 spell save DC"
+    },
+    "bonus_spells_4": {
+      "formula": "casting_ability != '' and casting_mod >= 4 ? floor((casting_mod - 4) / 4) + 1 : 0",
+      "label": "Level 4 bonus spells"
+    },
+    "spell_slots_4": {
+      "formula": "spells_per_day_4 + bonus_spells_4",
+      "label": "Level 4 spell slots"
+    },
+    "spell_dc_5": {
+      "formula": "casting_ability == '' ? '—' : 10 + 5 + casting_mod",
+      "label": "Level 5 spell save DC"
+    },
+    "bonus_spells_5": {
+      "formula": "casting_ability != '' and casting_mod >= 5 ? floor((casting_mod - 5) / 4) + 1 : 0",
+      "label": "Level 5 bonus spells"
+    },
+    "spell_slots_5": {
+      "formula": "spells_per_day_5 + bonus_spells_5",
+      "label": "Level 5 spell slots"
+    },
+    "spell_dc_6": {
+      "formula": "casting_ability == '' ? '—' : 10 + 6 + casting_mod",
+      "label": "Level 6 spell save DC"
+    },
+    "bonus_spells_6": {
+      "formula": "casting_ability != '' and casting_mod >= 6 ? floor((casting_mod - 6) / 4) + 1 : 0",
+      "label": "Level 6 bonus spells"
+    },
+    "spell_slots_6": {
+      "formula": "spells_per_day_6 + bonus_spells_6",
+      "label": "Level 6 spell slots"
+    },
+    "spell_dc_7": {
+      "formula": "casting_ability == '' ? '—' : 10 + 7 + casting_mod",
+      "label": "Level 7 spell save DC"
+    },
+    "bonus_spells_7": {
+      "formula": "casting_ability != '' and casting_mod >= 7 ? floor((casting_mod - 7) / 4) + 1 : 0",
+      "label": "Level 7 bonus spells"
+    },
+    "spell_slots_7": {
+      "formula": "spells_per_day_7 + bonus_spells_7",
+      "label": "Level 7 spell slots"
+    },
+    "spell_dc_8": {
+      "formula": "casting_ability == '' ? '—' : 10 + 8 + casting_mod",
+      "label": "Level 8 spell save DC"
+    },
+    "bonus_spells_8": {
+      "formula": "casting_ability != '' and casting_mod >= 8 ? floor((casting_mod - 8) / 4) + 1 : 0",
+      "label": "Level 8 bonus spells"
+    },
+    "spell_slots_8": {
+      "formula": "spells_per_day_8 + bonus_spells_8",
+      "label": "Level 8 spell slots"
+    },
+    "spell_dc_9": {
+      "formula": "casting_ability == '' ? '—' : 10 + 9 + casting_mod",
+      "label": "Level 9 spell save DC"
+    },
+    "bonus_spells_9": {
+      "formula": "casting_ability != '' and casting_mod >= 9 ? floor((casting_mod - 9) / 4) + 1 : 0",
+      "label": "Level 9 bonus spells"
+    },
+    "spell_slots_9": {
+      "formula": "spells_per_day_9 + bonus_spells_9",
+      "label": "Level 9 spell slots"
+    }
+  },
+  "validators": [
+    {
+      "rule": "total_weight <= heavy_load or heavy_load == 0",
+      "message": "Carrying more than a heavy load."
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "_id": "acolyte",
+    "name": "Acolyte",
+    "ability_scores": "Intelligence, Wisdom, Charisma",
+    "feat": "Magic Initiate (Cleric)",
+    "skill_proficiencies": [
+      "Insight",
+      "Religion"
+    ],
+    "description": "You devoted yourself to service in a temple.",
+    "feat_id": "magic-initiate"
+  },
+  {
+    "_id": "criminal",
+    "name": "Criminal",
+    "ability_scores": "Dexterity, Constitution, Intelligence",
+    "feat": "Alert",
+    "skill_proficiencies": [
+      "Sleight of Hand",
+      "Stealth"
+    ],
+    "description": "You learned your skills in the shadow of the law.",
+    "feat_id": "alert"
+  },
+  {
+    "_id": "sage",
+    "name": "Sage",
+    "ability_scores": "Constitution, Intelligence, Wisdom",
+    "feat": "Magic Initiate (Wizard)",
+    "skill_proficiencies": [
+      "Arcana",
+      "History"
+    ],
+    "description": "You spent years learning the lore of the multiverse.",
+    "feat_id": "magic-initiate"
+  },
+  {
+    "_id": "soldier",
+    "name": "Soldier",
+    "ability_scores": "Strength, Dexterity, Constitution",
+    "feat": "Savage Attacker",
+    "skill_proficiencies": [
+      "Athletics",
+      "Intimidation"
+    ],
+    "description": "You began training for war as soon as you reached adulthood.",
+    "feat_id": "savage-attacker"
+  }
+]

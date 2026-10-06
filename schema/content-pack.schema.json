@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/grimoire-codex/community-add-ons/main/schema/content-pack.schema.json",
+  "title": "Grimoire content pack metadata",
+  "description": "The _meta.json of a content pack — the catalog content (spells, classes, feats) a character sheet draws from. Installed server-wide by an admin, then imported into a ruleset per table.",
+  "type": "object",
+  "required": ["pack_id", "schema_id", "name"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "pack_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+([-_][a-z0-9]+)*$",
+      "description": "Unique id, matching the directory name."
+    },
+    "schema_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+([-_][a-z0-9]+)*$",
+      "description": "The character sheet this pack supplies content for. Not a hard reference — a pack may be installed before the sheet is."
+    },
+    "name": { "type": "string", "maxLength": 200 },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "description": { "type": "string", "maxLength": 2000 },
+    "license": { "type": "string", "maxLength": 200 },
+    "license_url": { "type": "string" },
+    "attribution": {
+      "type": "string",
+      "maxLength": 4000,
+      "description": "Credit shown verbatim wherever this pack's content appears. Required when 'license' is set."
+    },
+    "source_url": { "type": "string" },
+    "source": {
+      "type": "string",
+      "maxLength": 100,
+      "description": "Short label each entry is tagged with, so 'Fireball (srd)' is distinguishable from a table's own."
+    }
+  },
+  "dependentRequired": { "license": ["attribution"] }
+}

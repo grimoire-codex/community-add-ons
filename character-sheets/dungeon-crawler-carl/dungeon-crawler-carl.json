@@ -1,0 +1,781 @@
+{
+  "$schema": "../../schema/character-sheet.schema.json",
+  "id": "dungeon-crawler-carl",
+  "name": "Dungeon Crawler Carl",
+  "version": "1.0.0",
+  "system": "Dungeon Crawler Carl Roleplaying Game",
+  "description": "An unofficial crawler sheet for the Dungeon Crawler Carl Roleplaying Game: five stats enhanced and unenhanced, health in tenths, evade and damage resistance totals, mana, buffs and attacks, the hotlist and gear slots, skills, inventory, pet and mount, and sponsors. Structure only - bring the rules from your book. Not affiliated with or endorsed by Renegade Game Studios or Matt Dinniman.",
+  "author": "hunter-read",
+  "homepage": "https://renegadegamestudios.com/dungeon-crawler-carl/",
+  "name_field": "hero_name",
+  "layout_file": "dungeon-crawler-carl.html",
+  "styles_file": "dungeon-crawler-carl.css",
+  "fields": {
+    "hero_name": {
+      "type": "text",
+      "label": "Name"
+    },
+    "race": {
+      "type": "text",
+      "label": "Race"
+    },
+    "pronouns": {
+      "type": "text",
+      "label": "Gender/Pronouns"
+    },
+    "level": {
+      "type": "number",
+      "label": "Level",
+      "min": 0,
+      "default": 1
+    },
+    "crawler_number": {
+      "type": "text",
+      "label": "Crawler Number"
+    },
+    "klass": {
+      "type": "text",
+      "label": "Class"
+    },
+    "floor": {
+      "type": "number",
+      "label": "Floor",
+      "min": 1,
+      "default": 1
+    },
+    "health": {
+      "type": "number",
+      "label": "Health (tenths)",
+      "min": 0,
+      "max": 10,
+      "default": 10
+    },
+    "str_enhanced": {
+      "type": "number",
+      "label": "Strength (enhanced)",
+      "min": 0
+    },
+    "str_unenhanced": {
+      "type": "number",
+      "label": "Strength (unenhanced)",
+      "min": 0
+    },
+    "str_mod": {
+      "type": "number",
+      "label": "Strength modifier",
+      "default": 0
+    },
+    "int_enhanced": {
+      "type": "number",
+      "label": "Intelligence (enhanced)",
+      "min": 0
+    },
+    "int_unenhanced": {
+      "type": "number",
+      "label": "Intelligence (unenhanced)",
+      "min": 0
+    },
+    "int_mod": {
+      "type": "number",
+      "label": "Intelligence modifier",
+      "default": 0
+    },
+    "con_enhanced": {
+      "type": "number",
+      "label": "Constitution (enhanced)",
+      "min": 0
+    },
+    "con_unenhanced": {
+      "type": "number",
+      "label": "Constitution (unenhanced)",
+      "min": 0
+    },
+    "con_mod": {
+      "type": "number",
+      "label": "Constitution modifier",
+      "default": 0
+    },
+    "dex_enhanced": {
+      "type": "number",
+      "label": "Dexterity (enhanced)",
+      "min": 0
+    },
+    "dex_unenhanced": {
+      "type": "number",
+      "label": "Dexterity (unenhanced)",
+      "min": 0
+    },
+    "dex_mod": {
+      "type": "number",
+      "label": "Dexterity modifier",
+      "default": 0
+    },
+    "cha_enhanced": {
+      "type": "number",
+      "label": "Charisma (enhanced)",
+      "min": 0
+    },
+    "cha_unenhanced": {
+      "type": "number",
+      "label": "Charisma (unenhanced)",
+      "min": 0
+    },
+    "cha_mod": {
+      "type": "number",
+      "label": "Charisma modifier",
+      "default": 0
+    },
+    "evade_buffs": {
+      "type": "number",
+      "label": "Evade buffs",
+      "default": 0
+    },
+    "armor": {
+      "type": "number",
+      "label": "Armor",
+      "default": 0
+    },
+    "dr_buffs": {
+      "type": "number",
+      "label": "Damage resistance buffs",
+      "default": 0
+    },
+    "move": {
+      "type": "text",
+      "label": "Move"
+    },
+    "step": {
+      "type": "text",
+      "label": "Step"
+    },
+    "ai_favor": {
+      "type": "text",
+      "label": "AI Favor"
+    },
+    "size": {
+      "type": "text",
+      "label": "Size"
+    },
+    "mana_max": {
+      "type": "number",
+      "label": "Max Mana",
+      "min": 0,
+      "default": 0
+    },
+    "mana": {
+      "type": "number",
+      "label": "Current Mana",
+      "min": 0,
+      "default": 0
+    },
+    "debuffs": {
+      "type": "text",
+      "label": "Debuffs"
+    },
+    "external_buff_1": {
+      "type": "text",
+      "label": "External buff 1"
+    },
+    "external_buff_2": {
+      "type": "text",
+      "label": "External buff 2"
+    },
+    "external_buff_3": {
+      "type": "text",
+      "label": "External buff 3"
+    },
+    "attack_1_name": {
+      "type": "text",
+      "label": "Attack 1"
+    },
+    "attack_1_rank": {
+      "type": "number",
+      "label": "Attack 1 rank",
+      "default": 0
+    },
+    "attack_1_hit_mod": {
+      "type": "number",
+      "label": "Attack 1 to-hit stat mod",
+      "default": 0
+    },
+    "attack_1_dice": {
+      "type": "text",
+      "label": "Attack 1 damage dice"
+    },
+    "attack_1_dmg_mod": {
+      "type": "number",
+      "label": "Attack 1 damage stat mod",
+      "default": 0
+    },
+    "attack_1_effects": {
+      "type": "text",
+      "label": "Attack 1 effects"
+    },
+    "attack_2_name": {
+      "type": "text",
+      "label": "Attack 2"
+    },
+    "attack_2_rank": {
+      "type": "number",
+      "label": "Attack 2 rank",
+      "default": 0
+    },
+    "attack_2_hit_mod": {
+      "type": "number",
+      "label": "Attack 2 to-hit stat mod",
+      "default": 0
+    },
+    "attack_2_dice": {
+      "type": "text",
+      "label": "Attack 2 damage dice"
+    },
+    "attack_2_dmg_mod": {
+      "type": "number",
+      "label": "Attack 2 damage stat mod",
+      "default": 0
+    },
+    "attack_2_effects": {
+      "type": "text",
+      "label": "Attack 2 effects"
+    },
+    "attack_3_name": {
+      "type": "text",
+      "label": "Attack 3"
+    },
+    "attack_3_rank": {
+      "type": "number",
+      "label": "Attack 3 rank",
+      "default": 0
+    },
+    "attack_3_hit_mod": {
+      "type": "number",
+      "label": "Attack 3 to-hit stat mod",
+      "default": 0
+    },
+    "attack_3_dice": {
+      "type": "text",
+      "label": "Attack 3 damage dice"
+    },
+    "attack_3_dmg_mod": {
+      "type": "number",
+      "label": "Attack 3 damage stat mod",
+      "default": 0
+    },
+    "attack_3_effects": {
+      "type": "text",
+      "label": "Attack 3 effects"
+    },
+    "attack_4_name": {
+      "type": "text",
+      "label": "Attack 4"
+    },
+    "attack_4_rank": {
+      "type": "number",
+      "label": "Attack 4 rank",
+      "default": 0
+    },
+    "attack_4_hit_mod": {
+      "type": "number",
+      "label": "Attack 4 to-hit stat mod",
+      "default": 0
+    },
+    "attack_4_dice": {
+      "type": "text",
+      "label": "Attack 4 damage dice"
+    },
+    "attack_4_dmg_mod": {
+      "type": "number",
+      "label": "Attack 4 damage stat mod",
+      "default": 0
+    },
+    "attack_4_effects": {
+      "type": "text",
+      "label": "Attack 4 effects"
+    },
+    "attack_5_name": {
+      "type": "text",
+      "label": "Attack 5"
+    },
+    "attack_5_rank": {
+      "type": "number",
+      "label": "Attack 5 rank",
+      "default": 0
+    },
+    "attack_5_hit_mod": {
+      "type": "number",
+      "label": "Attack 5 to-hit stat mod",
+      "default": 0
+    },
+    "attack_5_dice": {
+      "type": "text",
+      "label": "Attack 5 damage dice"
+    },
+    "attack_5_dmg_mod": {
+      "type": "number",
+      "label": "Attack 5 damage stat mod",
+      "default": 0
+    },
+    "attack_5_effects": {
+      "type": "text",
+      "label": "Attack 5 effects"
+    },
+    "hotlist_1": {
+      "type": "textarea",
+      "label": "Hotlist 1",
+      "rows": 2
+    },
+    "hotlist_2": {
+      "type": "textarea",
+      "label": "Hotlist 2",
+      "rows": 2
+    },
+    "hotlist_3": {
+      "type": "textarea",
+      "label": "Hotlist 3",
+      "rows": 2
+    },
+    "hotlist_4": {
+      "type": "textarea",
+      "label": "Hotlist 4",
+      "rows": 2
+    },
+    "hotlist_5": {
+      "type": "textarea",
+      "label": "Hotlist 5",
+      "rows": 2
+    },
+    "hotlist_6": {
+      "type": "textarea",
+      "label": "Hotlist 6",
+      "rows": 2
+    },
+    "hotlist_7": {
+      "type": "textarea",
+      "label": "Hotlist 7",
+      "rows": 2
+    },
+    "hotlist_8": {
+      "type": "textarea",
+      "label": "Hotlist 8",
+      "rows": 2
+    },
+    "hotlist_9": {
+      "type": "textarea",
+      "label": "Hotlist 9",
+      "rows": 2
+    },
+    "hotlist_10": {
+      "type": "textarea",
+      "label": "Hotlist 10",
+      "rows": 2
+    },
+    "gear_head": {
+      "type": "text",
+      "label": "Head"
+    },
+    "gear_torso": {
+      "type": "text",
+      "label": "Torso"
+    },
+    "gear_arms": {
+      "type": "text",
+      "label": "Arms"
+    },
+    "gear_hands": {
+      "type": "text",
+      "label": "Hands/Holding"
+    },
+    "gear_legs": {
+      "type": "text",
+      "label": "Legs"
+    },
+    "gear_feet": {
+      "type": "text",
+      "label": "Feet"
+    },
+    "accessories": {
+      "type": "list",
+      "label": "Accessories",
+      "columns": [
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Accessory",
+          "flex": 3
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 4
+        }
+      ],
+      "add_label": "Add an accessory"
+    },
+    "popularity": {
+      "type": "textarea",
+      "label": "Popularity",
+      "rows": 3
+    },
+    "past_trauma": {
+      "type": "textarea",
+      "label": "Past Trauma",
+      "rows": 3
+    },
+    "loose_ends": {
+      "type": "textarea",
+      "label": "Loose Ends",
+      "rows": 3
+    },
+    "regrets": {
+      "type": "textarea",
+      "label": "Regrets",
+      "rows": 3
+    },
+    "notes": {
+      "type": "textarea",
+      "label": "Notes",
+      "rows": 6
+    },
+    "skills": {
+      "type": "list",
+      "label": "Skills",
+      "columns": [
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Name",
+          "flex": 3
+        },
+        {
+          "key": "rank",
+          "type": "number",
+          "label": "Rank",
+          "flex": 1,
+          "min": 0
+        },
+        {
+          "key": "stat",
+          "type": "text",
+          "label": "Stat & Mod",
+          "flex": 1
+        },
+        {
+          "key": "check",
+          "type": "text",
+          "label": "Check Type",
+          "flex": 2
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes & Upgrades",
+          "flex": 5
+        },
+        {
+          "key": "done",
+          "type": "checkbox",
+          "label": "✔",
+          "flex": 1
+        }
+      ],
+      "add_label": "Add a skill"
+    },
+    "inventory": {
+      "type": "list",
+      "label": "Inventory",
+      "columns": [
+        {
+          "key": "item",
+          "type": "text",
+          "label": "Item",
+          "flex": 3
+        },
+        {
+          "key": "qty",
+          "type": "number",
+          "label": "Quantity",
+          "flex": 1,
+          "min": 0,
+          "default": 1
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 6
+        }
+      ],
+      "add_label": "Add an item"
+    },
+    "pet_name": {
+      "type": "text",
+      "label": "Pet"
+    },
+    "pet_health": {
+      "type": "number",
+      "label": "Pet health (tenths)",
+      "min": 0,
+      "max": 10,
+      "default": 10
+    },
+    "pet_str": {
+      "type": "number",
+      "label": "Pet Strength",
+      "default": 0
+    },
+    "pet_int": {
+      "type": "number",
+      "label": "Pet Intelligence",
+      "default": 0
+    },
+    "pet_con": {
+      "type": "number",
+      "label": "Pet Constitution",
+      "default": 0
+    },
+    "pet_dex": {
+      "type": "number",
+      "label": "Pet Dexterity",
+      "default": 0
+    },
+    "pet_cha": {
+      "type": "number",
+      "label": "Pet Charisma",
+      "default": 0
+    },
+    "pet_level": {
+      "type": "text",
+      "label": "Pet level"
+    },
+    "pet_dr": {
+      "type": "text",
+      "label": "Pet DR"
+    },
+    "pet_evade": {
+      "type": "text",
+      "label": "Pet Evade"
+    },
+    "pet_move": {
+      "type": "text",
+      "label": "Pet move"
+    },
+    "pet_size": {
+      "type": "text",
+      "label": "Pet size"
+    },
+    "pet_attack_1": {
+      "type": "text",
+      "label": "Pet attack 1"
+    },
+    "pet_attack_2": {
+      "type": "text",
+      "label": "Pet attack 2"
+    },
+    "pet_special": {
+      "type": "text",
+      "label": "Pet special"
+    },
+    "mount_name": {
+      "type": "text",
+      "label": "Mount / Vehicle"
+    },
+    "mount_health": {
+      "type": "number",
+      "label": "Mount health (tenths)",
+      "min": 0,
+      "max": 10,
+      "default": 10
+    },
+    "mount_size": {
+      "type": "text",
+      "label": "Mount size"
+    },
+    "mount_occupants": {
+      "type": "text",
+      "label": "Mount occupants"
+    },
+    "mount_move": {
+      "type": "text",
+      "label": "Mount move"
+    },
+    "mount_dr": {
+      "type": "text",
+      "label": "Mount DR"
+    },
+    "mount_accessories": {
+      "type": "textarea",
+      "label": "Mount accessories",
+      "rows": 3
+    },
+    "kills": {
+      "type": "list",
+      "label": "Important Things I've Killed",
+      "columns": [
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Killed",
+          "flex": 4
+        },
+        {
+          "key": "floor",
+          "type": "text",
+          "label": "Floor",
+          "flex": 1
+        }
+      ],
+      "add_label": "Add a kill"
+    },
+    "space_tier": {
+      "type": "text",
+      "label": "Personal space tier"
+    },
+    "space_size": {
+      "type": "text",
+      "label": "Personal space size"
+    },
+    "amenities": {
+      "type": "list",
+      "label": "Amenities",
+      "columns": [
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Amenity",
+          "flex": 4
+        }
+      ],
+      "add_label": "Add an amenity"
+    },
+    "clubs": {
+      "type": "list",
+      "label": "Clubs, Societies, Guilds, etc",
+      "columns": [
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Name",
+          "flex": 3
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 4
+        }
+      ],
+      "add_label": "Add one"
+    },
+    "deity": {
+      "type": "textarea",
+      "label": "Deity",
+      "rows": 6
+    },
+    "racial_abilities": {
+      "type": "list",
+      "label": "Racial Abilities",
+      "columns": [
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Ability",
+          "flex": 3
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 4
+        }
+      ],
+      "add_label": "Add an ability"
+    },
+    "class_abilities": {
+      "type": "list",
+      "label": "Class Abilities",
+      "columns": [
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Ability",
+          "flex": 3
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 4
+        }
+      ],
+      "add_label": "Add an ability"
+    },
+    "sponsor_1": {
+      "type": "textarea",
+      "label": "Sponsor 1",
+      "rows": 6
+    },
+    "sponsor_2": {
+      "type": "textarea",
+      "label": "Sponsor 2",
+      "rows": 6
+    },
+    "sponsor_3": {
+      "type": "textarea",
+      "label": "Sponsor 3",
+      "rows": 6
+    }
+  },
+  "computed": {
+    "health_pct": {
+      "formula": "concat(health * 10, '%')",
+      "label": "Health"
+    },
+    "evade_total": {
+      "formula": "dex_mod + evade_buffs",
+      "label": "Evade Total"
+    },
+    "evade_dex": {
+      "formula": "dex_mod",
+      "label": "Evade: DEX Mod"
+    },
+    "dr_total": {
+      "formula": "armor + dr_buffs",
+      "label": "DR Total"
+    },
+    "attack_1_to_hit": {
+      "formula": "attack_1_name == '' ? '' : signed(attack_1_rank + attack_1_hit_mod)",
+      "label": "Attack 1 to hit"
+    },
+    "attack_2_to_hit": {
+      "formula": "attack_2_name == '' ? '' : signed(attack_2_rank + attack_2_hit_mod)",
+      "label": "Attack 2 to hit"
+    },
+    "attack_3_to_hit": {
+      "formula": "attack_3_name == '' ? '' : signed(attack_3_rank + attack_3_hit_mod)",
+      "label": "Attack 3 to hit"
+    },
+    "attack_4_to_hit": {
+      "formula": "attack_4_name == '' ? '' : signed(attack_4_rank + attack_4_hit_mod)",
+      "label": "Attack 4 to hit"
+    },
+    "attack_5_to_hit": {
+      "formula": "attack_5_name == '' ? '' : signed(attack_5_rank + attack_5_hit_mod)",
+      "label": "Attack 5 to hit"
+    },
+    "accessory_count": {
+      "formula": "len(accessories)",
+      "label": "Accessories"
+    }
+  },
+  "validators": [
+    {
+      "rule": "mana <= mana_max or mana_max == 0",
+      "message": "Current mana is above the maximum."
+    },
+    {
+      "rule": "accessory_count <= 10",
+      "message": "More than ten accessories."
+    }
+  ]
+}

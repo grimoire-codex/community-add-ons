@@ -1,0 +1,566 @@
+[
+ {
+  "_id": "acolyte",
+  "name": "Acolyte",
+  "boosts": "Intelligence or Wisdom, Free",
+  "skills": [
+   "Religion"
+  ],
+  "either_skills": [],
+  "lore": "Scribing Lore",
+  "feat": "Student of the Canon",
+  "feat_id": "student-of-the-canon",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Intelligence or Wisdom, and one is a free attribute boost.\n\nYou're trained in the Religion skill and the Scribing Lore skill. You gain the Student of the Canon skill feat."
+ },
+ {
+  "_id": "acrobat",
+  "name": "Acrobat",
+  "boosts": "Dexterity or Strength, Free",
+  "skills": [
+   "Acrobatics"
+  ],
+  "either_skills": [],
+  "lore": "Circus Lore",
+  "feat": "Steady Balance",
+  "feat_id": "steady-balance",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Strength or Dexterity, and one is a free attribute boost.\n\nYou're trained in the Acrobatics skill and the Circus Lore skill. You gain the Steady Balance skill feat."
+ },
+ {
+  "_id": "animal-whisperer",
+  "name": "Animal Whisperer",
+  "boosts": "Charisma or Wisdom, Free",
+  "skills": [
+   "Nature"
+  ],
+  "either_skills": [],
+  "lore": "",
+  "feat": "Train Animal",
+  "feat_id": "train-animal",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Wisdom or Charisma, and one is a free attribute boost.\n\nYou're trained in the Nature skill and a Lore skill related to one terrain inhabited by animals you like (such as Plains Lore or Swamp Lore). You gain the Train Animal skill feat."
+ },
+ {
+  "_id": "artisan",
+  "name": "Artisan",
+  "boosts": "Intelligence or Strength, Free",
+  "skills": [
+   "Crafting"
+  ],
+  "either_skills": [],
+  "lore": "Guild Lore",
+  "feat": "Specialty Crafting",
+  "feat_id": "specialty-crafting",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Strength or Intelligence, and one is a free attribute boost.\n\nYou're trained in the Crafting skill and the Guild Lore skill. You gain the Specialty Crafting skill feat."
+ },
+ {
+  "_id": "artist",
+  "name": "Artist",
+  "boosts": "Charisma or Dexterity, Free",
+  "skills": [
+   "Crafting"
+  ],
+  "either_skills": [],
+  "lore": "Art Lore",
+  "feat": "Specialty Crafting",
+  "feat_id": "specialty-crafting",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Dexterity or Charisma, and one is a free attribute boost.\n\nYou're trained in the Crafting skill and the Art Lore skill. You gain the Specialty Crafting skill feat."
+ },
+ {
+  "_id": "bandit",
+  "name": "Bandit",
+  "boosts": "Charisma or Dexterity, Free",
+  "skills": [
+   "Intimidation"
+  ],
+  "either_skills": [],
+  "lore": "",
+  "feat": "Group Coercion",
+  "feat_id": "group-coercion",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Dexterity or Charisma, and one is a free attribute boost.\n\nYou're trained in the Intimidation skill and a Lore skill related to the terrain you worked in (such as Desert Lore or Plains Lore). You gain the Group Coercion skill feat."
+ },
+ {
+  "_id": "barkeep",
+  "name": "Barkeep",
+  "boosts": "Charisma or Constitution, Free",
+  "skills": [
+   "Diplomacy"
+  ],
+  "either_skills": [],
+  "lore": "Alcohol Lore",
+  "feat": "Hobnobber",
+  "feat_id": "hobnobber",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Constitution or Charisma, and one is a free attribute boost.\n\nYou're trained in the Diplomacy skill and the Alcohol Lore skill. You gain the Hobnobber skill feat."
+ },
+ {
+  "_id": "barrister",
+  "name": "Barrister",
+  "boosts": "Charisma or Intelligence, Free",
+  "skills": [
+   "Diplomacy"
+  ],
+  "either_skills": [],
+  "lore": "Legal Lore",
+  "feat": "Group Impression",
+  "feat_id": "group-impression",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Intelligence or Charisma, and one is a free attribute boost.\n\nYou're trained in the Diplomacy skill and the Legal Lore skill. You gain the Group Impression skill feat."
+ },
+ {
+  "_id": "bounty-hunter",
+  "name": "Bounty Hunter",
+  "boosts": "Strength or Wisdom, Free",
+  "skills": [
+   "Survival"
+  ],
+  "either_skills": [],
+  "lore": "Legal Lore",
+  "feat": "Experienced Tracker",
+  "feat_id": "experienced-tracker",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Strength or Wisdom, and one is a free attribute boost.\n\nYou're trained in the Survival skill and the Legal Lore skill. You gain the Experienced Tracker skill feat."
+ },
+ {
+  "_id": "charlatan",
+  "name": "Charlatan",
+  "boosts": "Charisma or Intelligence, Free",
+  "skills": [
+   "Deception"
+  ],
+  "either_skills": [],
+  "lore": "Underworld Lore",
+  "feat": "Charming Liar",
+  "feat_id": "charming-liar",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Intelligence or Charisma, and one is a free attribute boost.\n\nYou're trained in the Deception skill and the Underworld Lore skill. You gain the Charming Liar skill feat."
+ },
+ {
+  "_id": "cook",
+  "name": "Cook",
+  "boosts": "Constitution or Intelligence, Free",
+  "skills": [
+   "Survival"
+  ],
+  "either_skills": [],
+  "lore": "Cooking Lore",
+  "feat": "Seasoned",
+  "feat_id": "seasoned",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Constitution or Intelligence, and one is a free attribute boost.\n\nYou're trained in the Survival skill and the Cooking Lore skill. You gain the Seasoned skill feat."
+ },
+ {
+  "_id": "criminal",
+  "name": "Criminal",
+  "boosts": "Dexterity or Intelligence, Free",
+  "skills": [
+   "Stealth"
+  ],
+  "either_skills": [],
+  "lore": "Underworld Lore",
+  "feat": "Experienced Smuggler",
+  "feat_id": "experienced-smuggler",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Dexterity or Intelligence, and one is a free attribute boost.\n\nYou're trained in the Stealth skill and the Underworld Lore skill. You gain the Experienced Smuggler skill feat."
+ },
+ {
+  "_id": "cultist",
+  "name": "Cultist",
+  "boosts": "Charisma or Intelligence, Free",
+  "skills": [
+   "Occultism"
+  ],
+  "either_skills": [],
+  "lore": "",
+  "feat": "Schooled in Secrets",
+  "feat_id": "schooled-in-secrets",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Intelligence or Charisma, and one is a free attribute boost.\n\nYou're trained in the Occultism skill and a Lore skill related to your deity or cult. You gain the Schooled in Secrets skill feat."
+ },
+ {
+  "_id": "detective",
+  "name": "Detective",
+  "boosts": "Intelligence or Wisdom, Free",
+  "skills": [
+   "Society"
+  ],
+  "either_skills": [],
+  "lore": "Underworld Lore",
+  "feat": "Streetwise",
+  "feat_id": "streetwise",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Intelligence or Wisdom, and one is a free attribute boost.\n\nYou're trained in the Society skill and the Underworld Lore skill. You gain the Streetwise skill feat."
+ },
+ {
+  "_id": "emissary",
+  "name": "Emissary",
+  "boosts": "Charisma or Intelligence, Free",
+  "skills": [
+   "Society"
+  ],
+  "either_skills": [],
+  "lore": "",
+  "feat": "Multilingual",
+  "feat_id": "multilingual",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Intelligence or Charisma, and one is a free attribute boost.\n\nYou're trained in the Society skill and a Lore skill related to one city you've visited often. You gain the Multilingual skill feat."
+ },
+ {
+  "_id": "entertainer",
+  "name": "Entertainer",
+  "boosts": "Charisma or Dexterity, Free",
+  "skills": [
+   "Performance"
+  ],
+  "either_skills": [],
+  "lore": "Theater Lore",
+  "feat": "Fascinating Performance",
+  "feat_id": "fascinating-performance",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Dexterity or Charisma, and one is a free attribute boost.\n\nYou're trained in the Performance skill and the Theater Lore skill. You gain the Fascinating Performance skill feat."
+ },
+ {
+  "_id": "farmhand",
+  "name": "Farmhand",
+  "boosts": "Constitution or Wisdom, Free",
+  "skills": [
+   "Athletics"
+  ],
+  "either_skills": [],
+  "lore": "Farming Lore",
+  "feat": "Assurance",
+  "feat_id": "assurance",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Constitution or Wisdom, and one is a free attribute boost.\n\nYou're trained in the Athletics skill and the Farming Lore skill. You gain the Assurance skill feat with Athletics."
+ },
+ {
+  "_id": "field-medic",
+  "name": "Field Medic",
+  "boosts": "Constitution or Wisdom, Free",
+  "skills": [
+   "Medicine"
+  ],
+  "either_skills": [],
+  "lore": "Warfare Lore",
+  "feat": "Battle Medicine",
+  "feat_id": "battle-medicine",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Constitution or Wisdom, and one is a free attribute boost.\n\nYou're trained in the Medicine skill and the Warfare Lore skill. You gain the Battle Medicine skill feat."
+ },
+ {
+  "_id": "fortune-teller",
+  "name": "Fortune Teller",
+  "boosts": "Charisma or Intelligence, Free",
+  "skills": [
+   "Occultism"
+  ],
+  "either_skills": [],
+  "lore": "Fortune-Telling Lore",
+  "feat": "Oddity Identification",
+  "feat_id": "oddity-identification",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Intelligence or Charisma, and one is a free attribute boost.\n\nYou're trained in the Occultism skill and the Fortune-Telling Lore skill. You gain the Oddity Identification skill feat."
+ },
+ {
+  "_id": "gambler",
+  "name": "Gambler",
+  "boosts": "Charisma or Dexterity, Free",
+  "skills": [
+   "Deception"
+  ],
+  "either_skills": [],
+  "lore": "Games Lore",
+  "feat": "Lie to Me",
+  "feat_id": "lie-to-me",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Dexterity or Charisma, and one is a free attribute boost.\n\nYou're trained in the Deception skill and the Games Lore skill. You gain the Lie to Me skill feat."
+ },
+ {
+  "_id": "gladiator",
+  "name": "Gladiator",
+  "boosts": "Charisma or Strength, Free",
+  "skills": [
+   "Performance"
+  ],
+  "either_skills": [],
+  "lore": "Gladatorial Lore",
+  "feat": "Impressive Performance",
+  "feat_id": "impressive-performance",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Strength or Charisma, and one is a free attribute boost.\n\nYou're trained in the Performance skill and the Gladiatorial Lore skill. You gain the Impressive Performance skill feat."
+ },
+ {
+  "_id": "guard",
+  "name": "Guard",
+  "boosts": "Charisma or Strength, Free",
+  "skills": [
+   "Intimidation"
+  ],
+  "either_skills": [],
+  "lore": "",
+  "feat": "Quick Coercion",
+  "feat_id": "quick-coercion",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Strength or Charisma, and one is a free attribute boost.\n\nYou're trained in the Intimidation skill and the Legal Lore or Warfare Lore skill. You gain the Quick Coercion skill feat."
+ },
+ {
+  "_id": "herbalist",
+  "name": "Herbalist",
+  "boosts": "Constitution or Wisdom, Free",
+  "skills": [
+   "Nature"
+  ],
+  "either_skills": [],
+  "lore": "Herbalism Lore",
+  "feat": "Natural Medicine",
+  "feat_id": "natural-medicine",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Constitution or Wisdom, and one is a free attribute boost.\n\nYou're trained in the Nature skill and the Herbalism Lore skill. You gain the Natural Medicine skill feat."
+ },
+ {
+  "_id": "hermit",
+  "name": "Hermit",
+  "boosts": "Constitution or Intelligence, Free",
+  "skills": [],
+  "either_skills": [
+   "Nature",
+   "Occultism"
+  ],
+  "lore": "",
+  "feat": "Dubious Knowledge",
+  "feat_id": "dubious-knowledge",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Constitution or Intelligence, and one is a free attribute boost.\n\nYou're trained in the Nature or Occultism skill, plus a Lore skill related to the terrain you lived in as a hermit (such as Cave Lore or Desert Lore). You gain the Dubious Knowledge skill feat."
+ },
+ {
+  "_id": "hunter",
+  "name": "Hunter",
+  "boosts": "Dexterity or Wisdom, Free",
+  "skills": [
+   "Survival"
+  ],
+  "either_skills": [],
+  "lore": "Tanning Lore",
+  "feat": "Survey Wildlife",
+  "feat_id": "survey-wildlife",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Dexterity or Wisdom, and one is a free attribute boost.\n\nYou're trained in the Survival skill and the Tanning Lore skill. You gain the Survey Wildlife skill feat."
+ },
+ {
+  "_id": "laborer",
+  "name": "Laborer",
+  "boosts": "Constitution or Strength, Free",
+  "skills": [
+   "Athletics"
+  ],
+  "either_skills": [],
+  "lore": "Labor Lore",
+  "feat": "Hefty Hauler",
+  "feat_id": "hefty-hauler",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Strength or Constitution, and one is a free attribute boost.\n\nYou're trained in the Athletics skill and the Labor Lore skill. You gain the Hefty Hauler skill feat."
+ },
+ {
+  "_id": "martial-disciple",
+  "name": "Martial Disciple",
+  "boosts": "Dexterity or Strength, Free",
+  "skills": [],
+  "either_skills": [
+   "Acrobatics",
+   "Athletics"
+  ],
+  "lore": "Warfare Lore",
+  "feat": "Cat Fall or Quick Jump",
+  "feat_id": "",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Strength or Dexterity, and one is a free attribute boost.\n\nYou're trained in your choice of the Acrobatics or Athletics skill. You gain a skill feat: Cat Fall if you chose Acrobatics or Quick Jump if you chose Athletics. You're also trained in the Warfare Lore skill."
+ },
+ {
+  "_id": "merchant",
+  "name": "Merchant",
+  "boosts": "Charisma or Intelligence, Free",
+  "skills": [
+   "Diplomacy"
+  ],
+  "either_skills": [],
+  "lore": "Mercantile Lore",
+  "feat": "Bargain Hunter",
+  "feat_id": "bargain-hunter",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Intelligence or Charisma, and one is a free attribute boost.\n\nYou're trained in the Diplomacy skill and the Mercantile Lore skill. You gain the Bargain Hunter skill feat."
+ },
+ {
+  "_id": "miner",
+  "name": "Miner",
+  "boosts": "Strength or Wisdom, Free",
+  "skills": [
+   "Survival"
+  ],
+  "either_skills": [],
+  "lore": "Mining Lore",
+  "feat": "Terrain Expertise",
+  "feat_id": "terrain-expertise",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Strength or Wisdom, and one is a free attribute boost.\n\nYou're trained in the Survival skill and the Mining Lore skill. You gain the Terrain Expertise skill feat with underground terrain."
+ },
+ {
+  "_id": "noble",
+  "name": "Noble",
+  "boosts": "Charisma or Intelligence, Free",
+  "skills": [
+   "Society"
+  ],
+  "either_skills": [],
+  "lore": "",
+  "feat": "Courtly Graces",
+  "feat_id": "courtly-graces",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Intelligence or Charisma, and one is a free attribute boost.\n\nYou're trained in the Society skill and the Genealogy Lore or Heraldry Lore skill. You gain the Courtly Graces skill feat."
+ },
+ {
+  "_id": "nomad",
+  "name": "Nomad",
+  "boosts": "Constitution or Wisdom, Free",
+  "skills": [
+   "Survival"
+  ],
+  "either_skills": [],
+  "lore": "",
+  "feat": "Assurance",
+  "feat_id": "assurance",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Constitution or Wisdom, and one is a free attribute boost.\n\nYou're trained in the Survival skill and a Lore skill related to one terrain you traveled in (such as Desert Lore or Swamp Lore). You gain the Assurance skill feat with Survival."
+ },
+ {
+  "_id": "prisoner",
+  "name": "Prisoner",
+  "boosts": "Constitution or Strength, Free",
+  "skills": [
+   "Stealth"
+  ],
+  "either_skills": [],
+  "lore": "Underworld Lore",
+  "feat": "Experienced Smuggler",
+  "feat_id": "experienced-smuggler",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Strength or Constitution, and one is a free attribute boost.\n\nYou're trained in the Stealth skill and the Underworld Lore skill. You gain the Experienced Smuggler skill feat."
+ },
+ {
+  "_id": "raised-by-belief",
+  "name": "Raised by Belief",
+  "boosts": "Free, Free",
+  "skills": [],
+  "either_skills": [],
+  "lore": "",
+  "feat": "Assurance",
+  "feat_id": "assurance",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to an attribute specified in your deity's Divine Attribute, and the other is a free attribute boost.\n\nYou're trained in the deity's listed Divine Skill and gain the Assurance feat with that skill."
+ },
+ {
+  "_id": "sailor",
+  "name": "Sailor",
+  "boosts": "Dexterity or Strength, Free",
+  "skills": [
+   "Athletics"
+  ],
+  "either_skills": [],
+  "lore": "Sailing Lore",
+  "feat": "Underwater Marauder",
+  "feat_id": "underwater-marauder",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Strength or Dexterity, and one is a free attribute boost.\n\nYou're trained in the Athletics skill and the Sailing Lore skill. You gain the Underwater Marauder skill feat."
+ },
+ {
+  "_id": "scholar",
+  "name": "Scholar",
+  "boosts": "Intelligence or Wisdom, Free",
+  "skills": [],
+  "either_skills": [
+   "Arcana",
+   "Nature",
+   "Occultism",
+   "Religion"
+  ],
+  "lore": "Academia Lore",
+  "feat": "Assurance",
+  "feat_id": "assurance",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Intelligence or Wisdom, and one is a free attribute boost.\n\nYou're trained in your choice of the Arcana, Nature, Occultism, or Religion skill, and gain the Assurance skill feat in your chosen skill. You're also trained in the Academia Lore skill."
+ },
+ {
+  "_id": "scout",
+  "name": "Scout",
+  "boosts": "Dexterity or Wisdom, Free",
+  "skills": [
+   "Survival"
+  ],
+  "either_skills": [],
+  "lore": "",
+  "feat": "Forager",
+  "feat_id": "forager",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Dexterity or Wisdom, and one is a free attribute boost.\n\nYou're trained in the Survival skill and a Lore skill related to one terrain you scouted in (such as Forest Lore or Cavern Lore). You gain the Forager skill feat."
+ },
+ {
+  "_id": "street-urchin",
+  "name": "Street Urchin",
+  "boosts": "Constitution or Dexterity, Free",
+  "skills": [
+   "Thievery"
+  ],
+  "either_skills": [],
+  "lore": "",
+  "feat": "Pickpocket",
+  "feat_id": "pickpocket",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Dexterity or Constitution, and one is a free attribute boost.\n\nYou gain the Pickpocket skill feat."
+ },
+ {
+  "_id": "teacher",
+  "name": "Teacher",
+  "boosts": "Intelligence or Wisdom, Free",
+  "skills": [],
+  "either_skills": [
+   "Performance",
+   "Society"
+  ],
+  "lore": "Academia Lore",
+  "feat": "Experienced Professional",
+  "feat_id": "experienced-professional",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Intelligence or Wisdom, and one is a free attribute boost.\n\nYou're trained in your choice of either the Performance or Society skill, as well as the Academia Lore skill. You gain the Experienced Professional skill feat."
+ },
+ {
+  "_id": "tinker",
+  "name": "Tinker",
+  "boosts": "Dexterity or Intelligence, Free",
+  "skills": [
+   "Crafting"
+  ],
+  "either_skills": [],
+  "lore": "Engineering Lore",
+  "feat": "Specialty Crafting",
+  "feat_id": "specialty-crafting",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Dexterity or Intelligence, and one is a free attribute boost.\n\nYou're trained in the Crafting skill and the Engineering Lore skill. You gain the Specialty Crafting skill feat."
+ },
+ {
+  "_id": "warrior-background",
+  "name": "Warrior",
+  "boosts": "Constitution or Strength, Free",
+  "skills": [
+   "Intimidation"
+  ],
+  "either_skills": [],
+  "lore": "Warfare Lore",
+  "feat": "Intimidating Glare",
+  "feat_id": "intimidating-glare",
+  "rarity": "Common",
+  "description": "Choose two attribute boosts. One must be to Strength or Constitution, and one is a free attribute boost.\n\nYou're trained in the Intimidation skill and the Warfare Lore skill. You gain the Intimidating Glare skill feat."
+ }
+]

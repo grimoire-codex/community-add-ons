@@ -1,0 +1,401 @@
+/* Cosmere Roleplaying Game character sheet.
+   The printed sheet's arrangement - three realms side by side, each an
+   attribute pair either side of its defense - in original styling: the
+   fan content policy asks fans not to copy the official page backgrounds,
+   borders or templates. Plain ruled panels, a shield-shaped defense, skill
+   ranks as boxes to tick. Every colour is an app token. */
+
+.sheet-cosmere {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--text);
+}
+
+.gc-tabpanel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* --- shared ---------------------------------------------------------------- */
+
+.panel {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-card);
+  padding: 8px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.cap {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.cap.dim {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.title {
+  margin: 0 0 4px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  color: var(--text-dim);
+}
+
+.hint {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+/* --- identity -------------------------------------------------------------- */
+
+.identity {
+  display: grid;
+  grid-template-columns: minmax(200px, 0.8fr) minmax(0, 2fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.id-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 110px;
+  gap: 8px 12px;
+}
+
+.id-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.id-cell.level {
+  border-left: 1px solid var(--border);
+  padding-left: 12px;
+}
+
+.id-main .grow:first-child input {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* --- realms ---------------------------------------------------------------- */
+
+.realms {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+}
+
+.realm-title {
+  margin: 0 0 6px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.realm-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 72px minmax(0, 1fr);
+  gap: 8px;
+  align-items: end;
+}
+
+.attr,
+.defense {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.attr-box {
+  width: 100%;
+  border: 2px solid var(--text-dim);
+  border-radius: 6px;
+  padding: 10px 6px;
+  background: var(--bg-card);
+}
+
+.attr-box input {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  border: none;
+  background: transparent;
+}
+
+/* Defense: a shield - square shoulders, a rounded point. */
+.shield {
+  width: 64px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--gold);
+  border-radius: 6px 6px 50% 50% / 6px 6px 38% 38%;
+  background: var(--bg-card);
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--gold);
+}
+
+/* --- pools ----------------------------------------------------------------- */
+
+.pools {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.pool {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 10px;
+  align-items: end;
+}
+
+.pool-head {
+  grid-column: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pool-cells {
+  grid-column: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  border: 2px solid var(--text-dim);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.pool-max {
+  padding: 6px;
+  border-right: 1px solid var(--border);
+}
+
+.pool-cur {
+  padding: 2px 6px 6px;
+}
+
+.pool-cells input {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
+  background: transparent;
+}
+
+.deflect,
+.invested {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.deflect-box {
+  width: 58px;
+  border: 2px solid var(--text-dim);
+  border-radius: 8px 8px 4px 4px;
+  padding: 6px 4px;
+}
+
+.deflect-box input {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
+  background: transparent;
+}
+
+.invested {
+  justify-content: center;
+  font-size: 11px;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+/* --- skills ---------------------------------------------------------------- */
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 18px;
+}
+
+.skill-col {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* The modifier in a box, the skill and its attribute, its ranks as circles. */
+.skill {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  font-size: 13px;
+}
+
+.sk-mod {
+  display: block;
+  text-align: center;
+  border: 2px solid var(--text-dim);
+  border-radius: 6px;
+  padding: 4px 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.sk-name {
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sk-attr {
+  color: var(--text-muted);
+}
+
+.skill.custom .sk-name {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 64px;
+  gap: 4px;
+  text-transform: none;
+}
+
+.skill.custom input,
+.skill.custom select {
+  padding: 2px 4px;
+  font-size: 12px;
+}
+
+.ranks {
+  text-align: center;
+}
+
+/* --- derived --------------------------------------------------------------- */
+
+.derived {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.stat {
+  align-items: center;
+  text-align: center;
+}
+
+.stat b {
+  font-size: 20px;
+  color: var(--gold);
+}
+
+.lower {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr);
+  gap: 12px;
+  align-items: start;
+}
+
+/* --- second page ----------------------------------------------------------- */
+
+.story {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+
+.story.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.boxings {
+  display: grid;
+  grid-template-columns: auto 90px;
+  gap: 8px;
+  align-items: center;
+  margin-top: 6px;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+
+.purpose .title + * {
+  margin-bottom: 6px;
+}
+
+.goals {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.goal {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+}
+
+/* --- narrower screens ------------------------------------------------------ */
+
+@media (max-width: 1100px) {
+  .realms,
+  .pools,
+  .skills,
+  .story {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .derived {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .lower,
+  .identity {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .story.two,
+  .derived {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

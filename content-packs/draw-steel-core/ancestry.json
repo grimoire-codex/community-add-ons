@@ -1,0 +1,110 @@
+[
+ {
+  "_id": "devil",
+  "name": "Devil",
+  "description": "The native ancestry of the Seven Cities of Hell, devils are humanoids with red or blue skin expressed in a wide variety of hues, from bright crimson to deep purple. Each devil is born with some hellmark - horns, a tail, cloven hooves, a forked tongue, fanged incisors, or even wings.",
+  "ancestry_points": 3,
+  "size": "1M",
+  "speed": 5,
+  "trait_ids": "devil-silver-tongue",
+  "trait_names": "Silver Tongue",
+  "ability_ids": "",
+  "ability_names": ""
+ },
+ {
+  "_id": "dragon-knight",
+  "name": "Dragon Knight",
+  "description": "The ritual of Dracogenesis that grants the power to create a generation of dragon knights—also known as draconians or wyrmwights—is obscure and supremely difficult for even an experienced sorcerer to master. Small populations of draconians in Khemhara, Higara, and Khoursir attest to this. Descendants of original generations created millennia ago by powerful wizards, they have never been numerous. A typical clutch yields only a single egg. After only a few generations, these draconians begin to show new adaptations like feathers or frilled ridges.",
+  "ancestry_points": 3,
+  "size": "1M",
+  "speed": 5,
+  "trait_ids": "dragon-knight-wyrmplate",
+  "trait_names": "Wyrmplate",
+  "ability_ids": "",
+  "ability_names": ""
+ },
+ {
+  "_id": "dwarf",
+  "name": "Dwarf",
+  "description": "Possessed of a strength that belies their size, dwarves have flesh infused with stone - a silico-organic hybrid making them physically denser than other humanoids. They enjoy a reputation in Orden as savvy engineers and technologists thanks to the lore they inherited from their elder siblings, the long-extinct steel dwarves.",
+  "ancestry_points": 3,
+  "size": "1M",
+  "speed": 5,
+  "trait_ids": "dwarf-runic-carving",
+  "trait_names": "Runic Carving",
+  "ability_ids": "",
+  "ability_names": ""
+ },
+ {
+  "_id": "elf-wode",
+  "name": "Elf (wode)",
+  "description": "Children of the sylvan celestials and masters of the elf-haunted forests called wodes, wode elves see all forests as their domain by birthright. They know and enjoy their reputation among humans for snatching children who wander too far into the woods. Humans should fear the trees.",
+  "ancestry_points": 3,
+  "size": "1M",
+  "speed": 5,
+  "trait_ids": "elf-wode-wode-elf-glamor",
+  "trait_names": "Wode Elf Glamor",
+  "ability_ids": "",
+  "ability_names": ""
+ },
+ {
+  "_id": "elf-high",
+  "name": "Elf (high)",
+  "description": "Children of the solar celestials created to tend their libraries and attend to the true elves as heralds, the high elf history describes a better age, before the coming of humans and war. A time when the celestials were still in the world, and all that mattered was art and beauty.",
+  "ancestry_points": 3,
+  "size": "1M",
+  "speed": 5,
+  "trait_ids": "elf-high-high-elf-glamor",
+  "trait_names": "High Elf Glamor",
+  "ability_ids": "",
+  "ability_names": ""
+ },
+ {
+  "_id": "human",
+  "name": "Human",
+  "description": "Humans belong to the world in a way the other speaking peoples do not. You can sense the presence of the supernatural—that … oily smell in the air, as I’ve heard it described. And the presence of deathless causes the hairs on the back of your neck to stand up. Or why do you think graveyards affect you so? Whatever magic is, its grip on you is light. Whatever drives the deathless, your nature rebels against it.",
+  "ancestry_points": 3,
+  "size": "1M",
+  "speed": 5,
+  "trait_ids": "human-detect-the-supernatural",
+  "trait_names": "Detect the Supernatural",
+  "ability_ids": "human-detect-the-supernatural-ability",
+  "ability_names": "Detect the Supernatural"
+ },
+ {
+  "_id": "orc",
+  "name": "Orc",
+  "description": "An anger that cannot be hidden. A fury that drives them in battle. Orcs are famed throughout the world as consummate warriors - a reputation that the peace-loving orcs find distasteful.",
+  "ancestry_points": 3,
+  "size": "1M",
+  "speed": 5,
+  "trait_ids": "orc-relentless",
+  "trait_names": "Relentless",
+  "ability_ids": "",
+  "ability_names": ""
+ },
+ {
+  "_id": "polder",
+  "name": "Polder",
+  "description": "After humans, polders are the most numerous and diverse ancestry in Orden. They are not humans, but they live in and among humans and share their gods and culture. Almost every human culture in Orden has a polder saint or a human saint venerated by polder.",
+  "ancestry_points": 4,
+  "size": "1S",
+  "speed": 5,
+  "trait_ids": "polder-shadowmeld, polder-small",
+  "trait_names": "Shadowmeld, Small!",
+  "ability_ids": "polder-shadowmeld-ability",
+  "ability_names": "Shadowmeld"
+ },
+ {
+  "_id": "revenant",
+  "name": "Revenant",
+  "description": "The dead walk among us. Some of them are happier about it than others. Unlike the necromantic rituals that produce wights and wraiths and zombies, revenants rise from the grave through a combination of an unjust death and a burning desire for vengeance. Creatures sustained on pure will, they have no need of food or water or air - and, unlike their zombified cousins, they retain all their memories and personality from life.",
+  "ancestry_points": 2,
+  "size": "1M",
+  "speed": 5,
+  "trait_ids": "revenant-former-life, revenant-damage-modifier, revenant-tough-but-withered",
+  "trait_names": "Former Life, Damage Modifier, Tough But Withered",
+  "ability_ids": "",
+  "ability_names": ""
+ }
+]

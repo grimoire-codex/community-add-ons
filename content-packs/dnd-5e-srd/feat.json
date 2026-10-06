@@ -1,0 +1,121 @@
+[
+  {
+    "_id": "alert",
+    "name": "Alert",
+    "category": "Origin",
+    "prerequisite": "",
+    "description": "You gain a bonus to Initiative equal to your Proficiency Bonus, and you can swap Initiative with a willing ally."
+  },
+  {
+    "_id": "magic-initiate",
+    "name": "Magic Initiate",
+    "category": "Origin",
+    "prerequisite": "",
+    "description": "You learn two cantrips and one level 1 spell from a chosen class's spell list."
+  },
+  {
+    "_id": "savage-attacker",
+    "name": "Savage Attacker",
+    "category": "Origin",
+    "prerequisite": "",
+    "description": "Once per turn you can reroll a melee weapon's damage dice and use either total."
+  },
+  {
+    "_id": "skilled",
+    "name": "Skilled",
+    "category": "Origin",
+    "prerequisite": "",
+    "description": "You gain proficiency in any combination of three skills or tools."
+  },
+  {
+    "_id": "ability-score-improvement",
+    "name": "Ability Score Improvement",
+    "category": "General",
+    "prerequisite": "Level 4+",
+    "description": "Increase one ability score by 2, or two scores by 1 each, to a maximum of 20."
+  },
+  {
+    "_id": "grappler",
+    "name": "Grappler",
+    "category": "General",
+    "prerequisite": "Level 4+, Strength or Dexterity 13+",
+    "description": "You have Advantage on attacks against creatures you are grappling."
+  },
+  {
+    "_id": "archery",
+    "name": "Archery",
+    "category": "Fighting Style",
+    "prerequisite": "Fighting Style Feature",
+    "description": "You gain a +2 bonus to attack rolls you make with Ranged weapons."
+  },
+  {
+    "_id": "defense",
+    "name": "Defense",
+    "category": "Fighting Style",
+    "prerequisite": "Fighting Style Feature",
+    "description": "While wearing Light, Medium, or Heavy armor, you gain a +1 bonus to Armor Class."
+  },
+  {
+    "_id": "great-weapon-fighting",
+    "name": "Great Weapon Fighting",
+    "category": "Fighting Style",
+    "prerequisite": "Fighting Style Feature",
+    "description": "When you roll damage for a Melee weapon attack with a Two-Handed or Versatile weapon held in two hands, treat any 1 or 2 on a damage die as a 3."
+  },
+  {
+    "_id": "two-weapon-fighting",
+    "name": "Two-Weapon Fighting",
+    "category": "Fighting Style",
+    "prerequisite": "Fighting Style Feature",
+    "description": "When you make an extra attack from wielding a Light weapon, you can add your ability modifier to that attack's damage if you aren't already."
+  },
+  {
+    "_id": "boon-of-combat-prowess",
+    "name": "Boon of Combat Prowess",
+    "category": "Epic Boon",
+    "prerequisite": "Level 19+",
+    "description": "Increase one ability score by 1 (max 30). When you miss with an attack roll you can hit instead, once until the start of your next turn."
+  },
+  {
+    "_id": "boon-of-dimensional-travel",
+    "name": "Boon of Dimensional Travel",
+    "category": "Epic Boon",
+    "prerequisite": "Level 19+",
+    "description": "Increase one ability score by 1 (max 30). Immediately after the Attack or Magic action, you can teleport up to 30 feet to a space you can see."
+  },
+  {
+    "_id": "boon-of-fate",
+    "name": "Boon of Fate",
+    "category": "Epic Boon",
+    "prerequisite": "Level 19+",
+    "description": "Increase one ability score by 1 (max 30). When a creature within 60 feet succeeds or fails a D20 Test, roll 2d4 as a bonus or penalty; once until you roll Initiative or rest."
+  },
+  {
+    "_id": "boon-of-irresistible-offense",
+    "name": "Boon of Irresistible Offense",
+    "category": "Epic Boon",
+    "prerequisite": "Level 19+",
+    "description": "Increase Strength or Dexterity by 1 (max 30). Your Bludgeoning, Piercing, and Slashing damage ignores Resistance, and a natural 20 deals extra damage equal to that score."
+  },
+  {
+    "_id": "boon-of-spell-recall",
+    "name": "Boon of Spell Recall",
+    "category": "Epic Boon",
+    "prerequisite": "Level 19+, Spellcasting Feature",
+    "description": "Increase Intelligence, Wisdom, or Charisma by 1 (max 30). When you cast with a level 1-4 slot, roll 1d4; on the slot's level, the slot isn't expended."
+  },
+  {
+    "_id": "boon-of-the-night-spirit",
+    "name": "Boon of the Night Spirit",
+    "category": "Epic Boon",
+    "prerequisite": "Level 19+",
+    "description": "Increase one ability score by 1 (max 30). In Dim Light or Darkness you can turn Invisible as a Bonus Action, and have Resistance to all damage except Psychic and Radiant."
+  },
+  {
+    "_id": "boon-of-truesight",
+    "name": "Boon of Truesight",
+    "category": "Epic Boon",
+    "prerequisite": "Level 19+",
+    "description": "Increase one ability score by 1 (max 30). You have Truesight with a range of 60 feet."
+  }
+]

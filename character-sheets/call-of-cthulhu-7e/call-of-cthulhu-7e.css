@@ -1,0 +1,475 @@
+/* Call of Cthulhu 7th Edition investigator sheet.
+   The app's own vocabulary - bordered boxes with small uppercase captions -
+   around the content of the modern-era investigator sheet, deliberately not
+   its parchment, fonts or page frame, which are Chaosium's trade dress: characteristics
+   and their half and fifth values in a block, the four pools that run down
+   in play (hit points, Sanity, Luck, magic points), and skills in columns of
+   ruled lines. Every colour is an app token, so a theme restyles the sheet. */
+
+.sheet-coc {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--text);
+}
+
+.gc-tabpanel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gc-field-readonly > div {
+  white-space: pre-line;
+}
+
+/* --- shared ---------------------------------------------------------------- */
+
+.box {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-card);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.tiny {
+  display: block;
+  margin: 0;
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.tiny.inline {
+  display: inline;
+}
+
+.box-title {
+  text-align: center;
+  font-weight: 700;
+  color: var(--text-dim);
+}
+
+.box-heading {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+}
+
+.big {
+  display: block;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--gold);
+}
+
+.big.small {
+  font-size: 18px;
+}
+
+.big-input input {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.hint {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.opt {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.pair,
+.trio {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px 8px;
+  align-items: center;
+  text-align: center;
+}
+
+.trio {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* A value's half and fifth, as the printed sheet stacks them beside it. */
+.hf {
+  display: inline-grid;
+  grid-template-rows: auto auto;
+  font-size: 11px;
+  line-height: 1.1;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.hf.center {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  font-size: 12px;
+}
+
+/* --- identity, characteristics and pools ------------------------------------ */
+
+.part-heading {
+  margin: 4px 0 0;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-align: center;
+  color: var(--text-dim);
+}
+
+/* A field on an underline with its caption beneath, as the sheet's header. */
+.line {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  border-bottom: 1px solid var(--border);
+  min-width: 0;
+}
+
+.line input,
+.line select {
+  border: none;
+  background: transparent;
+  padding: 3px 0;
+}
+
+.id-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 8px 16px;
+}
+
+.id-grid .wide input {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.char-block {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 10px;
+}
+
+.char-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 18px;
+}
+
+.char-col {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Name, the value, and its half and fifth in their own cells. */
+.char {
+  display: grid;
+  grid-template-columns: 52px minmax(54px, 1fr) 40px 40px;
+  gap: 6px;
+  align-items: center;
+}
+
+.char.head .tiny {
+  text-align: center;
+}
+
+.c-name {
+  display: flex;
+  flex-direction: column;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--gold);
+  line-height: 1.05;
+}
+
+.c-sub {
+  font-size: 11px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.char input {
+  text-align: center;
+  font-weight: 700;
+}
+
+.c-cell,
+.cell-value {
+  display: block;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 3px 2px;
+  font-weight: 600;
+}
+
+.c-cell {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.pools {
+  gap: 8px;
+}
+
+.pool {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: 2px 10px;
+  align-items: center;
+}
+
+.pool-name {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.pool-cells {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px 6px;
+  text-align: center;
+}
+
+.pool-cells.three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.pool-cells input {
+  text-align: center;
+}
+
+.hf-line {
+  grid-column: 2;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.status {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 18px;
+}
+
+.status .opt {
+  font-size: 13px;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.status-item .cell-value {
+  min-width: 40px;
+}
+
+/* --- skills ---------------------------------------------------------------- */
+
+.skills {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* Down each column, then across, as the printed sheet reads: 56 lines in
+     three columns of 19. */
+  grid-template-rows: repeat(19, auto);
+  grid-auto-flow: column;
+  column-gap: 18px;
+}
+
+/* Improvement box, name, occupation box, value, half and fifth. */
+.skill {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr) 18px 52px 22px;
+  gap: 6px;
+  align-items: center;
+  font-size: 12px;
+  padding: 3px 0;
+  border-top: 1px solid var(--border);
+}
+
+.s-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.base {
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.slot-name {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 4px;
+  align-items: center;
+}
+
+.slot-name input {
+  padding: 2px 4px;
+  font-size: 12px;
+}
+
+.skill input {
+  padding: 2px;
+}
+
+.extras summary {
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.bases {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px 12px;
+  margin-top: 6px;
+}
+
+.points-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2px 10px;
+  text-align: center;
+  align-items: center;
+}
+
+/* --- combat --------------------------------------------------------------- */
+
+.combat-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: 14px;
+  align-items: start;
+}
+
+/* The unarmed line the sheet prints before any weapon. */
+.brawl {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) repeat(3, 44px) minmax(0, 1.2fr) repeat(4, minmax(0, 0.7fr));
+  gap: 3px 6px;
+  align-items: center;
+  font-size: 13px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}
+
+.w-name {
+  font-weight: 700;
+}
+
+.combat-side {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cstat {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 60px;
+  gap: 6px;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.cstat.dodge {
+  grid-template-columns: minmax(0, 1fr) 46px 36px 36px;
+}
+
+.cell-value.small {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.wealth {
+  gap: 10px;
+}
+
+/* --- other pages ----------------------------------------------------------- */
+
+.story {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+
+/* --- narrower screens ------------------------------------------------------ */
+
+@media (max-width: 1200px) {
+  .char-block,
+  .combat-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .skills {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(28, auto);
+  }
+}
+
+@media (max-width: 760px) {
+  .id-grid,
+  .bases {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .skills {
+    grid-template-rows: none;
+    grid-auto-flow: row;
+  }
+  .skills,
+  .story,
+  .char-grid,
+  .points-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .brawl {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .id-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

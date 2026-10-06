@@ -1,0 +1,453 @@
+/* D&D 5e (2024) character sheet.
+   After the published sheet, in Grimoire's colours: bordered boxes with small
+   uppercase captions, each ability's modifier in a circle beside its score,
+   saves and skills as ruled lines beneath it. Fixed-size boxes follow the print;
+   lists, which grow, get the full width instead. Every colour is an app token,
+   so a theme restyles the sheet along with everything else. */
+
+.sheet-5e {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--text);
+}
+
+/* Each page spaces its own sections: with pages, those sit inside the page
+   panel rather than directly in the sheet. */
+.gc-tabpanel {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* --- shared ---------------------------------------------------------------- */
+
+.box {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-card);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.tiny {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.box-title {
+  text-align: center;
+  font-weight: 700;
+  color: var(--text-dim);
+}
+
+.box-heading {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+}
+
+.big {
+  display: block;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--gold);
+}
+
+.hint {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+.pip-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* --- top bar --------------------------------------------------------------- */
+
+.topbar {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(0, 1.6fr);
+  gap: 10px;
+}
+
+.name-row input {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* Two pickers to a row, so a name like "Dragonborn" fits on one line. */
+.identity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 12px;
+}
+
+.topstats {
+  display: grid;
+  grid-template-columns: minmax(80px, 0.7fr) minmax(90px, 0.8fr) minmax(230px, 2.2fr) minmax(120px, 1.1fr) minmax(110px, 1fr);
+  gap: 10px;
+}
+
+.level,
+.armour,
+.hitdice,
+.death {
+  align-items: stretch;
+  text-align: center;
+  justify-content: center;
+}
+
+.armour {
+  border-radius: 10px 10px 36px 36px;
+  align-items: center;
+}
+
+.hp {
+  justify-content: center;
+}
+
+/* Hit points get the room they need: current large, temp and max beside it.
+   Max gets a little extra for the marker that says it follows your class. */
+.hp-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: 4px 8px;
+  align-items: center;
+  text-align: center;
+}
+
+.hp-current input {
+  font-size: 22px;
+  font-weight: 700;
+  padding: 4px;
+}
+
+.pips {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+/* --- page one -------------------------------------------------------------- */
+
+.page-one {
+  display: grid;
+  grid-template-columns: minmax(420px, 1fr) minmax(0, 1.5fr);
+  gap: 10px;
+  align-items: start;
+}
+
+.abilities {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  align-items: start;
+}
+
+.abilities-col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.training {
+  grid-column: 1 / -1;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.ability {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--bg-card);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ability-name {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+.ability-core {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* The modifier in a circle, the score in a tab beside it: the printed sheet's
+   emphasis, since the modifier is the number actually rolled. */
+.ability-mod {
+  width: 62px;
+  height: 62px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.mod-value {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--gold);
+}
+
+.ability-score {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.score-value {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* Capped, so on a wide screen the two small boxes stay small. */
+.ability-parts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2px 8px;
+  text-align: center;
+  width: 100%;
+  max-width: 180px;
+  margin: 0 auto;
+}
+
+.ability-parts input {
+  padding: 3px;
+  font-size: 13px;
+}
+
+.lines {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Fixed cells, so a row keeps its columns even when one draws nothing. The
+   first holds a skill's proficiency dropdown, or a save's checkbox. */
+.line {
+  display: grid;
+  grid-template-columns: 54px 30px minmax(0, 1fr);
+  gap: 4px;
+  align-items: center;
+  font-size: 12px;
+  padding: 4px 0;
+  border-top: 1px solid var(--border);
+}
+
+.c-tier {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.c-tier .gc-tier {
+  width: 100%;
+}
+
+.c-value {
+  text-align: right;
+  font-weight: 700;
+  color: var(--gold);
+}
+
+.c-name {
+  overflow-wrap: normal;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.save .c-name {
+  font-weight: 700;
+}
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.stat {
+  justify-content: space-between;
+}
+
+.stat input {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 3px;
+}
+
+.armour-training {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  align-items: center;
+}
+
+/* --- page two -------------------------------------------------------------- */
+
+.page-two {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr);
+  gap: 10px;
+  align-items: start;
+}
+
+.p2-main,
+.p2-side {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.caster-toggle {
+  flex-direction: row;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.casting {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(0, 2fr);
+  gap: 12px;
+  align-items: center;
+}
+
+.casting-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  text-align: center;
+}
+
+.slots-key {
+  text-align: center;
+}
+
+/* Three by three, like the printed sheet, rather than nine tall rows. */
+.slots {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px 14px;
+}
+
+/* Label, the boxes to tick, then the total the boxes come from. */
+.slot {
+  display: grid;
+  /* The total's column holds its box and the marker that says it follows
+     your class; at 40px the marker left the box too narrow to read. */
+  grid-template-columns: 52px minmax(0, 1fr) 64px;
+  gap: 6px;
+  align-items: center;
+}
+
+.pact {
+  margin-top: 8px;
+  grid-template-columns: 110px minmax(0, 1fr) 64px;
+}
+
+.slot input {
+  padding: 3px;
+}
+
+.coins {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+  text-align: center;
+}
+
+.coins input {
+  padding: 3px;
+}
+
+.extras summary {
+  cursor: pointer;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+/* --- narrower screens ------------------------------------------------------ */
+
+@media (max-width: 1200px) {
+  .topbar {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .page-one {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .topstats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .hp {
+    grid-column: 1 / -1;
+  }
+  .page-two,
+  .casting {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .slots {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .stat-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .abilities,
+  .identity-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

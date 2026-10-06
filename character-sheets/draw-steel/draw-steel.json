@@ -1,0 +1,1801 @@
+{
+  "$schema": "../../schema/character-sheet.schema.json",
+  "id": "draw-steel",
+  "name": "Draw Steel",
+  "version": "1.0.0",
+  "system": "Draw Steel",
+  "description": "A hero sheet for MCDM's Draw Steel: characteristics, stamina and recoveries, the heroic resource, and abilities with their power-roll tiers. Picking an ancestry, culture, career, class or kit fills in what it gives; every value can still be set by hand.",
+  "author": "hunter-read",
+  "homepage": "https://www.mcdmproductions.com/draw-steel-creator-license",
+  "license": "Draw Steel Creator License",
+  "license_url": "https://www.mcdmproductions.com/draw-steel-creator-license",
+  "attribution": "Grimoire is an independent product published under the DRAW STEEL Creator License and is not affiliated with MCDM Productions, LLC. DRAW STEEL © 2026 MCDM Productions, LLC.",
+  "content_types": {
+    "class": {
+      "label": "Class",
+      "label_plural": "Classes",
+      "identity_field": "name",
+      "sort_default": [
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "description"
+      ],
+      "filter_fields": [
+        "heroic_resource"
+      ],
+      "compact_display": "{heroic_resource} · {primary_characteristics}",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "heroic_resource": {
+          "type": "text",
+          "label": "Heroic Resource"
+        },
+        "primary_characteristics": {
+          "type": "text",
+          "label": "Primary Characteristics"
+        },
+        "stamina": {
+          "type": "number",
+          "label": "Starting Stamina"
+        },
+        "stamina_per_level": {
+          "type": "number",
+          "label": "Stamina per Level"
+        },
+        "recoveries": {
+          "type": "number",
+          "label": "Recoveries"
+        },
+        "subclass_name": {
+          "type": "text",
+          "label": "Subclass Called"
+        },
+        "skill_choices": {
+          "type": "number",
+          "label": "Skill Choices"
+        },
+        "skill_options": {
+          "type": "multiselect",
+          "label": "Skill Options",
+          "options": [
+            "Alchemy",
+            "Alertness",
+            "Architecture",
+            "Blacksmithing",
+            "Brag",
+            "Carpentry",
+            "Climb",
+            "Conceal Object",
+            "Cooking",
+            "Criminal Underworld",
+            "Culture",
+            "Disguise",
+            "Drive",
+            "Eavesdrop",
+            "Empathize",
+            "Endurance",
+            "Escape Artist",
+            "Fletching",
+            "Flirt",
+            "Forgery",
+            "Gamble",
+            "Gymnastics",
+            "Handle Animals",
+            "Heal",
+            "Hide",
+            "History",
+            "Interrogate",
+            "Intimidate",
+            "Jewelry",
+            "Jump",
+            "Lead",
+            "Lie",
+            "Lift",
+            "Magic",
+            "Mechanics",
+            "Monsters",
+            "Music",
+            "Nature",
+            "Navigate",
+            "Perform",
+            "Persuade",
+            "Pick Lock",
+            "Pick Pocket",
+            "Psionics",
+            "Read Person",
+            "Religion",
+            "Ride",
+            "Rumors",
+            "Sabotage",
+            "Search",
+            "Sneak",
+            "Society",
+            "Strategy",
+            "Swim",
+            "Tailoring",
+            "Track"
+          ]
+        },
+        "feature_ids": {
+          "type": "text",
+          "label": "Level 1 Feature Ids"
+        },
+        "feature_names": {
+          "type": "text",
+          "label": "Level 1 Features"
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Description"
+        }
+      }
+    },
+    "subclass": {
+      "label": "Subclass",
+      "label_plural": "Subclasses",
+      "identity_field": "name",
+      "sort_default": [
+        "class",
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "description"
+      ],
+      "filter_fields": [
+        "class"
+      ],
+      "compact_display": "{class}",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "class": {
+          "type": "text",
+          "label": "Class"
+        },
+        "feature_ids": {
+          "type": "text",
+          "label": "Level 1 Feature Ids"
+        },
+        "feature_names": {
+          "type": "text",
+          "label": "Level 1 Features"
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Description"
+        }
+      }
+    },
+    "ancestry": {
+      "label": "Ancestry",
+      "label_plural": "Ancestries",
+      "identity_field": "name",
+      "sort_default": [
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "description"
+      ],
+      "filter_fields": [
+        "size"
+      ],
+      "compact_display": "size {size}, speed {speed}",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "size": {
+          "type": "text",
+          "label": "Size"
+        },
+        "speed": {
+          "type": "number",
+          "label": "Speed"
+        },
+        "ancestry_points": {
+          "type": "number",
+          "label": "Ancestry Points"
+        },
+        "trait_ids": {
+          "type": "text",
+          "label": "Signature Trait Ids"
+        },
+        "trait_names": {
+          "type": "text",
+          "label": "Signature Traits"
+        },
+        "ability_ids": {
+          "type": "text",
+          "label": "Ability Ids"
+        },
+        "ability_names": {
+          "type": "text",
+          "label": "Abilities"
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Description"
+        }
+      }
+    },
+    "trait": {
+      "label": "Ancestry Trait",
+      "label_plural": "Ancestry Traits",
+      "identity_field": "name",
+      "sort_default": [
+        "ancestry",
+        "cost",
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "description"
+      ],
+      "filter_fields": [
+        "ancestry",
+        "cost"
+      ],
+      "compact_display": "{ancestry} · {cost} pt",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "ancestry": {
+          "type": "text",
+          "label": "Ancestry"
+        },
+        "cost": {
+          "type": "number",
+          "label": "Cost"
+        },
+        "signature": {
+          "type": "checkbox",
+          "label": "Signature"
+        },
+        "ability_ids": {
+          "type": "text",
+          "label": "Ability Ids"
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Description"
+        }
+      }
+    },
+    "kit": {
+      "label": "Kit",
+      "label_plural": "Kits",
+      "identity_field": "name",
+      "sort_default": [
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "description"
+      ],
+      "filter_fields": [
+        "armor",
+        "weapon"
+      ],
+      "compact_display": "{armor} {weapon}",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "armor": {
+          "type": "text",
+          "label": "Armour"
+        },
+        "weapon": {
+          "type": "text",
+          "label": "Weapon"
+        },
+        "stamina": {
+          "type": "number",
+          "label": "Stamina per Echelon"
+        },
+        "speed": {
+          "type": "number",
+          "label": "Speed Bonus"
+        },
+        "stability": {
+          "type": "number",
+          "label": "Stability Bonus"
+        },
+        "melee_damage": {
+          "type": "text",
+          "label": "Melee Damage Bonus"
+        },
+        "ranged_damage": {
+          "type": "text",
+          "label": "Ranged Damage Bonus"
+        },
+        "melee_distance": {
+          "type": "number",
+          "label": "Melee Distance Bonus"
+        },
+        "ranged_distance": {
+          "type": "number",
+          "label": "Ranged Distance Bonus"
+        },
+        "disengage": {
+          "type": "number",
+          "label": "Disengage Bonus"
+        },
+        "ability_ids": {
+          "type": "text",
+          "label": "Ability Ids"
+        },
+        "ability_names": {
+          "type": "text",
+          "label": "Abilities"
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Description"
+        }
+      }
+    },
+    "career": {
+      "label": "Career",
+      "label_plural": "Careers",
+      "identity_field": "name",
+      "sort_default": [
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "description"
+      ],
+      "filter_fields": [],
+      "compact_display": "{name}",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "skill_choices_1": {
+          "type": "number",
+          "label": "Skill Choices (1)"
+        },
+        "skill_options_1": {
+          "type": "multiselect",
+          "label": "Skill Options (1)",
+          "options": [
+            "Alchemy",
+            "Alertness",
+            "Architecture",
+            "Blacksmithing",
+            "Brag",
+            "Carpentry",
+            "Climb",
+            "Conceal Object",
+            "Cooking",
+            "Criminal Underworld",
+            "Culture",
+            "Disguise",
+            "Drive",
+            "Eavesdrop",
+            "Empathize",
+            "Endurance",
+            "Escape Artist",
+            "Fletching",
+            "Flirt",
+            "Forgery",
+            "Gamble",
+            "Gymnastics",
+            "Handle Animals",
+            "Heal",
+            "Hide",
+            "History",
+            "Interrogate",
+            "Intimidate",
+            "Jewelry",
+            "Jump",
+            "Lead",
+            "Lie",
+            "Lift",
+            "Magic",
+            "Mechanics",
+            "Monsters",
+            "Music",
+            "Nature",
+            "Navigate",
+            "Perform",
+            "Persuade",
+            "Pick Lock",
+            "Pick Pocket",
+            "Psionics",
+            "Read Person",
+            "Religion",
+            "Ride",
+            "Rumors",
+            "Sabotage",
+            "Search",
+            "Sneak",
+            "Society",
+            "Strategy",
+            "Swim",
+            "Tailoring",
+            "Track"
+          ]
+        },
+        "skill_choices_2": {
+          "type": "number",
+          "label": "Skill Choices (2)"
+        },
+        "skill_options_2": {
+          "type": "multiselect",
+          "label": "Skill Options (2)",
+          "options": [
+            "Alchemy",
+            "Alertness",
+            "Architecture",
+            "Blacksmithing",
+            "Brag",
+            "Carpentry",
+            "Climb",
+            "Conceal Object",
+            "Cooking",
+            "Criminal Underworld",
+            "Culture",
+            "Disguise",
+            "Drive",
+            "Eavesdrop",
+            "Empathize",
+            "Endurance",
+            "Escape Artist",
+            "Fletching",
+            "Flirt",
+            "Forgery",
+            "Gamble",
+            "Gymnastics",
+            "Handle Animals",
+            "Heal",
+            "Hide",
+            "History",
+            "Interrogate",
+            "Intimidate",
+            "Jewelry",
+            "Jump",
+            "Lead",
+            "Lie",
+            "Lift",
+            "Magic",
+            "Mechanics",
+            "Monsters",
+            "Music",
+            "Nature",
+            "Navigate",
+            "Perform",
+            "Persuade",
+            "Pick Lock",
+            "Pick Pocket",
+            "Psionics",
+            "Read Person",
+            "Religion",
+            "Ride",
+            "Rumors",
+            "Sabotage",
+            "Search",
+            "Sneak",
+            "Society",
+            "Strategy",
+            "Swim",
+            "Tailoring",
+            "Track"
+          ]
+        },
+        "skill_choices_3": {
+          "type": "number",
+          "label": "Skill Choices (3)"
+        },
+        "skill_options_3": {
+          "type": "multiselect",
+          "label": "Skill Options (3)",
+          "options": [
+            "Alchemy",
+            "Alertness",
+            "Architecture",
+            "Blacksmithing",
+            "Brag",
+            "Carpentry",
+            "Climb",
+            "Conceal Object",
+            "Cooking",
+            "Criminal Underworld",
+            "Culture",
+            "Disguise",
+            "Drive",
+            "Eavesdrop",
+            "Empathize",
+            "Endurance",
+            "Escape Artist",
+            "Fletching",
+            "Flirt",
+            "Forgery",
+            "Gamble",
+            "Gymnastics",
+            "Handle Animals",
+            "Heal",
+            "Hide",
+            "History",
+            "Interrogate",
+            "Intimidate",
+            "Jewelry",
+            "Jump",
+            "Lead",
+            "Lie",
+            "Lift",
+            "Magic",
+            "Mechanics",
+            "Monsters",
+            "Music",
+            "Nature",
+            "Navigate",
+            "Perform",
+            "Persuade",
+            "Pick Lock",
+            "Pick Pocket",
+            "Psionics",
+            "Read Person",
+            "Religion",
+            "Ride",
+            "Rumors",
+            "Sabotage",
+            "Search",
+            "Sneak",
+            "Society",
+            "Strategy",
+            "Swim",
+            "Tailoring",
+            "Track"
+          ]
+        },
+        "inciting_incidents": {
+          "type": "textarea",
+          "label": "Inciting Incidents"
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Description"
+        }
+      }
+    },
+    "culture": {
+      "label": "Culture",
+      "label_plural": "Cultures",
+      "identity_field": "name",
+      "sort_default": [
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "description"
+      ],
+      "filter_fields": [],
+      "compact_display": "{name}",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "skill_choices_1": {
+          "type": "number",
+          "label": "Skill Choices (1)"
+        },
+        "skill_options_1": {
+          "type": "multiselect",
+          "label": "Skill Options (1)",
+          "options": [
+            "Alchemy",
+            "Alertness",
+            "Architecture",
+            "Blacksmithing",
+            "Brag",
+            "Carpentry",
+            "Climb",
+            "Conceal Object",
+            "Cooking",
+            "Criminal Underworld",
+            "Culture",
+            "Disguise",
+            "Drive",
+            "Eavesdrop",
+            "Empathize",
+            "Endurance",
+            "Escape Artist",
+            "Fletching",
+            "Flirt",
+            "Forgery",
+            "Gamble",
+            "Gymnastics",
+            "Handle Animals",
+            "Heal",
+            "Hide",
+            "History",
+            "Interrogate",
+            "Intimidate",
+            "Jewelry",
+            "Jump",
+            "Lead",
+            "Lie",
+            "Lift",
+            "Magic",
+            "Mechanics",
+            "Monsters",
+            "Music",
+            "Nature",
+            "Navigate",
+            "Perform",
+            "Persuade",
+            "Pick Lock",
+            "Pick Pocket",
+            "Psionics",
+            "Read Person",
+            "Religion",
+            "Ride",
+            "Rumors",
+            "Sabotage",
+            "Search",
+            "Sneak",
+            "Society",
+            "Strategy",
+            "Swim",
+            "Tailoring",
+            "Track"
+          ]
+        },
+        "skill_choices_2": {
+          "type": "number",
+          "label": "Skill Choices (2)"
+        },
+        "skill_options_2": {
+          "type": "multiselect",
+          "label": "Skill Options (2)",
+          "options": [
+            "Alchemy",
+            "Alertness",
+            "Architecture",
+            "Blacksmithing",
+            "Brag",
+            "Carpentry",
+            "Climb",
+            "Conceal Object",
+            "Cooking",
+            "Criminal Underworld",
+            "Culture",
+            "Disguise",
+            "Drive",
+            "Eavesdrop",
+            "Empathize",
+            "Endurance",
+            "Escape Artist",
+            "Fletching",
+            "Flirt",
+            "Forgery",
+            "Gamble",
+            "Gymnastics",
+            "Handle Animals",
+            "Heal",
+            "Hide",
+            "History",
+            "Interrogate",
+            "Intimidate",
+            "Jewelry",
+            "Jump",
+            "Lead",
+            "Lie",
+            "Lift",
+            "Magic",
+            "Mechanics",
+            "Monsters",
+            "Music",
+            "Nature",
+            "Navigate",
+            "Perform",
+            "Persuade",
+            "Pick Lock",
+            "Pick Pocket",
+            "Psionics",
+            "Read Person",
+            "Religion",
+            "Ride",
+            "Rumors",
+            "Sabotage",
+            "Search",
+            "Sneak",
+            "Society",
+            "Strategy",
+            "Swim",
+            "Tailoring",
+            "Track"
+          ]
+        },
+        "skill_choices_3": {
+          "type": "number",
+          "label": "Skill Choices (3)"
+        },
+        "skill_options_3": {
+          "type": "multiselect",
+          "label": "Skill Options (3)",
+          "options": [
+            "Alchemy",
+            "Alertness",
+            "Architecture",
+            "Blacksmithing",
+            "Brag",
+            "Carpentry",
+            "Climb",
+            "Conceal Object",
+            "Cooking",
+            "Criminal Underworld",
+            "Culture",
+            "Disguise",
+            "Drive",
+            "Eavesdrop",
+            "Empathize",
+            "Endurance",
+            "Escape Artist",
+            "Fletching",
+            "Flirt",
+            "Forgery",
+            "Gamble",
+            "Gymnastics",
+            "Handle Animals",
+            "Heal",
+            "Hide",
+            "History",
+            "Interrogate",
+            "Intimidate",
+            "Jewelry",
+            "Jump",
+            "Lead",
+            "Lie",
+            "Lift",
+            "Magic",
+            "Mechanics",
+            "Monsters",
+            "Music",
+            "Nature",
+            "Navigate",
+            "Perform",
+            "Persuade",
+            "Pick Lock",
+            "Pick Pocket",
+            "Psionics",
+            "Read Person",
+            "Religion",
+            "Ride",
+            "Rumors",
+            "Sabotage",
+            "Search",
+            "Sneak",
+            "Society",
+            "Strategy",
+            "Swim",
+            "Tailoring",
+            "Track"
+          ]
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Description"
+        }
+      }
+    },
+    "domain": {
+      "label": "Domain",
+      "label_plural": "Domains",
+      "identity_field": "name",
+      "sort_default": [
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "description"
+      ],
+      "filter_fields": [],
+      "compact_display": "{name}",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Description"
+        }
+      }
+    },
+    "perk": {
+      "label": "Perk",
+      "label_plural": "Perks",
+      "identity_field": "name",
+      "sort_default": [
+        "list",
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "description"
+      ],
+      "filter_fields": [
+        "list"
+      ],
+      "compact_display": "{list}",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "list": {
+          "type": "text",
+          "label": "Type"
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Description"
+        }
+      }
+    },
+    "title": {
+      "label": "Title",
+      "label_plural": "Titles",
+      "identity_field": "name",
+      "sort_default": [
+        "echelon",
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "description"
+      ],
+      "filter_fields": [
+        "echelon"
+      ],
+      "compact_display": "Echelon {echelon}",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "echelon": {
+          "type": "number",
+          "label": "Echelon"
+        },
+        "prerequisites": {
+          "type": "text",
+          "label": "Prerequisites"
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Description"
+        }
+      }
+    },
+    "complication": {
+      "label": "Complication",
+      "label_plural": "Complications",
+      "identity_field": "name",
+      "sort_default": [
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "description"
+      ],
+      "filter_fields": [],
+      "compact_display": "{name}",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Benefit and Drawback"
+        }
+      }
+    },
+    "ability": {
+      "label": "Ability",
+      "label_plural": "Abilities",
+      "identity_field": "name",
+      "sort_default": [
+        "origin",
+        "level",
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "keywords",
+        "effect",
+        "description"
+      ],
+      "filter_fields": [
+        "origin",
+        "type",
+        "cost",
+        "keywords"
+      ],
+      "compact_display": "{origin} · {cost} {type}",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "origin": {
+          "type": "text",
+          "label": "From"
+        },
+        "level": {
+          "type": "number",
+          "label": "Level"
+        },
+        "cost": {
+          "type": "text",
+          "label": "Cost"
+        },
+        "type": {
+          "type": "text",
+          "label": "Action"
+        },
+        "keywords": {
+          "type": "text",
+          "label": "Keywords"
+        },
+        "distance": {
+          "type": "text",
+          "label": "Distance"
+        },
+        "target": {
+          "type": "text",
+          "label": "Target"
+        },
+        "power_roll": {
+          "type": "text",
+          "label": "Power Roll"
+        },
+        "tier_1": {
+          "type": "text",
+          "label": "≤11"
+        },
+        "tier_2": {
+          "type": "text",
+          "label": "12–16"
+        },
+        "tier_3": {
+          "type": "text",
+          "label": "17+"
+        },
+        "effect": {
+          "type": "textarea",
+          "label": "Effect"
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Description"
+        }
+      }
+    },
+    "feature": {
+      "label": "Feature",
+      "label_plural": "Features",
+      "identity_field": "name",
+      "sort_default": [
+        "origin",
+        "level",
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "description"
+      ],
+      "filter_fields": [
+        "origin",
+        "level"
+      ],
+      "compact_display": "{origin} {level}",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "origin": {
+          "type": "text",
+          "label": "From"
+        },
+        "level": {
+          "type": "number",
+          "label": "Level"
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Description"
+        }
+      }
+    }
+  },
+  "fields": {
+    "hero_name": {
+      "type": "text",
+      "label": "Name"
+    },
+    "level": {
+      "type": "number",
+      "label": "Level",
+      "min": 1,
+      "max": 10,
+      "default": 1
+    },
+    "xp": {
+      "type": "number",
+      "label": "XP",
+      "min": 0,
+      "default": 0
+    },
+    "ancestry": {
+      "type": "content_ref",
+      "label": "Ancestry",
+      "content_type": "ancestry",
+      "on_pick": [
+        {
+          "grant": "ancestry_traits",
+          "from": "trait_ids",
+          "names": "trait_names",
+          "carry": {
+            "ancestry": "name"
+          }
+        },
+        {
+          "grant": "abilities",
+          "from": "ability_ids",
+          "names": "ability_names",
+          "carry": {
+            "origin": "name"
+          }
+        }
+      ]
+    },
+    "culture": {
+      "type": "content_ref",
+      "label": "Culture",
+      "content_type": "culture",
+      "on_pick": [
+        {
+          "choose": "skills",
+          "count": "skill_choices_1",
+          "from": "skill_options_1",
+          "label": "Choose a skill from your culture"
+        },
+        {
+          "choose": "skills",
+          "count": "skill_choices_2",
+          "from": "skill_options_2",
+          "label": "Choose a skill from your culture"
+        },
+        {
+          "choose": "skills",
+          "count": "skill_choices_3",
+          "from": "skill_options_3",
+          "label": "Choose a skill from your culture"
+        }
+      ]
+    },
+    "culture_environment": {
+      "type": "text",
+      "label": "Culture: Environment",
+      "placeholder": "Nomadic, rural, secluded…"
+    },
+    "culture_organization": {
+      "type": "text",
+      "label": "Culture: Organization",
+      "placeholder": "Bureaucratic, communal"
+    },
+    "culture_upbringing": {
+      "type": "text",
+      "label": "Culture: Upbringing",
+      "placeholder": "Academic, creative, labor…"
+    },
+    "culture_notes": {
+      "type": "textarea",
+      "label": "Culture notes",
+      "rows": 3
+    },
+    "career": {
+      "type": "content_ref",
+      "label": "Career",
+      "content_type": "career",
+      "on_pick": [
+        {
+          "choose": "skills",
+          "count": "skill_choices_1",
+          "from": "skill_options_1",
+          "label": "Choose a skill from your career"
+        },
+        {
+          "choose": "skills",
+          "count": "skill_choices_2",
+          "from": "skill_options_2",
+          "label": "Choose a skill from your career"
+        },
+        {
+          "choose": "skills",
+          "count": "skill_choices_3",
+          "from": "skill_options_3",
+          "label": "Choose a skill from your career"
+        }
+      ]
+    },
+    "career_benefits": {
+      "type": "textarea",
+      "label": "Career benefits",
+      "rows": 4
+    },
+    "klass": {
+      "type": "content_ref",
+      "label": "Class",
+      "content_type": "class",
+      "on_pick": [
+        {
+          "grant": "features",
+          "from": "feature_ids",
+          "names": "feature_names",
+          "carry": {
+            "origin": "name"
+          }
+        },
+        {
+          "choose": "skills",
+          "count": "skill_choices",
+          "from": "skill_options",
+          "label": "Choose your class skills"
+        }
+      ]
+    },
+    "subclass": {
+      "type": "content_ref",
+      "label": "Subclass",
+      "content_type": "subclass",
+      "on_pick": [
+        {
+          "grant": "features",
+          "from": "feature_ids",
+          "names": "feature_names",
+          "carry": {
+            "origin": "class"
+          }
+        }
+      ]
+    },
+    "kit": {
+      "type": "content_ref",
+      "label": "Kit",
+      "content_type": "kit",
+      "on_pick": [
+        {
+          "grant": "abilities",
+          "from": "ability_ids",
+          "names": "ability_names",
+          "carry": {
+            "origin": "name"
+          }
+        }
+      ]
+    },
+    "kit_weapon": {
+      "type": "text",
+      "label": "Kit weapon / implement",
+      "default_from": "ref(kit, 'weapon')"
+    },
+    "kit_armor": {
+      "type": "text",
+      "label": "Kit armor / ward",
+      "default_from": "ref(kit, 'armor')"
+    },
+    "kit_speed": {
+      "type": "number",
+      "label": "Kit speed bonus",
+      "default": 0,
+      "default_from": "0 + ref(kit, 'speed')"
+    },
+    "kit_disengage": {
+      "type": "number",
+      "label": "Kit disengage bonus",
+      "default": 0,
+      "default_from": "0 + ref(kit, 'disengage')"
+    },
+    "kit_stamina": {
+      "type": "number",
+      "label": "Kit stamina bonus (per echelon)",
+      "default": 0,
+      "default_from": "0 + ref(kit, 'stamina')"
+    },
+    "kit_stability": {
+      "type": "number",
+      "label": "Kit stability bonus",
+      "default": 0,
+      "default_from": "0 + ref(kit, 'stability')"
+    },
+    "melee_distance_bonus": {
+      "type": "number",
+      "label": "Melee Distance Bonus",
+      "min": 0,
+      "default": 0,
+      "default_from": "0 + ref(kit, 'melee_distance')"
+    },
+    "ranged_distance_bonus": {
+      "type": "number",
+      "label": "Ranged Distance Bonus",
+      "min": 0,
+      "default": 0,
+      "default_from": "0 + ref(kit, 'ranged_distance')"
+    },
+    "melee_damage_bonus": {
+      "type": "text",
+      "label": "Melee Damage Bonus",
+      "placeholder": "+0/+0/+0",
+      "default_from": "ref(kit, 'melee_damage')"
+    },
+    "ranged_damage_bonus": {
+      "type": "text",
+      "label": "Ranged Damage Bonus",
+      "placeholder": "+0/+0/+0",
+      "default_from": "ref(kit, 'ranged_damage')"
+    },
+    "kit_effects": {
+      "type": "textarea",
+      "label": "Kit effects",
+      "rows": 3
+    },
+    "complication": {
+      "type": "content_ref",
+      "label": "Complication",
+      "content_type": "complication"
+    },
+    "complication_details": {
+      "type": "textarea",
+      "label": "Complication details",
+      "rows": 6
+    },
+    "inciting_incident": {
+      "type": "textarea",
+      "label": "Inciting Incident",
+      "rows": 3
+    },
+    "might": {
+      "type": "number",
+      "label": "Might",
+      "min": -5,
+      "max": 5,
+      "default": 0,
+      "default_from": "contains(ref(klass, 'primary_characteristics'), 'Might') ? 2 : 0"
+    },
+    "agility": {
+      "type": "number",
+      "label": "Agility",
+      "min": -5,
+      "max": 5,
+      "default": 0,
+      "default_from": "contains(ref(klass, 'primary_characteristics'), 'Agility') ? 2 : 0"
+    },
+    "reason": {
+      "type": "number",
+      "label": "Reason",
+      "min": -5,
+      "max": 5,
+      "default": 0,
+      "default_from": "contains(ref(klass, 'primary_characteristics'), 'Reason') ? 2 : 0"
+    },
+    "intuition": {
+      "type": "number",
+      "label": "Intuition",
+      "min": -5,
+      "max": 5,
+      "default": 0,
+      "default_from": "contains(ref(klass, 'primary_characteristics'), 'Intuition') ? 2 : 0"
+    },
+    "presence": {
+      "type": "number",
+      "label": "Presence",
+      "min": -5,
+      "max": 5,
+      "default": 0,
+      "default_from": "contains(ref(klass, 'primary_characteristics'), 'Presence') ? 2 : 0"
+    },
+    "stamina_max": {
+      "type": "number",
+      "label": "Stamina Maximum",
+      "min": 0,
+      "default": 20,
+      "default_from": "ref(klass, 'stamina') ? ref(klass, 'stamina') + ref(klass, 'stamina_per_level') * (level - 1) + kit_stamina * min(4, floor((level - 1) / 3) + 1) : ''"
+    },
+    "stamina_current": {
+      "type": "number",
+      "label": "Current Stamina",
+      "default": 20,
+      "default_from": "stamina_max"
+    },
+    "stamina_temp": {
+      "type": "number",
+      "label": "Temporary Stamina",
+      "min": 0,
+      "default": 0
+    },
+    "recoveries_max": {
+      "type": "number",
+      "label": "Recoveries",
+      "min": 0,
+      "default": 8,
+      "default_from": "ref(klass, 'recoveries') ? ref(klass, 'recoveries') : ''"
+    },
+    "recoveries_used": {
+      "type": "number",
+      "label": "Recoveries Spent",
+      "min": 0,
+      "default": 0
+    },
+    "resource_name": {
+      "type": "text",
+      "label": "Heroic Resource",
+      "placeholder": "Focus, Drama, Ferocity…",
+      "default_from": "ref(klass, 'heroic_resource')"
+    },
+    "heroic_resource": {
+      "type": "number",
+      "label": "Heroic Resource",
+      "min": 0,
+      "default": 0
+    },
+    "surges": {
+      "type": "number",
+      "label": "Surges",
+      "min": 0,
+      "default": 0
+    },
+    "victories": {
+      "type": "number",
+      "label": "Victories",
+      "min": 0,
+      "default": 0,
+      "max": 15
+    },
+    "renown": {
+      "type": "number",
+      "label": "Renown",
+      "min": 0,
+      "default": 0
+    },
+    "wealth": {
+      "type": "number",
+      "label": "Wealth",
+      "min": 0,
+      "default": 1
+    },
+    "speed": {
+      "type": "number",
+      "label": "Speed",
+      "min": 0,
+      "default": 5,
+      "default_from": "(ref(ancestry, 'speed') ? ref(ancestry, 'speed') : 5) + kit_speed"
+    },
+    "stability": {
+      "type": "number",
+      "label": "Stability",
+      "min": 0,
+      "default": 0,
+      "default_from": "0 + kit_stability"
+    },
+    "size": {
+      "type": "text",
+      "label": "Size",
+      "default": "1M",
+      "default_from": "ref(ancestry, 'size')"
+    },
+    "disengage": {
+      "type": "number",
+      "label": "Disengage",
+      "min": 0,
+      "default": 1,
+      "default_from": "1 + kit_disengage"
+    },
+    "conditions": {
+      "type": "multiselect",
+      "label": "Conditions (end of turn)",
+      "options": [
+        "Bleeding",
+        "Dazed",
+        "Frightened",
+        "Grabbed",
+        "Prone",
+        "Restrained",
+        "Slowed",
+        "Taunted",
+        "Weakened"
+      ]
+    },
+    "conditions_save": {
+      "type": "multiselect",
+      "label": "Conditions (save ends)",
+      "options": [
+        "Bleeding",
+        "Dazed",
+        "Frightened",
+        "Grabbed",
+        "Prone",
+        "Restrained",
+        "Slowed",
+        "Taunted",
+        "Weakened"
+      ]
+    },
+    "condition_1_name": {
+      "type": "text",
+      "label": "Other condition 1"
+    },
+    "condition_1_eot": {
+      "type": "checkbox",
+      "label": "Other condition 1: end of turn"
+    },
+    "condition_1_save": {
+      "type": "checkbox",
+      "label": "Other condition 1: save ends"
+    },
+    "condition_2_name": {
+      "type": "text",
+      "label": "Other condition 2"
+    },
+    "condition_2_eot": {
+      "type": "checkbox",
+      "label": "Other condition 2: end of turn"
+    },
+    "condition_2_save": {
+      "type": "checkbox",
+      "label": "Other condition 2: save ends"
+    },
+    "save_ends": {
+      "type": "number",
+      "label": "Save ends on",
+      "min": 1,
+      "max": 10,
+      "default": 6
+    },
+    "skills": {
+      "type": "multiselect",
+      "label": "Skills",
+      "options": [
+        "Alchemy",
+        "Alertness",
+        "Architecture",
+        "Blacksmithing",
+        "Brag",
+        "Carpentry",
+        "Climb",
+        "Conceal Object",
+        "Cooking",
+        "Criminal Underworld",
+        "Culture",
+        "Disguise",
+        "Drive",
+        "Eavesdrop",
+        "Empathize",
+        "Endurance",
+        "Escape Artist",
+        "Fletching",
+        "Flirt",
+        "Forgery",
+        "Gamble",
+        "Gymnastics",
+        "Handle Animals",
+        "Heal",
+        "Hide",
+        "History",
+        "Interrogate",
+        "Intimidate",
+        "Jewelry",
+        "Jump",
+        "Lead",
+        "Lie",
+        "Lift",
+        "Magic",
+        "Mechanics",
+        "Monsters",
+        "Music",
+        "Nature",
+        "Navigate",
+        "Perform",
+        "Persuade",
+        "Pick Lock",
+        "Pick Pocket",
+        "Psionics",
+        "Read Person",
+        "Religion",
+        "Ride",
+        "Rumors",
+        "Sabotage",
+        "Search",
+        "Sneak",
+        "Society",
+        "Strategy",
+        "Swim",
+        "Tailoring",
+        "Timescape",
+        "Track"
+      ]
+    },
+    "languages": {
+      "type": "textarea",
+      "label": "Languages",
+      "rows": 4,
+      "placeholder": "Caelian, …"
+    },
+    "ancestry_traits": {
+      "type": "content_list",
+      "label": "Ancestry Traits",
+      "content_type": "trait",
+      "allow_freeform": true,
+      "display_columns": [
+        "cost"
+      ]
+    },
+    "features": {
+      "type": "content_list",
+      "label": "Features",
+      "content_type": "feature",
+      "allow_freeform": true,
+      "display_columns": [
+        "level"
+      ]
+    },
+    "abilities": {
+      "type": "content_list",
+      "label": "Abilities",
+      "content_type": "ability",
+      "allow_freeform": true,
+      "display_columns": [
+        "cost",
+        "type",
+        "keywords",
+        "distance",
+        "target"
+      ]
+    },
+    "domains": {
+      "type": "content_list",
+      "label": "Domains",
+      "content_type": "domain",
+      "allow_freeform": true
+    },
+    "perks": {
+      "type": "content_list",
+      "label": "Perks",
+      "content_type": "perk",
+      "allow_freeform": true,
+      "display_columns": [
+        {
+          "key": "list",
+          "label": "Type"
+        }
+      ]
+    },
+    "titles": {
+      "type": "content_list",
+      "label": "Titles",
+      "content_type": "title",
+      "allow_freeform": true,
+      "display_columns": [
+        "echelon"
+      ]
+    },
+    "trinkets": {
+      "type": "list",
+      "label": "Trinkets",
+      "columns": [
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Trinket",
+          "flex": 3
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 4
+        }
+      ],
+      "add_label": "Add a trinket"
+    },
+    "leveled_treasures": {
+      "type": "list",
+      "label": "Leveled Treasures",
+      "columns": [
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Treasure",
+          "flex": 3
+        },
+        {
+          "key": "level",
+          "type": "number",
+          "label": "Level",
+          "min": 1,
+          "max": 10,
+          "flex": 1
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 4
+        }
+      ],
+      "add_label": "Add a treasure"
+    },
+    "consumables": {
+      "type": "list",
+      "label": "Consumables",
+      "columns": [
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Consumable",
+          "flex": 3
+        },
+        {
+          "key": "qty",
+          "type": "number",
+          "label": "Qty",
+          "default": 1,
+          "min": 0,
+          "flex": 1
+        }
+      ],
+      "add_label": "Add a consumable"
+    },
+    "projects": {
+      "type": "list",
+      "label": "Projects",
+      "columns": [
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Project Name",
+          "flex": 4
+        },
+        {
+          "key": "assigned",
+          "type": "text",
+          "label": "Assigned Hero / Follower",
+          "flex": 3
+        },
+        {
+          "key": "characteristic",
+          "type": "select",
+          "label": "Characteristic",
+          "flex": 2,
+          "options": [
+            "Might",
+            "Agility",
+            "Reason",
+            "Intuition",
+            "Presence"
+          ]
+        },
+        {
+          "key": "points",
+          "type": "number",
+          "label": "Points",
+          "min": 0,
+          "flex": 1
+        },
+        {
+          "key": "goal",
+          "type": "number",
+          "label": "Goal",
+          "min": 0,
+          "flex": 1
+        }
+      ],
+      "add_label": "Add a project"
+    },
+    "notes": {
+      "type": "textarea",
+      "label": "Notes",
+      "rows": 6
+    }
+  },
+  "computed": {
+    "echelon": {
+      "formula": "min(4, floor((level - 1) / 3) + 1)",
+      "label": "Echelon"
+    },
+    "recoveries_left": {
+      "formula": "max(0, recoveries_max - recoveries_used)",
+      "label": "Recoveries Left"
+    },
+    "recovery_value": {
+      "formula": "floor(stamina_max / 3)",
+      "label": "Recovery Value"
+    },
+    "winded": {
+      "formula": "floor(stamina_max / 2)",
+      "label": "Winded At"
+    },
+    "is_winded": {
+      "formula": "stamina_current <= 0 ? 'Dying' : (stamina_current <= winded ? 'Winded' : 'Steady')",
+      "label": "Condition"
+    },
+    "dying_at": {
+      "formula": "0 - winded",
+      "label": "Dead At"
+    },
+    "potency_strong": {
+      "formula": "max(might, agility, reason, intuition, presence)",
+      "label": "Strong Potency"
+    },
+    "potency_average": {
+      "formula": "potency_strong - 1",
+      "label": "Average Potency"
+    },
+    "potency_weak": {
+      "formula": "potency_strong - 2",
+      "label": "Weak Potency"
+    },
+    "ancestry_points": {
+      "formula": "ref(ancestry, 'ancestry_points') ? ref(ancestry, 'ancestry_points') : 0",
+      "label": "Ancestry Points"
+    },
+    "ancestry_points_spent": {
+      "formula": "sum_refs(ancestry_traits, 'cost')",
+      "label": "Ancestry Points Spent"
+    },
+    "ability_count": {
+      "formula": "count_refs(abilities)",
+      "label": "Abilities Known"
+    },
+    "skill_count": {
+      "formula": "len(skills)",
+      "label": "Skills Known"
+    },
+    "surge_damage": {
+      "formula": "max(might, agility, reason, intuition, presence)",
+      "label": "Surge Damage"
+    },
+    "treasure_count": {
+      "formula": "len(leveled_treasures)",
+      "label": "Leveled Treasures Carried"
+    }
+  },
+  "name_field": "hero_name",
+  "validators": [
+    {
+      "rule": "ancestry_points_spent <= ancestry_points or ancestry_points == 0",
+      "message": "The purchased traits cost more ancestry points than the ancestry gives."
+    },
+    {
+      "rule": "stamina_current > dying_at",
+      "message": "Stamina at or below the negative of the winded value: the hero is dead."
+    },
+    {
+      "rule": "treasure_count <= 3",
+      "message": "More than three leveled treasures - a hero can carry only three safely."
+    }
+  ],
+  "layout_file": "draw-steel.html",
+  "styles_file": "draw-steel.css"
+}

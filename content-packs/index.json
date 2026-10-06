@@ -1,0 +1,276 @@
+{
+  "$schema": "../schema/content-pack-index.schema.json",
+  "version": 1,
+  "generated": "2026-10-06T20:44:56+00:00",
+  "packs": [
+    {
+      "pack_id": "dnd-5e-srd",
+      "schema_id": "dnd-5e-2024",
+      "name": "D&D 5e SRD 5.2",
+      "files": [
+        {
+          "name": "_meta.json",
+          "path": "content-packs/dnd-5e-srd/_meta.json",
+          "sha256": "908cacd9120bef86d6969045987cd77b31e573eb16139442cf7410003a5ec54c",
+          "bytes": 817
+        },
+        {
+          "name": "background.json",
+          "path": "content-packs/dnd-5e-srd/background.json",
+          "sha256": "80de897ba96bba1b4ee1eb031bb29a9de9608f394a2654a5ddcd4792075f668b",
+          "bytes": 1291
+        },
+        {
+          "name": "class.json",
+          "path": "content-packs/dnd-5e-srd/class.json",
+          "sha256": "ec9f7877240a549738d532bbd7536a1b9d2a9d9e2c3befddb3c5c2ef87d05006",
+          "bytes": 8015
+        },
+        {
+          "name": "feat.json",
+          "path": "content-packs/dnd-5e-srd/feat.json",
+          "sha256": "1ff029affa7acc0d162c80e93625d86ffe2c66aedccf4d234511778c7e753545",
+          "bytes": 4665
+        },
+        {
+          "name": "feature.json",
+          "path": "content-packs/dnd-5e-srd/feature.json",
+          "sha256": "4fbcc48c88327464ad6631eb009cf575b2f76108252f9d3322417aeea73c7e44",
+          "bytes": 123597
+        },
+        {
+          "name": "item.json",
+          "path": "content-packs/dnd-5e-srd/item.json",
+          "sha256": "f8ca8eb28f3868836cb15b5c25818f7cf199051c5257fc2b589001cf153dcc5a",
+          "bytes": 56362
+        },
+        {
+          "name": "magic_item.json",
+          "path": "content-packs/dnd-5e-srd/magic_item.json",
+          "sha256": "b44f11927d8134c672f1cb2d9421930f193dd15d693f0f15d5c8d5c67b2851f3",
+          "bytes": 234843
+        },
+        {
+          "name": "species.json",
+          "path": "content-packs/dnd-5e-srd/species.json",
+          "sha256": "b30f2b92736a711a54c701abbe5e322974c98dbdd162b06658c870eba5fbaf78",
+          "bytes": 3238
+        },
+        {
+          "name": "spell.json",
+          "path": "content-packs/dnd-5e-srd/spell.json",
+          "sha256": "55f7f99923faf7839de5290ac84e892340626a41ad0cbd6f288e530ceb28d17a",
+          "bytes": 354751
+        },
+        {
+          "name": "trait.json",
+          "path": "content-packs/dnd-5e-srd/trait.json",
+          "sha256": "2b6f1cbd91034832a0d3433665f655da568e6fc027797f413e531bc62de72384",
+          "bytes": 7983
+        }
+      ],
+      "entry_count": 1109,
+      "content_types": [
+        "background",
+        "class",
+        "feat",
+        "feature",
+        "item",
+        "magic_item",
+        "species",
+        "spell",
+        "trait"
+      ],
+      "version": "1.0.0",
+      "description": "The System Reference Document 5.2, and nothing outside it: classes and every class and subclass feature, species and their traits, backgrounds, feats, all 339 spells, equipment and magic items.",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "This work includes material from the System Reference Document 5.2 (\u201cSRD 5.2\u201d) by Wizards of the Coast LLC, available at https://www.dndbeyond.com/srd. The SRD 5.2 is licensed under the Creative Commons Attribution 4.0 International License, available at https://creativecommons.org/licenses/by/4.0/legalcode.",
+      "source_url": "https://www.dndbeyond.com/srd"
+    },
+    {
+      "pack_id": "draw-steel-core",
+      "schema_id": "draw-steel",
+      "name": "Draw Steel: Heroes (via Forge Steel)",
+      "files": [
+        {
+          "name": "_meta.json",
+          "path": "content-packs/draw-steel-core/_meta.json",
+          "sha256": "85ce0157668c3f7a78c2a909f86ef18f43b2bac8f88afdb6e7474064c9b79931",
+          "bytes": 966
+        },
+        {
+          "name": "ability.json",
+          "path": "content-packs/draw-steel-core/ability.json",
+          "sha256": "1a4e1c760ac9a5ff81495ae0246fe37845ad8508921b0f0e4bc9c81e081f4e39",
+          "bytes": 386803
+        },
+        {
+          "name": "ancestry.json",
+          "path": "content-packs/draw-steel-core/ancestry.json",
+          "sha256": "fa9847c862ee4bcee3efe6f0d1b547393079679fca7ca245d917dbdb4bdbda1e",
+          "bytes": 5388
+        },
+        {
+          "name": "career.json",
+          "path": "content-packs/draw-steel-core/career.json",
+          "sha256": "8ee1b2a0f771ee506d620b45de39c5baf921ea7328b8894a19cf57bcbb1d6e75",
+          "bytes": 59334
+        },
+        {
+          "name": "class.json",
+          "path": "content-packs/draw-steel-core/class.json",
+          "sha256": "cf7bff4a4aba27b3c102db62ddb31b92ff9d4e8a66a1460d21352ed9b8042ce9",
+          "bytes": 18454
+        },
+        {
+          "name": "complication.json",
+          "path": "content-packs/draw-steel-core/complication.json",
+          "sha256": "2bab3509d41c35a2fef9fb1ef8bfabb5b01a65b89e226ad538d7a829998a3c0c",
+          "bytes": 70513
+        },
+        {
+          "name": "culture.json",
+          "path": "content-packs/draw-steel-core/culture.json",
+          "sha256": "43f13b2b8058c1e515f087e46a5801da2e2d31ac03a0f9fd94d2777c8d101ed0",
+          "bytes": 22616
+        },
+        {
+          "name": "domain.json",
+          "path": "content-packs/draw-steel-core/domain.json",
+          "sha256": "7e1b453909ad16eec109cbe4087b38e77a1cf8e4485147b6750e4285e303ede9",
+          "bytes": 19854
+        },
+        {
+          "name": "feature.json",
+          "path": "content-packs/draw-steel-core/feature.json",
+          "sha256": "3b13dfa30e99fc6a76559669a6d6225fac3b57bbb5b9a8bdef5080fe5ad07ec8",
+          "bytes": 245952
+        },
+        {
+          "name": "kit.json",
+          "path": "content-packs/draw-steel-core/kit.json",
+          "sha256": "e01c95b95fa6172f64513179348fb5436a208bb2825645f44e9e86163c9663b5",
+          "bytes": 14986
+        },
+        {
+          "name": "perk.json",
+          "path": "content-packs/draw-steel-core/perk.json",
+          "sha256": "487975a6dc88c804646815c7fa589554e54f7651c2bd2dcec27c4d637e3178ad",
+          "bytes": 17334
+        },
+        {
+          "name": "subclass.json",
+          "path": "content-packs/draw-steel-core/subclass.json",
+          "sha256": "689f9c227a77909f0f512c9266bebcc644015a868b17373fb055e1ce0d9f79f6",
+          "bytes": 11005
+        },
+        {
+          "name": "title.json",
+          "path": "content-packs/draw-steel-core/title.json",
+          "sha256": "33d532d22172904235be5640b7e2448afceec11a5e0c615bf94fb27b3bd63f5e",
+          "bytes": 54775
+        },
+        {
+          "name": "trait.json",
+          "path": "content-packs/draw-steel-core/trait.json",
+          "sha256": "4a8343de16ff6676cea98188b09f0b59bab0e48085d790ed3282a05e0f913de4",
+          "bytes": 21967
+        }
+      ],
+      "entry_count": 1660,
+      "content_types": [
+        "ability",
+        "ancestry",
+        "career",
+        "class",
+        "complication",
+        "culture",
+        "domain",
+        "feature",
+        "kit",
+        "perk",
+        "subclass",
+        "title",
+        "trait"
+      ],
+      "version": "1.0.0",
+      "description": "Every class, subclass, ancestry and trait, culture, career, kit, domain, perk, title and complication from Draw Steel: Heroes, with each ability's power-roll tiers and each class's features by level. The text is MCDM's, converted from Forge Steel's data for the core book only.",
+      "license": "Draw Steel Creator License",
+      "license_url": "https://www.mcdmproductions.com/draw-steel-creator-license",
+      "attribution": "This pack is an independent product published under the DRAW STEEL Creator License and is not affiliated with MCDM Productions, LLC. DRAW STEEL \u00a9 2024 MCDM Productions, LLC. Converted from the data of Forge Steel (https://github.com/andyaiken/forgesteel) by Andy Aiken.",
+      "source_url": "https://forgesteel.net/"
+    },
+    {
+      "pack_id": "pf2e-player-core",
+      "schema_id": "pathfinder-2e",
+      "name": "Pathfinder Player Core",
+      "files": [
+        {
+          "name": "_meta.json",
+          "path": "content-packs/pf2e-player-core/_meta.json",
+          "sha256": "66a675554aeb2cea43ccfc67876252347a0e581bef7e07b28dabe0d032b0fed5",
+          "bytes": 1835
+        },
+        {
+          "name": "ancestry.json",
+          "path": "content-packs/pf2e-player-core/ancestry.json",
+          "sha256": "f8960a24858965ee7c598abf1d4d945e7aaa33c3e877ce047a2eec7e39667d7a",
+          "bytes": 4867
+        },
+        {
+          "name": "background.json",
+          "path": "content-packs/pf2e-player-core/background.json",
+          "sha256": "68bc65cd077cb725476980092c698b133a7d844b8af2b5fe3b66e59246a038f6",
+          "bytes": 20358
+        },
+        {
+          "name": "class.json",
+          "path": "content-packs/pf2e-player-core/class.json",
+          "sha256": "476875a355a8f2129d25c0cc16d6afe1e345d29a2dafea3460ba4f2b1c618394",
+          "bytes": 10442
+        },
+        {
+          "name": "feat.json",
+          "path": "content-packs/pf2e-player-core/feat.json",
+          "sha256": "5e50bb1613cfe8376c25988fa887220e16b214f9d04f21c15d4e2135b13e7d9b",
+          "bytes": 477881
+        },
+        {
+          "name": "feature.json",
+          "path": "content-packs/pf2e-player-core/feature.json",
+          "sha256": "f16e01169b0d885c62262a903f8936e9eeca41dde926ddfe4c87b57dba9bb22a",
+          "bytes": 109206
+        },
+        {
+          "name": "heritage.json",
+          "path": "content-packs/pf2e-player-core/heritage.json",
+          "sha256": "ea755377aa1b4c7fd6d77076e3cd37224547fd4bf97eee9d38aaf5f72bd6afc5",
+          "bytes": 19000
+        },
+        {
+          "name": "spell.json",
+          "path": "content-packs/pf2e-player-core/spell.json",
+          "sha256": "cef3ecc63bded2b99b63dcc375098c3b33c012d867957ddaba8d4a5837632bf0",
+          "bytes": 479827
+        }
+      ],
+      "entry_count": 1606,
+      "content_types": [
+        "ancestry",
+        "background",
+        "class",
+        "feat",
+        "feature",
+        "heritage",
+        "spell"
+      ],
+      "version": "1.0.0",
+      "description": "The ancestries, heritages, backgrounds, classes, class features, feats and spells of Pathfinder Player Core (the remastered core rulebook), converted from the Pathfinder Second Edition system for Foundry VTT. ORC-licensed content from that one book only.",
+      "license": "ORC",
+      "license_url": "https://paizo.com/orclicense",
+      "attribution": "ORC Notice: This product is licensed under the ORC License located at the Library of Congress at TX 9-307-067 and available online at various locations. All warranties are disclaimed as set forth therein. Attribution: This product is based on the following Licensed Material: Pathfinder Player Core \u00a9 2023, Paizo Inc.; Designers: Logan Bonner, Jason Bulmahn, Stephen Radney-MacFarland, and Mark Seifter. Authors: Alexander Augunas, Kate Baker, Logan Bonner, Jason Bulmahn, Carlos Cabrera, Calder CaDavid, James Case, Eleanor Ferron, Steven Hammond, Joan Hong, Vanessa Hoskins, James Jacobs, Jenny Jarzabski, Erik Keith, Dustin Knight, Lyz Liddell, Luis Loza, Patchen Mortimer, Dennis Muldoon, Stephen Radney-MacFarland, Mikhail Rekun, David N. Ross, Michael Sayre, Mark Seifter, Kendra Leigh Speedling, Mark Thompson, Clark Valentine, Andrew White, Landon Winkler, and Linda Zayas-Palmer. Reserved Material: Pathfinder and its trademarks are Paizo Inc.'s, and this pack is not published, endorsed, or specifically approved by Paizo Inc. Converted from the Pathfinder Second Edition system for Foundry Virtual Tabletop (https://github.com/foundryvtt/pf2e), whose code is licensed under the Apache License 2.0.",
+      "source_url": "https://github.com/foundryvtt/pf2e"
+    }
+  ]
+}

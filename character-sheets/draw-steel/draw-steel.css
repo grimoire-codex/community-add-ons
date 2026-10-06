@@ -1,0 +1,1132 @@
+/* Draw Steel hero sheet, after MCDM's printed character sheet.
+   The printed sheet's vocabulary, drawn with borders alone: panels with thin
+   rules, small serif capitals centred over a rule with a diamond at its middle,
+   heavy double-ruled frames for the characteristics and the big trackers -
+   stamina's shield, the recoveries ring, the heroic resource and surges - and
+   pill-shaped boxes captioned on their lower edge. No artwork, no logo.
+   Every colour is an app token, so a theme restyles the sheet with the app. */
+
+.sheet-ds {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--text);
+  --frame: var(--text-dim);
+  --serif: "Bitter", "Roboto Slab", "Rockwell", "Iowan Old Style", Georgia, serif;
+}
+
+.gc-tabpanel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* An opened ability or feature keeps its paragraphs: the text is plain, with
+   blank lines between paragraphs, and would otherwise run together. */
+.gc-field-readonly > div {
+  white-space: pre-line;
+}
+
+/* --- the printed sheet's vocabulary ---------------------------------------- */
+
+.panel {
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--bg-card);
+  padding: 10px 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.label {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* The rule under a heading, with its diamond: a line, and a gem set on it. */
+.rule {
+  display: flex;
+  justify-content: center;
+  border-top: 2px solid var(--frame);
+  height: 0;
+  margin: 2px 0 10px;
+}
+
+.rule .gem {
+  margin-top: -9px;
+  padding: 0 4px;
+  background: var(--bg-card);
+  color: var(--frame);
+  font-size: 11px;
+  line-height: 16px;
+}
+
+.cap {
+  display: block;
+  font-family: var(--serif);
+  font-size: 11px;
+  color: var(--text-muted);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.count {
+  color: var(--gold);
+  margin-left: 4px;
+}
+
+.hint {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.row {
+  display: grid;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 18px;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.columns .col + .col {
+  border-left: 1px solid var(--border);
+  padding-left: 18px;
+}
+
+.columns .label {
+  text-align: left;
+  margin-bottom: 4px;
+}
+
+/* A field on an underline, captioned beneath - the identity block. */
+.line {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border-bottom: 1px solid var(--frame);
+  padding-bottom: 2px;
+}
+
+.line .cap {
+  text-align: left;
+}
+
+.line input,
+.line select {
+  border: none;
+  background: transparent;
+  padding: 2px 0;
+}
+
+/* A pill-shaped box, its caption sitting on its lower edge. */
+.pill-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 2px solid var(--frame);
+  border-radius: 10px;
+  padding: 4px 10px 0;
+}
+
+.pill-cap {
+  align-self: center;
+  margin-bottom: -9px;
+  padding: 0 6px;
+  background: var(--bg-card);
+  font-family: var(--serif);
+  font-size: 11px;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.pill-cap.top {
+  margin: -11px 0 2px;
+}
+
+.pill-field.area {
+  border-radius: 8px;
+  padding: 6px 10px 8px;
+}
+
+/* A small boxed number, captioned beneath - size, speed, kit bonuses. */
+.mini {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
+}
+
+.mini input,
+.mini select {
+  width: 100%;
+  border: 2px solid var(--frame);
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 700;
+  padding: 3px 2px;
+}
+
+.mini .cap {
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* --- page one: identity and progress --------------------------------------- */
+
+.row.top {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+}
+
+.identity {
+  border: 2px solid var(--frame);
+  border-radius: 10px;
+  gap: 10px;
+}
+
+.identity .name input {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.victories-level {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: stretch;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+}
+
+.victories .label {
+  text-align: left;
+  margin-bottom: 6px;
+}
+
+.track {
+  border: 2px solid var(--frame);
+  border-radius: 4px;
+  padding: 4px 8px;
+}
+
+.track .gc-pips {
+  gap: 3px !important;
+}
+
+.track .gc-pips input {
+  width: 18px !important;
+  height: 22px !important;
+}
+
+.level {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border-left: 3px double var(--frame);
+  padding-left: 14px;
+}
+
+.level-value input {
+  width: 64px;
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  border: none;
+  background: transparent;
+}
+
+.tabs3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.tabbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border: 2px solid var(--frame);
+  border-radius: 10px 10px 4px 4px;
+  padding: 6px 8px 8px;
+}
+
+.tabbox input {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
+  background: transparent;
+}
+
+/* --- page one: the stats band ---------------------------------------------- */
+
+.stats {
+  display: grid;
+  grid-template-columns: minmax(330px, 2.2fr) minmax(220px, 1.4fr) minmax(130px, 0.9fr) minmax(130px, 0.9fr) minmax(110px, 0.8fr);
+  gap: 0;
+  padding: 12px 6px;
+}
+
+.stat-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  min-width: 0;
+}
+
+.stat-block + .stat-block {
+  border-left: 1px solid var(--border);
+}
+
+.chars {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+}
+
+.char {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.char .label {
+  font-size: 11px;
+  letter-spacing: 0.02em;
+}
+
+/* The characteristic frames: a heavy double rule, its corners clipped round. */
+.frame {
+  width: 100%;
+  max-width: 68px;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px double var(--frame);
+  border-radius: 22%;
+}
+
+.frame input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 700;
+  padding: 0;
+}
+
+.movement {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  width: 88%;
+}
+
+.stamina-body {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+}
+
+/* Stamina's shield: square shoulders, a rounded point below. */
+.shield {
+  width: 84px;
+  height: 92px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 5px double var(--frame);
+  border-radius: 10px 10px 50% 50% / 10px 10px 45% 45%;
+}
+
+.shield input {
+  width: 60px;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 700;
+  padding: 0;
+}
+
+.states {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border: 2px solid var(--frame);
+  border-radius: 10px;
+  padding: 6px 8px;
+}
+
+.state {
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr);
+  gap: 0 6px;
+  align-items: center;
+  font-family: var(--serif);
+  font-size: 13px;
+}
+
+.state .cap {
+  grid-column: 2;
+  text-align: left;
+}
+
+.gem {
+  color: var(--text-muted);
+}
+
+.gem.on {
+  color: var(--gold);
+}
+
+.condition-now {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--gold);
+  text-align: center;
+}
+
+.under {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  width: 100%;
+}
+
+.under.single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.mini-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 1px solid var(--frame);
+  padding-top: 2px;
+}
+
+.mini-line input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-weight: 700;
+  padding: 2px;
+}
+
+.mini-line .value {
+  font-weight: 700;
+  padding: 2px;
+}
+
+/* The recoveries ring. */
+.ring {
+  width: 76px;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px double var(--frame);
+  border-radius: 50%;
+}
+
+.ring-value {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.recoveries .gc-pips {
+  justify-content: center;
+}
+
+/* The heroic resource and surges frames. */
+.hex,
+.square {
+  width: 76px;
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 5px double var(--frame);
+}
+
+.hex {
+  border-radius: 30%;
+}
+
+.square {
+  border-radius: 6px;
+}
+
+.hex input,
+.square input {
+  width: 56px;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 700;
+  padding: 0;
+}
+
+.resource .mini-line input {
+  font-family: var(--serif);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 12px;
+}
+
+.surge-rules {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+/* --- page one: equipment, conditions, reference ---------------------------- */
+
+/* Equipment and conditions side by side, class features beneath both, and
+   the reference column running down the right of all three - as printed. */
+.row.middle {
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr) minmax(200px, 0.6fr);
+  grid-template-areas:
+    "equipment conditions side"
+    "features features side";
+  /* The reference column is the tallest thing here; let the class features
+     row take its extra height rather than opening a gap above it. */
+  grid-template-rows: auto 1fr;
+  align-items: start;
+}
+
+.row.middle > .equipment {
+  grid-area: equipment;
+}
+
+.row.middle > .conditions {
+  grid-area: conditions;
+}
+
+.row.middle > .features {
+  grid-area: features;
+  align-self: stretch;
+}
+
+.row.middle > .side {
+  grid-area: side;
+}
+
+.features .gc-content-list {
+  min-height: 120px;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.kit-tag {
+  margin-left: auto;
+  font-family: var(--serif);
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.equipment .head .title {
+  margin-left: auto;
+}
+
+.kit-boxes {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.kit-boxes .cap {
+  font-size: 11px;
+  white-space: normal;
+  line-height: 1.15;
+}
+
+.pill-field input,
+.pill-field select,
+.pill-field textarea {
+  border: none;
+  background: transparent;
+}
+
+.tiers {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tier-heads {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.tier-heads span {
+  border: 1px solid var(--frame);
+  border-radius: 4px;
+  font-size: 11px;
+  text-align: center;
+  padding: 1px 0;
+}
+
+.tiers input {
+  text-align: center;
+  letter-spacing: 0.08em;
+}
+
+.cond-table {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  justify-items: center;
+  row-gap: 0;
+}
+
+.cond-table > * {
+  min-height: 26px;
+  display: flex;
+  align-items: center;
+}
+
+.cond-head {
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 12px;
+  padding-bottom: 6px;
+}
+
+.cond-table .cond-head:first-child,
+.cond-table .cond {
+  justify-self: stretch;
+  padding-left: 6px;
+}
+
+.cond {
+  font-family: var(--serif);
+  font-size: 13px;
+  border-top: 1px solid var(--border);
+}
+
+.cond input {
+  border: none;
+  background: transparent;
+  padding: 2px 0;
+}
+
+.cond-table .gc-option {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+.footnote {
+  margin: 4px 0 0;
+  font-family: var(--serif);
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.save-target {
+  display: inline-block;
+  vertical-align: middle;
+  width: 40px;
+}
+
+.save-target input {
+  text-align: center;
+  padding: 1px;
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.potencies {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.pot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border: 2px solid var(--frame);
+  border-radius: 10px 10px 4px 4px;
+  padding: 4px 2px 6px;
+}
+
+.pot .label {
+  font-size: 11px;
+}
+
+.pot b {
+  font-family: var(--serif);
+  font-size: 20px;
+  color: var(--gold);
+}
+
+.reference .title {
+  text-align: left;
+}
+
+.reference .title.turn {
+  margin-top: 6px;
+  padding-top: 10px;
+  border-top: 2px solid var(--frame);
+  text-align: center;
+}
+
+.ref-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-family: var(--serif);
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--text-dim);
+}
+
+.ref-list b {
+  color: var(--text);
+}
+
+.ref-list.dash {
+  list-style-type: "– ";
+  padding-left: 14px;
+  gap: 1px;
+}
+
+.ref-text {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.ref-head {
+  margin: 6px 0 2px;
+  font-family: var(--serif);
+  font-size: 12px;
+  font-weight: 700;
+  border-bottom: 1px solid var(--frame);
+  padding-bottom: 2px;
+}
+
+/* --- page two: background -------------------------------------------------- */
+
+.culture-pick {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+}
+
+.culture-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 2fr);
+  gap: 12px;
+}
+
+/* A rounded card with its caption set into the top edge. */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border: 2px solid var(--frame);
+  border-radius: 12px;
+  padding: 0 10px 10px;
+  min-height: 80px;
+}
+
+.card.tall {
+  min-height: 260px;
+}
+
+.card-cap {
+  align-self: center;
+  margin: -8px 0 0;
+  padding: 0 6px;
+  background: var(--bg-card);
+  font-family: var(--serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.card input,
+.card textarea {
+  border: none;
+  background: transparent;
+}
+
+.row.background {
+  grid-template-columns: minmax(0, 2.1fr) minmax(260px, 1fr);
+  align-items: start;
+}
+
+.bg-left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.row.two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.career,
+.complication {
+  gap: 14px;
+}
+
+.skill-group {
+  margin: 8px 0 4px;
+  font-family: var(--serif);
+  font-size: 13px;
+  font-weight: 700;
+  border-bottom: 1px solid var(--frame);
+  padding-bottom: 2px;
+}
+
+.options {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 3px 10px;
+  font-family: var(--serif);
+  font-size: 12px;
+}
+
+.opt {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* --- page three: ability cards ---------------------------------------------- */
+/* The abilities list is drawn as the printed sheet's cards: each row a card,
+   its name in the action tab, the cost in a ring at the corner, and target,
+   distance and keywords in boxes below. Opening one shows the power roll and
+   effect across the full width beneath its row of cards. */
+
+.abilities table,
+.abilities tbody {
+  display: block;
+}
+
+.abilities thead {
+  display: none;
+}
+
+.abilities tbody {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 12px;
+}
+
+.abilities tbody > tr {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-rows: auto auto auto auto auto;
+  gap: 4px 6px;
+  border: 2px solid var(--frame) !important;
+  border-radius: 4px 14px 4px 14px;
+  padding: 0 8px 8px;
+  min-height: 170px;
+  align-content: start;
+}
+
+.abilities tbody > tr > td {
+  display: block;
+  padding: 0 !important;
+  min-width: 0;
+}
+
+/* Name: the action tab across the top. */
+.abilities tbody > tr > td:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1;
+  border-bottom: 2px solid var(--frame);
+  margin: 0 -4px 0 -8px;
+  padding: 6px 8px 4px !important;
+}
+
+/* Cost: a ring in the top corner. */
+.abilities tbody > tr > td:nth-child(2) {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+  margin-top: 6px;
+  min-width: 34px;
+  min-height: 30px;
+  padding: 0 8px !important;
+  border: 2px solid var(--frame);
+  border-radius: 999px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--serif);
+  font-size: 11px !important;
+  font-weight: 700;
+  color: var(--text) !important;
+}
+
+/* Action type: the line of the card's category. */
+.abilities tbody > tr > td:nth-child(3) {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  font-family: var(--serif);
+  font-size: 12px !important;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2px !important;
+}
+
+/* Keywords sit at the foot, as on the printed card. */
+.abilities tbody > tr > td:nth-child(4) {
+  grid-column: 1 / -1;
+  grid-row: 5;
+  align-self: end;
+  border-top: 2px solid var(--frame);
+  margin-top: 6px;
+  padding-top: 4px !important;
+  font-size: 11px !important;
+  text-align: right;
+}
+
+/* Distance and target as captioned boxes. */
+.abilities tbody > tr > td:nth-child(5),
+.abilities tbody > tr > td:nth-child(6) {
+  grid-column: 1 / -1;
+  border: 1.5px solid var(--frame);
+  border-radius: 6px;
+  padding: 3px 8px !important;
+  font-size: 12px !important;
+  text-align: center;
+}
+
+.abilities tbody > tr > td:nth-child(5) {
+  grid-row: 4;
+}
+
+.abilities tbody > tr > td:nth-child(6) {
+  grid-row: 3;
+}
+
+/* Remove sits quietly in the corner beneath the cost. */
+.abilities tbody > tr > td:nth-child(7) {
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: end;
+  width: auto !important;
+}
+
+.abilities tbody > tr > td:nth-child(3) {
+  grid-column: 1;
+}
+
+/* An opened card's detail row spans the grid beneath it. */
+.abilities tbody > tr:has(> td[colspan]) {
+  display: block;
+  grid-column: 1 / -1;
+  min-height: 0;
+  border-radius: 6px;
+  padding: 4px 12px 10px;
+}
+
+.abilities tbody > tr:has(> td[colspan]) > td {
+  display: block;
+}
+
+/* --- page four: treasure and projects -------------------------------------- */
+
+.treasures .head {
+  justify-content: center;
+}
+
+.carry {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.treasures .head .title {
+  margin-left: auto;
+}
+
+.carry .label {
+  font-size: 11px;
+}
+
+.carry-boxes {
+  display: inline-flex;
+  gap: 2px;
+  border: 2px solid var(--frame);
+  border-radius: 8px;
+  padding: 2px 6px;
+}
+
+.carry-box {
+  display: inline-block;
+  width: 14px;
+  height: 18px;
+  border: 1.5px solid var(--frame);
+  border-radius: 2px;
+}
+
+.carry-box.full {
+  background: var(--gold);
+}
+
+.row.bottom {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  align-items: start;
+}
+
+/* --- narrower screens ------------------------------------------------------ */
+
+@media (max-width: 1280px) {
+  .stats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    row-gap: 14px;
+  }
+  .characteristics {
+    grid-column: 1 / -1;
+  }
+  .stamina {
+    border-left: none !important;
+  }
+  .row.middle {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+      "equipment conditions"
+      "features features"
+      "side side";
+    grid-template-rows: none;
+  }
+  .side {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  }
+}
+
+@media (max-width: 960px) {
+  .row.middle {
+    grid-template-areas: "equipment" "conditions" "features" "side";
+    grid-template-rows: none;
+  }
+  .row.top,
+  .row.middle,
+  .row.background,
+  .row.bottom,
+  .side {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .stat-block {
+    border-left: none !important;
+  }
+  .culture-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .row.two,
+  .columns,
+  .pair,
+  .chars {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .chars {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .kit-boxes {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .columns .col + .col {
+    border-left: none;
+    padding-left: 0;
+  }
+  .stats {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

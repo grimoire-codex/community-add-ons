@@ -1,0 +1,437 @@
+/* Pathfinder Roleplaying Game (first edition) character sheet.
+   The 2009 sheet's arrangement - abilities, defenses and offense down the
+   left, speed and skills down the right, every derived line written out as
+   the sum it is - in original styling. Paizo's Community Use Policy asks that
+   fan material not look like Paizo's, so there are no black banners, no
+   flourishes and no Paizo typefaces. Every colour is an app token. */
+
+.sheet-pf1 {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--text);
+}
+
+.gc-tabpanel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* --- shared ---------------------------------------------------------------- */
+
+.block {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-card);
+  padding: 8px 12px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.banner {
+  margin: 0 0 4px;
+  padding: 3px 10px;
+  border-left: 3px solid var(--gold);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.sub {
+  margin: 6px 0 0;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.cap {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  line-height: 1.15;
+}
+
+.hint {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.hint b {
+  color: var(--text);
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  align-items: start;
+}
+
+/* A value on an underline with its caption beneath. */
+.line {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.line.grow {
+  flex: 1;
+}
+
+.box {
+  display: block;
+  min-width: 36px;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 3px 2px;
+  font-weight: 600;
+}
+
+.box.total {
+  border-color: var(--text-dim);
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.tag {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+}
+
+.tag small {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.06em;
+}
+
+/* --- identity -------------------------------------------------------------- */
+
+.identity {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 6px 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-card);
+}
+
+.identity .line {
+  grid-column: span 2;
+}
+
+.identity .w2 {
+  grid-column: span 3;
+}
+
+.identity .w3 {
+  grid-column: span 4;
+}
+
+.identity .name input {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+/* --- first page ------------------------------------------------------------ */
+
+.p1 {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.p1-left,
+.p1-right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.abil {
+  display: grid;
+  grid-template-columns: 96px repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  align-items: center;
+}
+
+.abil.head .cap {
+  text-align: center;
+}
+
+.abil input {
+  text-align: center;
+  font-weight: 700;
+}
+
+.hp-top {
+  display: grid;
+  grid-template-columns: auto 90px minmax(0, 1fr);
+  gap: 10px;
+  align-items: end;
+}
+
+.hp .big input {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* A derived line: name, total, then each term it is the sum of. */
+.eq {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 6px 4px;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.eq .tag {
+  width: 96px;
+  flex-shrink: 0;
+  padding-top: 3px;
+}
+
+.eq.small {
+  align-items: center;
+  gap: 10px;
+}
+
+.eq.small .tag {
+  width: auto;
+}
+
+.term {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 2px;
+  flex: 1;
+  min-width: 44px;
+  max-width: 90px;
+  text-align: center;
+}
+
+/* Captions under a term break between words, never inside one. */
+.term .cap {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.term input {
+  text-align: center;
+}
+
+.op {
+  padding-top: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.iter {
+  font-weight: 700;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.weapon {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.w-top,
+.w-bottom {
+  display: flex;
+  gap: 8px;
+}
+
+.w-top .line:not(.grow),
+.w-bottom .line:not(.grow) {
+  width: 92px;
+}
+
+.speed-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 54px minmax(0, 1fr) 54px;
+  gap: 6px 8px;
+  align-items: center;
+}
+
+.speed-grid.five {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.sq {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Class-skill box, name, total, ability, ranks, misc. */
+.skill {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr) 46px 58px 50px 50px;
+  gap: 6px;
+  align-items: center;
+  padding: 2px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+}
+
+.skill.head {
+  border-bottom: 2px solid var(--text-dim);
+}
+
+.skill.head .cap {
+  text-align: center;
+}
+
+.skill.head .cap:nth-child(2) {
+  text-align: left;
+}
+
+.sk-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sk-name.slot {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 6px;
+  align-items: center;
+}
+
+.sk-name.slot input {
+  padding: 1px 4px;
+  font-size: 12px;
+}
+
+.ab {
+  text-align: center;
+  color: var(--text-dim);
+}
+
+.ab small {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.skill input {
+  text-align: center;
+  padding: 1px 2px;
+}
+
+/* --- second page ----------------------------------------------------------- */
+
+.p2 {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(320px, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.totals {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding-top: 6px;
+  border-top: 2px solid var(--text-dim);
+}
+
+.totals .line {
+  width: 90px;
+}
+
+.loads {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px 12px;
+  margin-top: 6px;
+}
+
+.money {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.spell-level {
+  display: grid;
+  grid-template-columns: 54px 54px 30px 54px 44px minmax(0, 1fr);
+  gap: 6px;
+  align-items: center;
+}
+
+.spell-level.head .cap {
+  text-align: center;
+}
+
+.spell-level input {
+  text-align: center;
+}
+
+.lvl {
+  text-align: center;
+  font-weight: 800;
+}
+
+/* --- narrower screens ------------------------------------------------------ */
+
+@media (max-width: 1250px) {
+  .p1,
+  .p2 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 760px) {
+  .identity {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .identity .line,
+  .identity .w2,
+  .identity .w3 {
+    grid-column: span 2;
+  }
+  .two,
+  .speed-grid,
+  .speed-grid.five {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .skill {
+    grid-template-columns: 18px minmax(0, 1fr) 42px 44px 44px 44px;
+  }
+}

@@ -1,8 +1,7 @@
 # Dungeon Crawler Carl
 
 An unofficial crawler sheet for the **Dungeon Crawler Carl Roleplaying Game**,
-following the content and order of the printed character sheet, in Grimoire's
-own styling.
+following the content, order and look of the printed character sheet.
 
 ## What it covers
 
@@ -21,16 +20,11 @@ Five pages, in the printed sheet's order:
   personal space, clubs and societies, and your deity
 - **Abilities & Sponsors** - racial and class abilities and three sponsors
 
-## Structure only
+## Rules not included
 
-Renegade Game Studios and Matt Dinniman publish no fan content policy or open
-licence for the game. Following this repository's rule for that case, the sheet
-carries only the **structure** of a character - field names and the simple sums
-the printed sheet itself shows - and no rules text, no stat tables, no artwork,
-no logo, and none of the printed sheet's look. Stat modifiers are fields you
-fill in from your book rather than formulas.
-
-If Renegade publishes a fan policy, check this sheet against it.
+The sheet carries the structure of a crawler and the sums the printed sheet
+itself shows; it includes no rules text, stat tables, artwork or logo. Stat
+modifiers are fields you fill in from your book rather than formulas.
 
 Dungeon Crawler Carl is a trademark of Matt Dinniman LLC; the roleplaying game
 is © Renegade Game Studios. This sheet is not affiliated with, endorsed by, or

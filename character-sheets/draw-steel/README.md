@@ -3,11 +3,6 @@
 A hero sheet for MCDM's **Draw Steel**, with a custom HTML layout after MCDM's
 printed character sheet.
 
-Version 3 follows the printed sheet's layout. It replaces the equipment list with
-the printed sheet's **trinkets**, **leveled treasures** and **consumables**, and
-splits conditions into **end of turn** and **save ends**. Version 2 changed
-**career** and **complication** from free text into picks from the pack.
-
 ## What it covers
 
 Four pages in the printed sheet's order:

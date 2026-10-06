@@ -5,7 +5,7 @@ backgrounds a character picks from. A sheet describes the *shape* of a spell;
 a pack supplies the spells.
 
 A pack is published in `content-packs/index.json` like everything else here, and
-an admin installs one from **Characters → Manage sheets → Rulesets → Browse
+an admin installs one from **Characters → Manage sheets → Content → Browse
 content packs**. Grimoire writes it into the server's
 `DATA_PATH/character-content/`, checking each file against the digest the index
 published. Copying a directory there by hand still works and is loaded on

@@ -27,10 +27,6 @@ backgrounds, feats, all of its spells, its equipment (weapons with damage,
 properties and mastery; armour with its AC, Strength and Stealth) and its
 magic items.
 
-Version 2 replaces the free-text equipment list with one that draws from the
-catalogue, and the three attunement lines with an **Attuned** tick on each
-magic item.
-
 ## Licence
 
 The SRD 5.2 is published under **CC BY 4.0**, which permits redistribution and

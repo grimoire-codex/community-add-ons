@@ -2,7 +2,7 @@
   "$schema": "../../schema/character-sheet.schema.json",
   "id": "call-of-cthulhu-7e",
   "name": "Call of Cthulhu 7th Edition",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "system": "Call of Cthulhu 7th Edition",
   "description": "An investigator sheet for Call of Cthulhu 7th Edition: eight characteristics and percentile skills with their half and fifth values, hit points, magic points, Sanity and Luck, damage bonus, Build and Move, and the occupation and personal-interest points a new investigator spends.",
   "author": "hunter-read",

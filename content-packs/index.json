@@ -1,7 +1,7 @@
 {
   "$schema": "../schema/content-pack-index.schema.json",
   "version": 1,
-  "generated": "2026-10-06T18:31:28+00:00",
+  "generated": "2026-10-06T20:44:56+00:00",
   "packs": [
     {
       "pack_id": "dnd-5e-srd",
@@ -11,7 +11,7 @@
         {
           "name": "_meta.json",
           "path": "content-packs/dnd-5e-srd/_meta.json",
-          "sha256": "27166155525589091afd1a4faa14766486e8cafd212fb3a8d62fcaae61741b1d",
+          "sha256": "908cacd9120bef86d6969045987cd77b31e573eb16139442cf7410003a5ec54c",
           "bytes": 817
         },
         {
@@ -81,7 +81,7 @@
         "spell",
         "trait"
       ],
-      "version": "2.0.0",
+      "version": "1.0.0",
       "description": "The System Reference Document 5.2, and nothing outside it: classes and every class and subclass feature, species and their traits, backgrounds, feats, all 339 spells, equipment and magic items.",
       "license": "CC-BY-4.0",
       "license_url": "https://creativecommons.org/licenses/by/4.0/",

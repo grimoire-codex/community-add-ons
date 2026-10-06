@@ -2,11 +2,6 @@
 
 A character sheet for **Pathfinder Second Edition**, with a custom HTML layout.
 
-Version 2 changes fields a version 1 character may have filled in: **heritage** and
-**background** were free text and are now picks from the pack, and **skills** moved
-from a table you filled in to the sixteen skills with a rank each. Re-enter them
-after updating.
-
 ## What it covers
 
 Four pages: **Character**, **Feats & Features**, **Spells** and **Gear & Notes**.

@@ -2,7 +2,7 @@
   "$schema": "../../schema/character-sheet.schema.json",
   "id": "draw-steel",
   "name": "Draw Steel",
-  "version": "3.0.0",
+  "version": "1.0.0",
   "system": "Draw Steel",
   "description": "A hero sheet for MCDM's Draw Steel: characteristics, stamina and recoveries, the heroic resource, and abilities with their power-roll tiers. Picking an ancestry, culture, career, class or kit fills in what it gives; every value can still be set by hand.",
   "author": "hunter-read",

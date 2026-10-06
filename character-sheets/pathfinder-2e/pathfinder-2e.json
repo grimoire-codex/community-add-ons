@@ -2,7 +2,7 @@
   "$schema": "../../schema/character-sheet.schema.json",
   "id": "pathfinder-2e",
   "name": "Pathfinder 2e",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "system": "Pathfinder Second Edition",
   "description": "A character sheet for Pathfinder 2e: proficiency ranks that add your level once trained, three saves, bulk-based encumbrance, and rank-based spellcasting. Picking an ancestry, background or class fills in what it gives; every value can still be set by hand.",
   "author": "hunter-read",

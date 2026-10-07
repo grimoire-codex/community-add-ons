@@ -4,8 +4,9 @@ Community-maintained add-ons for [Grimoire](https://github.com/hunter-read/grimo
 the self-hosted TTRPG library manager.
 
 This is the single home for everything the community contributes to Grimoire.
-Today that means **scrapers**, **note templates**, **themes**, and **character
-sheets**; the layout leaves room for plugins as those land.
+Today that means **scrapers**, **note templates**, **themes**, **character
+sheets** and the **content packs** they draw from; the layout leaves room for
+plugins as those land.
 
 | Directory | What lives there |
 | --- | --- |
@@ -16,7 +17,7 @@ sheets**; the layout leaves room for plugins as those land.
 | [`content-packs/`](content-packs/) | Content packs — the spells, classes and feats a character sheet draws from, installed server-wide by an admin |
 | [`plugins/`](plugins/) | Reserved for future add-on kinds |
 | [`schema/`](schema/) | JSON Schemas that every add-on, template, theme, sheet, pack, and index are validated against |
-| [`docs/`](docs/) | Authoring reference |
+| [`docs/`](docs/) | Authoring reference - including the full [character sheet reference](docs/character-sheets.md) |
 
 ## Installing an add-on
 
@@ -84,22 +85,41 @@ for the authoring reference.
 
 ### Character sheets
 
-Schema-driven character sheets a user installs for their own account — see
-[`character-sheets/`](character-sheets/) for the authoring reference.
+Schema-driven character sheets a user installs for their own account. See
+[`character-sheets/`](character-sheets/) for how to add one, and the
+[character sheet reference](docs/character-sheets.md) for everything a sheet
+can use.
 
 | Sheet | System | Licence | Layout |
 | --- | --- | --- | --- |
 | [D&D 5e (2024)](character-sheets/dnd-5e-2024/) | Dungeons & Dragons 5e | CC BY 4.0 | Custom |
 | [Draw Steel](character-sheets/draw-steel/) | Draw Steel | Draw Steel Creator License | Custom |
 | [Pathfinder 2e](character-sheets/pathfinder-2e/) | Pathfinder 2e | ORC | Custom |
+| [Pathfinder 1e](character-sheets/pathfinder-1e/) | Pathfinder 1e | OGL 1.0a | Custom |
+| [Call of Cthulhu 7e](character-sheets/call-of-cthulhu-7e/) | Call of Cthulhu 7th Edition | Chaosium Fan Material Policy | Custom |
+| [Traveller](character-sheets/traveller-2e/) | Traveller (Mongoose 2nd Edition) | Traveller Fair Use Policy | Custom |
+| [Cosmere RPG](character-sheets/cosmere-rpg/) | Cosmere RPG | Cosmere RPG Fan Content Policy | Custom |
+| [Dungeon Crawler Carl](character-sheets/dungeon-crawler-carl/) | Dungeon Crawler Carl | - | Custom |
 | [Cairn](character-sheets/cairn/) | Cairn | CC BY-SA 4.0 | Default |
 | [Basic Fantasy](character-sheets/basic-fantasy/) | Basic Fantasy RPG | CC BY-SA 4.0 | Default |
 
 A sheet describes its fields, the values derived from them, and how it is drawn
-— either as simple sections or as a custom HTML layout. Nothing in a sheet
+- either as simple sections or as a custom HTML layout. Nothing in a sheet
 executes: formulas are parsed rather than evaluated, and a custom layout is
 rendered as components rather than inserted as markup. A sheet carrying licensed
 content must credit it, and Grimoire displays that credit verbatim.
+
+### Content packs
+
+The spells, classes, species and feats a sheet's catalog fields pick from.
+Installed server-wide by an admin, then imported into a campaign's ruleset. See
+[`content-packs/`](content-packs/) for how to add one.
+
+| Pack | For sheet | Licence |
+| --- | --- | --- |
+| [D&D 5e SRD 5.2](content-packs/dnd-5e-srd/) | D&D 5e (2024) | CC BY 4.0 |
+| [Draw Steel: Heroes](content-packs/draw-steel-core/) | Draw Steel | Draw Steel Creator License |
+| [Pathfinder Player Core](content-packs/pf2e-player-core/) | Pathfinder 2e | ORC |
 
 Note templates are **not add-ons** — nobody installs them into a server. A GM
 browses this catalogue from inside their campaign wiki and downloads a copy into
@@ -112,19 +132,22 @@ in [`templates/index.json`](templates/index.json).
 1. Read the authoring reference for what you're adding —
    [`docs/format.md`](docs/format.md) for scrapers,
    [`docs/note-templates.md`](docs/note-templates.md) for note templates,
-   [`themes/README.md`](themes/README.md) for themes, and
-   [`character-sheets/README.md`](character-sheets/README.md) for character
-   sheets.
+   [`themes/README.md`](themes/README.md) for themes,
+   [`character-sheets/README.md`](character-sheets/README.md) and the
+   [character sheet reference](docs/character-sheets.md) for character sheets,
+   and [`content-packs/README.md`](content-packs/README.md) for content packs.
 2. Add your add-on under the right directory, in its own folder named after its
    `id` (e.g. `scrapers/my-source/my-source.yml`,
-   `templates/<system>/my-template/my-template.yml`).
+   `templates/<system>/my-template/my-template.yml`,
+   `character-sheets/my-game/my-game.json`, `content-packs/my-game-srd/_meta.json`).
 3. Open a PR. CI validates every add-on against
    [`schema/addon.schema.json`](schema/addon.schema.json) and every note
    template against
    [`schema/note-template.schema.json`](schema/note-template.schema.json), then
    regenerates every index file — so **don't hand-edit `index.json`,
-   `templates/index.json`, `themes/index.json`, or
-   `character-sheets/index.json`**; they're build artifacts.
+   `templates/index.json`, `themes/index.json`, `character-sheets/index.json`
+   or `content-packs/index.json`**; they're build artifacts. Run
+   `python3 scripts/build_index.py` and commit what it writes.
 
 ### What makes a good scraper
 

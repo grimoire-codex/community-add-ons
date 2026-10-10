@@ -2,7 +2,7 @@
   "$schema": "../../schema/character-sheet.schema.json",
   "id": "dnd-5e-2024",
   "name": "D&D 5th Edition (2024)",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "system": "Dungeons & Dragons 5th Edition (2024)",
   "description": "A character sheet for the 2024 revision of D&D 5th Edition, with the SRD 5.2 catalogue of classes and their features, species, backgrounds, feats, spells, equipment and magic items.",
   "author": "hunter-read",
@@ -10,6 +10,17 @@
   "license": "CC-BY-4.0",
   "license_url": "https://creativecommons.org/licenses/by/4.0/",
   "attribution": "This work includes material from the System Reference Document 5.2 (“SRD 5.2”) by Wizards of the Coast LLC, available at https://www.dndbeyond.com/srd. The SRD 5.2 is licensed under the Creative Commons Attribution 4.0 International License, available at https://creativecommons.org/licenses/by/4.0/legalcode.",
+  "import_sources": [
+    {
+      "id": "dicecloud-v1",
+      "name": "DiceCloud v1",
+      "url_patterns": [
+        "https://v1.dicecloud.com/character/*",
+        "http://v1.dicecloud.com/character/*"
+      ],
+      "example_url": "https://v1.dicecloud.com/character/AbCdEfGhIj"
+    }
+  ],
   "content_types": {
     "class": {
       "label": "Class",

@@ -10,6 +10,9 @@ layout that follows the shape of the published sheet.
 - **Armour class, initiative, passive Perception and proficiency bonus**, all
   derived — proficiency scales `2 + floor((level - 1) / 4)`, and passive
   Perception picks up your Perception proficiency automatically
+- **Skill proficiency tiers** — none, half (`floor(proficiency / 2)`), proficient,
+  or expertise — via the skill ladder (useful for Jack of All Trades-style half
+  proficiency on individual skills)
 - **Spellcasting** that only appears for casters: pick the ability and the save
   DC and attack bonus follow
 - **Equipment** picked from the catalogue or typed in, each with a quantity,

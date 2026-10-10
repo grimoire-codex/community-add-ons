@@ -2,7 +2,7 @@
   "$schema": "../../schema/character-sheet.schema.json",
   "id": "dnd-5e-2024",
   "name": "D&D 5th Edition (2024)",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "system": "Dungeons & Dragons 5th Edition (2024)",
   "description": "A character sheet for the 2024 revision of D&D 5th Edition, with the SRD 5.2 catalogue of classes and their features, species, backgrounds, feats, spells, equipment and magic items.",
   "author": "hunter-read",
@@ -817,6 +817,30 @@
       "type": "checkbox",
       "label": "Heroic Inspiration"
     },
+    "skill_half_profs": {
+      "type": "multiselect",
+      "label": "Skill Half Proficiencies",
+      "options": [
+        "Acrobatics",
+        "Animal Handling",
+        "Arcana",
+        "Athletics",
+        "Deception",
+        "History",
+        "Insight",
+        "Intimidation",
+        "Investigation",
+        "Medicine",
+        "Nature",
+        "Perception",
+        "Performance",
+        "Persuasion",
+        "Religion",
+        "Sleight of Hand",
+        "Stealth",
+        "Survival"
+      ]
+    },
     "skill_profs": {
       "type": "multiselect",
       "label": "Skill Proficiencies",
@@ -1263,6 +1287,10 @@
       "formula": "2 + floor((level - 1) / 4)",
       "label": "Proficiency Bonus"
     },
+    "half_proficiency": {
+      "formula": "floor(proficiency / 2)",
+      "label": "Half Proficiency Bonus"
+    },
     "strength_score": {
       "formula": "strength + strength_bonus",
       "label": "Strength Score"
@@ -1336,75 +1364,75 @@
       "label": "CHA Save"
     },
     "skill_acrobatics": {
-      "formula": "signed(dexterity_mod + (contains(skill_expertise, 'Acrobatics') ? 2 * proficiency : (contains(skill_profs, 'Acrobatics') ? proficiency : 0)))",
+      "formula": "signed(dexterity_mod + (contains(skill_expertise, 'Acrobatics') ? 2 * proficiency : (contains(skill_profs, 'Acrobatics') ? proficiency : (contains(skill_half_profs, 'Acrobatics') ? floor(proficiency / 2) : 0))))",
       "label": "Acrobatics"
     },
     "skill_animal_handling": {
-      "formula": "signed(wisdom_mod + (contains(skill_expertise, 'Animal Handling') ? 2 * proficiency : (contains(skill_profs, 'Animal Handling') ? proficiency : 0)))",
+      "formula": "signed(wisdom_mod + (contains(skill_expertise, 'Animal Handling') ? 2 * proficiency : (contains(skill_profs, 'Animal Handling') ? proficiency : (contains(skill_half_profs, 'Animal Handling') ? floor(proficiency / 2) : 0))))",
       "label": "Animal Handling"
     },
     "skill_arcana": {
-      "formula": "signed(intelligence_mod + (contains(skill_expertise, 'Arcana') ? 2 * proficiency : (contains(skill_profs, 'Arcana') ? proficiency : 0)))",
+      "formula": "signed(intelligence_mod + (contains(skill_expertise, 'Arcana') ? 2 * proficiency : (contains(skill_profs, 'Arcana') ? proficiency : (contains(skill_half_profs, 'Arcana') ? floor(proficiency / 2) : 0))))",
       "label": "Arcana"
     },
     "skill_athletics": {
-      "formula": "signed(strength_mod + (contains(skill_expertise, 'Athletics') ? 2 * proficiency : (contains(skill_profs, 'Athletics') ? proficiency : 0)))",
+      "formula": "signed(strength_mod + (contains(skill_expertise, 'Athletics') ? 2 * proficiency : (contains(skill_profs, 'Athletics') ? proficiency : (contains(skill_half_profs, 'Athletics') ? floor(proficiency / 2) : 0))))",
       "label": "Athletics"
     },
     "skill_deception": {
-      "formula": "signed(charisma_mod + (contains(skill_expertise, 'Deception') ? 2 * proficiency : (contains(skill_profs, 'Deception') ? proficiency : 0)))",
+      "formula": "signed(charisma_mod + (contains(skill_expertise, 'Deception') ? 2 * proficiency : (contains(skill_profs, 'Deception') ? proficiency : (contains(skill_half_profs, 'Deception') ? floor(proficiency / 2) : 0))))",
       "label": "Deception"
     },
     "skill_history": {
-      "formula": "signed(intelligence_mod + (contains(skill_expertise, 'History') ? 2 * proficiency : (contains(skill_profs, 'History') ? proficiency : 0)))",
+      "formula": "signed(intelligence_mod + (contains(skill_expertise, 'History') ? 2 * proficiency : (contains(skill_profs, 'History') ? proficiency : (contains(skill_half_profs, 'History') ? floor(proficiency / 2) : 0))))",
       "label": "History"
     },
     "skill_insight": {
-      "formula": "signed(wisdom_mod + (contains(skill_expertise, 'Insight') ? 2 * proficiency : (contains(skill_profs, 'Insight') ? proficiency : 0)))",
+      "formula": "signed(wisdom_mod + (contains(skill_expertise, 'Insight') ? 2 * proficiency : (contains(skill_profs, 'Insight') ? proficiency : (contains(skill_half_profs, 'Insight') ? floor(proficiency / 2) : 0))))",
       "label": "Insight"
     },
     "skill_intimidation": {
-      "formula": "signed(charisma_mod + (contains(skill_expertise, 'Intimidation') ? 2 * proficiency : (contains(skill_profs, 'Intimidation') ? proficiency : 0)))",
+      "formula": "signed(charisma_mod + (contains(skill_expertise, 'Intimidation') ? 2 * proficiency : (contains(skill_profs, 'Intimidation') ? proficiency : (contains(skill_half_profs, 'Intimidation') ? floor(proficiency / 2) : 0))))",
       "label": "Intimidation"
     },
     "skill_investigation": {
-      "formula": "signed(intelligence_mod + (contains(skill_expertise, 'Investigation') ? 2 * proficiency : (contains(skill_profs, 'Investigation') ? proficiency : 0)))",
+      "formula": "signed(intelligence_mod + (contains(skill_expertise, 'Investigation') ? 2 * proficiency : (contains(skill_profs, 'Investigation') ? proficiency : (contains(skill_half_profs, 'Investigation') ? floor(proficiency / 2) : 0))))",
       "label": "Investigation"
     },
     "skill_medicine": {
-      "formula": "signed(wisdom_mod + (contains(skill_expertise, 'Medicine') ? 2 * proficiency : (contains(skill_profs, 'Medicine') ? proficiency : 0)))",
+      "formula": "signed(wisdom_mod + (contains(skill_expertise, 'Medicine') ? 2 * proficiency : (contains(skill_profs, 'Medicine') ? proficiency : (contains(skill_half_profs, 'Medicine') ? floor(proficiency / 2) : 0))))",
       "label": "Medicine"
     },
     "skill_nature": {
-      "formula": "signed(intelligence_mod + (contains(skill_expertise, 'Nature') ? 2 * proficiency : (contains(skill_profs, 'Nature') ? proficiency : 0)))",
+      "formula": "signed(intelligence_mod + (contains(skill_expertise, 'Nature') ? 2 * proficiency : (contains(skill_profs, 'Nature') ? proficiency : (contains(skill_half_profs, 'Nature') ? floor(proficiency / 2) : 0))))",
       "label": "Nature"
     },
     "skill_perception": {
-      "formula": "signed(wisdom_mod + (contains(skill_expertise, 'Perception') ? 2 * proficiency : (contains(skill_profs, 'Perception') ? proficiency : 0)))",
+      "formula": "signed(wisdom_mod + (contains(skill_expertise, 'Perception') ? 2 * proficiency : (contains(skill_profs, 'Perception') ? proficiency : (contains(skill_half_profs, 'Perception') ? floor(proficiency / 2) : 0))))",
       "label": "Perception"
     },
     "skill_performance": {
-      "formula": "signed(charisma_mod + (contains(skill_expertise, 'Performance') ? 2 * proficiency : (contains(skill_profs, 'Performance') ? proficiency : 0)))",
+      "formula": "signed(charisma_mod + (contains(skill_expertise, 'Performance') ? 2 * proficiency : (contains(skill_profs, 'Performance') ? proficiency : (contains(skill_half_profs, 'Performance') ? floor(proficiency / 2) : 0))))",
       "label": "Performance"
     },
     "skill_persuasion": {
-      "formula": "signed(charisma_mod + (contains(skill_expertise, 'Persuasion') ? 2 * proficiency : (contains(skill_profs, 'Persuasion') ? proficiency : 0)))",
+      "formula": "signed(charisma_mod + (contains(skill_expertise, 'Persuasion') ? 2 * proficiency : (contains(skill_profs, 'Persuasion') ? proficiency : (contains(skill_half_profs, 'Persuasion') ? floor(proficiency / 2) : 0))))",
       "label": "Persuasion"
     },
     "skill_religion": {
-      "formula": "signed(intelligence_mod + (contains(skill_expertise, 'Religion') ? 2 * proficiency : (contains(skill_profs, 'Religion') ? proficiency : 0)))",
+      "formula": "signed(intelligence_mod + (contains(skill_expertise, 'Religion') ? 2 * proficiency : (contains(skill_profs, 'Religion') ? proficiency : (contains(skill_half_profs, 'Religion') ? floor(proficiency / 2) : 0))))",
       "label": "Religion"
     },
     "skill_sleight_of_hand": {
-      "formula": "signed(dexterity_mod + (contains(skill_expertise, 'Sleight of Hand') ? 2 * proficiency : (contains(skill_profs, 'Sleight of Hand') ? proficiency : 0)))",
+      "formula": "signed(dexterity_mod + (contains(skill_expertise, 'Sleight of Hand') ? 2 * proficiency : (contains(skill_profs, 'Sleight of Hand') ? proficiency : (contains(skill_half_profs, 'Sleight of Hand') ? floor(proficiency / 2) : 0))))",
       "label": "Sleight of Hand"
     },
     "skill_stealth": {
-      "formula": "signed(dexterity_mod + (contains(skill_expertise, 'Stealth') ? 2 * proficiency : (contains(skill_profs, 'Stealth') ? proficiency : 0)))",
+      "formula": "signed(dexterity_mod + (contains(skill_expertise, 'Stealth') ? 2 * proficiency : (contains(skill_profs, 'Stealth') ? proficiency : (contains(skill_half_profs, 'Stealth') ? floor(proficiency / 2) : 0))))",
       "label": "Stealth"
     },
     "skill_survival": {
-      "formula": "signed(wisdom_mod + (contains(skill_expertise, 'Survival') ? 2 * proficiency : (contains(skill_profs, 'Survival') ? proficiency : 0)))",
+      "formula": "signed(wisdom_mod + (contains(skill_expertise, 'Survival') ? 2 * proficiency : (contains(skill_profs, 'Survival') ? proficiency : (contains(skill_half_profs, 'Survival') ? floor(proficiency / 2) : 0))))",
       "label": "Survival"
     },
     "initiative": {
@@ -1416,7 +1444,7 @@
       "label": "Armour Class"
     },
     "passive_perception": {
-      "formula": "10 + wisdom_mod + (contains(skill_expertise, 'Perception') ? 2 * proficiency : (contains(skill_profs, 'Perception') ? proficiency : 0))",
+      "formula": "10 + wisdom_mod + (contains(skill_expertise, 'Perception') ? 2 * proficiency : (contains(skill_profs, 'Perception') ? proficiency : (contains(skill_half_profs, 'Perception') ? floor(proficiency / 2) : 0)))",
       "label": "Passive Perception"
     },
     "spell_mod": {

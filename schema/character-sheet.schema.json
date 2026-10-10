@@ -58,7 +58,7 @@
     "attribution": {
       "type": "string",
       "maxLength": 2000,
-      "description": "Credit for the upstream game, rendered verbatim in Grimoire wherever this sheet is browsed or used. Some licences require exact wording — reproduce it here character for character."
+      "description": "Credit for the upstream game, rendered verbatim in Grimoire wherever this sheet is browsed or used. Some licences require exact wording \u2014 reproduce it here character for character."
     },
     "fields": {
       "type": "object",
@@ -271,7 +271,7 @@
           },
           "per_entry_fields": {
             "type": "object",
-            "description": "The character's own notes on a referenced entry — prepared, equipped, uses remaining. Ordinary field definitions.",
+            "description": "The character's own notes on a referenced entry \u2014 prepared, equipped, uses remaining. Ordinary field definitions.",
             "additionalProperties": {
               "type": "object"
             }
@@ -383,7 +383,7 @@
     "layout_html": {
       "type": "string",
       "maxLength": 262144,
-      "description": "A custom sheet as an HTML template, written inline. Prefer 'layout_file' for anything longer than a line or two — HTML embedded in JSON has to be escaped, which makes it unreadable and unmaintainable."
+      "description": "A custom sheet as an HTML template, written inline. Prefer 'layout_file' for anything longer than a line or two \u2014 HTML embedded in JSON has to be escaped, which makes it unreadable and unmaintainable."
     },
     "styles": {
       "type": "string",
@@ -425,7 +425,7 @@
     "content_types": {
       "type": "object",
       "maxProperties": 50,
-      "description": "Typed catalogs a character can reference — spells, classes, feats. A content type is a field schema applied to entries rather than to a character.",
+      "description": "Typed catalogs a character can reference \u2014 spells, classes, feats. A content type is a field schema applied to entries rather than to a character.",
       "propertyNames": {
         "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
       },
@@ -447,7 +447,7 @@
           },
           "identity_field": {
             "type": "string",
-            "description": "The entry's name — what a reference shows and what the catalog sorts by. Must be one of the type's own fields."
+            "description": "The entry's name \u2014 what a reference shows and what the catalog sorts by. Must be one of the type's own fields."
           },
           "sort_default": {
             "type": "array",
@@ -469,7 +469,7 @@
           },
           "compact_display": {
             "type": "string",
-            "description": "A one-line template like '{name} — {school} {level}'. Every {token} must name one of the type's fields."
+            "description": "A one-line template like '{name} \u2014 {school} {level}'. Every {token} must name one of the type's fields."
           },
           "fields": {
             "type": "object",
@@ -494,6 +494,47 @@
     "name_field": {
       "type": "string",
       "description": "A text field that holds the character's name. It starts as the name given when the character is created, and editing either one updates the other."
+    },
+    "import_sources": {
+      "type": "array",
+      "maxItems": 20,
+      "description": "External URL importers this sheet supports. Grimoire matches a pasted URL against url_patterns and runs the converter registered for id (e.g. dicecloud-v1).",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name",
+          "url_patterns"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+([-_][a-z0-9]+)*$",
+            "description": "Importer id registered in Grimoire (e.g. dicecloud-v1)."
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Label shown in the Import dialog."
+          },
+          "url_patterns": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 20,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": "Glob or prefix patterns matched against the pasted URL."
+          },
+          "example_url": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Optional example URL shown under the source in the Import dialog."
+          }
+        }
+      }
     }
   }
 }

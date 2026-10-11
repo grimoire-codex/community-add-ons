@@ -19,6 +19,17 @@
         "http://v1.dicecloud.com/character/*"
       ],
       "example_url": "https://v1.dicecloud.com/character/AbCdEfGhIj"
+    },
+    {
+      "id": "dndbeyond",
+      "name": "D&D Beyond",
+      "url_patterns": [
+        "https://www.dndbeyond.com/characters/*",
+        "https://dndbeyond.com/characters/*",
+        "http://www.dndbeyond.com/characters/*",
+        "http://dndbeyond.com/characters/*"
+      ],
+      "example_url": "https://www.dndbeyond.com/characters/93643159"
     }
   ],
   "content_types": {

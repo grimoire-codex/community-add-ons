@@ -355,6 +355,14 @@ The `rule` states what **should** hold; the message shows when it does not.
 sheet mid-edit is routinely invalid, and a table's house rule is as good as the
 book's. Up to 200 validators.
 
+A validator with a `field` waits while that field is hidden, so the player is
+never warned about something the sheet is not showing them. The field counts as
+hidden while its own [`visible_if`](#visible_if) is false, or while every place
+the layout draws it is inside a hidden section, `<g-tab>` or `<g-if>`. A field
+the layout never places still gets its warning, since **All values** reaches
+it. A validator with no `field` is about the whole sheet and always shows, so
+give `field` to any rule that only matters while a field is on screen.
+
 ## Content types
 
 `content_types` declares the shape of the catalog content the sheet picks from.

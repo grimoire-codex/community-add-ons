@@ -87,20 +87,17 @@
     "glory": {
       "type": "number",
       "label": "Glory",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "session_glory": {
       "type": "number",
       "label": "Session Glory",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "honor": {
       "type": "number",
       "label": "Honor",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "honor_mark": {
       "type": "checkbox",
@@ -111,41 +108,40 @@
       "label": "SIZ",
       "min": 0,
       "default": 10,
-      "max": 60
+      "max": 21
     },
     "dex": {
       "type": "number",
       "label": "DEX",
       "min": 0,
       "default": 10,
-      "max": 60
+      "max": 21
     },
     "str": {
       "type": "number",
       "label": "STR",
       "min": 0,
       "default": 10,
-      "max": 60
+      "max": 21
     },
     "con": {
       "type": "number",
       "label": "CON",
       "min": 0,
       "default": 10,
-      "max": 60
+      "max": 21
     },
     "app": {
       "type": "number",
       "label": "APP",
       "min": 0,
       "default": 10,
-      "max": 60
+      "max": 21
     },
     "hp_current": {
       "type": "number",
       "label": "Current Hit Points",
-      "min": 0,
-      "default": 20
+      "min": 0
     },
     "debilitated": {
       "type": "checkbox",
@@ -168,39 +164,41 @@
           "key": "wound",
           "type": "text",
           "label": "Wound",
-          "flex": 4
+          "flex": 2
+        },
+        {
+          "key": "damage",
+          "type": "text",
+          "label": "Damage",
+          "flex": 1
         },
         {
           "key": "notes",
           "type": "text",
           "label": "Notes",
-          "flex": 3
+          "flex": 4
         }
       ]
     },
     "armor_mail": {
       "type": "number",
       "label": "Mail/Plate",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "armor_textile": {
       "type": "number",
       "label": "Textile",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "armor_helm": {
       "type": "number",
       "label": "Helm",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "armor_shield": {
       "type": "number",
       "label": "Shield",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "weapons": {
       "type": "list",
@@ -419,7 +417,6 @@
       "type": "number",
       "label": "Directed Trait",
       "min": 0,
-      "default": 0,
       "max": 20
     },
     "directed_2_name": {
@@ -430,7 +427,6 @@
       "type": "number",
       "label": "Directed Trait",
       "min": 0,
-      "default": 0,
       "max": 20
     },
     "ideal": {
@@ -475,8 +471,7 @@
       "type": "number",
       "label": "Homage",
       "min": 0,
-      "default": 0,
-      "max": 20
+      "max": 40
     },
     "passion_homage_subject": {
       "type": "text",
@@ -486,8 +481,7 @@
       "type": "number",
       "label": "Fealty",
       "min": 0,
-      "default": 0,
-      "max": 20
+      "max": 40
     },
     "passion_fealty_subject": {
       "type": "text",
@@ -497,29 +491,25 @@
       "type": "number",
       "label": "Love (Family)",
       "min": 0,
-      "default": 0,
-      "max": 20
+      "max": 40
     },
     "passion_devotion": {
       "type": "number",
       "label": "Devotion (Deity)",
       "min": 0,
-      "default": 0,
-      "max": 20
+      "max": 40
     },
     "passion_hospitality": {
       "type": "number",
       "label": "Hospitality",
       "min": 0,
-      "default": 0,
-      "max": 20
+      "max": 40
     },
     "passion_station": {
       "type": "number",
       "label": "Station",
       "min": 0,
-      "default": 0,
-      "max": 20
+      "max": 40
     },
     "passion_c1_name": {
       "type": "text",
@@ -533,8 +523,7 @@
       "type": "number",
       "label": "Passion 1",
       "min": 0,
-      "default": 0,
-      "max": 20
+      "max": 40
     },
     "passion_c2_name": {
       "type": "text",
@@ -548,8 +537,7 @@
       "type": "number",
       "label": "Passion 2",
       "min": 0,
-      "default": 0,
-      "max": 20
+      "max": 40
     },
     "passion_c3_name": {
       "type": "text",
@@ -563,8 +551,7 @@
       "type": "number",
       "label": "Passion 3",
       "min": 0,
-      "default": 0,
-      "max": 20
+      "max": 40
     },
     "passion_c4_name": {
       "type": "text",
@@ -578,8 +565,7 @@
       "type": "number",
       "label": "Passion 4",
       "min": 0,
-      "default": 0,
-      "max": 20
+      "max": 40
     },
     "passion_c5_name": {
       "type": "text",
@@ -593,8 +579,7 @@
       "type": "number",
       "label": "Passion 5",
       "min": 0,
-      "default": 0,
-      "max": 20
+      "max": 40
     },
     "passion_c6_name": {
       "type": "text",
@@ -608,8 +593,7 @@
       "type": "number",
       "label": "Passion 6",
       "min": 0,
-      "default": 0,
-      "max": 20
+      "max": 40
     },
     "passion_c7_name": {
       "type": "text",
@@ -623,8 +607,7 @@
       "type": "number",
       "label": "Passion 7",
       "min": 0,
-      "default": 0,
-      "max": 20
+      "max": 40
     },
     "passion_checks": {
       "type": "multiselect",
@@ -649,147 +632,126 @@
       "type": "number",
       "label": "Awareness",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_chirurgery": {
       "type": "number",
       "label": "Chirurgery",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_compose": {
       "type": "number",
       "label": "Compose",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_courtesy": {
       "type": "number",
       "label": "Courtesy",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_dancing": {
       "type": "number",
       "label": "Dancing",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_falconry": {
       "type": "number",
       "label": "Falconry",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_fashion": {
       "type": "number",
       "label": "Fashion",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_first_aid": {
       "type": "number",
       "label": "First Aid",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_flirting": {
       "type": "number",
       "label": "Flirting",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_folklore": {
       "type": "number",
       "label": "Folklore",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_gaming": {
       "type": "number",
       "label": "Gaming",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_hunting": {
       "type": "number",
       "label": "Hunting",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_industry": {
       "type": "number",
       "label": "Industry",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_intrigue": {
       "type": "number",
       "label": "Intrigue",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_literacy": {
       "type": "number",
       "label": "Literacy",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_orate": {
       "type": "number",
       "label": "Orate",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_play": {
       "type": "number",
       "label": "Play Instrument",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_recognize": {
       "type": "number",
       "label": "Recognize",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_religion_skill": {
       "type": "number",
       "label": "Religion",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_singing": {
       "type": "number",
       "label": "Singing",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_stewardship": {
       "type": "number",
       "label": "Stewardship",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_extra_1_name": {
@@ -800,91 +762,78 @@
       "type": "number",
       "label": "Other skill",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_battle": {
       "type": "number",
       "label": "Battle",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_horsemanship": {
       "type": "number",
       "label": "Horsemanship",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_sword": {
       "type": "number",
       "label": "Sword",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_charge": {
       "type": "number",
       "label": "Charge",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_spear": {
       "type": "number",
       "label": "Spear",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_hafted": {
       "type": "number",
       "label": "Hafted",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_hafted_2h": {
       "type": "number",
       "label": "2H Hafted",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_brawling": {
       "type": "number",
       "label": "Brawling",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_bow": {
       "type": "number",
       "label": "Bow",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_crossbow": {
       "type": "number",
       "label": "Crossbow",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_thrown": {
       "type": "number",
       "label": "Thrown Weapon",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "sk_siegecraft": {
       "type": "number",
       "label": "Siegecraft",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "skill_checks": {
@@ -938,44 +887,37 @@
     "warhorse_siz": {
       "type": "number",
       "label": "Warhorse SIZ",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "warhorse_dex": {
       "type": "number",
       "label": "Warhorse DEX",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "warhorse_str": {
       "type": "number",
       "label": "Warhorse STR",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "warhorse_con": {
       "type": "number",
       "label": "Warhorse CON",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "warhorse_armor": {
       "type": "number",
       "label": "Warhorse Armor",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "warhorse_move": {
       "type": "number",
       "label": "Warhorse Move",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "warhorse_hp": {
       "type": "number",
       "label": "Warhorse HP",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "warhorse_damage": {
       "type": "text",
@@ -992,32 +934,32 @@
     "best_horse_move": {
       "type": "number",
       "label": "Best Riding Horse Move",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "best_horse_con": {
       "type": "number",
       "label": "Best Riding Horse CON",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "best_horse_hp": {
       "type": "number",
       "label": "Best Riding Horse HP",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "squire1_horse_move": {
       "type": "number",
       "label": "Squire's Horse Move",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "squire2_horse_move": {
       "type": "number",
       "label": "Squire's Horse Move",
-      "min": 0,
-      "default": 0
+      "min": 0
+    },
+    "squire3_horse_move": {
+      "type": "number",
+      "label": "Squire's Horse Move",
+      "min": 0
     },
     "other_horse1_type": {
       "type": "text",
@@ -1030,8 +972,7 @@
     "other_horse1_move": {
       "type": "number",
       "label": "Other Horse 1 Move",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "other_horse2_type": {
       "type": "text",
@@ -1044,20 +985,17 @@
     "other_horse2_move": {
       "type": "number",
       "label": "Other Horse 2 Move",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "joust_wins": {
       "type": "number",
       "label": "Jousting Wins",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "joust_losses": {
       "type": "number",
       "label": "Jousting Losses",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "equestrian_notes": {
       "type": "textarea",
@@ -1151,14 +1089,12 @@
     "squire1_age": {
       "type": "number",
       "label": "Squire Age",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "squire1_skill": {
       "type": "number",
       "label": "Squire Skill",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "squire1_notes": {
@@ -1173,14 +1109,12 @@
     "squire2_age": {
       "type": "number",
       "label": "Squire Age",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "squire2_skill": {
       "type": "number",
       "label": "Squire Skill",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "squire2_notes": {
@@ -1195,14 +1129,12 @@
     "squire3_age": {
       "type": "number",
       "label": "Squire Age",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "squire3_skill": {
       "type": "number",
       "label": "Squire Skill",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "squire3_notes": {
@@ -1213,32 +1145,27 @@
     "passive_traits": {
       "type": "number",
       "label": "Traits & Passions",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "passive_appeal": {
       "type": "number",
       "label": "Fair Appeal",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "passive_living": {
       "type": "number",
       "label": "Standard of Living",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "passive_titles": {
       "type": "number",
       "label": "Titles",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "passive_other": {
       "type": "number",
       "label": "Other",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "passive_other_note": {
       "type": "text",
@@ -1311,8 +1238,7 @@
     "parent1_glory": {
       "type": "number",
       "label": "Parent's Glory",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "parent2_name": {
       "type": "text",
@@ -1321,8 +1247,7 @@
     "parent2_glory": {
       "type": "number",
       "label": "Parent's Glory",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "family_characteristic": {
       "type": "text",
@@ -2700,26 +2625,22 @@
     "best_horse_siz": {
       "type": "number",
       "label": "Best Riding Horse SIZ",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "best_horse_dex": {
       "type": "number",
       "label": "Best Riding Horse DEX",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "best_horse_str": {
       "type": "number",
       "label": "Best Riding Horse STR",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "best_horse_armor": {
       "type": "number",
       "label": "Best Riding Horse Armor",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "best_horse_damage": {
       "type": "text",
@@ -2732,32 +2653,27 @@
     "squire1_horse_siz": {
       "type": "number",
       "label": "Squire's Horse SIZ",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "squire1_horse_dex": {
       "type": "number",
       "label": "Squire's Horse DEX",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "squire1_horse_str": {
       "type": "number",
       "label": "Squire's Horse STR",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "squire1_horse_con": {
       "type": "number",
       "label": "Squire's Horse CON",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "squire1_horse_armor": {
       "type": "number",
       "label": "Squire's Horse Armor",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "squire1_horse_damage": {
       "type": "text",
@@ -2766,8 +2682,7 @@
     "squire1_horse_hp": {
       "type": "number",
       "label": "Squire's Horse HP",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "squire2_horse_name": {
       "type": "text",
@@ -2776,32 +2691,27 @@
     "squire2_horse_siz": {
       "type": "number",
       "label": "Squire's Horse SIZ",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "squire2_horse_dex": {
       "type": "number",
       "label": "Squire's Horse DEX",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "squire2_horse_str": {
       "type": "number",
       "label": "Squire's Horse STR",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "squire2_horse_con": {
       "type": "number",
       "label": "Squire's Horse CON",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "squire2_horse_armor": {
       "type": "number",
       "label": "Squire's Horse Armor",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "squire2_horse_damage": {
       "type": "text",
@@ -2810,8 +2720,7 @@
     "squire2_horse_hp": {
       "type": "number",
       "label": "Squire's Horse HP",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "squire3_horse_name": {
       "type": "text",
@@ -2820,32 +2729,27 @@
     "squire3_horse_siz": {
       "type": "number",
       "label": "Squire's Horse SIZ",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "squire3_horse_dex": {
       "type": "number",
       "label": "Squire's Horse DEX",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "squire3_horse_str": {
       "type": "number",
       "label": "Squire's Horse STR",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "squire3_horse_con": {
       "type": "number",
       "label": "Squire's Horse CON",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "squire3_horse_armor": {
       "type": "number",
       "label": "Squire's Horse Armor",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "squire3_horse_damage": {
       "type": "text",
@@ -2854,44 +2758,37 @@
     "squire3_horse_hp": {
       "type": "number",
       "label": "Squire's Horse HP",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "other_horse_siz": {
       "type": "number",
       "label": "Other Horse SIZ",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "other_horse_dex": {
       "type": "number",
       "label": "Other Horse DEX",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "other_horse_str": {
       "type": "number",
       "label": "Other Horse STR",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "other_horse_con": {
       "type": "number",
       "label": "Other Horse CON",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "other_horse_armor": {
       "type": "number",
       "label": "Other Horse Armor",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "other_horse_move": {
       "type": "number",
       "label": "Other Horse Move",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "other_horse_damage": {
       "type": "text",
@@ -2900,8 +2797,7 @@
     "other_horse_hp": {
       "type": "number",
       "label": "Other Horse HP",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "squire1_horse_type": {
       "type": "text",
@@ -2911,11 +2807,19 @@
       "type": "text",
       "label": "Squire's Horse Type"
     },
+    "squire3_horse_type": {
+      "type": "text",
+      "label": "Squire's Horse Type"
+    },
     "squire1_horse_worth": {
       "type": "text",
       "label": "Squire's Horse Worth"
     },
     "squire2_horse_worth": {
+      "type": "text",
+      "label": "Squire's Horse Worth"
+    },
+    "squire3_horse_worth": {
       "type": "text",
       "label": "Squire's Horse Worth"
     },
@@ -2986,50 +2890,42 @@
     "manor1_folklore": {
       "type": "number",
       "label": "Manor 1 Folklore",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor1_station": {
       "type": "number",
       "label": "Manor 1 Station",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor1_privy_funds": {
       "type": "number",
       "label": "Manor 1 Privy Funds (\u00a3)",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor1_current_income": {
       "type": "number",
       "label": "Manor 1 Current Income (\u00a3)",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor1_assized_rent": {
       "type": "number",
       "label": "Manor 1 Assized Rent (\u00a3)",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor1_total_treasure": {
       "type": "number",
       "label": "Manor 1 Total Treasure (\u00a3)",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor1_stewardship": {
       "type": "number",
       "label": "Manor 1 Stewardship",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor1_total_dv": {
       "type": "number",
       "label": "Manor 1 Total DV",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor1_fumble": {
       "type": "checkbox",
@@ -3050,50 +2946,42 @@
     "manor2_folklore": {
       "type": "number",
       "label": "Manor 2 Folklore",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor2_station": {
       "type": "number",
       "label": "Manor 2 Station",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor2_privy_funds": {
       "type": "number",
       "label": "Manor 2 Privy Funds (\u00a3)",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor2_current_income": {
       "type": "number",
       "label": "Manor 2 Current Income (\u00a3)",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor2_assized_rent": {
       "type": "number",
       "label": "Manor 2 Assized Rent (\u00a3)",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor2_total_treasure": {
       "type": "number",
       "label": "Manor 2 Total Treasure (\u00a3)",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor2_stewardship": {
       "type": "number",
       "label": "Manor 2 Stewardship",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor2_total_dv": {
       "type": "number",
       "label": "Manor 2 Total DV",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor2_fumble": {
       "type": "checkbox",
@@ -3114,50 +3002,42 @@
     "manor3_folklore": {
       "type": "number",
       "label": "Manor 3 Folklore",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor3_station": {
       "type": "number",
       "label": "Manor 3 Station",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor3_privy_funds": {
       "type": "number",
       "label": "Manor 3 Privy Funds (\u00a3)",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor3_current_income": {
       "type": "number",
       "label": "Manor 3 Current Income (\u00a3)",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor3_assized_rent": {
       "type": "number",
       "label": "Manor 3 Assized Rent (\u00a3)",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor3_total_treasure": {
       "type": "number",
       "label": "Manor 3 Total Treasure (\u00a3)",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor3_stewardship": {
       "type": "number",
       "label": "Manor 3 Stewardship",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor3_total_dv": {
       "type": "number",
       "label": "Manor 3 Total DV",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor3_fumble": {
       "type": "checkbox",
@@ -3178,50 +3058,42 @@
     "manor4_folklore": {
       "type": "number",
       "label": "Manor 4 Folklore",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor4_station": {
       "type": "number",
       "label": "Manor 4 Station",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor4_privy_funds": {
       "type": "number",
       "label": "Manor 4 Privy Funds (\u00a3)",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor4_current_income": {
       "type": "number",
       "label": "Manor 4 Current Income (\u00a3)",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor4_assized_rent": {
       "type": "number",
       "label": "Manor 4 Assized Rent (\u00a3)",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor4_total_treasure": {
       "type": "number",
       "label": "Manor 4 Total Treasure (\u00a3)",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor4_stewardship": {
       "type": "number",
       "label": "Manor 4 Stewardship",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor4_total_dv": {
       "type": "number",
       "label": "Manor 4 Total DV",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor4_fumble": {
       "type": "checkbox",
@@ -3242,50 +3114,42 @@
     "manor5_folklore": {
       "type": "number",
       "label": "Manor 5 Folklore",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor5_station": {
       "type": "number",
       "label": "Manor 5 Station",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor5_privy_funds": {
       "type": "number",
       "label": "Manor 5 Privy Funds (\u00a3)",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor5_current_income": {
       "type": "number",
       "label": "Manor 5 Current Income (\u00a3)",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor5_assized_rent": {
       "type": "number",
       "label": "Manor 5 Assized Rent (\u00a3)",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor5_total_treasure": {
       "type": "number",
       "label": "Manor 5 Total Treasure (\u00a3)",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor5_stewardship": {
       "type": "number",
       "label": "Manor 5 Stewardship",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor5_total_dv": {
       "type": "number",
       "label": "Manor 5 Total DV",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "manor5_fumble": {
       "type": "checkbox",
@@ -3303,7 +3167,6 @@
       "type": "number",
       "label": "Siegecraft",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "barony_constable": {
@@ -3314,7 +3177,6 @@
       "type": "number",
       "label": "Horsemanship",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "barony_dapifer": {
@@ -3325,7 +3187,6 @@
       "type": "number",
       "label": "Folklore",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "barony_marshall": {
@@ -3336,7 +3197,6 @@
       "type": "number",
       "label": "Battle",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "barony_pincerna": {
@@ -3347,7 +3207,6 @@
       "type": "number",
       "label": "Courtesy",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "barony_seneschal": {
@@ -3358,7 +3217,6 @@
       "type": "number",
       "label": "Stewardship",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "barony_steward": {
@@ -3369,7 +3227,6 @@
       "type": "number",
       "label": "Stewardship",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "barony_chaplain": {
@@ -3380,7 +3237,6 @@
       "type": "number",
       "label": "Religion",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "barony_clerk": {
@@ -3391,7 +3247,6 @@
       "type": "number",
       "label": "Clerk",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "barony_engineer": {
@@ -3402,7 +3257,6 @@
       "type": "number",
       "label": "Siegecraft",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "barony_lawyer": {
@@ -3413,7 +3267,6 @@
       "type": "number",
       "label": "Law",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "barony_physician": {
@@ -3424,14 +3277,12 @@
       "type": "number",
       "label": "First Aid",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "barony_chirurgery": {
       "type": "number",
       "label": "Chirurgery",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "barony_standard_of_living": {
@@ -3441,38 +3292,32 @@
     "barony_station": {
       "type": "number",
       "label": "Barony Station",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "barony_privy_funds": {
       "type": "number",
       "label": "Barony Privy Funds (\u00a3)",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "barony_current_income": {
       "type": "number",
       "label": "Barony Current Income (\u00a3)",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "barony_assized_rent": {
       "type": "number",
       "label": "Barony Assized Rent (\u00a3)",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "barony_total_treasure": {
       "type": "number",
       "label": "Barony Total Treasure (\u00a3)",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "barony_total_dv": {
       "type": "number",
       "label": "Barony Total DV",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "barony_fumble": {
       "type": "checkbox",
@@ -3485,38 +3330,32 @@
     "barony_army_mounted_sergeants": {
       "type": "number",
       "label": "Mounted Sergeants",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "barony_army_household_knights": {
       "type": "number",
       "label": "Household Knights",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "barony_army_vassal_knights": {
       "type": "number",
       "label": "Vassal Knights",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "barony_army_garrison_soldiers": {
       "type": "number",
       "label": "Garrison Soldiers",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "barony_army_spearmen": {
       "type": "number",
       "label": "Spearmen",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "barony_army_archers": {
       "type": "number",
       "label": "Archers",
-      "min": 0,
-      "default": 0
+      "min": 0
     },
     "family_records": {
       "type": "list",
@@ -3658,132 +3497,184 @@
     "spouse_trait_chaste": {
       "type": "number",
       "label": "Chaste",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_trait_lustful": {
       "type": "number",
       "label": "Lustful",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_trait_energetic": {
       "type": "number",
       "label": "Energetic",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_trait_lazy": {
       "type": "number",
       "label": "Lazy",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_trait_forgiving": {
       "type": "number",
       "label": "Forgiving",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_trait_vengeful": {
       "type": "number",
       "label": "Vengeful",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_trait_generous": {
       "type": "number",
       "label": "Generous",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_trait_selfish": {
       "type": "number",
       "label": "Selfish",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_trait_honest": {
       "type": "number",
       "label": "Honest",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_trait_deceitful": {
       "type": "number",
       "label": "Deceitful",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_trait_just": {
       "type": "number",
       "label": "Just",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_trait_arbitrary": {
       "type": "number",
       "label": "Arbitrary",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_trait_merciful": {
       "type": "number",
       "label": "Merciful",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_trait_cruel": {
       "type": "number",
       "label": "Cruel",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_trait_modest": {
       "type": "number",
       "label": "Modest",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_trait_proud": {
       "type": "number",
       "label": "Proud",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_trait_prudent": {
       "type": "number",
       "label": "Prudent",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_trait_reckless": {
       "type": "number",
       "label": "Reckless",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_trait_spiritual": {
       "type": "number",
       "label": "Spiritual",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_trait_worldly": {
       "type": "number",
       "label": "Worldly",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_trait_temperate": {
       "type": "number",
       "label": "Temperate",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_trait_indulgent": {
       "type": "number",
       "label": "Indulgent",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_trait_trusting": {
       "type": "number",
       "label": "Trusting",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_trait_suspicious": {
       "type": "number",
       "label": "Suspicious",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_trait_valorous": {
       "type": "number",
       "label": "Valorous",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_trait_cowardly": {
       "type": "number",
       "label": "Cowardly",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "spouse_directed_1_name": {
       "type": "text",
@@ -3792,7 +3683,8 @@
     "spouse_directed_1": {
       "type": "number",
       "label": "Directed Trait 1",
-      "min": 0
+      "min": 0,
+      "max": 20
     },
     "spouse_directed_2_name": {
       "type": "text",
@@ -3801,12 +3693,14 @@
     "spouse_directed_2": {
       "type": "number",
       "label": "Directed Trait 2",
-      "min": 0
+      "min": 0,
+      "max": 20
     },
     "spouse_passion_1": {
       "type": "number",
       "label": "Passion 1",
-      "min": 0
+      "min": 0,
+      "max": 40
     },
     "spouse_passion_1_name": {
       "type": "text",
@@ -3819,7 +3713,8 @@
     "spouse_passion_2": {
       "type": "number",
       "label": "Passion 2",
-      "min": 0
+      "min": 0,
+      "max": 40
     },
     "spouse_passion_2_name": {
       "type": "text",
@@ -3832,7 +3727,8 @@
     "spouse_passion_3": {
       "type": "number",
       "label": "Passion 3",
-      "min": 0
+      "min": 0,
+      "max": 40
     },
     "spouse_passion_3_name": {
       "type": "text",
@@ -3846,175 +3742,150 @@
       "type": "number",
       "label": "Awareness",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "spouse_sk_chirurgery": {
       "type": "number",
       "label": "Chirurgery",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "spouse_sk_compose": {
       "type": "number",
       "label": "Compose",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "spouse_sk_courtesy": {
       "type": "number",
       "label": "Courtesy",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "spouse_sk_dancing": {
       "type": "number",
       "label": "Dancing",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "spouse_sk_falconry": {
       "type": "number",
       "label": "Falconry",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "spouse_sk_fashion": {
       "type": "number",
       "label": "Fashion",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "spouse_sk_first_aid": {
       "type": "number",
       "label": "First Aid",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "spouse_sk_flirting": {
       "type": "number",
       "label": "Flirting",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "spouse_sk_folklore": {
       "type": "number",
       "label": "Folklore",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "spouse_sk_gaming": {
       "type": "number",
       "label": "Gaming",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "spouse_sk_hunting": {
       "type": "number",
       "label": "Hunting",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "spouse_sk_industry": {
       "type": "number",
       "label": "Industry",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "spouse_sk_intrigue": {
       "type": "number",
       "label": "Intrigue",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "spouse_sk_literacy": {
       "type": "number",
       "label": "Literacy",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "spouse_sk_orate": {
       "type": "number",
       "label": "Orate",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "spouse_sk_play": {
       "type": "number",
       "label": "Play Instrument",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "spouse_sk_recognize": {
       "type": "number",
       "label": "Recognize",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "spouse_sk_religion_skill": {
       "type": "number",
       "label": "Religion",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "spouse_sk_singing": {
       "type": "number",
       "label": "Singing",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "spouse_sk_stewardship": {
       "type": "number",
       "label": "Stewardship",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "spouse_sk_extra_1": {
       "type": "number",
       "label": "Other skill",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "spouse_sk_brawling": {
       "type": "number",
       "label": "Brawling",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "spouse_sk_horsemanship": {
       "type": "number",
       "label": "Horsemanship",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "spouse_sk_siegecraft": {
       "type": "number",
       "label": "Siegecraft",
       "min": 0,
-      "default": 0,
       "max": 40
     },
     "spouse_trait_checks": {
@@ -4073,7 +3944,8 @@
     "spouse_passion_4": {
       "type": "number",
       "label": "Passion 4",
-      "min": 0
+      "min": 0,
+      "max": 40
     },
     "spouse_passion_4_name": {
       "type": "text",
@@ -4086,7 +3958,8 @@
     "spouse_passion_5": {
       "type": "number",
       "label": "Passion 5",
-      "min": 0
+      "min": 0,
+      "max": 40
     },
     "spouse_passion_5_name": {
       "type": "text",
@@ -4099,7 +3972,8 @@
     "spouse_passion_6": {
       "type": "number",
       "label": "Passion 6",
-      "min": 0
+      "min": 0,
+      "max": 40
     },
     "spouse_passion_6_name": {
       "type": "text",
@@ -4112,7 +3986,8 @@
     "spouse_passion_7": {
       "type": "number",
       "label": "Passion 7",
-      "min": 0
+      "min": 0,
+      "max": 40
     },
     "spouse_passion_7_name": {
       "type": "text",
@@ -4129,7 +4004,8 @@
     "spouse_homage": {
       "type": "number",
       "label": "Homage",
-      "min": 0
+      "min": 0,
+      "max": 40
     },
     "spouse_fealty_subject": {
       "type": "text",
@@ -4138,28 +4014,32 @@
     "spouse_fealty": {
       "type": "number",
       "label": "Fealty",
-      "min": 0
+      "min": 0,
+      "max": 40
     },
     "spouse_love_family": {
       "type": "number",
       "label": "Love (Family)",
       "min": 0,
-      "max": 20
+      "max": 40
     },
     "spouse_devotion": {
       "type": "number",
       "label": "Devotion (Deity)",
-      "min": 0
+      "min": 0,
+      "max": 40
     },
     "spouse_hospitality": {
       "type": "number",
       "label": "Hospitality",
-      "min": 0
+      "min": 0,
+      "max": 40
     },
     "spouse_station": {
       "type": "number",
       "label": "Station",
-      "min": 0
+      "min": 0,
+      "max": 40
     },
     "squire1_str": {
       "type": "number",
@@ -4779,132 +4659,184 @@
     "squire1_trait_chaste": {
       "type": "number",
       "label": "Chaste",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_lustful": {
       "type": "number",
       "label": "Lustful",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_energetic": {
       "type": "number",
       "label": "Energetic",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_lazy": {
       "type": "number",
       "label": "Lazy",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_forgiving": {
       "type": "number",
       "label": "Forgiving",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_vengeful": {
       "type": "number",
       "label": "Vengeful",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_generous": {
       "type": "number",
       "label": "Generous",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_selfish": {
       "type": "number",
       "label": "Selfish",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_honest": {
       "type": "number",
       "label": "Honest",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_deceitful": {
       "type": "number",
       "label": "Deceitful",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_just": {
       "type": "number",
       "label": "Just",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_arbitrary": {
       "type": "number",
       "label": "Arbitrary",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_merciful": {
       "type": "number",
       "label": "Merciful",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_cruel": {
       "type": "number",
       "label": "Cruel",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_modest": {
       "type": "number",
       "label": "Modest",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_proud": {
       "type": "number",
       "label": "Proud",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_prudent": {
       "type": "number",
       "label": "Prudent",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_reckless": {
       "type": "number",
       "label": "Reckless",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_spiritual": {
       "type": "number",
       "label": "Spiritual",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_worldly": {
       "type": "number",
       "label": "Worldly",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_temperate": {
       "type": "number",
       "label": "Temperate",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_indulgent": {
       "type": "number",
       "label": "Indulgent",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_trusting": {
       "type": "number",
       "label": "Trusting",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_suspicious": {
       "type": "number",
       "label": "Suspicious",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_valorous": {
       "type": "number",
       "label": "Valorous",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_cowardly": {
       "type": "number",
       "label": "Cowardly",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire1_trait_checks": {
       "type": "multiselect",
@@ -4947,7 +4879,8 @@
     "squire1_directed_1": {
       "type": "number",
       "label": "Directed Trait 1",
-      "min": 0
+      "min": 0,
+      "max": 20
     },
     "squire1_directed_2_name": {
       "type": "text",
@@ -4956,137 +4889,190 @@
     "squire1_directed_2": {
       "type": "number",
       "label": "Directed Trait 2",
-      "min": 0
+      "min": 0,
+      "max": 20
     },
     "squire2_trait_chaste": {
       "type": "number",
       "label": "Chaste",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_lustful": {
       "type": "number",
       "label": "Lustful",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_energetic": {
       "type": "number",
       "label": "Energetic",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_lazy": {
       "type": "number",
       "label": "Lazy",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_forgiving": {
       "type": "number",
       "label": "Forgiving",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_vengeful": {
       "type": "number",
       "label": "Vengeful",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_generous": {
       "type": "number",
       "label": "Generous",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_selfish": {
       "type": "number",
       "label": "Selfish",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_honest": {
       "type": "number",
       "label": "Honest",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_deceitful": {
       "type": "number",
       "label": "Deceitful",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_just": {
       "type": "number",
       "label": "Just",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_arbitrary": {
       "type": "number",
       "label": "Arbitrary",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_merciful": {
       "type": "number",
       "label": "Merciful",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_cruel": {
       "type": "number",
       "label": "Cruel",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_modest": {
       "type": "number",
       "label": "Modest",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_proud": {
       "type": "number",
       "label": "Proud",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_prudent": {
       "type": "number",
       "label": "Prudent",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_reckless": {
       "type": "number",
       "label": "Reckless",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_spiritual": {
       "type": "number",
       "label": "Spiritual",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_worldly": {
       "type": "number",
       "label": "Worldly",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_temperate": {
       "type": "number",
       "label": "Temperate",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_indulgent": {
       "type": "number",
       "label": "Indulgent",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_trusting": {
       "type": "number",
       "label": "Trusting",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_suspicious": {
       "type": "number",
       "label": "Suspicious",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_valorous": {
       "type": "number",
       "label": "Valorous",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_cowardly": {
       "type": "number",
       "label": "Cowardly",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire2_trait_checks": {
       "type": "multiselect",
@@ -5129,7 +5115,8 @@
     "squire2_directed_1": {
       "type": "number",
       "label": "Directed Trait 1",
-      "min": 0
+      "min": 0,
+      "max": 20
     },
     "squire2_directed_2_name": {
       "type": "text",
@@ -5138,137 +5125,190 @@
     "squire2_directed_2": {
       "type": "number",
       "label": "Directed Trait 2",
-      "min": 0
+      "min": 0,
+      "max": 20
     },
     "squire3_trait_chaste": {
       "type": "number",
       "label": "Chaste",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_lustful": {
       "type": "number",
       "label": "Lustful",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_energetic": {
       "type": "number",
       "label": "Energetic",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_lazy": {
       "type": "number",
       "label": "Lazy",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_forgiving": {
       "type": "number",
       "label": "Forgiving",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_vengeful": {
       "type": "number",
       "label": "Vengeful",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_generous": {
       "type": "number",
       "label": "Generous",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_selfish": {
       "type": "number",
       "label": "Selfish",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_honest": {
       "type": "number",
       "label": "Honest",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_deceitful": {
       "type": "number",
       "label": "Deceitful",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_just": {
       "type": "number",
       "label": "Just",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_arbitrary": {
       "type": "number",
       "label": "Arbitrary",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_merciful": {
       "type": "number",
       "label": "Merciful",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_cruel": {
       "type": "number",
       "label": "Cruel",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_modest": {
       "type": "number",
       "label": "Modest",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_proud": {
       "type": "number",
       "label": "Proud",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_prudent": {
       "type": "number",
       "label": "Prudent",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_reckless": {
       "type": "number",
       "label": "Reckless",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_spiritual": {
       "type": "number",
       "label": "Spiritual",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_worldly": {
       "type": "number",
       "label": "Worldly",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_temperate": {
       "type": "number",
       "label": "Temperate",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_indulgent": {
       "type": "number",
       "label": "Indulgent",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_trusting": {
       "type": "number",
       "label": "Trusting",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_suspicious": {
       "type": "number",
       "label": "Suspicious",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_valorous": {
       "type": "number",
       "label": "Valorous",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_cowardly": {
       "type": "number",
       "label": "Cowardly",
-      "min": 0
+      "min": 0,
+      "default": 10,
+      "max": 20
     },
     "squire3_trait_checks": {
       "type": "multiselect",
@@ -5311,7 +5351,8 @@
     "squire3_directed_1": {
       "type": "number",
       "label": "Directed Trait 1",
-      "min": 0
+      "min": 0,
+      "max": 20
     },
     "squire3_directed_2_name": {
       "type": "text",
@@ -5320,7 +5361,8 @@
     "squire3_directed_2": {
       "type": "number",
       "label": "Directed Trait 2",
-      "min": 0
+      "min": 0,
+      "max": 20
     }
   },
   "computed": {
@@ -5477,313 +5519,313 @@
     },
     {
       "rule": "spouse_trait_chaste + spouse_trait_lustful == 20",
-      "message": "Chaste + Lustful should total 20.",
+      "message": "Spouse - Chaste + Lustful should total 20.",
       "field": "spouse_trait_chaste",
       "severity": "error"
     },
     {
       "rule": "spouse_trait_energetic + spouse_trait_lazy == 20",
-      "message": "Energetic + Lazy should total 20.",
+      "message": "Spouse - Energetic + Lazy should total 20.",
       "field": "spouse_trait_energetic",
       "severity": "error"
     },
     {
       "rule": "spouse_trait_forgiving + spouse_trait_vengeful == 20",
-      "message": "Forgiving + Vengeful should total 20.",
+      "message": "Spouse - Forgiving + Vengeful should total 20.",
       "field": "spouse_trait_forgiving",
       "severity": "error"
     },
     {
       "rule": "spouse_trait_generous + spouse_trait_selfish == 20",
-      "message": "Generous + Selfish should total 20.",
+      "message": "Spouse - Generous + Selfish should total 20.",
       "field": "spouse_trait_generous",
       "severity": "error"
     },
     {
       "rule": "spouse_trait_honest + spouse_trait_deceitful == 20",
-      "message": "Honest + Deceitful should total 20.",
+      "message": "Spouse - Honest + Deceitful should total 20.",
       "field": "spouse_trait_honest",
       "severity": "error"
     },
     {
       "rule": "spouse_trait_just + spouse_trait_arbitrary == 20",
-      "message": "Just + Arbitrary should total 20.",
+      "message": "Spouse - Just + Arbitrary should total 20.",
       "field": "spouse_trait_just",
       "severity": "error"
     },
     {
       "rule": "spouse_trait_merciful + spouse_trait_cruel == 20",
-      "message": "Merciful + Cruel should total 20.",
+      "message": "Spouse - Merciful + Cruel should total 20.",
       "field": "spouse_trait_merciful",
       "severity": "error"
     },
     {
       "rule": "spouse_trait_modest + spouse_trait_proud == 20",
-      "message": "Modest + Proud should total 20.",
+      "message": "Spouse - Modest + Proud should total 20.",
       "field": "spouse_trait_modest",
       "severity": "error"
     },
     {
       "rule": "spouse_trait_prudent + spouse_trait_reckless == 20",
-      "message": "Prudent + Reckless should total 20.",
+      "message": "Spouse - Prudent + Reckless should total 20.",
       "field": "spouse_trait_prudent",
       "severity": "error"
     },
     {
       "rule": "spouse_trait_spiritual + spouse_trait_worldly == 20",
-      "message": "Spiritual + Worldly should total 20.",
+      "message": "Spouse - Spiritual + Worldly should total 20.",
       "field": "spouse_trait_spiritual",
       "severity": "error"
     },
     {
       "rule": "spouse_trait_temperate + spouse_trait_indulgent == 20",
-      "message": "Temperate + Indulgent should total 20.",
+      "message": "Spouse - Temperate + Indulgent should total 20.",
       "field": "spouse_trait_temperate",
       "severity": "error"
     },
     {
       "rule": "spouse_trait_trusting + spouse_trait_suspicious == 20",
-      "message": "Trusting + Suspicious should total 20.",
+      "message": "Spouse - Trusting + Suspicious should total 20.",
       "field": "spouse_trait_trusting",
       "severity": "error"
     },
     {
       "rule": "spouse_trait_valorous + spouse_trait_cowardly == 20",
-      "message": "Valorous + Cowardly should total 20.",
+      "message": "Spouse - Valorous + Cowardly should total 20.",
       "field": "spouse_trait_valorous",
       "severity": "error"
     },
     {
       "rule": "squire1_trait_chaste + squire1_trait_lustful == 20",
-      "message": "Chaste + Lustful should total 20.",
+      "message": "Squire 1 - Chaste + Lustful should total 20.",
       "field": "squire1_trait_chaste",
       "severity": "error"
     },
     {
       "rule": "squire1_trait_energetic + squire1_trait_lazy == 20",
-      "message": "Energetic + Lazy should total 20.",
+      "message": "Squire 1 - Energetic + Lazy should total 20.",
       "field": "squire1_trait_energetic",
       "severity": "error"
     },
     {
       "rule": "squire1_trait_forgiving + squire1_trait_vengeful == 20",
-      "message": "Forgiving + Vengeful should total 20.",
+      "message": "Squire 1 - Forgiving + Vengeful should total 20.",
       "field": "squire1_trait_forgiving",
       "severity": "error"
     },
     {
       "rule": "squire1_trait_generous + squire1_trait_selfish == 20",
-      "message": "Generous + Selfish should total 20.",
+      "message": "Squire 1 - Generous + Selfish should total 20.",
       "field": "squire1_trait_generous",
       "severity": "error"
     },
     {
       "rule": "squire1_trait_honest + squire1_trait_deceitful == 20",
-      "message": "Honest + Deceitful should total 20.",
+      "message": "Squire 1 - Honest + Deceitful should total 20.",
       "field": "squire1_trait_honest",
       "severity": "error"
     },
     {
       "rule": "squire1_trait_just + squire1_trait_arbitrary == 20",
-      "message": "Just + Arbitrary should total 20.",
+      "message": "Squire 1 - Just + Arbitrary should total 20.",
       "field": "squire1_trait_just",
       "severity": "error"
     },
     {
       "rule": "squire1_trait_merciful + squire1_trait_cruel == 20",
-      "message": "Merciful + Cruel should total 20.",
+      "message": "Squire 1 - Merciful + Cruel should total 20.",
       "field": "squire1_trait_merciful",
       "severity": "error"
     },
     {
       "rule": "squire1_trait_modest + squire1_trait_proud == 20",
-      "message": "Modest + Proud should total 20.",
+      "message": "Squire 1 - Modest + Proud should total 20.",
       "field": "squire1_trait_modest",
       "severity": "error"
     },
     {
       "rule": "squire1_trait_prudent + squire1_trait_reckless == 20",
-      "message": "Prudent + Reckless should total 20.",
+      "message": "Squire 1 - Prudent + Reckless should total 20.",
       "field": "squire1_trait_prudent",
       "severity": "error"
     },
     {
       "rule": "squire1_trait_spiritual + squire1_trait_worldly == 20",
-      "message": "Spiritual + Worldly should total 20.",
+      "message": "Squire 1 - Spiritual + Worldly should total 20.",
       "field": "squire1_trait_spiritual",
       "severity": "error"
     },
     {
       "rule": "squire1_trait_temperate + squire1_trait_indulgent == 20",
-      "message": "Temperate + Indulgent should total 20.",
+      "message": "Squire 1 - Temperate + Indulgent should total 20.",
       "field": "squire1_trait_temperate",
       "severity": "error"
     },
     {
       "rule": "squire1_trait_trusting + squire1_trait_suspicious == 20",
-      "message": "Trusting + Suspicious should total 20.",
+      "message": "Squire 1 - Trusting + Suspicious should total 20.",
       "field": "squire1_trait_trusting",
       "severity": "error"
     },
     {
       "rule": "squire1_trait_valorous + squire1_trait_cowardly == 20",
-      "message": "Valorous + Cowardly should total 20.",
+      "message": "Squire 1 - Valorous + Cowardly should total 20.",
       "field": "squire1_trait_valorous",
       "severity": "error"
     },
     {
       "rule": "squire2_trait_chaste + squire2_trait_lustful == 20",
-      "message": "Chaste + Lustful should total 20.",
+      "message": "Squire 2 - Chaste + Lustful should total 20.",
       "field": "squire2_trait_chaste",
       "severity": "error"
     },
     {
       "rule": "squire2_trait_energetic + squire2_trait_lazy == 20",
-      "message": "Energetic + Lazy should total 20.",
+      "message": "Squire 2 - Energetic + Lazy should total 20.",
       "field": "squire2_trait_energetic",
       "severity": "error"
     },
     {
       "rule": "squire2_trait_forgiving + squire2_trait_vengeful == 20",
-      "message": "Forgiving + Vengeful should total 20.",
+      "message": "Squire 2 - Forgiving + Vengeful should total 20.",
       "field": "squire2_trait_forgiving",
       "severity": "error"
     },
     {
       "rule": "squire2_trait_generous + squire2_trait_selfish == 20",
-      "message": "Generous + Selfish should total 20.",
+      "message": "Squire 2 - Generous + Selfish should total 20.",
       "field": "squire2_trait_generous",
       "severity": "error"
     },
     {
       "rule": "squire2_trait_honest + squire2_trait_deceitful == 20",
-      "message": "Honest + Deceitful should total 20.",
+      "message": "Squire 2 - Honest + Deceitful should total 20.",
       "field": "squire2_trait_honest",
       "severity": "error"
     },
     {
       "rule": "squire2_trait_just + squire2_trait_arbitrary == 20",
-      "message": "Just + Arbitrary should total 20.",
+      "message": "Squire 2 - Just + Arbitrary should total 20.",
       "field": "squire2_trait_just",
       "severity": "error"
     },
     {
       "rule": "squire2_trait_merciful + squire2_trait_cruel == 20",
-      "message": "Merciful + Cruel should total 20.",
+      "message": "Squire 2 - Merciful + Cruel should total 20.",
       "field": "squire2_trait_merciful",
       "severity": "error"
     },
     {
       "rule": "squire2_trait_modest + squire2_trait_proud == 20",
-      "message": "Modest + Proud should total 20.",
+      "message": "Squire 2 - Modest + Proud should total 20.",
       "field": "squire2_trait_modest",
       "severity": "error"
     },
     {
       "rule": "squire2_trait_prudent + squire2_trait_reckless == 20",
-      "message": "Prudent + Reckless should total 20.",
+      "message": "Squire 2 - Prudent + Reckless should total 20.",
       "field": "squire2_trait_prudent",
       "severity": "error"
     },
     {
       "rule": "squire2_trait_spiritual + squire2_trait_worldly == 20",
-      "message": "Spiritual + Worldly should total 20.",
+      "message": "Squire 2 - Spiritual + Worldly should total 20.",
       "field": "squire2_trait_spiritual",
       "severity": "error"
     },
     {
       "rule": "squire2_trait_temperate + squire2_trait_indulgent == 20",
-      "message": "Temperate + Indulgent should total 20.",
+      "message": "Squire 2 - Temperate + Indulgent should total 20.",
       "field": "squire2_trait_temperate",
       "severity": "error"
     },
     {
       "rule": "squire2_trait_trusting + squire2_trait_suspicious == 20",
-      "message": "Trusting + Suspicious should total 20.",
+      "message": "Squire 2 - Trusting + Suspicious should total 20.",
       "field": "squire2_trait_trusting",
       "severity": "error"
     },
     {
       "rule": "squire2_trait_valorous + squire2_trait_cowardly == 20",
-      "message": "Valorous + Cowardly should total 20.",
+      "message": "Squire 2 - Valorous + Cowardly should total 20.",
       "field": "squire2_trait_valorous",
       "severity": "error"
     },
     {
       "rule": "squire3_trait_chaste + squire3_trait_lustful == 20",
-      "message": "Chaste + Lustful should total 20.",
+      "message": "Squire 3 - Chaste + Lustful should total 20.",
       "field": "squire3_trait_chaste",
       "severity": "error"
     },
     {
       "rule": "squire3_trait_energetic + squire3_trait_lazy == 20",
-      "message": "Energetic + Lazy should total 20.",
+      "message": "Squire 3 - Energetic + Lazy should total 20.",
       "field": "squire3_trait_energetic",
       "severity": "error"
     },
     {
       "rule": "squire3_trait_forgiving + squire3_trait_vengeful == 20",
-      "message": "Forgiving + Vengeful should total 20.",
+      "message": "Squire 3 - Forgiving + Vengeful should total 20.",
       "field": "squire3_trait_forgiving",
       "severity": "error"
     },
     {
       "rule": "squire3_trait_generous + squire3_trait_selfish == 20",
-      "message": "Generous + Selfish should total 20.",
+      "message": "Squire 3 - Generous + Selfish should total 20.",
       "field": "squire3_trait_generous",
       "severity": "error"
     },
     {
       "rule": "squire3_trait_honest + squire3_trait_deceitful == 20",
-      "message": "Honest + Deceitful should total 20.",
+      "message": "Squire 3 - Honest + Deceitful should total 20.",
       "field": "squire3_trait_honest",
       "severity": "error"
     },
     {
       "rule": "squire3_trait_just + squire3_trait_arbitrary == 20",
-      "message": "Just + Arbitrary should total 20.",
+      "message": "Squire 3 - Just + Arbitrary should total 20.",
       "field": "squire3_trait_just",
       "severity": "error"
     },
     {
       "rule": "squire3_trait_merciful + squire3_trait_cruel == 20",
-      "message": "Merciful + Cruel should total 20.",
+      "message": "Squire 3 - Merciful + Cruel should total 20.",
       "field": "squire3_trait_merciful",
       "severity": "error"
     },
     {
       "rule": "squire3_trait_modest + squire3_trait_proud == 20",
-      "message": "Modest + Proud should total 20.",
+      "message": "Squire 3 - Modest + Proud should total 20.",
       "field": "squire3_trait_modest",
       "severity": "error"
     },
     {
       "rule": "squire3_trait_prudent + squire3_trait_reckless == 20",
-      "message": "Prudent + Reckless should total 20.",
+      "message": "Squire 3 - Prudent + Reckless should total 20.",
       "field": "squire3_trait_prudent",
       "severity": "error"
     },
     {
       "rule": "squire3_trait_spiritual + squire3_trait_worldly == 20",
-      "message": "Spiritual + Worldly should total 20.",
+      "message": "Squire 3 - Spiritual + Worldly should total 20.",
       "field": "squire3_trait_spiritual",
       "severity": "error"
     },
     {
       "rule": "squire3_trait_temperate + squire3_trait_indulgent == 20",
-      "message": "Temperate + Indulgent should total 20.",
+      "message": "Squire 3 - Temperate + Indulgent should total 20.",
       "field": "squire3_trait_temperate",
       "severity": "error"
     },
     {
       "rule": "squire3_trait_trusting + squire3_trait_suspicious == 20",
-      "message": "Trusting + Suspicious should total 20.",
+      "message": "Squire 3 - Trusting + Suspicious should total 20.",
       "field": "squire3_trait_trusting",
       "severity": "error"
     },
     {
       "rule": "squire3_trait_valorous + squire3_trait_cowardly == 20",
-      "message": "Valorous + Cowardly should total 20.",
+      "message": "Squire 3 - Valorous + Cowardly should total 20.",
       "field": "squire3_trait_valorous",
       "severity": "error"
     }

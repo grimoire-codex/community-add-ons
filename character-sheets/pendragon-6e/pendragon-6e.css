@@ -8,7 +8,9 @@
    right; horses, squire, passive glory, history, equipment, family, holdings
    and notes below. Trait values sit in shield-shaped boxes, the same
    app-styled shield the Cosmere sheet uses for its defenses.
-   Every colour is an app token, so a theme restyles the sheet. */
+   Every colour is an app token, so a theme restyles the sheet.
+   Tabs: Character, Household & History, Family, Family Record, Family Events,
+   Manor 1-5, Barony. */
 
 .sheet-pendragon {
   display: flex;

@@ -17,6 +17,28 @@
   color: var(--text);
 }
 
+.masthead {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  padding: 10px 14px;
+  background: var(--text);
+  color: var(--bg-card);
+  border-radius: 4px;
+}
+
+.mast-name {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.mast-class {
+  font-size: 16px;
+  opacity: 0.8;
+}
+
 .gc-tabpanel {
   display: flex;
   flex-direction: column;

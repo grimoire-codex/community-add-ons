@@ -147,6 +147,10 @@
       "type": "checkbox",
       "label": "Debilitated?"
     },
+    "unconscious_checkbox": {
+      "type": "checkbox",
+      "label": "Unconscious"
+    },
     "aggravation_damage": {
       "type": "text",
       "label": "Aggravation Damage"
@@ -161,22 +165,29 @@
       "add_label": "Add wound",
       "columns": [
         {
-          "key": "wound",
-          "type": "text",
-          "label": "Wound",
-          "flex": 2
+          "key": "type",
+          "type": "select",
+          "label": "Type",
+          "flex": 2,
+          "options": [
+            "Minor",
+            "Major",
+            "Mortal"
+          ]
         },
         {
           "key": "damage",
-          "type": "text",
+          "type": "number",
           "label": "Damage",
-          "flex": 1
+          "min": 0,
+          "default": 0,
+          "flex": 1.25
         },
         {
           "key": "notes",
           "type": "text",
           "label": "Notes",
-          "flex": 4
+          "flex": 2.75
         }
       ]
     },
@@ -212,9 +223,9 @@
           "flex": 3
         },
         {
-          "key": "value",
+          "key": "skill",
           "type": "number",
-          "label": "Value",
+          "label": "Skill",
           "min": 0,
           "default": 0,
           "flex": 1
@@ -5398,6 +5409,18 @@
       "formula": "floor((con + siz) / 4)",
       "label": "Unconscious"
     },
+    "count_wounds_minor": {
+      "formula": "count_where(wounds, 'type', 'Minor')",
+      "label": "Minor Wound Count"
+    },
+    "count_wounds_major": {
+      "formula": "count_where(wounds, 'type', 'Major')",
+      "label": "Major Wound Count"
+    },
+    "count_wounds_mortal": {
+      "formula": "count_where(wounds, 'type', 'Mortal')",
+      "label": "Mortal Wound Count"
+    },
     "total_armor": {
       "formula": "armor_mail + armor_textile + armor_helm",
       "label": "Total Armor Protection"
@@ -5827,6 +5850,78 @@
       "rule": "squire3_trait_valorous + squire3_trait_cowardly == 20",
       "message": "Squire 3 - Valorous + Cowardly should total 20.",
       "field": "squire3_trait_valorous",
+      "severity": "error"
+    },
+    {
+      "rule": "glory >= 0",
+      "message": "Glory cannot be negative",
+      "field": "glory",
+      "severity": "error"
+    },
+    {
+      "rule": "honor >= 0",
+      "message": "Honor cannot be negative",
+      "field": "honor",
+      "severity": "error"
+    },
+    {
+      "rule": "session_glory >= 0",
+      "message": "Session Glory cannot be negative",
+      "field": "session_glory",
+      "severity": "error"
+    },
+    {
+      "rule": "hp_current >= 0",
+      "message": "Current Hit Points cannot be negative",
+      "field": "hp_current",
+      "severity": "error"
+    },
+    {
+      "rule": "spouse_age >= 0",
+      "message": "Spouse Age cannot be negative",
+      "field": "spouse_age",
+      "severity": "error"
+    },
+    {
+      "rule": "squire1_age >= 0",
+      "message": "Squire 1 Age cannot be negative",
+      "field": "squire1_age",
+      "severity": "error"
+    },
+    {
+      "rule": "squire2_age >= 0",
+      "message": "Squire 2 Age cannot be negative",
+      "field": "squire2_age",
+      "severity": "error"
+    },
+    {
+      "rule": "squire3_age >= 0",
+      "message": "Squire 3 Age cannot be negative",
+      "field": "squire3_age",
+      "severity": "error"
+    },
+    {
+      "rule": "armor_mail >= 0",
+      "message": "Mail/Plate Armor cannot be negative",
+      "field": "armor_mail",
+      "severity": "error"
+    },
+    {
+      "rule": "armor_textile >= 0",
+      "message": "Textile Armor cannot be negative",
+      "field": "armor_textile",
+      "severity": "error"
+    },
+    {
+      "rule": "armor_helm >= 0",
+      "message": "Helm Armor cannot be negative",
+      "field": "armor_helm",
+      "severity": "error"
+    },
+    {
+      "rule": "armor_shield >= 0",
+      "message": "Shield Armor cannot be negative",
+      "field": "armor_shield",
       "severity": "error"
     }
   ],

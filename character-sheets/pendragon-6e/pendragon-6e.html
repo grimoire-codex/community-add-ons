@@ -12,6 +12,10 @@
      the same app-styled shield the Cosmere sheet uses for its defenses. -->
 
 <div class="sheet-pendragon">
+<header class="masthead">
+  <span class="mast-name"><g-value name="character_name" /></span>
+  <span class="mast-class"><g-value name="char_class" /></span>
+</header>
 <g-tabs>
 <g-tab title="Character">
   <section class="box header">
@@ -102,7 +106,8 @@
       </section>
 
       <section class="box">
-        <h3 class="box-heading">Current HP &amp; Wounds</h3>
+        <h3 class="box-heading">Health &amp; Injuries</h3>
+        <h4 class="sub-heading">HP &amp; Damage</h4>
         <div class="hp-grid">
           <span class="c-name">Current HP</span>
           <span class="c-name">Aggravation Damage</span>
@@ -111,7 +116,12 @@
           <g-field name="aggravation_damage" label="" />
           <g-field name="deterioration_damage" label="" />
         </div>
-        <label class="opt"><g-field name="debilitated" label="" />Debilitated?</label>
+        <div class="id-grid pairs">
+          <label class="opt"><g-field name="unconscious_checkbox" label="" />Unconscious?</label>
+          <label class="opt"><g-field name="debilitated" label="" />Debilitated?</label>
+        </div>
+        <h4 class="sub-heading">Wounds</h4>
+        <p class="hint">Minor <b><g-value name="count_wounds_minor" /></b> · Major <b><g-value name="count_wounds_major" /></b> · Mortal <b><g-value name="count_wounds_mortal" /></b></p>
         <g-field name="wounds" label="" />
       </section>
 

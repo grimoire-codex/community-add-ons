@@ -209,7 +209,7 @@
    every text field spans the full width of its area. */
 .header {
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.7fr) minmax(0, 0.8fr) minmax(0, 0.7fr) minmax(0, 0.7fr);
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 1.3fr) minmax(0, 0.5fr);
   gap: 8px 15px;
   align-items: stretch;
 }
@@ -419,6 +419,15 @@
   align-items: center;
 }
 
+.age {
+  display: block;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 3px 2px;
+  /* font-weight: 600; */
+}
+
 .c-name {
   /* font-weight: 600; */
   font-size: 15px;
@@ -526,8 +535,27 @@
 
 .armor-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px 12px;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+  gap: 2px 8px;
+  align-items: center;
+  text-align: center;
+}
+
+.armor-grid > :first-child {
+  align-items: left;
+  text-align: left;
+}
+
+.armor-grid input {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.armor-grid input > :first-child {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
 }
 
 .total-line {

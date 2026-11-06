@@ -19,6 +19,11 @@
       "type": "text",
       "label": "Player Name"
     },
+    "birth_year": {
+      "type": "number",
+      "label": "Birth Year",
+      "min": 0
+    },
     "born": {
       "type": "text",
       "label": "Born"
@@ -102,6 +107,11 @@
     "honor_mark": {
       "type": "checkbox",
       "label": "Honor mark"
+    },
+    "year": {
+      "type": "number",
+      "label": "Year",
+      "min": 0
     },
     "siz": {
       "type": "number",
@@ -190,6 +200,22 @@
           "flex": 2.75
         }
       ]
+    },
+    "armor_mail_type": {
+      "type": "text",
+      "label": "Mail/Plate"
+    },
+    "armor_textile_type": {
+      "type": "text",
+      "label": "Textile"
+    },
+    "armor_helm_type": {
+      "type": "text",
+      "label": "Helm"
+    },
+    "armor_shield_type": {
+      "type": "text",
+      "label": "Shield"
     },
     "armor_mail": {
       "type": "number",
@@ -3389,6 +3415,7 @@
           "key": "born",
           "type": "text",
           "label": "Born",
+          "min": 0,
           "flex": 1.5
         },
         {
@@ -3455,11 +3482,6 @@
       "type": "text",
       "label": "Name"
     },
-    "spouse_age": {
-      "type": "number",
-      "label": "Age",
-      "min": 0
-    },
     "spouse_born": {
       "type": "text",
       "label": "Born"
@@ -3475,6 +3497,15 @@
     "spouse_religion": {
       "type": "text",
       "label": "Religion"
+    },
+    "spouse_lord": {
+      "type": "text",
+      "label": "Lord"
+    },
+    "spouse_birth_year": {
+      "type": "number",
+      "label": "Birth Year",
+      "min": 0
     },
     "spouse_sk_extra_1_name": {
       "type": "text",
@@ -5377,6 +5408,10 @@
     }
   },
   "computed": {
+    "age": {
+      "formula": "year - birth_year",
+      "label": "Age"
+    },
     "knockdown": {
       "formula": "siz",
       "label": "Knockdown"
@@ -5428,6 +5463,10 @@
     "total_armor_and_shield": {
       "formula": "armor_mail + armor_textile + armor_helm + armor_shield",
       "label": "With Shield"
+    },
+    "spouse_age": {
+      "formula": "year - spouse_birth_year",
+      "label": "Age"
     }
   },
   "name_field": "character_name",
@@ -5874,30 +5913,6 @@
       "rule": "hp_current >= 0",
       "message": "Current Hit Points cannot be negative",
       "field": "hp_current",
-      "severity": "error"
-    },
-    {
-      "rule": "spouse_age >= 0",
-      "message": "Spouse Age cannot be negative",
-      "field": "spouse_age",
-      "severity": "error"
-    },
-    {
-      "rule": "squire1_age >= 0",
-      "message": "Squire 1 Age cannot be negative",
-      "field": "squire1_age",
-      "severity": "error"
-    },
-    {
-      "rule": "squire2_age >= 0",
-      "message": "Squire 2 Age cannot be negative",
-      "field": "squire2_age",
-      "severity": "error"
-    },
-    {
-      "rule": "squire3_age >= 0",
-      "message": "Squire 3 Age cannot be negative",
-      "field": "squire3_age",
       "severity": "error"
     },
     {

@@ -21,11 +21,12 @@
 <g-tabs>
 <g-tab title="Character">
   <section class="box header">
-    <div class="gstat"><span>Player Name</span><g-field name="player" label="" /></div>
     <div class="gstat"><span>Character Name</span><g-field name="character_name" label="" /></div>
     <div class="gstat"><span>Session Glory</span><g-field name="session_glory" label="" /></div>
     <div class="gstat"><span>Glory</span><g-field name="glory" label="" /></div>
     <div class="gstat"><span>Honor</span><span class="honor-input"><g-field name="honor" label="" /><g-field name="honor_mark" label="" /></span></div>
+    <div class="gstat"><span>Player Name</span><g-field name="player" label="" /></div>
+    <div class="gstat"><span>Year</span><g-field name="year" label="" /></div>
   </section>
 
   <div class="main-grid">
@@ -64,16 +65,20 @@
       <section class="box">
         <h3 class="box-heading">Personal Information</h3>
         <div class="id-grid pairs">
-          <div class="gstat">Born</span><g-field name="born" label="" /></div>
-          <div class="gstat">Class</span><g-field name="char_class" label="" /></div>
-        </div>
-        <div class="id-grid pairs">
           <div class="gstat">Homeland</span><g-field name="homeland" label="" /></div>
           <div class="gstat">Culture</span><g-field name="culture" label="" /></div>
         </div>
         <div class="id-grid pairs">
           <div class="gstat">Lord</span><g-field name="lord" label="" /></div>
           <div class="gstat">Religion</span><g-field name="religion" label="" /></div>
+        </div>
+        <div class="id-grid pairs">
+          <div class="gstat">Born</span><g-field name="born" label="" /></div>
+          <div class="gstat">Class</span><g-field name="char_class" label="" /></div>
+        </div>
+        <div class="id-grid pairs">
+          <div class="gstat">Birth Year</span><g-field name="birth_year" label="" /></div>
+          <div class="gstat">Age</span><span class="age"><g-value name="age"/></span></div>
         </div>
         <div class="id-grid pairs">
           <label class="opt"><g-field name="heir" label="" />Heir?</label>
@@ -129,12 +134,35 @@
 
       <section class="box">
         <h3 class="box-heading">Armor</h3>
+        <h4 class="sub-heading">Mail/Plate</h4>
         <div class="armor-grid">
-          <div class="gstat">Mail/Plate</span><g-field name="armor_mail" label="" variant="compact" /></div>
-          <div class="gstat">Textile</span><g-field name="armor_textile" label="" variant="compact" /></div>
-          <div class="gstat">Helm</span><g-field name="armor_helm" label="" variant="compact" /></div>
-          <div class="gstat">Shield</span><g-field name="armor_shield" label="" variant="compact" /></div>
+          <span class="c-name">Item</span>
+          <span class="c-name">Protection</span>
+          <g-field name="armor_mail_type" label="" />
+          <g-field name="armor_mail" label="" />
         </div>
+        <h4 class="sub-heading">Textile</h4>
+        <div class="armor-grid">
+          <span class="c-name">Item</span>
+          <span class="c-name">Protection</span>
+          <g-field name="armor_textile_type" label="" />
+          <g-field name="armor_textile" label="" />
+        </div>
+        <h4 class="sub-heading">Helm</h4>
+        <div class="armor-grid">
+          <span class="c-name">Item</span>
+          <span class="c-name">Protection</span>
+          <g-field name="armor_helm_type" label="" />
+          <g-field name="armor_helm" label="" />
+        </div>
+        <h4 class="sub-heading">Shield</h4>
+        <div class="armor-grid">
+          <span class="c-name">Item</span>
+          <span class="c-name">Protection</span>
+          <g-field name="armor_shield_type" label="" />
+          <g-field name="armor_shield" label="" />
+        </div>
+        <h4 class="sub-heading">Total Protection</h4>
         <div class="total-line"><span>Armor Protection (No Shield)</span><span class="cell-value"><g-value name="total_armor" /></span><span>Armor Protection (With Shield)</span><span class="cell-value"><g-value name="total_armor_and_shield" /></span></div>
       </section>
 
@@ -656,17 +684,22 @@
     <div class="col">
       <g-section title="Spouse" name="spouse" visible_if="married">
         <h3 class="sub-heading">Personal Information</h3>
+        <div class="gstat"><span>Name</span><g-field name="spouse_name" label="" /></div>
         <div class="id-grid pairs">
-          <div class="gstat"><span>Name</span><g-field name="spouse_name" label="" /></div>
           <div class="gstat"><span>Homeland</span><g-field name="spouse_homeland" label="" /></div>
+          <div class="gstat"><span>Culture</span><g-field name="spouse_culture" label="" /></div>
         </div>
         <div class="id-grid pairs">
-          <div class="gstat"><span>Culture</span><g-field name="spouse_culture" label="" /></div>
+          <div class="gstat"><span>Lord</span><g-field name="spouse_lord" label="" /></div>
           <div class="gstat"><span>Religion</span><g-field name="spouse_religion" label="" /></div>
         </div>
         <div class="id-grid pairs">
           <div class="gstat"><span>Born</span><g-field name="spouse_born" label="" variant="compact" /></div>
-          <div class="gstat"><span>Age</span><g-field name="spouse_age" label="" variant="compact" /></div>
+          <div class="gstat"><span>Class</span><g-field name="spouse_class" label="" variant="compact" /></div>
+        </div>
+        <div class="id-grid pairs">
+          <div class="gstat">Birth Year</span><g-field name="spouse_birth_year" label="" /></div>
+          <div class="gstat">Age</span><span class="age"><g-value name="spouse_age"/></span></div>
         </div>
         <h3 class="sub-heading">Characteristics</h3>
         <div class="char-grid">

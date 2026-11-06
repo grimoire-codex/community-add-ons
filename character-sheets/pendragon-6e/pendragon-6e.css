@@ -190,7 +190,7 @@
 
 .id-grid {
   display: grid;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
   gap: 8px 15px;
 }
 
@@ -424,7 +424,9 @@
   text-align: center;
   border: 1px solid var(--border);
   border-radius: 6px;
-  padding: 3px 2px;
+  padding: 12px 2px;
+  min-height: 39px;
+  font-size: 15px;
   /* font-weight: 600; */
 }
 

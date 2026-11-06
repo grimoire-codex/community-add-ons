@@ -1123,10 +1123,9 @@
       "type": "text",
       "label": "Squire Name"
     },
-    "squire1_age": {
-      "type": "number",
-      "label": "Squire Age",
-      "min": 0
+    "squire1_birthyear": {
+      "type": "text",
+      "label": "Squire Birth Year"
     },
     "squire1_skill": {
       "type": "number",
@@ -1143,10 +1142,9 @@
       "type": "text",
       "label": "Squire Name"
     },
-    "squire2_age": {
-      "type": "number",
-      "label": "Squire Age",
-      "min": 0
+    "squire2_birthyear": {
+      "type": "text",
+      "label": "Squire Birth Year"
     },
     "squire2_skill": {
       "type": "number",
@@ -1163,10 +1161,9 @@
       "type": "text",
       "label": "Squire Name"
     },
-    "squire3_age": {
-      "type": "number",
-      "label": "Squire Age",
-      "min": 0
+    "squire3_birthyear": {
+      "type": "text",
+      "label": "Squire Birth Year"
     },
     "squire3_skill": {
       "type": "number",
@@ -3494,6 +3491,10 @@
       "type": "text",
       "label": "Culture"
     },
+    "spouse_class": {
+      "type": "text",
+      "label": "Class"
+    },
     "spouse_religion": {
       "type": "text",
       "label": "Religion"
@@ -5466,6 +5467,18 @@
     },
     "spouse_age": {
       "formula": "year - spouse_birth_year",
+      "label": "Age"
+    },
+    "squire1_age": {
+      "formula": "year - squire1_birthyear",
+      "label": "Age"
+    },
+    "squire2_age": {
+      "formula": "year - squire2_birthyear",
+      "label": "Age"
+    },
+    "squire3_age": {
+      "formula": "year - squire3_birthyear",
       "label": "Age"
     }
   },

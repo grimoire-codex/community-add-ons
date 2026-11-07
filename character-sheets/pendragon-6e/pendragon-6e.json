@@ -5406,6 +5406,93 @@
       "label": "Directed Trait 2",
       "min": 0,
       "max": 20
+    },
+    "squire1_class": {
+      "type": "text",
+      "label": "Class"
+    },
+    "squire1_lord": {
+      "type": "text",
+      "label": "Lord"
+    },
+    "squire1_culture": {
+      "type": "text",
+      "label": "Culture"
+    },
+    "squire1_religion": {
+      "type": "text",
+      "label": "Religion"
+    },
+    "squire1_birthplace": {
+      "type": "text",
+      "label": "Birthplace"
+    },
+    "squire1_homeland": {
+      "type": "text",
+      "label": "Homeland"
+    },
+    "squire1_distinctive_features": {
+      "type": "textarea",
+      "label": "Distinctive Features",
+      "rows": 1
+    },
+    "squire2_class": {
+      "type": "text",
+      "label": "Class"
+    },
+    "squire2_lord": {
+      "type": "text",
+      "label": "Lord"
+    },
+    "squire2_culture": {
+      "type": "text",
+      "label": "Culture"
+    },
+    "squire2_religion": {
+      "type": "text",
+      "label": "Religion"
+    },
+    "squire2_birthplace": {
+      "type": "text",
+      "label": "Birthplace"
+    },
+    "squire2_homeland": {
+      "type": "text",
+      "label": "Homeland"
+    },
+    "squire2_distinctive_features": {
+      "type": "textarea",
+      "label": "Distinctive Features",
+      "rows": 1
+    },
+    "squire3_class": {
+      "type": "text",
+      "label": "Class"
+    },
+    "squire3_lord": {
+      "type": "text",
+      "label": "Lord"
+    },
+    "squire3_culture": {
+      "type": "text",
+      "label": "Culture"
+    },
+    "squire3_religion": {
+      "type": "text",
+      "label": "Religion"
+    },
+    "squire3_birthplace": {
+      "type": "text",
+      "label": "Birthplace"
+    },
+    "squire3_homeland": {
+      "type": "text",
+      "label": "Homeland"
+    },
+    "squire3_distinctive_features": {
+      "type": "textarea",
+      "label": "Distinctive Features",
+      "rows": 1
     }
   },
   "computed": {

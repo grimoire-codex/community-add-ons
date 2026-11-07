@@ -24,9 +24,9 @@
       "label": "Birth Year",
       "min": 0
     },
-    "born": {
+    "birthplace": {
       "type": "text",
-      "label": "Born"
+      "label": "Birthplace"
     },
     "heir": {
       "type": "checkbox",
@@ -3409,9 +3409,9 @@
           "flex": 1.5
         },
         {
-          "key": "born",
+          "key": "birthplace",
           "type": "text",
-          "label": "Born",
+          "label": "Birthplace",
           "min": 0,
           "flex": 1.5
         },
@@ -3479,9 +3479,9 @@
       "type": "text",
       "label": "Name"
     },
-    "spouse_born": {
+    "spouse_birthplace": {
       "type": "text",
-      "label": "Born"
+      "label": "Birthplace"
     },
     "spouse_homeland": {
       "type": "text",

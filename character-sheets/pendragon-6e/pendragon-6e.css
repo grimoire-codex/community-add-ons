@@ -234,6 +234,32 @@
   box-sizing: border-box;
 }
 
+/* Squire header */
+.squire-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 1.3fr) minmax(0, 0.5fr);
+  gap: 8px 15px;
+  align-items: stretch;
+}
+
+.squire-header .tiny,
+.squire-header .gstat > span {
+  text-align: center;
+  white-space: nowrap;
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.squire-header .gstat {
+  align-items: stretch;
+}
+
+.squire-header .gstat input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 /* The printed sheet's three columns: heraldry and traits | identity,
    characteristics, wounds, armor, attacks | passions and skills. */
 .main-grid {
@@ -312,7 +338,7 @@
 /* Horses beside squire and passive glory; history beside the rest. */
 .lower-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 10px;
   align-items: start;
 }

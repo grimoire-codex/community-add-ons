@@ -9,8 +9,8 @@
    and notes below. Trait values sit in shield-shaped boxes, the same
    app-styled shield the Cosmere sheet uses for its defenses.
    Every colour is an app token, so a theme restyles the sheet.
-   Tabs: Character, Household & History, Family, Family Record, Family Events,
-   Manor 1-5, Barony. */
+   Tabs: Character, Household & History, Family Record, Family Events,
+   Spouse, Manor 1-5, Barony, Squire 1-3. */
 
 .sheet-pendragon {
   display: flex;

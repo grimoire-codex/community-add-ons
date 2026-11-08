@@ -1291,6 +1291,11 @@
       "type": "text",
       "label": "Parent's Name"
     },
+    "parent1_birthyear": {
+      "type": "number",
+      "label": "Parent's Birth Year",
+      "min": 0
+    },
     "parent1_glory": {
       "type": "number",
       "label": "Parent's Glory",
@@ -1299,6 +1304,11 @@
     "parent2_name": {
       "type": "text",
       "label": "Parent's Name"
+    },
+    "parent2_birthyear": {
+      "type": "number",
+      "label": "Parent's Birth Year",
+      "min": 0
     },
     "parent2_glory": {
       "type": "number",
@@ -1329,6 +1339,13 @@
           "flex": 2
         },
         {
+          "key": "born",
+          "type": "number",
+          "label": "Birth Year",
+          "min": 0,
+          "flex": 1
+        },
+        {
           "key": "age",
           "type": "number",
           "label": "Age",
@@ -1354,6 +1371,13 @@
           "flex": 2
         },
         {
+          "key": "born",
+          "type": "number",
+          "label": "Birth Year",
+          "min": 0,
+          "flex": 1
+        },
+        {
           "key": "age",
           "type": "number",
           "label": "Age",
@@ -1377,6 +1401,13 @@
           "type": "text",
           "label": "Name",
           "flex": 2
+        },
+        {
+          "key": "born",
+          "type": "number",
+          "label": "Birth Year",
+          "min": 0,
+          "flex": 1
         },
         {
           "key": "age",
@@ -6909,6 +6940,14 @@
     "squire3_total_armor_and_shield": {
       "formula": "squire3_armor_mail + squire3_armor_textile + squire3_armor_helm + squire3_armor_shield",
       "label": "With Shield"
+    },
+    "parent1_age": {
+      "formula": "year - parent1_birthyear",
+      "label": "Age"
+    },
+    "parent2_age": {
+      "formula": "year - parent2_birthyear",
+      "label": "Age"
     }
   },
   "name_field": "character_name",

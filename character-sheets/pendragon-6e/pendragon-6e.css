@@ -303,7 +303,7 @@
 /* Family: father on the left, mother on the right. */
 .family-grid {
   display: grid;
-  grid-template-columns: repeat(1, minmax(0, 1fr) minmax(0, 0.5fr));
+  grid-template-columns: repeat(1, minmax(0, 3fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr));
   gap: 10px;
 }
 
@@ -369,16 +369,16 @@
   align-items: start;
 }
 
-.family-3col {
+.family-2col {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 10px;
   align-items: start;
 }
 
 .main-grid .col,
 .lower-grid .col,
-.family-3col .col,
+.family-2col .col,
 .spouse-skills-grid .col {
   display: flex;
   flex-direction: column;
@@ -476,8 +476,8 @@
   text-align: center;
   border: 1px solid var(--border);
   border-radius: 6px;
-  padding: 12px 2px;
-  min-height: 39px;
+  padding: 10px 2px;
+  min-height: 34px;
   font-size: 15px;
   /* font-weight: 600; */
 }

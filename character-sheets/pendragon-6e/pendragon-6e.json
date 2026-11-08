@@ -1002,21 +1002,6 @@
       "label": "Best Riding Horse HP",
       "min": 0
     },
-    "squire1_horse_move": {
-      "type": "number",
-      "label": "Squire's Horse Move",
-      "min": 0
-    },
-    "squire2_horse_move": {
-      "type": "number",
-      "label": "Squire's Horse Move",
-      "min": 0
-    },
-    "squire3_horse_move": {
-      "type": "number",
-      "label": "Squire's Horse Move",
-      "min": 0
-    },
     "other_horse1_type": {
       "type": "text",
       "label": "Other Horse 1 type"
@@ -1063,12 +1048,6 @@
       "label": "Other Horses",
       "add_label": "Add horse",
       "columns": [
-        {
-          "key": "name",
-          "type": "text",
-          "label": "Name",
-          "flex": 2
-        },
         {
           "key": "type",
           "type": "text",
@@ -1263,8 +1242,9 @@
       "min": 0
     },
     "passive_other_note": {
-      "type": "text",
-      "label": "Other Passive Glory note"
+      "type": "textarea",
+      "label": "Other Passive Glory note",
+      "rows": 1
     },
     "history": {
       "type": "list",
@@ -2726,9 +2706,68 @@
       "type": "text",
       "label": "Best Riding Horse Damage"
     },
+    "spouse_horse_name": {
+      "type": "text",
+      "label": "Squire's Horse Name"
+    },
+    "spouse_horse_type": {
+      "type": "text",
+      "label": "Squire's Horse Type"
+    },
+    "spouse_horse_worth": {
+      "type": "text",
+      "label": "Squire's Horse Worth"
+    },
+    "spouse_horse_siz": {
+      "type": "number",
+      "label": "Squire's Horse SIZ",
+      "min": 0
+    },
+    "spouse_horse_dex": {
+      "type": "number",
+      "label": "Squire's Horse DEX",
+      "min": 0
+    },
+    "spouse_horse_str": {
+      "type": "number",
+      "label": "Squire's Horse STR",
+      "min": 0
+    },
+    "spouse_horse_con": {
+      "type": "number",
+      "label": "Squire's Horse CON",
+      "min": 0
+    },
+    "spouse_horse_armor": {
+      "type": "number",
+      "label": "Squire's Horse Armor",
+      "min": 0
+    },
+    "spouse_horse_move": {
+      "type": "number",
+      "label": "Squire's Horse Move",
+      "min": 0
+    },
+    "spouse_horse_damage": {
+      "type": "text",
+      "label": "Squire's Horse Damage"
+    },
+    "spouse_horse_hp": {
+      "type": "number",
+      "label": "Squire's Horse HP",
+      "min": 0
+    },
     "squire1_horse_name": {
       "type": "text",
       "label": "Squire's Horse Name"
+    },
+    "squire1_horse_type": {
+      "type": "text",
+      "label": "Squire's Horse Type"
+    },
+    "squire1_horse_worth": {
+      "type": "text",
+      "label": "Squire's Horse Worth"
     },
     "squire1_horse_siz": {
       "type": "number",
@@ -2755,6 +2794,11 @@
       "label": "Squire's Horse Armor",
       "min": 0
     },
+    "squire1_horse_move": {
+      "type": "number",
+      "label": "Squire's Horse Move",
+      "min": 0
+    },
     "squire1_horse_damage": {
       "type": "text",
       "label": "Squire's Horse Damage"
@@ -2767,6 +2811,14 @@
     "squire2_horse_name": {
       "type": "text",
       "label": "Squire's Horse Name"
+    },
+    "squire2_horse_type": {
+      "type": "text",
+      "label": "Squire's Horse Type"
+    },
+    "squire2_horse_worth": {
+      "type": "text",
+      "label": "Squire's Horse Worth"
     },
     "squire2_horse_siz": {
       "type": "number",
@@ -2793,6 +2845,11 @@
       "label": "Squire's Horse Armor",
       "min": 0
     },
+    "squire2_horse_move": {
+      "type": "number",
+      "label": "Squire's Horse Move",
+      "min": 0
+    },
     "squire2_horse_damage": {
       "type": "text",
       "label": "Squire's Horse Damage"
@@ -2805,6 +2862,14 @@
     "squire3_horse_name": {
       "type": "text",
       "label": "Squire's Horse Name"
+    },
+    "squire3_horse_type": {
+      "type": "text",
+      "label": "Squire's Horse Type"
+    },
+    "squire3_horse_worth": {
+      "type": "text",
+      "label": "Squire's Horse Worth"
     },
     "squire3_horse_siz": {
       "type": "number",
@@ -2829,6 +2894,11 @@
     "squire3_horse_armor": {
       "type": "number",
       "label": "Squire's Horse Armor",
+      "min": 0
+    },
+    "squire3_horse_move": {
+      "type": "number",
+      "label": "Squire's Horse Move",
       "min": 0
     },
     "squire3_horse_damage": {
@@ -2878,30 +2948,6 @@
       "type": "number",
       "label": "Other Horse HP",
       "min": 0
-    },
-    "squire1_horse_type": {
-      "type": "text",
-      "label": "Squire's Horse Type"
-    },
-    "squire2_horse_type": {
-      "type": "text",
-      "label": "Squire's Horse Type"
-    },
-    "squire3_horse_type": {
-      "type": "text",
-      "label": "Squire's Horse Type"
-    },
-    "squire1_horse_worth": {
-      "type": "text",
-      "label": "Squire's Horse Worth"
-    },
-    "squire2_horse_worth": {
-      "type": "text",
-      "label": "Squire's Horse Worth"
-    },
-    "squire3_horse_worth": {
-      "type": "text",
-      "label": "Squire's Horse Worth"
     },
     "warhorse_worth": {
       "type": "text",
@@ -3568,6 +3614,11 @@
       "label": "Birth Year",
       "min": 0
     },
+    "spouse_distinctive_features": {
+      "type": "textarea",
+      "label": "Distinctive Features",
+      "rows": 1
+    },
     "spouse_sk_extra_1_name": {
       "type": "text",
       "label": "Other skill name"
@@ -3934,48 +3985,6 @@
       "min": 0,
       "max": 20
     },
-    "spouse_passion_1": {
-      "type": "number",
-      "label": "Passion 1",
-      "min": 0,
-      "max": 40
-    },
-    "spouse_passion_1_name": {
-      "type": "text",
-      "label": "Passion 1 name"
-    },
-    "spouse_passion_1_object": {
-      "type": "text",
-      "label": "Passion 1 object"
-    },
-    "spouse_passion_2": {
-      "type": "number",
-      "label": "Passion 2",
-      "min": 0,
-      "max": 40
-    },
-    "spouse_passion_2_name": {
-      "type": "text",
-      "label": "Passion 2 name"
-    },
-    "spouse_passion_2_object": {
-      "type": "text",
-      "label": "Passion 2 object"
-    },
-    "spouse_passion_3": {
-      "type": "number",
-      "label": "Passion 3",
-      "min": 0,
-      "max": 40
-    },
-    "spouse_passion_3_name": {
-      "type": "text",
-      "label": "Passion 3 name"
-    },
-    "spouse_passion_3_object": {
-      "type": "text",
-      "label": "Passion 3 object"
-    },
     "spouse_sk_awareness": {
       "type": "number",
       "label": "Awareness",
@@ -4178,6 +4187,48 @@
         "Station",
         "Passion 7"
       ]
+    },
+    "spouse_passion_1": {
+      "type": "number",
+      "label": "Passion 1",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_passion_1_name": {
+      "type": "text",
+      "label": "Passion 1 name"
+    },
+    "spouse_passion_1_object": {
+      "type": "text",
+      "label": "Passion 1 object"
+    },
+    "spouse_passion_2": {
+      "type": "number",
+      "label": "Passion 2",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_passion_2_name": {
+      "type": "text",
+      "label": "Passion 2 name"
+    },
+    "spouse_passion_2_object": {
+      "type": "text",
+      "label": "Passion 2 object"
+    },
+    "spouse_passion_3": {
+      "type": "number",
+      "label": "Passion 3",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_passion_3_name": {
+      "type": "text",
+      "label": "Passion 3 name"
+    },
+    "spouse_passion_3_object": {
+      "type": "text",
+      "label": "Passion 3 object"
     },
     "spouse_passion_4": {
       "type": "number",
@@ -5535,6 +5586,167 @@
       "min": 0,
       "max": 20
     },
+    "squire1_passion_checks": {
+      "type": "multiselect",
+      "label": "Spouse Passion Checks",
+      "options": [
+        "Homage",
+        "Fealty",
+        "Passion 1",
+        "Passion 2",
+        "Love (Family)",
+        "Passion 3",
+        "Passion 4",
+        "Passion 5",
+        "Devotion (Deity)",
+        "Passion 6",
+        "Hospitality",
+        "Station",
+        "Passion 7"
+      ]
+    },
+    "squire1_passion_1": {
+      "type": "number",
+      "label": "Passion 1",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_passion_1_name": {
+      "type": "text",
+      "label": "Passion 1 name"
+    },
+    "squire1_passion_1_object": {
+      "type": "text",
+      "label": "Passion 1 object"
+    },
+    "squire1_passion_2": {
+      "type": "number",
+      "label": "Passion 2",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_passion_2_name": {
+      "type": "text",
+      "label": "Passion 2 name"
+    },
+    "squire1_passion_2_object": {
+      "type": "text",
+      "label": "Passion 2 object"
+    },
+    "squire1_passion_3": {
+      "type": "number",
+      "label": "Passion 3",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_passion_3_name": {
+      "type": "text",
+      "label": "Passion 3 name"
+    },
+    "squire1_passion_3_object": {
+      "type": "text",
+      "label": "Passion 3 object"
+    },
+    "squire1_passion_4": {
+      "type": "number",
+      "label": "Passion 4",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_passion_4_name": {
+      "type": "text",
+      "label": "Passion 4 name"
+    },
+    "squire1_passion_4_object": {
+      "type": "text",
+      "label": "Passion 4 object"
+    },
+    "squire1_passion_5": {
+      "type": "number",
+      "label": "Passion 5",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_passion_5_name": {
+      "type": "text",
+      "label": "Passion 5 name"
+    },
+    "squire1_passion_5_object": {
+      "type": "text",
+      "label": "Passion 5 object"
+    },
+    "squire1_passion_6": {
+      "type": "number",
+      "label": "Passion 6",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_passion_6_name": {
+      "type": "text",
+      "label": "Passion 6 name"
+    },
+    "squire1_passion_6_object": {
+      "type": "text",
+      "label": "Passion 6 object"
+    },
+    "squire1_passion_7": {
+      "type": "number",
+      "label": "Passion 7",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_passion_7_name": {
+      "type": "text",
+      "label": "Passion 7 name"
+    },
+    "squire1_passion_7_object": {
+      "type": "text",
+      "label": "Passion 7 object"
+    },
+    "squire1_homage_subject": {
+      "type": "text",
+      "label": "Homage subject"
+    },
+    "squire1_homage": {
+      "type": "number",
+      "label": "Homage",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_fealty_subject": {
+      "type": "text",
+      "label": "Fealty subject"
+    },
+    "squire1_fealty": {
+      "type": "number",
+      "label": "Fealty",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_love_family": {
+      "type": "number",
+      "label": "Love (Family)",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_devotion": {
+      "type": "number",
+      "label": "Devotion (Deity)",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_hospitality": {
+      "type": "number",
+      "label": "Hospitality",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_station": {
+      "type": "number",
+      "label": "Station",
+      "min": 0,
+      "max": 40
+    },
     "squire2_trait_chaste": {
       "type": "number",
       "label": "Chaste",
@@ -5771,6 +5983,167 @@
       "min": 0,
       "max": 20
     },
+    "squire2_passion_checks": {
+      "type": "multiselect",
+      "label": "Spouse Passion Checks",
+      "options": [
+        "Homage",
+        "Fealty",
+        "Passion 1",
+        "Passion 2",
+        "Love (Family)",
+        "Passion 3",
+        "Passion 4",
+        "Passion 5",
+        "Devotion (Deity)",
+        "Passion 6",
+        "Hospitality",
+        "Station",
+        "Passion 7"
+      ]
+    },
+    "squire2_passion_1": {
+      "type": "number",
+      "label": "Passion 1",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_passion_1_name": {
+      "type": "text",
+      "label": "Passion 1 name"
+    },
+    "squire2_passion_1_object": {
+      "type": "text",
+      "label": "Passion 1 object"
+    },
+    "squire2_passion_2": {
+      "type": "number",
+      "label": "Passion 2",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_passion_2_name": {
+      "type": "text",
+      "label": "Passion 2 name"
+    },
+    "squire2_passion_2_object": {
+      "type": "text",
+      "label": "Passion 2 object"
+    },
+    "squire2_passion_3": {
+      "type": "number",
+      "label": "Passion 3",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_passion_3_name": {
+      "type": "text",
+      "label": "Passion 3 name"
+    },
+    "squire2_passion_3_object": {
+      "type": "text",
+      "label": "Passion 3 object"
+    },
+    "squire2_passion_4": {
+      "type": "number",
+      "label": "Passion 4",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_passion_4_name": {
+      "type": "text",
+      "label": "Passion 4 name"
+    },
+    "squire2_passion_4_object": {
+      "type": "text",
+      "label": "Passion 4 object"
+    },
+    "squire2_passion_5": {
+      "type": "number",
+      "label": "Passion 5",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_passion_5_name": {
+      "type": "text",
+      "label": "Passion 5 name"
+    },
+    "squire2_passion_5_object": {
+      "type": "text",
+      "label": "Passion 5 object"
+    },
+    "squire2_passion_6": {
+      "type": "number",
+      "label": "Passion 6",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_passion_6_name": {
+      "type": "text",
+      "label": "Passion 6 name"
+    },
+    "squire2_passion_6_object": {
+      "type": "text",
+      "label": "Passion 6 object"
+    },
+    "squire2_passion_7": {
+      "type": "number",
+      "label": "Passion 7",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_passion_7_name": {
+      "type": "text",
+      "label": "Passion 7 name"
+    },
+    "squire2_passion_7_object": {
+      "type": "text",
+      "label": "Passion 7 object"
+    },
+    "squire2_homage_subject": {
+      "type": "text",
+      "label": "Homage subject"
+    },
+    "squire2_homage": {
+      "type": "number",
+      "label": "Homage",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_fealty_subject": {
+      "type": "text",
+      "label": "Fealty subject"
+    },
+    "squire2_fealty": {
+      "type": "number",
+      "label": "Fealty",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_love_family": {
+      "type": "number",
+      "label": "Love (Family)",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_devotion": {
+      "type": "number",
+      "label": "Devotion (Deity)",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_hospitality": {
+      "type": "number",
+      "label": "Hospitality",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_station": {
+      "type": "number",
+      "label": "Station",
+      "min": 0,
+      "max": 40
+    },
     "squire3_trait_chaste": {
       "type": "number",
       "label": "Chaste",
@@ -6006,6 +6379,167 @@
       "label": "Directed Trait 2",
       "min": 0,
       "max": 20
+    },
+    "squire3_passion_checks": {
+      "type": "multiselect",
+      "label": "Spouse Passion Checks",
+      "options": [
+        "Homage",
+        "Fealty",
+        "Passion 1",
+        "Passion 2",
+        "Love (Family)",
+        "Passion 3",
+        "Passion 4",
+        "Passion 5",
+        "Devotion (Deity)",
+        "Passion 6",
+        "Hospitality",
+        "Station",
+        "Passion 7"
+      ]
+    },
+    "squire3_passion_1": {
+      "type": "number",
+      "label": "Passion 1",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_passion_1_name": {
+      "type": "text",
+      "label": "Passion 1 name"
+    },
+    "squire3_passion_1_object": {
+      "type": "text",
+      "label": "Passion 1 object"
+    },
+    "squire3_passion_2": {
+      "type": "number",
+      "label": "Passion 2",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_passion_2_name": {
+      "type": "text",
+      "label": "Passion 2 name"
+    },
+    "squire3_passion_2_object": {
+      "type": "text",
+      "label": "Passion 2 object"
+    },
+    "squire3_passion_3": {
+      "type": "number",
+      "label": "Passion 3",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_passion_3_name": {
+      "type": "text",
+      "label": "Passion 3 name"
+    },
+    "squire3_passion_3_object": {
+      "type": "text",
+      "label": "Passion 3 object"
+    },
+    "squire3_passion_4": {
+      "type": "number",
+      "label": "Passion 4",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_passion_4_name": {
+      "type": "text",
+      "label": "Passion 4 name"
+    },
+    "squire3_passion_4_object": {
+      "type": "text",
+      "label": "Passion 4 object"
+    },
+    "squire3_passion_5": {
+      "type": "number",
+      "label": "Passion 5",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_passion_5_name": {
+      "type": "text",
+      "label": "Passion 5 name"
+    },
+    "squire3_passion_5_object": {
+      "type": "text",
+      "label": "Passion 5 object"
+    },
+    "squire3_passion_6": {
+      "type": "number",
+      "label": "Passion 6",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_passion_6_name": {
+      "type": "text",
+      "label": "Passion 6 name"
+    },
+    "squire3_passion_6_object": {
+      "type": "text",
+      "label": "Passion 6 object"
+    },
+    "squire3_passion_7": {
+      "type": "number",
+      "label": "Passion 7",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_passion_7_name": {
+      "type": "text",
+      "label": "Passion 7 name"
+    },
+    "squire3_passion_7_object": {
+      "type": "text",
+      "label": "Passion 7 object"
+    },
+    "squire3_homage_subject": {
+      "type": "text",
+      "label": "Homage subject"
+    },
+    "squire3_homage": {
+      "type": "number",
+      "label": "Homage",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_fealty_subject": {
+      "type": "text",
+      "label": "Fealty subject"
+    },
+    "squire3_fealty": {
+      "type": "number",
+      "label": "Fealty",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_love_family": {
+      "type": "number",
+      "label": "Love (Family)",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_devotion": {
+      "type": "number",
+      "label": "Devotion (Deity)",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_hospitality": {
+      "type": "number",
+      "label": "Hospitality",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_station": {
+      "type": "number",
+      "label": "Station",
+      "min": 0,
+      "max": 40
     },
     "squire1_class": {
       "type": "text",

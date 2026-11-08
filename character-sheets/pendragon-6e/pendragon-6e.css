@@ -260,6 +260,32 @@
   box-sizing: border-box;
 }
 
+/* Spouse header */
+.spouse-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 0.5fr) minmax(0, 1.3fr) minmax(0, 0.5fr);
+  gap: 8px 15px;
+  align-items: stretch;
+}
+
+.spouse-header .tiny,
+.spouse-header .gstat > span {
+  text-align: center;
+  white-space: nowrap;
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.spouse-header .gstat {
+  align-items: stretch;
+}
+
+.spouse-header .gstat input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 /* The printed sheet's three columns: heraldry and traits | identity,
    characteristics, wounds, armor, attacks | passions and skills. */
 .main-grid {
@@ -277,7 +303,7 @@
 /* Family: father on the left, mother on the right. */
 .family-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(1, minmax(0, 1fr) minmax(0, 0.5fr));
   gap: 10px;
 }
 

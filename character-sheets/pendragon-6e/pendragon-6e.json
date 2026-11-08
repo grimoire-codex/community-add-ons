@@ -15,9 +15,33 @@
       "type": "text",
       "label": "Character Name"
     },
+    "glory": {
+      "type": "number",
+      "label": "Glory",
+      "min": 0
+    },
+    "session_glory": {
+      "type": "number",
+      "label": "Session Glory",
+      "min": 0
+    },
+    "honor": {
+      "type": "number",
+      "label": "Honor",
+      "min": 0
+    },
+    "honor_check": {
+      "type": "checkbox",
+      "label": "Honor check"
+    },
     "player": {
       "type": "text",
       "label": "Player Name"
+    },
+    "year": {
+      "type": "number",
+      "label": "Year",
+      "min": 0
     },
     "birth_year": {
       "type": "number",
@@ -88,30 +112,6 @@
           "flex": 1
         }
       ]
-    },
-    "glory": {
-      "type": "number",
-      "label": "Glory",
-      "min": 0
-    },
-    "session_glory": {
-      "type": "number",
-      "label": "Session Glory",
-      "min": 0
-    },
-    "honor": {
-      "type": "number",
-      "label": "Honor",
-      "min": 0
-    },
-    "honor_mark": {
-      "type": "checkbox",
-      "label": "Honor mark"
-    },
-    "year": {
-      "type": "number",
-      "label": "Year",
-      "min": 0
     },
     "siz": {
       "type": "number",
@@ -261,6 +261,25 @@
           "type": "text",
           "label": "Damage",
           "flex": 2
+        }
+      ]
+    },
+    "equipment": {
+      "type": "list",
+      "label": "Equipment",
+      "add_label": "Add item",
+      "columns": [
+        {
+          "key": "item",
+          "type": "text",
+          "label": "Item",
+          "flex": 2
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 4
         }
       ]
     },
@@ -1123,6 +1142,20 @@
       "type": "text",
       "label": "Squire Name"
     },
+    "squire1_glory": {
+      "type": "number",
+      "label": "Glory",
+      "min": 0
+    },
+    "squire1_honor": {
+      "type": "number",
+      "label": "Honor",
+      "min": 0
+    },
+    "squire1_honor_check": {
+      "type": "checkbox",
+      "label": "Honor check"
+    },
     "squire1_birthyear": {
       "type": "text",
       "label": "Squire Birth Year"
@@ -1142,6 +1175,20 @@
       "type": "text",
       "label": "Squire Name"
     },
+    "squire2_glory": {
+      "type": "number",
+      "label": "Glory",
+      "min": 0
+    },
+    "squire2_honor": {
+      "type": "number",
+      "label": "Honor",
+      "min": 0
+    },
+    "squire2_honor_check": {
+      "type": "checkbox",
+      "label": "Honor check"
+    },
     "squire2_birthyear": {
       "type": "text",
       "label": "Squire Birth Year"
@@ -1160,6 +1207,20 @@
     "squire3_name": {
       "type": "text",
       "label": "Squire Name"
+    },
+    "squire3_glory": {
+      "type": "number",
+      "label": "Glory",
+      "min": 0
+    },
+    "squire3_honor": {
+      "type": "number",
+      "label": "Honor",
+      "min": 0
+    },
+    "squire3_honor_check": {
+      "type": "checkbox",
+      "label": "Honor check"
     },
     "squire3_birthyear": {
       "type": "text",
@@ -1246,25 +1307,6 @@
         }
       ]
     },
-    "equipment": {
-      "type": "list",
-      "label": "Equipment",
-      "add_label": "Add item",
-      "columns": [
-        {
-          "key": "item",
-          "type": "text",
-          "label": "Item",
-          "flex": 2
-        },
-        {
-          "key": "notes",
-          "type": "text",
-          "label": "Notes",
-          "flex": 4
-        }
-      ]
-    },
     "parent1_name": {
       "type": "text",
       "label": "Parent's Name"
@@ -1286,6 +1328,10 @@
     "family_characteristic": {
       "type": "text",
       "label": "Family Characteristic"
+    },
+    "family_characteristic_effect": {
+      "type": "text",
+      "label": "Family Characteristic Effect"
     },
     "family_notes": {
       "type": "textarea",
@@ -3479,6 +3525,20 @@
       "type": "text",
       "label": "Name"
     },
+    "spouse_glory": {
+      "type": "number",
+      "label": "Glory",
+      "min": 0
+    },
+    "spouse_honor": {
+      "type": "number",
+      "label": "Honor",
+      "min": 0
+    },
+    "spouse_honor_check": {
+      "type": "checkbox",
+      "label": "Honor check"
+    },
     "spouse_birthplace": {
       "type": "text",
       "label": "Birthplace"
@@ -3536,6 +3596,141 @@
       "type": "number",
       "label": "APP",
       "min": 0
+    },
+    "spouse_hp_current": {
+      "type": "number",
+      "label": "Current Hit Points",
+      "min": 0
+    },
+    "spouse_debilitated": {
+      "type": "checkbox",
+      "label": "Debilitated?"
+    },
+    "spouse_unconscious_checkbox": {
+      "type": "checkbox",
+      "label": "Unconscious"
+    },
+    "spouse_aggravation_damage": {
+      "type": "text",
+      "label": "Aggravation Damage"
+    },
+    "spouse_deterioration_damage": {
+      "type": "text",
+      "label": "Deterioration Damage"
+    },
+    "spouse_wounds": {
+      "type": "list",
+      "label": "Wounds",
+      "add_label": "Add wound",
+      "columns": [
+        {
+          "key": "type",
+          "type": "select",
+          "label": "Type",
+          "flex": 2,
+          "options": [
+            "Minor",
+            "Major",
+            "Mortal"
+          ]
+        },
+        {
+          "key": "damage",
+          "type": "number",
+          "label": "Damage",
+          "min": 0,
+          "default": 0,
+          "flex": 1.25
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 2.75
+        }
+      ]
+    },
+    "spouse_armor_mail_type": {
+      "type": "text",
+      "label": "Mail/Plate"
+    },
+    "spouse_armor_textile_type": {
+      "type": "text",
+      "label": "Textile"
+    },
+    "spouse_armor_helm_type": {
+      "type": "text",
+      "label": "Helm"
+    },
+    "spouse_armor_shield_type": {
+      "type": "text",
+      "label": "Shield"
+    },
+    "spouse_armor_mail": {
+      "type": "number",
+      "label": "Mail/Plate",
+      "min": 0
+    },
+    "spouse_armor_textile": {
+      "type": "number",
+      "label": "Textile",
+      "min": 0
+    },
+    "spouse_armor_helm": {
+      "type": "number",
+      "label": "Helm",
+      "min": 0
+    },
+    "spouse_armor_shield": {
+      "type": "number",
+      "label": "Shield",
+      "min": 0
+    },
+    "spouse_weapons": {
+      "type": "list",
+      "label": "Attacks",
+      "add_label": "Add attack",
+      "columns": [
+        {
+          "key": "weapon",
+          "type": "text",
+          "label": "Weapon",
+          "flex": 3
+        },
+        {
+          "key": "skill",
+          "type": "number",
+          "label": "Skill",
+          "min": 0,
+          "default": 0,
+          "flex": 1
+        },
+        {
+          "key": "damage",
+          "type": "text",
+          "label": "Damage",
+          "flex": 2
+        }
+      ]
+    },
+    "spouse_equipment": {
+      "type": "list",
+      "label": "Equipment",
+      "add_label": "Add item",
+      "columns": [
+        {
+          "key": "item",
+          "type": "text",
+          "label": "Item",
+          "flex": 2
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 4
+        }
+      ]
     },
     "spouse_trait_chaste": {
       "type": "number",
@@ -4109,6 +4304,141 @@
       "label": "APP",
       "min": 0
     },
+    "squire1_hp_current": {
+      "type": "number",
+      "label": "Current Hit Points",
+      "min": 0
+    },
+    "squire1_debilitated": {
+      "type": "checkbox",
+      "label": "Debilitated?"
+    },
+    "squire1_unconscious_checkbox": {
+      "type": "checkbox",
+      "label": "Unconscious"
+    },
+    "squire1_aggravation_damage": {
+      "type": "text",
+      "label": "Aggravation Damage"
+    },
+    "squire1_deterioration_damage": {
+      "type": "text",
+      "label": "Deterioration Damage"
+    },
+    "squire1_wounds": {
+      "type": "list",
+      "label": "Wounds",
+      "add_label": "Add wound",
+      "columns": [
+        {
+          "key": "type",
+          "type": "select",
+          "label": "Type",
+          "flex": 2,
+          "options": [
+            "Minor",
+            "Major",
+            "Mortal"
+          ]
+        },
+        {
+          "key": "damage",
+          "type": "number",
+          "label": "Damage",
+          "min": 0,
+          "default": 0,
+          "flex": 1.25
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 2.75
+        }
+      ]
+    },
+    "squire1_armor_mail_type": {
+      "type": "text",
+      "label": "Mail/Plate"
+    },
+    "squire1_armor_textile_type": {
+      "type": "text",
+      "label": "Textile"
+    },
+    "squire1_armor_helm_type": {
+      "type": "text",
+      "label": "Helm"
+    },
+    "squire1_armor_shield_type": {
+      "type": "text",
+      "label": "Shield"
+    },
+    "squire1_armor_mail": {
+      "type": "number",
+      "label": "Mail/Plate",
+      "min": 0
+    },
+    "squire1_armor_textile": {
+      "type": "number",
+      "label": "Textile",
+      "min": 0
+    },
+    "squire1_armor_helm": {
+      "type": "number",
+      "label": "Helm",
+      "min": 0
+    },
+    "squire1_armor_shield": {
+      "type": "number",
+      "label": "Shield",
+      "min": 0
+    },
+    "squire1_weapons": {
+      "type": "list",
+      "label": "Attacks",
+      "add_label": "Add attack",
+      "columns": [
+        {
+          "key": "weapon",
+          "type": "text",
+          "label": "Weapon",
+          "flex": 3
+        },
+        {
+          "key": "skill",
+          "type": "number",
+          "label": "Skill",
+          "min": 0,
+          "default": 0,
+          "flex": 1
+        },
+        {
+          "key": "damage",
+          "type": "text",
+          "label": "Damage",
+          "flex": 2
+        }
+      ]
+    },
+    "squire1_equipment": {
+      "type": "list",
+      "label": "Equipment",
+      "add_label": "Add item",
+      "columns": [
+        {
+          "key": "item",
+          "type": "text",
+          "label": "Item",
+          "flex": 2
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 4
+        }
+      ]
+    },
     "squire2_str": {
       "type": "number",
       "label": "STR",
@@ -4134,6 +4464,141 @@
       "label": "APP",
       "min": 0
     },
+    "squire2_hp_current": {
+      "type": "number",
+      "label": "Current Hit Points",
+      "min": 0
+    },
+    "squire2_debilitated": {
+      "type": "checkbox",
+      "label": "Debilitated?"
+    },
+    "squire2_unconscious_checkbox": {
+      "type": "checkbox",
+      "label": "Unconscious"
+    },
+    "squire2_aggravation_damage": {
+      "type": "text",
+      "label": "Aggravation Damage"
+    },
+    "squire2_deterioration_damage": {
+      "type": "text",
+      "label": "Deterioration Damage"
+    },
+    "squire2_wounds": {
+      "type": "list",
+      "label": "Wounds",
+      "add_label": "Add wound",
+      "columns": [
+        {
+          "key": "type",
+          "type": "select",
+          "label": "Type",
+          "flex": 2,
+          "options": [
+            "Minor",
+            "Major",
+            "Mortal"
+          ]
+        },
+        {
+          "key": "damage",
+          "type": "number",
+          "label": "Damage",
+          "min": 0,
+          "default": 0,
+          "flex": 1.25
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 2.75
+        }
+      ]
+    },
+    "squire2_armor_mail_type": {
+      "type": "text",
+      "label": "Mail/Plate"
+    },
+    "squire2_armor_textile_type": {
+      "type": "text",
+      "label": "Textile"
+    },
+    "squire2_armor_helm_type": {
+      "type": "text",
+      "label": "Helm"
+    },
+    "squire2_armor_shield_type": {
+      "type": "text",
+      "label": "Shield"
+    },
+    "squire2_armor_mail": {
+      "type": "number",
+      "label": "Mail/Plate",
+      "min": 0
+    },
+    "squire2_armor_textile": {
+      "type": "number",
+      "label": "Textile",
+      "min": 0
+    },
+    "squire2_armor_helm": {
+      "type": "number",
+      "label": "Helm",
+      "min": 0
+    },
+    "squire2_armor_shield": {
+      "type": "number",
+      "label": "Shield",
+      "min": 0
+    },
+    "squire2_weapons": {
+      "type": "list",
+      "label": "Attacks",
+      "add_label": "Add attack",
+      "columns": [
+        {
+          "key": "weapon",
+          "type": "text",
+          "label": "Weapon",
+          "flex": 3
+        },
+        {
+          "key": "skill",
+          "type": "number",
+          "label": "Skill",
+          "min": 0,
+          "default": 0,
+          "flex": 1
+        },
+        {
+          "key": "damage",
+          "type": "text",
+          "label": "Damage",
+          "flex": 2
+        }
+      ]
+    },
+    "squire2_equipment": {
+      "type": "list",
+      "label": "Equipment",
+      "add_label": "Add item",
+      "columns": [
+        {
+          "key": "item",
+          "type": "text",
+          "label": "Item",
+          "flex": 2
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 4
+        }
+      ]
+    },
     "squire3_str": {
       "type": "number",
       "label": "STR",
@@ -4158,6 +4623,141 @@
       "type": "number",
       "label": "APP",
       "min": 0
+    },
+    "squire3_hp_current": {
+      "type": "number",
+      "label": "Current Hit Points",
+      "min": 0
+    },
+    "squire3_debilitated": {
+      "type": "checkbox",
+      "label": "Debilitated?"
+    },
+    "squire3_unconscious_checkbox": {
+      "type": "checkbox",
+      "label": "Unconscious"
+    },
+    "squire3_aggravation_damage": {
+      "type": "text",
+      "label": "Aggravation Damage"
+    },
+    "squire3_deterioration_damage": {
+      "type": "text",
+      "label": "Deterioration Damage"
+    },
+    "squire3_wounds": {
+      "type": "list",
+      "label": "Wounds",
+      "add_label": "Add wound",
+      "columns": [
+        {
+          "key": "type",
+          "type": "select",
+          "label": "Type",
+          "flex": 2,
+          "options": [
+            "Minor",
+            "Major",
+            "Mortal"
+          ]
+        },
+        {
+          "key": "damage",
+          "type": "number",
+          "label": "Damage",
+          "min": 0,
+          "default": 0,
+          "flex": 1.25
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 2.75
+        }
+      ]
+    },
+    "squire3_armor_mail_type": {
+      "type": "text",
+      "label": "Mail/Plate"
+    },
+    "squire3_armor_textile_type": {
+      "type": "text",
+      "label": "Textile"
+    },
+    "squire3_armor_helm_type": {
+      "type": "text",
+      "label": "Helm"
+    },
+    "squire3_armor_shield_type": {
+      "type": "text",
+      "label": "Shield"
+    },
+    "squire3_armor_mail": {
+      "type": "number",
+      "label": "Mail/Plate",
+      "min": 0
+    },
+    "squire3_armor_textile": {
+      "type": "number",
+      "label": "Textile",
+      "min": 0
+    },
+    "squire3_armor_helm": {
+      "type": "number",
+      "label": "Helm",
+      "min": 0
+    },
+    "squire3_armor_shield": {
+      "type": "number",
+      "label": "Shield",
+      "min": 0
+    },
+    "squire3_weapons": {
+      "type": "list",
+      "label": "Attacks",
+      "add_label": "Add attack",
+      "columns": [
+        {
+          "key": "weapon",
+          "type": "text",
+          "label": "Weapon",
+          "flex": 3
+        },
+        {
+          "key": "skill",
+          "type": "number",
+          "label": "Skill",
+          "min": 0,
+          "default": 0,
+          "flex": 1
+        },
+        {
+          "key": "damage",
+          "type": "text",
+          "label": "Damage",
+          "flex": 2
+        }
+      ]
+    },
+    "squire3_equipment": {
+      "type": "list",
+      "label": "Equipment",
+      "add_label": "Add item",
+      "columns": [
+        {
+          "key": "item",
+          "type": "text",
+          "label": "Item",
+          "flex": 2
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 4
+        }
+      ]
     },
     "squire1_sk_awareness": {
       "type": "number",
@@ -5556,17 +6156,225 @@
       "formula": "year - spouse_birth_year",
       "label": "Age"
     },
+    "spouse_knockdown": {
+      "formula": "spouse_siz",
+      "label": "Knockdown"
+    },
+    "spouse_weapon_damage": {
+      "formula": "floor((spouse_str + spouse_siz) / 6)",
+      "label": "Weapon Damage (d6)"
+    },
+    "spouse_brawling_damage": {
+      "formula": "floor((spouse_str + spouse_siz) / 6)",
+      "label": "Brawling Damage"
+    },
+    "spouse_movement_rate": {
+      "formula": "floor((spouse_str + spouse_dex) / 2) + 5",
+      "label": "Movement Rate"
+    },
+    "spouse_major_wound": {
+      "formula": "spouse_con",
+      "label": "Major Wound"
+    },
+    "spouse_healing_rate": {
+      "formula": "floor(spouse_con / 5)",
+      "label": "Healing Rate"
+    },
+    "spouse_total_hit_points": {
+      "formula": "spouse_con + spouse_siz",
+      "label": "Total Hit Points"
+    },
+    "spouse_unconscious": {
+      "formula": "floor((spouse_con + spouse_siz) / 4)",
+      "label": "Unconscious"
+    },
+    "spouse_count_wounds_minor": {
+      "formula": "count_where(spouse_wounds, 'type', 'Minor')",
+      "label": "Minor Wound Count"
+    },
+    "spouse_count_wounds_major": {
+      "formula": "count_where(spouse_wounds, 'type', 'Major')",
+      "label": "Major Wound Count"
+    },
+    "spouse_count_wounds_mortal": {
+      "formula": "count_where(spouse_wounds, 'type', 'Mortal')",
+      "label": "Mortal Wound Count"
+    },
+    "spouse_total_armor": {
+      "formula": "spouse_armor_mail + spouse_armor_textile + spouse_armor_helm",
+      "label": "Total Armor Protection"
+    },
+    "spouse_total_armor_and_shield": {
+      "formula": "spouse_armor_mail + spouse_armor_textile + spouse_armor_helm + spouse_armor_shield",
+      "label": "With Shield"
+    },
     "squire1_age": {
       "formula": "year - squire1_birthyear",
       "label": "Age"
+    },
+    "squire1_knockdown": {
+      "formula": "squire1_siz",
+      "label": "Knockdown"
+    },
+    "squire1_weapon_damage": {
+      "formula": "floor((squire1_str + squire1_siz) / 6)",
+      "label": "Weapon Damage (d6)"
+    },
+    "squire1_brawling_damage": {
+      "formula": "floor((squire1_str + squire1_siz) / 6)",
+      "label": "Brawling Damage"
+    },
+    "squire1_movement_rate": {
+      "formula": "floor((squire1_str + squire1_dex) / 2) + 5",
+      "label": "Movement Rate"
+    },
+    "squire1_major_wound": {
+      "formula": "squire1_con",
+      "label": "Major Wound"
+    },
+    "squire1_healing_rate": {
+      "formula": "floor(squire1_con / 5)",
+      "label": "Healing Rate"
+    },
+    "squire1_total_hit_points": {
+      "formula": "squire1_con + squire1_siz",
+      "label": "Total Hit Points"
+    },
+    "squire1_unconscious": {
+      "formula": "floor((squire1_con + squire1_siz) / 4)",
+      "label": "Unconscious"
+    },
+    "squire1_count_wounds_minor": {
+      "formula": "count_where(squire1_wounds, 'type', 'Minor')",
+      "label": "Minor Wound Count"
+    },
+    "squire1_count_wounds_major": {
+      "formula": "count_where(squire1_wounds, 'type', 'Major')",
+      "label": "Major Wound Count"
+    },
+    "squire1_count_wounds_mortal": {
+      "formula": "count_where(squire1_wounds, 'type', 'Mortal')",
+      "label": "Mortal Wound Count"
+    },
+    "squire1_total_armor": {
+      "formula": "squire1_armor_mail + squire1_armor_textile + squire1_armor_helm",
+      "label": "Total Armor Protection"
+    },
+    "squire1_total_armor_and_shield": {
+      "formula": "squire1_armor_mail + squire1_armor_textile + squire1_armor_helm + squire1_armor_shield",
+      "label": "With Shield"
     },
     "squire2_age": {
       "formula": "year - squire2_birthyear",
       "label": "Age"
     },
+    "squire2_knockdown": {
+      "formula": "squire2_siz",
+      "label": "Knockdown"
+    },
+    "squire2_weapon_damage": {
+      "formula": "floor((squire2_str + squire2_siz) / 6)",
+      "label": "Weapon Damage (d6)"
+    },
+    "squire2_brawling_damage": {
+      "formula": "floor((squire2_str + squire2_siz) / 6)",
+      "label": "Brawling Damage"
+    },
+    "squire2_movement_rate": {
+      "formula": "floor((squire2_str + squire2_dex) / 2) + 5",
+      "label": "Movement Rate"
+    },
+    "squire2_major_wound": {
+      "formula": "squire2_con",
+      "label": "Major Wound"
+    },
+    "squire2_healing_rate": {
+      "formula": "floor(squire2_con / 5)",
+      "label": "Healing Rate"
+    },
+    "squire2_total_hit_points": {
+      "formula": "squire2_con + squire2_siz",
+      "label": "Total Hit Points"
+    },
+    "squire2_unconscious": {
+      "formula": "floor((squire2_con + squire2_siz) / 4)",
+      "label": "Unconscious"
+    },
+    "squire2_count_wounds_minor": {
+      "formula": "count_where(squire2_wounds, 'type', 'Minor')",
+      "label": "Minor Wound Count"
+    },
+    "squire2_count_wounds_major": {
+      "formula": "count_where(squire2_wounds, 'type', 'Major')",
+      "label": "Major Wound Count"
+    },
+    "squire2_count_wounds_mortal": {
+      "formula": "count_where(squire2_wounds, 'type', 'Mortal')",
+      "label": "Mortal Wound Count"
+    },
+    "squire2_total_armor": {
+      "formula": "squire2_armor_mail + squire2_armor_textile + squire2_armor_helm",
+      "label": "Total Armor Protection"
+    },
+    "squire2_total_armor_and_shield": {
+      "formula": "squire2_armor_mail + squire2_armor_textile + squire2_armor_helm + squire2_armor_shield",
+      "label": "With Shield"
+    },
     "squire3_age": {
       "formula": "year - squire3_birthyear",
       "label": "Age"
+    },
+    "squire3_knockdown": {
+      "formula": "squire3_siz",
+      "label": "Knockdown"
+    },
+    "squire3_weapon_damage": {
+      "formula": "floor((squire3_str + squire3_siz) / 6)",
+      "label": "Weapon Damage (d6)"
+    },
+    "squire3_brawling_damage": {
+      "formula": "floor((squire3_str + squire3_siz) / 6)",
+      "label": "Brawling Damage"
+    },
+    "squire3_movement_rate": {
+      "formula": "floor((squire3_str + squire3_dex) / 2) + 5",
+      "label": "Movement Rate"
+    },
+    "squire3_major_wound": {
+      "formula": "squire3_con",
+      "label": "Major Wound"
+    },
+    "squire3_healing_rate": {
+      "formula": "floor(squire3_con / 5)",
+      "label": "Healing Rate"
+    },
+    "squire3_total_hit_points": {
+      "formula": "squire3_con + squire3_siz",
+      "label": "Total Hit Points"
+    },
+    "squire3_unconscious": {
+      "formula": "floor((squire3_con + squire3_siz) / 4)",
+      "label": "Unconscious"
+    },
+    "squire3_count_wounds_minor": {
+      "formula": "count_where(squire3_wounds, 'type', 'Minor')",
+      "label": "Minor Wound Count"
+    },
+    "squire3_count_wounds_major": {
+      "formula": "count_where(squire3_wounds, 'type', 'Major')",
+      "label": "Major Wound Count"
+    },
+    "squire3_count_wounds_mortal": {
+      "formula": "count_where(squire3_wounds, 'type', 'Mortal')",
+      "label": "Mortal Wound Count"
+    },
+    "squire3_total_armor": {
+      "formula": "squire3_armor_mail + squire3_armor_textile + squire3_armor_helm",
+      "label": "Total Armor Protection"
+    },
+    "squire3_total_armor_and_shield": {
+      "formula": "squire3_armor_mail + squire3_armor_textile + squire3_armor_helm + squire3_armor_shield",
+      "label": "With Shield"
     }
   },
   "name_field": "character_name",

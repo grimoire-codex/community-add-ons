@@ -2,10 +2,10 @@
   "$schema": "../../schema/character-sheet.schema.json",
   "id": "dnd-5e-2024",
   "name": "D&D 5th Edition (2024)",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "grimoire_min_version": "1.10.0",
   "system": "Dungeons & Dragons 5th Edition (2024)",
-  "description": "A character sheet for the 2024 revision of D&D 5th Edition, with the SRD 5.2 catalogue of classes and their features, species, backgrounds, feats, spells, equipment and magic items.",
+  "description": "A character sheet for the 2024 revision of D&D 5th Edition, with the SRD 5.2 catalogue of classes, subclasses and their features, species, backgrounds, feats, spells, equipment and magic items.",
   "author": "hunter-read",
   "homepage": "https://www.dndbeyond.com/srd",
   "license": "CC-BY-4.0",
@@ -135,6 +135,52 @@
         "feature_names": {
           "type": "text",
           "label": "Level 1 Features"
+        }
+      }
+    },
+    "subclass": {
+      "label": "Subclass",
+      "label_plural": "Subclasses",
+      "identity_field": "name",
+      "sort_default": [
+        "class",
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "class",
+        "description"
+      ],
+      "filter_fields": [
+        "class"
+      ],
+      "compact_display": "{class} · from level {level}",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "class": {
+          "type": "text",
+          "label": "Class"
+        },
+        "level": {
+          "type": "number",
+          "label": "Chosen At Level",
+          "min": 1,
+          "max": 20
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Description"
+        },
+        "feature_ids": {
+          "type": "text",
+          "label": "Feature Ids"
+        },
+        "feature_names": {
+          "type": "text",
+          "label": "Features"
         }
       }
     },
@@ -388,12 +434,14 @@
       "search_fields": [
         "name",
         "class",
+        "subclass",
         "description"
       ],
       "filter_fields": [
-        "class"
+        "class",
+        "subclass"
       ],
-      "compact_display": "{class} {level}",
+      "compact_display": "{class} {subclass} {level}",
       "fields": {
         "name": {
           "type": "text",
@@ -402,6 +450,10 @@
         "class": {
           "type": "text",
           "label": "Class"
+        },
+        "subclass": {
+          "type": "text",
+          "label": "Subclass"
         },
         "level": {
           "type": "number",
@@ -608,8 +660,21 @@
       ]
     },
     "subclass": {
-      "type": "text",
-      "label": "Subclass"
+      "type": "content_ref",
+      "label": "Subclass",
+      "content_type": "subclass",
+      "allow_freeform": true,
+      "on_pick": [
+        {
+          "grant": "features",
+          "from": "feature_ids",
+          "names": "feature_names",
+          "carry": {
+            "class": "class",
+            "subclass": "name"
+          }
+        }
+      ]
     },
     "alignment": {
       "type": "select",

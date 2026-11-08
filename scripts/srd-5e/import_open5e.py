@@ -5,8 +5,10 @@
 
 Open5e (github.com/open5e/open5e-api) keeps the System Reference Document 5.2
 as Django fixtures, one JSON file per model. This reads them and writes the
-pack's spells, class features, equipment and magic items, and adds each class's
-level 1 features to class.json so picking a class can grant them.
+pack's spells, class and subclass features, subclasses, equipment and magic
+items, and adds each class's level 1 features to class.json so picking a class
+can grant them. A subclass feature keeps its class and names its subclass, and
+each subclass lists the features it grants at the level it is chosen.
 
 Everything written is SRD 5.2 text, under the CC BY 4.0 attribution the pack
 already carries. Open5e expands a generic magic item into one row per weapon or
@@ -165,16 +167,19 @@ def features(source: pathlib.Path) -> tuple[list[dict], dict[str, list[dict]]]:
         if f.get("feature_type") or not levels.get(row["pk"]) or SKIP_FEATURE.search(f["name"]):
             continue
         owner = classes[f["parent"]]
+        parent = classes.get(owner["subclass_of"]) if owner["subclass_of"] else None
         entry = {
             "_id": slug(f"{owner['name']} {f['name']}"),
             "name": f["name"],
-            "class": owner["name"],
+            "class": parent["name"] if parent else owner["name"],
             "level": min(levels[row["pk"]]),
             "description": plain(f["desc"]),
         }
+        if parent:
+            entry["subclass"] = owner["name"]
         out.append(entry)
         by_class[short(f["parent"])].append(entry)
-    out.sort(key=lambda e: (e["class"], e["level"], e["name"]))
+    out.sort(key=lambda e: (e["class"], e.get("subclass", ""), e["level"], e["name"]))
     ids = [e["_id"] for e in out]
     assert len(ids) == len(set(ids)), "duplicate feature id"
     return out, by_class
@@ -418,6 +423,29 @@ def add_class_features(by_class: dict[str, list[dict]]) -> list[dict]:
     return classes
 
 
+def subclasses(source: pathlib.Path, by_class: dict[str, list[dict]]) -> list[dict]:
+    """Each subclass, with the features it grants at the level it is chosen."""
+    classes = {row["pk"]: row["fields"] for row in load(source, "CharacterClass")}
+    out = []
+    for pk, f in classes.items():
+        if not f["subclass_of"]:
+            continue
+        granted = by_class.get(short(pk), [])
+        level = min((g["level"] for g in granted), default=3)
+        first = sorted((g for g in granted if g["level"] == level), key=lambda g: g["name"])
+        out.append({
+            "_id": short(pk),
+            "name": f["name"],
+            "class": classes[f["subclass_of"]]["name"],
+            "level": level,
+            "description": plain(f["desc"]),
+            "feature_ids": ", ".join(g["_id"] for g in first),
+            "feature_names": ", ".join(g["name"] for g in first),
+        })
+    out.sort(key=lambda e: (e["class"], e["name"]))
+    return out
+
+
 def write(name: str, rows: list[dict]) -> None:
     with open(PACK / f"{name}.json", "w", encoding="utf-8") as handle:
         json.dump(rows, handle, indent=2, ensure_ascii=False)
@@ -440,6 +468,7 @@ def main() -> None:
     write("feature", feature_rows)
     write("item", items(source, {s["_id"] for s in spell_rows}))
     write("magic_item", magic_items(source))
+    write("subclass", subclasses(source, by_class))
     write("class", add_class_features(by_class))
 
 

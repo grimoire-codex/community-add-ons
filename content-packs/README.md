@@ -6,7 +6,7 @@ a pack supplies the spells.
 
 | Pack | For sheet | Licence | Entries |
 | --- | --- | --- | --- |
-| [`dnd-5e-srd`](dnd-5e-srd/) | `dnd-5e-2024` | CC BY 4.0 (SRD 5.2) | 1109 |
+| [`dnd-5e-srd`](dnd-5e-srd/) | `dnd-5e-2024` | CC BY 4.0 (SRD 5.2) | 1121 |
 | [`dnd-5e-srd-5-1`](dnd-5e-srd-5-1/) | `dnd-5e-2014` | CC BY 4.0 (SRD 5.1) | 1115 |
 | [`draw-steel-core`](draw-steel-core/) | `draw-steel` | Draw Steel Creator License | 1660 |
 | [`pf2e-player-core`](pf2e-player-core/) | `pathfinder-2e` | ORC | 1606 |

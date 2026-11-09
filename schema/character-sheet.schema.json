@@ -250,6 +250,10 @@
                   "type": "string"
                 },
                 "default": {},
+                "default_from": {
+                  "type": "string",
+                  "description": "An expression working this cell out for each row while it is empty - e.g. born ? campaign_year - born : null. Sees the sheet's fields with the row's columns laid over them; may not read computed values, image fields or another default_from column. A value the player types wins, and clearing the cell hands it back. Not on a checkbox column. Needs Grimoire 1.11.0."
+                },
                 "flex": {
                   "type": "number"
                 },

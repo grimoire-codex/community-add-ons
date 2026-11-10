@@ -538,14 +538,27 @@ Put the CSS in a sibling `<id>.css` file (or name it with `styles_file`).
 `.<sheet-scope> .score`, so a sheet cannot restyle the app around it. `:root`,
 `html` and `body` become the sheet's own root, so `:root { --ink: #222 }`
 declares sheet-wide variables as you would expect, and a selector starting `&`
-attaches to the root: `&.dark` matches the sheet's root element.
+attaches to the root: `&.dark` matches the sheet's root element. `&` may only
+start a selector, and what follows it must step down into the sheet (`& .a`,
+`&.dark > .a`), not across to its siblings - `& ~ *`, `& + div`, or a selector
+that opens with `~` or `+`, is refused. Rules do not nest: write
+`.a .b { … }`, not `.a { & .b { … } }`.
 
 **At-rules:** `@media`, `@supports`, `@container` and `@layer` only.
 `@import`, `@font-face` and `@keyframes` are refused - one loads a file, one a
 font over the network, one animates.
 
-**Values:** `url(…)` is refused wherever it appears - an image belongs in an
-`<img src>`. So are `expression(…)`, `javascript:` and `-moz-binding`.
+**Values:** a value may call only these functions: `var()`, `env()`, `calc()`,
+`min()`, `max()`, `clamp()` and the other maths functions (`round()`, `mod()`,
+`rem()`, `abs()`, `sign()`, `pow()`, `sqrt()`, `hypot()`, `log()`, `exp()` and
+the trigonometric ones), the colour functions (`rgb()`, `rgba()`, `hsl()`,
+`hsla()`, `hwb()`, `lab()`, `lch()`, `oklab()`, `oklch()`, `color()`,
+`color-mix()`, `light-dark()`), the gradients (`linear-gradient()`,
+`radial-gradient()`, `conic-gradient()` and their `repeating-` forms), and the
+grid-track helpers `repeat()`, `minmax()` and `fit-content()`. Anything else is
+refused - `url(…)` wherever it appears and however it is spelt, `image-set()`,
+`attr()`, `expression()` - because an image belongs in an `<img src>`, not the
+stylesheet. A custom property's value is held to the same rule.
 
 **Properties:** custom properties (`--anything`) are always allowed. Otherwise
 only these:

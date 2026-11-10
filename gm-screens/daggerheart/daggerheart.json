@@ -1,0 +1,44 @@
+{
+  "$schema": "../../schema/gm-screen.schema.json",
+  "format": "grimoire://gm-screen/v1",
+  "id": "daggerheart",
+  "name": "Daggerheart",
+  "version": "1.0.0",
+  "system": "Daggerheart",
+  "description": "Fear from 0 to 12, countdowns, adversary token pools that empty at the end of each scene, the party at a glance, and a scratch note.",
+  "author": "hunter-read",
+  "license": "MIT",
+  "attribution": "Daggerheart is a trademark of Critical Role, LLC. This preset is not affiliated with or endorsed by Critical Role, LLC or Darrington Press.",
+  "grimoire_min_version": "1.11.0",
+  "panels": [
+    {
+      "kind": "counter",
+      "title": "Fear",
+      "x": 0, "y": 0, "w": 4, "h": 3,
+      "config": { "min": 0, "max": 12, "start": 0, "style": "pips", "resets": "" }
+    },
+    {
+      "kind": "party",
+      "title": "Party",
+      "x": 4, "y": 0, "w": 8, "h": 5,
+      "config": { "stats": [], "include_inactive": false }
+    },
+    {
+      "kind": "clocks",
+      "title": "Countdowns",
+      "x": 0, "y": 3, "w": 4, "h": 9,
+      "config": { "mode": "countdown" }
+    },
+    {
+      "kind": "pools",
+      "title": "Adversary pools",
+      "x": 4, "y": 5, "w": 4, "h": 7,
+      "config": { "resets": "scene" }
+    },
+    {
+      "kind": "scratch",
+      "title": "Scratch note",
+      "x": 8, "y": 5, "w": 4, "h": 7
+    }
+  ]
+}

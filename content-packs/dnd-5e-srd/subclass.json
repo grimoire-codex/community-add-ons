@@ -1,0 +1,110 @@
+[
+  {
+    "_id": "path-of-the-berserker",
+    "name": "Path of the Berserker",
+    "class": "Barbarian",
+    "level": 3,
+    "description": "Channel Rage into Violent Fury\n\nBarbarians who walk the Path of the Berserker direct their Rage primarily toward violence. Their path is one of untrammeled fury, and they thrill in the chaos of battle as they allow their Rage to seize and empower them.",
+    "feature_ids": "path-of-the-berserker-frenzy",
+    "feature_names": "Frenzy"
+  },
+  {
+    "_id": "college-of-lore",
+    "name": "College of Lore",
+    "class": "Bard",
+    "level": 3,
+    "description": "Plumb the Depths of Magical Knowledge\n\nBards of the College of Lore collect spells and secrets from diverse sources, such as scholarly tomes, mystical rites, and peasant tales. The college's members gather in libraries and universities to share their lore with one another. They also meet at festivals or affairs of state, where they can expose corruption, unravel lies, and poke fun at self-important figures of authority.",
+    "feature_ids": "college-of-lore-bonus-proficiencies, college-of-lore-cutting-words",
+    "feature_names": "Bonus Proficiencies, Cutting Words"
+  },
+  {
+    "_id": "life-domain",
+    "name": "Life Domain",
+    "class": "Cleric",
+    "level": 3,
+    "description": "Soothe the Hurts of the World\n\nThe Life Domain focuses on the positive energy that helps sustain all life in the multiverse. Clerics who tap into this domain are masters of healing, using that life force to cure many hurts.\n\nExistence itself relies on the positive energy associated with this domain, so a Cleric of almost any religious tradition might choose it. This domain is particularly associated with agricultural deities, gods of healing or endurance, and gods of home and community. Religious orders of healing also seek the magic of this domain.",
+    "feature_ids": "life-domain-disciple-of-life, life-domain-life-domain-spells, life-domain-preserve-life",
+    "feature_names": "Disciple of Life, Life Domain Spells, Preserve Life"
+  },
+  {
+    "_id": "circle-of-the-land",
+    "name": "Circle of the Land",
+    "class": "Druid",
+    "level": 3,
+    "description": "Celebrate Connection to the Natural World\n\nThe Circle of the Land comprises mystics and sages who safeguard ancient knowledge and rites. These Druids meet within sacred circles of trees or standing stones to whisper primal secrets in Druidic. The circle's wisest members preside as the chief priests of their communities.",
+    "feature_ids": "circle-of-the-land-circle-of-the-land-spells, circle-of-the-land-lands-aid",
+    "feature_names": "Circle of the Land Spells, Land's Aid"
+  },
+  {
+    "_id": "champion",
+    "name": "Champion",
+    "class": "Fighter",
+    "level": 3,
+    "description": "Pursue Physical Excellence in Combat\n\nA Champion focuses on the development of martial prowess in a relentless pursuit of victory. Champions combine rigorous training with physical excellence to deal devastating blows, withstand peril, and garner glory. Whether in athletic contests or bloody battle, Champions strive for the crown of the victor.",
+    "feature_ids": "champion-improved-critical, champion-remarkable-athlete",
+    "feature_names": "Improved Critical, Remarkable Athlete"
+  },
+  {
+    "_id": "warrior-of-the-open-hand",
+    "name": "Warrior of the Open Hand",
+    "class": "Monk",
+    "level": 3,
+    "description": "Master Unarmed Combat Techniques\n\nWarriors of the Open Hand are masters of unarmed combat. They learn techniques to push and trip their opponents and manipulate their own energy to protect themselves from harm.",
+    "feature_ids": "warrior-of-the-open-hand-open-hand-technique",
+    "feature_names": "Open Hand Technique"
+  },
+  {
+    "_id": "oath-of-devotion",
+    "name": "Oath of Devotion",
+    "class": "Paladin",
+    "level": 3,
+    "description": "Uphold the Ideals of Justice and Order\n\nThe Oath of Devotion binds Paladins to the ideals of justice and order. These Paladins meet the archetype of the knight in shining armor. They hold themselves to the highest standards of conduct, and some—for better or worse—hold the rest of the world to the same standards.\n\nMany who swear this oath are devoted to gods of law and good and use their gods' tenets as the measure of personal devotion. Others hold angels as their ideals and incorporate images of angelic wings into their helmets or coats of arms.\n\nThese paladins share the following tenets:\n\n• Let your word be your promise.\n• Protect the weak and never fear to act.\n• Let your honorable deeds be an example.",
+    "feature_ids": "oath-of-devotion-oath-of-devotion-spells, oath-of-devotion-sacred-weapon",
+    "feature_names": "Oath of Devotion Spells, Sacred Weapon"
+  },
+  {
+    "_id": "hunter",
+    "name": "Hunter",
+    "class": "Ranger",
+    "level": 3,
+    "description": "Protect Nature and People from Destruction\n\nYou stalk prey in the wilds and elsewhere, using your abilities as a Hunter to protect nature and people everywhere from forces that would destroy them.",
+    "feature_ids": "hunter-hunters-lore, hunter-hunters-prey",
+    "feature_names": "Hunter's Lore, Hunter's Prey"
+  },
+  {
+    "_id": "thief",
+    "name": "Thief",
+    "class": "Rogue",
+    "level": 3,
+    "description": "Hunt for Treasure as a Classic Adventurer\n\nA mix of burglar, treasure hunter, and explorer, you are the epitome of an adventurer. In addition to improving your agility and stealth, you gain abilities useful for delving into ruins and getting maximum benefit from the magic items you find there.",
+    "feature_ids": "thief-fast-hands, thief-second-story-work",
+    "feature_names": "Fast Hands, Second-Story Work"
+  },
+  {
+    "_id": "draconic-sorcery",
+    "name": "Draconic Sorcery",
+    "class": "Sorcerer",
+    "level": 3,
+    "description": "Breathe the Magic of Dragons\n\nYour innate magic comes from the gift of a dragon. Perhaps an ancient dragon facing death bequeathed some of its magical power to you or your ancestor. You might have absorbed magic from a site infused with dragons' power. Or perhaps you handled a treasure taken from a dragon's hoard that was steeped in draconic power. Or you might have a dragon for an ancestor.",
+    "feature_ids": "draconic-sorcery-draconic-resilience, draconic-sorcery-draconic-spells",
+    "feature_names": "Draconic Resilience, Draconic Spells"
+  },
+  {
+    "_id": "fiend-patron",
+    "name": "Fiend Patron",
+    "class": "Warlock",
+    "level": 3,
+    "description": "Make a Deal with the Lower Planes\n\nYour pact draws on the Lower Planes, the realms of perdition. You might forge a bargain with a demon lord, an archdevil, or another fiend that is especially mighty. That patron's aims are evil—the corruption or destruction of all things, ultimately including you—and your path is defined by the extent to which you strive against those aims.",
+    "feature_ids": "fiend-patron-dark-ones-blessing, fiend-patron-fiend-spells",
+    "feature_names": "Dark One's Blessing, Fiend Spells"
+  },
+  {
+    "_id": "evoker",
+    "name": "Evoker",
+    "class": "Wizard",
+    "level": 3,
+    "description": "Create Explosive Elemental Effects\n\nYour studies focus on magic that creates powerful elemental effects such as bitter cold, searing flame, rolling thunder, crackling lightning, and burning acid. Some Evokers find employment in military forces, serving as artillery to blast armies from afar. Others use their power to protect others, while some seek their own gain.",
+    "feature_ids": "evoker-evocation-savant, evoker-potent-cantrip",
+    "feature_names": "Evocation Savant, Potent Cantrip"
+  }
+]

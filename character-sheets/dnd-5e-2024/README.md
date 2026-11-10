@@ -27,18 +27,21 @@ species, the other details, portrait, appearance and backstory) and **Notes**.
 - **Equipment** picked from the catalogue or typed in, each with a quantity,
   and carried weight - counting quantity - against a `Strength × 15` capacity
 - **Magic items**, with a warning if more than three are attuned
-- **Attacks**, feats, and a catalogue of classes, species, backgrounds, feats
+- **Attacks**, feats, and a catalogue of classes, subclasses, species,
+  backgrounds, feats
   and spells
 - **Custom class, species, or background** — type a homebrew name when the
   catalogue entry is missing (or you prefer not to pick one)
-- **Picking a class** adds its level 1 features
+- **Picking a class** adds its level 1 features, and **picking a subclass** adds
+  the features it grants at the level it is chosen
 - **Your character's art, large** on the Spells & Details page, beside their
   appearance - framed the way you chose (click it to choose)
 
 ## With the SRD 5.2 pack
 
 The [`dnd-5e-srd`](../../content-packs/dnd-5e-srd/) pack carries the SRD's
-classes and every class and subclass feature, species and their traits,
+classes, its subclasses and every class and subclass feature, species and
+their traits,
 backgrounds, feats, all of its spells, its equipment (weapons with damage,
 properties and mastery; armour with its AC, Strength and Stealth) and its
 magic items.

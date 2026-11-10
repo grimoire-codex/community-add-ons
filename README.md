@@ -98,6 +98,7 @@ for the authoring reference.
 
 | Theme | Mode | Description |
 | --- | --- | --- |
+| [Codex Red](themes/codex-red/) | light & dark | Crimson on gunmetal for the Codex theme, with danger and warning moved onto vermilion and amber |
 | [High Contrast](themes/high-contrast/) | light & dark | Pure black or white surfaces at full-strength contrast; every pairing clears WCAG AAA |
 
 ### Character sheets

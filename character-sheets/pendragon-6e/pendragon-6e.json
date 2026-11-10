@@ -198,6 +198,12 @@
           "type": "text",
           "label": "Notes",
           "flex": 2.75
+        },
+        {
+          "key": "aid",
+          "type": "checkbox",
+          "label": "Aid?",
+          "flex": 0.5
         }
       ]
     },
@@ -237,6 +243,12 @@
       "label": "Shield",
       "min": 0
     },
+    "armor_shield_missile_protection": {
+      "type": "number",
+      "label": "Missile Protection",
+      "min": -10,
+      "max": 0
+    },
     "weapons": {
       "type": "list",
       "label": "Attacks",
@@ -273,15 +285,31 @@
           "key": "item",
           "type": "text",
           "label": "Item",
-          "flex": 2
+          "flex": 2.5
         },
         {
           "key": "notes",
           "type": "text",
           "label": "Notes",
-          "flex": 4
+          "flex": 3
+        },
+        {
+          "key": "value",
+          "type": "text",
+          "label": "Value",
+          "flex": 1
         }
       ]
+    },
+    "money_libra": {
+      "type": "number",
+      "label": "Libra",
+      "min": 0
+    },
+    "money_denarii": {
+      "type": "number",
+      "label": "Denarii",
+      "min": 0
     },
     "trait_chaste": {
       "type": "number",
@@ -1350,6 +1378,7 @@
           "type": "number",
           "label": "Age",
           "min": 0,
+          "default_from": "born ? year - born : null",
           "flex": 1
         },
         {
@@ -1382,6 +1411,7 @@
           "type": "number",
           "label": "Age",
           "min": 0,
+          "default_from": "born ? year - born : null",
           "flex": 1
         },
         {
@@ -1414,6 +1444,7 @@
           "type": "number",
           "label": "Age",
           "min": 0,
+          "default_from": "born ? year - born : null",
           "flex": 1
         },
         {
@@ -3539,10 +3570,18 @@
           "flex": 1.5
         },
         {
+          "key": "born",
+          "type": "number",
+          "label": "Birth Year",
+          "min": 0,
+          "flex": 1
+        },
+        {
           "key": "age",
           "type": "number",
           "label": "Age",
           "min": 0,
+          "default_from": "born ? year - born : null",
           "flex": 1
         },
         {
@@ -6716,6 +6755,10 @@
     "total_armor_and_shield": {
       "formula": "armor_mail + armor_textile + armor_helm + armor_shield",
       "label": "With Shield"
+    },
+    "money_total": {
+      "formula": "money_libra + (floor(money_denarii / 2.4) / 100)",
+      "label": "Total Money"
     },
     "spouse_age": {
       "formula": "year - spouse_birth_year",

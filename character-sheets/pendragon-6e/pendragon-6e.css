@@ -109,7 +109,7 @@
 .gc-section > h3 {
   text-align: center;
   margin: 0;
-  font-size: 15px;
+  font-size: 15px !important;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--text-dim);
@@ -120,7 +120,7 @@
 .tiny {
   display: block;
   margin: 0;
-  font-size: 15px;
+  font-size: 15px !important;
   /* font-weight: 600; */
   /* text-transform: uppercase; */
   letter-spacing: 0.07em;
@@ -134,7 +134,7 @@
 
 .box-heading {
   margin: 0;
-  font-size: 15px;
+  font-size: 15px !important;
   /* font-weight: 600; */
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -146,9 +146,9 @@
 
 .sub-heading {
   margin: 6px 0 0;
-  font-size: 15px;
+  font-size: 15px !important;
   /* font-weight: 600; */
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   letter-spacing: 0.08em;
   color: var(--text-dim);
   border-bottom: 1px solid var(--border);
@@ -157,7 +157,7 @@
 .hint {
   margin: 0;
   color: var(--text-muted);
-  font-size: 15px;
+  font-size: 15px !important;
 }
 
 .opt {
@@ -166,7 +166,7 @@
   gap: 6px;
   cursor: pointer;
   white-space: nowrap;
-  font-size: 15px;
+  font-size: 15px !important;
   /* font-weight: 600; */
 }
 
@@ -184,7 +184,7 @@
   border: none;
   background: transparent;
   padding: 3px 0;
-  font-size: 15px;
+  font-size: 15px !important;
   /* font-weight: 600; */
 }
 
@@ -200,7 +200,7 @@
 }
 
 .id-grid .wide input {
-  font-size: 15px;
+  font-size: 15px !important;
   /* font-weight: 600; */
 }
 
@@ -407,7 +407,7 @@
   grid-template-columns: minmax(0, 1fr) auto;
   column-gap: 20px;
   align-items: center;
-  font-size: 15px;
+  font-size: 15px !important;
   padding: 2px 0;
   border-bottom: 1px solid var(--border);
 }
@@ -442,7 +442,7 @@
 .spouse-skill input {
   width: 50px;
   max-width: 50px;
-  font-size: 15px;
+  font-size: 15px !important;
   text-align: center;
 }
 
@@ -478,13 +478,13 @@
   border-radius: 6px;
   padding: 10px 2px;
   min-height: 34px;
-  font-size: 15px;
+  font-size: 15px !important;
   /* font-weight: 600; */
 }
 
 .c-name {
   /* font-weight: 600; */
-  font-size: 15px;
+  font-size: 15px !important;
   color: var(--text);
 }
 
@@ -499,7 +499,7 @@
 }
 
 .c-cell {
-  font-size: 15px;
+  font-size: 15px !important;
   color: var(--text-dim);
 }
 
@@ -517,7 +517,7 @@
   grid-template-columns: minmax(0, 1fr) 90px;
   gap: 8px;
   align-items: center;
-  font-size: 15px;
+  font-size: 15px !important;
   /* font-weight: 600; */
   padding: 3px 0;
   border-bottom: 1px solid var(--border);
@@ -570,7 +570,7 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
-  font-size: 15px;
+  font-size: 15px !important;
   /* font-weight: 600; */
 }
 
@@ -612,12 +612,37 @@
   text-align: left;
 }
 
+.shield-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2px 8px;
+  align-items: center;
+  text-align: center;
+}
+
+.shield-grid > :first-child {
+  align-items: left;
+  text-align: left;
+}
+
+.shield-grid input {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.shield-grid input > :first-child {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+}
+
 .total-line {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 90px;
   gap: 8px;
   align-items: center;
-  font-size: 15px;
+  font-size: 15px !important;
   /* font-weight: 600; */
 }
 
@@ -642,14 +667,14 @@
   grid-template-columns: 18px minmax(0, 1fr) 52px;
   gap: 1px;
   align-items: center;
-  font-size: 15px;
+  font-size: 15px !important;
   /* font-weight: 600; */
   padding: 1px 0;
   border-bottom: 1px solid var(--border);
 }
 
 .skill input {
-  font-size: 15px;
+  font-size: 15px !important;
   /* font-weight: 600; */
 }
 
@@ -689,7 +714,7 @@
   grid-template-columns: 18px 52px minmax(0, 1fr) minmax(0, 1fr) 52px 18px;
   gap: 6px;
   align-items: center;
-  font-size: 15px;
+  font-size: 15px !important;
   /* font-weight: 600; */
   padding: 4px 0;
   border-bottom: 1px solid var(--border);

@@ -142,30 +142,32 @@
           <h3 class="box-heading">Armor</h3>
           <h4 class="sub-heading">Mail/Plate</h4>
           <div class="armor-grid">
-            <span class="c-name">Item</span>
+            <span class="c-name">Type</span>
             <span class="c-name">Protection</span>
             <g-field name="armor_mail_type" label="" />
             <g-field name="armor_mail" label="" />
           </div>
           <h4 class="sub-heading">Textile</h4>
           <div class="armor-grid">
-            <span class="c-name">Item</span>
+            <span class="c-name">Type</span>
             <span class="c-name">Protection</span>
             <g-field name="armor_textile_type" label="" />
             <g-field name="armor_textile" label="" />
           </div>
           <h4 class="sub-heading">Helm</h4>
           <div class="armor-grid">
-            <span class="c-name">Item</span>
+            <span class="c-name">Type</span>
             <span class="c-name">Protection</span>
             <g-field name="armor_helm_type" label="" />
             <g-field name="armor_helm" label="" />
           </div>
           <h4 class="sub-heading">Shield</h4>
-          <div class="armor-grid">
-            <span class="c-name">Item</span>
+          <div class="shield-grid">
+            <span class="c-name">Type</span>
+            <span class="c-name">vs Missiles</span>
             <span class="c-name">Protection</span>
             <g-field name="armor_shield_type" label="" />
+            <g-field name="armor_shield_missile_protection" label="" />
             <g-field name="armor_shield" label="" />
           </div>
           <h4 class="sub-heading">Total Protection</h4>
@@ -178,6 +180,16 @@
         <section class="box">
           <h3 class="box-heading">Attacks</h3>
           <g-field name="weapons" label="" />
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Coinage</h3>
+          <h4 class="sub-heading">Total Value: <b>£</b><g-value name="money_total" /></h4>
+          <div class="id-grid pairs">
+            <div class="gstat"><span>Libra (£)<g-field name="money_libra"  label="" variant="compact"/></span></div>
+            <div class="gstat"><span>Denarii (D)<g-field name="money_denarii"  label="" variant="compact"/></span></div>
+          </div>
+          <span class="hint">1 £ = 240 D</span>
         </section>
 
         <section class="box">
@@ -229,8 +241,8 @@
           <h3 class="box-heading">Passions</h3>
           <h4 class="sub-heading">Fidelitas</h4>
           <ul class="skills single">
-            <li class="skill"><g-option field="passion_checks" value="Homage" label="Check for Homage" /><span class="s-name slot-name"><span class="tiny inline">Homage</span><g-field name="passion_homage_subject" label="" /></span><g-field name="passion_homage" label="" variant="compact" /></li>
-            <li class="skill"><g-option field="passion_checks" value="Fealty" label="Check for Fealty" /><span class="s-name slot-name"><span class="tiny inline">Fealty</span><g-field name="passion_fealty_subject" label="" /></span><g-field name="passion_fealty" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="passion_checks" value="Homage" label="Check for Homage" /><span class="s-name slot-name"><span class="s-name">Homage</span><g-field name="passion_homage_subject" label="" /></span><g-field name="passion_homage" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="passion_checks" value="Fealty" label="Check for Fealty" /><span class="s-name slot-name"><span class="s-name">Fealty</span><g-field name="passion_fealty_subject" label="" /></span><g-field name="passion_fealty" label="" variant="compact" /></li>
             <li class="skill"><g-option field="passion_checks" value="Passion 1" label="Check for passion 1" /><span class="s-name slot-name twin"><g-field name="passion_c1_name" label="" /><g-field name="passion_c1_object" label="" /></span><g-field name="passion_c1" label="" variant="compact" /></li>
             <li class="skill"><g-option field="passion_checks" value="Passion 2" label="Check for passion 2" /><span class="s-name slot-name twin"><g-field name="passion_c2_name" label="" /><g-field name="passion_c2_object" label="" /></span><g-field name="passion_c2" label="" variant="compact" /></li>
           </ul>
@@ -427,7 +439,7 @@
     </div>
   </g-tab>
 
-  <g-tab title="Squire 1" visible_if="squire1_check">
+  <g-tab title="Squire 1" visible_if="squire1_check"> <!-- title_from=squire1_name -->
     <section class="box squire-header">
       <div class="gstat"><span>Name</span><g-field name="squire1_name" label="" /></div>
       <div class="gstat"><span>Squire Skill</span><g-field name="squire1_skill" label="" variant="compact" /></div>
@@ -582,8 +594,8 @@
           <h3 class="box-heading">Passions</h3>
           <h4 class="sub-heading">Fidelitas</h4>
           <ul class="skills single">
-            <li class="skill"><g-option field="squire1_passion_checks" value="Homage" label="Check for Homage" /><span class="s-name slot-name"><span class="tiny inline">Homage</span><g-field name="squire1_homage_subject" label="" /></span><g-field name="squire1_homage" label="" variant="compact" /></li>
-            <li class="skill"><g-option field="squire1_passion_checks" value="Fealty" label="Check for Fealty" /><span class="s-name slot-name"><span class="tiny inline">Fealty</span><g-field name="squire1_fealty_subject" label="" /></span><g-field name="squire1_fealty" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire1_passion_checks" value="Homage" label="Check for Homage" /><span class="s-name slot-name"><span class="s-name">Homage</span><g-field name="squire1_homage_subject" label="" /></span><g-field name="squire1_homage" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire1_passion_checks" value="Fealty" label="Check for Fealty" /><span class="s-name slot-name"><span class="s-name">Fealty</span><g-field name="squire1_fealty_subject" label="" /></span><g-field name="squire1_fealty" label="" variant="compact" /></li>
             <li class="skill"><g-option field="squire1_passion_checks" value="Passion 1" label="Check for passion 1" /><span class="s-name slot-name twin"><g-field name="squire1_passion_1_name" label="" /><g-field name="squire1_passion_1_object" label="" /></span><g-field name="squire1_passion_1" label="" variant="compact" /></li>
             <li class="skill"><g-option field="squire1_passion_checks" value="Passion 2" label="Check for passion 2" /><span class="s-name slot-name twin"><g-field name="squire1_passion_2_name" label="" /><g-field name="squire1_passion_2_object" label="" /></span><g-field name="squire1_passion_2" label="" variant="compact" /></li>
           </ul>
@@ -658,7 +670,7 @@
     </div>
   </g-tab>
 
-  <g-tab title="Squire 2" visible_if="squire2_check">
+  <g-tab title="Squire 2" visible_if="squire2_check"> <!-- title_from=squire2_name -->
     <section class="box squire-header">
       <div class="gstat"><span>Name</span><g-field name="squire2_name" label="" /></div>
       <div class="gstat"><span>Squire Skill</span><g-field name="squire2_skill" label="" variant="compact" /></div>
@@ -813,8 +825,8 @@
           <h3 class="box-heading">Passions</h3>
           <h4 class="sub-heading">Fidelitas</h4>
           <ul class="skills single">
-            <li class="skill"><g-option field="squire2_passion_checks" value="Homage" label="Check for Homage" /><span class="s-name slot-name"><span class="tiny inline">Homage</span><g-field name="squire2_homage_subject" label="" /></span><g-field name="squire2_homage" label="" variant="compact" /></li>
-            <li class="skill"><g-option field="squire2_passion_checks" value="Fealty" label="Check for Fealty" /><span class="s-name slot-name"><span class="tiny inline">Fealty</span><g-field name="squire2_fealty_subject" label="" /></span><g-field name="squire2_fealty" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire2_passion_checks" value="Homage" label="Check for Homage" /><span class="s-name slot-name"><span class="s-name">Homage</span><g-field name="squire2_homage_subject" label="" /></span><g-field name="squire2_homage" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire2_passion_checks" value="Fealty" label="Check for Fealty" /><span class="s-name slot-name"><span class="s-name">Fealty</span><g-field name="squire2_fealty_subject" label="" /></span><g-field name="squire2_fealty" label="" variant="compact" /></li>
             <li class="skill"><g-option field="squire2_passion_checks" value="Passion 1" label="Check for passion 1" /><span class="s-name slot-name twin"><g-field name="squire2_passion_1_name" label="" /><g-field name="squire2_passion_1_object" label="" /></span><g-field name="squire2_passion_1" label="" variant="compact" /></li>
             <li class="skill"><g-option field="squire2_passion_checks" value="Passion 2" label="Check for passion 2" /><span class="s-name slot-name twin"><g-field name="squire2_passion_2_name" label="" /><g-field name="squire2_passion_2_object" label="" /></span><g-field name="squire2_passion_2" label="" variant="compact" /></li>
           </ul>
@@ -889,7 +901,7 @@
     </div>
   </g-tab>
 
-  <g-tab title="Squire 3" visible_if="squire3_check">
+  <g-tab title="Squire 3" visible_if="squire3_check"> <!-- title_from=squire2_name -->
     <section class="box squire-header">
       <div class="gstat"><span>Name</span><g-field name="squire3_name" label="" /></div>
       <div class="gstat"><span>Squire Skill</span><g-field name="squire3_skill" label="" variant="compact" /></div>
@@ -1044,8 +1056,8 @@
           <h3 class="box-heading">Passions</h3>
           <h4 class="sub-heading">Fidelitas</h4>
           <ul class="skills single">
-            <li class="skill"><g-option field="squire3_passion_checks" value="Homage" label="Check for Homage" /><span class="s-name slot-name"><span class="tiny inline">Homage</span><g-field name="squire3_homage_subject" label="" /></span><g-field name="squire3_homage" label="" variant="compact" /></li>
-            <li class="skill"><g-option field="squire3_passion_checks" value="Fealty" label="Check for Fealty" /><span class="s-name slot-name"><span class="tiny inline">Fealty</span><g-field name="squire3_fealty_subject" label="" /></span><g-field name="squire3_fealty" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire3_passion_checks" value="Homage" label="Check for Homage" /><span class="s-name slot-name"><span class="s-name">Homage</span><g-field name="squire3_homage_subject" label="" /></span><g-field name="squire3_homage" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire3_passion_checks" value="Fealty" label="Check for Fealty" /><span class="s-name slot-name"><span class="s-name">Fealty</span><g-field name="squire3_fealty_subject" label="" /></span><g-field name="squire3_fealty" label="" variant="compact" /></li>
             <li class="skill"><g-option field="squire3_passion_checks" value="Passion 1" label="Check for passion 1" /><span class="s-name slot-name twin"><g-field name="squire3_passion_1_name" label="" /><g-field name="squire3_passion_1_object" label="" /></span><g-field name="squire3_passion_1" label="" variant="compact" /></li>
             <li class="skill"><g-option field="squire3_passion_checks" value="Passion 2" label="Check for passion 2" /><span class="s-name slot-name twin"><g-field name="squire3_passion_2_name" label="" /><g-field name="squire3_passion_2_object" label="" /></span><g-field name="squire3_passion_2" label="" variant="compact" /></li>
           </ul>
@@ -1127,7 +1139,7 @@
     </section>
   </g-tab>
 
-  <g-tab title="Spouse"  visible_if="married">
+  <g-tab title="Spouse"  visible_if="married">  <!-- title_from=spouse_name -->
     <section class="box spouse-header">
       <div class="gstat"><span>Name</span><g-field name="spouse_name" label="" /></div>
       <div class="gstat"><span>Glory</span><g-field name="spouse_glory" label="" /></div>
@@ -1277,8 +1289,8 @@
           <h3 class="box-heading">Passions</h3>
           <h4 class="sub-heading">Fidelitas</h4>
           <ul class="skills single">
-            <li class="skill"><g-option field="spouse_passion_checks" value="Homage" label="Check for Homage" /><span class="s-name slot-name"><span class="tiny inline">Homage</span><g-field name="spouse_homage_subject" label="" /></span><g-field name="spouse_homage" label="" variant="compact" /></li>
-            <li class="skill"><g-option field="spouse_passion_checks" value="Fealty" label="Check for Fealty" /><span class="s-name slot-name"><span class="tiny inline">Fealty</span><g-field name="spouse_fealty_subject" label="" /></span><g-field name="spouse_fealty" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="spouse_passion_checks" value="Homage" label="Check for Homage" /><span class="s-name slot-name"><span class="s-name">Homage</span><g-field name="spouse_homage_subject" label="" /></span><g-field name="spouse_homage" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="spouse_passion_checks" value="Fealty" label="Check for Fealty" /><span class="s-name slot-name"><span class="s-name">Fealty</span><g-field name="spouse_fealty_subject" label="" /></span><g-field name="spouse_fealty" label="" variant="compact" /></li>
             <li class="skill"><g-option field="spouse_passion_checks" value="Passion 1" label="Check for passion 1" /><span class="s-name slot-name twin"><g-field name="spouse_passion_1_name" label="" /><g-field name="spouse_passion_1_object" label="" /></span><g-field name="spouse_passion_1" label="" variant="compact" /></li>
             <li class="skill"><g-option field="spouse_passion_checks" value="Passion 2" label="Check for passion 2" /><span class="s-name slot-name twin"><g-field name="spouse_passion_2_name" label="" /><g-field name="spouse_passion_2_object" label="" /></span><g-field name="spouse_passion_2" label="" variant="compact" /></li>
           </ul>
@@ -1436,7 +1448,7 @@
     </section>
   </g-tab>
 
-  <g-tab title="Manor 1" visible_if = "holdings_manor1_check">
+  <g-tab title="Manor 1" visible_if="holdings_manor1_check"> <!-- title_from=manor1_name -->
     <section class="box">
       <div class="manor-info-line1">
         <div class="gstat"><span class="tiny">Name</span><g-field name="manor1_name" label="" /></div>
@@ -1472,7 +1484,7 @@
     </section>
   </g-tab>
 
-  <g-tab title="Manor 2" visible_if = "holdings_manor2_check">
+  <g-tab title="Manor 2" visible_if="holdings_manor2_check"> <!-- title_from=manor2_name -->
     <section class="box">
       <div class="manor-info-line1">
         <div class="gstat"><span class="tiny">Name</span><g-field name="manor2_name" label="" /></div>
@@ -1508,7 +1520,7 @@
     </section>
   </g-tab>
 
-  <g-tab title="Manor 3" visible_if = "holdings_manor3_check">
+  <g-tab title="Manor 3" visible_if="holdings_manor3_check"> <!-- title_from=manor2_name -->
     <section class="box">
       <div class="manor-info-line1">
         <div class="gstat"><span class="tiny">Name</span><g-field name="manor3_name" label="" /></div>
@@ -1544,7 +1556,7 @@
     </section>
   </g-tab>
 
-  <g-tab title="Manor 4" visible_if = "holdings_manor4_check">
+  <g-tab title="Manor 4" visible_if="holdings_manor4_check"> <!-- title_from=manor2_name -->
     <section class="box">
       <div class="manor-info-line1">
         <div class="gstat"><span class="tiny">Name</span><g-field name="manor4_name" label="" /></div>
@@ -1580,7 +1592,7 @@
     </section>
   </g-tab>
 
-  <g-tab title="Manor 5" visible_if = "holdings_manor5_check">
+  <g-tab title="Manor 5" visible_if="holdings_manor5_check"> <!-- title_from=manor2_name -->
     <section class="box">
       <div class="manor-info-line1">
         <div class="gstat"><span class="tiny">Name</span><g-field name="manor5_name" label="" /></div>
@@ -1616,7 +1628,7 @@
     </section>
   </g-tab>
 
-  <g-tab title="Barony" visible_if="holdings_barony_check">
+  <g-tab title="Barony" visible_if="holdings_barony_check"> <!-- title_from=manor2_name -->
     <section class="box">
       <div class="manor-info-line1">
         <div class="gstat"><span class="tiny">Name</span><g-field name="barony_name" label="" /></div>

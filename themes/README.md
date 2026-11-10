@@ -119,5 +119,6 @@ cannot add.
 
 | Theme | Mode | Description |
 | --- | --- | --- |
+| [Codex Red](codex-red/) | light & dark | Crimson on gunmetal for the Codex theme, with danger and warning moved onto vermilion and amber. Follows System. |
 | [High Contrast](high-contrast/) | light & dark | Pure black or pure white surfaces at full-strength contrast; every pairing clears WCAG AAA, and it follows System. |
 | [One Dark](one-dark/) | light & dark | Atom's One Dark and One Light — slate-blue surfaces, soft syntax hues, and One's blue in place of the gold accent. Follows System. |

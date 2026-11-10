@@ -1,7 +1,24 @@
 {
   "version": 1,
-  "generated": "2026-10-23T19:28:09Z",
+  "generated": "2026-11-10T16:20:42Z",
   "themes": [
+    {
+      "id": "codex-red",
+      "name": "Codex Red",
+      "version": "1.0.0",
+      "mode": "dark",
+      "modes": [
+        "light",
+        "dark"
+      ],
+      "path": "themes/codex-red/codex-red.json",
+      "sha256": "1edd5226b7677cb3e5429e851074f7839a4dd275d6dd7be9cde7448c84f041ee",
+      "app_mode": "codex",
+      "author": "hunter-read",
+      "description": "Crimson on cool gunmetal, from the Codex logo. Codex's steel accent traded for crimson, with danger and warning moved off it - onto vermilion and amber - so a destructive button never looks like the primary one. Every text and accent pairing clears WCAG AA (4.5:1). Follows System, so it tracks your OS setting.",
+      "homepage": "https://github.com/grimoire-codex/community-add-ons",
+      "grimoire_min_version": "1.6.0"
+    },
     {
       "id": "high-contrast",
       "name": "High Contrast",

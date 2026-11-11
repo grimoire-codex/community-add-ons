@@ -65,6 +65,10 @@
           <span class="hint">🕆 Christian - ☀ Pagan - ☾ Heathen - 🗲 Wodinic</span>
           <span class="hint">♥ Romantic - 🛡 Chivalrous</span>
         </section>
+
+        <g-section title="Notes">
+          <div class="gstat"><g-field name="notes" label="" /></div>
+        </g-section>
       </div>
 
       <div class="col">
@@ -187,13 +191,14 @@
           <h4 class="sub-heading">Total Value: <b>£</b><g-value name="money_total" /></h4>
           <div class="id-grid pairs">
             <div class="gstat"><span>Libra (£)<g-field name="money_libra"  label="" variant="compact"/></span></div>
-            <div class="gstat"><span>Denarii (D)<g-field name="money_denarii"  label="" variant="compact"/></span></div>
+            <div class="gstat"><span>Denarii (d)<g-field name="money_denarii"  label="" variant="compact"/></span></div>
           </div>
-          <span class="hint">1 £ = 240 D</span>
+          <span class="hint">£ 1 = 240 d</span>
         </section>
 
         <section class="box">
           <h3 class="box-heading">Equipment</h3>
+          <h4 class="sub-heading">Total Value: <b>£</b><g-value name="equipment_total_value" /></h4>
           <g-field name="equipment" label="" />
         </section>
       </div>
@@ -470,6 +475,10 @@
             <li class="trait directed"><span class="s-name slot-name"><span class="tiny inline">Directed Trait</span><g-field name=squire1_directed_2_name label="" /></span><span class="shield"><g-field name=squire1_directed_2 label="" variant="compact" /></span><g-option field=squire1_trait_checks value="Directed Trait 2" label="Check for directed trait 2" /></li>
           </ul>
         </section>
+  
+        <section class="box">
+          <div class="gstat"><span>Notes</span><g-field name="squire1_notes" label="" /></div>
+        </section>
       </div>
 
       <div class="col">
@@ -565,10 +574,12 @@
             <g-field name="squire1_armor_helm" label="" />
           </div>
           <h4 class="sub-heading">Shield</h4>
-          <div class="armor-grid">
-            <span class="c-name">Item</span>
+          <div class="shield-grid">
+            <span class="c-name">Type</span>
+            <span class="c-name">vs Missiles</span>
             <span class="c-name">Protection</span>
             <g-field name="squire1_armor_shield_type" label="" />
+            <g-field name="squire1_armor_shield_missile_protection" label="" />
             <g-field name="squire1_armor_shield" label="" />
           </div>
           <h4 class="sub-heading">Total Protection</h4>
@@ -585,6 +596,7 @@
 
         <section class="box">
           <h3 class="box-heading">Equipment</h3>
+          <h4 class="sub-heading">Total Value: <b>£</b><g-value name="squire1_equipment_total_value" /></h4>
           <g-field name="squire1_equipment" label="" />
         </section>
       </div>
@@ -663,9 +675,6 @@
             <li class="spouse-skill"><span class="spouse-skill-name">Siegecraft</span><g-field name="squire1_sk_siegecraft" label="" variant="compact" /></li>
           </ul>
         </section>
-        <section class="box">
-          <div class="gstat"><span>Notes</span><g-field name="squire1_notes" label="" /></div>
-        </section>
       </div>
     </div>
   </g-tab>
@@ -700,6 +709,10 @@
             <li class="trait directed"><span class="s-name slot-name"><span class="tiny inline">Directed Trait</span><g-field name=squire2_directed_1_name label="" /></span><span class="shield"><g-field name=squire2_directed_1 label="" variant="compact" /></span><g-option field=squire2_trait_checks value="Directed Trait 1" label="Check for directed trait 1" /></li>
             <li class="trait directed"><span class="s-name slot-name"><span class="tiny inline">Directed Trait</span><g-field name=squire2_directed_2_name label="" /></span><span class="shield"><g-field name=squire2_directed_2 label="" variant="compact" /></span><g-option field=squire2_trait_checks value="Directed Trait 2" label="Check for directed trait 2" /></li>
           </ul>
+        </section>
+
+        <section class="box">
+          <div class="gstat"><span>Notes</span><g-field name="squire2_notes" label="" /></div>
         </section>
       </div>
 
@@ -796,10 +809,12 @@
             <g-field name="squire2_armor_helm" label="" />
           </div>
           <h4 class="sub-heading">Shield</h4>
-          <div class="armor-grid">
-            <span class="c-name">Item</span>
+          <div class="shield-grid">
+            <span class="c-name">Type</span>
+            <span class="c-name">vs Missiles</span>
             <span class="c-name">Protection</span>
             <g-field name="squire2_armor_shield_type" label="" />
+            <g-field name="squire2_armor_shield_missile_protection" label="" />
             <g-field name="squire2_armor_shield" label="" />
           </div>
           <h4 class="sub-heading">Total Protection</h4>
@@ -816,6 +831,7 @@
 
         <section class="box">
           <h3 class="box-heading">Equipment</h3>
+          <h4 class="sub-heading">Total Value: <b>£</b><g-value name="squire2_equipment_total_value" /></h4>
           <g-field name="squire2_equipment" label="" />
         </section>
       </div>
@@ -894,9 +910,6 @@
             <li class="spouse-skill"><span class="spouse-skill-name">Siegecraft</span><g-field name="squire2_sk_siegecraft" label="" variant="compact" /></li>
           </ul>
         </section>
-        <section class="box">
-          <div class="gstat"><span>Notes</span><g-field name="squire2_notes" label="" /></div>
-        </section>
       </div>
     </div>
   </g-tab>
@@ -931,6 +944,10 @@
             <li class="trait directed"><span class="s-name slot-name"><span class="tiny inline">Directed Trait</span><g-field name=squire3_directed_1_name label="" /></span><span class="shield"><g-field name=squire3_directed_1 label="" variant="compact" /></span><g-option field=squire3_trait_checks value="Directed Trait 1" label="Check for directed trait 1" /></li>
             <li class="trait directed"><span class="s-name slot-name"><span class="tiny inline">Directed Trait</span><g-field name=squire3_directed_2_name label="" /></span><span class="shield"><g-field name=squire3_directed_2 label="" variant="compact" /></span><g-option field=squire3_trait_checks value="Directed Trait 2" label="Check for directed trait 2" /></li>
           </ul>
+        </section>
+
+        <section class="box">
+          <div class="gstat"><span>Notes</span><g-field name="squire3_notes" label="" /></div>
         </section>
       </div>
 
@@ -1027,10 +1044,12 @@
             <g-field name="squire3_armor_helm" label="" />
           </div>
           <h4 class="sub-heading">Shield</h4>
-          <div class="armor-grid">
-            <span class="c-name">Item</span>
+          <div class="shield-grid">
+            <span class="c-name">Type</span>
+            <span class="c-name">vs Missiles</span>
             <span class="c-name">Protection</span>
             <g-field name="squire3_armor_shield_type" label="" />
+            <g-field name="squire3_armor_shield_missile_protection" label="" />
             <g-field name="squire3_armor_shield" label="" />
           </div>
           <h4 class="sub-heading">Total Protection</h4>
@@ -1047,6 +1066,7 @@
 
         <section class="box">
           <h3 class="box-heading">Equipment</h3>
+          <h4 class="sub-heading">Total Value: <b>£</b><g-value name="squire3_equipment_total_value" /></h4>
           <g-field name="squire3_equipment" label="" />
         </section>
       </div>
@@ -1125,9 +1145,6 @@
             <li class="spouse-skill"><span class="spouse-skill-name">Siegecraft</span><g-field name="squire3_sk_siegecraft" label="" variant="compact" /></li>
           </ul>
         </section>
-        <section class="box">
-          <div class="gstat"><span>Notes</span><g-field name="squire3_notes" label="" /></div>
-        </section>
       </div>
     </div>
   </g-tab>
@@ -1167,6 +1184,10 @@
             <li class="trait directed"><span class="s-name slot-name"><span class="tiny inline">Directed Trait</span><g-field name="spouse_directed_1_name" label="" /></span><span class="shield"><g-field name="spouse_directed_1" label="" variant="compact" /></span><g-option field="spouse_trait_checks" value="Directed Trait 1" label="Check for directed trait 1" /></li>
             <li class="trait directed"><span class="s-name slot-name"><span class="tiny inline">Directed Trait</span><g-field name="spouse_directed_2_name" label="" /></span><span class="shield"><g-field name="spouse_directed_2" label="" variant="compact" /></span><g-option field="spouse_trait_checks" value="Directed Trait 2" label="Check for directed trait 2" /></li>
           </ul>
+        </section>
+  
+        <section class="box">
+          <div class="gstat"><span>Notes</span><g-field name="spouse_notes" label="" /></div>
         </section>
       </div>
 
@@ -1260,10 +1281,12 @@
             <g-field name="spouse_armor_helm" label="" />
           </div>
           <h4 class="sub-heading">Shield</h4>
-          <div class="armor-grid">
-            <span class="c-name">Item</span>
+          <div class="shield-grid">
+            <span class="c-name">Type</span>
+            <span class="c-name">vs Missiles</span>
             <span class="c-name">Protection</span>
             <g-field name="spouse_armor_shield_type" label="" />
+            <g-field name="spouse_armor_shield_missile_protection" label="" />
             <g-field name="spouse_armor_shield" label="" />
           </div>
           <h4 class="sub-heading">Total Protection</h4>
@@ -1280,6 +1303,7 @@
 
         <section class="box">
           <h3 class="box-heading">Equipment</h3>
+          <h4 class="sub-heading">Total Value: <b>£</b><g-value name="spouse_equipment_total_value" /></h4>
           <g-field name="spouse_equipment" label="" />
         </section>
       </div>

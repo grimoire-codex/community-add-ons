@@ -1504,1254 +1504,6 @@
       "type": "checkbox",
       "label": "Squire 3"
     },
-    "manor1_defenses": {
-      "add_label": "Add defenses",
-      "label": "Defenses",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "location",
-          "label": "Location",
-          "type": "text"
-        },
-        {
-          "flex": 1,
-          "key": "dv",
-          "label": "DV",
-          "type": "number"
-        },
-        {
-          "flex": 3,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "manor1_enhancements": {
-      "add_label": "Add enhancements",
-      "label": "Enhancements",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "statistic",
-          "label": "Statistic",
-          "type": "text"
-        },
-        {
-          "flex": 4,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "manor1_investments": {
-      "add_label": "Add investments",
-      "label": "Investments",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "income",
-          "label": "Income",
-          "type": "number"
-        },
-        {
-          "flex": 1,
-          "key": "statistic",
-          "label": "Statistic",
-          "type": "text"
-        },
-        {
-          "flex": 4,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "manor1_manor_folk": {
-      "add_label": "Add manor folk",
-      "label": "Manor Folk",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "position",
-          "label": "Position",
-          "type": "text"
-        },
-        {
-          "flex": 1,
-          "key": "key_skill",
-          "label": "Key Skill",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "skill_value",
-          "label": "Skill Value",
-          "type": "number"
-        },
-        {
-          "flex": 3,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        }
-      ]
-    },
-    "manor1_manorial_improvements": {
-      "add_label": "Add manorial improvements",
-      "label": "Manorial Improvements",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "effects",
-          "label": "Effects",
-          "type": "text"
-        },
-        {
-          "flex": 4,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "manor1_name": {
-      "label": "Manor 1 name",
-      "type": "text"
-    },
-    "manor1_notable_features": {
-      "add_label": "Add notable features",
-      "label": "Notable Features",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "effects",
-          "label": "Effects",
-          "type": "text"
-        },
-        {
-          "flex": 4,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "manor2_defenses": {
-      "add_label": "Add defenses",
-      "label": "Defenses",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "location",
-          "label": "Location",
-          "type": "text"
-        },
-        {
-          "flex": 1,
-          "key": "dv",
-          "label": "DV",
-          "type": "number"
-        },
-        {
-          "flex": 3,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "manor2_enhancements": {
-      "add_label": "Add enhancements",
-      "label": "Enhancements",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "statistic",
-          "label": "Statistic",
-          "type": "text"
-        },
-        {
-          "flex": 4,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "manor2_investments": {
-      "add_label": "Add investments",
-      "label": "Investments",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "income",
-          "label": "Income",
-          "type": "number"
-        },
-        {
-          "flex": 1,
-          "key": "statistic",
-          "label": "Statistic",
-          "type": "text"
-        },
-        {
-          "flex": 4,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "manor2_manor_folk": {
-      "add_label": "Add manor folk",
-      "label": "Manor Folk",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "position",
-          "label": "Position",
-          "type": "text"
-        },
-        {
-          "flex": 1,
-          "key": "key_skill",
-          "label": "Key Skill",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "skill_value",
-          "label": "Skill Value",
-          "type": "number"
-        },
-        {
-          "flex": 3,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        }
-      ]
-    },
-    "manor2_manorial_improvements": {
-      "add_label": "Add manorial improvements",
-      "label": "Manorial Improvements",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "effects",
-          "label": "Effects",
-          "type": "text"
-        },
-        {
-          "flex": 4,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "manor2_name": {
-      "label": "Manor 2 name",
-      "type": "text"
-    },
-    "manor2_notable_features": {
-      "add_label": "Add notable features",
-      "label": "Notable Features",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "effects",
-          "label": "Effects",
-          "type": "text"
-        },
-        {
-          "flex": 4,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "manor3_defenses": {
-      "add_label": "Add defenses",
-      "label": "Defenses",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "location",
-          "label": "Location",
-          "type": "text"
-        },
-        {
-          "flex": 1,
-          "key": "dv",
-          "label": "DV",
-          "type": "number"
-        },
-        {
-          "flex": 3,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "manor3_enhancements": {
-      "add_label": "Add enhancements",
-      "label": "Enhancements",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "statistic",
-          "label": "Statistic",
-          "type": "text"
-        },
-        {
-          "flex": 4,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "manor3_investments": {
-      "add_label": "Add investments",
-      "label": "Investments",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "income",
-          "label": "Income",
-          "type": "number"
-        },
-        {
-          "flex": 1,
-          "key": "statistic",
-          "label": "Statistic",
-          "type": "text"
-        },
-        {
-          "flex": 4,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "manor3_manor_folk": {
-      "add_label": "Add manor folk",
-      "label": "Manor Folk",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "position",
-          "label": "Position",
-          "type": "text"
-        },
-        {
-          "flex": 1,
-          "key": "key_skill",
-          "label": "Key Skill",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "skill_value",
-          "label": "Skill Value",
-          "type": "number"
-        },
-        {
-          "flex": 3,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        }
-      ]
-    },
-    "manor3_manorial_improvements": {
-      "add_label": "Add manorial improvements",
-      "label": "Manorial Improvements",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "effects",
-          "label": "Effects",
-          "type": "text"
-        },
-        {
-          "flex": 4,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "manor3_name": {
-      "label": "Manor 3 name",
-      "type": "text"
-    },
-    "manor3_notable_features": {
-      "add_label": "Add notable features",
-      "label": "Notable Features",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "effects",
-          "label": "Effects",
-          "type": "text"
-        },
-        {
-          "flex": 4,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "manor4_defenses": {
-      "add_label": "Add defenses",
-      "label": "Defenses",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "location",
-          "label": "Location",
-          "type": "text"
-        },
-        {
-          "flex": 1,
-          "key": "dv",
-          "label": "DV",
-          "type": "number"
-        },
-        {
-          "flex": 3,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "manor4_enhancements": {
-      "add_label": "Add enhancements",
-      "label": "Enhancements",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "statistic",
-          "label": "Statistic",
-          "type": "text"
-        },
-        {
-          "flex": 4,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "manor4_investments": {
-      "add_label": "Add investments",
-      "label": "Investments",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "income",
-          "label": "Income",
-          "type": "number"
-        },
-        {
-          "flex": 1,
-          "key": "statistic",
-          "label": "Statistic",
-          "type": "text"
-        },
-        {
-          "flex": 4,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "manor4_manor_folk": {
-      "add_label": "Add manor folk",
-      "label": "Manor Folk",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "position",
-          "label": "Position",
-          "type": "text"
-        },
-        {
-          "flex": 1,
-          "key": "key_skill",
-          "label": "Key Skill",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "skill_value",
-          "label": "Skill Value",
-          "type": "number"
-        },
-        {
-          "flex": 3,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        }
-      ]
-    },
-    "manor4_manorial_improvements": {
-      "add_label": "Add manorial improvements",
-      "label": "Manorial Improvements",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "effects",
-          "label": "Effects",
-          "type": "text"
-        },
-        {
-          "flex": 4,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "manor4_name": {
-      "label": "Manor 4 name",
-      "type": "text"
-    },
-    "manor4_notable_features": {
-      "add_label": "Add notable features",
-      "label": "Notable Features",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "effects",
-          "label": "Effects",
-          "type": "text"
-        },
-        {
-          "flex": 4,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "manor5_defenses": {
-      "add_label": "Add defenses",
-      "label": "Defenses",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "location",
-          "label": "Location",
-          "type": "text"
-        },
-        {
-          "flex": 1,
-          "key": "dv",
-          "label": "DV",
-          "type": "number"
-        },
-        {
-          "flex": 3,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "manor5_enhancements": {
-      "add_label": "Add enhancements",
-      "label": "Enhancements",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "statistic",
-          "label": "Statistic",
-          "type": "text"
-        },
-        {
-          "flex": 4,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "manor5_investments": {
-      "add_label": "Add investments",
-      "label": "Investments",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "income",
-          "label": "Income",
-          "type": "number"
-        },
-        {
-          "flex": 1,
-          "key": "statistic",
-          "label": "Statistic",
-          "type": "text"
-        },
-        {
-          "flex": 4,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "manor5_manor_folk": {
-      "add_label": "Add manor folk",
-      "label": "Manor Folk",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "position",
-          "label": "Position",
-          "type": "text"
-        },
-        {
-          "flex": 1,
-          "key": "key_skill",
-          "label": "Key Skill",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "skill_value",
-          "label": "Skill Value",
-          "type": "number"
-        },
-        {
-          "flex": 3,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        }
-      ]
-    },
-    "manor5_manorial_improvements": {
-      "add_label": "Add manorial improvements",
-      "label": "Manorial Improvements",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "effects",
-          "label": "Effects",
-          "type": "text"
-        },
-        {
-          "flex": 4,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "manor5_name": {
-      "label": "Manor 5 name",
-      "type": "text"
-    },
-    "manor5_notable_features": {
-      "add_label": "Add notable features",
-      "label": "Notable Features",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "effects",
-          "label": "Effects",
-          "type": "text"
-        },
-        {
-          "flex": 4,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "barony_defenses": {
-      "add_label": "Add defenses",
-      "label": "Defenses",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "location",
-          "label": "Location",
-          "type": "text"
-        },
-        {
-          "flex": 1,
-          "key": "dv",
-          "label": "DV",
-          "type": "number"
-        },
-        {
-          "flex": 3,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "barony_enhancements": {
-      "add_label": "Add enhancements",
-      "label": "Enhancements",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "statistic",
-          "label": "Statistic",
-          "type": "text"
-        },
-        {
-          "flex": 4,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "barony_investments": {
-      "add_label": "Add investments",
-      "label": "Investments",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "income",
-          "label": "Income",
-          "type": "number"
-        },
-        {
-          "flex": 1,
-          "key": "statistic",
-          "label": "Statistic",
-          "type": "text"
-        },
-        {
-          "flex": 4,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "barony_manor_folk": {
-      "add_label": "Add manor folk",
-      "label": "Manor Folk",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "position",
-          "label": "Position",
-          "type": "text"
-        },
-        {
-          "flex": 1,
-          "key": "key_skill",
-          "label": "Key Skill",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "skill_value",
-          "label": "Skill Value",
-          "type": "number"
-        },
-        {
-          "flex": 3,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        }
-      ]
-    },
-    "barony_manorial_improvements": {
-      "add_label": "Add manorial improvements",
-      "label": "Manorial Improvements",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "effects",
-          "label": "Effects",
-          "type": "text"
-        },
-        {
-          "flex": 4,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
-    "barony_name": {
-      "label": "Barony name",
-      "type": "text"
-    },
-    "barony_notable_features": {
-      "add_label": "Add notable features",
-      "label": "Notable Features",
-      "type": "list",
-      "columns": [
-        {
-          "flex": 1.5,
-          "key": "name",
-          "label": "Name",
-          "type": "text"
-        },
-        {
-          "flex": 2,
-          "key": "effects",
-          "label": "Effects",
-          "type": "text"
-        },
-        {
-          "flex": 4,
-          "key": "notes",
-          "label": "Notes",
-          "type": "text"
-        },
-        {
-          "flex": 0.5,
-          "key": "damaged",
-          "label": "Damaged?",
-          "type": "checkbox"
-        }
-      ]
-    },
     "best_horse_siz": {
       "type": "number",
       "label": "Best Riding Horse SIZ",
@@ -3026,532 +1778,6 @@
     "best_horse_worth": {
       "type": "text",
       "label": "Best Riding Horse Worth"
-    },
-    "manor1_county": {
-      "type": "text",
-      "label": "Manor 1 County"
-    },
-    "manor1_hundred": {
-      "type": "text",
-      "label": "Manor 1 Hundred"
-    },
-    "manor2_county": {
-      "type": "text",
-      "label": "Manor 2 County"
-    },
-    "manor2_hundred": {
-      "type": "text",
-      "label": "Manor 2 Hundred"
-    },
-    "manor3_county": {
-      "type": "text",
-      "label": "Manor 3 County"
-    },
-    "manor3_hundred": {
-      "type": "text",
-      "label": "Manor 3 Hundred"
-    },
-    "manor4_county": {
-      "type": "text",
-      "label": "Manor 4 County"
-    },
-    "manor4_hundred": {
-      "type": "text",
-      "label": "Manor 4 Hundred"
-    },
-    "manor5_county": {
-      "type": "text",
-      "label": "Manor 5 County"
-    },
-    "manor5_hundred": {
-      "type": "text",
-      "label": "Manor 5 Hundred"
-    },
-    "barony_county": {
-      "type": "text",
-      "label": "Barony County"
-    },
-    "barony_hundred": {
-      "type": "text",
-      "label": "Barony Hundred"
-    },
-    "manor1_steward": {
-      "type": "text",
-      "label": "Manor 1 Steward"
-    },
-    "manor1_standard_of_living": {
-      "type": "text",
-      "label": "Manor 1 Standard of Living"
-    },
-    "manor1_folklore": {
-      "type": "number",
-      "label": "Manor 1 Folklore",
-      "min": 0
-    },
-    "manor1_station": {
-      "type": "number",
-      "label": "Manor 1 Station",
-      "min": 0
-    },
-    "manor1_privy_funds": {
-      "type": "number",
-      "label": "Manor 1 Privy Funds (\u00a3)",
-      "min": 0
-    },
-    "manor1_current_income": {
-      "type": "number",
-      "label": "Manor 1 Current Income (\u00a3)",
-      "min": 0
-    },
-    "manor1_assized_rent": {
-      "type": "number",
-      "label": "Manor 1 Assized Rent (\u00a3)",
-      "min": 0
-    },
-    "manor1_total_treasure": {
-      "type": "number",
-      "label": "Manor 1 Total Treasure (\u00a3)",
-      "min": 0
-    },
-    "manor1_stewardship": {
-      "type": "number",
-      "label": "Manor 1 Stewardship",
-      "min": 0
-    },
-    "manor1_total_dv": {
-      "type": "number",
-      "label": "Manor 1 Total DV",
-      "min": 0
-    },
-    "manor1_fumble": {
-      "type": "checkbox",
-      "label": "Manor 1 Fumble"
-    },
-    "manor1_famine": {
-      "type": "checkbox",
-      "label": "Manor 1 Famine"
-    },
-    "manor2_steward": {
-      "type": "text",
-      "label": "Manor 2 Steward"
-    },
-    "manor2_standard_of_living": {
-      "type": "text",
-      "label": "Manor 2 Standard of Living"
-    },
-    "manor2_folklore": {
-      "type": "number",
-      "label": "Manor 2 Folklore",
-      "min": 0
-    },
-    "manor2_station": {
-      "type": "number",
-      "label": "Manor 2 Station",
-      "min": 0
-    },
-    "manor2_privy_funds": {
-      "type": "number",
-      "label": "Manor 2 Privy Funds (\u00a3)",
-      "min": 0
-    },
-    "manor2_current_income": {
-      "type": "number",
-      "label": "Manor 2 Current Income (\u00a3)",
-      "min": 0
-    },
-    "manor2_assized_rent": {
-      "type": "number",
-      "label": "Manor 2 Assized Rent (\u00a3)",
-      "min": 0
-    },
-    "manor2_total_treasure": {
-      "type": "number",
-      "label": "Manor 2 Total Treasure (\u00a3)",
-      "min": 0
-    },
-    "manor2_stewardship": {
-      "type": "number",
-      "label": "Manor 2 Stewardship",
-      "min": 0
-    },
-    "manor2_total_dv": {
-      "type": "number",
-      "label": "Manor 2 Total DV",
-      "min": 0
-    },
-    "manor2_fumble": {
-      "type": "checkbox",
-      "label": "Manor 2 Fumble"
-    },
-    "manor2_famine": {
-      "type": "checkbox",
-      "label": "Manor 2 Famine"
-    },
-    "manor3_steward": {
-      "type": "text",
-      "label": "Manor 3 Steward"
-    },
-    "manor3_standard_of_living": {
-      "type": "text",
-      "label": "Manor 3 Standard of Living"
-    },
-    "manor3_folklore": {
-      "type": "number",
-      "label": "Manor 3 Folklore",
-      "min": 0
-    },
-    "manor3_station": {
-      "type": "number",
-      "label": "Manor 3 Station",
-      "min": 0
-    },
-    "manor3_privy_funds": {
-      "type": "number",
-      "label": "Manor 3 Privy Funds (\u00a3)",
-      "min": 0
-    },
-    "manor3_current_income": {
-      "type": "number",
-      "label": "Manor 3 Current Income (\u00a3)",
-      "min": 0
-    },
-    "manor3_assized_rent": {
-      "type": "number",
-      "label": "Manor 3 Assized Rent (\u00a3)",
-      "min": 0
-    },
-    "manor3_total_treasure": {
-      "type": "number",
-      "label": "Manor 3 Total Treasure (\u00a3)",
-      "min": 0
-    },
-    "manor3_stewardship": {
-      "type": "number",
-      "label": "Manor 3 Stewardship",
-      "min": 0
-    },
-    "manor3_total_dv": {
-      "type": "number",
-      "label": "Manor 3 Total DV",
-      "min": 0
-    },
-    "manor3_fumble": {
-      "type": "checkbox",
-      "label": "Manor 3 Fumble"
-    },
-    "manor3_famine": {
-      "type": "checkbox",
-      "label": "Manor 3 Famine"
-    },
-    "manor4_steward": {
-      "type": "text",
-      "label": "Manor 4 Steward"
-    },
-    "manor4_standard_of_living": {
-      "type": "text",
-      "label": "Manor 4 Standard of Living"
-    },
-    "manor4_folklore": {
-      "type": "number",
-      "label": "Manor 4 Folklore",
-      "min": 0
-    },
-    "manor4_station": {
-      "type": "number",
-      "label": "Manor 4 Station",
-      "min": 0
-    },
-    "manor4_privy_funds": {
-      "type": "number",
-      "label": "Manor 4 Privy Funds (\u00a3)",
-      "min": 0
-    },
-    "manor4_current_income": {
-      "type": "number",
-      "label": "Manor 4 Current Income (\u00a3)",
-      "min": 0
-    },
-    "manor4_assized_rent": {
-      "type": "number",
-      "label": "Manor 4 Assized Rent (\u00a3)",
-      "min": 0
-    },
-    "manor4_total_treasure": {
-      "type": "number",
-      "label": "Manor 4 Total Treasure (\u00a3)",
-      "min": 0
-    },
-    "manor4_stewardship": {
-      "type": "number",
-      "label": "Manor 4 Stewardship",
-      "min": 0
-    },
-    "manor4_total_dv": {
-      "type": "number",
-      "label": "Manor 4 Total DV",
-      "min": 0
-    },
-    "manor4_fumble": {
-      "type": "checkbox",
-      "label": "Manor 4 Fumble"
-    },
-    "manor4_famine": {
-      "type": "checkbox",
-      "label": "Manor 4 Famine"
-    },
-    "manor5_steward": {
-      "type": "text",
-      "label": "Manor 5 Steward"
-    },
-    "manor5_standard_of_living": {
-      "type": "text",
-      "label": "Manor 5 Standard of Living"
-    },
-    "manor5_folklore": {
-      "type": "number",
-      "label": "Manor 5 Folklore",
-      "min": 0
-    },
-    "manor5_station": {
-      "type": "number",
-      "label": "Manor 5 Station",
-      "min": 0
-    },
-    "manor5_privy_funds": {
-      "type": "number",
-      "label": "Manor 5 Privy Funds (\u00a3)",
-      "min": 0
-    },
-    "manor5_current_income": {
-      "type": "number",
-      "label": "Manor 5 Current Income (\u00a3)",
-      "min": 0
-    },
-    "manor5_assized_rent": {
-      "type": "number",
-      "label": "Manor 5 Assized Rent (\u00a3)",
-      "min": 0
-    },
-    "manor5_total_treasure": {
-      "type": "number",
-      "label": "Manor 5 Total Treasure (\u00a3)",
-      "min": 0
-    },
-    "manor5_stewardship": {
-      "type": "number",
-      "label": "Manor 5 Stewardship",
-      "min": 0
-    },
-    "manor5_total_dv": {
-      "type": "number",
-      "label": "Manor 5 Total DV",
-      "min": 0
-    },
-    "manor5_fumble": {
-      "type": "checkbox",
-      "label": "Manor 5 Fumble"
-    },
-    "manor5_famine": {
-      "type": "checkbox",
-      "label": "Manor 5 Famine"
-    },
-    "barony_castellan": {
-      "type": "text",
-      "label": "Castellan"
-    },
-    "barony_siegecraft_castellan": {
-      "type": "number",
-      "label": "Siegecraft",
-      "min": 0,
-      "max": 40
-    },
-    "barony_constable": {
-      "type": "text",
-      "label": "Constable"
-    },
-    "barony_horsemanship": {
-      "type": "number",
-      "label": "Horsemanship",
-      "min": 0,
-      "max": 40
-    },
-    "barony_dapifer": {
-      "type": "text",
-      "label": "Dapifer"
-    },
-    "barony_folklore": {
-      "type": "number",
-      "label": "Folklore",
-      "min": 0,
-      "max": 40
-    },
-    "barony_marshall": {
-      "type": "text",
-      "label": "Marshall"
-    },
-    "barony_battle": {
-      "type": "number",
-      "label": "Battle",
-      "min": 0,
-      "max": 40
-    },
-    "barony_pincerna": {
-      "type": "text",
-      "label": "Pincerna"
-    },
-    "barony_courtesy": {
-      "type": "number",
-      "label": "Courtesy",
-      "min": 0,
-      "max": 40
-    },
-    "barony_seneschal": {
-      "type": "text",
-      "label": "Seneschal"
-    },
-    "barony_stewardship_seneschal": {
-      "type": "number",
-      "label": "Stewardship",
-      "min": 0,
-      "max": 40
-    },
-    "barony_steward": {
-      "type": "text",
-      "label": "Steward"
-    },
-    "barony_stewardship_steward": {
-      "type": "number",
-      "label": "Stewardship",
-      "min": 0,
-      "max": 40
-    },
-    "barony_chaplain": {
-      "type": "text",
-      "label": "Chaplain"
-    },
-    "barony_religion": {
-      "type": "number",
-      "label": "Religion",
-      "min": 0,
-      "max": 40
-    },
-    "barony_clerk": {
-      "type": "text",
-      "label": "Clerk"
-    },
-    "barony_clerk_skill": {
-      "type": "number",
-      "label": "Clerk",
-      "min": 0,
-      "max": 40
-    },
-    "barony_engineer": {
-      "type": "text",
-      "label": "Engineer"
-    },
-    "barony_siegecraft_engineer": {
-      "type": "number",
-      "label": "Siegecraft",
-      "min": 0,
-      "max": 40
-    },
-    "barony_lawyer": {
-      "type": "text",
-      "label": "Lawyer"
-    },
-    "barony_law": {
-      "type": "number",
-      "label": "Law",
-      "min": 0,
-      "max": 40
-    },
-    "barony_physician": {
-      "type": "text",
-      "label": "Physician"
-    },
-    "barony_firstaid": {
-      "type": "number",
-      "label": "First Aid",
-      "min": 0,
-      "max": 40
-    },
-    "barony_chirurgery": {
-      "type": "number",
-      "label": "Chirurgery",
-      "min": 0,
-      "max": 40
-    },
-    "barony_standard_of_living": {
-      "type": "text",
-      "label": "Barony Standard of Living"
-    },
-    "barony_station": {
-      "type": "number",
-      "label": "Barony Station",
-      "min": 0
-    },
-    "barony_privy_funds": {
-      "type": "number",
-      "label": "Barony Privy Funds (\u00a3)",
-      "min": 0
-    },
-    "barony_current_income": {
-      "type": "number",
-      "label": "Barony Current Income (\u00a3)",
-      "min": 0
-    },
-    "barony_assized_rent": {
-      "type": "number",
-      "label": "Barony Assized Rent (\u00a3)",
-      "min": 0
-    },
-    "barony_total_treasure": {
-      "type": "number",
-      "label": "Barony Total Treasure (\u00a3)",
-      "min": 0
-    },
-    "barony_total_dv": {
-      "type": "number",
-      "label": "Barony Total DV",
-      "min": 0
-    },
-    "barony_fumble": {
-      "type": "checkbox",
-      "label": "Barony Fumble"
-    },
-    "barony_famine": {
-      "type": "checkbox",
-      "label": "Barony Famine"
-    },
-    "barony_army_mounted_sergeants": {
-      "type": "number",
-      "label": "Mounted Sergeants",
-      "min": 0
-    },
-    "barony_army_household_knights": {
-      "type": "number",
-      "label": "Household Knights",
-      "min": 0
-    },
-    "barony_army_vassal_knights": {
-      "type": "number",
-      "label": "Vassal Knights",
-      "min": 0
-    },
-    "barony_army_garrison_soldiers": {
-      "type": "number",
-      "label": "Garrison Soldiers",
-      "min": 0
-    },
-    "barony_army_spearmen": {
-      "type": "number",
-      "label": "Spearmen",
-      "min": 0
-    },
-    "barony_army_archers": {
-      "type": "number",
-      "label": "Archers",
-      "min": 0
     },
     "family_records": {
       "type": "list",
@@ -6814,6 +5040,1818 @@
       "type": "textarea",
       "label": "Distinctive Features",
       "rows": 1
+    },
+  
+    "manor1_name": {
+      "label": "Manor 1 name",
+      "type": "text"
+    },
+    "manor1_county": {
+      "type": "text",
+      "label": "Manor 1 County"
+    },
+    "manor1_hundred": {
+      "type": "text",
+      "label": "Manor 1 Hundred"
+    },
+    "manor1_steward": {
+      "type": "text",
+      "label": "Manor 1 Steward"
+    },
+    "manor1_privy_funds": {
+      "type": "number",
+      "label": "Manor 1 Privy Funds (\u00a3)",
+      "min": 0
+    },
+    "manor1_current_income": {
+      "type": "number",
+      "label": "Manor 1 Current Income (\u00a3)",
+      "min": 0
+    },
+    "manor1_assized_rent": {
+      "type": "number",
+      "label": "Manor 1 Assized Rent (\u00a3)",
+      "min": 0
+    },
+    "manor1_total_treasure": {
+      "type": "number",
+      "label": "Manor 1 Total Treasure (\u00a3)",
+      "min": 0
+    },
+    "manor1_standard_of_living": {
+      "type": "text",
+      "label": "Manor 1 Standard of Living"
+    },
+    "manor1_folklore": {
+      "type": "number",
+      "label": "Manor 1 Folklore",
+      "min": 0
+    },
+    "manor1_station": {
+      "type": "number",
+      "label": "Manor 1 Station",
+      "min": 0
+    },
+    "manor1_total_dv": {
+      "type": "number",
+      "label": "Manor 1 Total DV",
+      "min": 0
+    },
+    "manor1_stewardship": {
+      "type": "number",
+      "label": "Manor 1 Stewardship",
+      "min": 0
+    },
+    "manor1_fumble": {
+      "type": "checkbox",
+      "label": "Manor 1 Fumble"
+    },
+    "manor1_famine": {
+      "type": "checkbox",
+      "label": "Manor 1 Famine"
+    },
+    "manor1_manorial_improvements": {
+      "add_label": "Add manorial improvements",
+      "label": "Manorial Improvements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Effects",
+          "key": "effects",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor1_investments": {
+      "add_label": "Add investments",
+      "label": "Investments",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Income",
+          "key": "income",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Statistic",
+          "key": "statistic",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor1_enhancements": {
+      "add_label": "Add enhancements",
+      "label": "Enhancements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Stat Check",
+          "key": "statistic",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor1_notable_features": {
+      "add_label": "Add notable features",
+      "label": "Notable Features",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Effects",
+          "key": "effects",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor1_defenses": {
+      "add_label": "Add defenses",
+      "label": "Defenses",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Location",
+          "key": "location",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "DV",
+          "key": "dv",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor1_manor_folk": {
+      "add_label": "Add person",
+      "label": "Manor Folk",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Position",
+          "key": "position",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Key Skill",
+          "key": "key_skill",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Skill Value",
+          "key": "skill_value",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        }
+      ]
+    },
+    "manor2_name": {
+      "label": "Manor 1 name",
+      "type": "text"
+    },
+    "manor2_county": {
+      "type": "text",
+      "label": "Manor 1 County"
+    },
+    "manor2_hundred": {
+      "type": "text",
+      "label": "Manor 1 Hundred"
+    },
+    "manor2_steward": {
+      "type": "text",
+      "label": "Manor 1 Steward"
+    },
+    "manor2_privy_funds": {
+      "type": "number",
+      "label": "Manor 1 Privy Funds (\u00a3)",
+      "min": 0
+    },
+    "manor2_current_income": {
+      "type": "number",
+      "label": "Manor 1 Current Income (\u00a3)",
+      "min": 0
+    },
+    "manor2_assized_rent": {
+      "type": "number",
+      "label": "Manor 1 Assized Rent (\u00a3)",
+      "min": 0
+    },
+    "manor2_total_treasure": {
+      "type": "number",
+      "label": "Manor 1 Total Treasure (\u00a3)",
+      "min": 0
+    },
+    "manor2_standard_of_living": {
+      "type": "text",
+      "label": "Manor 1 Standard of Living"
+    },
+    "manor2_folklore": {
+      "type": "number",
+      "label": "Manor 1 Folklore",
+      "min": 0
+    },
+    "manor2_station": {
+      "type": "number",
+      "label": "Manor 1 Station",
+      "min": 0
+    },
+    "manor2_total_dv": {
+      "type": "number",
+      "label": "Manor 1 Total DV",
+      "min": 0
+    },
+    "manor2_stewardship": {
+      "type": "number",
+      "label": "Manor 1 Stewardship",
+      "min": 0
+    },
+    "manor2_fumble": {
+      "type": "checkbox",
+      "label": "Manor 1 Fumble"
+    },
+    "manor2_famine": {
+      "type": "checkbox",
+      "label": "Manor 1 Famine"
+    },
+    "manor2_manorial_improvements": {
+      "add_label": "Add manorial improvements",
+      "label": "Manorial Improvements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Effects",
+          "key": "effects",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor2_investments": {
+      "add_label": "Add investments",
+      "label": "Investments",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Income",
+          "key": "income",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Statistic",
+          "key": "statistic",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor2_enhancements": {
+      "add_label": "Add enhancements",
+      "label": "Enhancements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Stat Check",
+          "key": "statistic",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor2_notable_features": {
+      "add_label": "Add notable features",
+      "label": "Notable Features",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Effects",
+          "key": "effects",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor2_defenses": {
+      "add_label": "Add defenses",
+      "label": "Defenses",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Location",
+          "key": "location",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "DV",
+          "key": "dv",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor2_manor_folk": {
+      "add_label": "Add person",
+      "label": "Manor Folk",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Position",
+          "key": "position",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Key Skill",
+          "key": "key_skill",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Skill Value",
+          "key": "skill_value",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        }
+      ]
+    },
+    "manor3_name": {
+      "label": "Manor 1 name",
+      "type": "text"
+    },
+    "manor3_county": {
+      "type": "text",
+      "label": "Manor 1 County"
+    },
+    "manor3_hundred": {
+      "type": "text",
+      "label": "Manor 1 Hundred"
+    },
+    "manor3_steward": {
+      "type": "text",
+      "label": "Manor 1 Steward"
+    },
+    "manor3_privy_funds": {
+      "type": "number",
+      "label": "Manor 1 Privy Funds (\u00a3)",
+      "min": 0
+    },
+    "manor3_current_income": {
+      "type": "number",
+      "label": "Manor 1 Current Income (\u00a3)",
+      "min": 0
+    },
+    "manor3_assized_rent": {
+      "type": "number",
+      "label": "Manor 1 Assized Rent (\u00a3)",
+      "min": 0
+    },
+    "manor3_total_treasure": {
+      "type": "number",
+      "label": "Manor 1 Total Treasure (\u00a3)",
+      "min": 0
+    },
+    "manor3_standard_of_living": {
+      "type": "text",
+      "label": "Manor 1 Standard of Living"
+    },
+    "manor3_folklore": {
+      "type": "number",
+      "label": "Manor 1 Folklore",
+      "min": 0
+    },
+    "manor3_station": {
+      "type": "number",
+      "label": "Manor 1 Station",
+      "min": 0
+    },
+    "manor3_total_dv": {
+      "type": "number",
+      "label": "Manor 1 Total DV",
+      "min": 0
+    },
+    "manor3_stewardship": {
+      "type": "number",
+      "label": "Manor 1 Stewardship",
+      "min": 0
+    },
+    "manor3_fumble": {
+      "type": "checkbox",
+      "label": "Manor 1 Fumble"
+    },
+    "manor3_famine": {
+      "type": "checkbox",
+      "label": "Manor 1 Famine"
+    },
+    "manor3_manorial_improvements": {
+      "add_label": "Add manorial improvements",
+      "label": "Manorial Improvements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Effects",
+          "key": "effects",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor3_investments": {
+      "add_label": "Add investments",
+      "label": "Investments",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Income",
+          "key": "income",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Statistic",
+          "key": "statistic",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor3_enhancements": {
+      "add_label": "Add enhancements",
+      "label": "Enhancements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Stat Check",
+          "key": "statistic",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor3_notable_features": {
+      "add_label": "Add notable features",
+      "label": "Notable Features",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Effects",
+          "key": "effects",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor3_defenses": {
+      "add_label": "Add defenses",
+      "label": "Defenses",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Location",
+          "key": "location",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "DV",
+          "key": "dv",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor3_manor_folk": {
+      "add_label": "Add person",
+      "label": "Manor Folk",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Position",
+          "key": "position",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Key Skill",
+          "key": "key_skill",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Skill Value",
+          "key": "skill_value",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        }
+      ]
+    },
+    "manor4_name": {
+      "label": "Manor 1 name",
+      "type": "text"
+    },
+    "manor4_county": {
+      "type": "text",
+      "label": "Manor 1 County"
+    },
+    "manor4_hundred": {
+      "type": "text",
+      "label": "Manor 1 Hundred"
+    },
+    "manor4_steward": {
+      "type": "text",
+      "label": "Manor 1 Steward"
+    },
+    "manor4_privy_funds": {
+      "type": "number",
+      "label": "Manor 1 Privy Funds (\u00a3)",
+      "min": 0
+    },
+    "manor4_current_income": {
+      "type": "number",
+      "label": "Manor 1 Current Income (\u00a3)",
+      "min": 0
+    },
+    "manor4_assized_rent": {
+      "type": "number",
+      "label": "Manor 1 Assized Rent (\u00a3)",
+      "min": 0
+    },
+    "manor4_total_treasure": {
+      "type": "number",
+      "label": "Manor 1 Total Treasure (\u00a3)",
+      "min": 0
+    },
+    "manor4_standard_of_living": {
+      "type": "text",
+      "label": "Manor 1 Standard of Living"
+    },
+    "manor4_folklore": {
+      "type": "number",
+      "label": "Manor 1 Folklore",
+      "min": 0
+    },
+    "manor4_station": {
+      "type": "number",
+      "label": "Manor 1 Station",
+      "min": 0
+    },
+    "manor4_total_dv": {
+      "type": "number",
+      "label": "Manor 1 Total DV",
+      "min": 0
+    },
+    "manor4_stewardship": {
+      "type": "number",
+      "label": "Manor 1 Stewardship",
+      "min": 0
+    },
+    "manor4_fumble": {
+      "type": "checkbox",
+      "label": "Manor 1 Fumble"
+    },
+    "manor4_famine": {
+      "type": "checkbox",
+      "label": "Manor 1 Famine"
+    },
+    "manor4_manorial_improvements": {
+      "add_label": "Add manorial improvements",
+      "label": "Manorial Improvements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Effects",
+          "key": "effects",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor4_investments": {
+      "add_label": "Add investments",
+      "label": "Investments",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Income",
+          "key": "income",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Statistic",
+          "key": "statistic",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor4_enhancements": {
+      "add_label": "Add enhancements",
+      "label": "Enhancements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Stat Check",
+          "key": "statistic",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor4_notable_features": {
+      "add_label": "Add notable features",
+      "label": "Notable Features",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Effects",
+          "key": "effects",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor4_defenses": {
+      "add_label": "Add defenses",
+      "label": "Defenses",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Location",
+          "key": "location",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "DV",
+          "key": "dv",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor4_manor_folk": {
+      "add_label": "Add person",
+      "label": "Manor Folk",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Position",
+          "key": "position",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Key Skill",
+          "key": "key_skill",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Skill Value",
+          "key": "skill_value",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        }
+      ]
+    },
+    "manor5_name": {
+      "label": "Manor 1 name",
+      "type": "text"
+    },
+    "manor5_county": {
+      "type": "text",
+      "label": "Manor 1 County"
+    },
+    "manor5_hundred": {
+      "type": "text",
+      "label": "Manor 1 Hundred"
+    },
+    "manor5_steward": {
+      "type": "text",
+      "label": "Manor 1 Steward"
+    },
+    "manor5_privy_funds": {
+      "type": "number",
+      "label": "Manor 1 Privy Funds (\u00a3)",
+      "min": 0
+    },
+    "manor5_current_income": {
+      "type": "number",
+      "label": "Manor 1 Current Income (\u00a3)",
+      "min": 0
+    },
+    "manor5_assized_rent": {
+      "type": "number",
+      "label": "Manor 1 Assized Rent (\u00a3)",
+      "min": 0
+    },
+    "manor5_total_treasure": {
+      "type": "number",
+      "label": "Manor 1 Total Treasure (\u00a3)",
+      "min": 0
+    },
+    "manor5_standard_of_living": {
+      "type": "text",
+      "label": "Manor 1 Standard of Living"
+    },
+    "manor5_folklore": {
+      "type": "number",
+      "label": "Manor 1 Folklore",
+      "min": 0
+    },
+    "manor5_station": {
+      "type": "number",
+      "label": "Manor 1 Station",
+      "min": 0
+    },
+    "manor5_total_dv": {
+      "type": "number",
+      "label": "Manor 1 Total DV",
+      "min": 0
+    },
+    "manor5_stewardship": {
+      "type": "number",
+      "label": "Manor 1 Stewardship",
+      "min": 0
+    },
+    "manor5_fumble": {
+      "type": "checkbox",
+      "label": "Manor 1 Fumble"
+    },
+    "manor5_famine": {
+      "type": "checkbox",
+      "label": "Manor 1 Famine"
+    },
+    "manor5_manorial_improvements": {
+      "add_label": "Add manorial improvements",
+      "label": "Manorial Improvements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Effects",
+          "key": "effects",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor5_investments": {
+      "add_label": "Add investments",
+      "label": "Investments",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Income",
+          "key": "income",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Statistic",
+          "key": "statistic",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor5_enhancements": {
+      "add_label": "Add enhancements",
+      "label": "Enhancements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Stat Check",
+          "key": "statistic",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor5_notable_features": {
+      "add_label": "Add notable features",
+      "label": "Notable Features",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Effects",
+          "key": "effects",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor5_defenses": {
+      "add_label": "Add defenses",
+      "label": "Defenses",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Location",
+          "key": "location",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "DV",
+          "key": "dv",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor5_manor_folk": {
+      "add_label": "Add person",
+      "label": "Manor Folk",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Position",
+          "key": "position",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Key Skill",
+          "key": "key_skill",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Skill Value",
+          "key": "skill_value",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        }
+      ]
+    },
+    "barony_name": {
+      "label": "Barony name",
+      "type": "text"
+    },
+    "barony_county": {
+      "type": "text",
+      "label": "Barony County"
+    },
+    "barony_hundred": {
+      "type": "text",
+      "label": "Barony Hundred"
+    },
+    "barony_privy_funds": {
+      "type": "number",
+      "label": "Barony Privy Funds (\u00a3)",
+      "min": 0
+    },
+    "barony_current_income": {
+      "type": "number",
+      "label": "Barony Current Income (\u00a3)",
+      "min": 0
+    },
+    "barony_assized_rent": {
+      "type": "number",
+      "label": "Barony Assized Rent (\u00a3)",
+      "min": 0
+    },
+    "barony_total_treasure": {
+      "type": "number",
+      "label": "Barony Total Treasure (\u00a3)",
+      "min": 0
+    },
+    "barony_total_dv": {
+      "type": "number",
+      "label": "Barony Total DV",
+      "min": 0
+    },
+    "barony_standard_of_living": {
+      "type": "text",
+      "label": "Barony Standard of Living"
+    },
+    "barony_station": {
+      "type": "number",
+      "label": "Barony Station",
+      "min": 0
+    },
+    "barony_fumble": {
+      "type": "checkbox",
+      "label": "Barony Fumble"
+    },
+    "barony_famine": {
+      "type": "checkbox",
+      "label": "Barony Famine"
+    },
+    "barony_castellan": {
+      "type": "text",
+      "label": "Castellan"
+    },
+    "barony_siegecraft_castellan": {
+      "type": "number",
+      "label": "Siegecraft",
+      "min": 0,
+      "max": 40
+    },
+    "barony_constable": {
+      "type": "text",
+      "label": "Constable"
+    },
+    "barony_horsemanship": {
+      "type": "number",
+      "label": "Horsemanship",
+      "min": 0,
+      "max": 40
+    },
+    "barony_dapifer": {
+      "type": "text",
+      "label": "Dapifer"
+    },
+    "barony_folklore": {
+      "type": "number",
+      "label": "Folklore",
+      "min": 0,
+      "max": 40
+    },
+    "barony_marshall": {
+      "type": "text",
+      "label": "Marshall"
+    },
+    "barony_battle": {
+      "type": "number",
+      "label": "Battle",
+      "min": 0,
+      "max": 40
+    },
+    "barony_pincerna": {
+      "type": "text",
+      "label": "Pincerna"
+    },
+    "barony_courtesy": {
+      "type": "number",
+      "label": "Courtesy",
+      "min": 0,
+      "max": 40
+    },
+    "barony_seneschal": {
+      "type": "text",
+      "label": "Seneschal"
+    },
+    "barony_stewardship_seneschal": {
+      "type": "number",
+      "label": "Stewardship",
+      "min": 0,
+      "max": 40
+    },
+    "barony_steward": {
+      "type": "text",
+      "label": "Steward"
+    },
+    "barony_stewardship_steward": {
+      "type": "number",
+      "label": "Stewardship",
+      "min": 0,
+      "max": 40
+    },
+    "barony_chaplain": {
+      "type": "text",
+      "label": "Chaplain"
+    },
+    "barony_religion": {
+      "type": "number",
+      "label": "Religion",
+      "min": 0,
+      "max": 40
+    },
+    "barony_clerk": {
+      "type": "text",
+      "label": "Clerk"
+    },
+    "barony_clerk_skill": {
+      "type": "number",
+      "label": "Clerk",
+      "min": 0,
+      "max": 40
+    },
+    "barony_engineer": {
+      "type": "text",
+      "label": "Engineer"
+    },
+    "barony_siegecraft_engineer": {
+      "type": "number",
+      "label": "Siegecraft",
+      "min": 0,
+      "max": 40
+    },
+    "barony_lawyer": {
+      "type": "text",
+      "label": "Lawyer"
+    },
+    "barony_law": {
+      "type": "number",
+      "label": "Law",
+      "min": 0,
+      "max": 40
+    },
+    "barony_physician": {
+      "type": "text",
+      "label": "Physician"
+    },
+    "barony_firstaid": {
+      "type": "number",
+      "label": "First Aid",
+      "min": 0,
+      "max": 40
+    },
+    "barony_chirurgery": {
+      "type": "number",
+      "label": "Chirurgery",
+      "min": 0,
+      "max": 40
+    },
+    "barony_army_mounted_sergeants": {
+      "type": "number",
+      "label": "Mounted Sergeants",
+      "min": 0
+    },
+    "barony_army_household_knights": {
+      "type": "number",
+      "label": "Household Knights",
+      "min": 0
+    },
+    "barony_army_vassal_knights": {
+      "type": "number",
+      "label": "Vassal Knights",
+      "min": 0
+    },
+    "barony_army_garrison_soldiers": {
+      "type": "number",
+      "label": "Garrison Soldiers",
+      "min": 0
+    },
+    "barony_army_spearmen": {
+      "type": "number",
+      "label": "Spearmen",
+      "min": 0
+    },
+    "barony_army_archers": {
+      "type": "number",
+      "label": "Archers",
+      "min": 0
+    },
+    "barony_defenses": {
+      "add_label": "Add defenses",
+      "label": "Defenses",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Location",
+          "key": "location",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "DV",
+          "key": "dv",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "barony_improvements": {
+      "add_label": "Add manorial improvements",
+      "label": "Manorial Improvements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Effects",
+          "key": "effects",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "barony_investments": {
+      "add_label": "Add investments",
+      "label": "Investments",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Income",
+          "key": "income",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Statistic",
+          "key": "statistic",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "barony_enhancements": {
+      "add_label": "Add enhancements",
+      "label": "Enhancements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Statistic",
+          "key": "statistic",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "barony_notable_features": {
+      "add_label": "Add notable features",
+      "label": "Notable Features",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Effects",
+          "key": "effects",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "barony_folk": {
+      "add_label": "Add person",
+      "label": "Barony Folk",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Position",
+          "key": "position",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Key Skill",
+          "key": "key_skill",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Skill Value",
+          "key": "skill_value",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        }
+      ]
+    },
+    "barony_settlements": {
+      "add_label": "Add settlement",
+      "label": "Settlements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Type",
+          "key": "type",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Location",
+          "key": "location",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Notable People",
+          "key": "people",
+          "type": "text",
+          "flex": 3
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        }
+      ]
     }
   },
   "computed": {

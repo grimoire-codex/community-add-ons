@@ -151,6 +151,7 @@ authoring reference.
 | Preset | What it sets up |
 | --- | --- |
 | [Daggerheart](gm-screens/daggerheart/) | Fear from 0 to 12, countdowns, adversary pools that empty each scene, the party, a scratch note |
+| [D&D 5th Edition (2014)](gm-screens/dnd-5e-2014/) | The party's HP, AC and passive Perception, initiative, every condition and exhaustion, DCs, cover, light, travel pace and damage by level from the SRD 5.1, and random tables for NPCs, scene events and quick finds |
 | [Draw Steel](gm-screens/draw-steel/) | Malice, a turn tracker where heroes and the Director take turns, the heroes' Stamina, Recoveries, Victories and Heroic Resource, montage clocks |
 
 ### Assistant skills

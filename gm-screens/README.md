@@ -3,7 +3,8 @@
 Ready-made GM screens for Grimoire. A campaign's GM screen is a board of
 Grimoire's built-in tools - a counter for Fear or Malice, countdowns and
 clocks, token pools, an initiative tracker, the party at a glance, pinned notes
-and a scratch note - placed on a twelve-column grid. A preset is one of those
+a rules reference, random tables and a scratch note - placed on a twelve-column
+grid. A preset is one of those
 boards set up for a game, so a GM starts from the trackers their system uses
 instead of an empty page.
 
@@ -81,12 +82,19 @@ the GM triggers with **End scene**, **End session** and **Rest**.
 | `initiative` | `mode`: `ordered` (by score) or `sides` (sides take turns, each combatant ticked once it has acted); `sides`: 2-4 `{key, label}`; `resets` | - |
 | `party` | `stats`: `{label, value, max, style}` - `value` and `max` name fields or computed values of the system's character sheet; `include_inactive` | - |
 | `note` | `page_slug` - the campaign note to pin, by its name | - |
+| `reference` | `sections`: up to 30 `{title, text}`, each shown with a button; `text` is Markdown (emphasis, lists and tables), at most 8,000 characters a section and 60,000 a panel | - |
+| `table` | `columns`: 1-4 `{label, entries}` - each column rolls a die of as many sides as it has entries (up to 100), so a d20 table is 20 entries; `mode`: `list` (each column's result on its own line) or `join` (run together into one word, for names) | `rolls`: the last roll, one entry number per column |
 | `scratch` | - | - |
 
 A `party` panel reads the character sheet the table uses, so name fields from a
 sheet in [`character-sheets/`](../character-sheets/) - the Draw Steel preset
 reads `stamina_current` out of `stamina_max` from the Draw Steel sheet. Leave
 `stats` empty when there is no sheet for the game yet; the GM picks them.
+
+A `reference` panel shows its Markdown as text only: no HTML, and an image
+appears as its description. Rules text must be yours to share - the D&D 5e
+(2014) preset quotes the SRD 5.1 under CC-BY-4.0, and writes its random tables
+from scratch rather than copying a published book's.
 
 Credit the game the way its licence asks, in `license`, `license_url` and
 `attribution`, as character sheets do.

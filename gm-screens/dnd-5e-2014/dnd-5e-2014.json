@@ -1,0 +1,485 @@
+{
+  "$schema": "../../schema/gm-screen.schema.json",
+  "format": "grimoire://gm-screen/v1",
+  "id": "dnd-5e-2014",
+  "name": "D&D 5th Edition (2014)",
+  "version": "1.0.0",
+  "system": "Dungeons & Dragons 5th Edition (2014)",
+  "description": "A GM screen for the 2014 rules: the party's hit points, AC, initiative, passive Perception and spell save DC from the D&D 5e (2014) sheet, an initiative tracker, every condition and exhaustion, setting a DC, skills, cover, light and obscured areas, travel pace and damage by level, plus random tables for NPC names, looks, manners, ideals, bonds and flaws, scene events and quick finds.",
+  "author": "hunter-read",
+  "homepage": "https://dnd.wizards.com/resources/systems-reference-document",
+  "license": "CC-BY-4.0",
+  "license_url": "https://creativecommons.org/licenses/by/4.0/",
+  "attribution": "This work includes material taken from the System Reference Document 5.1 (“SRD 5.1”) by Wizards of the Coast LLC and available at https://dnd.wizards.com/resources/systems-reference-document. The SRD 5.1 is licensed under the Creative Commons Attribution 4.0 International License available at https://creativecommons.org/licenses/by/4.0/legalcode. The random tables are original to this preset.",
+  "grimoire_min_version": "1.11.0",
+  "panels": [
+    {
+      "kind": "party",
+      "title": "Party",
+      "x": 0,
+      "y": 0,
+      "w": 12,
+      "h": 4,
+      "config": {
+        "stats": [
+          {
+            "label": "HP",
+            "value": "hp_current",
+            "max": "hp_max",
+            "style": "number"
+          },
+          {
+            "label": "Temp HP",
+            "value": "hp_temp",
+            "max": null,
+            "style": "number"
+          },
+          {
+            "label": "AC",
+            "value": "armor_class",
+            "max": null,
+            "style": "number"
+          },
+          {
+            "label": "Initiative",
+            "value": "initiative",
+            "max": null,
+            "style": "number"
+          },
+          {
+            "label": "Passive Perception",
+            "value": "passive_perception",
+            "max": null,
+            "style": "number"
+          },
+          {
+            "label": "Spell save DC",
+            "value": "spell_save_dc",
+            "max": null,
+            "style": "number"
+          }
+        ],
+        "include_inactive": false
+      }
+    },
+    {
+      "kind": "initiative",
+      "title": "Initiative",
+      "x": 0,
+      "y": 4,
+      "w": 3,
+      "h": 11,
+      "config": {
+        "mode": "ordered",
+        "resets": "scene"
+      }
+    },
+    {
+      "kind": "reference",
+      "title": "Conditions",
+      "x": 3,
+      "y": 4,
+      "w": 5,
+      "h": 11,
+      "config": {
+        "sections": [
+          {
+            "id": "blinded",
+            "title": "Blinded",
+            "text": "- A blinded creature can't see and automatically fails any ability check that requires sight.\n- Attack rolls against the creature have advantage, and the creature's attack rolls have disadvantage."
+          },
+          {
+            "id": "charmed",
+            "title": "Charmed",
+            "text": "- A charmed creature can't attack the charmer or target the charmer with harmful abilities or magical effects.\n- The charmer has advantage on any ability check to interact socially with the creature."
+          },
+          {
+            "id": "deafened",
+            "title": "Deafened",
+            "text": "- A deafened creature can't hear and automatically fails any ability check that requires hearing."
+          },
+          {
+            "id": "exhaustion",
+            "title": "Exhaustion",
+            "text": "Exhaustion is measured in six levels. A creature suffers the effect of its current level as well as all lower levels.\n\n| Level | Effect |\n| --- | --- |\n| 1 | Disadvantage on ability checks |\n| 2 | Speed halved |\n| 3 | Disadvantage on attack rolls and saving throws |\n| 4 | Hit point maximum halved |\n| 5 | Speed reduced to 0 |\n| 6 | Death |\n\n- If an already exhausted creature suffers another effect that causes exhaustion, its current level increases by the amount specified in the effect's description.\n- An effect that removes exhaustion reduces its level as specified, with all exhaustion effects ending if the level is reduced below 1.\n- Finishing a long rest reduces a creature's exhaustion level by 1, provided that the creature has also ingested some food and drink."
+          },
+          {
+            "id": "frightened",
+            "title": "Frightened",
+            "text": "- A frightened creature has disadvantage on ability checks and attack rolls while the source of its fear is within line of sight.\n- The creature can't willingly move closer to the source of its fear."
+          },
+          {
+            "id": "grappled",
+            "title": "Grappled",
+            "text": "- A grappled creature's speed becomes 0, and it can't benefit from any bonus to its speed.\n- The condition ends if the grappler is incapacitated.\n- The condition also ends if an effect removes the grappled creature from the reach of the grappler or grappling effect, such as when a creature is hurled away by the *thunderwave* spell."
+          },
+          {
+            "id": "incapacitated",
+            "title": "Incapacitated",
+            "text": "- An incapacitated creature can't take actions or reactions."
+          },
+          {
+            "id": "invisible",
+            "title": "Invisible",
+            "text": "- An invisible creature is impossible to see without the aid of magic or a special sense. For the purpose of hiding, the creature is heavily obscured. The creature's location can be detected by any noise it makes or any tracks it leaves.\n- Attack rolls against the creature have disadvantage, and the creature's attack rolls have advantage."
+          },
+          {
+            "id": "paralyzed",
+            "title": "Paralyzed",
+            "text": "- A paralyzed creature is incapacitated and can't move or speak.\n- The creature automatically fails Strength and Dexterity saving throws.\n- Attack rolls against the creature have advantage.\n- Any attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature."
+          },
+          {
+            "id": "petrified",
+            "title": "Petrified",
+            "text": "- A petrified creature is transformed, along with any nonmagical object it is wearing or carrying, into a solid inanimate substance (usually stone). Its weight increases by a factor of ten, and it ceases aging.\n- The creature is incapacitated, can't move or speak, and is unaware of its surroundings.\n- Attack rolls against the creature have advantage.\n- The creature automatically fails Strength and Dexterity saving throws.\n- The creature has resistance to all damage.\n- The creature is immune to poison and disease, although a poison or disease already in its system is suspended, not neutralized."
+          },
+          {
+            "id": "poisoned",
+            "title": "Poisoned",
+            "text": "- A poisoned creature has disadvantage on attack rolls and ability checks."
+          },
+          {
+            "id": "prone",
+            "title": "Prone",
+            "text": "- A prone creature's only movement option is to crawl, unless it stands up and thereby ends the condition.\n- The creature has disadvantage on attack rolls.\n- An attack roll against the creature has advantage if the attacker is within 5 feet of the creature. Otherwise, the attack roll has disadvantage."
+          },
+          {
+            "id": "restrained",
+            "title": "Restrained",
+            "text": "- A restrained creature's speed becomes 0, and it can't benefit from any bonus to its speed.\n- Attack rolls against the creature have advantage, and the creature's attack rolls have disadvantage.\n- The creature has disadvantage on Dexterity saving throws."
+          },
+          {
+            "id": "stunned",
+            "title": "Stunned",
+            "text": "- A stunned creature is incapacitated, can't move, and can speak only falteringly.\n- The creature automatically fails Strength and Dexterity saving throws.\n- Attack rolls against the creature have advantage."
+          },
+          {
+            "id": "unconscious",
+            "title": "Unconscious",
+            "text": "- An unconscious creature is incapacitated, can't move or speak, and is unaware of its surroundings.\n- The creature drops whatever it's holding and falls prone.\n- The creature automatically fails Strength and Dexterity saving throws.\n- Attack rolls against the creature have advantage.\n- Any attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature."
+          }
+        ]
+      }
+    },
+    {
+      "kind": "reference",
+      "title": "Rules",
+      "x": 8,
+      "y": 4,
+      "w": 4,
+      "h": 11,
+      "config": {
+        "sections": [
+          {
+            "id": "dc",
+            "title": "Setting a DC",
+            "text": "| Task difficulty | DC |\n| --- | --- |\n| Very easy | 5 |\n| Easy | 10 |\n| Medium | 15 |\n| Hard | 20 |\n| Very hard | 25 |\n| Nearly impossible | 30 |"
+          },
+          {
+            "id": "skills",
+            "title": "Skills",
+            "text": "| Ability | Skills |\n| --- | --- |\n| Strength | Athletics |\n| Dexterity | Acrobatics, Sleight of Hand, Stealth |\n| Constitution | - |\n| Intelligence | Arcana, History, Investigation, Nature, Religion |\n| Wisdom | Animal Handling, Insight, Medicine, Perception, Survival |\n| Charisma | Deception, Intimidation, Performance, Persuasion |"
+          },
+          {
+            "id": "cover",
+            "title": "Cover",
+            "text": "| Cover | Effect |\n| --- | --- |\n| Half | +2 bonus to AC and Dexterity saving throws |\n| Three-quarters | +5 bonus to AC and Dexterity saving throws |\n| Total | Can't be targeted directly by an attack or a spell |\n\n- **Half cover:** an obstacle blocks at least half of the target's body - a low wall, a large piece of furniture, a narrow tree trunk, or a creature, friend or foe.\n- **Three-quarters cover:** about three-quarters of the target is covered - a portcullis, an arrow slit, or a thick tree trunk.\n- **Total cover:** the target is completely concealed by an obstacle. Some spells can still reach it by including it in an area of effect.\n- Behind several sources of cover, only the most protective degree applies."
+          },
+          {
+            "id": "obscured",
+            "title": "Obscured areas",
+            "text": "| Area | Examples | Effect |\n| --- | --- | --- |\n| Lightly obscured | Dim light, patchy fog, moderate foliage | Disadvantage on Wisdom (Perception) checks that rely on sight |\n| Heavily obscured | Darkness, opaque fog, dense foliage | Blocks vision entirely: a creature trying to see something there is effectively blinded |"
+          },
+          {
+            "id": "light",
+            "title": "Light",
+            "text": "| Light | Examples |\n| --- | --- |\n| Bright | Daylight, torches, lanterns, fires |\n| Dim (lightly obscured) | The edge of a light source's reach, twilight and dawn, a bright full moon |\n| Darkness (heavily obscured) | Outdoors at night, an unlit dungeon, magical darkness |\n\n| Source | Bright | Dim | Lasts |\n| --- | --- | --- | --- |\n| Candle | 5 ft. | +5 ft. | 1 hour |\n| Torch | 20 ft. | +20 ft. | 1 hour |\n| Lamp | 15 ft. | +30 ft. | 6 hours a flask of oil |\n| Hooded lantern | 30 ft. | +30 ft. | 6 hours a flask of oil |\n| Bullseye lantern | 60-ft. cone | +60 ft. | 6 hours a flask of oil |\n\nA hooded lantern with its hood lowered gives dim light in a 5-foot radius. **Darkvision** sees dim light within its range as bright, and darkness as dim, in shades of gray."
+          },
+          {
+            "id": "travel",
+            "title": "Travel pace",
+            "text": "| Pace | Minute | Hour | Day | Effect |\n| --- | --- | --- | --- | --- |\n| Fast | 400 ft. | 4 miles | 30 miles | -5 penalty to passive Wisdom (Perception) scores |\n| Normal | 300 ft. | 3 miles | 24 miles | - |\n| Slow | 200 ft. | 2 miles | 18 miles | Able to use stealth |\n\n- **Forced march:** past 8 hours of travel in a day, each traveler makes a Constitution saving throw at the end of each extra hour, DC 10 + 1 for each hour past 8. On a failure, they gain one level of exhaustion.\n- **Difficult terrain:** travelers move at half speed."
+          },
+          {
+            "id": "damage",
+            "title": "Damage by level",
+            "text": "| Character level | Setback | Dangerous | Deadly |\n| --- | --- | --- | --- |\n| 1st-4th | 1d10 | 2d10 | 4d10 |\n| 5th-10th | 2d10 | 4d10 | 10d10 |\n| 11th-16th | 4d10 | 10d10 | 18d10 |\n| 17th-20th | 10d10 | 18d10 | 24d10 |\n\n| Danger | Save DC | Attack bonus |\n| --- | --- | --- |\n| Setback | 10-11 | +3 to +5 |\n| Dangerous | 12-15 | +6 to +8 |\n| Deadly | 16-20 | +9 to +12 |"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "table",
+      "title": "NPC names",
+      "x": 0,
+      "y": 15,
+      "w": 3,
+      "h": 9,
+      "config": {
+        "mode": "join",
+        "columns": [
+          {
+            "id": "start",
+            "label": "Start",
+            "entries": [
+              "Al",
+              "Bar",
+              "Cor",
+              "Da",
+              "El",
+              "Fen",
+              "Gar",
+              "Hal",
+              "Is",
+              "Jor",
+              "Kel",
+              "Lor",
+              "Mar",
+              "Nor",
+              "Os",
+              "Per",
+              "Quen",
+              "Ros",
+              "Tam",
+              "Vel"
+            ]
+          },
+          {
+            "id": "end",
+            "label": "End",
+            "entries": [
+              "ric",
+              "wyn",
+              "a",
+              "dren",
+              "ith",
+              "os",
+              "mund",
+              "ara",
+              "eth",
+              "on",
+              "ia",
+              "gar",
+              "wen",
+              "ius",
+              "enne",
+              "or",
+              "ys",
+              "bert",
+              "ina",
+              "ak"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "kind": "table",
+      "title": "NPC look and manner",
+      "x": 3,
+      "y": 15,
+      "w": 5,
+      "h": 9,
+      "config": {
+        "mode": "list",
+        "columns": [
+          {
+            "id": "look",
+            "label": "Look",
+            "entries": [
+              "Ink-stained fingers",
+              "Far too many rings, all of them cheap",
+              "A much-mended coat with mismatched patches",
+              "Tall, and stoops through every doorway",
+              "Spectacles they keep pushing up their nose",
+              "Smells of woodsmoke and pipeweed",
+              "A faded ship tattooed on one forearm",
+              "Odd boots, one noticeably newer",
+              "Clothes far too fine for this place",
+              "Leans on a cane they don't seem to need",
+              "Always nibbling something from a pocket",
+              "A tame mouse riding on one shoulder",
+              "A ring of keys that jingles with every step",
+              "Paint flecks on hands and sleeves",
+              "Sunburnt nose and a permanent squint",
+              "A wide-brimmed hat they never take off",
+              "A holy symbol worn on a bootlace",
+              "A freshly bandaged hand",
+              "Flour dusted on sleeves and apron",
+              "A flower tucked behind one ear"
+            ]
+          },
+          {
+            "id": "manner",
+            "label": "Manner",
+            "entries": [
+              "Answers questions with questions",
+              "Laughs at their own jokes before the punchline",
+              "Leans in to talk, always a little too close",
+              "Counts coins while they talk",
+              "Calls everyone \"friend\", enemies included",
+              "Never quite finishes a sentence",
+              "Has a proverb for every occasion",
+              "Sharpens a knife all through the conversation",
+              "Stiffly formal and polite",
+              "Haggles over everything, even gifts",
+              "Talks about themselves by name",
+              "Gets every name slightly wrong",
+              "Keeps glancing at the door",
+              "Brings up a famous cousin at every chance",
+              "Holds eye contact a moment too long",
+              "Speaks slowly, weighing every word",
+              "Interrupts constantly",
+              "Superstitious: knocks on wood, spits for luck",
+              "Apologises for everything",
+              "A little hard of hearing, so shouts"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "kind": "table",
+      "title": "NPC ideal, bond and flaw",
+      "x": 8,
+      "y": 15,
+      "w": 4,
+      "h": 9,
+      "config": {
+        "mode": "list",
+        "columns": [
+          {
+            "id": "ideal",
+            "label": "Ideal",
+            "entries": [
+              "Family comes before everything",
+              "A debt must always be repaid",
+              "Knowledge should be free to all",
+              "The strong should shield the weak",
+              "Tradition keeps the world from falling apart",
+              "Coin is the only real safety",
+              "Every rule is there to be bent",
+              "Beauty is worth any price",
+              "The gods are watching; act like it",
+              "Freedom, for themselves and everyone",
+              "Loyalty to the crown, whoever wears it",
+              "Leave every place better than you found it"
+            ]
+          },
+          {
+            "id": "bond",
+            "label": "Bond",
+            "entries": [
+              "Owes their life to a stranger they hope to find again",
+              "Sends half of every wage to a sibling in the city",
+              "Guards a key to a lock they have never seen",
+              "Swore an oath at a dying friend's bedside",
+              "Keeps a letter they have never dared to send",
+              "Protects the village that took them in as a child",
+              "Hunts the person who burned their home",
+              "Devoted to an old mentor, now frail",
+              "Carries a family heirloom everyone else wants",
+              "In love with someone far above their station"
+            ]
+          },
+          {
+            "id": "flaw",
+            "label": "Flaw",
+            "entries": [
+              "Can't keep a secret to save their life",
+              "Gambles away anything not nailed down",
+              "Lies when the truth would do just as well",
+              "Holds a grudge for years",
+              "Trusts anyone who flatters them",
+              "Goes pale at the sight of blood",
+              "Takes credit for other people's work",
+              "Drinks to forget, and forgets too much",
+              "Hears insults where none were meant",
+              "Can't turn down a dare",
+              "Hoards things, useful or not",
+              "Would sell out a friend for the right price"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "kind": "table",
+      "title": "Something happens",
+      "x": 0,
+      "y": 24,
+      "w": 4,
+      "h": 9,
+      "config": {
+        "columns": [
+          {
+            "id": "event",
+            "label": "Something happens",
+            "entries": [
+              "A sudden downpour sends everyone looking for shelter",
+              "A breathless messenger arrives, looking for someone else",
+              "A cart loses a wheel and blocks the way",
+              "Someone in the crowd recognises one of the party",
+              "A dog runs off with something important",
+              "A bell starts ringing in the distance",
+              "A fight breaks out nearby",
+              "A child asks the party to help find a parent",
+              "A merchant offers a deal that seems too good",
+              "The lights go out",
+              "A stranger slips a note into someone's pocket",
+              "The ground trembles, briefly",
+              "A patrol arrives asking questions",
+              "Smoke rises from a building nearby",
+              "A street performer picks one of the party for their act",
+              "An animal acts strangely, then bolts",
+              "Someone faints",
+              "A rival turns up chasing the same goal",
+              "Thunder rolls, though the sky is clear",
+              "Everyone falls quiet as a procession passes"
+            ]
+          }
+        ],
+        "mode": "list"
+      }
+    },
+    {
+      "kind": "table",
+      "title": "Quick finds",
+      "x": 4,
+      "y": 24,
+      "w": 4,
+      "h": 9,
+      "config": {
+        "columns": [
+          {
+            "id": "find",
+            "label": "In the drawer, pocket or pack",
+            "entries": [
+              "A few copper coins and a loose button",
+              "A half-finished letter",
+              "A tarnished silver spoon",
+              "A map with one spot circled in charcoal",
+              "A small key on a ribbon",
+              "Dried flowers pressed in a book",
+              "A carved wooden horse",
+              "A pouch of seeds nobody here recognises",
+              "A pair of loaded dice",
+              "A list of names, some crossed out",
+              "A stoppered vial that smells of mint",
+              "An IOU for a large sum, unsigned"
+            ]
+          }
+        ],
+        "mode": "list"
+      }
+    },
+    {
+      "kind": "scratch",
+      "title": "Scratch note",
+      "x": 8,
+      "y": 24,
+      "w": 4,
+      "h": 9
+    }
+  ]
+}

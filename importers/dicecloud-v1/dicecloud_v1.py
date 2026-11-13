@@ -613,7 +613,7 @@ def convert(data, fetch_picture=True):
     fields.update({
         "hero_name": (char.get("name") or "").strip(),
         "level": level,
-        "subclass": subclass_of(data),
+        "subclass": entry(subclass) if (subclass := subclass_of(data)) else None,
         "alignment": ALIGNMENTS.get((char.get("alignment") or "").strip().lower()),
         "skill_profs": profs["skill_profs"],
         "skill_expertise": profs["skill_expertise"],

@@ -1,4 +1,4 @@
-name: Validate add-ons, templates, themes, character sheets, and skills
+name: Validate add-ons, templates, themes, character sheets, GM screens, and skills
 
 on:
   push:

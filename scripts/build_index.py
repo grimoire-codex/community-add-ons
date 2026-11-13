@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Validate this repo's contents and regenerate its four index files.
+"""Validate this repo's contents and regenerate its index files.
 
   index.json            add-ons (scrapers, character importers) — installed by an admin
   templates/index.json  note templates — browsed and downloaded by a GM
   themes/index.json     colour themes — installed per user
   character-sheets/index.json  character sheets — installed per user
   content-packs/index.json     content packs — installed server-wide by an admin
+  gm-screens/index.json        GM screen presets — applied by a GM to a campaign
 
 Assistant skills (skills/) have no index - each user installs them into their
 own assistant - but they are validated here too.
@@ -53,6 +54,8 @@ SKILL_DIR = ROOT / "skills"
 SKILL_DESCRIPTION_MAX = 1024
 SHEET_INDEX_PATH = SHEET_DIR / "index.json"
 PACK_INDEX_PATH = PACK_DIR / "index.json"
+SCREEN_DIR = ROOT / "gm-screens"
+SCREEN_INDEX_PATH = SCREEN_DIR / "index.json"
 # Optional per-folder metadata (display name), not an add-on itself.
 FOLDER_META = "_folder.yml"
 
@@ -663,6 +666,112 @@ def build_content_packs() -> tuple[dict, list[str]]:
     return index, errors
 
 
+def discover_screens() -> list[pathlib.Path]:
+    """Every GM screen preset, as gm-screens/<id>/<id>.json."""
+    if not SCREEN_DIR.is_dir():
+        return []
+    found = []
+    for entry in sorted(SCREEN_DIR.iterdir()):
+        if not entry.is_dir() or entry.name.startswith("."):
+            continue
+        candidate = entry / f"{entry.name}.json"
+        if candidate.is_file():
+            found.append(candidate)
+    return found
+
+
+def build_screens() -> tuple[dict, list[str]]:
+    """Validate every GM screen preset and build the catalogue Grimoire browses.
+
+    A preset is a board of Grimoire's built-in tools, set up for a game. It is
+    data only: a GM applies one to a campaign they run, Grimoire checks the
+    file against the digest published here, and cleans every value again on
+    the way in.
+    """
+    schema = json.loads((ROOT / "schema" / "gm-screen.schema.json").read_text())
+    validator = jsonschema.Draft202012Validator(schema)
+    errors: list[str] = []
+    screens = []
+
+    for screen_path in discover_screens():
+        rel = screen_path.relative_to(ROOT).as_posix()
+        try:
+            data = json.loads(screen_path.read_text())
+        except json.JSONDecodeError as exc:
+            errors.append(f"{rel}: invalid JSON: {exc}")
+            continue
+
+        schema_errors = sorted(validator.iter_errors(data), key=lambda e: list(e.path))
+        if schema_errors:
+            for err in schema_errors:
+                loc = "/".join(str(p) for p in err.path) or "(root)"
+                errors.append(f"{rel}: {loc}: {err.message}")
+            continue
+
+        if data["id"] != screen_path.parent.name:
+            errors.append(
+                f"{rel}: id '{data['id']}' does not match directory "
+                f"'{screen_path.parent.name}'"
+            )
+            continue
+
+        # Panels must not overlap: Grimoire would move one aside, and the
+        # author should see the board they meant.
+        placed = [p for p in data["panels"] if "x" in p and "y" in p]
+        for i, a in enumerate(placed):
+            for b in placed[i + 1:]:
+                aw, ah = a.get("w", 4), a.get("h", 4)
+                bw, bh = b.get("w", 4), b.get("h", 4)
+                if a["x"] + aw > 12 or b["x"] + bw > 12:
+                    continue
+                if (
+                    a["x"] < b["x"] + bw
+                    and b["x"] < a["x"] + aw
+                    and a["y"] < b["y"] + bh
+                    and b["y"] < a["y"] + ah
+                ):
+                    errors.append(
+                        f"{rel}: panels '{a.get('title', a['kind'])}' and "
+                        f"'{b.get('title', b['kind'])}' overlap"
+                    )
+        for panel in placed:
+            if panel["x"] + panel.get("w", 4) > 12:
+                errors.append(
+                    f"{rel}: panel '{panel.get('title', panel['kind'])}' runs past "
+                    "the twelfth column"
+                )
+
+        entry = {
+            "id": data["id"],
+            "name": data["name"],
+            "version": data["version"],
+            "panel_count": len(data["panels"]),
+            "path": rel,
+            "sha256": sha256(screen_path),
+        }
+        for optional in (
+            "system", "description", "author", "homepage", "license",
+            "license_url", "attribution", "grimoire_min_version",
+        ):
+            if data.get(optional):
+                entry[optional] = data[optional]
+        screens.append(entry)
+
+    index = {
+        "version": 1,
+        "generated": dt.datetime.now(dt.timezone.utc)
+        .isoformat(timespec="seconds")
+        .replace("+00:00", "Z"),
+        "screens": sorted(screens, key=lambda s: s["id"]),
+    }
+
+    index_schema = json.loads((ROOT / "schema" / "gm-screen-index.schema.json").read_text())
+    for err in jsonschema.Draft202012Validator(index_schema).iter_errors(index):
+        errors.append(f"gm-screens/index.json: {err.message}")
+
+    return index, errors
+
+
 def check_skills() -> tuple[int, list[str]]:
     """Validate each assistant skill: SKILL.md frontmatter and compiling scripts.
 
@@ -721,8 +830,12 @@ def main() -> int:
     theme_index, theme_errors = build_themes()
     sheet_index, sheet_errors = build_sheets()
     pack_index, pack_errors = build_content_packs()
+    screen_index, screen_errors = build_screens()
     skill_count, skill_errors = check_skills()
-    errors = errors + template_errors + theme_errors + sheet_errors + pack_errors + skill_errors
+    errors = (
+        errors + template_errors + theme_errors + sheet_errors + pack_errors
+        + screen_errors + skill_errors
+    )
     if errors:
         print("Validation failed:")
         for err in errors:
@@ -734,7 +847,8 @@ def main() -> int:
         f"{len(template_index['templates'])} note template(s), "
         f"{len(theme_index['themes'])} theme(s), "
         f"{len(sheet_index['sheets'])} character sheet(s), "
-        f"{len(pack_index['packs'])} content pack(s), and "
+        f"{len(pack_index['packs'])} content pack(s), "
+        f"{len(screen_index['screens'])} GM screen preset(s), and "
         f"{skill_count} assistant skill(s)."
     )
 
@@ -744,6 +858,7 @@ def main() -> int:
         (THEME_INDEX_PATH, theme_index, "themes"),
         (SHEET_INDEX_PATH, sheet_index, "sheets"),
         (PACK_INDEX_PATH, pack_index, "packs"),
+        (SCREEN_INDEX_PATH, screen_index, "screens"),
     ]
 
     if args.check:

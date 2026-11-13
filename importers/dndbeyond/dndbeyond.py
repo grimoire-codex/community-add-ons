@@ -506,7 +506,8 @@ def convert(data, fetch_portrait=True):
     # any class has. The full split goes in the notes.
     if levels:
         fields["klass"] = entry(max(levels, key=lambda row: row[1])[0])
-        fields["subclass"] = next((sub for _, _, sub in levels if sub), None)
+        subclass = next((sub for _, _, sub in levels if sub), None)
+        fields["subclass"] = entry(subclass) if subclass else None
     if race_name:
         fields["species"] = entry(race_name)
     background = background_name(data)

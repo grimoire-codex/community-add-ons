@@ -1,0 +1,302 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/grimoire-codex/community-add-ons/main/schema/gm-screen.schema.json",
+  "title": "Grimoire GM screen preset",
+  "description": "A ready-made GM screen board: Grimoire's built-in tools, placed on a twelve-column grid and set up for a game. Data only - no code, no markup. Grimoire bounds every value again when the preset is applied.",
+  "type": "object",
+  "required": ["id", "name", "version", "panels"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "format": { "const": "grimoire://gm-screen/v1" },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Matches the preset's directory name."
+    },
+    "name": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "system": { "type": "string", "maxLength": 200 },
+    "description": { "type": "string", "maxLength": 1000 },
+    "author": { "type": "string", "maxLength": 120 },
+    "homepage": { "type": "string", "format": "uri" },
+    "license": { "type": "string", "maxLength": 100 },
+    "license_url": { "type": "string", "format": "uri" },
+    "attribution": { "type": "string", "maxLength": 1000 },
+    "grimoire_min_version": { "type": "string" },
+    "panels": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 60,
+      "items": { "$ref": "#/$defs/panel" }
+    }
+  },
+  "$defs": {
+    "resets": { "enum": ["", "scene", "session", "rest"] },
+    "panel": {
+      "type": "object",
+      "required": ["kind"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": ["note", "party", "counter", "clocks", "pools", "scratch", "initiative", "reference", "table"]
+        },
+        "title": { "type": "string", "maxLength": 120 },
+        "x": { "type": "integer", "minimum": 0, "maximum": 11 },
+        "y": { "type": "integer", "minimum": 0 },
+        "w": { "type": "integer", "minimum": 1, "maximum": 12 },
+        "h": { "type": "integer", "minimum": 1, "maximum": 40 },
+        "config": { "type": "object" },
+        "state": { "type": "object" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "kind": { "const": "counter" } } },
+          "then": {
+            "properties": {
+              "config": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "min": { "type": "integer" },
+                  "max": { "type": ["integer", "null"] },
+                  "start": { "type": "integer" },
+                  "style": { "enum": ["number", "pips"] },
+                  "resets": { "$ref": "#/$defs/resets" }
+                }
+              },
+              "state": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": { "value": { "type": "integer" } }
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "clocks" } } },
+          "then": {
+            "properties": {
+              "config": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": { "mode": { "enum": ["countdown", "clock"] } }
+              },
+              "state": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "items": {
+                    "type": "array",
+                    "maxItems": 50,
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": { "type": "string" },
+                        "name": { "type": "string", "maxLength": 120 },
+                        "size": { "type": "integer", "minimum": 1, "maximum": 30 },
+                        "ticks": { "type": "integer", "minimum": 0 },
+                        "note": { "type": "string", "maxLength": 500 },
+                        "resets": { "$ref": "#/$defs/resets" },
+                        "loops": { "type": "boolean" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "pools" } } },
+          "then": {
+            "properties": {
+              "config": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": { "resets": { "$ref": "#/$defs/resets" } }
+              },
+              "state": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "items": {
+                    "type": "array",
+                    "maxItems": 50,
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": { "type": "string" },
+                        "name": { "type": "string", "maxLength": 120 },
+                        "tokens": { "type": "integer", "minimum": 0 },
+                        "note": { "type": "string", "maxLength": 500 }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "initiative" } } },
+          "then": {
+            "properties": {
+              "config": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "mode": { "enum": ["ordered", "sides"] },
+                  "sides": {
+                    "type": "array",
+                    "minItems": 2,
+                    "maxItems": 4,
+                    "items": {
+                      "type": "object",
+                      "required": ["key", "label"],
+                      "additionalProperties": false,
+                      "properties": {
+                        "key": { "type": "string", "pattern": "^[a-z0-9_-]{1,30}$" },
+                        "label": { "type": "string", "maxLength": 60 }
+                      }
+                    }
+                  },
+                  "resets": { "$ref": "#/$defs/resets" }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "party" } } },
+          "then": {
+            "properties": {
+              "config": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "stats": {
+                    "type": "array",
+                    "maxItems": 12,
+                    "items": {
+                      "type": "object",
+                      "required": ["value"],
+                      "additionalProperties": false,
+                      "properties": {
+                        "label": { "type": "string", "maxLength": 60 },
+                        "value": { "type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$" },
+                        "max": {
+                          "oneOf": [
+                            { "type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$" },
+                            { "type": "integer", "minimum": 1, "maximum": 30 },
+                            { "type": "null" }
+                          ]
+                        },
+                        "style": { "enum": ["number", "pips"] }
+                      }
+                    }
+                  },
+                  "include_inactive": { "type": "boolean" }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "reference" } } },
+          "then": {
+            "properties": {
+              "config": {
+                "type": "object",
+                "required": ["sections"],
+                "additionalProperties": false,
+                "properties": {
+                  "sections": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 30,
+                    "description": "Shown one at a time, each with a button. Grimoire keeps sections up to 60,000 characters of text in all.",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": { "type": "string", "pattern": "^[A-Za-z0-9_-]{1,40}$" },
+                        "title": { "type": "string", "maxLength": 60 },
+                        "text": {
+                          "type": "string",
+                          "maxLength": 8000,
+                          "description": "Markdown: emphasis, lists and GitHub-style tables. Shown as text only - no HTML, and images appear as their description."
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "state": { "type": "object", "maxProperties": 0 }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "table" } } },
+          "then": {
+            "properties": {
+              "config": {
+                "type": "object",
+                "required": ["columns"],
+                "additionalProperties": false,
+                "properties": {
+                  "mode": {
+                    "enum": ["list", "join"],
+                    "description": "list: each column's result on its own line. join: the results run together into one word, for names."
+                  },
+                  "columns": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 4,
+                    "items": {
+                      "type": "object",
+                      "required": ["entries"],
+                      "additionalProperties": false,
+                      "properties": {
+                        "id": { "type": "string", "pattern": "^[A-Za-z0-9_-]{1,40}$" },
+                        "label": { "type": "string", "maxLength": 60 },
+                        "entries": {
+                          "type": "array",
+                          "minItems": 1,
+                          "maxItems": 100,
+                          "description": "The column rolls a die of this many sides.",
+                          "items": { "type": "string", "minLength": 1, "maxLength": 300 }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "state": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "rolls": { "type": "array", "maxItems": 4, "items": { "type": "integer", "minimum": 1 } }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": { "properties": { "kind": { "const": "note" } } },
+          "then": {
+            "properties": {
+              "config": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": { "page_slug": { "type": "string", "maxLength": 255 } }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

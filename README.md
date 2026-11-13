@@ -5,8 +5,8 @@ the self-hosted TTRPG library manager.
 
 This is the single home for everything the community contributes to Grimoire.
 Today that means **scrapers**, **note templates**, **themes**, **character
-sheets**, the **content packs** they draw from, and **assistant skills**; the
-layout leaves room for plugins as those land.
+sheets**, the **content packs** they draw from, **GM screen presets**, and
+**assistant skills**; the layout leaves room for plugins as those land.
 
 | Directory | What lives there |
 | --- | --- |
@@ -16,6 +16,7 @@ layout leaves room for plugins as those land.
 | [`themes/`](themes/) | Themes — colour schemes a user installs for their own account |
 | [`character-sheets/`](character-sheets/) | Character sheets — schema-driven sheets a user installs for their own account |
 | [`content-packs/`](content-packs/) | Content packs — the spells, classes and feats a character sheet draws from, installed server-wide by an admin |
+| [`gm-screens/`](gm-screens/) | GM screen presets — a campaign's board of GM trackers, set up for a game |
 | [`skills/`](skills/) | Assistant skills — teach Claude Code and other AI assistants to organise, check and describe a Grimoire library, answer rules questions from it, and prep sessions |
 | [`plugins/`](plugins/) | Reserved for future add-on kinds |
 | [`schema/`](schema/) | JSON Schemas that every add-on, template, theme, sheet, pack, and index are validated against |
@@ -98,6 +99,7 @@ for the authoring reference.
 
 | Theme | Mode | Description |
 | --- | --- | --- |
+| [Codex Red](themes/codex-red/) | light & dark | Crimson on gunmetal for the Codex theme, with danger and warning moved onto vermilion and amber |
 | [High Contrast](themes/high-contrast/) | light & dark | Pure black or white surfaces at full-strength contrast; every pairing clears WCAG AAA |
 
 ### Character sheets
@@ -140,6 +142,18 @@ Installed server-wide by an admin, then imported into a campaign's ruleset. See
 | [Draw Steel: Heroes](content-packs/draw-steel-core/) | Draw Steel | Draw Steel Creator License |
 | [Pathfinder Player Core](content-packs/pf2e-player-core/) | Pathfinder 2e | ORC |
 
+### GM screen presets
+
+Ready-made boards for a campaign's GM screen: Grimoire's built-in trackers,
+placed and set up for a game. See [`gm-screens/`](gm-screens/) for the
+authoring reference.
+
+| Preset | What it sets up |
+| --- | --- |
+| [Daggerheart](gm-screens/daggerheart/) | Fear from 0 to 12, countdowns, adversary pools that empty each scene, the party, a scratch note |
+| [D&D 5th Edition (2014)](gm-screens/dnd-5e-2014/) | The party's HP, AC and passive Perception, initiative, every condition and exhaustion, DCs, cover, light, travel pace and damage by level from the SRD 5.1, and random tables for NPCs, scene events and quick finds |
+| [Draw Steel](gm-screens/draw-steel/) | Malice, a turn tracker where heroes and the Director take turns, the heroes' Stamina, Recoveries, Victories and Heroic Resource, montage clocks |
+
 ### Assistant skills
 
 Installed into a user's own AI assistant, not into Grimoire - see
@@ -168,7 +182,8 @@ in [`templates/index.json`](templates/index.json).
    [`themes/README.md`](themes/README.md) for themes,
    [`character-sheets/README.md`](character-sheets/README.md) and the
    [character sheet reference](docs/character-sheets.md) for character sheets,
-   [`content-packs/README.md`](content-packs/README.md) for content packs, and
+   [`content-packs/README.md`](content-packs/README.md) for content packs,
+   [`gm-screens/README.md`](gm-screens/README.md) for GM screen presets, and
    [`skills/README.md`](skills/README.md) for assistant skills.
 2. Add your add-on under the right directory, in its own folder named after its
    `id` (e.g. `scrapers/my-source/my-source.yml`,
@@ -179,8 +194,8 @@ in [`templates/index.json`](templates/index.json).
    template against
    [`schema/note-template.schema.json`](schema/note-template.schema.json), then
    regenerates every index file — so **don't hand-edit `index.json`,
-   `templates/index.json`, `themes/index.json`, `character-sheets/index.json`
-   or `content-packs/index.json`**; they're build artifacts. Run
+   `templates/index.json`, `themes/index.json`, `character-sheets/index.json`,
+   `content-packs/index.json` or `gm-screens/index.json`**; they're build artifacts. Run
    `python3 scripts/build_index.py` and commit what it writes.
 
 ### What makes a good scraper

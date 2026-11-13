@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated": "2026-10-23T19:28:09Z",
+  "generated": "2026-11-08T23:31:28Z",
   "addons": [
     {
       "id": "dicecloud-v1",
@@ -17,7 +17,7 @@
       "grimoire_min_version": "1.9.0",
       "sheet": "dnd-5e-2024",
       "user_installable": false,
-      "script_sha256": "a3265ca7413eb118c03fe9efdf373953302ba15baa3653eaa471526bad6184b0"
+      "script_sha256": "996cd9bbd4002903f84f8648896ee431b048b7900218e8991df8ecf1e4ca2253"
     },
     {
       "id": "dndbeyond",
@@ -34,7 +34,7 @@
       "grimoire_min_version": "1.9.0",
       "sheet": "dnd-5e-2024",
       "user_installable": false,
-      "script_sha256": "7e386071d609eaceb971a5172937d27fe9dc3a8becc7f3869407832bccee0be8"
+      "script_sha256": "3d875961796e274e664dd3e094f39893b4da86ebbfd60aa1aa6c766570ae1316"
     },
     {
       "id": "drivethrurpg",

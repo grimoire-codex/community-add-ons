@@ -147,8 +147,9 @@ The character's own art is not a field: place it with
 
 Each column takes `key` (required, an identifier), `label`, `type` (`text`,
 `number`, `checkbox`, `select` or `textarea` - not another `list`), `options`
-for a select, `min`/`max` for a number, `default` for new rows, and `flex` for
-its relative width. Up to 20 columns, and 500 rows per character.
+for a select, `min`/`max` for a number, `default` for new rows, `default_from`
+to work the cell out from the sheet (see [below](#a-list-column-worked-out-per-row)),
+and `flex` for its relative width. Up to 20 columns, and 500 rows per character.
 
 A list stores an array of row objects keyed by column:
 `[{ "item": "Rope", "qty": 1, "mass": 1, "equipped": false }]`. The list
@@ -321,6 +322,47 @@ nothing, and is refused at install instead.
 Use it rather than a computed value for anything a player might reasonably set
 themselves.
 
+#### A list column worked out per row
+
+A `list` column can take a `default_from` too, worked out once for each row.
+Its formula sees the sheet's fields with **that row's columns** laid over them,
+the same names a `<g-repeat>` sees, so a column shadows a field of the same
+name. A family record whose ages follow the campaign year:
+
+```json
+"campaign_year": { "type": "number", "label": "Year", "default": 1890 },
+"family_records": {
+  "type": "list",
+  "columns": [
+    { "key": "name", "label": "Name" },
+    { "key": "born", "type": "number", "label": "Born" },
+    { "key": "age", "type": "number", "label": "Age", "min": 0,
+      "default_from": "born ? campaign_year - born : null" }
+  ]
+}
+```
+
+For a column, an **empty cell** is what counts as not set: every row is stored
+with every column, so there is no missing key to go by. An empty cell shows the
+formula's result, marked **auto**, and the result is clamped by `min`/`max`. A
+value the player types wins - `0` included - and clearing the cell hands it
+back. An empty result falls back to the column's `default`, then to an empty
+cell. The worked-out value is never saved into the row, so it keeps following
+the formula, and everything else on the sheet - computed values,
+`sum_where(family_records, 'age')`, validators, `<g-if>` inside the repeat -
+sees it as the cell shows it.
+
+The same rules as a field's `default_from` apply - fields only, not computed
+values, and no image fields - plus two of a column's own: it may not read
+another column that has a `default_from` (each row is worked out in one pass),
+and a `checkbox` column cannot have one, since an unticked box is already a
+value. Needs Grimoire 1.11.0.
+
+- Make a year column a `number`. A `text` cell such as "Spring 1890" reads as
+  `0` in arithmetic, and the age would come out as the whole campaign year.
+- Values players already typed into the column are kept when an update to your
+  sheet adds `default_from`. They follow the formula once cleared.
+
 ### `visible_if`
 
 A formula on a field, a simple-layout section, or a `<g-field>`,
@@ -491,7 +533,7 @@ a sibling `<id>.html` file (or name it with `layout_file`). It is real HTML with
 | `<g-section>` | `title`, `name`, `visible_if` | A `<section class="gc-section">` with an optional `<h3>` title. `name` becomes `data-section="…"`, a styling hook |
 | `<g-if>` | `test` | Its contents, while the formula is true |
 | `<g-repeat>` | `over` | Its contents once per row of a `list` field. Inside, `<g-field name="qty">` is **that row's** `qty` cell, and formulas see the row's columns and `_index` |
-| `<g-tabs>`, `<g-tab>` | `<g-tab title visible_if>` | Pages - the second page of a printed sheet. Only the chosen tab is drawn |
+| `<g-tabs>`, `<g-tab>` | `<g-tab title title_from visible_if>` | Pages - the second page of a printed sheet. Only the chosen tab is drawn. `title_from` is a formula naming the tab once it has a value - `<g-tab title="Squire" title_from="squire_name">` reads "Squire" until the squire is named, then the name. An empty result falls back to `title`, then to the page number; long titles are cut at 40 characters. `title_from` needs Grimoire 1.11.0 |
 | `<g-option>` | `field`, `value`, `label` | One checkbox for one option of multiselect `field`, so each box can sit where the printed sheet puts it - a proficiency dot beside its skill |
 | `<g-tier>` | `value`, `fields`, `labels`, `titles`, `label` | One dropdown for which rung of a ladder of multiselects holds `value`. `fields` lists the multiselects lowest rung first (`"skill_profs skill_expertise"`); `labels` is the short text shown closed and `titles` the full names in the list, both `\|`-separated, one more than the fields (the first is "none"). Choosing a rung adds `value` to every list up to it and removes it above |
 | `<g-pips>` | `count`, `value`, `label` | `count` boxes - a number, or a field or computed name - with the first `value` ticked, `value` naming a `number` field. Ticking one uses everything up to it. Spell slots, stress, a feature's uses |
@@ -538,14 +580,27 @@ Put the CSS in a sibling `<id>.css` file (or name it with `styles_file`).
 `.<sheet-scope> .score`, so a sheet cannot restyle the app around it. `:root`,
 `html` and `body` become the sheet's own root, so `:root { --ink: #222 }`
 declares sheet-wide variables as you would expect, and a selector starting `&`
-attaches to the root: `&.dark` matches the sheet's root element.
+attaches to the root: `&.dark` matches the sheet's root element. `&` may only
+start a selector, and what follows it must step down into the sheet (`& .a`,
+`&.dark > .a`), not across to its siblings - `& ~ *`, `& + div`, or a selector
+that opens with `~` or `+`, is refused. Rules do not nest: write
+`.a .b { … }`, not `.a { & .b { … } }`.
 
 **At-rules:** `@media`, `@supports`, `@container` and `@layer` only.
 `@import`, `@font-face` and `@keyframes` are refused - one loads a file, one a
 font over the network, one animates.
 
-**Values:** `url(…)` is refused wherever it appears - an image belongs in an
-`<img src>`. So are `expression(…)`, `javascript:` and `-moz-binding`.
+**Values:** a value may call only these functions: `var()`, `env()`, `calc()`,
+`min()`, `max()`, `clamp()` and the other maths functions (`round()`, `mod()`,
+`rem()`, `abs()`, `sign()`, `pow()`, `sqrt()`, `hypot()`, `log()`, `exp()` and
+the trigonometric ones), the colour functions (`rgb()`, `rgba()`, `hsl()`,
+`hsla()`, `hwb()`, `lab()`, `lch()`, `oklab()`, `oklch()`, `color()`,
+`color-mix()`, `light-dark()`), the gradients (`linear-gradient()`,
+`radial-gradient()`, `conic-gradient()` and their `repeating-` forms), and the
+grid-track helpers `repeat()`, `minmax()` and `fit-content()`. Anything else is
+refused - `url(…)` wherever it appears and however it is spelt, `image-set()`,
+`attr()`, `expression()` - because an image belongs in an `<img src>`, not the
+stylesheet. A custom property's value is held to the same rule.
 
 **Properties:** custom properties (`--anything`) are always allowed. Otherwise
 only these:

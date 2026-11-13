@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "generated": "2026-11-13T03:50:30Z",
+  "screens": [
+    {
+      "id": "daggerheart",
+      "name": "Daggerheart",
+      "version": "1.0.0",
+      "panel_count": 5,
+      "path": "gm-screens/daggerheart/daggerheart.json",
+      "sha256": "81471f42f4bedadb860e553d337fe91a6eefa3523ab9e272d9006c6cd0796c28",
+      "system": "Daggerheart",
+      "description": "Fear from 0 to 12, countdowns, adversary token pools that empty at the end of each scene, the party at a glance, and a scratch note.",
+      "author": "hunter-read",
+      "license": "MIT",
+      "attribution": "Daggerheart is a trademark of Critical Role, LLC. This preset is not affiliated with or endorsed by Critical Role, LLC or Darrington Press.",
+      "grimoire_min_version": "1.11.0"
+    },
+    {
+      "id": "dnd-5e-2014",
+      "name": "D&D 5th Edition (2014)",
+      "version": "1.0.0",
+      "panel_count": 10,
+      "path": "gm-screens/dnd-5e-2014/dnd-5e-2014.json",
+      "sha256": "860a4cfd55795ae8f539974a0c7161db004174396bb760d2f9f1ad30c2b3caeb",
+      "system": "Dungeons & Dragons 5th Edition (2014)",
+      "description": "A GM screen for the 2014 rules: the party's hit points, AC, initiative, passive Perception and spell save DC from the D&D 5e (2014) sheet, an initiative tracker, every condition and exhaustion, setting a DC, skills, cover, light and obscured areas, travel pace and damage by level, plus random tables for NPC names, looks, manners, ideals, bonds and flaws, scene events and quick finds.",
+      "author": "hunter-read",
+      "homepage": "https://dnd.wizards.com/resources/systems-reference-document",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "This work includes material taken from the System Reference Document 5.1 (\u201cSRD 5.1\u201d) by Wizards of the Coast LLC and available at https://dnd.wizards.com/resources/systems-reference-document. The SRD 5.1 is licensed under the Creative Commons Attribution 4.0 International License available at https://creativecommons.org/licenses/by/4.0/legalcode. The random tables are original to this preset.",
+      "grimoire_min_version": "1.11.0"
+    },
+    {
+      "id": "draw-steel",
+      "name": "Draw Steel",
+      "version": "1.0.0",
+      "panel_count": 5,
+      "path": "gm-screens/draw-steel/draw-steel.json",
+      "sha256": "af3d62f73b5d1d681eb9124077f90eeaa70535835bede8fe603552fe1dd1a888",
+      "system": "Draw Steel",
+      "description": "Malice for the encounter, a turn tracker where heroes and the Director take turns and each creature is ticked once it has acted, the heroes' Stamina, Recoveries, Victories and Heroic Resource from the Draw Steel sheet, montage and project clocks, and a scratch note.",
+      "author": "hunter-read",
+      "homepage": "https://www.mcdmproductions.com/draw-steel-creator-license",
+      "license": "Draw Steel Creator License",
+      "license_url": "https://www.mcdmproductions.com/draw-steel-creator-license",
+      "attribution": "Grimoire is an independent product published under the DRAW STEEL Creator License and is not affiliated with MCDM Productions, LLC. DRAW STEEL \u00a9 2026 MCDM Productions, LLC.",
+      "grimoire_min_version": "1.11.0"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "$schema": "../schema/content-pack-index.schema.json",
   "version": 1,
-  "generated": "2026-10-23T19:28:09+00:00",
+  "generated": "2026-11-08T23:31:29+00:00",
   "packs": [
     {
       "pack_id": "dnd-5e-srd",
@@ -11,8 +11,8 @@
         {
           "name": "_meta.json",
           "path": "content-packs/dnd-5e-srd/_meta.json",
-          "sha256": "908cacd9120bef86d6969045987cd77b31e573eb16139442cf7410003a5ec54c",
-          "bytes": 817
+          "sha256": "5c82eaad3c2d4fd6c0c05a8ef5a98e78c7be477bfe6ecdcee5a851f81150918c",
+          "bytes": 829
         },
         {
           "name": "background.json",
@@ -35,8 +35,8 @@
         {
           "name": "feature.json",
           "path": "content-packs/dnd-5e-srd/feature.json",
-          "sha256": "4fbcc48c88327464ad6631eb009cf575b2f76108252f9d3322417aeea73c7e44",
-          "bytes": 123597
+          "sha256": "15166e44855387cd7b08aec716e87702f2795e65c5b6f48bcd33262da28a1a1b",
+          "bytes": 125117
         },
         {
           "name": "item.json",
@@ -63,13 +63,19 @@
           "bytes": 354751
         },
         {
+          "name": "subclass.json",
+          "path": "content-packs/dnd-5e-srd/subclass.json",
+          "sha256": "c40f718d9e8b7c6bbac897c64641b893841bb5e2c9968d92c9ecd88ea4dffb1a",
+          "bytes": 7665
+        },
+        {
           "name": "trait.json",
           "path": "content-packs/dnd-5e-srd/trait.json",
           "sha256": "2b6f1cbd91034832a0d3433665f655da568e6fc027797f413e531bc62de72384",
           "bytes": 7983
         }
       ],
-      "entry_count": 1109,
+      "entry_count": 1121,
       "content_types": [
         "background",
         "class",
@@ -79,10 +85,11 @@
         "magic_item",
         "species",
         "spell",
+        "subclass",
         "trait"
       ],
-      "version": "1.0.0",
-      "description": "The System Reference Document 5.2, and nothing outside it: classes and every class and subclass feature, species and their traits, backgrounds, feats, all 339 spells, equipment and magic items.",
+      "version": "1.1.0",
+      "description": "The System Reference Document 5.2, and nothing outside it: classes, subclasses and every class and subclass feature, species and their traits, backgrounds, feats, all 339 spells, equipment and magic items.",
       "license": "CC-BY-4.0",
       "license_url": "https://creativecommons.org/licenses/by/4.0/",
       "attribution": "This work includes material from the System Reference Document 5.2 (\u201cSRD 5.2\u201d) by Wizards of the Coast LLC, available at https://www.dndbeyond.com/srd. The SRD 5.2 is licensed under the Creative Commons Attribution 4.0 International License, available at https://creativecommons.org/licenses/by/4.0/legalcode.",

@@ -23,7 +23,7 @@
 </header>
 
 <g-tabs>
-  <g-tab title="Character">
+  <g-tab title="Character" title_from=character_name>
     <section class="box header">
       <div class="gstat"><span>Character Name</span><g-field name="character_name" label="" /></div>
       <div class="gstat"><span>Session Glory</span><g-field name="session_glory" label="" /></div>
@@ -444,7 +444,7 @@
     </div>
   </g-tab>
 
-  <g-tab title="Squire 1" visible_if="squire1_check"> <!-- title_from=squire1_name -->
+  <g-tab title="Squire 1" title_from=squire1_name visible_if="squire1_check">
     <section class="box squire-header">
       <div class="gstat"><span>Name</span><g-field name="squire1_name" label="" /></div>
       <div class="gstat"><span>Squire Skill</span><g-field name="squire1_skill" label="" variant="compact" /></div>
@@ -679,7 +679,7 @@
     </div>
   </g-tab>
 
-  <g-tab title="Squire 2" visible_if="squire2_check"> <!-- title_from=squire2_name -->
+  <g-tab title="Squire 2" title_from=squire2_name visible_if="squire2_check">
     <section class="box squire-header">
       <div class="gstat"><span>Name</span><g-field name="squire2_name" label="" /></div>
       <div class="gstat"><span>Squire Skill</span><g-field name="squire2_skill" label="" variant="compact" /></div>
@@ -914,7 +914,7 @@
     </div>
   </g-tab>
 
-  <g-tab title="Squire 3" visible_if="squire3_check"> <!-- title_from=squire2_name -->
+  <g-tab title="Squire 3" title_from=squire3_name visible_if="squire3_check">
     <section class="box squire-header">
       <div class="gstat"><span>Name</span><g-field name="squire3_name" label="" /></div>
       <div class="gstat"><span>Squire Skill</span><g-field name="squire3_skill" label="" variant="compact" /></div>
@@ -1156,7 +1156,7 @@
     </section>
   </g-tab>
 
-  <g-tab title="Spouse"  visible_if="married">  <!-- title_from=spouse_name -->
+  <g-tab title="Spouse" title_from=spouse_name visible_if="married">
     <section class="box spouse-header">
       <div class="gstat"><span>Name</span><g-field name="spouse_name" label="" /></div>
       <div class="gstat"><span>Glory</span><g-field name="spouse_glory" label="" /></div>
@@ -1472,7 +1472,7 @@
     </section>
   </g-tab>
 
-  <g-tab title="Manor 1" visible_if="holdings_manor1_check"> <!-- title_from=manor1_name -->
+  <g-tab title="Manor 1" title_from=manor1_name visible_if="holdings_manor1_check">
     <g-section title="Manor"  name="manor1_name">
       <div class="manor-info-line1">
         <div class="gstat"><span class="tiny">Name</span><g-field name="manor1_name" label="" /></div>
@@ -1520,7 +1520,7 @@
     </section>
   </g-tab>
 
-  <g-tab title="Manor 2" visible_if="holdings_manor2_check"> <!-- title_from=manor2_name -->
+  <g-tab title="Manor 2" title_from=manor2_name visible_if="holdings_manor2_check">
     <g-section title="Manor"  name="manor2_name">
       <div class="manor-info-line1">
         <div class="gstat"><span class="tiny">Name</span><g-field name="manor2_name" label="" /></div>
@@ -1568,7 +1568,7 @@
     </section>
   </g-tab>
 
-  <g-tab title="Manor 3" visible_if="holdings_manor3_check"> <!-- title_from=manor3_name -->
+  <g-tab title="Manor 3" title_from=manor3_name visible_if="holdings_manor3_check">
     <g-section title="Manor"  name="manor3_name">
       <div class="manor-info-line1">
         <div class="gstat"><span class="tiny">Name</span><g-field name="manor3_name" label="" /></div>
@@ -1616,7 +1616,7 @@
     </section>
   </g-tab>
 
-  <g-tab title="Manor 4" visible_if="holdings_manor4_check"> <!-- title_from=manor4_name -->
+  <g-tab title="Manor 4" title_from=manor4_name visible_if="holdings_manor4_check">
     <g-section title="Manor"  name="manor4_name">
       <div class="manor-info-line1">
         <div class="gstat"><span class="tiny">Name</span><g-field name="manor4_name" label="" /></div>
@@ -1664,7 +1664,7 @@
     </section>
   </g-tab>
 
-  <g-tab title="Manor 5" visible_if="holdings_manor5_check"> <!-- title_from=manor5_name -->
+  <g-tab title="Manor 5" title_from=manor5_name visible_if="holdings_manor5_check">
     <g-section title="Manor"  name="manor5_name">
       <div class="manor-info-line1">
         <div class="gstat"><span class="tiny">Name</span><g-field name="manor5_name" label="" /></div>
@@ -1712,7 +1712,7 @@
     </section>
   </g-tab>
 
-  <g-tab title="Barony" visible_if="holdings_barony_check"> <!-- title_from=manor2_name -->
+  <g-tab title="Barony" title_from=barony_name visible_if="holdings_barony_check">
     <g-section title="Barony"  name="barony_name">
       <div class="manor-info-line1">
         <div class="gstat"><span class="tiny">Name</span><g-field name="barony_name" label="" /></div>

@@ -1,0 +1,61 @@
+{
+  "$schema": "../../schema/gm-screen.schema.json",
+  "format": "grimoire://gm-screen/v1",
+  "id": "draw-steel",
+  "name": "Draw Steel",
+  "version": "1.0.0",
+  "system": "Draw Steel",
+  "description": "Malice for the encounter, a turn tracker where heroes and the Director take turns and each creature is ticked once it has acted, the heroes' Stamina, Recoveries, Victories and Heroic Resource from the Draw Steel sheet, montage and project clocks, and a scratch note.",
+  "author": "hunter-read",
+  "homepage": "https://www.mcdmproductions.com/draw-steel-creator-license",
+  "license": "Draw Steel Creator License",
+  "license_url": "https://www.mcdmproductions.com/draw-steel-creator-license",
+  "attribution": "Grimoire is an independent product published under the DRAW STEEL Creator License and is not affiliated with MCDM Productions, LLC. DRAW STEEL © 2026 MCDM Productions, LLC.",
+  "grimoire_min_version": "1.11.0",
+  "panels": [
+    {
+      "kind": "counter",
+      "title": "Malice",
+      "x": 0, "y": 0, "w": 3, "h": 3,
+      "config": { "min": 0, "max": null, "start": 0, "style": "number", "resets": "scene" }
+    },
+    {
+      "kind": "party",
+      "title": "Heroes",
+      "x": 3, "y": 0, "w": 9, "h": 5,
+      "config": {
+        "stats": [
+          { "label": "Stamina", "value": "stamina_current", "max": "stamina_max", "style": "number" },
+          { "label": "Recoveries", "value": "recoveries_used", "max": "recoveries_max", "style": "pips" },
+          { "label": "Heroic Resource", "value": "heroic_resource", "max": null, "style": "number" },
+          { "label": "Victories", "value": "victories", "max": null, "style": "number" }
+        ],
+        "include_inactive": false
+      }
+    },
+    {
+      "kind": "initiative",
+      "title": "Turns",
+      "x": 0, "y": 3, "w": 3, "h": 10,
+      "config": {
+        "mode": "sides",
+        "sides": [
+          { "key": "heroes", "label": "Heroes" },
+          { "key": "director", "label": "Director" }
+        ],
+        "resets": "scene"
+      }
+    },
+    {
+      "kind": "clocks",
+      "title": "Montages and projects",
+      "x": 3, "y": 5, "w": 5, "h": 8,
+      "config": { "mode": "clock" }
+    },
+    {
+      "kind": "scratch",
+      "title": "Scratch note",
+      "x": 8, "y": 5, "w": 4, "h": 8
+    }
+  ]
+}

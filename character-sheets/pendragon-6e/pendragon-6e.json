@@ -291,7 +291,7 @@
           "key": "notes",
           "type": "text",
           "label": "Notes",
-          "flex": 3
+          "flex": 2.5
         },
         {
           "key": "libra",
@@ -2100,7 +2100,7 @@
           "key": "notes",
           "type": "text",
           "label": "Notes",
-          "flex": 3
+          "flex": 2.5
         },
         {
           "key": "libra",
@@ -2472,7 +2472,7 @@
     },
     "spouse_trait_checks": {
       "type": "multiselect",
-      "label": "Spouse Trait Checks",
+      "label": "Trait Checks",
       "options": [
         "Chaste",
         "Lustful",
@@ -2506,7 +2506,7 @@
     },
     "spouse_passion_checks": {
       "type": "multiselect",
-      "label": "Spouse Passion Checks",
+      "label": "Passion Checks",
       "options": [
         "Homage",
         "Fealty",
@@ -2521,6 +2521,46 @@
         "Hospitality",
         "Station",
         "Passion 7"
+      ]
+    },
+    "spouse_skill_checks": {
+      "type": "multiselect",
+      "label": "Skill checks",
+      "options": [
+        "Awareness",
+        "Chirurgery",
+        "Compose",
+        "Courtesy",
+        "Dancing",
+        "Falconry",
+        "Fashion",
+        "First Aid",
+        "Flirting",
+        "Folklore",
+        "Gaming",
+        "Hunting",
+        "Industry",
+        "Intrigue",
+        "Literacy",
+        "Orate",
+        "Play Instrument",
+        "Recognize",
+        "Religion",
+        "Singing",
+        "Stewardship",
+        "Extra 1",
+        "Battle",
+        "Horsemanship",
+        "Sword",
+        "Charge",
+        "Spear",
+        "Hafted",
+        "2H Hafted",
+        "Brawling",
+        "Bow",
+        "Crossbow",
+        "Thrown Weapon",
+        "Siegecraft"
       ]
     },
     "spouse_passion_1": {
@@ -2833,7 +2873,7 @@
           "key": "notes",
           "type": "text",
           "label": "Notes",
-          "flex": 3
+          "flex": 2.5
         },
         {
           "key": "libra",
@@ -3019,7 +3059,7 @@
           "key": "notes",
           "type": "text",
           "label": "Notes",
-          "flex": 3
+          "flex": 2.5
         },
         {
           "key": "libra",
@@ -3205,7 +3245,7 @@
           "key": "notes",
           "type": "text",
           "label": "Notes",
-          "flex": 3
+          "flex": 2.5
         },
         {
           "key": "libra",
@@ -3999,9 +4039,49 @@
       "min": 0,
       "max": 20
     },
+    "squire1_skill_checks": {
+      "type": "multiselect",
+      "label": "Skill checks",
+      "options": [
+        "Awareness",
+        "Chirurgery",
+        "Compose",
+        "Courtesy",
+        "Dancing",
+        "Falconry",
+        "Fashion",
+        "First Aid",
+        "Flirting",
+        "Folklore",
+        "Gaming",
+        "Hunting",
+        "Industry",
+        "Intrigue",
+        "Literacy",
+        "Orate",
+        "Play Instrument",
+        "Recognize",
+        "Religion",
+        "Singing",
+        "Stewardship",
+        "Extra 1",
+        "Battle",
+        "Horsemanship",
+        "Sword",
+        "Charge",
+        "Spear",
+        "Hafted",
+        "2H Hafted",
+        "Brawling",
+        "Bow",
+        "Crossbow",
+        "Thrown Weapon",
+        "Siegecraft"
+      ]
+    },
     "squire1_passion_checks": {
       "type": "multiselect",
-      "label": "Spouse Passion Checks",
+      "label": "Passion Checks",
       "options": [
         "Homage",
         "Fealty",
@@ -4396,9 +4476,49 @@
       "min": 0,
       "max": 20
     },
+    "squire2_skill_checks": {
+      "type": "multiselect",
+      "label": "Skill checks",
+      "options": [
+        "Awareness",
+        "Chirurgery",
+        "Compose",
+        "Courtesy",
+        "Dancing",
+        "Falconry",
+        "Fashion",
+        "First Aid",
+        "Flirting",
+        "Folklore",
+        "Gaming",
+        "Hunting",
+        "Industry",
+        "Intrigue",
+        "Literacy",
+        "Orate",
+        "Play Instrument",
+        "Recognize",
+        "Religion",
+        "Singing",
+        "Stewardship",
+        "Extra 1",
+        "Battle",
+        "Horsemanship",
+        "Sword",
+        "Charge",
+        "Spear",
+        "Hafted",
+        "2H Hafted",
+        "Brawling",
+        "Bow",
+        "Crossbow",
+        "Thrown Weapon",
+        "Siegecraft"
+      ]
+    },
     "squire2_passion_checks": {
       "type": "multiselect",
-      "label": "Spouse Passion Checks",
+      "label": "Passion Checks",
       "options": [
         "Homage",
         "Fealty",
@@ -4793,9 +4913,49 @@
       "min": 0,
       "max": 20
     },
+    "squire3_skill_checks": {
+      "type": "multiselect",
+      "label": "Skill checks",
+      "options": [
+        "Awareness",
+        "Chirurgery",
+        "Compose",
+        "Courtesy",
+        "Dancing",
+        "Falconry",
+        "Fashion",
+        "First Aid",
+        "Flirting",
+        "Folklore",
+        "Gaming",
+        "Hunting",
+        "Industry",
+        "Intrigue",
+        "Literacy",
+        "Orate",
+        "Play Instrument",
+        "Recognize",
+        "Religion",
+        "Singing",
+        "Stewardship",
+        "Extra 1",
+        "Battle",
+        "Horsemanship",
+        "Sword",
+        "Charge",
+        "Spear",
+        "Hafted",
+        "2H Hafted",
+        "Brawling",
+        "Bow",
+        "Crossbow",
+        "Thrown Weapon",
+        "Siegecraft"
+      ]
+    },
     "squire3_passion_checks": {
       "type": "multiselect",
-      "label": "Spouse Passion Checks",
+      "label": "Passion Checks",
       "options": [
         "Homage",
         "Fealty",

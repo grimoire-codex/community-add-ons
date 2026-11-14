@@ -378,78 +378,11 @@
 
 .main-grid .col,
 .lower-grid .col,
-.family-2col .col,
-.spouse-skills-grid .col {
+.family-2col .col {
   display: flex;
   flex-direction: column;
   gap: 10px;
   min-width: 0;
-}
-
-.spouse-skills-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 10px;
-}
-
-/* Spouse skills - label and input on the same line */
-.spouse-skills {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 6px 10px;
-}
-
-.spouse-skill {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  column-gap: 20px;
-  align-items: center;
-  font-size: 15px !important;
-  padding: 2px 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.spouse-skill-name {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: left;
-}
-
-/* Spouse skill name slot - for Religion / Extra Skill with embedded name field */
-.spouse-skill-name-slot {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  width: 100%;
-}
-
-.spouse-skill-name-slot > span:first-child {
-  flex-shrink: 0;
-  white-space: nowrap;
-}
-
-.spouse-skill-name-slot input {
-  flex: 1 1 auto !important;
-  min-width: 0 !important;
-  width: auto !important;
-  max-width: 90px !important;
-}
-
-.spouse-skill input {
-  width: 50px;
-  max-width: 50px;
-  font-size: 15px !important;
-  text-align: center;
-}
-
-.spouse-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
 }
 
 .army-grid {

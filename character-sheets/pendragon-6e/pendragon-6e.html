@@ -1,0 +1,1808 @@
+<!-- Pendragon 6th Edition character sheet.
+     Tabs: Character, Household & History, Family Record, Family Events,
+     Spouse, Manor 1-5, Barony, Squire 1-3.
+     Character tab: escutcheon, opposed traits, personal information,
+     characteristics, derived values, wounds, armor, attacks, squire, passive
+     glory, history, titles, holdings, family, equipment.
+     Spouse tab: spouse (personal info, characteristics, traits, passions,
+     skills).
+     Family Record tab: family record list. Family Events tab: family events
+     list.
+     Manor tabs 1-5: manor info, improvements, investments, enhancements,
+     notable features, defenses, manor folk.
+     Barony tab: barony info, army.
+     Squire tabs 1-3: name, birth year, age, class, culture, religion,
+     birthplace, homeland, distinctive features, characteristics, traits,
+     non-combat skills, combat skills, notes.
+     All values are editable; tabs with visible_if only show when conditions met. -->
+
+<div class="sheet-pendragon">
+<header class="masthead">
+  <span class="mast-name"><g-value name="character_name" /></span>
+  <span class="mast-class"><g-value name="char_class" /></span>
+</header>
+
+<g-tabs>
+  <g-tab title="Character" title_from=character_name>
+    <section class="box header">
+      <div class="gstat"><span>Character Name</span><g-field name="character_name" label="" /></div>
+      <div class="gstat"><span>Session Glory</span><g-field name="session_glory" label="" /></div>
+      <div class="gstat"><span>Glory</span><g-field name="glory" label="" /></div>
+      <div class="gstat"><span>Honor</span><span class="honor-input"><g-field name="honor" label="" /><g-field name="honor_check" label="" /></span></div>
+      <div class="gstat"><span>Player Name</span><g-field name="player" label="" /></div>
+      <div class="gstat"><span>Year</span><g-field name="year" label="" /></div>
+    </section>
+
+    <div class="main-grid">
+      <div class="col">
+
+        <section class="box">
+          <h3 class="box-heading">Escutcheon</h3>
+          <div class="gstat"><g-field name="escutcheon" label="" /></div>
+          <div class="gstat"><span>Blazon</span><g-field name="blazon" label="" /></div>
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Traits</h3>
+          <ul class="traits">
+            <li class="trait ideal"><span class="s-name slot-name"><span class="tiny inline">Ideal</span><g-field name="ideal" label="" /></span></li>
+            <li class="trait"><g-option field="trait_checks" value="Chaste" label="Check for Chaste" /><span class="shield"><g-field name="trait_chaste" label="" variant="compact" /></span><span class="s-name left">Chaste 🕆♥</span><span class="s-name right">☀ Lustful</span><span class="shield"><g-field name="trait_lustful" label="" variant="compact" /></span><g-option field="trait_checks" value="Lustful" label="Check for Lustful" /></li>
+            <li class="trait"><g-option field="trait_checks" value="Energetic" label="Check for Energetic" /><span class="shield"><g-field name="trait_energetic" label="" variant="compact" /></span><span class="s-name left">Energetic ☀🛡</span><span class="s-name right">Lazy</span><span class="shield"><g-field name="trait_lazy" label="" variant="compact" /></span><g-option field="trait_checks" value="Lazy" label="Check for Lazy" /></li>
+            <li class="trait"><g-option field="trait_checks" value="Forgiving" label="Check for Forgiving" /><span class="shield"><g-field name="trait_forgiving" label="" variant="compact" /></span><span class="s-name left">Forgiving 🕆</span><span class="s-name right">☾ Vengeful</span><span class="shield"><g-field name="trait_vengeful" label="" variant="compact" /></span><g-option field="trait_checks" value="Vengeful" label="Check for Vengeful" /></li>
+            <li class="trait"><g-option field="trait_checks" value="Generous" label="Check for Generous" /><span class="shield"><g-field name="trait_generous" label="" variant="compact" /></span><span class="s-name left">Generous ☀🗲♥🛡</span><span class="s-name right">Selfish</span><span class="shield"><g-field name="trait_selfish" label="" variant="compact" /></span><g-option field="trait_checks" value="Selfish" label="Check for Selfish" /></li>
+            <li class="trait"><g-option field="trait_checks" value="Honest" label="Check for Honest" /><span class="shield"><g-field name="trait_honest" label="" variant="compact" /></span><span class="s-name left">Honest ☀☾♥</span><span class="s-name right">☾ Deceitful</span><span class="shield"><g-field name="trait_deceitful" label="" variant="compact" /></span><g-option field="trait_checks" value="Deceitful" label="Check for Deceitful" /></li>
+            <li class="trait"><g-option field="trait_checks" value="Just" label="Check for Just" /><span class="shield"><g-field name="trait_just" label="" variant="compact" /></span><span class="s-name left">Just 🛡</span><span class="s-name right">☾ Arbitrary</span><span class="shield"><g-field name="trait_arbitrary" label="" variant="compact" /></span><g-option field="trait_checks" value="Arbitrary" label="Check for Arbitrary" /></li>
+            <li class="trait"><g-option field="trait_checks" value="Merciful" label="Check for Merciful" /><span class="shield"><g-field name="trait_merciful" label="" variant="compact" /></span><span class="s-name left">Merciful 🕆🛡</span><span class="s-name right">Cruel</span><span class="shield"><g-field name="trait_cruel" label="" variant="compact" /></span><g-option field="trait_checks" value="Cruel" label="Check for Cruel" /></li>
+            <li class="trait"><g-option field="trait_checks" value="Modest" label="Check for Modest" /><span class="shield"><g-field name="trait_modest" label="" variant="compact" /></span><span class="s-name left">Modest 🕆♥🛡</span><span class="s-name right">☀🗲☾ Proud</span><span class="shield"><g-field name="trait_proud" label="" variant="compact" /></span><g-option field="trait_checks" value="Proud" label="Check for Proud" /></li>
+            <li class="trait"><g-option field="trait_checks" value="Prudent" label="Check for Prudent" /><span class="shield"><g-field name="trait_prudent" label="" variant="compact" /></span><span class="s-name left">Prudent</span><span class="s-name right">🗲 Reckless</span><span class="shield"><g-field name="trait_reckless" label="" variant="compact" /></span><g-option field="trait_checks" value="Reckless" label="Check for Reckless" /></li>
+            <li class="trait"><g-option field="trait_checks" value="Spiritual" label="Check for Spiritual" /><span class="shield"><g-field name="trait_spiritual" label="" variant="compact" /></span><span class="s-name left">Spiritual 🕆☀☾♥</span><span class="s-name right">🗲 Worldly</span><span class="shield"><g-field name="trait_worldly" label="" variant="compact" /></span><g-option field="trait_checks" value="Worldly" label="Check for Worldly" /></li>
+            <li class="trait"><g-option field="trait_checks" value="Temperate" label="Check for Temperate" /><span class="shield"><g-field name="trait_temperate" label="" variant="compact" /></span><span class="s-name left">Temperate 🕆♥</span><span class="s-name right">🗲 Indulgent</span><span class="shield"><g-field name="trait_indulgent" label="" variant="compact" /></span><g-option field="trait_checks" value="Indulgent" label="Check for Indulgent" /></li>
+            <li class="trait"><g-option field="trait_checks" value="Trusting" label="Check for Trusting" /><span class="shield"><g-field name="trait_trusting" label="" variant="compact" /></span><span class="s-name left">Trusting</span><span class="s-name right">☾ Suspicious</span><span class="shield"><g-field name="trait_suspicious" label="" variant="compact" /></span><g-option field="trait_checks" value="Suspicious" label="Check for Suspicious" /></li>
+            <li class="trait"><g-option field="trait_checks" value="Valorous" label="Check for Valorous" /><span class="shield"><g-field name="trait_valorous" label="" variant="compact" /></span><span class="s-name left">Valorous 🗲🛡</span><span class="s-name right">Cowardly</span><span class="shield"><g-field name="trait_cowardly" label="" variant="compact" /></span><g-option field="trait_checks" value="Cowardly" label="Check for Cowardly" /></li>
+            <li class="trait directed"><span class="s-name slot-name"><span class="tiny inline">Directed Trait</span><g-field name="directed_1_name" label="" /></span><span class="shield"><g-field name="directed_1" label="" variant="compact" /></span><g-option field="trait_checks" value="Directed Trait 1" label="Check for directed trait 1" /></li>
+            <li class="trait directed"><span class="s-name slot-name"><span class="tiny inline">Directed Trait</span><g-field name="directed_2_name" label="" /></span><span class="shield"><g-field name="directed_2" label="" variant="compact" /></span><g-option field="trait_checks" value="Directed Trait 2" label="Check for directed trait 2" /></li>
+          </ul>
+          <span class="hint">🕆 Christian - ☀ Pagan - ☾ Heathen - 🗲 Wodinic</span>
+          <span class="hint">♥ Romantic - 🛡 Chivalrous</span>
+        </section>
+
+        <g-section title="Notes">
+          <div class="gstat"><g-field name="notes" label="" /></div>
+        </g-section>
+      </div>
+
+      <div class="col">
+        <section class="box">
+          <h3 class="box-heading">Personal Information</h3>
+          <div class="id-grid pairs">
+            <div class="gstat">Class</span><g-field name="char_class" label="" /></div>
+            <div class="gstat">Lord</span><g-field name="lord" label="" /></div>
+          </div>
+          <div class="id-grid pairs">
+            <div class="gstat">Culture</span><g-field name="culture" label="" /></div>
+            <div class="gstat">Religion</span><g-field name="religion" label="" /></div>
+          </div>
+          <div class="id-grid pairs">
+            <div class="gstat">Birthplace</span><g-field name="birthplace" label="" /></div>
+            <div class="gstat">Homeland</span><g-field name="homeland" label="" /></div>
+          </div>
+          <div class="id-grid pairs">
+            <div class="gstat">Birth Year</span><g-field name="birth_year" label="" /></div>
+            <div class="gstat">Age</span><span class="age"><g-value name="age"/></span></div>
+          </div>
+          <div class="id-grid pairs">
+            <label class="opt"><g-field name="heir" label="" />Heir?</label>
+            <label class="opt"><g-field name="married" label="" />Married?</label>
+          </div>
+          <div class="gstat"><span>Distinctive Features</span><g-field name="distinctive_features" label="" /></div>
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Characteristics</h3>
+          <div class="char-grid">
+            <div class="char"><span class="c-name">SIZ</span><g-field name="siz" label="" variant="compact" /></div>
+            <div class="char"><span class="c-name">DEX</span><g-field name="dex" label="" variant="compact" /></div>
+            <div class="char"><span class="c-name">STR</span><g-field name="str" label="" variant="compact" /></div>
+            <div class="char"><span class="c-name">CON</span><g-field name="con" label="" variant="compact" /></div>
+            <div class="char"><span class="c-name">APP</span><g-field name="app" label="" variant="compact" /></div>
+          </div>
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Derived Characteristics</h3>
+          <ul class="derived">
+            <li><span>Knockdown (SIZ)</span><span class="cell-value"><g-value name="knockdown" /></span></li>
+            <li><span>Weapon Damage (STR + SIZ)/6</span><span class="cell-value"><g-value name="weapon_damage" /> D6</span></li>
+            <li><span>Brawling Damage (STR + SIZ)/6</span><span class="cell-value"><g-value name="brawling_damage" /></span></li>
+            <li><span>Movement Rate ([STR + DEX]/2)+5</span><span class="cell-value"><g-value name="movement_rate" /></span></li>
+            <li><span>Major Wound (CON)</span><span class="cell-value"><g-value name="major_wound" /></span></li>
+            <li><span>Healing Rate (CON/5)</span><span class="cell-value"><g-value name="healing_rate" /></span></li>
+            <li><span>Total Hit Points (CON + SIZ)</span><span class="cell-value"><g-value name="total_hit_points" /></span></li>
+            <li><span>Unconscious (Total Hit Points/4)</span><span class="cell-value"><g-value name="unconscious" /></span></li>
+          </ul>
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Health &amp; Injuries</h3>
+          <h4 class="sub-heading">HP &amp; Damage</h4>
+          <div class="hp-grid">
+            <span class="c-name">Current HP</span>
+            <span class="c-name">Aggravation Damage</span>
+            <span class="c-name">Deterioration Damage</span>
+            <g-field name="hp_current" label="" />
+            <g-field name="aggravation_damage" label="" />
+            <g-field name="deterioration_damage" label="" />
+          </div>
+          <div class="id-grid pairs">
+            <label class="opt"><g-field name="unconscious_checkbox" label="" />Unconscious?</label>
+            <label class="opt"><g-field name="debilitated" label="" />Debilitated?</label>
+          </div>
+          <h4 class="sub-heading">Wounds</h4>
+          <p class="hint">Minor <b><g-value name="count_wounds_minor" /></b> · Major <b><g-value name="count_wounds_major" /></b> · Mortal <b><g-value name="count_wounds_mortal" /></b></p>
+          <g-field name="wounds" label="" />
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Armor</h3>
+          <h4 class="sub-heading">Mail/Plate</h4>
+          <div class="armor-grid">
+            <span class="c-name">Type</span>
+            <span class="c-name">Protection</span>
+            <g-field name="armor_mail_type" label="" />
+            <g-field name="armor_mail" label="" />
+          </div>
+          <h4 class="sub-heading">Textile</h4>
+          <div class="armor-grid">
+            <span class="c-name">Type</span>
+            <span class="c-name">Protection</span>
+            <g-field name="armor_textile_type" label="" />
+            <g-field name="armor_textile" label="" />
+          </div>
+          <h4 class="sub-heading">Helm</h4>
+          <div class="armor-grid">
+            <span class="c-name">Type</span>
+            <span class="c-name">Protection</span>
+            <g-field name="armor_helm_type" label="" />
+            <g-field name="armor_helm" label="" />
+          </div>
+          <h4 class="sub-heading">Shield</h4>
+          <div class="shield-grid">
+            <span class="c-name">Type</span>
+            <span class="c-name">vs Missiles</span>
+            <span class="c-name">Protection</span>
+            <g-field name="armor_shield_type" label="" />
+            <g-field name="armor_shield_missile_protection" label="" />
+            <g-field name="armor_shield" label="" />
+          </div>
+          <h4 class="sub-heading">Total Protection</h4>
+          <div class="total-line">
+            <span>Armor Protection (No Shield)</span><span class="cell-value"><g-value name="total_armor" /></span>
+            <span>Armor Protection (With Shield)</span><span class="cell-value"><g-value name="total_armor_and_shield" /></span>
+          </div>
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Attacks</h3>
+          <g-field name="weapons" label="" />
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Coinage</h3>
+          <h4 class="sub-heading">Total Value: <b>£</b><g-value name="money_total" /></h4>
+          <div class="id-grid pairs">
+            <div class="gstat"><span>Libra (£)<g-field name="money_libra"  label="" variant="compact"/></span></div>
+            <div class="gstat"><span>Denarii (d)<g-field name="money_denarii"  label="" variant="compact"/></span></div>
+          </div>
+          <span class="hint">£ 1 = 240 d</span>
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Equipment</h3>
+          <h4 class="sub-heading">Total Value: <b>£</b><g-value name="equipment_total_value" /></h4>
+          <g-field name="equipment" label="" />
+        </section>
+      </div>
+
+      <div class="col">
+        <section class="box">
+          <h3 class="box-heading">Passive Glory</h3>
+          <div class="passive-glory-grid">
+            <div class="gstat"><span>Traits &amp; Passions</span><g-field name="passive_traits" label="" variant="compact" /></div>
+            <div class="gstat"><span>Fair Appeal</span><g-field name="passive_appeal" label="" variant="compact" /></div>
+            <div class="gstat"><span>Standard of Living</span><g-field name="passive_living" label="" variant="compact" /></div>
+            <div class="gstat"><span>Titles</span><g-field name="passive_titles" label="" variant="compact" /></div>
+            <div class="gstat"><span>Other</span><g-field name="passive_other" label="" variant="compact" /></div>
+          </div>
+          <div class="gstat"><span>Notes</span><g-field name="passive_other_note" label="" /></div>
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Titles</h3>
+          <g-field name="titles" label="" />
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Holdings</h3>
+          <div class="hp-grid">
+            <label class="opt"><g-field name="holdings_manor1_check" label="" />Manor 1</label>
+            <label class="opt"><g-field name="holdings_manor2_check" label="" />Manor 2</label>
+            <label class="opt"><g-field name="holdings_manor3_check" label="" />Manor 3</label>
+            <label class="opt"><g-field name="holdings_manor4_check" label="" />Manor 4</label>
+            <label class="opt"><g-field name="holdings_manor5_check" label="" />Manor 5</label>
+            <label class="opt"><g-field name="holdings_barony_check" label="" />Barony</label>
+          </div>
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Squires</h3>
+          <div class="hp-grid">
+            <label class="opt"><g-field name="squire1_check" label="" />Squire 1</label>
+            <label class="opt"><g-field name="squire2_check" label="" />Squire 2</label>
+            <label class="opt"><g-field name="squire3_check" label="" />Squire 3</label>
+          </div>
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Passions</h3>
+          <h4 class="sub-heading">Fidelitas</h4>
+          <ul class="skills single">
+            <li class="skill"><g-option field="passion_checks" value="Homage" label="Check for Homage" /><span class="s-name slot-name"><span class="s-name">Homage</span><g-field name="passion_homage_subject" label="" /></span><g-field name="passion_homage" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="passion_checks" value="Fealty" label="Check for Fealty" /><span class="s-name slot-name"><span class="s-name">Fealty</span><g-field name="passion_fealty_subject" label="" /></span><g-field name="passion_fealty" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="passion_checks" value="Passion 1" label="Check for passion 1" /><span class="s-name slot-name twin"><g-field name="passion_c1_name" label="" /><g-field name="passion_c1_object" label="" /></span><g-field name="passion_c1" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="passion_checks" value="Passion 2" label="Check for passion 2" /><span class="s-name slot-name twin"><g-field name="passion_c2_name" label="" /><g-field name="passion_c2_object" label="" /></span><g-field name="passion_c2" label="" variant="compact" /></li>
+          </ul>
+          <h4 class="sub-heading">Fervor</h4>
+          <ul class="skills single">
+            <li class="skill"><g-option field="passion_checks" value="Love (Family)" label="Check for Love" /><span class="s-name">Love (Family)</span><g-field name="passion_love_family" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="passion_checks" value="Passion 3" label="Check for passion 3" /><span class="s-name slot-name twin"><g-field name="passion_c3_name" label="" /><g-field name="passion_c3_object" label="" /></span><g-field name="passion_c3" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="passion_checks" value="Passion 4" label="Check for passion 4" /><span class="s-name slot-name twin"><g-field name="passion_c4_name" label="" /><g-field name="passion_c4_object" label="" /></span><g-field name="passion_c4" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="passion_checks" value="Passion 5" label="Check for passion 5" /><span class="s-name slot-name twin"><g-field name="passion_c5_name" label="" /><g-field name="passion_c5_object" label="" /></span><g-field name="passion_c5" label="" variant="compact" /></li>
+          </ul>
+          <h4 class="sub-heading">Adoratio</h4>
+          <ul class="skills single">
+            <li class="skill"><g-option field="passion_checks" value="Devotion (Deity)" label="Check for Devotion" /><span class="s-name">Devotion (Deity)</span><g-field name="passion_devotion" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="passion_checks" value="Passion 6" label="Check for passion 6" /><span class="s-name slot-name twin"><g-field name="passion_c6_name" label="" /><g-field name="passion_c6_object" label="" /></span><g-field name="passion_c6" label="" variant="compact" /></li>
+          </ul>
+          <h4 class="sub-heading">Civilitas</h4>
+          <ul class="skills single">
+            <li class="skill"><g-option field="passion_checks" value="Hospitality" label="Check for Hospitality" /><span class="s-name">Hospitality</span><g-field name="passion_hospitality" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="passion_checks" value="Station" label="Check for Station" /><span class="s-name">Station</span><g-field name="passion_station" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="passion_checks" value="Passion 7" label="Check for passion 7" /><span class="s-name slot-name twin"><g-field name="passion_c7_name" label="" /><g-field name="passion_c7_object" label="" /></span><g-field name="passion_c7" label="" variant="compact" /></li>
+          </ul>
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Non-Combat Skills</h3>
+          <ul class="skills">
+            <li class="skill"><g-option field="skill_checks" value="Awareness" label="Check for Awareness" /><span class="s-name">Awareness ⚔</span><g-field name="sk_awareness" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Hunting" label="Check for Hunting" /><span class="s-name">Hunting ⚔</span><g-field name="sk_hunting" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Chirurgery" label="Check for Chirurgery" /><span class="s-name">Chirurgery 🏵</span><g-field name="sk_chirurgery" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Industry" label="Check for Industry" /><span class="s-name">Industry 🏵🕆</span><g-field name="sk_industry" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Compose" label="Check for Compose" /><span class="s-name">Compose ♕</span><g-field name="sk_compose" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Intrigue" label="Check for Intrigue" /><span class="s-name">Intrigue ♕</span><g-field name="sk_intrigue" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Courtesy" label="Check for Courtesy" /><span class="s-name">Courtesy ⚔♕🏵🕆</span><g-field name="sk_courtesy" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Literacy" label="Check for Literacy" /><span class="s-name">Literacy ♕🕆</span><g-field name="sk_literacy" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Dancing" label="Check for Dancing" /><span class="s-name">Dancing ♕🏵</span><g-field name="sk_dancing" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Orate" label="Check for Orate" /><span class="s-name">Orate ♕🕆</span><g-field name="sk_orate" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Falconry" label="Check for Falconry" /><span class="s-name">Falconry ♕</span><g-field name="sk_falconry" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Play Instrument" label="Check for Play" /><span class="s-name">Play Instrument ♕🏵</span><g-field name="sk_play" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Fashion" label="Check for Fashion" /><span class="s-name">Fashion ♕🏵</span><g-field name="sk_fashion" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Recognize" label="Check for Recognize" /><span class="s-name">Recognize ⚔♕🏵</span><g-field name="sk_recognize" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="First Aid" label="Check for First Aid" /><span class="s-name">First Aid ⚔🏵</span><g-field name="sk_first_aid" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Religion" label="Check for Religion" /><span class="s-name slot-name"><span>Religion ♕🕆</span></span><g-field name="sk_religion_skill" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Flirting" label="Check for Flirting" /><span class="s-name">Flirting ♕</span><g-field name="sk_flirting" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Singing" label="Check for Singing" /><span class="s-name">Singing ♕🏵🕆</span><g-field name="sk_singing" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Folklore" label="Check for Folklore" /><span class="s-name">Folklore</span><g-field name="sk_folklore" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Stewardship" label="Check for Stewardship" /><span class="s-name">Stewardship 🏵</span><g-field name="sk_stewardship" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Gaming" label="Check for Gaming" /><span class="s-name">Gaming ♕</span><g-field name="sk_gaming" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Extra 1" label="Check for extra skill 1" /><span class="s-name slot-name"><g-field name="sk_extra_1_name" label="" /></span><g-field name="sk_extra_1" label="" variant="compact" /></li>
+          </ul>
+          <span class="hint">⚔ Knightly - ♕ Courtly - 🏵 Ladies' - ✝ Ministerly</span>
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Combat Skills</h3>
+          <ul class="skills">
+            <li class="skill"><g-option field="skill_checks" value="Hafted" label="Check for Hafted" /><span class="s-name">Hafted</span><g-field name="sk_hafted" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Brawling" label="Check for Brawling" /><span class="s-name">Brawling ⚔</span><g-field name="sk_brawling" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="2H Hafted" label="Check for 2H Hafted" /><span class="s-name">2H Hafted</span><g-field name="sk_hafted_2h" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Bow" label="Check for Bow" /><span class="s-name">Bow</span><g-field name="sk_bow" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Spear" label="Check for Spear" /><span class="s-name">Spear</span><g-field name="sk_spear" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Crossbow" label="Check for Crossbow" /><span class="s-name">Crossbow</span><g-field name="sk_crossbow" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Sword" label="Check for Sword" /><span class="s-name">Sword ⚔</span><g-field name="sk_sword" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Thrown Weapon" label="Check for Thrown Weapon" /><span class="s-name">Thrown Weapon</span><g-field name="sk_thrown" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Charge" label="Check for Charge" /><span class="s-name">Charge ⚔</span><g-field name="sk_charge" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Battle" label="Check for Battle" /><span class="s-name">Battle ⚔</span><g-field name="sk_battle" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Horsemanship" label="Check for Horsemanship" /><span class="s-name">Horsemanship ⚔🏵</span><g-field name="sk_horsemanship" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="skill_checks" value="Siegecraft" label="Check for Siegecraft" /><span class="s-name">Siegecraft</span><g-field name="sk_siegecraft" label="" variant="compact" /></li>
+          </ul>
+          <span class="hint">⚔ Knightly - ♕ Courtly - 🏵 Ladies' - ✝ Ministerly</span>
+        </section>
+      </div>
+    </div>
+  </g-tab>
+
+  <g-tab title="Horses">
+  <div class="lower-grid">
+    <div class="col">
+      <g-section title="Warhorse">
+        <div class="horse-head">
+          <div class="gstat"><span class="tiny">Name</span><g-field name="warhorse_name" label="" /></div>
+          <div class="gstat"><span class="tiny">Type</span><g-field name="warhorse_type" label="" /></div>
+          <div class="gstat"><span class="tiny">Worth</span><g-field name="warhorse_worth" label="" /></div>
+        </div>
+        <div class="horse-grid">
+          <div class="gstat"><span>SIZ</span><g-field name="warhorse_siz" label="" variant="compact" /></div>
+          <div class="gstat"><span>DEX</span><g-field name="warhorse_dex" label="" variant="compact" /></div>
+          <div class="gstat"><span>STR</span><g-field name="warhorse_str" label="" variant="compact" /></div>
+          <div class="gstat"><span>CON</span><g-field name="warhorse_con" label="" variant="compact" /></div>
+          <div class="gstat"><span>Move</span><g-field name="warhorse_move" label="" variant="compact" /></div>
+          <div class="gstat"><span>HP</span><g-field name="warhorse_hp" label="" variant="compact" /></div>
+          <div class="gstat"><span>Armor</span><g-field name="warhorse_armor" label="" variant="compact" /></div>
+          <div class="gstat"><span>Damage</span><g-field name="warhorse_damage" label="" /></div>
+        </div>
+      </g-section>
+      <g-section title="Other Horses">
+        <g-field name="other_horses" label="" />
+      </g-section>
+      <g-section title="Misc">
+        <div class="equestrian-joust">
+          <div class="joust-grid">
+            <div class="gstat"><span>Joust Wins</span><g-field name="joust_wins" label="" variant="compact" /></div>
+            <div class="gstat"><span>Joust Losses</span><g-field name="joust_losses" label="" variant="compact" /></div>
+          </div>
+          <div class="gstat"><span>Equestrian Notes</span><g-field name="equestrian_notes" label="" /></div>
+        </div>
+      </g-section>
+    </div>
+    <div class="col">
+      <g-section title="Best Riding Horse">
+        <div class="horse-head">
+          <div class="gstat"><span class="tiny">Name</span><g-field name="best_horse_name" label="" /></div>
+          <div class="gstat"><span class="tiny">Type</span><g-field name="best_horse_type" label="" /></div>
+          <div class="gstat"><span class="tiny">Worth</span><g-field name="best_horse_worth" label="" /></div>
+        </div>
+        <div class="horse-grid">
+          <div class="gstat"><span>SIZ</span><g-field name="best_horse_siz" label="" variant="compact" /></div>
+          <div class="gstat"><span>DEX</span><g-field name="best_horse_dex" label="" variant="compact" /></div>
+          <div class="gstat"><span>STR</span><g-field name="best_horse_str" label="" variant="compact" /></div>
+          <div class="gstat"><span>CON</span><g-field name="best_horse_con" label="" variant="compact" /></div>
+          <div class="gstat"><span>Move</span><g-field name="best_horse_move" label="" variant="compact" /></div>
+          <div class="gstat"><span>HP</span><g-field name="best_horse_hp" label="" variant="compact" /></div>
+          <div class="gstat"><span>Armor</span><g-field name="best_horse_armor" label="" variant="compact" /></div>
+          <div class="gstat"><span>Damage</span><g-field name="best_horse_damage" label="" /></div>
+        </div>
+      </g-section>
+      <g-section title="Spouse's Horse" name="spouse_horse" visible_if="married">
+        <div class="horse-head">
+          <div class="gstat"><span class="tiny">Name</span><g-field name="spouse_horse_name" label="" /></div>
+          <div class="gstat"><span class="tiny">Type</span><g-field name="spouse_horse_type" label="" /></div>
+          <div class="gstat"><span class="tiny">Worth</span><g-field name="spouse_horse_worth" label="" /></div>
+        </div>
+        <div class="horse-grid">
+          <div class="gstat"><span>SIZ</span><g-field name="spouse_horse_siz" label="" variant="compact" /></div>
+          <div class="gstat"><span>DEX</span><g-field name="spouse_horse_dex" label="" variant="compact" /></div>
+          <div class="gstat"><span>STR</span><g-field name="spouse_horse_str" label="" variant="compact" /></div>
+          <div class="gstat"><span>CON</span><g-field name="spouse_horse_con" label="" variant="compact" /></div>
+          <div class="gstat"><span>Move</span><g-field name="spouse_horse_move" label="" variant="compact" /></div>
+          <div class="gstat"><span>HP</span><g-field name="spouse_horse_hp" label="" variant="compact" /></div>
+          <div class="gstat"><span>Armor</span><g-field name="spouse_horse_armor" label="" variant="compact" /></div>
+          <div class="gstat"><span>Damage</span><g-field name="spouse_horse_damage" label="" /></div>
+        </div>
+      </g-section>
+      <g-section title="Squire's Horse 1" name="squire1_horse" visible_if="squire1_check">
+        <div class="horse-head">
+          <div class="gstat"><span class="tiny">Name</span><g-field name="squire1_horse_name" label="" /></div>
+          <div class="gstat"><span class="tiny">Type</span><g-field name="squire1_horse_type" label="" /></div>
+          <div class="gstat"><span class="tiny">Worth</span><g-field name="squire1_horse_worth" label="" /></div>
+        </div>
+        <div class="horse-grid">
+          <div class="gstat"><span>SIZ</span><g-field name="squire1_horse_siz" label="" variant="compact" /></div>
+          <div class="gstat"><span>DEX</span><g-field name="squire1_horse_dex" label="" variant="compact" /></div>
+          <div class="gstat"><span>STR</span><g-field name="squire1_horse_str" label="" variant="compact" /></div>
+          <div class="gstat"><span>CON</span><g-field name="squire1_horse_con" label="" variant="compact" /></div>
+          <div class="gstat"><span>Move</span><g-field name="squire1_horse_move" label="" variant="compact" /></div>
+          <div class="gstat"><span>HP</span><g-field name="squire1_horse_hp" label="" variant="compact" /></div>
+          <div class="gstat"><span>Armor</span><g-field name="squire1_horse_armor" label="" variant="compact" /></div>
+          <div class="gstat"><span>Damage</span><g-field name="squire1_horse_damage" label="" /></div>
+        </div>
+      </g-section>
+      <g-section title="Squire's Horse 2" name="squire2_horse" visible_if="squire2_check">
+        <div class="horse-head">
+          <div class="gstat"><span class="tiny">Name</span><g-field name="squire2_horse_name" label="" /></div>
+          <div class="gstat"><span class="tiny">Type</span><g-field name="squire2_horse_type" label="" /></div>
+          <div class="gstat"><span class="tiny">Worth</span><g-field name="squire2_horse_worth" label="" /></div>
+        </div>
+        <div class="horse-grid">
+          <div class="gstat"><span>SIZ</span><g-field name="squire2_horse_siz" label="" variant="compact" /></div>
+          <div class="gstat"><span>DEX</span><g-field name="squire2_horse_dex" label="" variant="compact" /></div>
+          <div class="gstat"><span>STR</span><g-field name="squire2_horse_str" label="" variant="compact" /></div>
+          <div class="gstat"><span>CON</span><g-field name="squire2_horse_con" label="" variant="compact" /></div>
+          <div class="gstat"><span>HP</span><g-field name="squire2_horse_hp" label="" variant="compact" /></div>
+          <div class="gstat"><span>Move</span><g-field name="squire2_horse_move" label="" variant="compact" /></div>
+          <div class="gstat"><span>Armor</span><g-field name="squire2_horse_armor" label="" variant="compact" /></div>
+          <div class="gstat"><span>Damage</span><g-field name="squire2_horse_damage" label="" /></div>
+        </div>
+      </g-section>
+      <g-section title="Squire's Horse 3" name="squire3_horse" visible_if="squire3_check">
+        <div class="horse-head">
+          <div class="gstat"><span class="tiny">Name</span><g-field name="squire3_horse_name" label="" /></div>
+          <div class="gstat"><span class="tiny">Type</span><g-field name="squire3_horse_type" label="" /></div>
+          <div class="gstat"><span class="tiny">Worth</span><g-field name="squire3_horse_worth" label="" /></div>
+        </div>
+        <div class="horse-grid">
+          <div class="gstat"><span>SIZ</span><g-field name="squire3_horse_siz" label="" variant="compact" /></div>
+          <div class="gstat"><span>DEX</span><g-field name="squire3_horse_dex" label="" variant="compact" /></div>
+          <div class="gstat"><span>STR</span><g-field name="squire3_horse_str" label="" variant="compact" /></div>
+          <div class="gstat"><span>CON</span><g-field name="squire3_horse_con" label="" variant="compact" /></div>
+          <div class="gstat"><span>Move</span><g-field name="squire3_horse_move" label="" variant="compact" /></div>
+          <div class="gstat"><span>HP</span><g-field name="squire3_horse_hp" label="" variant="compact" /></div>
+          <div class="gstat"><span>Armor</span><g-field name="squire3_horse_armor" label="" variant="compact" /></div>
+          <div class="gstat"><span>Damage</span><g-field name="squire3_horse_damage" label="" /></div>
+        </div>
+      </g-section>
+    </div>
+  </g-tab>
+
+  <g-tab title="Squire 1" title_from=squire1_name visible_if="squire1_check">
+    <section class="box squire-header">
+      <div class="gstat"><span>Name</span><g-field name="squire1_name" label="" /></div>
+      <div class="gstat"><span>Squire Skill</span><g-field name="squire1_skill" label="" variant="compact" /></div>
+      <div class="gstat"><span>Glory</span><g-field name="squire1_glory" label="" /></div>
+      <div class="gstat"><span>Honor</span><span class="honor-input"><g-field name="squire1_honor" label="" /><g-field name="squire1_honor_check" label="" /></span></div>
+    </section>
+
+    <div class="main-grid">
+      <div class="col">
+
+        <section class="box">
+          <h3 class="box-heading">Traits</h3>
+          <ul class="traits">
+            <li class="trait"><g-option field=squire1_trait_checks value="Chaste" label="Check for Chaste" /><span class="shield"><g-field name=squire1_trait_chaste label="" variant="compact" /></span><span class="s-name left">Chaste 🕆♥</span><span class="s-name right">☀ Lustful</span><span class="shield"><g-field name=squire1_trait_lustful label="" variant="compact" /></span><g-option field=squire1_trait_checks value="Lustful" label="Check for Lustful" /></li>
+            <li class="trait"><g-option field=squire1_trait_checks value="Energetic" label="Check for Energetic" /><span class="shield"><g-field name=squire1_trait_energetic label="" variant="compact" /></span><span class="s-name left">Energetic ☀🛡</span><span class="s-name right">Lazy</span><span class="shield"><g-field name=squire1_trait_lazy label="" variant="compact" /></span><g-option field=squire1_trait_checks value="Lazy" label="Check for Lazy" /></li>
+            <li class="trait"><g-option field=squire1_trait_checks value="Forgiving" label="Check for Forgiving" /><span class="shield"><g-field name=squire1_trait_forgiving label="" variant="compact" /></span><span class="s-name left">Forgiving 🕆</span><span class="s-name right">☾ Vengeful</span><span class="shield"><g-field name=squire1_trait_vengeful label="" variant="compact" /></span><g-option field=squire1_trait_checks value="Vengeful" label="Check for Vengeful" /></li>
+            <li class="trait"><g-option field=squire1_trait_checks value="Generous" label="Check for Generous" /><span class="shield"><g-field name=squire1_trait_generous label="" variant="compact" /></span><span class="s-name left">Generous ☀🗲♥🛡</span><span class="s-name right">Selfish</span><span class="shield"><g-field name=squire1_trait_selfish label="" variant="compact" /></span><g-option field=squire1_trait_checks value="Selfish" label="Check for Selfish" /></li>
+            <li class="trait"><g-option field=squire1_trait_checks value="Honest" label="Check for Honest" /><span class="shield"><g-field name=squire1_trait_honest label="" variant="compact" /></span><span class="s-name left">Honest ☀☾♥</span><span class="s-name right">☾ Deceitful</span><span class="shield"><g-field name=squire1_trait_deceitful label="" variant="compact" /></span><g-option field=squire1_trait_checks value="Deceitful" label="Check for Deceitful" /></li>
+            <li class="trait"><g-option field=squire1_trait_checks value="Just" label="Check for Just" /><span class="shield"><g-field name=squire1_trait_just label="" variant="compact" /></span><span class="s-name left">Just 🛡</span><span class="s-name right">☾ Arbitrary</span><span class="shield"><g-field name=squire1_trait_arbitrary label="" variant="compact" /></span><g-option field=squire1_trait_checks value="Arbitrary" label="Check for Arbitrary" /></li>
+            <li class="trait"><g-option field=squire1_trait_checks value="Merciful" label="Check for Merciful" /><span class="shield"><g-field name=squire1_trait_merciful label="" variant="compact" /></span><span class="s-name left">Merciful 🕆🛡</span><span class="s-name right">Cruel</span><span class="shield"><g-field name=squire1_trait_cruel label="" variant="compact" /></span><g-option field=squire1_trait_checks value="Cruel" label="Check for Cruel" /></li>
+            <li class="trait"><g-option field=squire1_trait_checks value="Modest" label="Check for Modest" /><span class="shield"><g-field name=squire1_trait_modest label="" variant="compact" /></span><span class="s-name left">Modest 🕆♥🛡</span><span class="s-name right">☀🗲☾ Proud</span><span class="shield"><g-field name=squire1_trait_proud label="" variant="compact" /></span><g-option field=squire1_trait_checks value="Proud" label="Check for Proud" /></li>
+            <li class="trait"><g-option field=squire1_trait_checks value="Prudent" label="Check for Prudent" /><span class="shield"><g-field name=squire1_trait_prudent label="" variant="compact" /></span><span class="s-name left">Prudent</span><span class="s-name right">🗲 Reckless</span><span class="shield"><g-field name=squire1_trait_reckless label="" variant="compact" /></span><g-option field=squire1_trait_checks value="Reckless" label="Check for Reckless" /></li>
+            <li class="trait"><g-option field=squire1_trait_checks value="Spiritual" label="Check for Spiritual" /><span class="shield"><g-field name=squire1_trait_spiritual label="" variant="compact" /></span><span class="s-name left">Spiritual 🕆☀☾♥</span><span class="s-name right">🗲 Worldly</span><span class="shield"><g-field name=squire1_trait_worldly label="" variant="compact" /></span><g-option field=squire1_trait_checks value="Worldly" label="Check for Worldly" /></li>
+            <li class="trait"><g-option field=squire1_trait_checks value="Temperate" label="Check for Temperate" /><span class="shield"><g-field name=squire1_trait_temperate label="" variant="compact" /></span><span class="s-name left">Temperate 🕆♥</span><span class="s-name right">🗲 Indulgent</span><span class="shield"><g-field name=squire1_trait_indulgent label="" variant="compact" /></span><g-option field=squire1_trait_checks value="Indulgent" label="Check for Indulgent" /></li>
+            <li class="trait"><g-option field=squire1_trait_checks value="Trusting" label="Check for Trusting" /><span class="shield"><g-field name=squire1_trait_trusting label="" variant="compact" /></span><span class="s-name left">Trusting</span><span class="s-name right">☾ Suspicious</span><span class="shield"><g-field name=squire1_trait_suspicious label="" variant="compact" /></span><g-option field=squire1_trait_checks value="Suspicious" label="Check for Suspicious" /></li>
+            <li class="trait"><g-option field=squire1_trait_checks value="Valorous" label="Check for Valorous" /><span class="shield"><g-field name=squire1_trait_valorous label="" variant="compact" /></span><span class="s-name left">Valorous 🗲🛡</span><span class="s-name right">Cowardly</span><span class="shield"><g-field name=squire1_trait_cowardly label="" variant="compact" /></span><g-option field=squire1_trait_checks value="Cowardly" label="Check for Cowardly" /></li>
+            <li class="trait directed"><span class="s-name slot-name"><span class="tiny inline">Directed Trait</span><g-field name=squire1_directed_1_name label="" /></span><span class="shield"><g-field name=squire1_directed_1 label="" variant="compact" /></span><g-option field=squire1_trait_checks value="Directed Trait 1" label="Check for directed trait 1" /></li>
+            <li class="trait directed"><span class="s-name slot-name"><span class="tiny inline">Directed Trait</span><g-field name=squire1_directed_2_name label="" /></span><span class="shield"><g-field name=squire1_directed_2 label="" variant="compact" /></span><g-option field=squire1_trait_checks value="Directed Trait 2" label="Check for directed trait 2" /></li>
+          </ul>
+        </section>
+  
+        <g-section title="Notes">
+          <div class="gstat"><g-field name="squire1_notes" label="" /></div>
+        </g-section>
+      </div>
+
+      <div class="col">
+        <section class="box">
+          <h3 class="box-heading">Personal Information</h3>
+          <div class="id-grid pairs">
+            <div class="gstat"><span>Birth Year</span><g-field name="squire1_birthyear" label="" variant="compact" /></div>
+            <div class="gstat"><span>Age</span><span class="age"><g-value name="squire1_age"/></span></div>
+          </div>
+          <!--
+          <div class="id-grid pairs">
+            <div class="gstat"><span>Class</span><g-field name="squire1_class" label="" /></div>
+            <div class="gstat"><span>Lord</span><g-field name="squire1_lord" label="" /></div>
+          </div>
+          -->
+          <div class="id-grid pairs">
+            <div class="gstat"><span>Culture</span><g-field name="squire1_culture" label="" /></div>
+            <div class="gstat"><span>Religion</span><g-field name="squire1_religion" label="" /></div>
+          </div>
+          <div class="id-grid pairs">
+            <div class="gstat"><span>Birthplace</span><g-field name="squire1_birthplace" label="" /></div>
+            <div class="gstat"><span>Homeland</span><g-field name="squire1_homeland" label="" /></div>
+          </div>
+          <div class="gstat"><span>Distinctive Features</span><g-field name="squire1_distinctive_features" label="" /></div>
+        </section>
+
+        <section class="box">
+          <h4 class="box-heading">Characteristics</h4>
+          <div class="char-grid">
+            <div class="char"><span class="c-name">STR</span><g-field name="squire1_str" label="" variant="compact" /></div>
+            <div class="char"><span class="c-name">DEX</span><g-field name="squire1_dex" label="" variant="compact" /></div>
+            <div class="char"><span class="c-name">CON</span><g-field name="squire1_con" label="" variant="compact" /></div>
+            <div class="char"><span class="c-name">SIZ</span><g-field name="squire1_siz" label="" variant="compact" /></div>
+            <div class="char"><span class="c-name">APP</span><g-field name="squire1_app" label="" variant="compact" /></div>
+          </div>
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Derived Characteristics</h3>
+          <ul class="derived">
+            <li><span>Knockdown (SIZ)</span><span class="cell-value"><g-value name="squire1_knockdown" /></span></li>
+            <li><span>Weapon Damage (STR + SIZ)/6</span><span class="cell-value"><g-value name="squire1_weapon_damage" /> D6</span></li>
+            <li><span>Brawling Damage (STR + SIZ)/6</span><span class="cell-value"><g-value name="squire1_brawling_damage" /></span></li>
+            <li><span>Movement Rate ([STR + DEX]/2)+5</span><span class="cell-value"><g-value name="squire1_movement_rate" /></span></li>
+            <li><span>Major Wound (CON)</span><span class="cell-value"><g-value name="squire1_major_wound" /></span></li>
+            <li><span>Healing Rate (CON/5)</span><span class="cell-value"><g-value name="squire1_healing_rate" /></span></li>
+            <li><span>Total Hit Points (CON + SIZ)</span><span class="cell-value"><g-value name="squire1_total_hit_points" /></span></li>
+            <li><span>Unconscious (Total Hit Points/4)</span><span class="cell-value"><g-value name="squire1_unconscious" /></span></li>
+          </ul>
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Health &amp; Injuries</h3>
+          <h4 class="sub-heading">HP &amp; Damage</h4>
+          <div class="hp-grid">
+            <span class="c-name">Current HP</span>
+            <span class="c-name">Aggravation Damage</span>
+            <span class="c-name">Deterioration Damage</span>
+            <g-field name="squire1_hp_current" label="" />
+            <g-field name="squire1_aggravation_damage" label="" />
+            <g-field name="squire1_deterioration_damage" label="" />
+          </div>
+          <div class="id-grid pairs">
+            <label class="opt"><g-field name="squire1_unconscious_checkbox" label="" />Unconscious?</label>
+            <label class="opt"><g-field name="squire1_debilitated" label="" />Debilitated?</label>
+          </div>
+          <h4 class="sub-heading">Wounds</h4>
+          <p class="hint">Minor <b><g-value name="squire1_count_wounds_minor" /></b> · Major <b><g-value name="squire1_count_wounds_major" /></b> · Mortal <b><g-value name="squire1_count_wounds_mortal" /></b></p>
+          <g-field name="squire1_wounds" label="" />
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Armor</h3>
+          <h4 class="sub-heading">Mail/Plate</h4>
+          <div class="armor-grid">
+            <span class="c-name">Item</span>
+            <span class="c-name">Protection</span>
+            <g-field name="squire1_armor_mail_type" label="" />
+            <g-field name="squire1_armor_mail" label="" />
+          </div>
+          <h4 class="sub-heading">Textile</h4>
+          <div class="armor-grid">
+            <span class="c-name">Item</span>
+            <span class="c-name">Protection</span>
+            <g-field name="squire1_armor_textile_type" label="" />
+            <g-field name="squire1_armor_textile" label="" />
+          </div>
+          <h4 class="sub-heading">Helm</h4>
+          <div class="armor-grid">
+            <span class="c-name">Item</span>
+            <span class="c-name">Protection</span>
+            <g-field name="squire1_armor_helm_type" label="" />
+            <g-field name="squire1_armor_helm" label="" />
+          </div>
+          <h4 class="sub-heading">Shield</h4>
+          <div class="shield-grid">
+            <span class="c-name">Type</span>
+            <span class="c-name">vs Missiles</span>
+            <span class="c-name">Protection</span>
+            <g-field name="squire1_armor_shield_type" label="" />
+            <g-field name="squire1_armor_shield_missile_protection" label="" />
+            <g-field name="squire1_armor_shield" label="" />
+          </div>
+          <h4 class="sub-heading">Total Protection</h4>
+          <div class="total-line">
+            <span>Armor Protection (No Shield)</span><span class="cell-value"><g-value name="squire1_total_armor" /></span>
+            <span>Armor Protection (With Shield)</span><span class="cell-value"><g-value name="squire1_total_armor_and_shield" /></span>
+          </div>
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Attacks</h3>
+          <g-field name="squire1_weapons" label="" />
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Equipment</h3>
+          <h4 class="sub-heading">Total Value: <b>£</b><g-value name="squire1_equipment_total_value" /></h4>
+          <g-field name="squire1_equipment" label="" />
+        </section>
+      </div>
+
+      <div class="col">
+        <section class="box">
+          <h3 class="box-heading">Passions</h3>
+          <h4 class="sub-heading">Fidelitas</h4>
+          <ul class="skills single">
+            <li class="skill"><g-option field="squire1_passion_checks" value="Homage" label="Check for Homage" /><span class="s-name slot-name"><span class="s-name">Homage</span><g-field name="squire1_homage_subject" label="" /></span><g-field name="squire1_homage" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire1_passion_checks" value="Fealty" label="Check for Fealty" /><span class="s-name slot-name"><span class="s-name">Fealty</span><g-field name="squire1_fealty_subject" label="" /></span><g-field name="squire1_fealty" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire1_passion_checks" value="Passion 1" label="Check for passion 1" /><span class="s-name slot-name twin"><g-field name="squire1_passion_1_name" label="" /><g-field name="squire1_passion_1_object" label="" /></span><g-field name="squire1_passion_1" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire1_passion_checks" value="Passion 2" label="Check for passion 2" /><span class="s-name slot-name twin"><g-field name="squire1_passion_2_name" label="" /><g-field name="squire1_passion_2_object" label="" /></span><g-field name="squire1_passion_2" label="" variant="compact" /></li>
+          </ul>
+          <h4 class="sub-heading">Fervor</h4>
+          <ul class="skills single">
+            <li class="skill"><g-option field="squire1_passion_checks" value="Love (Family)" label="Check for Love" /><span class="s-name">Love (Family)</span><g-field name="squire1_love_family" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire1_passion_checks" value="Passion 3" label="Check for passion 3" /><span class="s-name slot-name twin"><g-field name="squire1_passion_3_name" label="" /><g-field name="squire1_passion_3_object" label="" /></span><g-field name="squire1_passion_3" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire1_passion_checks" value="Passion 4" label="Check for passion 4" /><span class="s-name slot-name twin"><g-field name="squire1_passion_4_name" label="" /><g-field name="squire1_passion_4_object" label="" /></span><g-field name="squire1_passion_4" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire1_passion_checks" value="Passion 5" label="Check for passion 5" /><span class="s-name slot-name twin"><g-field name="squire1_passion_5_name" label="" /><g-field name="squire1_passion_5_object" label="" /></span><g-field name="squire1_passion_5" label="" variant="compact" /></li>
+          </ul>
+          <h4 class="sub-heading">Adoratio</h4>
+          <ul class="skills single">
+            <li class="skill"><g-option field="squire1_passion_checks" value="Devotion (Deity)" label="Check for Devotion" /><span class="s-name">Devotion (Deity)</span><g-field name="squire1_devotion" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire1_passion_checks" value="Passion 6" label="Check for passion 6" /><span class="s-name slot-name twin"><g-field name="squire1_passion_6_name" label="" /><g-field name="squire1_passion_6_object" label="" /></span><g-field name="squire1_passion_6" label="" variant="compact" /></li>
+          </ul>
+          <h4 class="sub-heading">Civilitas</h4>
+          <ul class="skills single">
+            <li class="skill"><g-option field="squire1_passion_checks" value="Hospitality" label="Check for Hospitality" /><span class="s-name">Hospitality</span><g-field name="squire1_hospitality" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire1_passion_checks" value="Station" label="Check for Station" /><span class="s-name">Station</span><g-field name="squire1_station" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire1_passion_checks" value="Passion 7" label="Check for passion 7" /><span class="s-name slot-name twin"><g-field name="squire1_passion_7_name" label="" /><g-field name="squire1_passion_7_object" label="" /></span><g-field name="squire1_passion_7" label="" variant="compact" /></li>
+          </ul>
+        </section>
+
+        <section class="box">
+          <h4 class="sub-heading">Non-Combat Skills</h4>
+          <ul class="skills">
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Awareness" label="Check for Awareness" /><span class="s-name">Awareness ⚔</span><g-field name="squire1_sk_awareness" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Hunting" label="Check for Hunting" /><span class="s-name">Hunting ⚔</span><g-field name="squire1_sk_hunting" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Chirurgery" label="Check for Chirurgery" /><span class="s-name">Chirurgery 🏵</span><g-field name="squire1_sk_chirurgery" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Industry" label="Check for Industry" /><span class="s-name">Industry 🏵🕆</span><g-field name="squire1_sk_industry" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Compose" label="Check for Compose" /><span class="s-name">Compose ♕</span><g-field name="squire1_sk_compose" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Intrigue" label="Check for Intrigue" /><span class="s-name">Intrigue ♕</span><g-field name="squire1_sk_intrigue" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Courtesy" label="Check for Courtesy" /><span class="s-name">Courtesy ⚔♕🏵🕆</span><g-field name="squire1_sk_courtesy" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Literacy" label="Check for Literacy" /><span class="s-name">Literacy ♕🕆</span><g-field name="squire1_sk_literacy" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Dancing" label="Check for Dancing" /><span class="s-name">Dancing ♕🏵</span><g-field name="squire1_sk_dancing" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Orate" label="Check for Orate" /><span class="s-name">Orate ♕🕆</span><g-field name="squire1_sk_orate" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Falconry" label="Check for Falconry" /><span class="s-name">Falconry ♕</span><g-field name="squire1_sk_falconry" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Play Instrument" label="Check for Play" /><span class="s-name">Play Instrument ♕🏵</span><g-field name="squire1_sk_play" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Fashion" label="Check for Fashion" /><span class="s-name">Fashion ♕🏵</span><g-field name="squire1_sk_fashion" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Recognize" label="Check for Recognize" /><span class="s-name">Recognize ⚔♕🏵</span><g-field name="squire1_sk_recognize" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="First Aid" label="Check for First Aid" /><span class="s-name">First Aid ⚔🏵</span><g-field name="squire1_sk_first_aid" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Religion" label="Check for Religion" /><span class="s-name">Religion ♕🕆</span><g-field name="squire1_sk_religion_skill" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Flirting" label="Check for Flirting" /><span class="s-name">Flirting ♕</span><g-field name="squire1_sk_flirting" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Singing" label="Check for Singing" /><span class="s-name">Singing ♕🏵🕆</span><g-field name="squire1_sk_singing" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Folklore" label="Check for Folklore" /><span class="s-name">Folklore</span><g-field name="squire1_sk_folklore" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Stewardship" label="Check for Stewardship" /><span class="s-name">Stewardship 🏵</span><g-field name="squire1_sk_stewardship" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Gaming" label="Check for Gaming" /><span class="s-name">Gaming ♕</span><g-field name="squire1_sk_gaming" label="" variant="compact" /></li>
+          </ul>
+        </section>
+
+        <section class="box">
+          <h4 class="sub-heading">Combat Skills</h4>
+          <ul class="skills">
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Hafted" label="Check for Hafted" /><span class="s-name">Hafted</span><g-field name="squire1_sk_hafted" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Brawling" label="Check for Brawling" /><span class="s-name">Brawling ⚔</span><g-field name="squire1_sk_brawling" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="2H Hafted" label="Check for 2H Hafted" /><span class="s-name">2H Hafted</span><g-field name="squire1_sk_hafted_2h" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Bow" label="Check for Bow" /><span class="s-name">Bow</span><g-field name="squire1_sk_bow" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Spear" label="Check for Spear" /><span class="s-name">Spear</span><g-field name="squire1_sk_spear" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Crossbow" label="Check for Crossbow" /><span class="s-name">Crossbow</span><g-field name="squire1_sk_crossbow" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Sword" label="Check for Sword" /><span class="s-name">Sword ⚔</span><g-field name="squire1_sk_sword" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Thrown Weapon" label="Check for Thrown Weapon" /><span class="s-name">Thrown Weapon</span><g-field name="squire1_sk_thrown" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Charge" label="Check for Charge" /><span class="s-name">Charge ⚔</span><g-field name="squire1_sk_charge" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Battle" label="Check for Battle" /><span class="s-name">Battle ⚔</span><g-field name="squire1_sk_battle" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Horsemanship" label="Check for Horsemanship" /><span class="s-name">Horsemanship ⚔🏵</span><g-field name="squire1_sk_horsemanship" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire1_skill_checks" value="Siegecraft" label="Check for Siegecraft" /><span class="s-name">Siegecraft</span><g-field name="squire1_sk_siegecraft" label="" variant="compact" /></li>
+          </ul>
+          <span class="hint">⚔ Knightly - ♕ Courtly - 🏵 Ladies' - ✝ Ministerly</span>
+        </section>
+      </div>
+    </div>
+  </g-tab>
+
+  <g-tab title="Squire 2" title_from=squire2_name visible_if="squire2_check">
+    <section class="box squire-header">
+      <div class="gstat"><span>Name</span><g-field name="squire2_name" label="" /></div>
+      <div class="gstat"><span>Squire Skill</span><g-field name="squire2_skill" label="" variant="compact" /></div>
+      <div class="gstat"><span>Glory</span><g-field name="squire2_glory" label="" /></div>
+      <div class="gstat"><span>Honor</span><span class="honor-input"><g-field name="squire2_honor" label="" /><g-field name="squire2_honor_check" label="" /></span></div>
+    </section>
+
+    <div class="main-grid">
+      <div class="col">
+
+        <section class="box">
+          <h3 class="box-heading">Traits</h3>
+          <ul class="traits">
+            <li class="trait"><g-option field=squire2_trait_checks value="Chaste" label="Check for Chaste" /><span class="shield"><g-field name=squire2_trait_chaste label="" variant="compact" /></span><span class="s-name left">Chaste 🕆♥</span><span class="s-name right">☀ Lustful</span><span class="shield"><g-field name=squire2_trait_lustful label="" variant="compact" /></span><g-option field=squire2_trait_checks value="Lustful" label="Check for Lustful" /></li>
+            <li class="trait"><g-option field=squire2_trait_checks value="Energetic" label="Check for Energetic" /><span class="shield"><g-field name=squire2_trait_energetic label="" variant="compact" /></span><span class="s-name left">Energetic ☀🛡</span><span class="s-name right">Lazy</span><span class="shield"><g-field name=squire2_trait_lazy label="" variant="compact" /></span><g-option field=squire2_trait_checks value="Lazy" label="Check for Lazy" /></li>
+            <li class="trait"><g-option field=squire2_trait_checks value="Forgiving" label="Check for Forgiving" /><span class="shield"><g-field name=squire2_trait_forgiving label="" variant="compact" /></span><span class="s-name left">Forgiving 🕆</span><span class="s-name right">☾ Vengeful</span><span class="shield"><g-field name=squire2_trait_vengeful label="" variant="compact" /></span><g-option field=squire2_trait_checks value="Vengeful" label="Check for Vengeful" /></li>
+            <li class="trait"><g-option field=squire2_trait_checks value="Generous" label="Check for Generous" /><span class="shield"><g-field name=squire2_trait_generous label="" variant="compact" /></span><span class="s-name left">Generous ☀🗲♥🛡</span><span class="s-name right">Selfish</span><span class="shield"><g-field name=squire2_trait_selfish label="" variant="compact" /></span><g-option field=squire2_trait_checks value="Selfish" label="Check for Selfish" /></li>
+            <li class="trait"><g-option field=squire2_trait_checks value="Honest" label="Check for Honest" /><span class="shield"><g-field name=squire2_trait_honest label="" variant="compact" /></span><span class="s-name left">Honest ☀☾♥</span><span class="s-name right">☾ Deceitful</span><span class="shield"><g-field name=squire2_trait_deceitful label="" variant="compact" /></span><g-option field=squire2_trait_checks value="Deceitful" label="Check for Deceitful" /></li>
+            <li class="trait"><g-option field=squire2_trait_checks value="Just" label="Check for Just" /><span class="shield"><g-field name=squire2_trait_just label="" variant="compact" /></span><span class="s-name left">Just 🛡</span><span class="s-name right">☾ Arbitrary</span><span class="shield"><g-field name=squire2_trait_arbitrary label="" variant="compact" /></span><g-option field=squire2_trait_checks value="Arbitrary" label="Check for Arbitrary" /></li>
+            <li class="trait"><g-option field=squire2_trait_checks value="Merciful" label="Check for Merciful" /><span class="shield"><g-field name=squire2_trait_merciful label="" variant="compact" /></span><span class="s-name left">Merciful 🕆🛡</span><span class="s-name right">Cruel</span><span class="shield"><g-field name=squire2_trait_cruel label="" variant="compact" /></span><g-option field=squire2_trait_checks value="Cruel" label="Check for Cruel" /></li>
+            <li class="trait"><g-option field=squire2_trait_checks value="Modest" label="Check for Modest" /><span class="shield"><g-field name=squire2_trait_modest label="" variant="compact" /></span><span class="s-name left">Modest 🕆♥🛡</span><span class="s-name right">☀🗲☾ Proud</span><span class="shield"><g-field name=squire2_trait_proud label="" variant="compact" /></span><g-option field=squire2_trait_checks value="Proud" label="Check for Proud" /></li>
+            <li class="trait"><g-option field=squire2_trait_checks value="Prudent" label="Check for Prudent" /><span class="shield"><g-field name=squire2_trait_prudent label="" variant="compact" /></span><span class="s-name left">Prudent</span><span class="s-name right">🗲 Reckless</span><span class="shield"><g-field name=squire2_trait_reckless label="" variant="compact" /></span><g-option field=squire2_trait_checks value="Reckless" label="Check for Reckless" /></li>
+            <li class="trait"><g-option field=squire2_trait_checks value="Spiritual" label="Check for Spiritual" /><span class="shield"><g-field name=squire2_trait_spiritual label="" variant="compact" /></span><span class="s-name left">Spiritual 🕆☀☾♥</span><span class="s-name right">🗲 Worldly</span><span class="shield"><g-field name=squire2_trait_worldly label="" variant="compact" /></span><g-option field=squire2_trait_checks value="Worldly" label="Check for Worldly" /></li>
+            <li class="trait"><g-option field=squire2_trait_checks value="Temperate" label="Check for Temperate" /><span class="shield"><g-field name=squire2_trait_temperate label="" variant="compact" /></span><span class="s-name left">Temperate 🕆♥</span><span class="s-name right">🗲 Indulgent</span><span class="shield"><g-field name=squire2_trait_indulgent label="" variant="compact" /></span><g-option field=squire2_trait_checks value="Indulgent" label="Check for Indulgent" /></li>
+            <li class="trait"><g-option field=squire2_trait_checks value="Trusting" label="Check for Trusting" /><span class="shield"><g-field name=squire2_trait_trusting label="" variant="compact" /></span><span class="s-name left">Trusting</span><span class="s-name right">☾ Suspicious</span><span class="shield"><g-field name=squire2_trait_suspicious label="" variant="compact" /></span><g-option field=squire2_trait_checks value="Suspicious" label="Check for Suspicious" /></li>
+            <li class="trait"><g-option field=squire2_trait_checks value="Valorous" label="Check for Valorous" /><span class="shield"><g-field name=squire2_trait_valorous label="" variant="compact" /></span><span class="s-name left">Valorous 🗲🛡</span><span class="s-name right">Cowardly</span><span class="shield"><g-field name=squire2_trait_cowardly label="" variant="compact" /></span><g-option field=squire2_trait_checks value="Cowardly" label="Check for Cowardly" /></li>
+            <li class="trait directed"><span class="s-name slot-name"><span class="tiny inline">Directed Trait</span><g-field name=squire2_directed_1_name label="" /></span><span class="shield"><g-field name=squire2_directed_1 label="" variant="compact" /></span><g-option field=squire2_trait_checks value="Directed Trait 1" label="Check for directed trait 1" /></li>
+            <li class="trait directed"><span class="s-name slot-name"><span class="tiny inline">Directed Trait</span><g-field name=squire2_directed_2_name label="" /></span><span class="shield"><g-field name=squire2_directed_2 label="" variant="compact" /></span><g-option field=squire2_trait_checks value="Directed Trait 2" label="Check for directed trait 2" /></li>
+          </ul>
+        </section>
+
+        <g-section title="Notes">
+          <div class="gstat"><g-field name="squire2_notes" label="" /></div>
+        </g-section>
+      </div>
+
+      <div class="col">
+        <section class="box">
+          <h3 class="box-heading">Personal Information</h3>
+          <div class="id-grid pairs">
+            <div class="gstat"><span>Birth Year</span><g-field name="squire2_birthyear" label="" variant="compact" /></div>
+            <div class="gstat"><span>Age</span><span class="age"><g-value name="squire2_age"/></span></div>
+          </div>
+          <!--
+          <div class="id-grid pairs">
+            <div class="gstat"><span>Class</span><g-field name="squire2_class" label="" /></div>
+            <div class="gstat"><span>Lord</span><g-field name="squire2_lord" label="" /></div>
+          </div>
+          -->
+          <div class="id-grid pairs">
+            <div class="gstat"><span>Culture</span><g-field name="squire2_culture" label="" /></div>
+            <div class="gstat"><span>Religion</span><g-field name="squire2_religion" label="" /></div>
+          </div>
+          <div class="id-grid pairs">
+            <div class="gstat"><span>Birthplace</span><g-field name="squire2_birthplace" label="" /></div>
+            <div class="gstat"><span>Homeland</span><g-field name="squire2_homeland" label="" /></div>
+          </div>
+          <div class="gstat"><span>Distinctive Features</span><g-field name="squire2_distinctive_features" label="" /></div>
+        </section>
+
+        <section class="box">
+          <h4 class="box-heading">Characteristics</h4>
+          <div class="char-grid">
+            <div class="char"><span class="c-name">STR</span><g-field name="squire2_str" label="" variant="compact" /></div>
+            <div class="char"><span class="c-name">DEX</span><g-field name="squire2_dex" label="" variant="compact" /></div>
+            <div class="char"><span class="c-name">CON</span><g-field name="squire2_con" label="" variant="compact" /></div>
+            <div class="char"><span class="c-name">SIZ</span><g-field name="squire2_siz" label="" variant="compact" /></div>
+            <div class="char"><span class="c-name">APP</span><g-field name="squire2_app" label="" variant="compact" /></div>
+          </div>
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Derived Characteristics</h3>
+          <ul class="derived">
+            <li><span>Knockdown (SIZ)</span><span class="cell-value"><g-value name="squire2_knockdown" /></span></li>
+            <li><span>Weapon Damage (STR + SIZ)/6</span><span class="cell-value"><g-value name="squire2_weapon_damage" /> D6</span></li>
+            <li><span>Brawling Damage (STR + SIZ)/6</span><span class="cell-value"><g-value name="squire2_brawling_damage" /></span></li>
+            <li><span>Movement Rate ([STR + DEX]/2)+5</span><span class="cell-value"><g-value name="squire2_movement_rate" /></span></li>
+            <li><span>Major Wound (CON)</span><span class="cell-value"><g-value name="squire2_major_wound" /></span></li>
+            <li><span>Healing Rate (CON/5)</span><span class="cell-value"><g-value name="squire2_healing_rate" /></span></li>
+            <li><span>Total Hit Points (CON + SIZ)</span><span class="cell-value"><g-value name="squire2_total_hit_points" /></span></li>
+            <li><span>Unconscious (Total Hit Points/4)</span><span class="cell-value"><g-value name="squire2_unconscious" /></span></li>
+          </ul>
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Health &amp; Injuries</h3>
+          <h4 class="sub-heading">HP &amp; Damage</h4>
+          <div class="hp-grid">
+            <span class="c-name">Current HP</span>
+            <span class="c-name">Aggravation Damage</span>
+            <span class="c-name">Deterioration Damage</span>
+            <g-field name="squire2_hp_current" label="" />
+            <g-field name="squire2_aggravation_damage" label="" />
+            <g-field name="squire2_deterioration_damage" label="" />
+          </div>
+          <div class="id-grid pairs">
+            <label class="opt"><g-field name="squire2_unconscious_checkbox" label="" />Unconscious?</label>
+            <label class="opt"><g-field name="squire2_debilitated" label="" />Debilitated?</label>
+          </div>
+          <h4 class="sub-heading">Wounds</h4>
+          <p class="hint">Minor <b><g-value name="squire2_count_wounds_minor" /></b> · Major <b><g-value name="squire2_count_wounds_major" /></b> · Mortal <b><g-value name="squire2_count_wounds_mortal" /></b></p>
+          <g-field name="squire2_wounds" label="" />
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Armor</h3>
+          <h4 class="sub-heading">Mail/Plate</h4>
+          <div class="armor-grid">
+            <span class="c-name">Item</span>
+            <span class="c-name">Protection</span>
+            <g-field name="squire2_armor_mail_type" label="" />
+            <g-field name="squire2_armor_mail" label="" />
+          </div>
+          <h4 class="sub-heading">Textile</h4>
+          <div class="armor-grid">
+            <span class="c-name">Item</span>
+            <span class="c-name">Protection</span>
+            <g-field name="squire2_armor_textile_type" label="" />
+            <g-field name="squire2_armor_textile" label="" />
+          </div>
+          <h4 class="sub-heading">Helm</h4>
+          <div class="armor-grid">
+            <span class="c-name">Item</span>
+            <span class="c-name">Protection</span>
+            <g-field name="squire2_armor_helm_type" label="" />
+            <g-field name="squire2_armor_helm" label="" />
+          </div>
+          <h4 class="sub-heading">Shield</h4>
+          <div class="shield-grid">
+            <span class="c-name">Type</span>
+            <span class="c-name">vs Missiles</span>
+            <span class="c-name">Protection</span>
+            <g-field name="squire2_armor_shield_type" label="" />
+            <g-field name="squire2_armor_shield_missile_protection" label="" />
+            <g-field name="squire2_armor_shield" label="" />
+          </div>
+          <h4 class="sub-heading">Total Protection</h4>
+          <div class="total-line">
+            <span>Armor Protection (No Shield)</span><span class="cell-value"><g-value name="squire2_total_armor" /></span>
+            <span>Armor Protection (With Shield)</span><span class="cell-value"><g-value name="squire2_total_armor_and_shield" /></span>
+          </div>
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Attacks</h3>
+          <g-field name="squire2_weapons" label="" />
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Equipment</h3>
+          <h4 class="sub-heading">Total Value: <b>£</b><g-value name="squire2_equipment_total_value" /></h4>
+          <g-field name="squire2_equipment" label="" />
+        </section>
+      </div>
+
+      <div class="col">
+        <section class="box">
+          <h3 class="box-heading">Passions</h3>
+          <h4 class="sub-heading">Fidelitas</h4>
+          <ul class="skills single">
+            <li class="skill"><g-option field="squire2_passion_checks" value="Homage" label="Check for Homage" /><span class="s-name slot-name"><span class="s-name">Homage</span><g-field name="squire2_homage_subject" label="" /></span><g-field name="squire2_homage" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire2_passion_checks" value="Fealty" label="Check for Fealty" /><span class="s-name slot-name"><span class="s-name">Fealty</span><g-field name="squire2_fealty_subject" label="" /></span><g-field name="squire2_fealty" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire2_passion_checks" value="Passion 1" label="Check for passion 1" /><span class="s-name slot-name twin"><g-field name="squire2_passion_1_name" label="" /><g-field name="squire2_passion_1_object" label="" /></span><g-field name="squire2_passion_1" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire2_passion_checks" value="Passion 2" label="Check for passion 2" /><span class="s-name slot-name twin"><g-field name="squire2_passion_2_name" label="" /><g-field name="squire2_passion_2_object" label="" /></span><g-field name="squire2_passion_2" label="" variant="compact" /></li>
+          </ul>
+          <h4 class="sub-heading">Fervor</h4>
+          <ul class="skills single">
+            <li class="skill"><g-option field="squire2_passion_checks" value="Love (Family)" label="Check for Love" /><span class="s-name">Love (Family)</span><g-field name="squire2_love_family" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire2_passion_checks" value="Passion 3" label="Check for passion 3" /><span class="s-name slot-name twin"><g-field name="squire2_passion_3_name" label="" /><g-field name="squire2_passion_3_object" label="" /></span><g-field name="squire2_passion_3" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire2_passion_checks" value="Passion 4" label="Check for passion 4" /><span class="s-name slot-name twin"><g-field name="squire2_passion_4_name" label="" /><g-field name="squire2_passion_4_object" label="" /></span><g-field name="squire2_passion_4" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire2_passion_checks" value="Passion 5" label="Check for passion 5" /><span class="s-name slot-name twin"><g-field name="squire2_passion_5_name" label="" /><g-field name="squire2_passion_5_object" label="" /></span><g-field name="squire2_passion_5" label="" variant="compact" /></li>
+          </ul>
+          <h4 class="sub-heading">Adoratio</h4>
+          <ul class="skills single">
+            <li class="skill"><g-option field="squire2_passion_checks" value="Devotion (Deity)" label="Check for Devotion" /><span class="s-name">Devotion (Deity)</span><g-field name="squire2_devotion" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire2_passion_checks" value="Passion 6" label="Check for passion 6" /><span class="s-name slot-name twin"><g-field name="squire2_passion_6_name" label="" /><g-field name="squire2_passion_6_object" label="" /></span><g-field name="squire2_passion_6" label="" variant="compact" /></li>
+          </ul>
+          <h4 class="sub-heading">Civilitas</h4>
+          <ul class="skills single">
+            <li class="skill"><g-option field="squire2_passion_checks" value="Hospitality" label="Check for Hospitality" /><span class="s-name">Hospitality</span><g-field name="squire2_hospitality" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire2_passion_checks" value="Station" label="Check for Station" /><span class="s-name">Station</span><g-field name="squire2_station" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire2_passion_checks" value="Passion 7" label="Check for passion 7" /><span class="s-name slot-name twin"><g-field name="squire2_passion_7_name" label="" /><g-field name="squire2_passion_7_object" label="" /></span><g-field name="squire2_passion_7" label="" variant="compact" /></li>
+          </ul>
+        </section>
+
+        <section class="box">
+          <h4 class="sub-heading">Non-Combat Skills</h4>
+          <ul class="skills">
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Awareness" label="Check for Awareness" /><span class="s-name">Awareness ⚔</span><g-field name="squire2_sk_awareness" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Hunting" label="Check for Hunting" /><span class="s-name">Hunting ⚔</span><g-field name="squire2_sk_hunting" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Chirurgery" label="Check for Chirurgery" /><span class="s-name">Chirurgery 🏵</span><g-field name="squire2_sk_chirurgery" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Industry" label="Check for Industry" /><span class="s-name">Industry 🏵🕆</span><g-field name="squire2_sk_industry" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Compose" label="Check for Compose" /><span class="s-name">Compose ♕</span><g-field name="squire2_sk_compose" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Intrigue" label="Check for Intrigue" /><span class="s-name">Intrigue ♕</span><g-field name="squire2_sk_intrigue" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Courtesy" label="Check for Courtesy" /><span class="s-name">Courtesy ⚔♕🏵🕆</span><g-field name="squire2_sk_courtesy" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Literacy" label="Check for Literacy" /><span class="s-name">Literacy ♕🕆</span><g-field name="squire2_sk_literacy" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Dancing" label="Check for Dancing" /><span class="s-name">Dancing ♕🏵</span><g-field name="squire2_sk_dancing" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Orate" label="Check for Orate" /><span class="s-name">Orate ♕🕆</span><g-field name="squire2_sk_orate" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Falconry" label="Check for Falconry" /><span class="s-name">Falconry ♕</span><g-field name="squire2_sk_falconry" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Play Instrument" label="Check for Play" /><span class="s-name">Play Instrument ♕🏵</span><g-field name="squire2_sk_play" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Fashion" label="Check for Fashion" /><span class="s-name">Fashion ♕🏵</span><g-field name="squire2_sk_fashion" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Recognize" label="Check for Recognize" /><span class="s-name">Recognize ⚔♕🏵</span><g-field name="squire2_sk_recognize" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="First Aid" label="Check for First Aid" /><span class="s-name">First Aid ⚔🏵</span><g-field name="squire2_sk_first_aid" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Religion" label="Check for Religion" /><span class="s-name">Religion ♕🕆</span><g-field name="squire2_sk_religion_skill" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Flirting" label="Check for Flirting" /><span class="s-name">Flirting ♕</span><g-field name="squire2_sk_flirting" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Singing" label="Check for Singing" /><span class="s-name">Singing ♕🏵🕆</span><g-field name="squire2_sk_singing" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Folklore" label="Check for Folklore" /><span class="s-name">Folklore</span><g-field name="squire2_sk_folklore" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Stewardship" label="Check for Stewardship" /><span class="s-name">Stewardship 🏵</span><g-field name="squire2_sk_stewardship" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Gaming" label="Check for Gaming" /><span class="s-name">Gaming ♕</span><g-field name="squire2_sk_gaming" label="" variant="compact" /></li>
+          </ul>
+        </section>
+
+        <section class="box">
+          <h4 class="sub-heading">Combat Skills</h4>
+          <ul class="skills">
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Hafted" label="Check for Hafted" /><span class="s-name">Hafted</span><g-field name="squire2_sk_hafted" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Brawling" label="Check for Brawling" /><span class="s-name">Brawling ⚔</span><g-field name="squire2_sk_brawling" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="2H Hafted" label="Check for 2H Hafted" /><span class="s-name">2H Hafted</span><g-field name="squire2_sk_hafted_2h" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Bow" label="Check for Bow" /><span class="s-name">Bow</span><g-field name="squire2_sk_bow" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Spear" label="Check for Spear" /><span class="s-name">Spear</span><g-field name="squire2_sk_spear" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Crossbow" label="Check for Crossbow" /><span class="s-name">Crossbow</span><g-field name="squire2_sk_crossbow" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Sword" label="Check for Sword" /><span class="s-name">Sword ⚔</span><g-field name="squire2_sk_sword" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Thrown Weapon" label="Check for Thrown Weapon" /><span class="s-name">Thrown Weapon</span><g-field name="squire2_sk_thrown" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Charge" label="Check for Charge" /><span class="s-name">Charge ⚔</span><g-field name="squire2_sk_charge" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Battle" label="Check for Battle" /><span class="s-name">Battle ⚔</span><g-field name="squire2_sk_battle" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Horsemanship" label="Check for Horsemanship" /><span class="s-name">Horsemanship ⚔🏵</span><g-field name="squire2_sk_horsemanship" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire2_skill_checks" value="Siegecraft" label="Check for Siegecraft" /><span class="s-name">Siegecraft</span><g-field name="squire2_sk_siegecraft" label="" variant="compact" /></li>
+          </ul>
+          <span class="hint">⚔ Knightly - ♕ Courtly - 🏵 Ladies' - ✝ Ministerly</span>
+        </section>
+      </div>
+    </div>
+  </g-tab>
+
+  <g-tab title="Squire 3" title_from=squire3_name visible_if="squire3_check">
+    <section class="box squire-header">
+      <div class="gstat"><span>Name</span><g-field name="squire3_name" label="" /></div>
+      <div class="gstat"><span>Squire Skill</span><g-field name="squire3_skill" label="" variant="compact" /></div>
+      <div class="gstat"><span>Glory</span><g-field name="squire3_glory" label="" /></div>
+      <div class="gstat"><span>Honor</span><span class="honor-input"><g-field name="squire3_honor" label="" /><g-field name="squire3_honor_check" label="" /></span></div>
+    </section>
+
+    <div class="main-grid">
+      <div class="col">
+
+        <section class="box">
+          <h3 class="box-heading">Traits</h3>
+          <ul class="traits">
+            <li class="trait"><g-option field=squire3_trait_checks value="Chaste" label="Check for Chaste" /><span class="shield"><g-field name=squire3_trait_chaste label="" variant="compact" /></span><span class="s-name left">Chaste 🕆♥</span><span class="s-name right">☀ Lustful</span><span class="shield"><g-field name=squire3_trait_lustful label="" variant="compact" /></span><g-option field=squire3_trait_checks value="Lustful" label="Check for Lustful" /></li>
+            <li class="trait"><g-option field=squire3_trait_checks value="Energetic" label="Check for Energetic" /><span class="shield"><g-field name=squire3_trait_energetic label="" variant="compact" /></span><span class="s-name left">Energetic ☀🛡</span><span class="s-name right">Lazy</span><span class="shield"><g-field name=squire3_trait_lazy label="" variant="compact" /></span><g-option field=squire3_trait_checks value="Lazy" label="Check for Lazy" /></li>
+            <li class="trait"><g-option field=squire3_trait_checks value="Forgiving" label="Check for Forgiving" /><span class="shield"><g-field name=squire3_trait_forgiving label="" variant="compact" /></span><span class="s-name left">Forgiving 🕆</span><span class="s-name right">☾ Vengeful</span><span class="shield"><g-field name=squire3_trait_vengeful label="" variant="compact" /></span><g-option field=squire3_trait_checks value="Vengeful" label="Check for Vengeful" /></li>
+            <li class="trait"><g-option field=squire3_trait_checks value="Generous" label="Check for Generous" /><span class="shield"><g-field name=squire3_trait_generous label="" variant="compact" /></span><span class="s-name left">Generous ☀🗲♥🛡</span><span class="s-name right">Selfish</span><span class="shield"><g-field name=squire3_trait_selfish label="" variant="compact" /></span><g-option field=squire3_trait_checks value="Selfish" label="Check for Selfish" /></li>
+            <li class="trait"><g-option field=squire3_trait_checks value="Honest" label="Check for Honest" /><span class="shield"><g-field name=squire3_trait_honest label="" variant="compact" /></span><span class="s-name left">Honest ☀☾♥</span><span class="s-name right">☾ Deceitful</span><span class="shield"><g-field name=squire3_trait_deceitful label="" variant="compact" /></span><g-option field=squire3_trait_checks value="Deceitful" label="Check for Deceitful" /></li>
+            <li class="trait"><g-option field=squire3_trait_checks value="Just" label="Check for Just" /><span class="shield"><g-field name=squire3_trait_just label="" variant="compact" /></span><span class="s-name left">Just 🛡</span><span class="s-name right">☾ Arbitrary</span><span class="shield"><g-field name=squire3_trait_arbitrary label="" variant="compact" /></span><g-option field=squire3_trait_checks value="Arbitrary" label="Check for Arbitrary" /></li>
+            <li class="trait"><g-option field=squire3_trait_checks value="Merciful" label="Check for Merciful" /><span class="shield"><g-field name=squire3_trait_merciful label="" variant="compact" /></span><span class="s-name left">Merciful 🕆🛡</span><span class="s-name right">Cruel</span><span class="shield"><g-field name=squire3_trait_cruel label="" variant="compact" /></span><g-option field=squire3_trait_checks value="Cruel" label="Check for Cruel" /></li>
+            <li class="trait"><g-option field=squire3_trait_checks value="Modest" label="Check for Modest" /><span class="shield"><g-field name=squire3_trait_modest label="" variant="compact" /></span><span class="s-name left">Modest 🕆♥🛡</span><span class="s-name right">☀🗲☾ Proud</span><span class="shield"><g-field name=squire3_trait_proud label="" variant="compact" /></span><g-option field=squire3_trait_checks value="Proud" label="Check for Proud" /></li>
+            <li class="trait"><g-option field=squire3_trait_checks value="Prudent" label="Check for Prudent" /><span class="shield"><g-field name=squire3_trait_prudent label="" variant="compact" /></span><span class="s-name left">Prudent</span><span class="s-name right">🗲 Reckless</span><span class="shield"><g-field name=squire3_trait_reckless label="" variant="compact" /></span><g-option field=squire3_trait_checks value="Reckless" label="Check for Reckless" /></li>
+            <li class="trait"><g-option field=squire3_trait_checks value="Spiritual" label="Check for Spiritual" /><span class="shield"><g-field name=squire3_trait_spiritual label="" variant="compact" /></span><span class="s-name left">Spiritual 🕆☀☾♥</span><span class="s-name right">🗲 Worldly</span><span class="shield"><g-field name=squire3_trait_worldly label="" variant="compact" /></span><g-option field=squire3_trait_checks value="Worldly" label="Check for Worldly" /></li>
+            <li class="trait"><g-option field=squire3_trait_checks value="Temperate" label="Check for Temperate" /><span class="shield"><g-field name=squire3_trait_temperate label="" variant="compact" /></span><span class="s-name left">Temperate 🕆♥</span><span class="s-name right">🗲 Indulgent</span><span class="shield"><g-field name=squire3_trait_indulgent label="" variant="compact" /></span><g-option field=squire3_trait_checks value="Indulgent" label="Check for Indulgent" /></li>
+            <li class="trait"><g-option field=squire3_trait_checks value="Trusting" label="Check for Trusting" /><span class="shield"><g-field name=squire3_trait_trusting label="" variant="compact" /></span><span class="s-name left">Trusting</span><span class="s-name right">☾ Suspicious</span><span class="shield"><g-field name=squire3_trait_suspicious label="" variant="compact" /></span><g-option field=squire3_trait_checks value="Suspicious" label="Check for Suspicious" /></li>
+            <li class="trait"><g-option field=squire3_trait_checks value="Valorous" label="Check for Valorous" /><span class="shield"><g-field name=squire3_trait_valorous label="" variant="compact" /></span><span class="s-name left">Valorous 🗲🛡</span><span class="s-name right">Cowardly</span><span class="shield"><g-field name=squire3_trait_cowardly label="" variant="compact" /></span><g-option field=squire3_trait_checks value="Cowardly" label="Check for Cowardly" /></li>
+            <li class="trait directed"><span class="s-name slot-name"><span class="tiny inline">Directed Trait</span><g-field name=squire3_directed_1_name label="" /></span><span class="shield"><g-field name=squire3_directed_1 label="" variant="compact" /></span><g-option field=squire3_trait_checks value="Directed Trait 1" label="Check for directed trait 1" /></li>
+            <li class="trait directed"><span class="s-name slot-name"><span class="tiny inline">Directed Trait</span><g-field name=squire3_directed_2_name label="" /></span><span class="shield"><g-field name=squire3_directed_2 label="" variant="compact" /></span><g-option field=squire3_trait_checks value="Directed Trait 2" label="Check for directed trait 2" /></li>
+          </ul>
+        </section>
+
+        <g-section title="Notes">
+          <div class="gstat"><g-field name="squire3_notes" label="" /></div>
+        </g-section>
+      </div>
+
+      <div class="col">
+        <section class="box">
+          <h3 class="box-heading">Personal Information</h3>
+          <div class="id-grid pairs">
+            <div class="gstat"><span>Birth Year</span><g-field name="squire3_birthyear" label="" variant="compact" /></div>
+            <div class="gstat"><span>Age</span><span class="age"><g-value name="squire3_age"/></span></div>
+          <!--
+          </div>
+          <div class="id-grid pairs">
+            <div class="gstat"><span>Class</span><g-field name="squire3_class" label="" /></div>
+            <div class="gstat"><span>Lord</span><g-field name="squire3_lord" label="" /></div>
+          </div>
+          -->
+          <div class="id-grid pairs">
+            <div class="gstat"><span>Culture</span><g-field name="squire3_culture" label="" /></div>
+            <div class="gstat"><span>Religion</span><g-field name="squire3_religion" label="" /></div>
+          </div>
+          <div class="id-grid pairs">
+            <div class="gstat"><span>Birthplace</span><g-field name="squire3_birthplace" label="" /></div>
+            <div class="gstat"><span>Homeland</span><g-field name="squire3_homeland" label="" /></div>
+          </div>
+          <div class="gstat"><span>Distinctive Features</span><g-field name="squire3_distinctive_features" label="" /></div>
+        </section>
+
+        <section class="box">
+          <h4 class="box-heading">Characteristics</h4>
+          <div class="char-grid">
+            <div class="char"><span class="c-name">STR</span><g-field name="squire3_str" label="" variant="compact" /></div>
+            <div class="char"><span class="c-name">DEX</span><g-field name="squire3_dex" label="" variant="compact" /></div>
+            <div class="char"><span class="c-name">CON</span><g-field name="squire3_con" label="" variant="compact" /></div>
+            <div class="char"><span class="c-name">SIZ</span><g-field name="squire3_siz" label="" variant="compact" /></div>
+            <div class="char"><span class="c-name">APP</span><g-field name="squire3_app" label="" variant="compact" /></div>
+          </div>
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Derived Characteristics</h3>
+          <ul class="derived">
+            <li><span>Knockdown (SIZ)</span><span class="cell-value"><g-value name="squire3_knockdown" /></span></li>
+            <li><span>Weapon Damage (STR + SIZ)/6</span><span class="cell-value"><g-value name="squire3_weapon_damage" /> D6</span></li>
+            <li><span>Brawling Damage (STR + SIZ)/6</span><span class="cell-value"><g-value name="squire3_brawling_damage" /></span></li>
+            <li><span>Movement Rate ([STR + DEX]/2)+5</span><span class="cell-value"><g-value name="squire3_movement_rate" /></span></li>
+            <li><span>Major Wound (CON)</span><span class="cell-value"><g-value name="squire3_major_wound" /></span></li>
+            <li><span>Healing Rate (CON/5)</span><span class="cell-value"><g-value name="squire3_healing_rate" /></span></li>
+            <li><span>Total Hit Points (CON + SIZ)</span><span class="cell-value"><g-value name="squire3_total_hit_points" /></span></li>
+            <li><span>Unconscious (Total Hit Points/4)</span><span class="cell-value"><g-value name="squire3_unconscious" /></span></li>
+          </ul>
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Health &amp; Injuries</h3>
+          <h4 class="sub-heading">HP &amp; Damage</h4>
+          <div class="hp-grid">
+            <span class="c-name">Current HP</span>
+            <span class="c-name">Aggravation Damage</span>
+            <span class="c-name">Deterioration Damage</span>
+            <g-field name="squire3_hp_current" label="" />
+            <g-field name="squire3_aggravation_damage" label="" />
+            <g-field name="squire3_deterioration_damage" label="" />
+          </div>
+          <div class="id-grid pairs">
+            <label class="opt"><g-field name="squire3_unconscious_checkbox" label="" />Unconscious?</label>
+            <label class="opt"><g-field name="squire3_debilitated" label="" />Debilitated?</label>
+          </div>
+          <h4 class="sub-heading">Wounds</h4>
+          <p class="hint">Minor <b><g-value name="squire3_count_wounds_minor" /></b> · Major <b><g-value name="squire3_count_wounds_major" /></b> · Mortal <b><g-value name="squire3_count_wounds_mortal" /></b></p>
+          <g-field name="squire3_wounds" label="" />
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Armor</h3>
+          <h4 class="sub-heading">Mail/Plate</h4>
+          <div class="armor-grid">
+            <span class="c-name">Item</span>
+            <span class="c-name">Protection</span>
+            <g-field name="squire3_armor_mail_type" label="" />
+            <g-field name="squire3_armor_mail" label="" />
+          </div>
+          <h4 class="sub-heading">Textile</h4>
+          <div class="armor-grid">
+            <span class="c-name">Item</span>
+            <span class="c-name">Protection</span>
+            <g-field name="squire3_armor_textile_type" label="" />
+            <g-field name="squire3_armor_textile" label="" />
+          </div>
+          <h4 class="sub-heading">Helm</h4>
+          <div class="armor-grid">
+            <span class="c-name">Item</span>
+            <span class="c-name">Protection</span>
+            <g-field name="squire3_armor_helm_type" label="" />
+            <g-field name="squire3_armor_helm" label="" />
+          </div>
+          <h4 class="sub-heading">Shield</h4>
+          <div class="shield-grid">
+            <span class="c-name">Type</span>
+            <span class="c-name">vs Missiles</span>
+            <span class="c-name">Protection</span>
+            <g-field name="squire3_armor_shield_type" label="" />
+            <g-field name="squire3_armor_shield_missile_protection" label="" />
+            <g-field name="squire3_armor_shield" label="" />
+          </div>
+          <h4 class="sub-heading">Total Protection</h4>
+          <div class="total-line">
+            <span>Armor Protection (No Shield)</span><span class="cell-value"><g-value name="squire3_total_armor" /></span>
+            <span>Armor Protection (With Shield)</span><span class="cell-value"><g-value name="squire3_total_armor_and_shield" /></span>
+          </div>
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Attacks</h3>
+          <g-field name="squire3_weapons" label="" />
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Equipment</h3>
+          <h4 class="sub-heading">Total Value: <b>£</b><g-value name="squire3_equipment_total_value" /></h4>
+          <g-field name="squire3_equipment" label="" />
+        </section>
+      </div>
+
+      <div class="col">
+        <section class="box">
+          <h3 class="box-heading">Passions</h3>
+          <h4 class="sub-heading">Fidelitas</h4>
+          <ul class="skills single">
+            <li class="skill"><g-option field="squire3_passion_checks" value="Homage" label="Check for Homage" /><span class="s-name slot-name"><span class="s-name">Homage</span><g-field name="squire3_homage_subject" label="" /></span><g-field name="squire3_homage" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire3_passion_checks" value="Fealty" label="Check for Fealty" /><span class="s-name slot-name"><span class="s-name">Fealty</span><g-field name="squire3_fealty_subject" label="" /></span><g-field name="squire3_fealty" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire3_passion_checks" value="Passion 1" label="Check for passion 1" /><span class="s-name slot-name twin"><g-field name="squire3_passion_1_name" label="" /><g-field name="squire3_passion_1_object" label="" /></span><g-field name="squire3_passion_1" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire3_passion_checks" value="Passion 2" label="Check for passion 2" /><span class="s-name slot-name twin"><g-field name="squire3_passion_2_name" label="" /><g-field name="squire3_passion_2_object" label="" /></span><g-field name="squire3_passion_2" label="" variant="compact" /></li>
+          </ul>
+          <h4 class="sub-heading">Fervor</h4>
+          <ul class="skills single">
+            <li class="skill"><g-option field="squire3_passion_checks" value="Love (Family)" label="Check for Love" /><span class="s-name">Love (Family)</span><g-field name="squire3_love_family" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire3_passion_checks" value="Passion 3" label="Check for passion 3" /><span class="s-name slot-name twin"><g-field name="squire3_passion_3_name" label="" /><g-field name="squire3_passion_3_object" label="" /></span><g-field name="squire3_passion_3" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire3_passion_checks" value="Passion 4" label="Check for passion 4" /><span class="s-name slot-name twin"><g-field name="squire3_passion_4_name" label="" /><g-field name="squire3_passion_4_object" label="" /></span><g-field name="squire3_passion_4" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire3_passion_checks" value="Passion 5" label="Check for passion 5" /><span class="s-name slot-name twin"><g-field name="squire3_passion_5_name" label="" /><g-field name="squire3_passion_5_object" label="" /></span><g-field name="squire3_passion_5" label="" variant="compact" /></li>
+          </ul>
+          <h4 class="sub-heading">Adoratio</h4>
+          <ul class="skills single">
+            <li class="skill"><g-option field="squire3_passion_checks" value="Devotion (Deity)" label="Check for Devotion" /><span class="s-name">Devotion (Deity)</span><g-field name="squire3_devotion" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire3_passion_checks" value="Passion 6" label="Check for passion 6" /><span class="s-name slot-name twin"><g-field name="squire3_passion_6_name" label="" /><g-field name="squire3_passion_6_object" label="" /></span><g-field name="squire3_passion_6" label="" variant="compact" /></li>
+          </ul>
+          <h4 class="sub-heading">Civilitas</h4>
+          <ul class="skills single">
+            <li class="skill"><g-option field="squire3_passion_checks" value="Hospitality" label="Check for Hospitality" /><span class="s-name">Hospitality</span><g-field name="squire3_hospitality" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire3_passion_checks" value="Station" label="Check for Station" /><span class="s-name">Station</span><g-field name="squire3_station" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="squire3_passion_checks" value="Passion 7" label="Check for passion 7" /><span class="s-name slot-name twin"><g-field name="squire3_passion_7_name" label="" /><g-field name="squire3_passion_7_object" label="" /></span><g-field name="squire3_passion_7" label="" variant="compact" /></li>
+          </ul>
+        </section>
+
+        <section class="box">
+          <h4 class="sub-heading">Non-Combat Skills</h4>
+          <ul class="skills">
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Awareness" label="Check for Awareness" /><span class="s-name">Awareness ⚔</span><g-field name="squire3_sk_awareness" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Hunting" label="Check for Hunting" /><span class="s-name">Hunting ⚔</span><g-field name="squire3_sk_hunting" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Chirurgery" label="Check for Chirurgery" /><span class="s-name">Chirurgery 🏵</span><g-field name="squire3_sk_chirurgery" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Industry" label="Check for Industry" /><span class="s-name">Industry 🏵🕆</span><g-field name="squire3_sk_industry" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Compose" label="Check for Compose" /><span class="s-name">Compose ♕</span><g-field name="squire3_sk_compose" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Intrigue" label="Check for Intrigue" /><span class="s-name">Intrigue ♕</span><g-field name="squire3_sk_intrigue" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Courtesy" label="Check for Courtesy" /><span class="s-name">Courtesy ⚔♕🏵🕆</span><g-field name="squire3_sk_courtesy" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Literacy" label="Check for Literacy" /><span class="s-name">Literacy ♕🕆</span><g-field name="squire3_sk_literacy" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Dancing" label="Check for Dancing" /><span class="s-name">Dancing ♕🏵</span><g-field name="squire3_sk_dancing" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Orate" label="Check for Orate" /><span class="s-name">Orate ♕🕆</span><g-field name="squire3_sk_orate" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Falconry" label="Check for Falconry" /><span class="s-name">Falconry ♕</span><g-field name="squire3_sk_falconry" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Play Instrument" label="Check for Play" /><span class="s-name">Play Instrument ♕🏵</span><g-field name="squire3_sk_play" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Fashion" label="Check for Fashion" /><span class="s-name">Fashion ♕🏵</span><g-field name="squire3_sk_fashion" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Recognize" label="Check for Recognize" /><span class="s-name">Recognize ⚔♕🏵</span><g-field name="squire3_sk_recognize" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="First Aid" label="Check for First Aid" /><span class="s-name">First Aid ⚔🏵</span><g-field name="squire3_sk_first_aid" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Religion" label="Check for Religion" /><span class="s-name">Religion ♕🕆</span><g-field name="squire3_sk_religion_skill" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Flirting" label="Check for Flirting" /><span class="s-name">Flirting ♕</span><g-field name="squire3_sk_flirting" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Singing" label="Check for Singing" /><span class="s-name">Singing ♕🏵🕆</span><g-field name="squire3_sk_singing" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Folklore" label="Check for Folklore" /><span class="s-name">Folklore</span><g-field name="squire3_sk_folklore" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Stewardship" label="Check for Stewardship" /><span class="s-name">Stewardship 🏵</span><g-field name="squire3_sk_stewardship" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Gaming" label="Check for Gaming" /><span class="s-name">Gaming ♕</span><g-field name="squire3_sk_gaming" label="" variant="compact" /></li>
+          </ul>
+        </section>
+
+        <section class="box">
+          <h4 class="sub-heading">Combat Skills</h4>
+          <ul class="skills">
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Hafted" label="Check for Hafted" /><span class="s-name">Hafted</span><g-field name="squire3_sk_hafted" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Brawling" label="Check for Brawling" /><span class="s-name">Brawling ⚔</span><g-field name="squire3_sk_brawling" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="2H Hafted" label="Check for 2H Hafted" /><span class="s-name">2H Hafted</span><g-field name="squire3_sk_hafted_2h" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Bow" label="Check for Bow" /><span class="s-name">Bow</span><g-field name="squire3_sk_bow" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Spear" label="Check for Spear" /><span class="s-name">Spear</span><g-field name="squire3_sk_spear" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Crossbow" label="Check for Crossbow" /><span class="s-name">Crossbow</span><g-field name="squire3_sk_crossbow" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Sword" label="Check for Sword" /><span class="s-name">Sword ⚔</span><g-field name="squire3_sk_sword" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Thrown Weapon" label="Check for Thrown Weapon" /><span class="s-name">Thrown Weapon</span><g-field name="squire3_sk_thrown" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Charge" label="Check for Charge" /><span class="s-name">Charge ⚔</span><g-field name="squire3_sk_charge" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Battle" label="Check for Battle" /><span class="s-name">Battle ⚔</span><g-field name="squire3_sk_battle" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Horsemanship" label="Check for Horsemanship" /><span class="s-name">Horsemanship ⚔🏵</span><g-field name="squire3_sk_horsemanship" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="squire3_skill_checks" value="Siegecraft" label="Check for Siegecraft" /><span class="s-name">Siegecraft</span><g-field name="squire3_sk_siegecraft" label="" variant="compact" /></li>
+          </ul>
+          <span class="hint">⚔ Knightly - ♕ Courtly - 🏵 Ladies' - ✝ Ministerly</span>
+        </section>
+      </div>
+    </div>
+  </g-tab>
+
+  <g-tab title="History & Events">
+    <section class="box">
+      <h3 class="box-heading">History &amp; Events</h3>
+      <g-field name="history" label="" />
+    </section>
+  </g-tab>
+
+  <g-tab title="Spouse" title_from=spouse_name visible_if="married">
+    <section class="box spouse-header">
+      <div class="gstat"><span>Name</span><g-field name="spouse_name" label="" /></div>
+      <div class="gstat"><span>Glory</span><g-field name="spouse_glory" label="" /></div>
+      <div class="gstat"><span>Honor</span><span class="honor-input"><g-field name="spouse_honor" label="" /><g-field name="spouse_honor_check" label="" /></span></div>
+    </section>
+
+    <div class="main-grid">
+      <div class="col">
+        <section class="box">
+          <h3 class="box-heading">Traits</h3>
+          <ul class="traits">
+            <li class="trait"><g-option field="spouse_trait_checks" value="Chaste" label="Check for Chaste" /><span class="shield"><g-field name="spouse_trait_chaste" label="" variant="compact" /></span><span class="s-name left">Chaste 🕆♥</span><span class="s-name right">☀ Lustful</span><span class="shield"><g-field name="spouse_trait_lustful" label="" variant="compact" /></span><g-option field="spouse_trait_checks" value="Lustful" label="Check for Lustful" /></li>
+            <li class="trait"><g-option field="spouse_trait_checks" value="Energetic" label="Check for Energetic" /><span class="shield"><g-field name="spouse_trait_energetic" label="" variant="compact" /></span><span class="s-name left">Energetic ☀🛡</span><span class="s-name right">Lazy</span><span class="shield"><g-field name="spouse_trait_lazy" label="" variant="compact" /></span><g-option field="spouse_trait_checks" value="Lazy" label="Check for Lazy" /></li>
+            <li class="trait"><g-option field="spouse_trait_checks" value="Forgiving" label="Check for Forgiving" /><span class="shield"><g-field name="spouse_trait_forgiving" label="" variant="compact" /></span><span class="s-name left">Forgiving 🕆</span><span class="s-name right">☾ Vengeful</span><span class="shield"><g-field name="spouse_trait_vengeful" label="" variant="compact" /></span><g-option field="spouse_trait_checks" value="Vengeful" label="Check for Vengeful" /></li>
+            <li class="trait"><g-option field="spouse_trait_checks" value="Generous" label="Check for Generous" /><span class="shield"><g-field name="spouse_trait_generous" label="" variant="compact" /></span><span class="s-name left">Generous ☀🗲♥🛡</span><span class="s-name right">Selfish</span><span class="shield"><g-field name="spouse_trait_selfish" label="" variant="compact" /></span><g-option field="spouse_trait_checks" value="Selfish" label="Check for Selfish" /></li>
+            <li class="trait"><g-option field="spouse_trait_checks" value="Honest" label="Check for Honest" /><span class="shield"><g-field name="spouse_trait_honest" label="" variant="compact" /></span><span class="s-name left">Honest ☀☾♥</span><span class="s-name right">☾ Deceitful</span><span class="shield"><g-field name="spouse_trait_deceitful" label="" variant="compact" /></span><g-option field="spouse_trait_checks" value="Deceitful" label="Check for Deceitful" /></li>
+            <li class="trait"><g-option field="spouse_trait_checks" value="Just" label="Check for Just" /><span class="shield"><g-field name="spouse_trait_just" label="" variant="compact" /></span><span class="s-name left">Just 🛡</span><span class="s-name right">☾ Arbitrary</span><span class="shield"><g-field name="spouse_trait_arbitrary" label="" variant="compact" /></span><g-option field="spouse_trait_checks" value="Arbitrary" label="Check for Arbitrary" /></li>
+            <li class="trait"><g-option field="spouse_trait_checks" value="Merciful" label="Check for Merciful" /><span class="shield"><g-field name="spouse_trait_merciful" label="" variant="compact" /></span><span class="s-name left">Merciful 🕆🛡</span><span class="s-name right">Cruel</span><span class="shield"><g-field name="spouse_trait_cruel" label="" variant="compact" /></span><g-option field="spouse_trait_checks" value="Cruel" label="Check for Cruel" /></li>
+            <li class="trait"><g-option field="spouse_trait_checks" value="Modest" label="Check for Modest" /><span class="shield"><g-field name="spouse_trait_modest" label="" variant="compact" /></span><span class="s-name left">Modest 🕆♥🛡</span><span class="s-name right">☀🗲☾ Proud</span><span class="shield"><g-field name="spouse_trait_proud" label="" variant="compact" /></span><g-option field="spouse_trait_checks" value="Proud" label="Check for Proud" /></li>
+            <li class="trait"><g-option field="spouse_trait_checks" value="Prudent" label="Check for Prudent" /><span class="shield"><g-field name="spouse_trait_prudent" label="" variant="compact" /></span><span class="s-name left">Prudent</span><span class="s-name right">🗲 Reckless</span><span class="shield"><g-field name="spouse_trait_reckless" label="" variant="compact" /></span><g-option field="spouse_trait_checks" value="Reckless" label="Check for Reckless" /></li>
+            <li class="trait"><g-option field="spouse_trait_checks" value="Spiritual" label="Check for Spiritual" /><span class="shield"><g-field name="spouse_trait_spiritual" label="" variant="compact" /></span><span class="s-name left">Spiritual 🕆☀☾♥</span><span class="s-name right">🗲 Worldly</span><span class="shield"><g-field name="spouse_trait_worldly" label="" variant="compact" /></span><g-option field="spouse_trait_checks" value="Worldly" label="Check for Worldly" /></li>
+            <li class="trait"><g-option field="spouse_trait_checks" value="Temperate" label="Check for Temperate" /><span class="shield"><g-field name="spouse_trait_temperate" label="" variant="compact" /></span><span class="s-name left">Temperate 🕆♥</span><span class="s-name right">🗲 Indulgent</span><span class="shield"><g-field name="spouse_trait_indulgent" label="" variant="compact" /></span><g-option field="spouse_trait_checks" value="Indulgent" label="Check for Indulgent" /></li>
+            <li class="trait"><g-option field="spouse_trait_checks" value="Trusting" label="Check for Trusting" /><span class="shield"><g-field name="spouse_trait_trusting" label="" variant="compact" /></span><span class="s-name left">Trusting</span><span class="s-name right">☾ Suspicious</span><span class="shield"><g-field name="spouse_trait_suspicious" label="" variant="compact" /></span><g-option field="spouse_trait_checks" value="Suspicious" label="Check for Suspicious" /></li>
+            <li class="trait"><g-option field="spouse_trait_checks" value="Valorous" label="Check for Valorous" /><span class="shield"><g-field name="spouse_trait_valorous" label="" variant="compact" /></span><span class="s-name left">Valorous 🗲🛡</span><span class="s-name right">Cowardly</span><span class="shield"><g-field name="spouse_trait_cowardly" label="" variant="compact" /></span><g-option field="spouse_trait_checks" value="Cowardly" label="Check for Cowardly" /></li>
+            <li class="trait directed"><span class="s-name slot-name"><span class="tiny inline">Directed Trait</span><g-field name="spouse_directed_1_name" label="" /></span><span class="shield"><g-field name="spouse_directed_1" label="" variant="compact" /></span><g-option field="spouse_trait_checks" value="Directed Trait 1" label="Check for directed trait 1" /></li>
+            <li class="trait directed"><span class="s-name slot-name"><span class="tiny inline">Directed Trait</span><g-field name="spouse_directed_2_name" label="" /></span><span class="shield"><g-field name="spouse_directed_2" label="" variant="compact" /></span><g-option field="spouse_trait_checks" value="Directed Trait 2" label="Check for directed trait 2" /></li>
+          </ul>
+        </section>
+  
+        <g-section title="Notes">
+          <div class="gstat"><g-field name="spouse_notes" label="" /></div>
+        </g-section>
+      </div>
+
+      <div class="col">
+        <section class="box">
+          <h3 class="box-heading">Personal Information</h3>
+          <div class="id-grid pairs">
+            <div class="gstat"><span>Lord</span><g-field name="spouse_lord" label="" /></div>
+            <div class="gstat"><span>Class</span><g-field name="spouse_class" label="" variant="compact" /></div>
+          </div>
+          <div class="id-grid pairs">
+            <div class="gstat"><span>Culture</span><g-field name="spouse_culture" label="" /></div>
+            <div class="gstat"><span>Religion</span><g-field name="spouse_religion" label="" /></div>
+          </div>
+          <div class="id-grid pairs">
+            <div class="gstat"><span>Birthplace</span><g-field name="spouse_birthplace" label="" variant="compact" /></div>
+            <div class="gstat"><span>Homeland</span><g-field name="spouse_homeland" label="" /></div>
+          </div>
+          <div class="id-grid pairs">
+            <div class="gstat">Birth Year</span><g-field name="spouse_birth_year" label="" /></div>
+            <div class="gstat">Age</span><span class="age"><g-value name="spouse_age"/></span></div>
+          </div>
+          <div class="gstat"><span>Distinctive Features</span><g-field name="spouse_distinctive_features" label="" /></div>
+        </section>
+        <section class="box">
+          <h3 class="sub-heading">Characteristics</h3>
+          <div class="char-grid">
+            <div class="char"><span class="c-name">SIZ</span><g-field name="spouse_siz" label="" variant="compact" /></div>
+            <div class="char"><span class="c-name">DEX</span><g-field name="spouse_dex" label="" variant="compact" /></div>
+            <div class="char"><span class="c-name">STR</span><g-field name="spouse_str" label="" variant="compact" /></div>
+            <div class="char"><span class="c-name">CON</span><g-field name="spouse_con" label="" variant="compact" /></div>
+            <div class="char"><span class="c-name">APP</span><g-field name="spouse_app" label="" variant="compact" /></div>
+          </div>
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Derived Characteristics</h3>
+          <ul class="derived">
+            <li><span>Knockdown (SIZ)</span><span class="cell-value"><g-value name="spouse_knockdown" /></span></li>
+            <li><span>Weapon Damage (STR + SIZ)/6</span><span class="cell-value"><g-value name="spouse_weapon_damage" /> D6</span></li>
+            <li><span>Brawling Damage (STR + SIZ)/6</span><span class="cell-value"><g-value name="spouse_brawling_damage" /></span></li>
+            <li><span>Movement Rate ([STR + DEX]/2)+5</span><span class="cell-value"><g-value name="spouse_movement_rate" /></span></li>
+            <li><span>Major Wound (CON)</span><span class="cell-value"><g-value name="spouse_major_wound" /></span></li>
+            <li><span>Healing Rate (CON/5)</span><span class="cell-value"><g-value name="spouse_healing_rate" /></span></li>
+            <li><span>Total Hit Points (CON + SIZ)</span><span class="cell-value"><g-value name="spouse_total_hit_points" /></span></li>
+            <li><span>Unconscious (Total Hit Points/4)</span><span class="cell-value"><g-value name="spouse_unconscious" /></span></li>
+          </ul>
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Health &amp; Injuries</h3>
+          <h4 class="sub-heading">HP &amp; Damage</h4>
+          <div class="hp-grid">
+            <span class="c-name">Current HP</span>
+            <span class="c-name">Aggravation Damage</span>
+            <span class="c-name">Deterioration Damage</span>
+            <g-field name="spouse_hp_current" label="" />
+            <g-field name="spouse_aggravation_damage" label="" />
+            <g-field name="spouse_deterioration_damage" label="" />
+          </div>
+          <div class="id-grid pairs">
+            <label class="opt"><g-field name="spouse_unconscious_checkbox" label="" />Unconscious?</label>
+            <label class="opt"><g-field name="spouse_debilitated" label="" />Debilitated?</label>
+          </div>
+          <h4 class="sub-heading">Wounds</h4>
+          <p class="hint">Minor <b><g-value name="spouse_count_wounds_minor" /></b> · Major <b><g-value name="spouse_count_wounds_major" /></b> · Mortal <b><g-value name="spouse_count_wounds_mortal" /></b></p>
+          <g-field name="spouse_wounds" label="" />
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Armor</h3>
+          <h4 class="sub-heading">Mail/Plate</h4>
+          <div class="armor-grid">
+            <span class="c-name">Item</span>
+            <span class="c-name">Protection</span>
+            <g-field name="spouse_armor_mail_type" label="" />
+            <g-field name="spouse_armor_mail" label="" />
+          </div>
+          <h4 class="sub-heading">Textile</h4>
+          <div class="armor-grid">
+            <span class="c-name">Item</span>
+            <span class="c-name">Protection</span>
+            <g-field name="spouse_armor_textile_type" label="" />
+            <g-field name="spouse_armor_textile" label="" />
+          </div>
+          <h4 class="sub-heading">Helm</h4>
+          <div class="armor-grid">
+            <span class="c-name">Item</span>
+            <span class="c-name">Protection</span>
+            <g-field name="spouse_armor_helm_type" label="" />
+            <g-field name="spouse_armor_helm" label="" />
+          </div>
+          <h4 class="sub-heading">Shield</h4>
+          <div class="shield-grid">
+            <span class="c-name">Type</span>
+            <span class="c-name">vs Missiles</span>
+            <span class="c-name">Protection</span>
+            <g-field name="spouse_armor_shield_type" label="" />
+            <g-field name="spouse_armor_shield_missile_protection" label="" />
+            <g-field name="spouse_armor_shield" label="" />
+          </div>
+          <h4 class="sub-heading">Total Protection</h4>
+          <div class="total-line">
+            <span>Armor Protection (No Shield)</span><span class="cell-value"><g-value name="spouse_total_armor" /></span>
+            <span>Armor Protection (With Shield)</span><span class="cell-value"><g-value name="spouse_total_armor_and_shield" /></span>
+          </div>
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Attacks</h3>
+          <g-field name="spouse_weapons" label="" />
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Equipment</h3>
+          <h4 class="sub-heading">Total Value: <b>£</b><g-value name="spouse_equipment_total_value" /></h4>
+          <g-field name="spouse_equipment" label="" />
+        </section>
+      </div>
+
+      <div class="col">
+        <section class="box">
+          <h3 class="box-heading">Passions</h3>
+          <h4 class="sub-heading">Fidelitas</h4>
+          <ul class="skills single">
+            <li class="skill"><g-option field="spouse_passion_checks" value="Homage" label="Check for Homage" /><span class="s-name slot-name"><span class="s-name">Homage</span><g-field name="spouse_homage_subject" label="" /></span><g-field name="spouse_homage" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="spouse_passion_checks" value="Fealty" label="Check for Fealty" /><span class="s-name slot-name"><span class="s-name">Fealty</span><g-field name="spouse_fealty_subject" label="" /></span><g-field name="spouse_fealty" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="spouse_passion_checks" value="Passion 1" label="Check for passion 1" /><span class="s-name slot-name twin"><g-field name="spouse_passion_1_name" label="" /><g-field name="spouse_passion_1_object" label="" /></span><g-field name="spouse_passion_1" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="spouse_passion_checks" value="Passion 2" label="Check for passion 2" /><span class="s-name slot-name twin"><g-field name="spouse_passion_2_name" label="" /><g-field name="spouse_passion_2_object" label="" /></span><g-field name="spouse_passion_2" label="" variant="compact" /></li>
+          </ul>
+          <h4 class="sub-heading">Fervor</h4>
+          <ul class="skills single">
+            <li class="skill"><g-option field="spouse_passion_checks" value="Love (Family)" label="Check for Love" /><span class="s-name">Love (Family)</span><g-field name="spouse_love_family" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="spouse_passion_checks" value="Passion 3" label="Check for passion 3" /><span class="s-name slot-name twin"><g-field name="spouse_passion_3_name" label="" /><g-field name="spouse_passion_3_object" label="" /></span><g-field name="spouse_passion_3" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="spouse_passion_checks" value="Passion 4" label="Check for passion 4" /><span class="s-name slot-name twin"><g-field name="spouse_passion_4_name" label="" /><g-field name="spouse_passion_4_object" label="" /></span><g-field name="spouse_passion_4" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="spouse_passion_checks" value="Passion 5" label="Check for passion 5" /><span class="s-name slot-name twin"><g-field name="spouse_passion_5_name" label="" /><g-field name="spouse_passion_5_object" label="" /></span><g-field name="spouse_passion_5" label="" variant="compact" /></li>
+          </ul>
+          <h4 class="sub-heading">Adoratio</h4>
+          <ul class="skills single">
+            <li class="skill"><g-option field="spouse_passion_checks" value="Devotion (Deity)" label="Check for Devotion" /><span class="s-name">Devotion (Deity)</span><g-field name="spouse_devotion" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="spouse_passion_checks" value="Passion 6" label="Check for passion 6" /><span class="s-name slot-name twin"><g-field name="spouse_passion_6_name" label="" /><g-field name="spouse_passion_6_object" label="" /></span><g-field name="spouse_passion_6" label="" variant="compact" /></li>
+          </ul>
+          <h4 class="sub-heading">Civilitas</h4>
+          <ul class="skills single">
+            <li class="skill"><g-option field="spouse_passion_checks" value="Hospitality" label="Check for Hospitality" /><span class="s-name">Hospitality</span><g-field name="spouse_hospitality" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="spouse_passion_checks" value="Station" label="Check for Station" /><span class="s-name">Station</span><g-field name="spouse_station" label="" variant="compact" /></li>
+            <li class="skill"><g-option field="spouse_passion_checks" value="Passion 7" label="Check for passion 7" /><span class="s-name slot-name twin"><g-field name="spouse_passion_7_name" label="" /><g-field name="spouse_passion_7_object" label="" /></span><g-field name="spouse_passion_7" label="" variant="compact" /></li>
+          </ul>
+        </section>
+
+        <section class="box">
+          <h4 class="sub-heading">Non-Combat Skills</h4>
+          <ul class="skills">
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Awareness" label="Check for Awareness" /><span class="s-name">Awareness ⚔</span><g-field name="spouse_sk_awareness" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Hunting" label="Check for Hunting" /><span class="s-name">Hunting ⚔</span><g-field name="spouse_sk_hunting" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Chirurgery" label="Check for Chirurgery" /><span class="s-name">Chirurgery 🏵</span><g-field name="spouse_sk_chirurgery" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Industry" label="Check for Industry" /><span class="s-name">Industry 🏵🕆</span><g-field name="spouse_sk_industry" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Compose" label="Check for Compose" /><span class="s-name">Compose ♕</span><g-field name="spouse_sk_compose" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Intrigue" label="Check for Intrigue" /><span class="s-name">Intrigue ♕</span><g-field name="spouse_sk_intrigue" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Courtesy" label="Check for Courtesy" /><span class="s-name">Courtesy ⚔♕🏵🕆</span><g-field name="spouse_sk_courtesy" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Literacy" label="Check for Literacy" /><span class="s-name">Literacy ♕🕆</span><g-field name="spouse_sk_literacy" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Dancing" label="Check for Dancing" /><span class="s-name">Dancing ♕🏵</span><g-field name="spouse_sk_dancing" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Orate" label="Check for Orate" /><span class="s-name">Orate ♕🕆</span><g-field name="spouse_sk_orate" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Falconry" label="Check for Falconry" /><span class="s-name">Falconry ♕</span><g-field name="spouse_sk_falconry" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Play Instrument" label="Check for Play" /><span class="s-name">Play Instrument ♕🏵</span><g-field name="spouse_sk_play" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Fashion" label="Check for Fashion" /><span class="s-name">Fashion ♕🏵</span><g-field name="spouse_sk_fashion" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Recognize" label="Check for Recognize" /><span class="s-name">Recognize ⚔♕🏵</span><g-field name="spouse_sk_recognize" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="First Aid" label="Check for First Aid" /><span class="s-name">First Aid ⚔🏵</span><g-field name="spouse_sk_first_aid" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Religion" label="Check for Religion" /><span class="s-name">Religion ♕🕆</span><g-field name="spouse_sk_religion_skill" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Flirting" label="Check for Flirting" /><span class="s-name">Flirting ♕</span><g-field name="spouse_sk_flirting" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Singing" label="Check for Singing" /><span class="s-name">Singing ♕🏵🕆</span><g-field name="spouse_sk_singing" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Folklore" label="Check for Folklore" /><span class="s-name">Folklore</span><g-field name="spouse_sk_folklore" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Stewardship" label="Check for Stewardship" /><span class="s-name">Stewardship 🏵</span><g-field name="spouse_sk_stewardship" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Gaming" label="Check for Gaming" /><span class="s-name">Gaming ♕</span><g-field name="spouse_sk_gaming" label="" variant="compact" /></li>
+          </ul>
+        </section>
+
+        <section class="box">
+          <h4 class="sub-heading">Combat Skills</h4>
+          <ul class="skills">
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Hafted" label="Check for Hafted" /><span class="s-name">Hafted</span><g-field name="spouse_sk_hafted" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Brawling" label="Check for Brawling" /><span class="s-name">Brawling ⚔</span><g-field name="spouse_sk_brawling" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="2H Hafted" label="Check for 2H Hafted" /><span class="s-name">2H Hafted</span><g-field name="spouse_sk_hafted_2h" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Bow" label="Check for Bow" /><span class="s-name">Bow</span><g-field name="spouse_sk_bow" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Spear" label="Check for Spear" /><span class="s-name">Spear</span><g-field name="spouse_sk_spear" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Crossbow" label="Check for Crossbow" /><span class="s-name">Crossbow</span><g-field name="spouse_sk_crossbow" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Sword" label="Check for Sword" /><span class="s-name">Sword ⚔</span><g-field name="spouse_sk_sword" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Thrown Weapon" label="Check for Thrown Weapon" /><span class="s-name">Thrown Weapon</span><g-field name="spouse_sk_thrown" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Charge" label="Check for Charge" /><span class="s-name">Charge ⚔</span><g-field name="spouse_sk_charge" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Battle" label="Check for Battle" /><span class="s-name">Battle ⚔</span><g-field name="spouse_sk_battle" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Horsemanship" label="Check for Horsemanship" /><span class="s-name">Horsemanship ⚔🏵</span><g-field name="spouse_sk_horsemanship" label="" variant="compact" /></li>
+            <li class="skill"><g-option  field="spouse_skill_checks" value="Siegecraft" label="Check for Siegecraft" /><span class="s-name">Siegecraft</span><g-field name="spouse_sk_siegecraft" label="" variant="compact" /></li>
+          </ul>
+          <span class="hint">⚔ Knightly - ♕ Courtly - 🏵 Ladies' - ✝ Ministerly</span>
+        </section>
+      </div>
+    </div>
+  </g-tab>
+
+  <g-tab title="Family Record">
+    <div class="family-2col">
+      <div class="col">
+        <section class="box">
+          <h3 class="box-heading">Family Characteristic</h3>
+          <div class="lower-grid">
+            <div class="col">
+              <div class="gstat"><span>Characteristic</span><g-field name="family_characteristic" label="" /></div>
+            </div>
+            <div class="col">
+              <div class="gstat"><span>Effect</span><g-field name="family_characteristic_effect" label="" /></div>
+            </div>
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Parents</h3>
+          <div class="family-grid">
+            <div class="col">
+              <div class="gstat">Father</span><g-field name="parent1_name" label="" /></div>
+              <div class="gstat">Mother</span><g-field name="parent2_name" label="" /></div>
+            </div>
+            <div class="col">
+              <div class="gstat"><span>Birth Year</span><g-field name="parent1_birthyear" label="" variant="compact" /></div>
+              <div class="gstat"><span>Birth Year</span><g-field name="parent2_birthyear" label="" variant="compact" /></div>
+            </div>
+            <div class="col">
+              <div class="gstat"><span>Age</span><span class="age"><g-value name="parent1_age" /></span></div>
+              <div class="gstat"><span>Age</span><span class="age"><g-value name="parent2_age" /></span></div>
+            </div>
+            <div class="col">
+              <div class="gstat"><span>Father's Glory</span><g-field name="parent1_glory" label="" variant="compact" /></div>
+              <div class="gstat"><span>Mother's Glory</span><g-field name="parent2_glory" label="" variant="compact" /></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="box">
+          <h3 class="box-heading">Siblings</h3>
+          <g-field name="siblings" />
+        </section>
+      </div>
+
+      <div class="col">
+        <g-section title="Spouse" name="spouse" visible_if="married">
+          <div class="family-grid">
+            <div class="col">
+              <div class="gstat"><span>Name</span><g-field name="spouse_name" label="" /></div>
+            </div>
+            <div class="col">
+              <div class="gstat"><span>Birth Year</span><g-field name="spouse_birth_year" label="" variant="compact" /></div>
+            </div>
+            <div class="col">
+              <div class="gstat"><span>Age</span><span class="age"><g-value name="spouse_age" /></span></div>
+            </div>
+            <div class="col">
+              <div class="gstat"><span>Glory</span><g-field name="spouse_glory" label="" /></div>
+            </div>
+          </div>
+        </g-section>
+        <g-section title="Children" name="children" visible_if="married">
+          <g-field name="children" />
+        </g-section>
+
+        <section class="box">
+          <h3 class="box-heading">Other Relatives</h3>
+          <g-field name="other_relatives" />
+        </section>
+
+        <g-section title="Notes" name="notes">
+          <div class="gstat"><g-field name="family_notes" label="" /></div>
+        </g-section>
+      </div>
+    </div>
+
+    <section class="box">
+      <h3 class="box-heading">Family Record</h3>
+      <g-field name="family_records" label="" />
+    </section>
+  </g-tab>
+
+  <g-tab title="Family Events">
+    <section class="box">
+      <h3 class="box-heading">Family Events</h3>
+      <g-field name="family_events" label="" />
+    </section>
+  </g-tab>
+
+  <g-tab title="Manor 1" title_from=manor1_name visible_if="holdings_manor1_check">
+    <g-section title="Manor"  name="manor1_name">
+      <div class="manor-info-line1">
+        <div class="gstat"><span class="tiny">Name</span><g-field name="manor1_name" label="" /></div>
+        <div class="gstat"><span class="tiny">County</span><g-field name="manor1_county" label="" /></div>
+        <div class="gstat"><span class="tiny">Hundred</span><g-field name="manor1_hundred" label="" /></div>
+        <div class="gstat"><span class="tiny">Steward</span><g-field name="manor1_steward" label="" /></div>
+      </div>
+      <div class="manor-info-line2">
+        <div class="gstat"><span class="tiny">Privy Funds (£)</span><g-field name="manor1_privy_funds" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Current Income (£)</span><g-field name="manor1_current_income" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Assized Rent (£)</span><g-field name="manor1_assized_rent" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Total Treasure (£)</span><g-field name="manor1_total_treasure" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Standard of Living</span><g-field name="manor1_standard_of_living" label="" /></div>
+        <div class="gstat"><span class="tiny">Folklore</span><g-field name="sk_folklore" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Station</span><g-field name="passion_station" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Total DV</span><g-field name="manor1_total_dv" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Stewardship</span><g-field name="manor1_stewardship" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Fumble</span><g-field name="manor1_fumble" label="" /></div>
+        <div class="gstat"><span class="tiny">Famine</span><g-field name="manor1_famine" label="" /></div>
+      </div>
+    </g-section>
+    <section class="box">
+      <h4 class="sub-heading">Improvements</h4>
+      <g-field name="manor1_manorial_improvements" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Investments</h4>
+      <g-field name="manor1_investments" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Enhancements</h4>
+      <g-field name="manor1_enhancements" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Notable Features</h4>
+      <g-field name="manor1_notable_features" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Defenses</h4>
+      <g-field name="manor1_defenses" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Manor Folk</h4>
+      <g-field name="manor1_manor_folk" label="" />
+    </section>
+  </g-tab>
+
+  <g-tab title="Manor 2" title_from=manor2_name visible_if="holdings_manor2_check">
+    <g-section title="Manor"  name="manor2_name">
+      <div class="manor-info-line1">
+        <div class="gstat"><span class="tiny">Name</span><g-field name="manor2_name" label="" /></div>
+        <div class="gstat"><span class="tiny">County</span><g-field name="manor2_county" label="" /></div>
+        <div class="gstat"><span class="tiny">Hundred</span><g-field name="manor2_hundred" label="" /></div>
+        <div class="gstat"><span class="tiny">Steward</span><g-field name="manor2_steward" label="" /></div>
+      </div>
+      <div class="manor-info-line2">
+        <div class="gstat"><span class="tiny">Privy Funds (£)</span><g-field name="manor2_privy_funds" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Current Income (£)</span><g-field name="manor2_current_income" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Assized Rent (£)</span><g-field name="manor2_assized_rent" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Total Treasure (£)</span><g-field name="manor2_total_treasure" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Standard of Living</span><g-field name="manor2_standard_of_living" label="" /></div>
+        <div class="gstat"><span class="tiny">Folklore</span><g-field name="sk_folklore" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Station</span><g-field name="passion_station" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Total DV</span><g-field name="manor2_total_dv" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Stewardship</span><g-field name="manor2_stewardship" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Fumble</span><g-field name="manor2_fumble" label="" /></div>
+        <div class="gstat"><span class="tiny">Famine</span><g-field name="manor2_famine" label="" /></div>
+      </div>
+    </g-section>
+    <section class="box">
+      <h4 class="sub-heading">Improvements</h4>
+      <g-field name="manor2_manorial_improvements" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Investments</h4>
+      <g-field name="manor2_investments" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Enhancements</h4>
+      <g-field name="manor2_enhancements" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Notable Features</h4>
+      <g-field name="manor2_notable_features" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Defenses</h4>
+      <g-field name="manor2_defenses" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Manor Folk</h4>
+      <g-field name="manor2_manor_folk" label="" />
+    </section>
+  </g-tab>
+
+  <g-tab title="Manor 3" title_from=manor3_name visible_if="holdings_manor3_check">
+    <g-section title="Manor"  name="manor3_name">
+      <div class="manor-info-line1">
+        <div class="gstat"><span class="tiny">Name</span><g-field name="manor3_name" label="" /></div>
+        <div class="gstat"><span class="tiny">County</span><g-field name="manor3_county" label="" /></div>
+        <div class="gstat"><span class="tiny">Hundred</span><g-field name="manor3_hundred" label="" /></div>
+        <div class="gstat"><span class="tiny">Steward</span><g-field name="manor3_steward" label="" /></div>
+      </div>
+      <div class="manor-info-line2">
+        <div class="gstat"><span class="tiny">Privy Funds (£)</span><g-field name="manor3_privy_funds" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Current Income (£)</span><g-field name="manor3_current_income" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Assized Rent (£)</span><g-field name="manor3_assized_rent" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Total Treasure (£)</span><g-field name="manor3_total_treasure" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Standard of Living</span><g-field name="manor3_standard_of_living" label="" /></div>
+        <div class="gstat"><span class="tiny">Folklore</span><g-field name="sk_folklore" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Station</span><g-field name="passion_station" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Total DV</span><g-field name="manor3_total_dv" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Stewardship</span><g-field name="manor3_stewardship" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Fumble</span><g-field name="manor3_fumble" label="" /></div>
+        <div class="gstat"><span class="tiny">Famine</span><g-field name="manor3_famine" label="" /></div>
+      </div>
+    </g-section>
+    <section class="box">
+      <h4 class="sub-heading">Improvements</h4>
+      <g-field name="manor3_manorial_improvements" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Investments</h4>
+      <g-field name="manor3_investments" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Enhancements</h4>
+      <g-field name="manor3_enhancements" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Notable Features</h4>
+      <g-field name="manor3_notable_features" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Defenses</h4>
+      <g-field name="manor3_defenses" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Manor Folk</h4>
+      <g-field name="manor3_manor_folk" label="" />
+    </section>
+  </g-tab>
+
+  <g-tab title="Manor 4" title_from=manor4_name visible_if="holdings_manor4_check">
+    <g-section title="Manor"  name="manor4_name">
+      <div class="manor-info-line1">
+        <div class="gstat"><span class="tiny">Name</span><g-field name="manor4_name" label="" /></div>
+        <div class="gstat"><span class="tiny">County</span><g-field name="manor4_county" label="" /></div>
+        <div class="gstat"><span class="tiny">Hundred</span><g-field name="manor4_hundred" label="" /></div>
+        <div class="gstat"><span class="tiny">Steward</span><g-field name="manor4_steward" label="" /></div>
+      </div>
+      <div class="manor-info-line2">
+        <div class="gstat"><span class="tiny">Privy Funds (£)</span><g-field name="manor4_privy_funds" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Current Income (£)</span><g-field name="manor4_current_income" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Assized Rent (£)</span><g-field name="manor4_assized_rent" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Total Treasure (£)</span><g-field name="manor4_total_treasure" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Standard of Living</span><g-field name="manor4_standard_of_living" label="" /></div>
+        <div class="gstat"><span class="tiny">Folklore</span><g-field name="sk_folklore" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Station</span><g-field name="passion_station" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Total DV</span><g-field name="manor4_total_dv" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Stewardship</span><g-field name="manor4_stewardship" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Fumble</span><g-field name="manor4_fumble" label="" /></div>
+        <div class="gstat"><span class="tiny">Famine</span><g-field name="manor4_famine" label="" /></div>
+      </div>
+    </g-section>
+    <section class="box">
+      <h4 class="sub-heading">Improvements</h4>
+      <g-field name="manor4_manorial_improvements" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Investments</h4>
+      <g-field name="manor4_investments" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Enhancements</h4>
+      <g-field name="manor4_enhancements" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Notable Features</h4>
+      <g-field name="manor4_notable_features" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Defenses</h4>
+      <g-field name="manor4_defenses" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Manor Folk</h4>
+      <g-field name="manor4_manor_folk" label="" />
+    </section>
+  </g-tab>
+
+  <g-tab title="Manor 5" title_from=manor5_name visible_if="holdings_manor5_check">
+    <g-section title="Manor"  name="manor5_name">
+      <div class="manor-info-line1">
+        <div class="gstat"><span class="tiny">Name</span><g-field name="manor5_name" label="" /></div>
+        <div class="gstat"><span class="tiny">County</span><g-field name="manor5_county" label="" /></div>
+        <div class="gstat"><span class="tiny">Hundred</span><g-field name="manor5_hundred" label="" /></div>
+        <div class="gstat"><span class="tiny">Steward</span><g-field name="manor5_steward" label="" /></div>
+      </div>
+      <div class="manor-info-line2">
+        <div class="gstat"><span class="tiny">Privy Funds (£)</span><g-field name="manor5_privy_funds" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Current Income (£)</span><g-field name="manor5_current_income" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Assized Rent (£)</span><g-field name="manor5_assized_rent" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Total Treasure (£)</span><g-field name="manor5_total_treasure" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Standard of Living</span><g-field name="manor5_standard_of_living" label="" /></div>
+        <div class="gstat"><span class="tiny">Folklore</span><g-field name="sk_folklore" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Station</span><g-field name="passion_station" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Total DV</span><g-field name="manor5_total_dv" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Stewardship</span><g-field name="manor5_stewardship" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Fumble</span><g-field name="manor5_fumble" label="" /></div>
+        <div class="gstat"><span class="tiny">Famine</span><g-field name="manor5_famine" label="" /></div>
+      </div>
+    </g-section>
+    <section class="box">
+      <h4 class="sub-heading">Improvements</h4>
+      <g-field name="manor5_manorial_improvements" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Investments</h4>
+      <g-field name="manor5_investments" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Enhancements</h4>
+      <g-field name="manor5_enhancements" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Notable Features</h4>
+      <g-field name="manor5_notable_features" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Defenses</h4>
+      <g-field name="manor5_defenses" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Manor Folk</h4>
+      <g-field name="manor5_manor_folk" label="" />
+    </section>
+  </g-tab>
+
+  <g-tab title="Barony" title_from=barony_name visible_if="holdings_barony_check">
+    <g-section title="Barony"  name="barony_name">
+      <div class="manor-info-line1">
+        <div class="gstat"><span class="tiny">Name</span><g-field name="barony_name" label="" /></div>
+        <div class="gstat"><span class="tiny">County</span><g-field name="barony_county" label="" /></div>
+        <div class="gstat"><span class="tiny">Hundred</span><g-field name="barony_hundred" label="" /></div>
+      </div>
+      <div class="manor-info-line2">
+        <div class="gstat"><span class="tiny">Privy Funds (£)</span><g-field name="barony_privy_funds" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Current Income (£)</span><g-field name="barony_current_income" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Assized Rent (£)</span><g-field name="barony_assized_rent" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Total Treasure (£)</span><g-field name="barony_total_treasure" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Standard of Living</span><g-field name="barony_standard_of_living" label="" /></div>
+        <div class="gstat"><span class="tiny">Station</span><g-field name="passion_station" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Total DV</span><g-field name="barony_total_dv" label="" variant="compact" /></div>
+        <div class="gstat"><span class="tiny">Fumble</span><g-field name="barony_fumble" label="" /></div>
+        <div class="gstat"><span class="tiny">Famine</span><g-field name="barony_famine" label="" /></div>
+      </div>
+    </g-section>
+    <section class="box">
+      <h4 class="sub-heading">Court</h4>
+      <ul class="barony-court">
+          <li class="gstat"><span>Castellan</span><g-field name="barony_castellan" label="In charge of the castle." /><span class="tiny">Siegecraft</span><g-field name="barony_siegecraft_castellan" label="" variant="compact" /></li>
+          <li class="gstat"><span>Constable</span><g-field name="barony_constable" label="In charge of the stables and cavalry." /><span class="tiny">Horsemanship</span><g-field name="barony_horsemanship" label="" variant="compact" /></li>
+          <li class="gstat"><span>Dapifer</span><g-field name="barony_dapifer" label="In charge of the servants." /><span class="tiny">Folklore</span><g-field name="barony_folklore" label="" variant="compact" /></li>
+          <li class="gstat"><span>Marshall</span><g-field name="barony_marshall" label="In charge of the army." /><span class="tiny">Battle</span><g-field name="barony_battle" label="" variant="compact" /></li>
+      </ul>
+      <div class="line"><span></span></div>
+      <ul class="barony-court">
+          <li class="gstat"><span>Pincerna</span><g-field name="barony_pincerna" label="In charge of seating and service at table." /><span class="tiny">Courtesy</span><g-field name="barony_courtesy" label="" variant="compact" /></li>
+          <li class="gstat"><span>Seneschal</span><g-field name="barony_seneschal" label="In charge of primary estate's food, fields, and flocks." /><span class="tiny">Stewardship</span><g-field name="barony_stewardship_seneschal" label="" variant="compact" /></li>
+          <li class="gstat"><span>Steward</span><g-field name="barony_steward" label="In charge of outlying estate's food, fields, and flocks." /><span class="tiny">Stewardship</span><g-field name="barony_stewardship_steward" label="" variant="compact" /></li>
+          <li class="gstat"><span>Chaplain</span><g-field name="barony_chaplain" label="In charge of giving spiritual advice." /><span class="tiny">Religion</span><g-field name="barony_religion" label="" variant="compact" /></li>
+      </ul>
+      <div class="line"><span></span></div>
+      <ul class="barony-court">
+          <li class="gstat"><span>Clerk</span><g-field name="barony_clerk" label="In charge of accounts and correspondence." /><span class="tiny">Clerk (Skill)</span><g-field name="barony_clerk_skill" label="" variant="compact" /></li>
+          <li class="gstat"><span>Engineer</span><g-field name="barony_engineer" label="In charge of designing and constructing buildings." /><span class="tiny">Siegecraft</span><g-field name="barony_siegecraft_engineer" label="" variant="compact" /></li>
+          <li class="gstat"><span>Lawyer</span><g-field name="barony_lawyer" label="In charge of the ensuring compliance with the law." /><span class="tiny">Law</span><g-field name="barony_law" label="" variant="compact" /></li>
+          <li class="gstat"><span>Physician</span><g-field name="barony_physician" label="In charge of healing the sick." /><span class="tiny">First Aid</span><g-field name="barony_firstaid" label="" variant="compact" /><span class="tiny">Chirurgery</span><g-field name="barony_chirurgery" label="" variant="compact" /></li>
+      </ul>
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Army</h4>
+      <div class="army-grid">
+        <span class="c-name">Vassal Knights</span>
+        <span class="c-name">Household Knights</span>
+        <span class="c-name">Mounted Sergeants</span>
+        <span class="c-name">Garrison Soldiers</span>
+        <span class="c-name">Spearmen</span>
+        <span class="c-name">Archers</span>
+        <g-field name="barony_army_vassal_knights" label="" />
+        <g-field name="barony_army_household_knights" label="" />
+        <g-field name="barony_army_mounted_sergeants" label="" />
+        <g-field name="barony_army_garrison_soldiers" label="" />
+        <g-field name="barony_army_spearmen" label="" />
+        <g-field name="barony_army_archers" label="" />
+      </div>
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Defenses</h4>
+      <g-field name="barony_defenses" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Improvements</h4>
+      <g-field name="barony_improvements" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Investments</h4>
+      <g-field name="barony_investments" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Enhancements</h4>
+      <g-field name="barony_enhancements" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Notable Features</h4>
+      <g-field name="barony_notable_features" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Barony Folk</h4>
+      <g-field name="barony_folk" label="" />
+    </section>
+    <section class="box">
+      <h4 class="sub-heading">Settlements</h4>
+      <g-field name="barony_settlements" label="" />
+    </section>
+  </g-tab>
+</div>

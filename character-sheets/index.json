@@ -246,6 +246,26 @@
       "attribution": "This product is based on the Pathfinder Second Edition rules, published by Paizo Inc. under the ORC License. Pathfinder is a trademark of Paizo Inc. See https://paizo.com/orclicense."
     },
     {
+      "id": "pendragon-6e",
+      "name": "Pendragon 6th Edition",
+      "version": "1.1.0",
+      "path": "character-sheets/pendragon-6e/pendragon-6e.json",
+      "sha256": "fdd95f4522cb9d4ed44c09469041c93ef3d49c8fb12f83852e3ac512cb55fb42",
+      "custom_layout": true,
+      "field_count": 937,
+      "layout_path": "character-sheets/pendragon-6e/pendragon-6e.html",
+      "layout_sha256": "95480c6c15b5f13291f4ffe34921e88bb46ff02b3178b151eda39394e2dc2b5b",
+      "styles_path": "character-sheets/pendragon-6e/pendragon-6e.css",
+      "styles_sha256": "469fdd737aaab9b26f87ba2bb91223ef3febc2ee3acfb78e6d638c9eb0538148",
+      "system": "Pendragon 6th Edition",
+      "description": "A character sheet for Pendragon 6th Edition: SIZ, DEX, STR, CON and APP with derived Knockdown, Weapon and Brawling damage, Movement Rate, Major Wound, Healing Rate, Total Hit Points and Unconscious; the thirteen opposed Traits with Directed Traits; Passions under Fidelitas, Fervor, Adoratio and Civilitas; combat and non-combat skills with checks; armor, attacks, wounds, Glory and Honor; warhorse and riding horses, squire, Passive Glory, holdings, family and year-by-year history.",
+      "author": "hunter-read",
+      "homepage": "https://www.chaosium.com/fan-material-policy/",
+      "license": "Chaosium Fan Material Policy",
+      "license_url": "https://www.chaosium.com/fan-material-policy/",
+      "attribution": "This character sheet uses trademarks and/or copyrights owned by Chaosium Inc/Moon Design Publications LLC, which are used under Chaosium Inc's Fan Material Policy. We are expressly prohibited from charging you to use or access this content. This character sheet is not published, endorsed, or specifically approved by Chaosium Inc. For more information about Chaosium Inc's products, please visit www.chaosium.com."
+    },
+    {
       "id": "traveller-2e",
       "name": "Traveller (Mongoose 2nd Edition)",
       "version": "1.2.0",

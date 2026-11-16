@@ -252,6 +252,7 @@
       "path": "character-sheets/pendragon-6e/pendragon-6e.json",
       "sha256": "fdd95f4522cb9d4ed44c09469041c93ef3d49c8fb12f83852e3ac512cb55fb42",
       "custom_layout": true,
+      "custom_mobile_layout": false,
       "field_count": 937,
       "layout_path": "character-sheets/pendragon-6e/pendragon-6e.html",
       "layout_sha256": "95480c6c15b5f13291f4ffe34921e88bb46ff02b3178b151eda39394e2dc2b5b",

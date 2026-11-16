@@ -1,0 +1,7804 @@
+{
+  "$schema": "../../schema/character-sheet.schema.json",
+  "id": "pendragon-6e",
+  "name": "Pendragon 6th Edition",
+  "version": "1.1.0",
+  "system": "Pendragon 6th Edition",
+  "description": "A character sheet for Pendragon 6th Edition: SIZ, DEX, STR, CON and APP with derived Knockdown, Weapon and Brawling damage, Movement Rate, Major Wound, Healing Rate, Total Hit Points and Unconscious; the thirteen opposed Traits with Directed Traits; Passions under Fidelitas, Fervor, Adoratio and Civilitas; combat and non-combat skills with checks; armor, attacks, wounds, Glory and Honor; warhorse and riding horses, squire, Passive Glory, holdings, family and year-by-year history.",
+  "author": "hunter-read",
+  "homepage": "https://www.chaosium.com/fan-material-policy/",
+  "license": "Chaosium Fan Material Policy",
+  "license_url": "https://www.chaosium.com/fan-material-policy/",
+  "attribution": "This character sheet uses trademarks and/or copyrights owned by Chaosium Inc/Moon Design Publications LLC, which are used under Chaosium Inc's Fan Material Policy. We are expressly prohibited from charging you to use or access this content. This character sheet is not published, endorsed, or specifically approved by Chaosium Inc. For more information about Chaosium Inc's products, please visit www.chaosium.com.",
+  "fields": {
+    "character_name": {
+      "type": "text",
+      "label": "Character Name"
+    },
+    "glory": {
+      "type": "number",
+      "label": "Glory",
+      "min": 0
+    },
+    "session_glory": {
+      "type": "number",
+      "label": "Session Glory",
+      "min": 0
+    },
+    "honor": {
+      "type": "number",
+      "label": "Honor",
+      "min": 0
+    },
+    "honor_check": {
+      "type": "checkbox",
+      "label": "Honor check"
+    },
+    "player": {
+      "type": "text",
+      "label": "Player Name"
+    },
+    "year": {
+      "type": "number",
+      "label": "Year",
+      "min": 0
+    },
+    "birth_year": {
+      "type": "number",
+      "label": "Birth Year",
+      "min": 0
+    },
+    "birthplace": {
+      "type": "text",
+      "label": "Birthplace"
+    },
+    "heir": {
+      "type": "checkbox",
+      "label": "Heir?"
+    },
+    "married": {
+      "type": "checkbox",
+      "label": "Married?"
+    },
+    "homeland": {
+      "type": "text",
+      "label": "Homeland"
+    },
+    "lord": {
+      "type": "text",
+      "label": "Lord"
+    },
+    "char_class": {
+      "type": "text",
+      "label": "Class"
+    },
+    "culture": {
+      "type": "text",
+      "label": "Culture"
+    },
+    "religion": {
+      "type": "text",
+      "label": "Religion"
+    },
+    "distinctive_features": {
+      "type": "textarea",
+      "label": "Distinctive Features",
+      "rows": 2
+    },
+    "escutcheon": {
+      "type": "image",
+      "label": "Escutcheon"
+    },
+    "blazon": {
+      "type": "textarea",
+      "label": "Blazon",
+      "rows": 2
+    },
+    "titles": {
+      "type": "list",
+      "label": "Titles",
+      "add_label": "Add title",
+      "columns": [
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Title",
+          "flex": 6
+        },
+        {
+          "key": "glory",
+          "type": "text",
+          "label": "Glory",
+          "flex": 1
+        }
+      ]
+    },
+    "siz": {
+      "type": "number",
+      "label": "SIZ",
+      "min": 0,
+      "default": 10,
+      "max": 21
+    },
+    "dex": {
+      "type": "number",
+      "label": "DEX",
+      "min": 0,
+      "default": 10,
+      "max": 21
+    },
+    "str": {
+      "type": "number",
+      "label": "STR",
+      "min": 0,
+      "default": 10,
+      "max": 21
+    },
+    "con": {
+      "type": "number",
+      "label": "CON",
+      "min": 0,
+      "default": 10,
+      "max": 21
+    },
+    "app": {
+      "type": "number",
+      "label": "APP",
+      "min": 0,
+      "default": 10,
+      "max": 21
+    },
+    "hp_current": {
+      "type": "number",
+      "label": "Current Hit Points",
+      "min": 0
+    },
+    "debilitated": {
+      "type": "checkbox",
+      "label": "Debilitated?"
+    },
+    "unconscious_checkbox": {
+      "type": "checkbox",
+      "label": "Unconscious"
+    },
+    "aggravation_damage": {
+      "type": "text",
+      "label": "Aggravation Damage"
+    },
+    "deterioration_damage": {
+      "type": "text",
+      "label": "Deterioration Damage"
+    },
+    "wounds": {
+      "type": "list",
+      "label": "Wounds",
+      "add_label": "Add wound",
+      "columns": [
+        {
+          "key": "type",
+          "type": "select",
+          "label": "Type",
+          "flex": 2,
+          "options": [
+            "Minor",
+            "Major",
+            "Mortal"
+          ]
+        },
+        {
+          "key": "damage",
+          "type": "number",
+          "label": "Damage",
+          "min": 0,
+          "default": 0,
+          "flex": 1.25
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 2.75
+        },
+        {
+          "key": "aid",
+          "type": "checkbox",
+          "label": "Aid?",
+          "flex": 0.5
+        }
+      ]
+    },
+    "armor_mail_type": {
+      "type": "text",
+      "label": "Mail/Plate"
+    },
+    "armor_textile_type": {
+      "type": "text",
+      "label": "Textile"
+    },
+    "armor_helm_type": {
+      "type": "text",
+      "label": "Helm"
+    },
+    "armor_shield_type": {
+      "type": "text",
+      "label": "Shield"
+    },
+    "armor_mail": {
+      "type": "number",
+      "label": "Mail/Plate",
+      "min": 0
+    },
+    "armor_textile": {
+      "type": "number",
+      "label": "Textile",
+      "min": 0
+    },
+    "armor_helm": {
+      "type": "number",
+      "label": "Helm",
+      "min": 0
+    },
+    "armor_shield": {
+      "type": "number",
+      "label": "Shield",
+      "min": 0
+    },
+    "armor_shield_missile_protection": {
+      "type": "number",
+      "label": "Missile Protection",
+      "min": -10,
+      "max": 0
+    },
+    "weapons": {
+      "type": "list",
+      "label": "Attacks",
+      "add_label": "Add attack",
+      "columns": [
+        {
+          "key": "weapon",
+          "type": "text",
+          "label": "Weapon",
+          "flex": 3
+        },
+        {
+          "key": "skill",
+          "type": "number",
+          "label": "Skill",
+          "min": 0,
+          "default": 0,
+          "flex": 1
+        },
+        {
+          "key": "damage",
+          "type": "text",
+          "label": "Damage",
+          "flex": 2
+        }
+      ]
+    },
+    "equipment": {
+      "type": "list",
+      "label": "Equipment",
+      "add_label": "Add item",
+      "columns": [
+        {
+          "key": "item",
+          "type": "text",
+          "label": "Item",
+          "flex": 2.5
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 2.5
+        },
+        {
+          "key": "libra",
+          "type": "number",
+          "label": "£",
+          "min": 0,
+          "flex": 1
+        },
+        {
+          "key": "denarii",
+          "type": "number",
+          "label": "d",
+          "min": 0,
+          "flex": 1.25
+        }
+      ]
+    },
+    "money_libra": {
+      "type": "number",
+      "label": "Libra",
+      "min": 0
+    },
+    "money_denarii": {
+      "type": "number",
+      "label": "Denarii",
+      "min": 0
+    },
+    "trait_chaste": {
+      "type": "number",
+      "label": "Chaste",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "trait_lustful": {
+      "type": "number",
+      "label": "Lustful",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "trait_energetic": {
+      "type": "number",
+      "label": "Energetic",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "trait_lazy": {
+      "type": "number",
+      "label": "Lazy",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "trait_forgiving": {
+      "type": "number",
+      "label": "Forgiving",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "trait_vengeful": {
+      "type": "number",
+      "label": "Vengeful",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "trait_generous": {
+      "type": "number",
+      "label": "Generous",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "trait_selfish": {
+      "type": "number",
+      "label": "Selfish",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "trait_honest": {
+      "type": "number",
+      "label": "Honest",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "trait_deceitful": {
+      "type": "number",
+      "label": "Deceitful",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "trait_just": {
+      "type": "number",
+      "label": "Just",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "trait_arbitrary": {
+      "type": "number",
+      "label": "Arbitrary",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "trait_merciful": {
+      "type": "number",
+      "label": "Merciful",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "trait_cruel": {
+      "type": "number",
+      "label": "Cruel",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "trait_modest": {
+      "type": "number",
+      "label": "Modest",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "trait_proud": {
+      "type": "number",
+      "label": "Proud",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "trait_prudent": {
+      "type": "number",
+      "label": "Prudent",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "trait_reckless": {
+      "type": "number",
+      "label": "Reckless",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "trait_spiritual": {
+      "type": "number",
+      "label": "Spiritual",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "trait_worldly": {
+      "type": "number",
+      "label": "Worldly",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "trait_temperate": {
+      "type": "number",
+      "label": "Temperate",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "trait_indulgent": {
+      "type": "number",
+      "label": "Indulgent",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "trait_trusting": {
+      "type": "number",
+      "label": "Trusting",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "trait_suspicious": {
+      "type": "number",
+      "label": "Suspicious",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "trait_valorous": {
+      "type": "number",
+      "label": "Valorous",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "trait_cowardly": {
+      "type": "number",
+      "label": "Cowardly",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "directed_1_name": {
+      "type": "text",
+      "label": "Directed Trait name"
+    },
+    "directed_1": {
+      "type": "number",
+      "label": "Directed Trait",
+      "min": 0,
+      "max": 20
+    },
+    "directed_2_name": {
+      "type": "text",
+      "label": "Directed Trait name"
+    },
+    "directed_2": {
+      "type": "number",
+      "label": "Directed Trait",
+      "min": 0,
+      "max": 20
+    },
+    "ideal": {
+      "type": "text",
+      "label": "Ideal"
+    },
+    "trait_checks": {
+      "type": "multiselect",
+      "label": "Trait checks",
+      "options": [
+        "Chaste",
+        "Lustful",
+        "Energetic",
+        "Lazy",
+        "Forgiving",
+        "Vengeful",
+        "Generous",
+        "Selfish",
+        "Honest",
+        "Deceitful",
+        "Just",
+        "Arbitrary",
+        "Merciful",
+        "Cruel",
+        "Modest",
+        "Proud",
+        "Prudent",
+        "Reckless",
+        "Spiritual",
+        "Worldly",
+        "Temperate",
+        "Indulgent",
+        "Trusting",
+        "Suspicious",
+        "Valorous",
+        "Cowardly",
+        "Directed Trait 1",
+        "Directed Trait 2"
+      ]
+    },
+    "notes": {
+      "type": "textarea",
+      "label": "Notes",
+      "rows": 6
+    },
+    "passion_homage": {
+      "type": "number",
+      "label": "Homage",
+      "min": 0,
+      "max": 40
+    },
+    "passion_homage_subject": {
+      "type": "text",
+      "label": "Homage subject"
+    },
+    "passion_fealty": {
+      "type": "number",
+      "label": "Fealty",
+      "min": 0,
+      "max": 40
+    },
+    "passion_fealty_subject": {
+      "type": "text",
+      "label": "Fealty subject"
+    },
+    "passion_love_family": {
+      "type": "number",
+      "label": "Love (Family)",
+      "min": 0,
+      "max": 40
+    },
+    "passion_devotion": {
+      "type": "number",
+      "label": "Devotion (Deity)",
+      "min": 0,
+      "max": 40
+    },
+    "passion_hospitality": {
+      "type": "number",
+      "label": "Hospitality",
+      "min": 0,
+      "max": 40
+    },
+    "passion_station": {
+      "type": "number",
+      "label": "Station",
+      "min": 0,
+      "max": 40
+    },
+    "passion_c1_name": {
+      "type": "text",
+      "label": "Passion 1 name"
+    },
+    "passion_c1_object": {
+      "type": "text",
+      "label": "Passion 1 object"
+    },
+    "passion_c1": {
+      "type": "number",
+      "label": "Passion 1",
+      "min": 0,
+      "max": 40
+    },
+    "passion_c2_name": {
+      "type": "text",
+      "label": "Passion 2 name"
+    },
+    "passion_c2_object": {
+      "type": "text",
+      "label": "Passion 2 object"
+    },
+    "passion_c2": {
+      "type": "number",
+      "label": "Passion 2",
+      "min": 0,
+      "max": 40
+    },
+    "passion_c3_name": {
+      "type": "text",
+      "label": "Passion 3 name"
+    },
+    "passion_c3_object": {
+      "type": "text",
+      "label": "Passion 3 object"
+    },
+    "passion_c3": {
+      "type": "number",
+      "label": "Passion 3",
+      "min": 0,
+      "max": 40
+    },
+    "passion_c4_name": {
+      "type": "text",
+      "label": "Passion 4 name"
+    },
+    "passion_c4_object": {
+      "type": "text",
+      "label": "Passion 4 object"
+    },
+    "passion_c4": {
+      "type": "number",
+      "label": "Passion 4",
+      "min": 0,
+      "max": 40
+    },
+    "passion_c5_name": {
+      "type": "text",
+      "label": "Passion 5 name"
+    },
+    "passion_c5_object": {
+      "type": "text",
+      "label": "Passion 5 object"
+    },
+    "passion_c5": {
+      "type": "number",
+      "label": "Passion 5",
+      "min": 0,
+      "max": 40
+    },
+    "passion_c6_name": {
+      "type": "text",
+      "label": "Passion 6 name"
+    },
+    "passion_c6_object": {
+      "type": "text",
+      "label": "Passion 6 object"
+    },
+    "passion_c6": {
+      "type": "number",
+      "label": "Passion 6",
+      "min": 0,
+      "max": 40
+    },
+    "passion_c7_name": {
+      "type": "text",
+      "label": "Passion 7 name"
+    },
+    "passion_c7_object": {
+      "type": "text",
+      "label": "Passion 6 object"
+    },
+    "passion_c7": {
+      "type": "number",
+      "label": "Passion 7",
+      "min": 0,
+      "max": 40
+    },
+    "passion_checks": {
+      "type": "multiselect",
+      "label": "Passion checks",
+      "options": [
+        "Homage",
+        "Fealty",
+        "Love (Family)",
+        "Devotion (Deity)",
+        "Hospitality",
+        "Station",
+        "Passion 1",
+        "Passion 2",
+        "Passion 3",
+        "Passion 4",
+        "Passion 5",
+        "Passion 6",
+        "Passion 7"
+      ]
+    },
+    "sk_awareness": {
+      "type": "number",
+      "label": "Awareness",
+      "min": 0,
+      "max": 40
+    },
+    "sk_chirurgery": {
+      "type": "number",
+      "label": "Chirurgery",
+      "min": 0,
+      "max": 40
+    },
+    "sk_compose": {
+      "type": "number",
+      "label": "Compose",
+      "min": 0,
+      "max": 40
+    },
+    "sk_courtesy": {
+      "type": "number",
+      "label": "Courtesy",
+      "min": 0,
+      "max": 40
+    },
+    "sk_dancing": {
+      "type": "number",
+      "label": "Dancing",
+      "min": 0,
+      "max": 40
+    },
+    "sk_falconry": {
+      "type": "number",
+      "label": "Falconry",
+      "min": 0,
+      "max": 40
+    },
+    "sk_fashion": {
+      "type": "number",
+      "label": "Fashion",
+      "min": 0,
+      "max": 40
+    },
+    "sk_first_aid": {
+      "type": "number",
+      "label": "First Aid",
+      "min": 0,
+      "max": 40
+    },
+    "sk_flirting": {
+      "type": "number",
+      "label": "Flirting",
+      "min": 0,
+      "max": 40
+    },
+    "sk_folklore": {
+      "type": "number",
+      "label": "Folklore",
+      "min": 0,
+      "max": 40
+    },
+    "sk_gaming": {
+      "type": "number",
+      "label": "Gaming",
+      "min": 0,
+      "max": 40
+    },
+    "sk_hunting": {
+      "type": "number",
+      "label": "Hunting",
+      "min": 0,
+      "max": 40
+    },
+    "sk_industry": {
+      "type": "number",
+      "label": "Industry",
+      "min": 0,
+      "max": 40
+    },
+    "sk_intrigue": {
+      "type": "number",
+      "label": "Intrigue",
+      "min": 0,
+      "max": 40
+    },
+    "sk_literacy": {
+      "type": "number",
+      "label": "Literacy",
+      "min": 0,
+      "max": 40
+    },
+    "sk_orate": {
+      "type": "number",
+      "label": "Orate",
+      "min": 0,
+      "max": 40
+    },
+    "sk_play": {
+      "type": "number",
+      "label": "Play Instrument",
+      "min": 0,
+      "max": 40
+    },
+    "sk_recognize": {
+      "type": "number",
+      "label": "Recognize",
+      "min": 0,
+      "max": 40
+    },
+    "sk_religion_skill": {
+      "type": "number",
+      "label": "Religion",
+      "min": 0,
+      "max": 40
+    },
+    "sk_singing": {
+      "type": "number",
+      "label": "Singing",
+      "min": 0,
+      "max": 40
+    },
+    "sk_stewardship": {
+      "type": "number",
+      "label": "Stewardship",
+      "min": 0,
+      "max": 40
+    },
+    "sk_extra_1_name": {
+      "type": "text",
+      "label": "Other skill name"
+    },
+    "sk_extra_1": {
+      "type": "number",
+      "label": "Other skill",
+      "min": 0,
+      "max": 40
+    },
+    "sk_battle": {
+      "type": "number",
+      "label": "Battle",
+      "min": 0,
+      "max": 40
+    },
+    "sk_horsemanship": {
+      "type": "number",
+      "label": "Horsemanship",
+      "min": 0,
+      "max": 40
+    },
+    "sk_sword": {
+      "type": "number",
+      "label": "Sword",
+      "min": 0,
+      "max": 40
+    },
+    "sk_charge": {
+      "type": "number",
+      "label": "Charge",
+      "min": 0,
+      "max": 40
+    },
+    "sk_spear": {
+      "type": "number",
+      "label": "Spear",
+      "min": 0,
+      "max": 40
+    },
+    "sk_hafted": {
+      "type": "number",
+      "label": "Hafted",
+      "min": 0,
+      "max": 40
+    },
+    "sk_hafted_2h": {
+      "type": "number",
+      "label": "2H Hafted",
+      "min": 0,
+      "max": 40
+    },
+    "sk_brawling": {
+      "type": "number",
+      "label": "Brawling",
+      "min": 0,
+      "max": 40
+    },
+    "sk_bow": {
+      "type": "number",
+      "label": "Bow",
+      "min": 0,
+      "max": 40
+    },
+    "sk_crossbow": {
+      "type": "number",
+      "label": "Crossbow",
+      "min": 0,
+      "max": 40
+    },
+    "sk_thrown": {
+      "type": "number",
+      "label": "Thrown Weapon",
+      "min": 0,
+      "max": 40
+    },
+    "sk_siegecraft": {
+      "type": "number",
+      "label": "Siegecraft",
+      "min": 0,
+      "max": 40
+    },
+    "skill_checks": {
+      "type": "multiselect",
+      "label": "Skill checks",
+      "options": [
+        "Awareness",
+        "Chirurgery",
+        "Compose",
+        "Courtesy",
+        "Dancing",
+        "Falconry",
+        "Fashion",
+        "First Aid",
+        "Flirting",
+        "Folklore",
+        "Gaming",
+        "Hunting",
+        "Industry",
+        "Intrigue",
+        "Literacy",
+        "Orate",
+        "Play Instrument",
+        "Recognize",
+        "Religion",
+        "Singing",
+        "Stewardship",
+        "Extra 1",
+        "Battle",
+        "Horsemanship",
+        "Sword",
+        "Charge",
+        "Spear",
+        "Hafted",
+        "2H Hafted",
+        "Brawling",
+        "Bow",
+        "Crossbow",
+        "Thrown Weapon",
+        "Siegecraft"
+      ]
+    },
+    "warhorse_name": {
+      "type": "text",
+      "label": "Warhorse Name"
+    },
+    "warhorse_type": {
+      "type": "text",
+      "label": "Warhorse Type"
+    },
+    "warhorse_siz": {
+      "type": "number",
+      "label": "Warhorse SIZ",
+      "min": 0
+    },
+    "warhorse_dex": {
+      "type": "number",
+      "label": "Warhorse DEX",
+      "min": 0
+    },
+    "warhorse_str": {
+      "type": "number",
+      "label": "Warhorse STR",
+      "min": 0
+    },
+    "warhorse_con": {
+      "type": "number",
+      "label": "Warhorse CON",
+      "min": 0
+    },
+    "warhorse_armor": {
+      "type": "number",
+      "label": "Warhorse Armor",
+      "min": 0
+    },
+    "warhorse_move": {
+      "type": "number",
+      "label": "Warhorse Move",
+      "min": 0
+    },
+    "warhorse_hp": {
+      "type": "number",
+      "label": "Warhorse HP",
+      "min": 0
+    },
+    "warhorse_damage": {
+      "type": "text",
+      "label": "Warhorse Damage"
+    },
+    "best_horse_name": {
+      "type": "text",
+      "label": "Best Riding Horse name"
+    },
+    "best_horse_type": {
+      "type": "text",
+      "label": "Best Riding Horse type"
+    },
+    "best_horse_move": {
+      "type": "number",
+      "label": "Best Riding Horse Move",
+      "min": 0
+    },
+    "best_horse_con": {
+      "type": "number",
+      "label": "Best Riding Horse CON",
+      "min": 0
+    },
+    "best_horse_hp": {
+      "type": "number",
+      "label": "Best Riding Horse HP",
+      "min": 0
+    },
+    "other_horse1_type": {
+      "type": "text",
+      "label": "Other Horse 1 type"
+    },
+    "other_horse1_worth": {
+      "type": "text",
+      "label": "Other Horse 1 worth"
+    },
+    "other_horse1_move": {
+      "type": "number",
+      "label": "Other Horse 1 Move",
+      "min": 0
+    },
+    "other_horse2_type": {
+      "type": "text",
+      "label": "Other Horse 2 type"
+    },
+    "other_horse2_worth": {
+      "type": "text",
+      "label": "Other Horse 2 worth"
+    },
+    "other_horse2_move": {
+      "type": "number",
+      "label": "Other Horse 2 Move",
+      "min": 0
+    },
+    "joust_wins": {
+      "type": "number",
+      "label": "Jousting Wins",
+      "min": 0
+    },
+    "joust_losses": {
+      "type": "number",
+      "label": "Jousting Losses",
+      "min": 0
+    },
+    "equestrian_notes": {
+      "type": "textarea",
+      "label": "Equestrian Notes",
+      "rows": 4
+    },
+    "other_horses": {
+      "type": "list",
+      "label": "Other Horses",
+      "add_label": "Add horse",
+      "columns": [
+        {
+          "key": "type",
+          "type": "text",
+          "label": "Type",
+          "flex": 2
+        },
+        {
+          "key": "worth",
+          "type": "text",
+          "label": "Worth",
+          "flex": 1
+        },
+        {
+          "key": "siz",
+          "type": "number",
+          "label": "SIZ",
+          "min": 0,
+          "flex": 1
+        },
+        {
+          "key": "dex",
+          "type": "number",
+          "label": "DEX",
+          "min": 0,
+          "flex": 1
+        },
+        {
+          "key": "str",
+          "type": "number",
+          "label": "STR",
+          "min": 0,
+          "flex": 1
+        },
+        {
+          "key": "con",
+          "type": "number",
+          "label": "CON",
+          "min": 0,
+          "flex": 1
+        },
+        {
+          "key": "armor",
+          "type": "number",
+          "label": "Armor",
+          "min": 0,
+          "flex": 1
+        },
+        {
+          "key": "move",
+          "type": "number",
+          "label": "Move",
+          "min": 0,
+          "flex": 1
+        },
+        {
+          "key": "damage",
+          "type": "text",
+          "label": "Damage",
+          "flex": 1
+        },
+        {
+          "key": "hp",
+          "type": "number",
+          "label": "HP",
+          "min": 0,
+          "flex": 1
+        }
+      ]
+    },
+    "squire1_name": {
+      "type": "text",
+      "label": "Squire Name"
+    },
+    "squire1_glory": {
+      "type": "number",
+      "label": "Glory",
+      "min": 0
+    },
+    "squire1_honor": {
+      "type": "number",
+      "label": "Honor",
+      "min": 0
+    },
+    "squire1_honor_check": {
+      "type": "checkbox",
+      "label": "Honor check"
+    },
+    "squire1_birthyear": {
+      "type": "text",
+      "label": "Squire Birth Year"
+    },
+    "squire1_skill": {
+      "type": "number",
+      "label": "Squire Skill",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_notes": {
+      "type": "textarea",
+      "label": "Squire Notes",
+      "rows": 3
+    },
+    "squire2_name": {
+      "type": "text",
+      "label": "Squire Name"
+    },
+    "squire2_glory": {
+      "type": "number",
+      "label": "Glory",
+      "min": 0
+    },
+    "squire2_honor": {
+      "type": "number",
+      "label": "Honor",
+      "min": 0
+    },
+    "squire2_honor_check": {
+      "type": "checkbox",
+      "label": "Honor check"
+    },
+    "squire2_birthyear": {
+      "type": "text",
+      "label": "Squire Birth Year"
+    },
+    "squire2_skill": {
+      "type": "number",
+      "label": "Squire Skill",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_notes": {
+      "type": "textarea",
+      "label": "Squire Notes",
+      "rows": 3
+    },
+    "squire3_name": {
+      "type": "text",
+      "label": "Squire Name"
+    },
+    "squire3_glory": {
+      "type": "number",
+      "label": "Glory",
+      "min": 0
+    },
+    "squire3_honor": {
+      "type": "number",
+      "label": "Honor",
+      "min": 0
+    },
+    "squire3_honor_check": {
+      "type": "checkbox",
+      "label": "Honor check"
+    },
+    "squire3_birthyear": {
+      "type": "text",
+      "label": "Squire Birth Year"
+    },
+    "squire3_skill": {
+      "type": "number",
+      "label": "Squire Skill",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_notes": {
+      "type": "textarea",
+      "label": "Squire Notes",
+      "rows": 3
+    },
+    "passive_traits": {
+      "type": "number",
+      "label": "Traits & Passions",
+      "min": 0
+    },
+    "passive_appeal": {
+      "type": "number",
+      "label": "Fair Appeal",
+      "min": 0
+    },
+    "passive_living": {
+      "type": "number",
+      "label": "Standard of Living",
+      "min": 0
+    },
+    "passive_titles": {
+      "type": "number",
+      "label": "Titles",
+      "min": 0
+    },
+    "passive_other": {
+      "type": "number",
+      "label": "Other",
+      "min": 0
+    },
+    "passive_other_note": {
+      "type": "textarea",
+      "label": "Other Passive Glory note",
+      "rows": 1
+    },
+    "history": {
+      "type": "list",
+      "label": "History & Events",
+      "add_label": "Add year",
+      "columns": [
+        {
+          "key": "year",
+          "type": "text",
+          "label": "Year",
+          "flex": 1
+        },
+        {
+          "key": "event",
+          "type": "text",
+          "label": "Event",
+          "flex": 4
+        },
+        {
+          "key": "living",
+          "type": "text",
+          "label": "Standard of Living",
+          "flex": 2
+        },
+        {
+          "key": "new_glory",
+          "type": "number",
+          "label": "New Glory",
+          "min": 0,
+          "default": 0,
+          "flex": 1
+        },
+        {
+          "key": "total_glory",
+          "type": "number",
+          "label": "Total Glory",
+          "min": 0,
+          "default": 0,
+          "flex": 1
+        }
+      ]
+    },
+    "parent1_name": {
+      "type": "text",
+      "label": "Parent's Name"
+    },
+    "parent1_birthyear": {
+      "type": "number",
+      "label": "Parent's Birth Year",
+      "min": 0
+    },
+    "parent1_glory": {
+      "type": "number",
+      "label": "Parent's Glory",
+      "min": 0
+    },
+    "parent2_name": {
+      "type": "text",
+      "label": "Parent's Name"
+    },
+    "parent2_birthyear": {
+      "type": "number",
+      "label": "Parent's Birth Year",
+      "min": 0
+    },
+    "parent2_glory": {
+      "type": "number",
+      "label": "Parent's Glory",
+      "min": 0
+    },
+    "family_characteristic": {
+      "type": "text",
+      "label": "Family Characteristic"
+    },
+    "family_characteristic_effect": {
+      "type": "text",
+      "label": "Family Characteristic Effect"
+    },
+    "family_notes": {
+      "type": "textarea",
+      "label": "Family Notes",
+      "rows": 3
+    },
+    "siblings": {
+      "type": "list",
+      "add_label": "Add sibling",
+      "columns": [
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Name",
+          "flex": 2
+        },
+        {
+          "key": "born",
+          "type": "number",
+          "label": "Birth Year",
+          "min": 0,
+          "flex": 1
+        },
+        {
+          "key": "age",
+          "type": "number",
+          "label": "Age",
+          "min": 0,
+          "default_from": "born ? year - born : null",
+          "flex": 1
+        },
+        {
+          "key": "klass",
+          "type": "text",
+          "label": "Class",
+          "flex": 2
+        }
+      ]
+    },
+    "other_relatives": {
+      "type": "list",
+      "add_label": "Add Relative",
+      "columns": [
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Name",
+          "flex": 2
+        },
+        {
+          "key": "born",
+          "type": "number",
+          "label": "Birth Year",
+          "min": 0,
+          "flex": 1
+        },
+        {
+          "key": "age",
+          "type": "number",
+          "label": "Age",
+          "min": 0,
+          "default_from": "born ? year - born : null",
+          "flex": 1
+        },
+        {
+          "key": "klass",
+          "type": "text",
+          "label": "Class",
+          "flex": 2
+        }
+      ]
+    },
+    "children": {
+      "type": "list",
+      "add_label": "Add child",
+      "columns": [
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Name",
+          "flex": 2
+        },
+        {
+          "key": "born",
+          "type": "number",
+          "label": "Birth Year",
+          "min": 0,
+          "flex": 1
+        },
+        {
+          "key": "age",
+          "type": "number",
+          "label": "Age",
+          "min": 0,
+          "default_from": "born ? year - born : null",
+          "flex": 1
+        },
+        {
+          "key": "klass",
+          "type": "text",
+          "label": "Class",
+          "flex": 2
+        }
+      ]
+    },
+    "holdings_manor1_check": {
+      "type": "checkbox",
+      "label": "Manor 1"
+    },
+    "holdings_manor2_check": {
+      "type": "checkbox",
+      "label": "Manor 2"
+    },
+    "holdings_manor3_check": {
+      "type": "checkbox",
+      "label": "Manor 3"
+    },
+    "holdings_manor4_check": {
+      "type": "checkbox",
+      "label": "Manor 4"
+    },
+    "holdings_manor5_check": {
+      "type": "checkbox",
+      "label": "Manor 5"
+    },
+    "holdings_barony_check": {
+      "type": "checkbox",
+      "label": "Barony"
+    },
+    "squire1_check": {
+      "type": "checkbox",
+      "label": "Squire 1"
+    },
+    "squire2_check": {
+      "type": "checkbox",
+      "label": "Squire 2"
+    },
+    "squire3_check": {
+      "type": "checkbox",
+      "label": "Squire 3"
+    },
+    "best_horse_siz": {
+      "type": "number",
+      "label": "Best Riding Horse SIZ",
+      "min": 0
+    },
+    "best_horse_dex": {
+      "type": "number",
+      "label": "Best Riding Horse DEX",
+      "min": 0
+    },
+    "best_horse_str": {
+      "type": "number",
+      "label": "Best Riding Horse STR",
+      "min": 0
+    },
+    "best_horse_armor": {
+      "type": "number",
+      "label": "Best Riding Horse Armor",
+      "min": 0
+    },
+    "best_horse_damage": {
+      "type": "text",
+      "label": "Best Riding Horse Damage"
+    },
+    "spouse_horse_name": {
+      "type": "text",
+      "label": "Squire's Horse Name"
+    },
+    "spouse_horse_type": {
+      "type": "text",
+      "label": "Squire's Horse Type"
+    },
+    "spouse_horse_worth": {
+      "type": "text",
+      "label": "Squire's Horse Worth"
+    },
+    "spouse_horse_siz": {
+      "type": "number",
+      "label": "Squire's Horse SIZ",
+      "min": 0
+    },
+    "spouse_horse_dex": {
+      "type": "number",
+      "label": "Squire's Horse DEX",
+      "min": 0
+    },
+    "spouse_horse_str": {
+      "type": "number",
+      "label": "Squire's Horse STR",
+      "min": 0
+    },
+    "spouse_horse_con": {
+      "type": "number",
+      "label": "Squire's Horse CON",
+      "min": 0
+    },
+    "spouse_horse_armor": {
+      "type": "number",
+      "label": "Squire's Horse Armor",
+      "min": 0
+    },
+    "spouse_horse_move": {
+      "type": "number",
+      "label": "Squire's Horse Move",
+      "min": 0
+    },
+    "spouse_horse_damage": {
+      "type": "text",
+      "label": "Squire's Horse Damage"
+    },
+    "spouse_horse_hp": {
+      "type": "number",
+      "label": "Squire's Horse HP",
+      "min": 0
+    },
+    "squire1_horse_name": {
+      "type": "text",
+      "label": "Squire's Horse Name"
+    },
+    "squire1_horse_type": {
+      "type": "text",
+      "label": "Squire's Horse Type"
+    },
+    "squire1_horse_worth": {
+      "type": "text",
+      "label": "Squire's Horse Worth"
+    },
+    "squire1_horse_siz": {
+      "type": "number",
+      "label": "Squire's Horse SIZ",
+      "min": 0
+    },
+    "squire1_horse_dex": {
+      "type": "number",
+      "label": "Squire's Horse DEX",
+      "min": 0
+    },
+    "squire1_horse_str": {
+      "type": "number",
+      "label": "Squire's Horse STR",
+      "min": 0
+    },
+    "squire1_horse_con": {
+      "type": "number",
+      "label": "Squire's Horse CON",
+      "min": 0
+    },
+    "squire1_horse_armor": {
+      "type": "number",
+      "label": "Squire's Horse Armor",
+      "min": 0
+    },
+    "squire1_horse_move": {
+      "type": "number",
+      "label": "Squire's Horse Move",
+      "min": 0
+    },
+    "squire1_horse_damage": {
+      "type": "text",
+      "label": "Squire's Horse Damage"
+    },
+    "squire1_horse_hp": {
+      "type": "number",
+      "label": "Squire's Horse HP",
+      "min": 0
+    },
+    "squire2_horse_name": {
+      "type": "text",
+      "label": "Squire's Horse Name"
+    },
+    "squire2_horse_type": {
+      "type": "text",
+      "label": "Squire's Horse Type"
+    },
+    "squire2_horse_worth": {
+      "type": "text",
+      "label": "Squire's Horse Worth"
+    },
+    "squire2_horse_siz": {
+      "type": "number",
+      "label": "Squire's Horse SIZ",
+      "min": 0
+    },
+    "squire2_horse_dex": {
+      "type": "number",
+      "label": "Squire's Horse DEX",
+      "min": 0
+    },
+    "squire2_horse_str": {
+      "type": "number",
+      "label": "Squire's Horse STR",
+      "min": 0
+    },
+    "squire2_horse_con": {
+      "type": "number",
+      "label": "Squire's Horse CON",
+      "min": 0
+    },
+    "squire2_horse_armor": {
+      "type": "number",
+      "label": "Squire's Horse Armor",
+      "min": 0
+    },
+    "squire2_horse_move": {
+      "type": "number",
+      "label": "Squire's Horse Move",
+      "min": 0
+    },
+    "squire2_horse_damage": {
+      "type": "text",
+      "label": "Squire's Horse Damage"
+    },
+    "squire2_horse_hp": {
+      "type": "number",
+      "label": "Squire's Horse HP",
+      "min": 0
+    },
+    "squire3_horse_name": {
+      "type": "text",
+      "label": "Squire's Horse Name"
+    },
+    "squire3_horse_type": {
+      "type": "text",
+      "label": "Squire's Horse Type"
+    },
+    "squire3_horse_worth": {
+      "type": "text",
+      "label": "Squire's Horse Worth"
+    },
+    "squire3_horse_siz": {
+      "type": "number",
+      "label": "Squire's Horse SIZ",
+      "min": 0
+    },
+    "squire3_horse_dex": {
+      "type": "number",
+      "label": "Squire's Horse DEX",
+      "min": 0
+    },
+    "squire3_horse_str": {
+      "type": "number",
+      "label": "Squire's Horse STR",
+      "min": 0
+    },
+    "squire3_horse_con": {
+      "type": "number",
+      "label": "Squire's Horse CON",
+      "min": 0
+    },
+    "squire3_horse_armor": {
+      "type": "number",
+      "label": "Squire's Horse Armor",
+      "min": 0
+    },
+    "squire3_horse_move": {
+      "type": "number",
+      "label": "Squire's Horse Move",
+      "min": 0
+    },
+    "squire3_horse_damage": {
+      "type": "text",
+      "label": "Squire's Horse Damage"
+    },
+    "squire3_horse_hp": {
+      "type": "number",
+      "label": "Squire's Horse HP",
+      "min": 0
+    },
+    "other_horse_siz": {
+      "type": "number",
+      "label": "Other Horse SIZ",
+      "min": 0
+    },
+    "other_horse_dex": {
+      "type": "number",
+      "label": "Other Horse DEX",
+      "min": 0
+    },
+    "other_horse_str": {
+      "type": "number",
+      "label": "Other Horse STR",
+      "min": 0
+    },
+    "other_horse_con": {
+      "type": "number",
+      "label": "Other Horse CON",
+      "min": 0
+    },
+    "other_horse_armor": {
+      "type": "number",
+      "label": "Other Horse Armor",
+      "min": 0
+    },
+    "other_horse_move": {
+      "type": "number",
+      "label": "Other Horse Move",
+      "min": 0
+    },
+    "other_horse_damage": {
+      "type": "text",
+      "label": "Other Horse Damage"
+    },
+    "other_horse_hp": {
+      "type": "number",
+      "label": "Other Horse HP",
+      "min": 0
+    },
+    "warhorse_worth": {
+      "type": "text",
+      "label": "Warhorse Worth"
+    },
+    "best_horse_worth": {
+      "type": "text",
+      "label": "Best Riding Horse Worth"
+    },
+    "family_records": {
+      "type": "list",
+      "label": "Family Record",
+      "add_label": "Add family member",
+      "columns": [
+        {
+          "key": "name",
+          "type": "text",
+          "label": "Name",
+          "flex": 2
+        },
+        {
+          "key": "relation",
+          "type": "text",
+          "label": "Relation",
+          "flex": 1.5
+        },
+        {
+          "key": "birthplace",
+          "type": "text",
+          "label": "Birthplace",
+          "min": 0,
+          "flex": 1.5
+        },
+        {
+          "key": "born",
+          "type": "number",
+          "label": "Birth Year",
+          "min": 0,
+          "flex": 1
+        },
+        {
+          "key": "age",
+          "type": "number",
+          "label": "Age",
+          "min": 0,
+          "default_from": "born ? year - born : null",
+          "flex": 1
+        },
+        {
+          "key": "profession",
+          "type": "text",
+          "label": "Profession",
+          "flex": 2
+        },
+        {
+          "key": "key_skill",
+          "type": "text",
+          "label": "Key Skill",
+          "flex": 2
+        },
+        {
+          "key": "skill_level",
+          "type": "number",
+          "label": "Skill Level",
+          "min": 0,
+          "flex": 1
+        },
+        {
+          "key": "spouse",
+          "type": "text",
+          "label": "Spouse",
+          "flex": 2
+        }
+      ]
+    },
+    "family_events": {
+      "type": "list",
+      "label": "Family Events",
+      "add_label": "Add family event",
+      "columns": [
+        {
+          "key": "year",
+          "type": "number",
+          "label": "Year",
+          "min": 0,
+          "flex": 0.75
+        },
+        {
+          "key": "event",
+          "type": "text",
+          "label": "Event",
+          "flex": 2.5
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 6
+        }
+      ]
+    },
+    "spouse_name": {
+      "type": "text",
+      "label": "Name"
+    },
+    "spouse_glory": {
+      "type": "number",
+      "label": "Glory",
+      "min": 0
+    },
+    "spouse_honor": {
+      "type": "number",
+      "label": "Honor",
+      "min": 0
+    },
+    "spouse_honor_check": {
+      "type": "checkbox",
+      "label": "Honor check"
+    },
+    "spouse_birthplace": {
+      "type": "text",
+      "label": "Birthplace"
+    },
+    "spouse_homeland": {
+      "type": "text",
+      "label": "Homeland"
+    },
+    "spouse_culture": {
+      "type": "text",
+      "label": "Culture"
+    },
+    "spouse_class": {
+      "type": "text",
+      "label": "Class"
+    },
+    "spouse_religion": {
+      "type": "text",
+      "label": "Religion"
+    },
+    "spouse_lord": {
+      "type": "text",
+      "label": "Lord"
+    },
+    "spouse_birth_year": {
+      "type": "number",
+      "label": "Birth Year",
+      "min": 0
+    },
+    "spouse_distinctive_features": {
+      "type": "textarea",
+      "label": "Distinctive Features",
+      "rows": 1
+    },
+    "spouse_notes": {
+      "type": "textarea",
+      "label": "Squire Notes",
+      "rows": 3
+    },
+    "spouse_sk_extra_1_name": {
+      "type": "text",
+      "label": "Other skill name"
+    },
+    "spouse_str": {
+      "type": "number",
+      "label": "STR",
+      "min": 0
+    },
+    "spouse_dex": {
+      "type": "number",
+      "label": "DEX",
+      "min": 0
+    },
+    "spouse_con": {
+      "type": "number",
+      "label": "CON",
+      "min": 0
+    },
+    "spouse_siz": {
+      "type": "number",
+      "label": "SIZ",
+      "min": 0
+    },
+    "spouse_app": {
+      "type": "number",
+      "label": "APP",
+      "min": 0
+    },
+    "spouse_hp_current": {
+      "type": "number",
+      "label": "Current Hit Points",
+      "min": 0
+    },
+    "spouse_debilitated": {
+      "type": "checkbox",
+      "label": "Debilitated?"
+    },
+    "spouse_unconscious_checkbox": {
+      "type": "checkbox",
+      "label": "Unconscious"
+    },
+    "spouse_aggravation_damage": {
+      "type": "text",
+      "label": "Aggravation Damage"
+    },
+    "spouse_deterioration_damage": {
+      "type": "text",
+      "label": "Deterioration Damage"
+    },
+    "spouse_wounds": {
+      "type": "list",
+      "label": "Wounds",
+      "add_label": "Add wound",
+      "columns": [
+        {
+          "key": "type",
+          "type": "select",
+          "label": "Type",
+          "flex": 2,
+          "options": [
+            "Minor",
+            "Major",
+            "Mortal"
+          ]
+        },
+        {
+          "key": "damage",
+          "type": "number",
+          "label": "Damage",
+          "min": 0,
+          "default": 0,
+          "flex": 1.25
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 2.75
+        },
+        {
+          "key": "aid",
+          "type": "checkbox",
+          "label": "Aid?",
+          "flex": 0.5
+        }
+      ]
+    },
+    "spouse_armor_mail_type": {
+      "type": "text",
+      "label": "Mail/Plate"
+    },
+    "spouse_armor_textile_type": {
+      "type": "text",
+      "label": "Textile"
+    },
+    "spouse_armor_helm_type": {
+      "type": "text",
+      "label": "Helm"
+    },
+    "spouse_armor_shield_type": {
+      "type": "text",
+      "label": "Shield"
+    },
+    "spouse_armor_mail": {
+      "type": "number",
+      "label": "Mail/Plate",
+      "min": 0
+    },
+    "spouse_armor_textile": {
+      "type": "number",
+      "label": "Textile",
+      "min": 0
+    },
+    "spouse_armor_helm": {
+      "type": "number",
+      "label": "Helm",
+      "min": 0
+    },
+    "spouse_armor_shield": {
+      "type": "number",
+      "label": "Shield",
+      "min": 0
+    },
+    "spouse_armor_shield_missile_protection": {
+      "type": "number",
+      "label": "Missile Protection",
+      "min": -10,
+      "max": 0
+    },
+    "spouse_weapons": {
+      "type": "list",
+      "label": "Attacks",
+      "add_label": "Add attack",
+      "columns": [
+        {
+          "key": "weapon",
+          "type": "text",
+          "label": "Weapon",
+          "flex": 3
+        },
+        {
+          "key": "skill",
+          "type": "number",
+          "label": "Skill",
+          "min": 0,
+          "default": 0,
+          "flex": 1
+        },
+        {
+          "key": "damage",
+          "type": "text",
+          "label": "Damage",
+          "flex": 2
+        }
+      ]
+    },
+    "spouse_equipment": {
+      "type": "list",
+      "label": "Equipment",
+      "add_label": "Add item",
+      "columns": [
+        {
+          "key": "item",
+          "type": "text",
+          "label": "Item",
+          "flex": 2.5
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 2.5
+        },
+        {
+          "key": "libra",
+          "type": "number",
+          "label": "£",
+          "min": 0,
+          "flex": 1
+        },
+        {
+          "key": "denarii",
+          "type": "number",
+          "label": "d",
+          "min": 0,
+          "flex": 1.25
+        }
+      ]
+    },
+    "spouse_trait_chaste": {
+      "type": "number",
+      "label": "Chaste",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_trait_lustful": {
+      "type": "number",
+      "label": "Lustful",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_trait_energetic": {
+      "type": "number",
+      "label": "Energetic",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_trait_lazy": {
+      "type": "number",
+      "label": "Lazy",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_trait_forgiving": {
+      "type": "number",
+      "label": "Forgiving",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_trait_vengeful": {
+      "type": "number",
+      "label": "Vengeful",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_trait_generous": {
+      "type": "number",
+      "label": "Generous",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_trait_selfish": {
+      "type": "number",
+      "label": "Selfish",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_trait_honest": {
+      "type": "number",
+      "label": "Honest",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_trait_deceitful": {
+      "type": "number",
+      "label": "Deceitful",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_trait_just": {
+      "type": "number",
+      "label": "Just",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_trait_arbitrary": {
+      "type": "number",
+      "label": "Arbitrary",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_trait_merciful": {
+      "type": "number",
+      "label": "Merciful",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_trait_cruel": {
+      "type": "number",
+      "label": "Cruel",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_trait_modest": {
+      "type": "number",
+      "label": "Modest",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_trait_proud": {
+      "type": "number",
+      "label": "Proud",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_trait_prudent": {
+      "type": "number",
+      "label": "Prudent",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_trait_reckless": {
+      "type": "number",
+      "label": "Reckless",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_trait_spiritual": {
+      "type": "number",
+      "label": "Spiritual",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_trait_worldly": {
+      "type": "number",
+      "label": "Worldly",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_trait_temperate": {
+      "type": "number",
+      "label": "Temperate",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_trait_indulgent": {
+      "type": "number",
+      "label": "Indulgent",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_trait_trusting": {
+      "type": "number",
+      "label": "Trusting",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_trait_suspicious": {
+      "type": "number",
+      "label": "Suspicious",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_trait_valorous": {
+      "type": "number",
+      "label": "Valorous",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_trait_cowardly": {
+      "type": "number",
+      "label": "Cowardly",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "spouse_directed_1_name": {
+      "type": "text",
+      "label": "Directed Trait 1 name"
+    },
+    "spouse_directed_1": {
+      "type": "number",
+      "label": "Directed Trait 1",
+      "min": 0,
+      "max": 20
+    },
+    "spouse_directed_2_name": {
+      "type": "text",
+      "label": "Directed Trait 2 name"
+    },
+    "spouse_directed_2": {
+      "type": "number",
+      "label": "Directed Trait 2",
+      "min": 0,
+      "max": 20
+    },
+    "spouse_sk_awareness": {
+      "type": "number",
+      "label": "Awareness",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_sk_chirurgery": {
+      "type": "number",
+      "label": "Chirurgery",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_sk_compose": {
+      "type": "number",
+      "label": "Compose",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_sk_courtesy": {
+      "type": "number",
+      "label": "Courtesy",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_sk_dancing": {
+      "type": "number",
+      "label": "Dancing",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_sk_falconry": {
+      "type": "number",
+      "label": "Falconry",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_sk_fashion": {
+      "type": "number",
+      "label": "Fashion",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_sk_first_aid": {
+      "type": "number",
+      "label": "First Aid",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_sk_flirting": {
+      "type": "number",
+      "label": "Flirting",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_sk_folklore": {
+      "type": "number",
+      "label": "Folklore",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_sk_gaming": {
+      "type": "number",
+      "label": "Gaming",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_sk_hunting": {
+      "type": "number",
+      "label": "Hunting",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_sk_industry": {
+      "type": "number",
+      "label": "Industry",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_sk_intrigue": {
+      "type": "number",
+      "label": "Intrigue",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_sk_literacy": {
+      "type": "number",
+      "label": "Literacy",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_sk_orate": {
+      "type": "number",
+      "label": "Orate",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_sk_play": {
+      "type": "number",
+      "label": "Play Instrument",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_sk_recognize": {
+      "type": "number",
+      "label": "Recognize",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_sk_religion_skill": {
+      "type": "number",
+      "label": "Religion",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_sk_singing": {
+      "type": "number",
+      "label": "Singing",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_sk_stewardship": {
+      "type": "number",
+      "label": "Stewardship",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_sk_extra_1": {
+      "type": "number",
+      "label": "Other skill",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_sk_brawling": {
+      "type": "number",
+      "label": "Brawling",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_sk_horsemanship": {
+      "type": "number",
+      "label": "Horsemanship",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_sk_siegecraft": {
+      "type": "number",
+      "label": "Siegecraft",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_trait_checks": {
+      "type": "multiselect",
+      "label": "Trait Checks",
+      "options": [
+        "Chaste",
+        "Lustful",
+        "Energetic",
+        "Lazy",
+        "Forgiving",
+        "Vengeful",
+        "Generous",
+        "Selfish",
+        "Honest",
+        "Deceitful",
+        "Just",
+        "Arbitrary",
+        "Merciful",
+        "Cruel",
+        "Modest",
+        "Proud",
+        "Prudent",
+        "Reckless",
+        "Spiritual",
+        "Worldly",
+        "Temperate",
+        "Indulgent",
+        "Trusting",
+        "Suspicious",
+        "Valorous",
+        "Cowardly",
+        "Directed Trait 1",
+        "Directed Trait 2"
+      ]
+    },
+    "spouse_passion_checks": {
+      "type": "multiselect",
+      "label": "Passion Checks",
+      "options": [
+        "Homage",
+        "Fealty",
+        "Passion 1",
+        "Passion 2",
+        "Love (Family)",
+        "Passion 3",
+        "Passion 4",
+        "Passion 5",
+        "Devotion (Deity)",
+        "Passion 6",
+        "Hospitality",
+        "Station",
+        "Passion 7"
+      ]
+    },
+    "spouse_skill_checks": {
+      "type": "multiselect",
+      "label": "Skill checks",
+      "options": [
+        "Awareness",
+        "Chirurgery",
+        "Compose",
+        "Courtesy",
+        "Dancing",
+        "Falconry",
+        "Fashion",
+        "First Aid",
+        "Flirting",
+        "Folklore",
+        "Gaming",
+        "Hunting",
+        "Industry",
+        "Intrigue",
+        "Literacy",
+        "Orate",
+        "Play Instrument",
+        "Recognize",
+        "Religion",
+        "Singing",
+        "Stewardship",
+        "Extra 1",
+        "Battle",
+        "Horsemanship",
+        "Sword",
+        "Charge",
+        "Spear",
+        "Hafted",
+        "2H Hafted",
+        "Brawling",
+        "Bow",
+        "Crossbow",
+        "Thrown Weapon",
+        "Siegecraft"
+      ]
+    },
+    "spouse_passion_1": {
+      "type": "number",
+      "label": "Passion 1",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_passion_1_name": {
+      "type": "text",
+      "label": "Passion 1 name"
+    },
+    "spouse_passion_1_object": {
+      "type": "text",
+      "label": "Passion 1 object"
+    },
+    "spouse_passion_2": {
+      "type": "number",
+      "label": "Passion 2",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_passion_2_name": {
+      "type": "text",
+      "label": "Passion 2 name"
+    },
+    "spouse_passion_2_object": {
+      "type": "text",
+      "label": "Passion 2 object"
+    },
+    "spouse_passion_3": {
+      "type": "number",
+      "label": "Passion 3",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_passion_3_name": {
+      "type": "text",
+      "label": "Passion 3 name"
+    },
+    "spouse_passion_3_object": {
+      "type": "text",
+      "label": "Passion 3 object"
+    },
+    "spouse_passion_4": {
+      "type": "number",
+      "label": "Passion 4",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_passion_4_name": {
+      "type": "text",
+      "label": "Passion 4 name"
+    },
+    "spouse_passion_4_object": {
+      "type": "text",
+      "label": "Passion 4 object"
+    },
+    "spouse_passion_5": {
+      "type": "number",
+      "label": "Passion 5",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_passion_5_name": {
+      "type": "text",
+      "label": "Passion 5 name"
+    },
+    "spouse_passion_5_object": {
+      "type": "text",
+      "label": "Passion 5 object"
+    },
+    "spouse_passion_6": {
+      "type": "number",
+      "label": "Passion 6",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_passion_6_name": {
+      "type": "text",
+      "label": "Passion 6 name"
+    },
+    "spouse_passion_6_object": {
+      "type": "text",
+      "label": "Passion 6 object"
+    },
+    "spouse_passion_7": {
+      "type": "number",
+      "label": "Passion 7",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_passion_7_name": {
+      "type": "text",
+      "label": "Passion 7 name"
+    },
+    "spouse_passion_7_object": {
+      "type": "text",
+      "label": "Passion 7 object"
+    },
+    "spouse_homage_subject": {
+      "type": "text",
+      "label": "Homage subject"
+    },
+    "spouse_homage": {
+      "type": "number",
+      "label": "Homage",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_fealty_subject": {
+      "type": "text",
+      "label": "Fealty subject"
+    },
+    "spouse_fealty": {
+      "type": "number",
+      "label": "Fealty",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_love_family": {
+      "type": "number",
+      "label": "Love (Family)",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_devotion": {
+      "type": "number",
+      "label": "Devotion (Deity)",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_hospitality": {
+      "type": "number",
+      "label": "Hospitality",
+      "min": 0,
+      "max": 40
+    },
+    "spouse_station": {
+      "type": "number",
+      "label": "Station",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_str": {
+      "type": "number",
+      "label": "STR",
+      "min": 0
+    },
+    "squire1_dex": {
+      "type": "number",
+      "label": "DEX",
+      "min": 0
+    },
+    "squire1_con": {
+      "type": "number",
+      "label": "CON",
+      "min": 0
+    },
+    "squire1_siz": {
+      "type": "number",
+      "label": "SIZ",
+      "min": 0
+    },
+    "squire1_app": {
+      "type": "number",
+      "label": "APP",
+      "min": 0
+    },
+    "squire1_hp_current": {
+      "type": "number",
+      "label": "Current Hit Points",
+      "min": 0
+    },
+    "squire1_debilitated": {
+      "type": "checkbox",
+      "label": "Debilitated?"
+    },
+    "squire1_unconscious_checkbox": {
+      "type": "checkbox",
+      "label": "Unconscious"
+    },
+    "squire1_aggravation_damage": {
+      "type": "text",
+      "label": "Aggravation Damage"
+    },
+    "squire1_deterioration_damage": {
+      "type": "text",
+      "label": "Deterioration Damage"
+    },
+    "squire1_wounds": {
+      "type": "list",
+      "label": "Wounds",
+      "add_label": "Add wound",
+      "columns": [
+        {
+          "key": "type",
+          "type": "select",
+          "label": "Type",
+          "flex": 2,
+          "options": [
+            "Minor",
+            "Major",
+            "Mortal"
+          ]
+        },
+        {
+          "key": "damage",
+          "type": "number",
+          "label": "Damage",
+          "min": 0,
+          "default": 0,
+          "flex": 1.25
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 2.75
+        },
+        {
+          "key": "aid",
+          "type": "checkbox",
+          "label": "Aid?",
+          "flex": 0.5
+        }
+      ]
+    },
+    "squire1_armor_mail_type": {
+      "type": "text",
+      "label": "Mail/Plate"
+    },
+    "squire1_armor_textile_type": {
+      "type": "text",
+      "label": "Textile"
+    },
+    "squire1_armor_helm_type": {
+      "type": "text",
+      "label": "Helm"
+    },
+    "squire1_armor_shield_type": {
+      "type": "text",
+      "label": "Shield"
+    },
+    "squire1_armor_mail": {
+      "type": "number",
+      "label": "Mail/Plate",
+      "min": 0
+    },
+    "squire1_armor_textile": {
+      "type": "number",
+      "label": "Textile",
+      "min": 0
+    },
+    "squire1_armor_helm": {
+      "type": "number",
+      "label": "Helm",
+      "min": 0
+    },
+    "squire1_armor_shield": {
+      "type": "number",
+      "label": "Shield",
+      "min": 0
+    },
+    "squire1_armor_shield_missile_protection": {
+      "type": "number",
+      "label": "Missile Protection",
+      "min": -10,
+      "max": 0
+    },
+    "squire1_weapons": {
+      "type": "list",
+      "label": "Attacks",
+      "add_label": "Add attack",
+      "columns": [
+        {
+          "key": "weapon",
+          "type": "text",
+          "label": "Weapon",
+          "flex": 3
+        },
+        {
+          "key": "skill",
+          "type": "number",
+          "label": "Skill",
+          "min": 0,
+          "default": 0,
+          "flex": 1
+        },
+        {
+          "key": "damage",
+          "type": "text",
+          "label": "Damage",
+          "flex": 2
+        }
+      ]
+    },
+    "squire1_equipment": {
+      "type": "list",
+      "label": "Equipment",
+      "add_label": "Add item",
+      "columns": [
+        {
+          "key": "item",
+          "type": "text",
+          "label": "Item",
+          "flex": 2.5
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 2.5
+        },
+        {
+          "key": "libra",
+          "type": "number",
+          "label": "£",
+          "min": 0,
+          "flex": 1
+        },
+        {
+          "key": "denarii",
+          "type": "number",
+          "label": "d",
+          "min": 0,
+          "flex": 1.25
+        }
+      ]
+    },
+    "squire2_str": {
+      "type": "number",
+      "label": "STR",
+      "min": 0
+    },
+    "squire2_dex": {
+      "type": "number",
+      "label": "DEX",
+      "min": 0
+    },
+    "squire2_con": {
+      "type": "number",
+      "label": "CON",
+      "min": 0
+    },
+    "squire2_siz": {
+      "type": "number",
+      "label": "SIZ",
+      "min": 0
+    },
+    "squire2_app": {
+      "type": "number",
+      "label": "APP",
+      "min": 0
+    },
+    "squire2_hp_current": {
+      "type": "number",
+      "label": "Current Hit Points",
+      "min": 0
+    },
+    "squire2_debilitated": {
+      "type": "checkbox",
+      "label": "Debilitated?"
+    },
+    "squire2_unconscious_checkbox": {
+      "type": "checkbox",
+      "label": "Unconscious"
+    },
+    "squire2_aggravation_damage": {
+      "type": "text",
+      "label": "Aggravation Damage"
+    },
+    "squire2_deterioration_damage": {
+      "type": "text",
+      "label": "Deterioration Damage"
+    },
+    "squire2_wounds": {
+      "type": "list",
+      "label": "Wounds",
+      "add_label": "Add wound",
+      "columns": [
+        {
+          "key": "type",
+          "type": "select",
+          "label": "Type",
+          "flex": 2,
+          "options": [
+            "Minor",
+            "Major",
+            "Mortal"
+          ]
+        },
+        {
+          "key": "damage",
+          "type": "number",
+          "label": "Damage",
+          "min": 0,
+          "default": 0,
+          "flex": 1.25
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 2.75
+        },
+        {
+          "key": "aid",
+          "type": "checkbox",
+          "label": "Aid?",
+          "flex": 0.5
+        }
+      ]
+    },
+    "squire2_armor_mail_type": {
+      "type": "text",
+      "label": "Mail/Plate"
+    },
+    "squire2_armor_textile_type": {
+      "type": "text",
+      "label": "Textile"
+    },
+    "squire2_armor_helm_type": {
+      "type": "text",
+      "label": "Helm"
+    },
+    "squire2_armor_shield_type": {
+      "type": "text",
+      "label": "Shield"
+    },
+    "squire2_armor_mail": {
+      "type": "number",
+      "label": "Mail/Plate",
+      "min": 0
+    },
+    "squire2_armor_textile": {
+      "type": "number",
+      "label": "Textile",
+      "min": 0
+    },
+    "squire2_armor_helm": {
+      "type": "number",
+      "label": "Helm",
+      "min": 0
+    },
+    "squire2_armor_shield": {
+      "type": "number",
+      "label": "Shield",
+      "min": 0
+    },
+    "squire2_armor_shield_missile_protection": {
+      "type": "number",
+      "label": "Missile Protection",
+      "min": -10,
+      "max": 0
+    },
+    "squire2_weapons": {
+      "type": "list",
+      "label": "Attacks",
+      "add_label": "Add attack",
+      "columns": [
+        {
+          "key": "weapon",
+          "type": "text",
+          "label": "Weapon",
+          "flex": 3
+        },
+        {
+          "key": "skill",
+          "type": "number",
+          "label": "Skill",
+          "min": 0,
+          "default": 0,
+          "flex": 1
+        },
+        {
+          "key": "damage",
+          "type": "text",
+          "label": "Damage",
+          "flex": 2
+        }
+      ]
+    },
+    "squire2_equipment": {
+      "type": "list",
+      "label": "Equipment",
+      "add_label": "Add item",
+      "columns": [
+        {
+          "key": "item",
+          "type": "text",
+          "label": "Item",
+          "flex": 2.5
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 2.5
+        },
+        {
+          "key": "libra",
+          "type": "number",
+          "label": "£",
+          "min": 0,
+          "flex": 1
+        },
+        {
+          "key": "denarii",
+          "type": "number",
+          "label": "d",
+          "min": 0,
+          "flex": 1.25
+        }
+      ]
+    },
+    "squire3_str": {
+      "type": "number",
+      "label": "STR",
+      "min": 0
+    },
+    "squire3_dex": {
+      "type": "number",
+      "label": "DEX",
+      "min": 0
+    },
+    "squire3_con": {
+      "type": "number",
+      "label": "CON",
+      "min": 0
+    },
+    "squire3_siz": {
+      "type": "number",
+      "label": "SIZ",
+      "min": 0
+    },
+    "squire3_app": {
+      "type": "number",
+      "label": "APP",
+      "min": 0
+    },
+    "squire3_hp_current": {
+      "type": "number",
+      "label": "Current Hit Points",
+      "min": 0
+    },
+    "squire3_debilitated": {
+      "type": "checkbox",
+      "label": "Debilitated?"
+    },
+    "squire3_unconscious_checkbox": {
+      "type": "checkbox",
+      "label": "Unconscious"
+    },
+    "squire3_aggravation_damage": {
+      "type": "text",
+      "label": "Aggravation Damage"
+    },
+    "squire3_deterioration_damage": {
+      "type": "text",
+      "label": "Deterioration Damage"
+    },
+    "squire3_wounds": {
+      "type": "list",
+      "label": "Wounds",
+      "add_label": "Add wound",
+      "columns": [
+        {
+          "key": "type",
+          "type": "select",
+          "label": "Type",
+          "flex": 2,
+          "options": [
+            "Minor",
+            "Major",
+            "Mortal"
+          ]
+        },
+        {
+          "key": "damage",
+          "type": "number",
+          "label": "Damage",
+          "min": 0,
+          "default": 0,
+          "flex": 1.25
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 2.75
+        },
+        {
+          "key": "aid",
+          "type": "checkbox",
+          "label": "Aid?",
+          "flex": 0.5
+        }
+      ]
+    },
+    "squire3_armor_mail_type": {
+      "type": "text",
+      "label": "Mail/Plate"
+    },
+    "squire3_armor_textile_type": {
+      "type": "text",
+      "label": "Textile"
+    },
+    "squire3_armor_helm_type": {
+      "type": "text",
+      "label": "Helm"
+    },
+    "squire3_armor_shield_type": {
+      "type": "text",
+      "label": "Shield"
+    },
+    "squire3_armor_mail": {
+      "type": "number",
+      "label": "Mail/Plate",
+      "min": 0
+    },
+    "squire3_armor_textile": {
+      "type": "number",
+      "label": "Textile",
+      "min": 0
+    },
+    "squire3_armor_helm": {
+      "type": "number",
+      "label": "Helm",
+      "min": 0
+    },
+    "squire3_armor_shield": {
+      "type": "number",
+      "label": "Shield",
+      "min": 0
+    },
+    "squire3_armor_shield_missile_protection": {
+      "type": "number",
+      "label": "Missile Protection",
+      "min": -10,
+      "max": 0
+    },
+    "squire3_weapons": {
+      "type": "list",
+      "label": "Attacks",
+      "add_label": "Add attack",
+      "columns": [
+        {
+          "key": "weapon",
+          "type": "text",
+          "label": "Weapon",
+          "flex": 3
+        },
+        {
+          "key": "skill",
+          "type": "number",
+          "label": "Skill",
+          "min": 0,
+          "default": 0,
+          "flex": 1
+        },
+        {
+          "key": "damage",
+          "type": "text",
+          "label": "Damage",
+          "flex": 2
+        }
+      ]
+    },
+    "squire3_equipment": {
+      "type": "list",
+      "label": "Equipment",
+      "add_label": "Add item",
+      "columns": [
+        {
+          "key": "item",
+          "type": "text",
+          "label": "Item",
+          "flex": 2.5
+        },
+        {
+          "key": "notes",
+          "type": "text",
+          "label": "Notes",
+          "flex": 2.5
+        },
+        {
+          "key": "libra",
+          "type": "number",
+          "label": "£",
+          "min": 0,
+          "flex": 1
+        },
+        {
+          "key": "denarii",
+          "type": "number",
+          "label": "d",
+          "min": 0,
+          "flex": 1.25
+        }
+      ]
+    },
+    "squire1_sk_awareness": {
+      "type": "number",
+      "label": "Awareness",
+      "min": 0
+    },
+    "squire1_sk_battle": {
+      "type": "number",
+      "label": "Battle",
+      "min": 0
+    },
+    "squire1_sk_bow": {
+      "type": "number",
+      "label": "Bow",
+      "min": 0
+    },
+    "squire1_sk_brawling": {
+      "type": "number",
+      "label": "Brawling",
+      "min": 0
+    },
+    "squire1_sk_charge": {
+      "type": "number",
+      "label": "Charge",
+      "min": 0
+    },
+    "squire1_sk_chirurgery": {
+      "type": "number",
+      "label": "Chirurgery",
+      "min": 0
+    },
+    "squire1_sk_compose": {
+      "type": "number",
+      "label": "Compose",
+      "min": 0
+    },
+    "squire1_sk_courtesy": {
+      "type": "number",
+      "label": "Courtesy",
+      "min": 0
+    },
+    "squire1_sk_crossbow": {
+      "type": "number",
+      "label": "Crossbow",
+      "min": 0
+    },
+    "squire1_sk_dancing": {
+      "type": "number",
+      "label": "Dancing",
+      "min": 0
+    },
+    "squire1_sk_falconry": {
+      "type": "number",
+      "label": "Falconry",
+      "min": 0
+    },
+    "squire1_sk_fashion": {
+      "type": "number",
+      "label": "Fashion",
+      "min": 0
+    },
+    "squire1_sk_first_aid": {
+      "type": "number",
+      "label": "First Aid",
+      "min": 0
+    },
+    "squire1_sk_flirting": {
+      "type": "number",
+      "label": "Flirting",
+      "min": 0
+    },
+    "squire1_sk_folklore": {
+      "type": "number",
+      "label": "Folklore",
+      "min": 0
+    },
+    "squire1_sk_gaming": {
+      "type": "number",
+      "label": "Gaming",
+      "min": 0
+    },
+    "squire1_sk_hafted": {
+      "type": "number",
+      "label": "Hafted",
+      "min": 0
+    },
+    "squire1_sk_hafted_2h": {
+      "type": "number",
+      "label": "2H Hafted",
+      "min": 0
+    },
+    "squire1_sk_horsemanship": {
+      "type": "number",
+      "label": "Horsemanship",
+      "min": 0
+    },
+    "squire1_sk_hunting": {
+      "type": "number",
+      "label": "Hunting",
+      "min": 0
+    },
+    "squire1_sk_industry": {
+      "type": "number",
+      "label": "Industry",
+      "min": 0
+    },
+    "squire1_sk_intrigue": {
+      "type": "number",
+      "label": "Intrigue",
+      "min": 0
+    },
+    "squire1_sk_literacy": {
+      "type": "number",
+      "label": "Literacy",
+      "min": 0
+    },
+    "squire1_sk_orate": {
+      "type": "number",
+      "label": "Orate",
+      "min": 0
+    },
+    "squire1_sk_play": {
+      "type": "number",
+      "label": "Play Instrument",
+      "min": 0
+    },
+    "squire1_sk_recognize": {
+      "type": "number",
+      "label": "Recognize",
+      "min": 0
+    },
+    "squire1_sk_religion_skill": {
+      "type": "number",
+      "label": "Religion",
+      "min": 0
+    },
+    "squire1_sk_siegecraft": {
+      "type": "number",
+      "label": "Siegecraft",
+      "min": 0
+    },
+    "squire1_sk_singing": {
+      "type": "number",
+      "label": "Singing",
+      "min": 0
+    },
+    "squire1_sk_spear": {
+      "type": "number",
+      "label": "Spear",
+      "min": 0
+    },
+    "squire1_sk_stewardship": {
+      "type": "number",
+      "label": "Stewardship",
+      "min": 0
+    },
+    "squire1_sk_sword": {
+      "type": "number",
+      "label": "Sword",
+      "min": 0
+    },
+    "squire1_sk_thrown": {
+      "type": "number",
+      "label": "Thrown Weapon",
+      "min": 0
+    },
+    "squire2_sk_awareness": {
+      "type": "number",
+      "label": "Awareness",
+      "min": 0
+    },
+    "squire2_sk_battle": {
+      "type": "number",
+      "label": "Battle",
+      "min": 0
+    },
+    "squire2_sk_bow": {
+      "type": "number",
+      "label": "Bow",
+      "min": 0
+    },
+    "squire2_sk_brawling": {
+      "type": "number",
+      "label": "Brawling",
+      "min": 0
+    },
+    "squire2_sk_charge": {
+      "type": "number",
+      "label": "Charge",
+      "min": 0
+    },
+    "squire2_sk_chirurgery": {
+      "type": "number",
+      "label": "Chirurgery",
+      "min": 0
+    },
+    "squire2_sk_compose": {
+      "type": "number",
+      "label": "Compose",
+      "min": 0
+    },
+    "squire2_sk_courtesy": {
+      "type": "number",
+      "label": "Courtesy",
+      "min": 0
+    },
+    "squire2_sk_crossbow": {
+      "type": "number",
+      "label": "Crossbow",
+      "min": 0
+    },
+    "squire2_sk_dancing": {
+      "type": "number",
+      "label": "Dancing",
+      "min": 0
+    },
+    "squire2_sk_falconry": {
+      "type": "number",
+      "label": "Falconry",
+      "min": 0
+    },
+    "squire2_sk_fashion": {
+      "type": "number",
+      "label": "Fashion",
+      "min": 0
+    },
+    "squire2_sk_first_aid": {
+      "type": "number",
+      "label": "First Aid",
+      "min": 0
+    },
+    "squire2_sk_flirting": {
+      "type": "number",
+      "label": "Flirting",
+      "min": 0
+    },
+    "squire2_sk_folklore": {
+      "type": "number",
+      "label": "Folklore",
+      "min": 0
+    },
+    "squire2_sk_gaming": {
+      "type": "number",
+      "label": "Gaming",
+      "min": 0
+    },
+    "squire2_sk_hafted": {
+      "type": "number",
+      "label": "Hafted",
+      "min": 0
+    },
+    "squire2_sk_hafted_2h": {
+      "type": "number",
+      "label": "2H Hafted",
+      "min": 0
+    },
+    "squire2_sk_horsemanship": {
+      "type": "number",
+      "label": "Horsemanship",
+      "min": 0
+    },
+    "squire2_sk_hunting": {
+      "type": "number",
+      "label": "Hunting",
+      "min": 0
+    },
+    "squire2_sk_industry": {
+      "type": "number",
+      "label": "Industry",
+      "min": 0
+    },
+    "squire2_sk_intrigue": {
+      "type": "number",
+      "label": "Intrigue",
+      "min": 0
+    },
+    "squire2_sk_literacy": {
+      "type": "number",
+      "label": "Literacy",
+      "min": 0
+    },
+    "squire2_sk_orate": {
+      "type": "number",
+      "label": "Orate",
+      "min": 0
+    },
+    "squire2_sk_play": {
+      "type": "number",
+      "label": "Play Instrument",
+      "min": 0
+    },
+    "squire2_sk_recognize": {
+      "type": "number",
+      "label": "Recognize",
+      "min": 0
+    },
+    "squire2_sk_religion_skill": {
+      "type": "number",
+      "label": "Religion",
+      "min": 0
+    },
+    "squire2_sk_siegecraft": {
+      "type": "number",
+      "label": "Siegecraft",
+      "min": 0
+    },
+    "squire2_sk_singing": {
+      "type": "number",
+      "label": "Singing",
+      "min": 0
+    },
+    "squire2_sk_spear": {
+      "type": "number",
+      "label": "Spear",
+      "min": 0
+    },
+    "squire2_sk_stewardship": {
+      "type": "number",
+      "label": "Stewardship",
+      "min": 0
+    },
+    "squire2_sk_sword": {
+      "type": "number",
+      "label": "Sword",
+      "min": 0
+    },
+    "squire2_sk_thrown": {
+      "type": "number",
+      "label": "Thrown Weapon",
+      "min": 0
+    },
+    "squire3_sk_awareness": {
+      "type": "number",
+      "label": "Awareness",
+      "min": 0
+    },
+    "squire3_sk_battle": {
+      "type": "number",
+      "label": "Battle",
+      "min": 0
+    },
+    "squire3_sk_bow": {
+      "type": "number",
+      "label": "Bow",
+      "min": 0
+    },
+    "squire3_sk_brawling": {
+      "type": "number",
+      "label": "Brawling",
+      "min": 0
+    },
+    "squire3_sk_charge": {
+      "type": "number",
+      "label": "Charge",
+      "min": 0
+    },
+    "squire3_sk_chirurgery": {
+      "type": "number",
+      "label": "Chirurgery",
+      "min": 0
+    },
+    "squire3_sk_compose": {
+      "type": "number",
+      "label": "Compose",
+      "min": 0
+    },
+    "squire3_sk_courtesy": {
+      "type": "number",
+      "label": "Courtesy",
+      "min": 0
+    },
+    "squire3_sk_crossbow": {
+      "type": "number",
+      "label": "Crossbow",
+      "min": 0
+    },
+    "squire3_sk_dancing": {
+      "type": "number",
+      "label": "Dancing",
+      "min": 0
+    },
+    "squire3_sk_falconry": {
+      "type": "number",
+      "label": "Falconry",
+      "min": 0
+    },
+    "squire3_sk_fashion": {
+      "type": "number",
+      "label": "Fashion",
+      "min": 0
+    },
+    "squire3_sk_first_aid": {
+      "type": "number",
+      "label": "First Aid",
+      "min": 0
+    },
+    "squire3_sk_flirting": {
+      "type": "number",
+      "label": "Flirting",
+      "min": 0
+    },
+    "squire3_sk_folklore": {
+      "type": "number",
+      "label": "Folklore",
+      "min": 0
+    },
+    "squire3_sk_gaming": {
+      "type": "number",
+      "label": "Gaming",
+      "min": 0
+    },
+    "squire3_sk_hafted": {
+      "type": "number",
+      "label": "Hafted",
+      "min": 0
+    },
+    "squire3_sk_hafted_2h": {
+      "type": "number",
+      "label": "2H Hafted",
+      "min": 0
+    },
+    "squire3_sk_horsemanship": {
+      "type": "number",
+      "label": "Horsemanship",
+      "min": 0
+    },
+    "squire3_sk_hunting": {
+      "type": "number",
+      "label": "Hunting",
+      "min": 0
+    },
+    "squire3_sk_industry": {
+      "type": "number",
+      "label": "Industry",
+      "min": 0
+    },
+    "squire3_sk_intrigue": {
+      "type": "number",
+      "label": "Intrigue",
+      "min": 0
+    },
+    "squire3_sk_literacy": {
+      "type": "number",
+      "label": "Literacy",
+      "min": 0
+    },
+    "squire3_sk_orate": {
+      "type": "number",
+      "label": "Orate",
+      "min": 0
+    },
+    "squire3_sk_play": {
+      "type": "number",
+      "label": "Play Instrument",
+      "min": 0
+    },
+    "squire3_sk_recognize": {
+      "type": "number",
+      "label": "Recognize",
+      "min": 0
+    },
+    "squire3_sk_religion_skill": {
+      "type": "number",
+      "label": "Religion",
+      "min": 0
+    },
+    "squire3_sk_siegecraft": {
+      "type": "number",
+      "label": "Siegecraft",
+      "min": 0
+    },
+    "squire3_sk_singing": {
+      "type": "number",
+      "label": "Singing",
+      "min": 0
+    },
+    "squire3_sk_spear": {
+      "type": "number",
+      "label": "Spear",
+      "min": 0
+    },
+    "squire3_sk_stewardship": {
+      "type": "number",
+      "label": "Stewardship",
+      "min": 0
+    },
+    "squire3_sk_sword": {
+      "type": "number",
+      "label": "Sword",
+      "min": 0
+    },
+    "squire3_sk_thrown": {
+      "type": "number",
+      "label": "Thrown Weapon",
+      "min": 0
+    },
+    "spouse_sk_battle": {
+      "type": "number",
+      "label": "Battle",
+      "min": 0
+    },
+    "spouse_sk_bow": {
+      "type": "number",
+      "label": "Bow",
+      "min": 0
+    },
+    "spouse_sk_charge": {
+      "type": "number",
+      "label": "Charge",
+      "min": 0
+    },
+    "spouse_sk_crossbow": {
+      "type": "number",
+      "label": "Crossbow",
+      "min": 0
+    },
+    "spouse_sk_hafted": {
+      "type": "number",
+      "label": "Hafted",
+      "min": 0
+    },
+    "spouse_sk_hafted_2h": {
+      "type": "number",
+      "label": "2H Hafted",
+      "min": 0
+    },
+    "spouse_sk_spear": {
+      "type": "number",
+      "label": "Spear",
+      "min": 0
+    },
+    "spouse_sk_sword": {
+      "type": "number",
+      "label": "Sword",
+      "min": 0
+    },
+    "spouse_sk_thrown": {
+      "type": "number",
+      "label": "Thrown Weapon",
+      "min": 0
+    },
+    "squire1_trait_chaste": {
+      "type": "number",
+      "label": "Chaste",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_lustful": {
+      "type": "number",
+      "label": "Lustful",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_energetic": {
+      "type": "number",
+      "label": "Energetic",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_lazy": {
+      "type": "number",
+      "label": "Lazy",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_forgiving": {
+      "type": "number",
+      "label": "Forgiving",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_vengeful": {
+      "type": "number",
+      "label": "Vengeful",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_generous": {
+      "type": "number",
+      "label": "Generous",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_selfish": {
+      "type": "number",
+      "label": "Selfish",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_honest": {
+      "type": "number",
+      "label": "Honest",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_deceitful": {
+      "type": "number",
+      "label": "Deceitful",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_just": {
+      "type": "number",
+      "label": "Just",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_arbitrary": {
+      "type": "number",
+      "label": "Arbitrary",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_merciful": {
+      "type": "number",
+      "label": "Merciful",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_cruel": {
+      "type": "number",
+      "label": "Cruel",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_modest": {
+      "type": "number",
+      "label": "Modest",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_proud": {
+      "type": "number",
+      "label": "Proud",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_prudent": {
+      "type": "number",
+      "label": "Prudent",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_reckless": {
+      "type": "number",
+      "label": "Reckless",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_spiritual": {
+      "type": "number",
+      "label": "Spiritual",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_worldly": {
+      "type": "number",
+      "label": "Worldly",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_temperate": {
+      "type": "number",
+      "label": "Temperate",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_indulgent": {
+      "type": "number",
+      "label": "Indulgent",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_trusting": {
+      "type": "number",
+      "label": "Trusting",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_suspicious": {
+      "type": "number",
+      "label": "Suspicious",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_valorous": {
+      "type": "number",
+      "label": "Valorous",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_cowardly": {
+      "type": "number",
+      "label": "Cowardly",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire1_trait_checks": {
+      "type": "multiselect",
+      "label": "Trait Checks",
+      "options": [
+        "Chaste",
+        "Lustful",
+        "Energetic",
+        "Lazy",
+        "Forgiving",
+        "Vengeful",
+        "Generous",
+        "Selfish",
+        "Honest",
+        "Deceitful",
+        "Just",
+        "Arbitrary",
+        "Merciful",
+        "Cruel",
+        "Modest",
+        "Proud",
+        "Prudent",
+        "Reckless",
+        "Spiritual",
+        "Worldly",
+        "Temperate",
+        "Indulgent",
+        "Trusting",
+        "Suspicious",
+        "Valorous",
+        "Cowardly",
+        "Directed Trait 1",
+        "Directed Trait 2"
+      ]
+    },
+    "squire1_directed_1_name": {
+      "type": "text",
+      "label": "Directed Trait 1 name"
+    },
+    "squire1_directed_1": {
+      "type": "number",
+      "label": "Directed Trait 1",
+      "min": 0,
+      "max": 20
+    },
+    "squire1_directed_2_name": {
+      "type": "text",
+      "label": "Directed Trait 2 name"
+    },
+    "squire1_directed_2": {
+      "type": "number",
+      "label": "Directed Trait 2",
+      "min": 0,
+      "max": 20
+    },
+    "squire1_skill_checks": {
+      "type": "multiselect",
+      "label": "Skill checks",
+      "options": [
+        "Awareness",
+        "Chirurgery",
+        "Compose",
+        "Courtesy",
+        "Dancing",
+        "Falconry",
+        "Fashion",
+        "First Aid",
+        "Flirting",
+        "Folklore",
+        "Gaming",
+        "Hunting",
+        "Industry",
+        "Intrigue",
+        "Literacy",
+        "Orate",
+        "Play Instrument",
+        "Recognize",
+        "Religion",
+        "Singing",
+        "Stewardship",
+        "Extra 1",
+        "Battle",
+        "Horsemanship",
+        "Sword",
+        "Charge",
+        "Spear",
+        "Hafted",
+        "2H Hafted",
+        "Brawling",
+        "Bow",
+        "Crossbow",
+        "Thrown Weapon",
+        "Siegecraft"
+      ]
+    },
+    "squire1_passion_checks": {
+      "type": "multiselect",
+      "label": "Passion Checks",
+      "options": [
+        "Homage",
+        "Fealty",
+        "Passion 1",
+        "Passion 2",
+        "Love (Family)",
+        "Passion 3",
+        "Passion 4",
+        "Passion 5",
+        "Devotion (Deity)",
+        "Passion 6",
+        "Hospitality",
+        "Station",
+        "Passion 7"
+      ]
+    },
+    "squire1_passion_1": {
+      "type": "number",
+      "label": "Passion 1",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_passion_1_name": {
+      "type": "text",
+      "label": "Passion 1 name"
+    },
+    "squire1_passion_1_object": {
+      "type": "text",
+      "label": "Passion 1 object"
+    },
+    "squire1_passion_2": {
+      "type": "number",
+      "label": "Passion 2",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_passion_2_name": {
+      "type": "text",
+      "label": "Passion 2 name"
+    },
+    "squire1_passion_2_object": {
+      "type": "text",
+      "label": "Passion 2 object"
+    },
+    "squire1_passion_3": {
+      "type": "number",
+      "label": "Passion 3",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_passion_3_name": {
+      "type": "text",
+      "label": "Passion 3 name"
+    },
+    "squire1_passion_3_object": {
+      "type": "text",
+      "label": "Passion 3 object"
+    },
+    "squire1_passion_4": {
+      "type": "number",
+      "label": "Passion 4",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_passion_4_name": {
+      "type": "text",
+      "label": "Passion 4 name"
+    },
+    "squire1_passion_4_object": {
+      "type": "text",
+      "label": "Passion 4 object"
+    },
+    "squire1_passion_5": {
+      "type": "number",
+      "label": "Passion 5",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_passion_5_name": {
+      "type": "text",
+      "label": "Passion 5 name"
+    },
+    "squire1_passion_5_object": {
+      "type": "text",
+      "label": "Passion 5 object"
+    },
+    "squire1_passion_6": {
+      "type": "number",
+      "label": "Passion 6",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_passion_6_name": {
+      "type": "text",
+      "label": "Passion 6 name"
+    },
+    "squire1_passion_6_object": {
+      "type": "text",
+      "label": "Passion 6 object"
+    },
+    "squire1_passion_7": {
+      "type": "number",
+      "label": "Passion 7",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_passion_7_name": {
+      "type": "text",
+      "label": "Passion 7 name"
+    },
+    "squire1_passion_7_object": {
+      "type": "text",
+      "label": "Passion 7 object"
+    },
+    "squire1_homage_subject": {
+      "type": "text",
+      "label": "Homage subject"
+    },
+    "squire1_homage": {
+      "type": "number",
+      "label": "Homage",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_fealty_subject": {
+      "type": "text",
+      "label": "Fealty subject"
+    },
+    "squire1_fealty": {
+      "type": "number",
+      "label": "Fealty",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_love_family": {
+      "type": "number",
+      "label": "Love (Family)",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_devotion": {
+      "type": "number",
+      "label": "Devotion (Deity)",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_hospitality": {
+      "type": "number",
+      "label": "Hospitality",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_station": {
+      "type": "number",
+      "label": "Station",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_trait_chaste": {
+      "type": "number",
+      "label": "Chaste",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_lustful": {
+      "type": "number",
+      "label": "Lustful",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_energetic": {
+      "type": "number",
+      "label": "Energetic",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_lazy": {
+      "type": "number",
+      "label": "Lazy",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_forgiving": {
+      "type": "number",
+      "label": "Forgiving",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_vengeful": {
+      "type": "number",
+      "label": "Vengeful",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_generous": {
+      "type": "number",
+      "label": "Generous",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_selfish": {
+      "type": "number",
+      "label": "Selfish",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_honest": {
+      "type": "number",
+      "label": "Honest",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_deceitful": {
+      "type": "number",
+      "label": "Deceitful",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_just": {
+      "type": "number",
+      "label": "Just",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_arbitrary": {
+      "type": "number",
+      "label": "Arbitrary",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_merciful": {
+      "type": "number",
+      "label": "Merciful",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_cruel": {
+      "type": "number",
+      "label": "Cruel",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_modest": {
+      "type": "number",
+      "label": "Modest",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_proud": {
+      "type": "number",
+      "label": "Proud",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_prudent": {
+      "type": "number",
+      "label": "Prudent",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_reckless": {
+      "type": "number",
+      "label": "Reckless",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_spiritual": {
+      "type": "number",
+      "label": "Spiritual",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_worldly": {
+      "type": "number",
+      "label": "Worldly",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_temperate": {
+      "type": "number",
+      "label": "Temperate",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_indulgent": {
+      "type": "number",
+      "label": "Indulgent",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_trusting": {
+      "type": "number",
+      "label": "Trusting",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_suspicious": {
+      "type": "number",
+      "label": "Suspicious",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_valorous": {
+      "type": "number",
+      "label": "Valorous",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_cowardly": {
+      "type": "number",
+      "label": "Cowardly",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire2_trait_checks": {
+      "type": "multiselect",
+      "label": "Trait Checks",
+      "options": [
+        "Chaste",
+        "Lustful",
+        "Energetic",
+        "Lazy",
+        "Forgiving",
+        "Vengeful",
+        "Generous",
+        "Selfish",
+        "Honest",
+        "Deceitful",
+        "Just",
+        "Arbitrary",
+        "Merciful",
+        "Cruel",
+        "Modest",
+        "Proud",
+        "Prudent",
+        "Reckless",
+        "Spiritual",
+        "Worldly",
+        "Temperate",
+        "Indulgent",
+        "Trusting",
+        "Suspicious",
+        "Valorous",
+        "Cowardly",
+        "Directed Trait 1",
+        "Directed Trait 2"
+      ]
+    },
+    "squire2_directed_1_name": {
+      "type": "text",
+      "label": "Directed Trait 1 name"
+    },
+    "squire2_directed_1": {
+      "type": "number",
+      "label": "Directed Trait 1",
+      "min": 0,
+      "max": 20
+    },
+    "squire2_directed_2_name": {
+      "type": "text",
+      "label": "Directed Trait 2 name"
+    },
+    "squire2_directed_2": {
+      "type": "number",
+      "label": "Directed Trait 2",
+      "min": 0,
+      "max": 20
+    },
+    "squire2_skill_checks": {
+      "type": "multiselect",
+      "label": "Skill checks",
+      "options": [
+        "Awareness",
+        "Chirurgery",
+        "Compose",
+        "Courtesy",
+        "Dancing",
+        "Falconry",
+        "Fashion",
+        "First Aid",
+        "Flirting",
+        "Folklore",
+        "Gaming",
+        "Hunting",
+        "Industry",
+        "Intrigue",
+        "Literacy",
+        "Orate",
+        "Play Instrument",
+        "Recognize",
+        "Religion",
+        "Singing",
+        "Stewardship",
+        "Extra 1",
+        "Battle",
+        "Horsemanship",
+        "Sword",
+        "Charge",
+        "Spear",
+        "Hafted",
+        "2H Hafted",
+        "Brawling",
+        "Bow",
+        "Crossbow",
+        "Thrown Weapon",
+        "Siegecraft"
+      ]
+    },
+    "squire2_passion_checks": {
+      "type": "multiselect",
+      "label": "Passion Checks",
+      "options": [
+        "Homage",
+        "Fealty",
+        "Passion 1",
+        "Passion 2",
+        "Love (Family)",
+        "Passion 3",
+        "Passion 4",
+        "Passion 5",
+        "Devotion (Deity)",
+        "Passion 6",
+        "Hospitality",
+        "Station",
+        "Passion 7"
+      ]
+    },
+    "squire2_passion_1": {
+      "type": "number",
+      "label": "Passion 1",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_passion_1_name": {
+      "type": "text",
+      "label": "Passion 1 name"
+    },
+    "squire2_passion_1_object": {
+      "type": "text",
+      "label": "Passion 1 object"
+    },
+    "squire2_passion_2": {
+      "type": "number",
+      "label": "Passion 2",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_passion_2_name": {
+      "type": "text",
+      "label": "Passion 2 name"
+    },
+    "squire2_passion_2_object": {
+      "type": "text",
+      "label": "Passion 2 object"
+    },
+    "squire2_passion_3": {
+      "type": "number",
+      "label": "Passion 3",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_passion_3_name": {
+      "type": "text",
+      "label": "Passion 3 name"
+    },
+    "squire2_passion_3_object": {
+      "type": "text",
+      "label": "Passion 3 object"
+    },
+    "squire2_passion_4": {
+      "type": "number",
+      "label": "Passion 4",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_passion_4_name": {
+      "type": "text",
+      "label": "Passion 4 name"
+    },
+    "squire2_passion_4_object": {
+      "type": "text",
+      "label": "Passion 4 object"
+    },
+    "squire2_passion_5": {
+      "type": "number",
+      "label": "Passion 5",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_passion_5_name": {
+      "type": "text",
+      "label": "Passion 5 name"
+    },
+    "squire2_passion_5_object": {
+      "type": "text",
+      "label": "Passion 5 object"
+    },
+    "squire2_passion_6": {
+      "type": "number",
+      "label": "Passion 6",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_passion_6_name": {
+      "type": "text",
+      "label": "Passion 6 name"
+    },
+    "squire2_passion_6_object": {
+      "type": "text",
+      "label": "Passion 6 object"
+    },
+    "squire2_passion_7": {
+      "type": "number",
+      "label": "Passion 7",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_passion_7_name": {
+      "type": "text",
+      "label": "Passion 7 name"
+    },
+    "squire2_passion_7_object": {
+      "type": "text",
+      "label": "Passion 7 object"
+    },
+    "squire2_homage_subject": {
+      "type": "text",
+      "label": "Homage subject"
+    },
+    "squire2_homage": {
+      "type": "number",
+      "label": "Homage",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_fealty_subject": {
+      "type": "text",
+      "label": "Fealty subject"
+    },
+    "squire2_fealty": {
+      "type": "number",
+      "label": "Fealty",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_love_family": {
+      "type": "number",
+      "label": "Love (Family)",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_devotion": {
+      "type": "number",
+      "label": "Devotion (Deity)",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_hospitality": {
+      "type": "number",
+      "label": "Hospitality",
+      "min": 0,
+      "max": 40
+    },
+    "squire2_station": {
+      "type": "number",
+      "label": "Station",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_trait_chaste": {
+      "type": "number",
+      "label": "Chaste",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_lustful": {
+      "type": "number",
+      "label": "Lustful",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_energetic": {
+      "type": "number",
+      "label": "Energetic",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_lazy": {
+      "type": "number",
+      "label": "Lazy",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_forgiving": {
+      "type": "number",
+      "label": "Forgiving",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_vengeful": {
+      "type": "number",
+      "label": "Vengeful",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_generous": {
+      "type": "number",
+      "label": "Generous",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_selfish": {
+      "type": "number",
+      "label": "Selfish",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_honest": {
+      "type": "number",
+      "label": "Honest",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_deceitful": {
+      "type": "number",
+      "label": "Deceitful",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_just": {
+      "type": "number",
+      "label": "Just",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_arbitrary": {
+      "type": "number",
+      "label": "Arbitrary",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_merciful": {
+      "type": "number",
+      "label": "Merciful",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_cruel": {
+      "type": "number",
+      "label": "Cruel",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_modest": {
+      "type": "number",
+      "label": "Modest",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_proud": {
+      "type": "number",
+      "label": "Proud",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_prudent": {
+      "type": "number",
+      "label": "Prudent",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_reckless": {
+      "type": "number",
+      "label": "Reckless",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_spiritual": {
+      "type": "number",
+      "label": "Spiritual",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_worldly": {
+      "type": "number",
+      "label": "Worldly",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_temperate": {
+      "type": "number",
+      "label": "Temperate",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_indulgent": {
+      "type": "number",
+      "label": "Indulgent",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_trusting": {
+      "type": "number",
+      "label": "Trusting",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_suspicious": {
+      "type": "number",
+      "label": "Suspicious",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_valorous": {
+      "type": "number",
+      "label": "Valorous",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_cowardly": {
+      "type": "number",
+      "label": "Cowardly",
+      "min": 0,
+      "default": 10,
+      "max": 20
+    },
+    "squire3_trait_checks": {
+      "type": "multiselect",
+      "label": "Trait Checks",
+      "options": [
+        "Chaste",
+        "Lustful",
+        "Energetic",
+        "Lazy",
+        "Forgiving",
+        "Vengeful",
+        "Generous",
+        "Selfish",
+        "Honest",
+        "Deceitful",
+        "Just",
+        "Arbitrary",
+        "Merciful",
+        "Cruel",
+        "Modest",
+        "Proud",
+        "Prudent",
+        "Reckless",
+        "Spiritual",
+        "Worldly",
+        "Temperate",
+        "Indulgent",
+        "Trusting",
+        "Suspicious",
+        "Valorous",
+        "Cowardly",
+        "Directed Trait 1",
+        "Directed Trait 2"
+      ]
+    },
+    "squire3_directed_1_name": {
+      "type": "text",
+      "label": "Directed Trait 1 name"
+    },
+    "squire3_directed_1": {
+      "type": "number",
+      "label": "Directed Trait 1",
+      "min": 0,
+      "max": 20
+    },
+    "squire3_directed_2_name": {
+      "type": "text",
+      "label": "Directed Trait 2 name"
+    },
+    "squire3_directed_2": {
+      "type": "number",
+      "label": "Directed Trait 2",
+      "min": 0,
+      "max": 20
+    },
+    "squire3_skill_checks": {
+      "type": "multiselect",
+      "label": "Skill checks",
+      "options": [
+        "Awareness",
+        "Chirurgery",
+        "Compose",
+        "Courtesy",
+        "Dancing",
+        "Falconry",
+        "Fashion",
+        "First Aid",
+        "Flirting",
+        "Folklore",
+        "Gaming",
+        "Hunting",
+        "Industry",
+        "Intrigue",
+        "Literacy",
+        "Orate",
+        "Play Instrument",
+        "Recognize",
+        "Religion",
+        "Singing",
+        "Stewardship",
+        "Extra 1",
+        "Battle",
+        "Horsemanship",
+        "Sword",
+        "Charge",
+        "Spear",
+        "Hafted",
+        "2H Hafted",
+        "Brawling",
+        "Bow",
+        "Crossbow",
+        "Thrown Weapon",
+        "Siegecraft"
+      ]
+    },
+    "squire3_passion_checks": {
+      "type": "multiselect",
+      "label": "Passion Checks",
+      "options": [
+        "Homage",
+        "Fealty",
+        "Passion 1",
+        "Passion 2",
+        "Love (Family)",
+        "Passion 3",
+        "Passion 4",
+        "Passion 5",
+        "Devotion (Deity)",
+        "Passion 6",
+        "Hospitality",
+        "Station",
+        "Passion 7"
+      ]
+    },
+    "squire3_passion_1": {
+      "type": "number",
+      "label": "Passion 1",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_passion_1_name": {
+      "type": "text",
+      "label": "Passion 1 name"
+    },
+    "squire3_passion_1_object": {
+      "type": "text",
+      "label": "Passion 1 object"
+    },
+    "squire3_passion_2": {
+      "type": "number",
+      "label": "Passion 2",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_passion_2_name": {
+      "type": "text",
+      "label": "Passion 2 name"
+    },
+    "squire3_passion_2_object": {
+      "type": "text",
+      "label": "Passion 2 object"
+    },
+    "squire3_passion_3": {
+      "type": "number",
+      "label": "Passion 3",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_passion_3_name": {
+      "type": "text",
+      "label": "Passion 3 name"
+    },
+    "squire3_passion_3_object": {
+      "type": "text",
+      "label": "Passion 3 object"
+    },
+    "squire3_passion_4": {
+      "type": "number",
+      "label": "Passion 4",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_passion_4_name": {
+      "type": "text",
+      "label": "Passion 4 name"
+    },
+    "squire3_passion_4_object": {
+      "type": "text",
+      "label": "Passion 4 object"
+    },
+    "squire3_passion_5": {
+      "type": "number",
+      "label": "Passion 5",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_passion_5_name": {
+      "type": "text",
+      "label": "Passion 5 name"
+    },
+    "squire3_passion_5_object": {
+      "type": "text",
+      "label": "Passion 5 object"
+    },
+    "squire3_passion_6": {
+      "type": "number",
+      "label": "Passion 6",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_passion_6_name": {
+      "type": "text",
+      "label": "Passion 6 name"
+    },
+    "squire3_passion_6_object": {
+      "type": "text",
+      "label": "Passion 6 object"
+    },
+    "squire3_passion_7": {
+      "type": "number",
+      "label": "Passion 7",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_passion_7_name": {
+      "type": "text",
+      "label": "Passion 7 name"
+    },
+    "squire3_passion_7_object": {
+      "type": "text",
+      "label": "Passion 7 object"
+    },
+    "squire3_homage_subject": {
+      "type": "text",
+      "label": "Homage subject"
+    },
+    "squire3_homage": {
+      "type": "number",
+      "label": "Homage",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_fealty_subject": {
+      "type": "text",
+      "label": "Fealty subject"
+    },
+    "squire3_fealty": {
+      "type": "number",
+      "label": "Fealty",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_love_family": {
+      "type": "number",
+      "label": "Love (Family)",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_devotion": {
+      "type": "number",
+      "label": "Devotion (Deity)",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_hospitality": {
+      "type": "number",
+      "label": "Hospitality",
+      "min": 0,
+      "max": 40
+    },
+    "squire3_station": {
+      "type": "number",
+      "label": "Station",
+      "min": 0,
+      "max": 40
+    },
+    "squire1_class": {
+      "type": "text",
+      "label": "Class"
+    },
+    "squire1_lord": {
+      "type": "text",
+      "label": "Lord"
+    },
+    "squire1_culture": {
+      "type": "text",
+      "label": "Culture"
+    },
+    "squire1_religion": {
+      "type": "text",
+      "label": "Religion"
+    },
+    "squire1_birthplace": {
+      "type": "text",
+      "label": "Birthplace"
+    },
+    "squire1_homeland": {
+      "type": "text",
+      "label": "Homeland"
+    },
+    "squire1_distinctive_features": {
+      "type": "textarea",
+      "label": "Distinctive Features",
+      "rows": 1
+    },
+    "squire2_class": {
+      "type": "text",
+      "label": "Class"
+    },
+    "squire2_lord": {
+      "type": "text",
+      "label": "Lord"
+    },
+    "squire2_culture": {
+      "type": "text",
+      "label": "Culture"
+    },
+    "squire2_religion": {
+      "type": "text",
+      "label": "Religion"
+    },
+    "squire2_birthplace": {
+      "type": "text",
+      "label": "Birthplace"
+    },
+    "squire2_homeland": {
+      "type": "text",
+      "label": "Homeland"
+    },
+    "squire2_distinctive_features": {
+      "type": "textarea",
+      "label": "Distinctive Features",
+      "rows": 1
+    },
+    "squire3_class": {
+      "type": "text",
+      "label": "Class"
+    },
+    "squire3_lord": {
+      "type": "text",
+      "label": "Lord"
+    },
+    "squire3_culture": {
+      "type": "text",
+      "label": "Culture"
+    },
+    "squire3_religion": {
+      "type": "text",
+      "label": "Religion"
+    },
+    "squire3_birthplace": {
+      "type": "text",
+      "label": "Birthplace"
+    },
+    "squire3_homeland": {
+      "type": "text",
+      "label": "Homeland"
+    },
+    "squire3_distinctive_features": {
+      "type": "textarea",
+      "label": "Distinctive Features",
+      "rows": 1
+    },
+  
+    "manor1_name": {
+      "label": "Manor 1 name",
+      "type": "text"
+    },
+    "manor1_county": {
+      "type": "text",
+      "label": "Manor 1 County"
+    },
+    "manor1_hundred": {
+      "type": "text",
+      "label": "Manor 1 Hundred"
+    },
+    "manor1_steward": {
+      "type": "text",
+      "label": "Manor 1 Steward"
+    },
+    "manor1_privy_funds": {
+      "type": "number",
+      "label": "Manor 1 Privy Funds (\u00a3)",
+      "min": 0
+    },
+    "manor1_current_income": {
+      "type": "number",
+      "label": "Manor 1 Current Income (\u00a3)",
+      "min": 0
+    },
+    "manor1_assized_rent": {
+      "type": "number",
+      "label": "Manor 1 Assized Rent (\u00a3)",
+      "min": 0
+    },
+    "manor1_total_treasure": {
+      "type": "number",
+      "label": "Manor 1 Total Treasure (\u00a3)",
+      "min": 0
+    },
+    "manor1_standard_of_living": {
+      "type": "text",
+      "label": "Manor 1 Standard of Living"
+    },
+    "manor1_folklore": {
+      "type": "number",
+      "label": "Manor 1 Folklore",
+      "min": 0
+    },
+    "manor1_station": {
+      "type": "number",
+      "label": "Manor 1 Station",
+      "min": 0
+    },
+    "manor1_total_dv": {
+      "type": "number",
+      "label": "Manor 1 Total DV",
+      "min": 0
+    },
+    "manor1_stewardship": {
+      "type": "number",
+      "label": "Manor 1 Stewardship",
+      "min": 0
+    },
+    "manor1_fumble": {
+      "type": "checkbox",
+      "label": "Manor 1 Fumble"
+    },
+    "manor1_famine": {
+      "type": "checkbox",
+      "label": "Manor 1 Famine"
+    },
+    "manor1_manorial_improvements": {
+      "add_label": "Add manorial improvements",
+      "label": "Manorial Improvements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Effects",
+          "key": "effects",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor1_investments": {
+      "add_label": "Add investments",
+      "label": "Investments",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Income",
+          "key": "income",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Statistic",
+          "key": "statistic",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor1_enhancements": {
+      "add_label": "Add enhancements",
+      "label": "Enhancements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Stat Check",
+          "key": "statistic",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor1_notable_features": {
+      "add_label": "Add notable features",
+      "label": "Notable Features",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Effects",
+          "key": "effects",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor1_defenses": {
+      "add_label": "Add defenses",
+      "label": "Defenses",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Location",
+          "key": "location",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "DV",
+          "key": "dv",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor1_manor_folk": {
+      "add_label": "Add person",
+      "label": "Manor Folk",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Position",
+          "key": "position",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Key Skill",
+          "key": "key_skill",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Skill Value",
+          "key": "skill_value",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        }
+      ]
+    },
+    "manor2_name": {
+      "label": "Manor 1 name",
+      "type": "text"
+    },
+    "manor2_county": {
+      "type": "text",
+      "label": "Manor 1 County"
+    },
+    "manor2_hundred": {
+      "type": "text",
+      "label": "Manor 1 Hundred"
+    },
+    "manor2_steward": {
+      "type": "text",
+      "label": "Manor 1 Steward"
+    },
+    "manor2_privy_funds": {
+      "type": "number",
+      "label": "Manor 1 Privy Funds (\u00a3)",
+      "min": 0
+    },
+    "manor2_current_income": {
+      "type": "number",
+      "label": "Manor 1 Current Income (\u00a3)",
+      "min": 0
+    },
+    "manor2_assized_rent": {
+      "type": "number",
+      "label": "Manor 1 Assized Rent (\u00a3)",
+      "min": 0
+    },
+    "manor2_total_treasure": {
+      "type": "number",
+      "label": "Manor 1 Total Treasure (\u00a3)",
+      "min": 0
+    },
+    "manor2_standard_of_living": {
+      "type": "text",
+      "label": "Manor 1 Standard of Living"
+    },
+    "manor2_folklore": {
+      "type": "number",
+      "label": "Manor 1 Folklore",
+      "min": 0
+    },
+    "manor2_station": {
+      "type": "number",
+      "label": "Manor 1 Station",
+      "min": 0
+    },
+    "manor2_total_dv": {
+      "type": "number",
+      "label": "Manor 1 Total DV",
+      "min": 0
+    },
+    "manor2_stewardship": {
+      "type": "number",
+      "label": "Manor 1 Stewardship",
+      "min": 0
+    },
+    "manor2_fumble": {
+      "type": "checkbox",
+      "label": "Manor 1 Fumble"
+    },
+    "manor2_famine": {
+      "type": "checkbox",
+      "label": "Manor 1 Famine"
+    },
+    "manor2_manorial_improvements": {
+      "add_label": "Add manorial improvements",
+      "label": "Manorial Improvements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Effects",
+          "key": "effects",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor2_investments": {
+      "add_label": "Add investments",
+      "label": "Investments",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Income",
+          "key": "income",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Statistic",
+          "key": "statistic",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor2_enhancements": {
+      "add_label": "Add enhancements",
+      "label": "Enhancements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Stat Check",
+          "key": "statistic",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor2_notable_features": {
+      "add_label": "Add notable features",
+      "label": "Notable Features",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Effects",
+          "key": "effects",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor2_defenses": {
+      "add_label": "Add defenses",
+      "label": "Defenses",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Location",
+          "key": "location",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "DV",
+          "key": "dv",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor2_manor_folk": {
+      "add_label": "Add person",
+      "label": "Manor Folk",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Position",
+          "key": "position",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Key Skill",
+          "key": "key_skill",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Skill Value",
+          "key": "skill_value",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        }
+      ]
+    },
+    "manor3_name": {
+      "label": "Manor 1 name",
+      "type": "text"
+    },
+    "manor3_county": {
+      "type": "text",
+      "label": "Manor 1 County"
+    },
+    "manor3_hundred": {
+      "type": "text",
+      "label": "Manor 1 Hundred"
+    },
+    "manor3_steward": {
+      "type": "text",
+      "label": "Manor 1 Steward"
+    },
+    "manor3_privy_funds": {
+      "type": "number",
+      "label": "Manor 1 Privy Funds (\u00a3)",
+      "min": 0
+    },
+    "manor3_current_income": {
+      "type": "number",
+      "label": "Manor 1 Current Income (\u00a3)",
+      "min": 0
+    },
+    "manor3_assized_rent": {
+      "type": "number",
+      "label": "Manor 1 Assized Rent (\u00a3)",
+      "min": 0
+    },
+    "manor3_total_treasure": {
+      "type": "number",
+      "label": "Manor 1 Total Treasure (\u00a3)",
+      "min": 0
+    },
+    "manor3_standard_of_living": {
+      "type": "text",
+      "label": "Manor 1 Standard of Living"
+    },
+    "manor3_folklore": {
+      "type": "number",
+      "label": "Manor 1 Folklore",
+      "min": 0
+    },
+    "manor3_station": {
+      "type": "number",
+      "label": "Manor 1 Station",
+      "min": 0
+    },
+    "manor3_total_dv": {
+      "type": "number",
+      "label": "Manor 1 Total DV",
+      "min": 0
+    },
+    "manor3_stewardship": {
+      "type": "number",
+      "label": "Manor 1 Stewardship",
+      "min": 0
+    },
+    "manor3_fumble": {
+      "type": "checkbox",
+      "label": "Manor 1 Fumble"
+    },
+    "manor3_famine": {
+      "type": "checkbox",
+      "label": "Manor 1 Famine"
+    },
+    "manor3_manorial_improvements": {
+      "add_label": "Add manorial improvements",
+      "label": "Manorial Improvements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Effects",
+          "key": "effects",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor3_investments": {
+      "add_label": "Add investments",
+      "label": "Investments",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Income",
+          "key": "income",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Statistic",
+          "key": "statistic",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor3_enhancements": {
+      "add_label": "Add enhancements",
+      "label": "Enhancements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Stat Check",
+          "key": "statistic",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor3_notable_features": {
+      "add_label": "Add notable features",
+      "label": "Notable Features",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Effects",
+          "key": "effects",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor3_defenses": {
+      "add_label": "Add defenses",
+      "label": "Defenses",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Location",
+          "key": "location",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "DV",
+          "key": "dv",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor3_manor_folk": {
+      "add_label": "Add person",
+      "label": "Manor Folk",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Position",
+          "key": "position",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Key Skill",
+          "key": "key_skill",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Skill Value",
+          "key": "skill_value",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        }
+      ]
+    },
+    "manor4_name": {
+      "label": "Manor 1 name",
+      "type": "text"
+    },
+    "manor4_county": {
+      "type": "text",
+      "label": "Manor 1 County"
+    },
+    "manor4_hundred": {
+      "type": "text",
+      "label": "Manor 1 Hundred"
+    },
+    "manor4_steward": {
+      "type": "text",
+      "label": "Manor 1 Steward"
+    },
+    "manor4_privy_funds": {
+      "type": "number",
+      "label": "Manor 1 Privy Funds (\u00a3)",
+      "min": 0
+    },
+    "manor4_current_income": {
+      "type": "number",
+      "label": "Manor 1 Current Income (\u00a3)",
+      "min": 0
+    },
+    "manor4_assized_rent": {
+      "type": "number",
+      "label": "Manor 1 Assized Rent (\u00a3)",
+      "min": 0
+    },
+    "manor4_total_treasure": {
+      "type": "number",
+      "label": "Manor 1 Total Treasure (\u00a3)",
+      "min": 0
+    },
+    "manor4_standard_of_living": {
+      "type": "text",
+      "label": "Manor 1 Standard of Living"
+    },
+    "manor4_folklore": {
+      "type": "number",
+      "label": "Manor 1 Folklore",
+      "min": 0
+    },
+    "manor4_station": {
+      "type": "number",
+      "label": "Manor 1 Station",
+      "min": 0
+    },
+    "manor4_total_dv": {
+      "type": "number",
+      "label": "Manor 1 Total DV",
+      "min": 0
+    },
+    "manor4_stewardship": {
+      "type": "number",
+      "label": "Manor 1 Stewardship",
+      "min": 0
+    },
+    "manor4_fumble": {
+      "type": "checkbox",
+      "label": "Manor 1 Fumble"
+    },
+    "manor4_famine": {
+      "type": "checkbox",
+      "label": "Manor 1 Famine"
+    },
+    "manor4_manorial_improvements": {
+      "add_label": "Add manorial improvements",
+      "label": "Manorial Improvements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Effects",
+          "key": "effects",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor4_investments": {
+      "add_label": "Add investments",
+      "label": "Investments",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Income",
+          "key": "income",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Statistic",
+          "key": "statistic",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor4_enhancements": {
+      "add_label": "Add enhancements",
+      "label": "Enhancements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Stat Check",
+          "key": "statistic",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor4_notable_features": {
+      "add_label": "Add notable features",
+      "label": "Notable Features",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Effects",
+          "key": "effects",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor4_defenses": {
+      "add_label": "Add defenses",
+      "label": "Defenses",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Location",
+          "key": "location",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "DV",
+          "key": "dv",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor4_manor_folk": {
+      "add_label": "Add person",
+      "label": "Manor Folk",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Position",
+          "key": "position",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Key Skill",
+          "key": "key_skill",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Skill Value",
+          "key": "skill_value",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        }
+      ]
+    },
+    "manor5_name": {
+      "label": "Manor 1 name",
+      "type": "text"
+    },
+    "manor5_county": {
+      "type": "text",
+      "label": "Manor 1 County"
+    },
+    "manor5_hundred": {
+      "type": "text",
+      "label": "Manor 1 Hundred"
+    },
+    "manor5_steward": {
+      "type": "text",
+      "label": "Manor 1 Steward"
+    },
+    "manor5_privy_funds": {
+      "type": "number",
+      "label": "Manor 1 Privy Funds (\u00a3)",
+      "min": 0
+    },
+    "manor5_current_income": {
+      "type": "number",
+      "label": "Manor 1 Current Income (\u00a3)",
+      "min": 0
+    },
+    "manor5_assized_rent": {
+      "type": "number",
+      "label": "Manor 1 Assized Rent (\u00a3)",
+      "min": 0
+    },
+    "manor5_total_treasure": {
+      "type": "number",
+      "label": "Manor 1 Total Treasure (\u00a3)",
+      "min": 0
+    },
+    "manor5_standard_of_living": {
+      "type": "text",
+      "label": "Manor 1 Standard of Living"
+    },
+    "manor5_folklore": {
+      "type": "number",
+      "label": "Manor 1 Folklore",
+      "min": 0
+    },
+    "manor5_station": {
+      "type": "number",
+      "label": "Manor 1 Station",
+      "min": 0
+    },
+    "manor5_total_dv": {
+      "type": "number",
+      "label": "Manor 1 Total DV",
+      "min": 0
+    },
+    "manor5_stewardship": {
+      "type": "number",
+      "label": "Manor 1 Stewardship",
+      "min": 0
+    },
+    "manor5_fumble": {
+      "type": "checkbox",
+      "label": "Manor 1 Fumble"
+    },
+    "manor5_famine": {
+      "type": "checkbox",
+      "label": "Manor 1 Famine"
+    },
+    "manor5_manorial_improvements": {
+      "add_label": "Add manorial improvements",
+      "label": "Manorial Improvements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Effects",
+          "key": "effects",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor5_investments": {
+      "add_label": "Add investments",
+      "label": "Investments",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Income",
+          "key": "income",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Statistic",
+          "key": "statistic",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor5_enhancements": {
+      "add_label": "Add enhancements",
+      "label": "Enhancements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Stat Check",
+          "key": "statistic",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor5_notable_features": {
+      "add_label": "Add notable features",
+      "label": "Notable Features",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Effects",
+          "key": "effects",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor5_defenses": {
+      "add_label": "Add defenses",
+      "label": "Defenses",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Location",
+          "key": "location",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "DV",
+          "key": "dv",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "manor5_manor_folk": {
+      "add_label": "Add person",
+      "label": "Manor Folk",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Position",
+          "key": "position",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Key Skill",
+          "key": "key_skill",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Skill Value",
+          "key": "skill_value",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        }
+      ]
+    },
+    "barony_name": {
+      "label": "Barony name",
+      "type": "text"
+    },
+    "barony_county": {
+      "type": "text",
+      "label": "Barony County"
+    },
+    "barony_hundred": {
+      "type": "text",
+      "label": "Barony Hundred"
+    },
+    "barony_privy_funds": {
+      "type": "number",
+      "label": "Barony Privy Funds (\u00a3)",
+      "min": 0
+    },
+    "barony_current_income": {
+      "type": "number",
+      "label": "Barony Current Income (\u00a3)",
+      "min": 0
+    },
+    "barony_assized_rent": {
+      "type": "number",
+      "label": "Barony Assized Rent (\u00a3)",
+      "min": 0
+    },
+    "barony_total_treasure": {
+      "type": "number",
+      "label": "Barony Total Treasure (\u00a3)",
+      "min": 0
+    },
+    "barony_total_dv": {
+      "type": "number",
+      "label": "Barony Total DV",
+      "min": 0
+    },
+    "barony_standard_of_living": {
+      "type": "text",
+      "label": "Barony Standard of Living"
+    },
+    "barony_station": {
+      "type": "number",
+      "label": "Barony Station",
+      "min": 0
+    },
+    "barony_fumble": {
+      "type": "checkbox",
+      "label": "Barony Fumble"
+    },
+    "barony_famine": {
+      "type": "checkbox",
+      "label": "Barony Famine"
+    },
+    "barony_castellan": {
+      "type": "text",
+      "label": "Castellan"
+    },
+    "barony_siegecraft_castellan": {
+      "type": "number",
+      "label": "Siegecraft",
+      "min": 0,
+      "max": 40
+    },
+    "barony_constable": {
+      "type": "text",
+      "label": "Constable"
+    },
+    "barony_horsemanship": {
+      "type": "number",
+      "label": "Horsemanship",
+      "min": 0,
+      "max": 40
+    },
+    "barony_dapifer": {
+      "type": "text",
+      "label": "Dapifer"
+    },
+    "barony_folklore": {
+      "type": "number",
+      "label": "Folklore",
+      "min": 0,
+      "max": 40
+    },
+    "barony_marshall": {
+      "type": "text",
+      "label": "Marshall"
+    },
+    "barony_battle": {
+      "type": "number",
+      "label": "Battle",
+      "min": 0,
+      "max": 40
+    },
+    "barony_pincerna": {
+      "type": "text",
+      "label": "Pincerna"
+    },
+    "barony_courtesy": {
+      "type": "number",
+      "label": "Courtesy",
+      "min": 0,
+      "max": 40
+    },
+    "barony_seneschal": {
+      "type": "text",
+      "label": "Seneschal"
+    },
+    "barony_stewardship_seneschal": {
+      "type": "number",
+      "label": "Stewardship",
+      "min": 0,
+      "max": 40
+    },
+    "barony_steward": {
+      "type": "text",
+      "label": "Steward"
+    },
+    "barony_stewardship_steward": {
+      "type": "number",
+      "label": "Stewardship",
+      "min": 0,
+      "max": 40
+    },
+    "barony_chaplain": {
+      "type": "text",
+      "label": "Chaplain"
+    },
+    "barony_religion": {
+      "type": "number",
+      "label": "Religion",
+      "min": 0,
+      "max": 40
+    },
+    "barony_clerk": {
+      "type": "text",
+      "label": "Clerk"
+    },
+    "barony_clerk_skill": {
+      "type": "number",
+      "label": "Clerk",
+      "min": 0,
+      "max": 40
+    },
+    "barony_engineer": {
+      "type": "text",
+      "label": "Engineer"
+    },
+    "barony_siegecraft_engineer": {
+      "type": "number",
+      "label": "Siegecraft",
+      "min": 0,
+      "max": 40
+    },
+    "barony_lawyer": {
+      "type": "text",
+      "label": "Lawyer"
+    },
+    "barony_law": {
+      "type": "number",
+      "label": "Law",
+      "min": 0,
+      "max": 40
+    },
+    "barony_physician": {
+      "type": "text",
+      "label": "Physician"
+    },
+    "barony_firstaid": {
+      "type": "number",
+      "label": "First Aid",
+      "min": 0,
+      "max": 40
+    },
+    "barony_chirurgery": {
+      "type": "number",
+      "label": "Chirurgery",
+      "min": 0,
+      "max": 40
+    },
+    "barony_army_mounted_sergeants": {
+      "type": "number",
+      "label": "Mounted Sergeants",
+      "min": 0
+    },
+    "barony_army_household_knights": {
+      "type": "number",
+      "label": "Household Knights",
+      "min": 0
+    },
+    "barony_army_vassal_knights": {
+      "type": "number",
+      "label": "Vassal Knights",
+      "min": 0
+    },
+    "barony_army_garrison_soldiers": {
+      "type": "number",
+      "label": "Garrison Soldiers",
+      "min": 0
+    },
+    "barony_army_spearmen": {
+      "type": "number",
+      "label": "Spearmen",
+      "min": 0
+    },
+    "barony_army_archers": {
+      "type": "number",
+      "label": "Archers",
+      "min": 0
+    },
+    "barony_defenses": {
+      "add_label": "Add defenses",
+      "label": "Defenses",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Location",
+          "key": "location",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "DV",
+          "key": "dv",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "barony_improvements": {
+      "add_label": "Add manorial improvements",
+      "label": "Manorial Improvements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Effects",
+          "key": "effects",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "barony_investments": {
+      "add_label": "Add investments",
+      "label": "Investments",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Income",
+          "key": "income",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Statistic",
+          "key": "statistic",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "barony_enhancements": {
+      "add_label": "Add enhancements",
+      "label": "Enhancements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Statistic",
+          "key": "statistic",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "barony_notable_features": {
+      "add_label": "Add notable features",
+      "label": "Notable Features",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Effects",
+          "key": "effects",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 4
+        },
+        {
+          "label": "Damaged?",
+          "key": "damaged",
+          "type": "checkbox",
+          "flex": 0.5
+        }
+      ]
+    },
+    "barony_folk": {
+      "add_label": "Add person",
+      "label": "Barony Folk",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1.5
+        },
+        {
+          "label": "Position",
+          "key": "position",
+          "type": "text",
+          "flex": 2
+        },
+        {
+          "label": "Key Skill",
+          "key": "key_skill",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Skill Value",
+          "key": "skill_value",
+          "type": "number",
+          "flex": 0.5
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        }
+      ]
+    },
+    "barony_settlements": {
+      "add_label": "Add settlement",
+      "label": "Settlements",
+      "type": "list",
+      "columns": [
+        {
+          "label": "Name",
+          "key": "name",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Type",
+          "key": "type",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Location",
+          "key": "location",
+          "type": "text",
+          "flex": 1
+        },
+        {
+          "label": "Notable People",
+          "key": "people",
+          "type": "text",
+          "flex": 3
+        },
+        {
+          "label": "Notes",
+          "key": "notes",
+          "type": "text",
+          "flex": 3
+        }
+      ]
+    }
+  },
+  "computed": {
+    "age": {
+      "formula": "year - birth_year",
+      "label": "Age"
+    },
+    "knockdown": {
+      "formula": "siz",
+      "label": "Knockdown"
+    },
+    "weapon_damage": {
+      "formula": "floor((str + siz) / 6)",
+      "label": "Weapon Damage (d6)"
+    },
+    "brawling_damage": {
+      "formula": "floor((str + siz) / 6)",
+      "label": "Brawling Damage"
+    },
+    "movement_rate": {
+      "formula": "floor((str + dex) / 2) + 5",
+      "label": "Movement Rate"
+    },
+    "major_wound": {
+      "formula": "con",
+      "label": "Major Wound"
+    },
+    "healing_rate": {
+      "formula": "floor(con / 5)",
+      "label": "Healing Rate"
+    },
+    "total_hit_points": {
+      "formula": "con + siz",
+      "label": "Total Hit Points"
+    },
+    "unconscious": {
+      "formula": "floor((con + siz) / 4)",
+      "label": "Unconscious"
+    },
+    "count_wounds_minor": {
+      "formula": "count_where(wounds, 'type', 'Minor')",
+      "label": "Minor Wound Count"
+    },
+    "count_wounds_major": {
+      "formula": "count_where(wounds, 'type', 'Major')",
+      "label": "Major Wound Count"
+    },
+    "count_wounds_mortal": {
+      "formula": "count_where(wounds, 'type', 'Mortal')",
+      "label": "Mortal Wound Count"
+    },
+    "total_armor": {
+      "formula": "armor_mail + armor_textile + armor_helm",
+      "label": "Total Armor Protection"
+    },
+    "total_armor_and_shield": {
+      "formula": "armor_mail + armor_textile + armor_helm + armor_shield",
+      "label": "With Shield"
+    },
+    "money_total": {
+      "formula": "money_libra + (floor(money_denarii / 2.4) / 100)",
+      "label": "Total Money"
+    },
+    "equipment_total_value": {
+      "formula": "(sum(column(equipment, 'libra'))) + (floor(sum(column(equipment, 'denarii')) / 2.4) / 100)",
+      "label": "Total Value"
+    },
+    "spouse_age": {
+      "formula": "year - spouse_birth_year",
+      "label": "Age"
+    },
+    "spouse_knockdown": {
+      "formula": "spouse_siz",
+      "label": "Knockdown"
+    },
+    "spouse_weapon_damage": {
+      "formula": "floor((spouse_str + spouse_siz) / 6)",
+      "label": "Weapon Damage (d6)"
+    },
+    "spouse_brawling_damage": {
+      "formula": "floor((spouse_str + spouse_siz) / 6)",
+      "label": "Brawling Damage"
+    },
+    "spouse_movement_rate": {
+      "formula": "floor((spouse_str + spouse_dex) / 2) + 5",
+      "label": "Movement Rate"
+    },
+    "spouse_major_wound": {
+      "formula": "spouse_con",
+      "label": "Major Wound"
+    },
+    "spouse_healing_rate": {
+      "formula": "floor(spouse_con / 5)",
+      "label": "Healing Rate"
+    },
+    "spouse_total_hit_points": {
+      "formula": "spouse_con + spouse_siz",
+      "label": "Total Hit Points"
+    },
+    "spouse_unconscious": {
+      "formula": "floor((spouse_con + spouse_siz) / 4)",
+      "label": "Unconscious"
+    },
+    "spouse_count_wounds_minor": {
+      "formula": "count_where(spouse_wounds, 'type', 'Minor')",
+      "label": "Minor Wound Count"
+    },
+    "spouse_count_wounds_major": {
+      "formula": "count_where(spouse_wounds, 'type', 'Major')",
+      "label": "Major Wound Count"
+    },
+    "spouse_count_wounds_mortal": {
+      "formula": "count_where(spouse_wounds, 'type', 'Mortal')",
+      "label": "Mortal Wound Count"
+    },
+    "spouse_total_armor": {
+      "formula": "spouse_armor_mail + spouse_armor_textile + spouse_armor_helm",
+      "label": "Total Armor Protection"
+    },
+    "spouse_total_armor_and_shield": {
+      "formula": "spouse_armor_mail + spouse_armor_textile + spouse_armor_helm + spouse_armor_shield",
+      "label": "With Shield"
+    },
+    "spouse_equipment_total_value": {
+      "formula": "(sum(column(spouse_equipment, 'libra'))) + (floor(sum(column(spouse_equipment, 'denarii')) / 2.4) / 100)",
+      "label": "Total Value"
+    },
+    "squire1_age": {
+      "formula": "year - squire1_birthyear",
+      "label": "Age"
+    },
+    "squire1_knockdown": {
+      "formula": "squire1_siz",
+      "label": "Knockdown"
+    },
+    "squire1_weapon_damage": {
+      "formula": "floor((squire1_str + squire1_siz) / 6)",
+      "label": "Weapon Damage (d6)"
+    },
+    "squire1_brawling_damage": {
+      "formula": "floor((squire1_str + squire1_siz) / 6)",
+      "label": "Brawling Damage"
+    },
+    "squire1_movement_rate": {
+      "formula": "floor((squire1_str + squire1_dex) / 2) + 5",
+      "label": "Movement Rate"
+    },
+    "squire1_major_wound": {
+      "formula": "squire1_con",
+      "label": "Major Wound"
+    },
+    "squire1_healing_rate": {
+      "formula": "floor(squire1_con / 5)",
+      "label": "Healing Rate"
+    },
+    "squire1_total_hit_points": {
+      "formula": "squire1_con + squire1_siz",
+      "label": "Total Hit Points"
+    },
+    "squire1_unconscious": {
+      "formula": "floor((squire1_con + squire1_siz) / 4)",
+      "label": "Unconscious"
+    },
+    "squire1_count_wounds_minor": {
+      "formula": "count_where(squire1_wounds, 'type', 'Minor')",
+      "label": "Minor Wound Count"
+    },
+    "squire1_count_wounds_major": {
+      "formula": "count_where(squire1_wounds, 'type', 'Major')",
+      "label": "Major Wound Count"
+    },
+    "squire1_count_wounds_mortal": {
+      "formula": "count_where(squire1_wounds, 'type', 'Mortal')",
+      "label": "Mortal Wound Count"
+    },
+    "squire1_total_armor": {
+      "formula": "squire1_armor_mail + squire1_armor_textile + squire1_armor_helm",
+      "label": "Total Armor Protection"
+    },
+    "squire1_total_armor_and_shield": {
+      "formula": "squire1_armor_mail + squire1_armor_textile + squire1_armor_helm + squire1_armor_shield",
+      "label": "With Shield"
+    },
+    "squire1_equipment_total_value": {
+      "formula": "(sum(column(squire1_equipment, 'libra'))) + (floor(sum(column(squire1_equipment, 'denarii')) / 2.4) / 100)",
+      "label": "Total Value"
+    },
+    "squire2_age": {
+      "formula": "year - squire2_birthyear",
+      "label": "Age"
+    },
+    "squire2_knockdown": {
+      "formula": "squire2_siz",
+      "label": "Knockdown"
+    },
+    "squire2_weapon_damage": {
+      "formula": "floor((squire2_str + squire2_siz) / 6)",
+      "label": "Weapon Damage (d6)"
+    },
+    "squire2_brawling_damage": {
+      "formula": "floor((squire2_str + squire2_siz) / 6)",
+      "label": "Brawling Damage"
+    },
+    "squire2_movement_rate": {
+      "formula": "floor((squire2_str + squire2_dex) / 2) + 5",
+      "label": "Movement Rate"
+    },
+    "squire2_major_wound": {
+      "formula": "squire2_con",
+      "label": "Major Wound"
+    },
+    "squire2_healing_rate": {
+      "formula": "floor(squire2_con / 5)",
+      "label": "Healing Rate"
+    },
+    "squire2_total_hit_points": {
+      "formula": "squire2_con + squire2_siz",
+      "label": "Total Hit Points"
+    },
+    "squire2_unconscious": {
+      "formula": "floor((squire2_con + squire2_siz) / 4)",
+      "label": "Unconscious"
+    },
+    "squire2_count_wounds_minor": {
+      "formula": "count_where(squire2_wounds, 'type', 'Minor')",
+      "label": "Minor Wound Count"
+    },
+    "squire2_count_wounds_major": {
+      "formula": "count_where(squire2_wounds, 'type', 'Major')",
+      "label": "Major Wound Count"
+    },
+    "squire2_count_wounds_mortal": {
+      "formula": "count_where(squire2_wounds, 'type', 'Mortal')",
+      "label": "Mortal Wound Count"
+    },
+    "squire2_total_armor": {
+      "formula": "squire2_armor_mail + squire2_armor_textile + squire2_armor_helm",
+      "label": "Total Armor Protection"
+    },
+    "squire2_total_armor_and_shield": {
+      "formula": "squire2_armor_mail + squire2_armor_textile + squire2_armor_helm + squire2_armor_shield",
+      "label": "With Shield"
+    },
+    "squire2_equipment_total_value": {
+      "formula": "(sum(column(squire2_equipment, 'libra'))) + (floor(sum(column(squire2_equipment, 'denarii')) / 2.4) / 100)",
+      "label": "Total Value"
+    },
+    "squire3_age": {
+      "formula": "year - squire3_birthyear",
+      "label": "Age"
+    },
+    "squire3_knockdown": {
+      "formula": "squire3_siz",
+      "label": "Knockdown"
+    },
+    "squire3_weapon_damage": {
+      "formula": "floor((squire3_str + squire3_siz) / 6)",
+      "label": "Weapon Damage (d6)"
+    },
+    "squire3_brawling_damage": {
+      "formula": "floor((squire3_str + squire3_siz) / 6)",
+      "label": "Brawling Damage"
+    },
+    "squire3_movement_rate": {
+      "formula": "floor((squire3_str + squire3_dex) / 2) + 5",
+      "label": "Movement Rate"
+    },
+    "squire3_major_wound": {
+      "formula": "squire3_con",
+      "label": "Major Wound"
+    },
+    "squire3_healing_rate": {
+      "formula": "floor(squire3_con / 5)",
+      "label": "Healing Rate"
+    },
+    "squire3_total_hit_points": {
+      "formula": "squire3_con + squire3_siz",
+      "label": "Total Hit Points"
+    },
+    "squire3_unconscious": {
+      "formula": "floor((squire3_con + squire3_siz) / 4)",
+      "label": "Unconscious"
+    },
+    "squire3_count_wounds_minor": {
+      "formula": "count_where(squire3_wounds, 'type', 'Minor')",
+      "label": "Minor Wound Count"
+    },
+    "squire3_count_wounds_major": {
+      "formula": "count_where(squire3_wounds, 'type', 'Major')",
+      "label": "Major Wound Count"
+    },
+    "squire3_count_wounds_mortal": {
+      "formula": "count_where(squire3_wounds, 'type', 'Mortal')",
+      "label": "Mortal Wound Count"
+    },
+    "squire3_total_armor": {
+      "formula": "squire3_armor_mail + squire3_armor_textile + squire3_armor_helm",
+      "label": "Total Armor Protection"
+    },
+    "squire3_total_armor_and_shield": {
+      "formula": "squire3_armor_mail + squire3_armor_textile + squire3_armor_helm + squire3_armor_shield",
+      "label": "With Shield"
+    },
+    "squire3_equipment_total_value": {
+      "formula": "(sum(column(squire3_equipment, 'libra'))) + (floor(sum(column(squire3_equipment, 'denarii')) / 2.4) / 100)",
+      "label": "Total Value"
+    },
+    "parent1_age": {
+      "formula": "year - parent1_birthyear",
+      "label": "Age"
+    },
+    "parent2_age": {
+      "formula": "year - parent2_birthyear",
+      "label": "Age"
+    }
+  },
+  "name_field": "character_name",
+  "validators": [
+    {
+      "rule": "hp_current <= total_hit_points",
+      "message": "Current hit points are above Total Hit Points (CON + SIZ).",
+      "field": "hp_current",
+      "severity": "error"
+    },
+    {
+      "rule": "trait_chaste + trait_lustful == 20",
+      "message": "Chaste + Lustful should total 20.",
+      "field": "trait_chaste",
+      "severity": "error"
+    },
+    {
+      "rule": "trait_energetic + trait_lazy == 20",
+      "message": "Energetic + Lazy should total 20.",
+      "field": "trait_energetic",
+      "severity": "error"
+    },
+    {
+      "rule": "trait_forgiving + trait_vengeful == 20",
+      "message": "Forgiving + Vengeful should total 20.",
+      "field": "trait_forgiving",
+      "severity": "error"
+    },
+    {
+      "rule": "trait_generous + trait_selfish == 20",
+      "message": "Generous + Selfish should total 20.",
+      "field": "trait_generous",
+      "severity": "error"
+    },
+    {
+      "rule": "trait_honest + trait_deceitful == 20",
+      "message": "Honest + Deceitful should total 20.",
+      "field": "trait_honest",
+      "severity": "error"
+    },
+    {
+      "rule": "trait_just + trait_arbitrary == 20",
+      "message": "Just + Arbitrary should total 20.",
+      "field": "trait_just",
+      "severity": "error"
+    },
+    {
+      "rule": "trait_merciful + trait_cruel == 20",
+      "message": "Merciful + Cruel should total 20.",
+      "field": "trait_merciful",
+      "severity": "error"
+    },
+    {
+      "rule": "trait_modest + trait_proud == 20",
+      "message": "Modest + Proud should total 20.",
+      "field": "trait_modest",
+      "severity": "error"
+    },
+    {
+      "rule": "trait_prudent + trait_reckless == 20",
+      "message": "Prudent + Reckless should total 20.",
+      "field": "trait_prudent",
+      "severity": "error"
+    },
+    {
+      "rule": "trait_spiritual + trait_worldly == 20",
+      "message": "Spiritual + Worldly should total 20.",
+      "field": "trait_spiritual",
+      "severity": "error"
+    },
+    {
+      "rule": "trait_temperate + trait_indulgent == 20",
+      "message": "Temperate + Indulgent should total 20.",
+      "field": "trait_temperate",
+      "severity": "error"
+    },
+    {
+      "rule": "trait_trusting + trait_suspicious == 20",
+      "message": "Trusting + Suspicious should total 20.",
+      "field": "trait_trusting",
+      "severity": "error"
+    },
+    {
+      "rule": "trait_valorous + trait_cowardly == 20",
+      "message": "Valorous + Cowardly should total 20.",
+      "field": "trait_valorous",
+      "severity": "error"
+    },
+    {
+      "rule": "passion_homage + passion_fealty + passion_c1 + passion_c2 <= 40",
+      "message": "Fidelitas passions total more than 40.",
+      "field": "passion_homage",
+      "severity": "error"
+    },
+    {
+      "rule": "passion_love_family + passion_c3 + passion_c4 + passion_c5 <= 40",
+      "message": "Fervor passions total more than 40.",
+      "field": "passion_love_family",
+      "severity": "error"
+    },
+    {
+      "rule": "passion_devotion + passion_c6 <= 40",
+      "message": "Adoratio passions total more than 40.",
+      "field": "passion_devotion",
+      "severity": "error"
+    },
+    {
+      "rule": "passion_hospitality + passion_station + passion_c7 <= 40",
+      "message": "Civilitas passions total more than 40.",
+      "field": "passion_hospitality",
+      "severity": "error"
+    },
+    {
+      "rule": "spouse_trait_chaste + spouse_trait_lustful == 20",
+      "message": "Spouse - Chaste + Lustful should total 20.",
+      "field": "spouse_trait_chaste",
+      "severity": "error"
+    },
+    {
+      "rule": "spouse_trait_energetic + spouse_trait_lazy == 20",
+      "message": "Spouse - Energetic + Lazy should total 20.",
+      "field": "spouse_trait_energetic",
+      "severity": "error"
+    },
+    {
+      "rule": "spouse_trait_forgiving + spouse_trait_vengeful == 20",
+      "message": "Spouse - Forgiving + Vengeful should total 20.",
+      "field": "spouse_trait_forgiving",
+      "severity": "error"
+    },
+    {
+      "rule": "spouse_trait_generous + spouse_trait_selfish == 20",
+      "message": "Spouse - Generous + Selfish should total 20.",
+      "field": "spouse_trait_generous",
+      "severity": "error"
+    },
+    {
+      "rule": "spouse_trait_honest + spouse_trait_deceitful == 20",
+      "message": "Spouse - Honest + Deceitful should total 20.",
+      "field": "spouse_trait_honest",
+      "severity": "error"
+    },
+    {
+      "rule": "spouse_trait_just + spouse_trait_arbitrary == 20",
+      "message": "Spouse - Just + Arbitrary should total 20.",
+      "field": "spouse_trait_just",
+      "severity": "error"
+    },
+    {
+      "rule": "spouse_trait_merciful + spouse_trait_cruel == 20",
+      "message": "Spouse - Merciful + Cruel should total 20.",
+      "field": "spouse_trait_merciful",
+      "severity": "error"
+    },
+    {
+      "rule": "spouse_trait_modest + spouse_trait_proud == 20",
+      "message": "Spouse - Modest + Proud should total 20.",
+      "field": "spouse_trait_modest",
+      "severity": "error"
+    },
+    {
+      "rule": "spouse_trait_prudent + spouse_trait_reckless == 20",
+      "message": "Spouse - Prudent + Reckless should total 20.",
+      "field": "spouse_trait_prudent",
+      "severity": "error"
+    },
+    {
+      "rule": "spouse_trait_spiritual + spouse_trait_worldly == 20",
+      "message": "Spouse - Spiritual + Worldly should total 20.",
+      "field": "spouse_trait_spiritual",
+      "severity": "error"
+    },
+    {
+      "rule": "spouse_trait_temperate + spouse_trait_indulgent == 20",
+      "message": "Spouse - Temperate + Indulgent should total 20.",
+      "field": "spouse_trait_temperate",
+      "severity": "error"
+    },
+    {
+      "rule": "spouse_trait_trusting + spouse_trait_suspicious == 20",
+      "message": "Spouse - Trusting + Suspicious should total 20.",
+      "field": "spouse_trait_trusting",
+      "severity": "error"
+    },
+    {
+      "rule": "spouse_trait_valorous + spouse_trait_cowardly == 20",
+      "message": "Spouse - Valorous + Cowardly should total 20.",
+      "field": "spouse_trait_valorous",
+      "severity": "error"
+    },
+    {
+      "rule": "squire1_trait_chaste + squire1_trait_lustful == 20",
+      "message": "Squire 1 - Chaste + Lustful should total 20.",
+      "field": "squire1_trait_chaste",
+      "severity": "error"
+    },
+    {
+      "rule": "squire1_trait_energetic + squire1_trait_lazy == 20",
+      "message": "Squire 1 - Energetic + Lazy should total 20.",
+      "field": "squire1_trait_energetic",
+      "severity": "error"
+    },
+    {
+      "rule": "squire1_trait_forgiving + squire1_trait_vengeful == 20",
+      "message": "Squire 1 - Forgiving + Vengeful should total 20.",
+      "field": "squire1_trait_forgiving",
+      "severity": "error"
+    },
+    {
+      "rule": "squire1_trait_generous + squire1_trait_selfish == 20",
+      "message": "Squire 1 - Generous + Selfish should total 20.",
+      "field": "squire1_trait_generous",
+      "severity": "error"
+    },
+    {
+      "rule": "squire1_trait_honest + squire1_trait_deceitful == 20",
+      "message": "Squire 1 - Honest + Deceitful should total 20.",
+      "field": "squire1_trait_honest",
+      "severity": "error"
+    },
+    {
+      "rule": "squire1_trait_just + squire1_trait_arbitrary == 20",
+      "message": "Squire 1 - Just + Arbitrary should total 20.",
+      "field": "squire1_trait_just",
+      "severity": "error"
+    },
+    {
+      "rule": "squire1_trait_merciful + squire1_trait_cruel == 20",
+      "message": "Squire 1 - Merciful + Cruel should total 20.",
+      "field": "squire1_trait_merciful",
+      "severity": "error"
+    },
+    {
+      "rule": "squire1_trait_modest + squire1_trait_proud == 20",
+      "message": "Squire 1 - Modest + Proud should total 20.",
+      "field": "squire1_trait_modest",
+      "severity": "error"
+    },
+    {
+      "rule": "squire1_trait_prudent + squire1_trait_reckless == 20",
+      "message": "Squire 1 - Prudent + Reckless should total 20.",
+      "field": "squire1_trait_prudent",
+      "severity": "error"
+    },
+    {
+      "rule": "squire1_trait_spiritual + squire1_trait_worldly == 20",
+      "message": "Squire 1 - Spiritual + Worldly should total 20.",
+      "field": "squire1_trait_spiritual",
+      "severity": "error"
+    },
+    {
+      "rule": "squire1_trait_temperate + squire1_trait_indulgent == 20",
+      "message": "Squire 1 - Temperate + Indulgent should total 20.",
+      "field": "squire1_trait_temperate",
+      "severity": "error"
+    },
+    {
+      "rule": "squire1_trait_trusting + squire1_trait_suspicious == 20",
+      "message": "Squire 1 - Trusting + Suspicious should total 20.",
+      "field": "squire1_trait_trusting",
+      "severity": "error"
+    },
+    {
+      "rule": "squire1_trait_valorous + squire1_trait_cowardly == 20",
+      "message": "Squire 1 - Valorous + Cowardly should total 20.",
+      "field": "squire1_trait_valorous",
+      "severity": "error"
+    },
+    {
+      "rule": "squire2_trait_chaste + squire2_trait_lustful == 20",
+      "message": "Squire 2 - Chaste + Lustful should total 20.",
+      "field": "squire2_trait_chaste",
+      "severity": "error"
+    },
+    {
+      "rule": "squire2_trait_energetic + squire2_trait_lazy == 20",
+      "message": "Squire 2 - Energetic + Lazy should total 20.",
+      "field": "squire2_trait_energetic",
+      "severity": "error"
+    },
+    {
+      "rule": "squire2_trait_forgiving + squire2_trait_vengeful == 20",
+      "message": "Squire 2 - Forgiving + Vengeful should total 20.",
+      "field": "squire2_trait_forgiving",
+      "severity": "error"
+    },
+    {
+      "rule": "squire2_trait_generous + squire2_trait_selfish == 20",
+      "message": "Squire 2 - Generous + Selfish should total 20.",
+      "field": "squire2_trait_generous",
+      "severity": "error"
+    },
+    {
+      "rule": "squire2_trait_honest + squire2_trait_deceitful == 20",
+      "message": "Squire 2 - Honest + Deceitful should total 20.",
+      "field": "squire2_trait_honest",
+      "severity": "error"
+    },
+    {
+      "rule": "squire2_trait_just + squire2_trait_arbitrary == 20",
+      "message": "Squire 2 - Just + Arbitrary should total 20.",
+      "field": "squire2_trait_just",
+      "severity": "error"
+    },
+    {
+      "rule": "squire2_trait_merciful + squire2_trait_cruel == 20",
+      "message": "Squire 2 - Merciful + Cruel should total 20.",
+      "field": "squire2_trait_merciful",
+      "severity": "error"
+    },
+    {
+      "rule": "squire2_trait_modest + squire2_trait_proud == 20",
+      "message": "Squire 2 - Modest + Proud should total 20.",
+      "field": "squire2_trait_modest",
+      "severity": "error"
+    },
+    {
+      "rule": "squire2_trait_prudent + squire2_trait_reckless == 20",
+      "message": "Squire 2 - Prudent + Reckless should total 20.",
+      "field": "squire2_trait_prudent",
+      "severity": "error"
+    },
+    {
+      "rule": "squire2_trait_spiritual + squire2_trait_worldly == 20",
+      "message": "Squire 2 - Spiritual + Worldly should total 20.",
+      "field": "squire2_trait_spiritual",
+      "severity": "error"
+    },
+    {
+      "rule": "squire2_trait_temperate + squire2_trait_indulgent == 20",
+      "message": "Squire 2 - Temperate + Indulgent should total 20.",
+      "field": "squire2_trait_temperate",
+      "severity": "error"
+    },
+    {
+      "rule": "squire2_trait_trusting + squire2_trait_suspicious == 20",
+      "message": "Squire 2 - Trusting + Suspicious should total 20.",
+      "field": "squire2_trait_trusting",
+      "severity": "error"
+    },
+    {
+      "rule": "squire2_trait_valorous + squire2_trait_cowardly == 20",
+      "message": "Squire 2 - Valorous + Cowardly should total 20.",
+      "field": "squire2_trait_valorous",
+      "severity": "error"
+    },
+    {
+      "rule": "squire3_trait_chaste + squire3_trait_lustful == 20",
+      "message": "Squire 3 - Chaste + Lustful should total 20.",
+      "field": "squire3_trait_chaste",
+      "severity": "error"
+    },
+    {
+      "rule": "squire3_trait_energetic + squire3_trait_lazy == 20",
+      "message": "Squire 3 - Energetic + Lazy should total 20.",
+      "field": "squire3_trait_energetic",
+      "severity": "error"
+    },
+    {
+      "rule": "squire3_trait_forgiving + squire3_trait_vengeful == 20",
+      "message": "Squire 3 - Forgiving + Vengeful should total 20.",
+      "field": "squire3_trait_forgiving",
+      "severity": "error"
+    },
+    {
+      "rule": "squire3_trait_generous + squire3_trait_selfish == 20",
+      "message": "Squire 3 - Generous + Selfish should total 20.",
+      "field": "squire3_trait_generous",
+      "severity": "error"
+    },
+    {
+      "rule": "squire3_trait_honest + squire3_trait_deceitful == 20",
+      "message": "Squire 3 - Honest + Deceitful should total 20.",
+      "field": "squire3_trait_honest",
+      "severity": "error"
+    },
+    {
+      "rule": "squire3_trait_just + squire3_trait_arbitrary == 20",
+      "message": "Squire 3 - Just + Arbitrary should total 20.",
+      "field": "squire3_trait_just",
+      "severity": "error"
+    },
+    {
+      "rule": "squire3_trait_merciful + squire3_trait_cruel == 20",
+      "message": "Squire 3 - Merciful + Cruel should total 20.",
+      "field": "squire3_trait_merciful",
+      "severity": "error"
+    },
+    {
+      "rule": "squire3_trait_modest + squire3_trait_proud == 20",
+      "message": "Squire 3 - Modest + Proud should total 20.",
+      "field": "squire3_trait_modest",
+      "severity": "error"
+    },
+    {
+      "rule": "squire3_trait_prudent + squire3_trait_reckless == 20",
+      "message": "Squire 3 - Prudent + Reckless should total 20.",
+      "field": "squire3_trait_prudent",
+      "severity": "error"
+    },
+    {
+      "rule": "squire3_trait_spiritual + squire3_trait_worldly == 20",
+      "message": "Squire 3 - Spiritual + Worldly should total 20.",
+      "field": "squire3_trait_spiritual",
+      "severity": "error"
+    },
+    {
+      "rule": "squire3_trait_temperate + squire3_trait_indulgent == 20",
+      "message": "Squire 3 - Temperate + Indulgent should total 20.",
+      "field": "squire3_trait_temperate",
+      "severity": "error"
+    },
+    {
+      "rule": "squire3_trait_trusting + squire3_trait_suspicious == 20",
+      "message": "Squire 3 - Trusting + Suspicious should total 20.",
+      "field": "squire3_trait_trusting",
+      "severity": "error"
+    },
+    {
+      "rule": "squire3_trait_valorous + squire3_trait_cowardly == 20",
+      "message": "Squire 3 - Valorous + Cowardly should total 20.",
+      "field": "squire3_trait_valorous",
+      "severity": "error"
+    },
+    {
+      "rule": "glory >= 0",
+      "message": "Glory cannot be negative",
+      "field": "glory",
+      "severity": "error"
+    },
+    {
+      "rule": "honor >= 0",
+      "message": "Honor cannot be negative",
+      "field": "honor",
+      "severity": "error"
+    },
+    {
+      "rule": "session_glory >= 0",
+      "message": "Session Glory cannot be negative",
+      "field": "session_glory",
+      "severity": "error"
+    },
+    {
+      "rule": "hp_current >= 0",
+      "message": "Current Hit Points cannot be negative",
+      "field": "hp_current",
+      "severity": "error"
+    },
+    {
+      "rule": "armor_mail >= 0",
+      "message": "Mail/Plate Armor cannot be negative",
+      "field": "armor_mail",
+      "severity": "error"
+    },
+    {
+      "rule": "armor_textile >= 0",
+      "message": "Textile Armor cannot be negative",
+      "field": "armor_textile",
+      "severity": "error"
+    },
+    {
+      "rule": "armor_helm >= 0",
+      "message": "Helm Armor cannot be negative",
+      "field": "armor_helm",
+      "severity": "error"
+    },
+    {
+      "rule": "armor_shield >= 0",
+      "message": "Shield Armor cannot be negative",
+      "field": "armor_shield",
+      "severity": "error"
+    }
+  ],
+  "layout_file": "pendragon-6e.html",
+  "styles_file": "pendragon-6e.css"
+}

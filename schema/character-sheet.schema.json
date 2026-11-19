@@ -472,6 +472,16 @@
               "type": "string"
             }
           },
+          "filter_depends": {
+            "type": "object",
+            "description": "Filters that narrow within another filter, child to parent, such as {\"origin\": \"class\"}. The child is disabled until its parent is chosen (unless some entry has it without one) and clears when the parent changes. Both must be in filter_fields; one level deep.",
+            "propertyNames": {
+              "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+            },
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
           "compact_display": {
             "type": "string",
             "description": "A one-line template like '{name} — {school} {level}'. Every {token} must name one of the type's fields."

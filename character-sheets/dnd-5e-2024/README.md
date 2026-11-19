@@ -34,6 +34,8 @@ species, the other details, portrait, appearance and backstory) and **Notes**.
   catalogue entry is missing (or you prefer not to pick one)
 - **Picking a class** adds its level 1 features, and **picking a subclass** adds
   the features it grants at the level it is chosen
+- **The feature browser filters by class, then by subclass** - pick a class and
+  the Subclass filter lists only its subclasses
 - **Your character's art, large** on the Spells & Details page, beside their
   appearance - framed the way you chose (click it to choose)
 

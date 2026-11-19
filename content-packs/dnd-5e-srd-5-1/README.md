@@ -7,7 +7,7 @@ System Reference Document 5.1 - the open subset of the original 2014 rules:
 | --- | --- | --- |
 | `class.json` | 12 | Hit die, saving throws, armor, weapon and tool proficiencies, skill choices, spellcasting, level 1 features |
 | `subclass.json` | 12 | One per class, as the SRD has them, with the features they grant when chosen |
-| `feature.json` | 216 | Every class and subclass feature by level, the 32 eldritch invocations, and the Acolyte's feature |
+| `feature.json` | 216 | Every class and subclass feature by level, the 32 eldritch invocations, and the Acolyte's feature, filed under the class Background |
 | `race.json` | 9 | Size, speed, ability score increases, languages, skill proficiencies |
 | `subrace.json` | 4 | Hill Dwarf, High Elf, Lightfoot and Rock Gnome |
 | `trait.json` | 34 | Racial and subracial traits |

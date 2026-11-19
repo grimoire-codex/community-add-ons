@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated": "2026-11-08T23:31:29Z",
+  "generated": "2026-11-19T16:02:49Z",
   "sheets": [
     {
       "id": "basic-fantasy",
@@ -99,9 +99,9 @@
     {
       "id": "dnd-5e-2014",
       "name": "D&D 5th Edition (2014)",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "path": "character-sheets/dnd-5e-2014/dnd-5e-2014.json",
-      "sha256": "71c948290693aba4c31cc7b692cec6cbb5d097467f05a7771972099bfe1cd470",
+      "sha256": "b34466499a65128dfca092b08ff231c61da0d12ca760d6f529bbff13c05b645a",
       "custom_layout": true,
       "custom_mobile_layout": true,
       "field_count": 113,
@@ -125,9 +125,9 @@
     {
       "id": "dnd-5e-2024",
       "name": "D&D 5th Edition (2024)",
-      "version": "1.4.0",
+      "version": "1.5.0",
       "path": "character-sheets/dnd-5e-2024/dnd-5e-2024.json",
-      "sha256": "6014d877e979f6e10415163865b354a56738c0a3ca5505f4497ec7a455512ef8",
+      "sha256": "9bb06bae4d89d40642dc961224418ee5511f9f8a02477988ba16fd1767fdd11c",
       "custom_layout": true,
       "custom_mobile_layout": true,
       "field_count": 92,

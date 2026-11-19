@@ -440,6 +440,7 @@ says what an entry looks like and how the browser presents it.
 | `sort_default` | Properties the browser sorts by, in order |
 | `search_fields` | Properties full-text search indexes. Omit it and every text value is indexed |
 | `filter_fields` | Properties the browser offers as filters, each with the values present |
+| `filter_depends` | Filters that narrow within another, child to parent: `{"origin": "class"}` lists only the chosen class's origins. The child waits for its parent to be chosen (unless some entry has it without one) and clears when the parent changes. Both must be in `filter_fields`, one level deep. Older Grimoire releases ignore it |
 | `compact_display` | A one-line summary under each entry's name, with `{property}` placeholders |
 
 Every key that names a property is checked against `fields` at install. A pack

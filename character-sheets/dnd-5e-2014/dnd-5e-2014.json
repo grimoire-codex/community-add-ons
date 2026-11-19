@@ -2,7 +2,7 @@
   "$schema": "../../schema/character-sheet.schema.json",
   "id": "dnd-5e-2014",
   "name": "D&D 5th Edition (2014)",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "grimoire_min_version": "1.10.0",
   "system": "Dungeons & Dragons 5th Edition (2014)",
   "description": "A character sheet for the original 2014 rules of D&D 5th Edition, laid out after the three-page printed sheet, with the SRD 5.1 catalogue of races, classes and their features, spells, equipment and magic items.",
@@ -674,6 +674,9 @@
         "class",
         "origin"
       ],
+      "filter_depends": {
+        "origin": "class"
+      },
       "compact_display": "{origin} {level}",
       "fields": {
         "name": {

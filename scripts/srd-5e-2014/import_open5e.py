@@ -478,8 +478,10 @@ def background_entries(source: pathlib.Path) -> tuple[list[dict], list[dict]]:
         feature_entry = {
             "_id": slug(f"{f['name']} {feature['name']}"),
             "name": feature["name"],
-            "origin": f"{f['name']} (background)",
-            "class": "",
+            # Filed under "Background" so the class filter reaches it: origin is
+            # filtered within a class, and the browser waits for one.
+            "origin": f["name"],
+            "class": "Background",
             "description": prose(feature["name"], feature["desc"]),
         }
         features.append(feature_entry)

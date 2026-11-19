@@ -34,6 +34,9 @@ appearance, personality, backstory and allies) and **Notes**.
   adds its level 1 features and armor proficiencies; **picking a subclass** adds
   the features it grants when chosen; **picking a background** adds its skills
   and feature. Weapons, tools and languages fill in from the same picks
+- **The feature browser filters by class, then by where it came from** - pick a
+  class (or Background) and the From filter lists its subclasses and the
+  class itself
 - **Equipment** picked from the catalogue or typed in, with a quantity, and
   carried weight against a `Strength × 15` capacity
 - **Magic items**, with a warning if more than three are attuned

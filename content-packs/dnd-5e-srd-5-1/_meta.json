@@ -2,7 +2,7 @@
   "pack_id": "dnd-5e-srd-5-1",
   "schema_id": "dnd-5e-2014",
   "name": "D&D 5e SRD 5.1",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The System Reference Document 5.1 for the 2014 rules, and nothing outside it: the twelve classes with their subclasses and every feature, races and subraces with their traits, the Acolyte, the Grappler feat, all 319 spells, equipment and magic items.",
   "license": "CC-BY-4.0",
   "license_url": "https://creativecommons.org/licenses/by/4.0/",

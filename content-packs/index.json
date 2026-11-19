@@ -1,7 +1,7 @@
 {
   "$schema": "../schema/content-pack-index.schema.json",
   "version": 1,
-  "generated": "2026-11-08T23:31:29+00:00",
+  "generated": "2026-11-19T16:02:49+00:00",
   "packs": [
     {
       "pack_id": "dnd-5e-srd",
@@ -103,7 +103,7 @@
         {
           "name": "_meta.json",
           "path": "content-packs/dnd-5e-srd-5-1/_meta.json",
-          "sha256": "81593ad9a8f017f5c2dbf6b406a824c2e81dda86e06bd91d254acbfd40f55f1c",
+          "sha256": "112ee4ee62cb7414919ab0851bb0ad5a45abf3430b6b8fe6049745d9cb05a3ef",
           "bytes": 950
         },
         {
@@ -127,8 +127,8 @@
         {
           "name": "feature.json",
           "path": "content-packs/dnd-5e-srd-5-1/feature.json",
-          "sha256": "1056351825b321f3f8e8ec644933dd9a23b4baf577c713d19b81fd60f162e8ce",
-          "bytes": 134815
+          "sha256": "3b02bab27390bce36a473c2d28f481a89f2953c1e2a4443421e2bbfdbe94df5f",
+          "bytes": 134812
         },
         {
           "name": "item.json",
@@ -187,7 +187,7 @@
         "subrace",
         "trait"
       ],
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "The System Reference Document 5.1 for the 2014 rules, and nothing outside it: the twelve classes with their subclasses and every feature, races and subraces with their traits, the Acolyte, the Grappler feat, all 319 spells, equipment and magic items.",
       "license": "CC-BY-4.0",
       "license_url": "https://creativecommons.org/licenses/by/4.0/",

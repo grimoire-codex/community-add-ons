@@ -10,6 +10,14 @@ items, and adds each class's level 1 features to class.json so picking a class
 can grant them. A subclass feature keeps its class and names its subclass, and
 each subclass lists the features it grants at the level it is chosen.
 
+It also writes the reference material no character picks from - conditions,
+rules (the Rules Glossary and the rules chapters) and monsters - which the
+pack's _meta.json declares as content types of its own. Those are checked
+against the SRD 5.2.1 PDF that the same Open5e clone keeps under
+data/raw_sources/srd_5_2 (read by srd52.py, which needs pymupdf): a monster's
+header comes from its stat block, and every condition, rule and stat block
+entry takes the SRD's own words. The importer lists anything it could not match.
+
 Everything written is SRD 5.2 text, under the CC BY 4.0 attribution the pack
 already carries. Open5e expands a generic magic item into one row per weapon or
 armour - a Holy Avenger for every weapon in the game - so those are folded back
@@ -27,8 +35,13 @@ import pathlib
 import re
 import sys
 
+from srd52 import Srd, Wording, glossary
+
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 PACK = ROOT / "content-packs" / "dnd-5e-srd"
+
+#: The SRD 5.2.1, loaded in main() for the reference types.
+SRD: Srd
 
 
 def load(source: pathlib.Path, model: str) -> list[dict]:
@@ -49,11 +62,12 @@ def title(text: str) -> str:
     return " ".join(word.capitalize() for word in re.split(r"[-\s]+", text or "") if word)
 
 
-def plain(text: str | None) -> str:
+def plain(text: str | None, *, keep_marks: bool = False) -> str:
     """Markdown to the plain text a pack holds: paragraphs kept, markup gone.
 
     A table becomes one line per row, cells joined by " - ", which reads well
-    enough in a sheet's entry view and keeps every value.
+    enough in a sheet's entry view and keeps every value. `keep_marks` leaves
+    each table row marked, for `prose`.
     """
     lines = []
     for line in (text or "").replace("\r", "").split("\n"):
@@ -62,7 +76,7 @@ def plain(text: str | None) -> str:
             cells = [cell.strip() for cell in stripped.strip("|").split("|")]
             if all(re.fullmatch(r":?-{2,}:?", cell) or not cell for cell in cells):
                 continue
-            line = " - ".join(cell for cell in cells if cell)
+            line = (TABLE_ROW if keep_marks else "") + " - ".join(cell for cell in cells if cell)
         line = re.sub(r"^#+\s*", "", line)
         line = re.sub(r"^\s*[-*]\s+", "• ", line)
         line = re.sub(r"\*\*(.+?)\*\*", r"\1", line)
@@ -71,6 +85,39 @@ def plain(text: str | None) -> str:
         lines.append(line.rstrip())
     out = "\n".join(lines).strip()
     return re.sub(r"\n{3,}", "\n\n", out)
+
+
+#: Marks a line that was a table row, so `prose` leaves it as it is.
+TABLE_ROW = "\x00"
+
+
+def prose(name: str, markdown: str | None, against: Wording | None = None) -> str:
+    """An entry's text as plain text in the SRD's own words.
+
+    Open5e's paragraphs and table rows give the shape; `Wording.reword` puts
+    the SRD's wording into each paragraph - matched against `against`, such as
+    one monster's stat block, or the whole SRD. Text the SRD cannot be matched
+    to is kept as Open5e has it, and listed when the importer finishes.
+    """
+    text = plain(markdown, keep_marks=True)
+    lines = text.split("\n")
+    spots = [i for i, line in enumerate(lines) if line.strip()]
+    bodies, keep, bullets = [], set(), {}
+    for n, i in enumerate(spots):
+        line = lines[i]
+        if line.startswith(TABLE_ROW):
+            keep.add(n)
+            line = line[len(TABLE_ROW):]
+        elif line.startswith("• "):
+            bullets[n] = "• "
+            line = line[2:]
+        bodies.append(line)
+    reworded = (against or SRD).reword(name, bodies, keep)
+    if reworded is None:
+        return text.replace(TABLE_ROW, "")
+    for n, i in enumerate(spots):
+        lines[i] = bullets.get(n, "") + reworded[n]
+    return "\n".join(lines)
 
 
 def number(value) -> float | int:
@@ -446,6 +493,301 @@ def subclasses(source: pathlib.Path, by_class: dict[str, list[dict]]) -> list[di
     return out
 
 
+# --- conditions, rules and monsters ---------------------------------------------
+# Reference material: no character picks a condition or a monster, so the sheet
+# does not declare these types. The pack's _meta.json declares them itself.
+
+
+def conditions(source: pathlib.Path) -> list[dict]:
+    out = []
+    for row in load(source, "ConditionDescription"):
+        name = title(row["fields"]["describes"])
+        out.append({"_id": slug(name), "name": name, "description": prose(name, row["fields"]["desc"])})
+    return sorted(out, key=lambda e: e["name"])
+
+
+def sidebars(markdown: str) -> str:
+    """The SRD's sidebars - markdown block quotes in Open5e's copy - as plain
+    paragraphs."""
+    return "\n".join(re.sub(r"^\s*>\s?", "", line) for line in markdown.split("\n")).strip()
+
+
+def unique_ids(entries: list[dict], taken: set[str]) -> None:
+    """Give each entry an id from its name, qualified by its category when the
+    name is used more than once or is already another entry's in the pack
+    ("Cover" is a glossary entry and a section of Combat)."""
+    counts = collections.Counter(e["name"] for e in entries)
+    for entry in entries:
+        entry_id = slug(entry["name"])
+        if counts[entry["name"]] > 1 or entry_id in taken:
+            entry_id = slug(f"{entry['category']} {entry['name']}")
+        base, n = entry_id, 2
+        while entry_id in taken:
+            entry_id, n = f"{base}-{n}", n + 1
+        taken.add(entry_id)
+        entry["_id"] = entry_id
+
+
+def rules(source: pathlib.Path, markdown: pathlib.Path, taken: set[str]) -> list[dict]:
+    """The Rules Glossary, entry by entry, then the rules chapters a section
+    each, filed under the part they come from; a part's own introduction is an
+    entry named after it. The glossary's conditions are condition.json's."""
+    out = []
+    for heading, body in glossary(markdown):
+        name, tag = re.fullmatch(r"(.+?)(?: \[(.+)\])?", heading).groups()
+        if tag == "Condition":
+            continue
+        entry = {"name": name, "category": "Rules Glossary", "tag": tag or ""}
+        entry["description"] = prose(f"Rules Glossary: {heading}", body)
+        out.append({key: value for key, value in entry.items() if value != ""})
+    for entry in out:
+        # The Darkness spell has "darkness".
+        entry["_id"] = slug(entry["name"]) + ("-rule" if slug(entry["name"]) in taken else "")
+        assert entry["_id"] not in taken, entry["_id"]
+        taken.add(entry["_id"])
+
+    parts = {row["pk"]: row["fields"] for row in load(source, "RuleSet")}
+    rows = [(f["name"], 0, f["name"], f["desc"]) for f in parts.values() if f["desc"]]
+    for row in load(source, "Rule"):
+        f = row["fields"]
+        rows.append((parts[f["ruleset"]]["name"], f["index"], f["name"], f["desc"]))
+    chapters = []
+    for category, _, name, desc in sorted(rows, key=lambda r: (r[0], r[1], r[2])):
+        text = prose(f"{category}: {name}", sidebars(desc))
+        chapters.append({"name": name, "category": category, "description": text})
+    unique_ids(chapters, taken)
+    return [{"_id": e.pop("_id"), **e} for e in out + chapters]
+
+
+SECTIONS = {
+    "ACTION": "Actions",
+    "BONUS_ACTION": "Bonus Actions",
+    "REACTION": "Reactions",
+    "LEGENDARY_ACTION": "Legendary Actions",
+}
+
+LEGENDARY = re.compile(
+    r"Legendary Action Uses: .+?regains all expended uses at the start of each of its turns\."
+)
+
+CONDITIONS = {
+    "Blinded", "Charmed", "Deafened", "Exhaustion", "Frightened", "Grappled", "Incapacitated",
+    "Invisible", "Paralyzed", "Petrified", "Poisoned", "Prone", "Restrained", "Stunned",
+    "Unconscious",
+}
+
+ABILITIES = ["strength", "dexterity", "constitution", "intelligence", "wisdom", "charisma"]
+
+
+def usage(f: dict) -> str:
+    """What the SRD prints after an action's name: its form, recharge or uses."""
+    if "(" in f["name"]:
+        return ""
+    parts = []
+    if f.get("limited_to_form"):
+        parts.append(f["limited_to_form"])
+    if f.get("uses_type") in ("RECHARGE_ON_ROLL", "RECHARGE") and f.get("uses_param"):
+        low = f["uses_param"]
+        parts.append(f"Recharge {low}" if low == 6 else f"Recharge {low}–6")
+    elif f.get("uses_type") == "PER_DAY" and f.get("uses_param"):
+        parts.append(f"{f['uses_param']}/Day")
+    return "".join(f" ({part})" for part in parts)
+
+
+def locate(text: str, name: str, after: int) -> int:
+    """Where a stat block entry starts: its name, starting a sentence unless it
+    follows a spell list, which has no full stop. "Claw" finds "Claws"."""
+    bare = re.escape(name.split(" (")[0])
+    entry = rf"{bare}s?(?: \([^)]*\))?\. "
+    # Not a choice in another entry's text: "uses (A) Fire Breath or (B) Weakening Breath."
+    start = r"(?:(?<=[.):] )(?<!\([A-Z]\) )|(?<=ctions )|(?<=Traits ))"
+    found = re.compile(start + entry).search(text, after)
+    found = found or re.compile(r"(?<!\([A-Z]\) )" + entry).search(text, after)
+    return found.start() if found else len(text)
+
+
+def plainly(text: str) -> str:
+    """Text without its layout, to compare two copies of an entry."""
+    return re.sub(r"\s+", " ", text.replace("• ", " ")).strip()
+
+
+def rating(challenge: str) -> float | int:
+    top, _, bottom = challenge.partition("/")
+    return int(top) / int(bottom) if bottom else int(top)
+
+
+def immunities(printed: str) -> tuple[str, str]:
+    """The SRD prints damage and condition immunities on one line, damage
+    first: "Necrotic, Poison; Charmed, Exhaustion"."""
+    damage, conditions_ = [], []
+    for part in filter(None, printed.split("; ")):
+        names = {word.strip() for word in part.split(",")}
+        (conditions_ if names <= CONDITIONS else damage).append(part)
+    return "; ".join(damage), "; ".join(conditions_)
+
+
+def monsters(source: pathlib.Path, taken: set[str]) -> list[dict]:
+    creatures = load(source, "Creature")
+    parts: dict[str, list[tuple[str, dict]]] = collections.defaultdict(list)
+    for row in load(source, "CreatureTrait") + load(source, "CreatureAction"):
+        f = row["fields"]
+        # Open5e's "Bite " has a stray space.
+        section = SECTIONS[f["action_type"]] if "action_type" in f else "Traits"
+        parts[f["parent"]].append((section, {**f, "name": f["name"].strip()}))
+    blocks = SRD.stat_blocks([row["fields"]["name"] for row in creatures])
+
+    out, left_out, not_srd, from_srd = [], [], [], []
+    for row in creatures:
+        f = row["fields"]
+        block = blocks.get(f["name"])
+        if block is None:
+            left_out.append(f["name"])
+            continue
+        text = block["text"]
+        wording = Wording(text, SRD.unmatched, entries=True)
+
+        # Where each section and entry starts in the stat block. A section is
+        # searched from its heading, so an action and a legendary action of the
+        # same name are each found in their own.
+        spots, bounds = {}, {len(text)}
+        for heading in ["Traits", *SECTIONS.values()]:
+            # After a full stop, or after a spell list, which has none.
+            begins = re.search(
+                rf"(?<![\w(])(?<!Bonus )(?<!Legendary ){heading} (?=[A-Z][^.]{{0,60}}\. )", text
+            )
+            if begins:
+                bounds.add(begins.start())
+            for section, part in parts[row["pk"]]:
+                if section == heading:
+                    at = locate(text, part["name"], begins.end() if begins else 0)
+                    spots[id(part)] = (at, part.get("order_in_statblock") or 0)
+                    bounds.add(at)
+        if intro := LEGENDARY.search(text):
+            bounds.add(intro.start())
+
+        def printed(part: dict) -> str | None:
+            """The entry as the stat block prints it, for one Open5e has wrong
+            or short, with a spell list laid out as Open5e lays it out."""
+            begin = spots[id(part)][0]
+            if begin == len(text):
+                return None
+            end = min(b for b in bounds if b > begin)
+            entry = text[begin:end].strip()
+            if end == len(text):
+                # The last entry runs on to the next stat block's heading.
+                entry = entry[: entry.rfind(".") + 1]
+            head, *spells = re.split(r" (?=(?:At Will|\d+/Day(?: Each)?): )", entry)
+            return head + ("\n\n" + "\n".join(f"• {line}" for line in spells) if spells else "")
+
+        sections = []
+        for heading in ["Traits", *SECTIONS.values()]:
+            own = sorted((p for s, p in parts[row["pk"]] if s == heading), key=lambda p: spots[id(p)])
+            paragraphs = []
+            for part in own:
+                label = part["name"] + usage(part)
+                before = len(SRD.unmatched)
+                reworded = prose(f"{f['name']}: {part['name']}", f"{label}. {part['desc']}", wording)
+                srd = printed(part)
+                ours = [line.removeprefix("• ") for line in reworded.split("\n") if line]
+                if (
+                    srd is not None
+                    and plainly(srd) != plainly(reworded)
+                    and all(p.startswith("• ") for p in reworded.split("\n\n")[1:])
+                    and (
+                        len(plainly(srd)) >= 0.9 * len(plainly(reworded))
+                        or not all(line in srd for line in ours)
+                    )
+                ):
+                    # The stat block's own text, where Open5e's is short of it
+                    # ("Plane Shift (self only)") or has its own additions (an
+                    # "At Will" list for Read Thoughts).
+                    del SRD.unmatched[before:]
+                    from_srd.append(f"{f['name']}: {part['name']}")
+                    reworded = srd
+                elif len(SRD.unmatched) > before and SRD.unmatched[-1].endswith(": not found in the SRD"):
+                    # Nowhere in the stat block: Open5e's own.
+                    SRD.unmatched.pop()
+                    not_srd.append(f"{f['name']}: {part['name']}")
+                    continue
+                paragraphs.append(reworded)
+            if not paragraphs:
+                continue
+            if heading == "Legendary Actions" and intro:
+                paragraphs.insert(0, intro.group(0))
+            sections.append("\n\n".join([heading, *paragraphs]))
+
+        kind = re.fullmatch(r"(\w+)(?: \((.+)\))?", block["type"])
+        if kind:
+            kind, tags = kind.group(1), kind.group(2) or ""
+        else:
+            # "Swarm of Tiny Beasts": a Beast, and what it is a swarm of.
+            kind, tags = title(f["type"]), block["type"]
+        hit_points = re.fullmatch(r"(\d+) \((.+)\)", block["HP"])
+        if block["scores"]:
+            scores = dict(zip(ABILITIES, block["scores"]))
+            saves = ", ".join(
+                f"{a[:3].title()} {save}"
+                for a, save, mod in zip(ABILITIES, block["saves"], block["mods"])
+                if save != mod
+            )
+        else:
+            # One stat block misprints a save; Open5e's row is the SRD's otherwise.
+            print(f"  ! {f['name']}: ability scores and saves taken from Open5e")
+            scores = {a: f[f"ability_score_{a}"] for a in ABILITIES}
+            saves = ", ".join(
+                f"{a[:3].title()} {f[f'saving_throw_{a}']:+d}"
+                for a in ABILITIES
+                if f[f"saving_throw_{a}"] is not None
+                and f[f"saving_throw_{a}"] != (scores[a] - 10) // 2
+            )
+        if any(scores[a] != f[f"ability_score_{a}"] for a in ABILITIES):
+            print(f"  ! {f['name']}: ability scores per the SRD are {list(scores.values())}")
+        damage_immunities, condition_immunities = immunities(block["Immunities"])
+        entry = {
+            "name": f["name"],
+            "size": block["size"],
+            "type": kind,
+            "subtype": tags,
+            "alignment": block["alignment"],
+            "armor_class": int(block["AC"]),
+            "initiative": block["Initiative"],
+            "hit_points": int(hit_points.group(1)),
+            "hit_dice": hit_points.group(2),
+            "speed": block["Speed"],
+            **scores,
+            "saving_throws": saves,
+            "skills": block["Skills"],
+            "damage_vulnerabilities": block["Vulnerabilities"],
+            "damage_resistances": block["Resistances"],
+            "damage_immunities": damage_immunities,
+            "condition_immunities": condition_immunities,
+            "gear": block["Gear"],
+            "senses": block["Senses"],
+            "languages": block["Languages"],
+            "challenge": block["challenge"],
+            "cr": rating(block["challenge"]),
+            "xp": block["xp"],
+            "xp_in_lair": block["xp_in_lair"] or "",
+            "proficiency_bonus": block["proficiency_bonus"],
+            "description": "\n\n".join(sections),
+        }
+        out.append({key: value for key, value in entry.items() if value != ""})
+    if left_out:
+        print(f"  No stat block in the SRD, left out: {', '.join(sorted(left_out))}")
+    if not_srd:
+        print(f"  Not in the SRD's stat blocks, left out: {'; '.join(not_srd)}")
+    if from_srd:
+        print(f"  Open5e's text differs, the stat block's taken: {'; '.join(from_srd)}")
+    for entry in out:
+        entry_id = slug(entry["name"])
+        if entry_id in taken:
+            entry_id += "-monster"
+        assert entry_id not in taken, entry_id
+        taken.add(entry_id)
+        entry["_id"] = entry_id
+    return sorted(({"_id": e.pop("_id"), **e} for e in out), key=lambda e: e["name"])
+
+
 def write(name: str, rows: list[dict]) -> None:
     with open(PACK / f"{name}.json", "w", encoding="utf-8") as handle:
         json.dump(rows, handle, indent=2, ensure_ascii=False)
@@ -454,9 +796,13 @@ def write(name: str, rows: list[dict]) -> None:
 
 
 def main() -> None:
+    global SRD
     if len(sys.argv) != 2:
         sys.exit(__doc__)
     source = pathlib.Path(sys.argv[1])
+    # The SRD itself and the Rules Glossary's markdown, from the same clone.
+    raw = source.resolve().parents[2] / "raw_sources" / "srd_5_2"
+    SRD = Srd(raw / "SRD_CC_v5.2.1.pdf")
     class_names = {
         row["pk"]: row["fields"]["name"]
         for row in load(source, "CharacterClass")
@@ -464,12 +810,37 @@ def main() -> None:
     }
     feature_rows, by_class = features(source)
     spell_rows = spells(source, class_names)
+    item_rows = items(source, {s["_id"] for s in spell_rows})
+    magic_rows = magic_items(source)
+    subclass_rows = subclasses(source, by_class)
+    class_rows = add_class_features(by_class)
     write("spell", spell_rows)
     write("feature", feature_rows)
-    write("item", items(source, {s["_id"] for s in spell_rows}))
-    write("magic_item", magic_items(source))
-    write("subclass", subclasses(source, by_class))
-    write("class", add_class_features(by_class))
+    write("item", item_rows)
+    write("magic_item", magic_rows)
+    write("subclass", subclass_rows)
+    write("class", class_rows)
+
+    # Ids are unique across the whole pack, the reference types included. The
+    # species, backgrounds, feats and traits are hand-kept, so read from disk.
+    taken = {
+        e["_id"]
+        for rows in (spell_rows, feature_rows, item_rows, magic_rows, subclass_rows, class_rows)
+        for e in rows
+    }
+    for name in ("species", "background", "feat", "trait"):
+        with open(PACK / f"{name}.json", encoding="utf-8") as handle:
+            taken |= {e["_id"] for e in json.load(handle)}
+    condition_rows = conditions(source)
+    assert not taken & {e["_id"] for e in condition_rows}
+    taken |= {e["_id"] for e in condition_rows}
+    write("condition", condition_rows)
+    write("rule", rules(source, raw / "sections" / "09_rules_glossary.md", taken))
+    write("monster", monsters(source, taken))
+    if SRD.unmatched:
+        print(f"\nKept as Open5e has them - check against the SRD ({len(SRD.unmatched)}):")
+        for line in SRD.unmatched:
+            print(f"  {line}")
 
 
 if __name__ == "__main__":

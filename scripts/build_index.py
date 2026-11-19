@@ -549,6 +549,18 @@ def build_sheets() -> tuple[dict, list[str]]:
     return index, errors
 
 
+def schema_registry():
+    """Every schema in schema/, under its $id, so one can $ref another."""
+    from referencing import Registry, Resource
+
+    resources = []
+    for path in sorted((ROOT / "schema").glob("*.schema.json")):
+        contents = json.loads(path.read_text())
+        if contents.get("$id"):
+            resources.append((contents["$id"], Resource.from_contents(contents)))
+    return Registry().with_resources(resources)
+
+
 def build_content_packs() -> tuple[dict, list[str]]:
     """Validate every content pack and build the catalogue Grimoire browses.
 
@@ -573,7 +585,9 @@ def build_content_packs() -> tuple[dict, list[str]]:
         return index, errors
 
     schema = json.loads((ROOT / "schema" / "content-pack.schema.json").read_text())
-    validator = jsonschema.Draft202012Validator(schema)
+    # A pack's own content types are a sheet's, so its schema borrows the
+    # sheet schema's definition by reference, resolved from this checkout.
+    validator = jsonschema.Draft202012Validator(schema, registry=schema_registry())
 
     for directory in sorted(p for p in PACK_DIR.iterdir() if p.is_dir()):
         meta_path = directory / "_meta.json"

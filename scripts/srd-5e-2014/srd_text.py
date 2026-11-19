@@ -9,8 +9,14 @@ structure from Open5e's fixtures and everything checkable from here:
 - each spell's header - Open5e drops the area from a range of Self ("Self
   (15-foot cone)") and the trigger from a reaction's casting time;
 - the equipment tables - Open5e prices single arrows and adds gear of its own;
+- each monster's stat block header - size, type and tags, armor class, senses,
+  challenge - which Open5e keeps without the tags ("humanoid (goblinoid)");
 - the wording of every description, through `Srd.reword`: Open5e drops dashes,
-  lower-cases ability names and adds sentences the SRD does not have.
+  lower-cases ability names and adds sentences the SRD does not have. A
+  monster's traits and actions are reworded against its own stat block, a
+  `Wording` of its own.
+
+`Wording` is shared with the SRD 5.2 importer (../srd-5e/srd52.py).
 
 Needs PyMuPDF (pip install pymupdf).
 """
@@ -509,6 +515,64 @@ def equipment(text: str) -> list[dict]:
     return rows + poisons(text)
 
 
+# --- monsters ------------------------------------------------------------------
+
+SIZES = "Tiny|Small|Medium|Large|Huge|Gargantuan"
+
+#: Where the SRD files a creature under another name than Open5e's.
+SRD_NAMES = {"Deep Gnome (Svirfneblin)": "Gnome, Deep (Svirfneblin)", "Drow": "Elf, Drow"}
+
+#: A stat block's labelled header lines, in the order the SRD prints them.
+STAT_LINES = [
+    "Armor Class", "Hit Points", "Speed", "Saving Throws", "Skills", "Damage Vulnerabilities",
+    "Damage Resistances", "Damage Immunities", "Condition Immunities", "Senses", "Languages",
+    "Challenge",
+]
+
+SCORES = re.compile(r" ?STR DEX CON INT WIS CHA ((?:\d+ \([+−-]\d+\) ?){6})")
+
+
+def stat_blocks(text: str, names: list[str]) -> dict[str, dict]:
+    """Each named creature's stat block: its header lines, and its text.
+
+    A block runs from its name to the next block's, so `text` holds its traits
+    and actions - and any variant the SRD prints after them - for rewording
+    against. A name the SRD has no stat block for is left out: Open5e adds a
+    few of its own (the Donkey, and each insect swarm variant as a creature).
+    """
+    starts: dict[str, re.Match] = {}
+    # Longest first, so the Hawk is not found inside the Blood Hawk's block.
+    for name in sorted(names, key=len, reverse=True):
+        printed = re.escape(SRD_NAMES.get(name, name))
+        pattern = rf"(?<![\w']){printed} ({SIZES}) ((?:[^,(]|\([^)]*\))+?), (.+?) Armor Class "
+        for found in re.finditer(pattern, text):
+            if all(not other.start() <= found.start() < other.end() for other in starts.values()):
+                starts[name] = found
+                break
+    order = sorted(starts.values(), key=lambda m: m.start())
+    ends = {m.start(): n.start() for m, n in zip(order, order[1:])}
+    blocks = {}
+    for name, found in starts.items():
+        segment = text[found.start() : ends.get(found.start(), len(text))]
+        challenge = re.search(r"Challenge ([\d/]+) \(([\d,]+) XP\)", segment)
+        header = segment[found.end() - found.start() - len("Armor Class ") : challenge.end()]
+        scores = SCORES.search(header)
+        header = header[: scores.start()] + header[scores.end() - 1 :]
+        labels = "|".join(STAT_LINES)
+        lines = dict(re.findall(rf"({labels}) (.+?)(?= (?:{labels}) |$)", header))
+        blocks[name] = {
+            "size": found.group(1),
+            "type": found.group(2),
+            "alignment": found.group(3),
+            "scores": [int(score) for score in re.findall(r"(\d+) \(", scores.group(1))],
+            **{label: lines.get(label, "") for label in STAT_LINES},
+            "challenge": challenge.group(1),
+            "xp": int(challenge.group(2).replace(",", "")),
+            "text": segment,
+        }
+    return blocks
+
+
 def _key(token: str) -> str:
     """What two tokens must share to be the same word: letters and digits, any case."""
     return re.sub(r"[^a-z0-9]", "", token.lower()) or token
@@ -520,23 +584,26 @@ def _tokens(text: str) -> list[tuple[str, str]]:
     return [(m.group(1), " " if m.group(2) else "") for m in re.finditer(r"([^\s—]+|—)(\s*)", text)]
 
 
-class Srd:
-    """The SRD's text, and the lists, headers and tables read from it."""
+class Wording:
+    """A stretch of the SRD's text - the whole document, or one stat block of it -
+    that copies of its text are reworded against (see `reword`).
 
-    def __init__(self, pdf: pathlib.Path):
-        self.text = text_of(pdf)
-        self.spell_names = spell_names_described(self.text)
-        self.spell_lists = spell_lists(self.text, self.spell_names)
-        self.spell_headers = spell_headers(self.text, self.spell_names)
-        self.equipment = equipment(self.text)
-        self.magic_headings = lambda names: magic_headings(self.text, names)
+    Matching a copy against one stat block rather than the whole SRD keeps a
+    goblin's attack from taking a hobgoblin's numbers. Pass the whole SRD's
+    `unmatched` list to have a block report into it, and `entries` for text
+    that is a run of named entries, as a stat block is.
+    """
+
+    def __init__(self, text: str, unmatched: list[str] | None = None, *, entries: bool = False):
+        self.text = text
+        self.entries = entries
         # Bullets are layout; the copies being reworded carry their own.
         self._tokens = [t for t in _tokens(self.text) if t[0] != "•"]
         self._keys = [_key(t) for t, _ in self._tokens]
         self._grams: dict[tuple, list[int]] = collections.defaultdict(list)
         for i in range(len(self._keys) - 3):
             self._grams[tuple(self._keys[i : i + 4])].append(i)
-        self.unmatched: list[str] = []
+        self.unmatched: list[str] = [] if unmatched is None else unmatched
 
     def reword(
         self, name: str, paragraphs: list[str], keep: set[int] = frozenset(), *, quiet: bool = False
@@ -556,7 +623,7 @@ class Srd:
         Returns None when nothing can be matched; the name is recorded in
         `unmatched`, as is every paragraph left unmatched.
         """
-        whole = self._align(paragraphs, keep)
+        whole = self._match(paragraphs, keep)
         if whole is not None:
             return whole
         out, missed = [], 0
@@ -564,7 +631,7 @@ class Srd:
             if index in keep:
                 out.append(paragraph)
                 continue
-            alone = self._align([paragraph], set())
+            alone = self._match([paragraph], set())
             if alone is None:
                 missed += 1
                 out.append(paragraph)
@@ -579,7 +646,17 @@ class Srd:
             self.unmatched.append(f"{name}: {missed} of {prose} paragraphs not found in the SRD")
         return out
 
-    def _align(self, paragraphs: list[str], keep: set[int]) -> list[str] | None:
+    def _match(self, paragraphs: list[str], keep: set[int]) -> list[str] | None:
+        """In a stat block the copy's first words are the entry's name, which
+        the SRD may follow differently ("Sneak Attack. Once per turn, the"), so
+        they are first held to; failing that, matched like any other text."""
+        if self.entries:
+            named = self._align(paragraphs, keep, named=True)
+            if named is not None:
+                return named
+        return self._align(paragraphs, keep)
+
+    def _align(self, paragraphs: list[str], keep: set[int], *, named: bool = False) -> list[str] | None:
         words: list[str] = []
         owner: list[int] = []
         for index, paragraph in enumerate(paragraphs):
@@ -612,7 +689,10 @@ class Srd:
         # entry) is chance, not the passage: the passage is where runs agree.
         while len(equal) > 1 and equal[-1][2] - equal[-1][1] <= 2 and equal[-1][3] - equal[-2][4] >= 3:
             equal.pop()
-        while len(equal) > 1 and equal[0][2] - equal[0][1] <= 2 and equal[1][3] - equal[0][4] >= 3:
+        while (
+            not named and len(equal) > 1 and equal[0][2] - equal[0][1] <= 2
+            and equal[1][3] - equal[0][4] >= 3
+        ):
             equal.pop(0)
         if not equal:
             return None
@@ -629,12 +709,25 @@ class Srd:
         taken: list[list[int]] = [[] for _ in paragraphs]
         ran_on = False
         for tag, i1, i2, j1, j2 in opcodes:
+            if tag == "replace" and i1 == 0 and j2 == first and i2 - i1 <= 2:
+                # The copy's first word or two, where the SRD has a form of the
+                # same word ("Claw" for "Claws"), take the SRD's.
+                for k in range(i2 - i1):
+                    j = j2 - (i2 - i1) + k
+                    if words[k][:3] == self._keys[window.start + j][:3]:
+                        taken[owner[k]].append(j)
+                continue
             if j2 <= first or tag == "delete":
                 continue
             if j1 >= last:
                 # Past the last agreed word the SRD runs on into the next entry:
-                # take only the rest of the sentence ("ray of frost is.").
+                # take only the rest of the sentence ("ray of frost is."). In a
+                # stat block, a copy whose last word agrees has ended where the
+                # SRD does - a spell list has no full stop - and what follows is
+                # the next entry's name.
                 if ran_on or self._tokens[window.start + last - 1][0].endswith((".", "!", "?", ":")):
+                    continue
+                if self.entries and equal[-1][2] == len(words):
                     continue
                 ran_on = True
                 for j in range(j1, min(j2, j1 + (i2 - i1) + 3)):
@@ -710,3 +803,16 @@ class Srd:
                 break
         minimum = 2 if len(words) >= 12 else 1
         return [p for p in places if near(p) >= minimum]
+
+
+class Srd(Wording):
+    """The SRD's text, and the lists, headers, tables and stat blocks read from it."""
+
+    def __init__(self, pdf: pathlib.Path):
+        super().__init__(text_of(pdf))
+        self.spell_names = spell_names_described(self.text)
+        self.spell_lists = spell_lists(self.text, self.spell_names)
+        self.spell_headers = spell_headers(self.text, self.spell_names)
+        self.equipment = equipment(self.text)
+        self.magic_headings = lambda names: magic_headings(self.text, names)
+        self.stat_blocks = lambda names: stat_blocks(self.text, names)

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated": "2026-11-08T23:31:28Z",
+  "generated": "2026-11-21T02:21:17Z",
   "addons": [
     {
       "id": "dicecloud-v1",
@@ -24,17 +24,17 @@
       "name": "D&D Beyond",
       "kind": "character-importer",
       "target": "character",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "path": "importers/dndbeyond/dndbeyond.yml",
       "requires_script": true,
-      "sha256": "4fd9e0a7c046113fb3a7225583ac70f97854a6b0fb42e39a7700b589590dfa4d",
+      "sha256": "b8b607284034fe03a6b0920b0ff380eb9676d4227a00f88a1d91541722fdb5b7",
       "description": "D&D 5e characters from D&D Beyond: paste a character's link, or upload a saved copy of its JSON. The character must be shared publicly. Builds the character on the dnd-5e-2024 sheet.",
       "homepage": "https://www.dndbeyond.com",
       "author": "ianfhunter",
       "grimoire_min_version": "1.9.0",
       "sheet": "dnd-5e-2024",
       "user_installable": false,
-      "script_sha256": "3d875961796e274e664dd3e094f39893b4da86ebbfd60aa1aa6c766570ae1316"
+      "script_sha256": "e11a43e83415cb68344a17a68b04c275d9e4caef79ab73ed647d57cd26516c6f"
     },
     {
       "id": "drivethrurpg",

@@ -416,9 +416,13 @@ def spells(data):
 def portrait(data):
     """The avatar as a data URL, at full size rather than D&D Beyond's
     thumbnail. Only fetched from D&D Beyond itself."""
-    url = (data.get("avatarUrl") or "").strip()
+    # The character service keeps it under `decorations`, sized by a query
+    # string; an older saved copy has it at the top, as a thumbnail path.
+    decorations = data.get("decorations") if isinstance(data.get("decorations"), dict) else {}
+    url = (decorations.get("avatarUrl") or data.get("avatarUrl") or "").strip()
     if not url:
         return None
+    url = url.split("?", 1)[0]
     url = re.sub(r"/avatars/thumbnails/(\d+)/(\d+)/\d+/\d+/", r"/avatars/\1/\2/", url)
     if urllib.parse.urlparse(url).hostname not in PORTRAIT_HOSTS:
         return None
@@ -571,12 +575,21 @@ def convert(data, fetch_portrait=True):
     return answer
 
 
+def character_of(document):
+    """The character itself. The character service wraps it as
+    `{"id", "success", "message", "data": {...}}`; the envelope's own `id`
+    would pass for a character's, so it is unwrapped rather than read as one."""
+    if isinstance(document, dict) and "success" in document and isinstance(document.get("data"), dict):
+        return document["data"]
+    return document
+
+
 def main():
     request = json.load(sys.stdin)
     if request.get("action") != "import":
         answer = {"error": f"unknown action: {request.get('action')}"}
     else:
-        document = request.get("document")
+        document = character_of(request.get("document"))
         if not isinstance(document, dict) or not document.get("id"):
             answer = {"error": "That is not a D&D Beyond character."}
         else:

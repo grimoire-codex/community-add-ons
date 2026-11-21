@@ -39,7 +39,8 @@ appearance, personality, backstory and allies) and **Notes**.
   class itself
 - **Equipment** picked from the catalogue or typed in, with a quantity, and
   carried weight against a `Strength × 15` capacity
-- **Magic items**, with a warning if more than three are attuned
+- **Magic items**, with a quantity for a stack of potions or scrolls and a
+  warning if more than three are attuned
 - **Personality traits, ideals, bonds and flaws**, appearance and backstory
 - **Your character's art, large** in the Character Appearance box - framed the
   way you chose (click it to choose)

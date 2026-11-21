@@ -588,7 +588,8 @@ def items(data):
         description = (item.get("description") or "").strip()
         low = name.lower()
         if re.search(r"\+\s*\d", low) or any(hint in low for hint in MAGIC_HINTS):
-            magic_items.append(entry(name, description, {"attuned": bool(item.get("attuned"))}))
+            per = {"qty": max(quantity, 1), "attuned": bool(item.get("attuned"))}
+            magic_items.append(entry(name, description, per))
         else:
             equipment.append(entry(name, description, {"qty": max(quantity, 1), "equipped": equipped}))
     return equipment, magic_items, coins, shield

@@ -2,7 +2,7 @@ $schema: ../../schema/addon.schema.json
 id: dndbeyond
 name: D&D Beyond
 kind: character-importer
-version: 1.1.0
+version: 1.2.0
 description: >-
   D&D 5e characters from D&D Beyond: paste a character's link, or upload a
   saved copy of its JSON. The character must be shared publicly. Builds the

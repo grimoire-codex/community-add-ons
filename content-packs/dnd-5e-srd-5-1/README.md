@@ -16,6 +16,14 @@ System Reference Document 5.1 - the open subset of the original 2014 rules:
 | `spell.json` | 319 | Every spell, with the class lists the SRD prints |
 | `item.json` | 232 | Weapons, armor, adventuring gear, tools, packs, mounts, vehicles and poisons |
 | `magic_item.json` | 275 | Magic items |
+| `condition.json` | 15 | The conditions of Appendix PH-A, exhaustion with its levels |
+| `rule.json` | 282 | The SRD's rules a section each - abilities, combat, spellcasting, adventuring, equipment, traps, diseases, madness, the planes and pantheons, how to read a stat block - filed under the part they come from |
+| `monster.json` | 317 | Every monster, miscellaneous creature and NPC stat block, header fields and all, with its traits, actions, reactions and legendary actions as text |
+
+Conditions, rules and monsters are reference material: no character picks one,
+so the sheet does not declare them. The pack declares the three types itself in
+`_meta.json` (`content_types`), and Grimoire shows them in a system's Compendium
+tab once the pack is linked to the system.
 
 ## Where it comes from
 
@@ -57,6 +65,22 @@ Open5e's copy disagrees with the SRD in ways that matter, so the SRD wins:
   importer lists anything it could not match; a regenerated pack should list nothing.
 - **Grappler.** Open5e's second benefit is not the SRD's; the feat is written out
   from the SRD.
+- **Monsters.** Each creature's header - size, type and tags ("humanoid
+  (goblinoid)"), alignment, armor class, hit points, speed, ability scores,
+  saves, skills, resistances, senses, languages, challenge and XP - is read from
+  its stat block in the SRD. Its traits and actions are reworded against that
+  stat block alone, so one creature's attack cannot take another's numbers, and
+  each section is in the SRD's order, with the SRD's legendary action rules.
+  Open5e adds stat blocks the SRD does not print (the Donkey, the diseased giant
+  rat, each insect swarm variant as a creature of its own) and Monster Manual
+  variants the SRD does not have (the erinyes' rope of entanglement, the
+  ettercap's web garrote, the giant lizard's hold breath and spider climb, the
+  satyr's panpipes); those are
+  left out, as are its second copies of the Drow and the Deep Gnome.
+- **Rules.** Open5e files a few sections under another section's name (the
+  Standard Exchange Rates table as "Training"); they take the SRD's headings.
+  Its "Sage Advice" quotes are not SRD text and are dropped; the SRD's own
+  sidebars are kept as paragraphs.
 
 Open5e splits a few items into one entry per variant - each Ioun Stone, Figurine of
 Wondrous Power and Belt of Giant Strength. Those stay split, since a character owns

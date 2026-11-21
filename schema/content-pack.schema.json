@@ -33,6 +33,10 @@
       "type": "string",
       "maxLength": 100,
       "description": "Short label each entry is tagged with, so 'Fireball (srd)' is distinguishable from a table's own."
+    },
+    "content_types": {
+      "$ref": "character-sheet.schema.json#/properties/content_types",
+      "description": "Content types the pack declares for itself, shaped exactly like a character sheet's: reference material no sheet picks from, such as conditions, rules and monsters. Grimoire merges them under the sheet's (the sheet's declaration wins a name clash) and shows them in the system's Compendium tab. Older Grimoire versions ignore this key and store the entries as authored."
     }
   },
   "dependentRequired": { "license": ["attribution"] }

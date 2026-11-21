@@ -1,7 +1,7 @@
 {
   "$schema": "../schema/content-pack-index.schema.json",
   "version": 1,
-  "generated": "2026-11-19T16:02:49+00:00",
+  "generated": "2026-11-19T23:05:22+00:00",
   "packs": [
     {
       "pack_id": "dnd-5e-srd",
@@ -11,8 +11,8 @@
         {
           "name": "_meta.json",
           "path": "content-packs/dnd-5e-srd/_meta.json",
-          "sha256": "5c82eaad3c2d4fd6c0c05a8ef5a98e78c7be477bfe6ecdcee5a851f81150918c",
-          "bytes": 829
+          "sha256": "b904ba84854e09cc9c37e6909510fae5dddbcfcfd90833f77dacae71f2f9ce07",
+          "bytes": 5600
         },
         {
           "name": "background.json",
@@ -25,6 +25,12 @@
           "path": "content-packs/dnd-5e-srd/class.json",
           "sha256": "ec9f7877240a549738d532bbd7536a1b9d2a9d9e2c3befddb3c5c2ef87d05006",
           "bytes": 8015
+        },
+        {
+          "name": "condition.json",
+          "path": "content-packs/dnd-5e-srd/condition.json",
+          "sha256": "910d0abf0c72555799295df580e8f3570166f5c93c1f2cb8e7ae79b046724a62",
+          "bytes": 7135
         },
         {
           "name": "feat.json",
@@ -51,6 +57,18 @@
           "bytes": 234843
         },
         {
+          "name": "monster.json",
+          "path": "content-packs/dnd-5e-srd/monster.json",
+          "sha256": "86d530c22f9f4928e501811ddb1a34a3e699b4f09038a75eb893c39e06f4b769",
+          "bytes": 468074
+        },
+        {
+          "name": "rule.json",
+          "path": "content-packs/dnd-5e-srd/rule.json",
+          "sha256": "32f869e5f6ffc84c6d0e472272271c8c39320efe8061d2f42ae84c476986e6f8",
+          "bytes": 168017
+        },
+        {
           "name": "species.json",
           "path": "content-packs/dnd-5e-srd/species.json",
           "sha256": "b30f2b92736a711a54c701abbe5e322974c98dbdd162b06658c870eba5fbaf78",
@@ -75,21 +93,24 @@
           "bytes": 7983
         }
       ],
-      "entry_count": 1121,
+      "entry_count": 1674,
       "content_types": [
         "background",
         "class",
+        "condition",
         "feat",
         "feature",
         "item",
         "magic_item",
+        "monster",
+        "rule",
         "species",
         "spell",
         "subclass",
         "trait"
       ],
-      "version": "1.1.0",
-      "description": "The System Reference Document 5.2, and nothing outside it: classes, subclasses and every class and subclass feature, species and their traits, backgrounds, feats, all 339 spells, equipment and magic items.",
+      "version": "1.2.0",
+      "description": "The System Reference Document 5.2, and nothing outside it: classes, subclasses and every class and subclass feature, species and their traits, backgrounds, feats, all 339 spells, equipment and magic items - and, for reference, the 15 conditions, the Rules Glossary and rules chapters, and all 331 monster and animal stat blocks.",
       "license": "CC-BY-4.0",
       "license_url": "https://creativecommons.org/licenses/by/4.0/",
       "attribution": "This work includes material from the System Reference Document 5.2 (\u201cSRD 5.2\u201d) by Wizards of the Coast LLC, available at https://www.dndbeyond.com/srd. The SRD 5.2 is licensed under the Creative Commons Attribution 4.0 International License, available at https://creativecommons.org/licenses/by/4.0/legalcode.",
@@ -103,8 +124,8 @@
         {
           "name": "_meta.json",
           "path": "content-packs/dnd-5e-srd-5-1/_meta.json",
-          "sha256": "112ee4ee62cb7414919ab0851bb0ad5a45abf3430b6b8fe6049745d9cb05a3ef",
-          "bytes": 950
+          "sha256": "c5bd18a3c253de1218f47c53152fdaa05b833e37a6467bf9c5ec69f2cb6a5b2e",
+          "bytes": 5326
         },
         {
           "name": "background.json",
@@ -117,6 +138,12 @@
           "path": "content-packs/dnd-5e-srd-5-1/class.json",
           "sha256": "0226ed99ff18c32b42bef1175081bfa6d7a6c97a31b3307b63aab21794e2a4c6",
           "bytes": 16917
+        },
+        {
+          "name": "condition.json",
+          "path": "content-packs/dnd-5e-srd-5-1/condition.json",
+          "sha256": "2fea04edb4145ff8ef6c1ab8f61cd6d4758fb985a2dc89156dd91e860012b2c2",
+          "bytes": 6157
         },
         {
           "name": "feat.json",
@@ -143,10 +170,22 @@
           "bytes": 244235
         },
         {
+          "name": "monster.json",
+          "path": "content-packs/dnd-5e-srd-5-1/monster.json",
+          "sha256": "f31df70e6aafd7afc815d8a000707e6c92d82948a08ee64fb956db93306dfa74",
+          "bytes": 496267
+        },
+        {
           "name": "race.json",
           "path": "content-packs/dnd-5e-srd-5-1/race.json",
           "sha256": "f7f263aa1e877f9566c9b3cc55d4bf515122c88e4f51dde8eab9010eb56c3356",
           "bytes": 13923
+        },
+        {
+          "name": "rule.json",
+          "path": "content-packs/dnd-5e-srd-5-1/rule.json",
+          "sha256": "eb1f26ff5d5fc9881339eb9073836df1842f48fdcef4f30b49d11f46554b2fbe",
+          "bytes": 300951
         },
         {
           "name": "spell.json",
@@ -173,22 +212,25 @@
           "bytes": 11105
         }
       ],
-      "entry_count": 1115,
+      "entry_count": 1729,
       "content_types": [
         "background",
         "class",
+        "condition",
         "feat",
         "feature",
         "item",
         "magic_item",
+        "monster",
         "race",
+        "rule",
         "spell",
         "subclass",
         "subrace",
         "trait"
       ],
-      "version": "1.0.1",
-      "description": "The System Reference Document 5.1 for the 2014 rules, and nothing outside it: the twelve classes with their subclasses and every feature, races and subraces with their traits, the Acolyte, the Grappler feat, all 319 spells, equipment and magic items.",
+      "version": "1.1.0",
+      "description": "The System Reference Document 5.1 for the 2014 rules, and nothing outside it: the twelve classes with their subclasses and every feature, races and subraces with their traits, the Acolyte, the Grappler feat, all 319 spells, equipment and magic items - and, for reference, the 15 conditions, the SRD's rules section by section, and its 317 monster and NPC stat blocks.",
       "license": "CC-BY-4.0",
       "license_url": "https://creativecommons.org/licenses/by/4.0/",
       "attribution": "This work includes material taken from the System Reference Document 5.1 (\u201cSRD 5.1\u201d) by Wizards of the Coast LLC and available at https://dnd.wizards.com/resources/systems-reference-document. The SRD 5.1 is licensed under the Creative Commons Attribution 4.0 International License available at https://creativecommons.org/licenses/by/4.0/legalcode.",

@@ -2,7 +2,7 @@ $schema: ../../schema/addon.schema.json
 id: dndbeyond
 name: D&D Beyond
 kind: character-importer
-version: 1.0.0
+version: 1.1.0
 description: >-
   D&D 5e characters from D&D Beyond: paste a character's link, or upload a
   saved copy of its JSON. The character must be shared publicly. Builds the
@@ -22,14 +22,18 @@ script:
 importer:
   sheet: dnd-5e-2024
   # A saved copy of the character JSON; `readonlyUrl` and `classes` are
-  # D&D Beyond's own keys.
+  # D&D Beyond's own keys. Searched at any depth: the character service wraps
+  # the character in a `data` envelope, an older saved copy does not.
   extensions: [.json]
   detect:
-    - $.readonlyUrl
-    - $.classes
+    - $..readonlyUrl
+    - $..classes
   url:
     # /characters/123, a share link (/characters/123/AbCd), or one under a
     # profile (/profile/name/characters/123).
     pattern: 'dndbeyond\.com/(?:profile/[^/]+/)?characters/(\d+)'
-    fetch: https://www.dndbeyond.com/character/{identity}/json
+    # The character service D&D Beyond's own sheet reads. The older
+    # www.dndbeyond.com/character/{id}/json still answers, but leaves out the
+    # spells a player chose for a class, background spells and currency.
+    fetch: https://character-service.dndbeyond.com/character/v5/character/{identity}
     hint: https://www.dndbeyond.com/characters/93643159

@@ -402,9 +402,28 @@ def spells(data):
             seen.add(name.lower())
             out.append(entry(name, per={"prepared": prepared}))
 
+    # D&D Beyond flags a class spell `prepared` only for a class that prepares
+    # from a list (a wizard, a cleric). A class with a spells-known column and
+    # no prepared one (a warlock, a sorcerer) has every spell it chose to hand,
+    # flagged `countsAsKnownSpell` instead; cantrips are never flagged at all.
+    known_casters = set()
+    for klass in data.get("classes") or []:
+        rules = (klass.get("definition") or {}).get("spellRules") or {}
+        if any(rules.get("levelSpellKnownMaxes") or []) and not any(
+            rules.get("levelPreparedSpellMaxes") or []
+        ):
+            known_casters.add(klass.get("id"))
+
     for group in data.get("classSpells") or []:
+        known = group.get("characterClassId") in known_casters
         for spell in group.get("spells") or []:
-            add(spell, bool(spell.get("prepared") or spell.get("alwaysPrepared")))
+            ready = (
+                spell.get("prepared")
+                or spell.get("alwaysPrepared")
+                or (spell.get("definition") or {}).get("level") == 0
+                or (known and spell.get("countsAsKnownSpell"))
+            )
+            add(spell, bool(ready))
     # Spells from a species, a feat or an item are always to hand.
     other = data.get("spells") if isinstance(data.get("spells"), dict) else {}
     for group in other.values():
@@ -416,9 +435,13 @@ def spells(data):
 def portrait(data):
     """The avatar as a data URL, at full size rather than D&D Beyond's
     thumbnail. Only fetched from D&D Beyond itself."""
-    url = (data.get("avatarUrl") or "").strip()
+    # The character service keeps it under `decorations`, sized by a query
+    # string; an older saved copy has it at the top, as a thumbnail path.
+    decorations = data.get("decorations") if isinstance(data.get("decorations"), dict) else {}
+    url = (decorations.get("avatarUrl") or data.get("avatarUrl") or "").strip()
     if not url:
         return None
+    url = url.split("?", 1)[0]
     url = re.sub(r"/avatars/thumbnails/(\d+)/(\d+)/\d+/\d+/", r"/avatars/\1/\2/", url)
     if urllib.parse.urlparse(url).hostname not in PORTRAIT_HOSTS:
         return None
@@ -571,12 +594,21 @@ def convert(data, fetch_portrait=True):
     return answer
 
 
+def character_of(document):
+    """The character itself. The character service wraps it as
+    `{"id", "success", "message", "data": {...}}`; the envelope's own `id`
+    would pass for a character's, so it is unwrapped rather than read as one."""
+    if isinstance(document, dict) and "success" in document and isinstance(document.get("data"), dict):
+        return document["data"]
+    return document
+
+
 def main():
     request = json.load(sys.stdin)
     if request.get("action") != "import":
         answer = {"error": f"unknown action: {request.get('action')}"}
     else:
-        document = request.get("document")
+        document = character_of(request.get("document"))
         if not isinstance(document, dict) or not document.get("id"):
             answer = {"error": "That is not a D&D Beyond character."}
         else:

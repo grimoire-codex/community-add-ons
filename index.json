@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated": "2026-11-21T02:21:17Z",
+  "generated": "2026-11-21T02:23:45Z",
   "addons": [
     {
       "id": "dicecloud-v1",
@@ -34,7 +34,7 @@
       "grimoire_min_version": "1.9.0",
       "sheet": "dnd-5e-2024",
       "user_installable": false,
-      "script_sha256": "e11a43e83415cb68344a17a68b04c275d9e4caef79ab73ed647d57cd26516c6f"
+      "script_sha256": "054641e2b2a1e742c06c4763e8a4342aae9356dfebba160da24e4d41b005319f"
     },
     {
       "id": "drivethrurpg",

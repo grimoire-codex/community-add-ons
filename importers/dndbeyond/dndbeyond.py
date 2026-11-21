@@ -402,9 +402,28 @@ def spells(data):
             seen.add(name.lower())
             out.append(entry(name, per={"prepared": prepared}))
 
+    # D&D Beyond flags a class spell `prepared` only for a class that prepares
+    # from a list (a wizard, a cleric). A class with a spells-known column and
+    # no prepared one (a warlock, a sorcerer) has every spell it chose to hand,
+    # flagged `countsAsKnownSpell` instead; cantrips are never flagged at all.
+    known_casters = set()
+    for klass in data.get("classes") or []:
+        rules = (klass.get("definition") or {}).get("spellRules") or {}
+        if any(rules.get("levelSpellKnownMaxes") or []) and not any(
+            rules.get("levelPreparedSpellMaxes") or []
+        ):
+            known_casters.add(klass.get("id"))
+
     for group in data.get("classSpells") or []:
+        known = group.get("characterClassId") in known_casters
         for spell in group.get("spells") or []:
-            add(spell, bool(spell.get("prepared") or spell.get("alwaysPrepared")))
+            ready = (
+                spell.get("prepared")
+                or spell.get("alwaysPrepared")
+                or (spell.get("definition") or {}).get("level") == 0
+                or (known and spell.get("countsAsKnownSpell"))
+            )
+            add(spell, bool(ready))
     # Spells from a species, a feat or an item are always to hand.
     other = data.get("spells") if isinstance(data.get("spells"), dict) else {}
     for group in other.values():

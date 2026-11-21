@@ -2,7 +2,7 @@
   "$schema": "../../schema/character-sheet.schema.json",
   "id": "dnd-5e-2024",
   "name": "D&D 5th Edition (2024)",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "grimoire_min_version": "1.10.0",
   "system": "Dungeons & Dragons 5th Edition (2024)",
   "description": "A character sheet for the 2024 revision of D&D 5th Edition, with the SRD 5.2 catalogue of classes, subclasses and their features, species, backgrounds, feats, spells, equipment and magic items.",
@@ -1225,6 +1225,11 @@
       "content_type": "magic_item",
       "allow_freeform": true,
       "per_entry_fields": {
+        "qty": {
+          "type": "number",
+          "label": "Qty",
+          "min": 0
+        },
         "attuned": {
           "type": "checkbox",
           "label": "Attuned"

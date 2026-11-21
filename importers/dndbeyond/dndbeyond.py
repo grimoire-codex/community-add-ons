@@ -379,11 +379,12 @@ def gear(data):
             )
 
         rarity = (defn.get("rarity") or "").strip().lower()
+        qty = max(int(item.get("quantity") or 1), 1)
         if defn.get("magic") or rarity not in ("", "common", "none", "varies"):
-            magic_items.append(entry(name, description, {"attuned": bool(item.get("isAttuned"))}))
+            per = {"qty": qty, "attuned": bool(item.get("isAttuned"))}
+            magic_items.append(entry(name, description, per))
         else:
-            per = {"qty": max(int(item.get("quantity") or 1), 1), "equipped": equipped}
-            equipment.append(entry(name, description, per))
+            equipment.append(entry(name, description, {"qty": qty, "equipped": equipped}))
 
     for custom in data.get("customItems") or []:
         name = (custom.get("name") or "").strip()

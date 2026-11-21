@@ -26,7 +26,8 @@ species, the other details, portrait, appearance and backstory) and **Notes**.
   DC and attack bonus follow
 - **Equipment** picked from the catalogue or typed in, each with a quantity,
   and carried weight - counting quantity - against a `Strength × 15` capacity
-- **Magic items**, with a warning if more than three are attuned
+- **Magic items**, with a quantity for a stack of potions or scrolls and a
+  warning if more than three are attuned
 - **Attacks**, feats, and a catalogue of classes, subclasses, species,
   backgrounds, feats
   and spells

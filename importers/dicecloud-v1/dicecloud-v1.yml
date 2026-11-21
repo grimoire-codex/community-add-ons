@@ -2,7 +2,7 @@ $schema: ../../schema/addon.schema.json
 id: dicecloud-v1
 name: DiceCloud v1
 kind: character-importer
-version: 1.0.0
+version: 1.1.0
 description: >-
   D&D 5e characters from DiceCloud v1: paste a character's link, or upload a
   saved copy of its API JSON. A public sheet needs nothing more; a private one

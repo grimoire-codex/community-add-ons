@@ -154,7 +154,7 @@ and `flex` for its relative width. Up to 20 columns, and 500 rows per character.
 A list stores an array of row objects keyed by column:
 `[{ "item": "Rope", "qty": 1, "mass": 1, "equipped": false }]`. The list
 functions - [`count_where`](#function-reference), `sum_where`, `column`,
-`sum_qty` - read it.
+`sum_qty`, `at` - read it.
 
 ### Catalog fields: `content_ref` and `content_list`
 
@@ -284,6 +284,7 @@ install.
 | `sum_where(rows, 'col', 'where')` | Total of `col` across rows where `where` is true; add a fourth argument to match a value instead: `sum_where(gear, 'mass', 'location', 'pack')` |
 | `any_where(rows, 'col')` | Whether any row has `col` true (or equal to a third argument) |
 | `column(rows, 'col')` | Every row's `col`, as a list - for `sum`, `min` and `max` |
+| `at(rows, n, 'col')` | One row's `col`, picked by position: `at(weapons, 1, 'damage')` is the second weapon's damage. Counts from `0`; a negative `n` counts from the end, so `at(weapons, -1, 'damage')` is the last one. Leave out `'col'` for the whole row. Reads as empty (`''`, which is `0` in arithmetic) when there is no such row or column. Works on a `content_list` too: `at(classes, 0, 'hit_die')` reads the first pick's property, the player's per-entry notes on top |
 | `sum_qty(rows, 'col')` | Total of `col` times each row's `qty` - carried weight, cargo. A blank quantity counts once; `0` counts as none. Name a different quantity column with a third argument: `sum_qty(cargo, 'tons', 'count')`. Works on a `content_list` too, reading each entry's property and the player's per-entry quantity |
 
 ### Catalog fields

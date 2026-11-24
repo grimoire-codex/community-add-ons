@@ -449,6 +449,14 @@ entry's properties are kept only if the content type declares them - so
 **declare every property a formula or an `on_pick` rule reads**, or it is
 dropped when the pack loads. Up to 50 content types per sheet.
 
+Declare only what a character picks from. Reference material a table looks up
+but no character picks - conditions, rules, monsters - is declared by the
+[content pack](../content-packs/README.md#a-packs-own-content-types) that
+carries it, in its `_meta.json`, with the same keys as above. Grimoire merges a
+pack's types under the sheet's, and the sheet's declaration wins a name clash.
+Those types appear read-only in a system's **Compendium** tab once an admin or
+GM links the pack to a library system.
+
 ## What a pick does: `on_pick`
 
 A `content_ref` may carry rules that run when the player picks an entry:

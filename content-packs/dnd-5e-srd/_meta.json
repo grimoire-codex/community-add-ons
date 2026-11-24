@@ -2,11 +2,221 @@
   "pack_id": "dnd-5e-srd",
   "schema_id": "dnd-5e-2024",
   "name": "D&D 5e SRD 5.2",
-  "version": "1.1.0",
-  "description": "The System Reference Document 5.2, and nothing outside it: classes, subclasses and every class and subclass feature, species and their traits, backgrounds, feats, all 339 spells, equipment and magic items.",
+  "version": "1.2.0",
+  "description": "The System Reference Document 5.2, and nothing outside it: classes, subclasses and every class and subclass feature, species and their traits, backgrounds, feats, all 339 spells, equipment and magic items - and, for reference, the 15 conditions, the Rules Glossary and rules chapters, and all 331 monster and animal stat blocks.",
   "license": "CC-BY-4.0",
   "license_url": "https://creativecommons.org/licenses/by/4.0/",
   "attribution": "This work includes material from the System Reference Document 5.2 (“SRD 5.2”) by Wizards of the Coast LLC, available at https://www.dndbeyond.com/srd. The SRD 5.2 is licensed under the Creative Commons Attribution 4.0 International License, available at https://creativecommons.org/licenses/by/4.0/legalcode.",
   "source_url": "https://www.dndbeyond.com/srd",
-  "source": "srd"
+  "source": "srd",
+  "content_types": {
+    "condition": {
+      "label": "Condition",
+      "label_plural": "Conditions",
+      "identity_field": "name",
+      "sort_default": [
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "description"
+      ],
+      "filter_fields": [],
+      "compact_display": "{name}",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Description"
+        }
+      }
+    },
+    "rule": {
+      "label": "Rule",
+      "label_plural": "Rules",
+      "identity_field": "name",
+      "sort_default": [
+        "category",
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "category",
+        "description"
+      ],
+      "filter_fields": [
+        "category",
+        "tag"
+      ],
+      "compact_display": "{name} ({category})",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "category": {
+          "type": "text",
+          "label": "Category"
+        },
+        "tag": {
+          "type": "text",
+          "label": "Tag"
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Description"
+        }
+      }
+    },
+    "monster": {
+      "label": "Monster",
+      "label_plural": "Monsters",
+      "identity_field": "name",
+      "sort_default": [
+        "cr",
+        "name"
+      ],
+      "search_fields": [
+        "name",
+        "type",
+        "subtype",
+        "description"
+      ],
+      "filter_fields": [
+        "type",
+        "size",
+        "challenge"
+      ],
+      "compact_display": "{size} {type}, CR {challenge}",
+      "fields": {
+        "name": {
+          "type": "text",
+          "label": "Name"
+        },
+        "size": {
+          "type": "text",
+          "label": "Size"
+        },
+        "type": {
+          "type": "text",
+          "label": "Creature Type"
+        },
+        "subtype": {
+          "type": "text",
+          "label": "Tags"
+        },
+        "alignment": {
+          "type": "text",
+          "label": "Alignment"
+        },
+        "armor_class": {
+          "type": "number",
+          "label": "Armor Class"
+        },
+        "initiative": {
+          "type": "text",
+          "label": "Initiative"
+        },
+        "hit_points": {
+          "type": "number",
+          "label": "Hit Points"
+        },
+        "hit_dice": {
+          "type": "text",
+          "label": "Hit Dice"
+        },
+        "speed": {
+          "type": "text",
+          "label": "Speed"
+        },
+        "strength": {
+          "type": "number",
+          "label": "Strength"
+        },
+        "dexterity": {
+          "type": "number",
+          "label": "Dexterity"
+        },
+        "constitution": {
+          "type": "number",
+          "label": "Constitution"
+        },
+        "intelligence": {
+          "type": "number",
+          "label": "Intelligence"
+        },
+        "wisdom": {
+          "type": "number",
+          "label": "Wisdom"
+        },
+        "charisma": {
+          "type": "number",
+          "label": "Charisma"
+        },
+        "saving_throws": {
+          "type": "text",
+          "label": "Saving Throws"
+        },
+        "skills": {
+          "type": "text",
+          "label": "Skills"
+        },
+        "damage_vulnerabilities": {
+          "type": "text",
+          "label": "Damage Vulnerabilities"
+        },
+        "damage_resistances": {
+          "type": "text",
+          "label": "Damage Resistances"
+        },
+        "damage_immunities": {
+          "type": "text",
+          "label": "Damage Immunities"
+        },
+        "condition_immunities": {
+          "type": "text",
+          "label": "Condition Immunities"
+        },
+        "gear": {
+          "type": "text",
+          "label": "Gear"
+        },
+        "senses": {
+          "type": "text",
+          "label": "Senses"
+        },
+        "languages": {
+          "type": "text",
+          "label": "Languages"
+        },
+        "challenge": {
+          "type": "text",
+          "label": "Challenge"
+        },
+        "cr": {
+          "type": "number",
+          "label": "Challenge Rating"
+        },
+        "xp": {
+          "type": "number",
+          "label": "XP"
+        },
+        "xp_in_lair": {
+          "type": "number",
+          "label": "XP in Lair"
+        },
+        "proficiency_bonus": {
+          "type": "number",
+          "label": "Proficiency Bonus"
+        },
+        "description": {
+          "type": "textarea",
+          "label": "Traits and Actions"
+        }
+      }
+    }
+  }
 }

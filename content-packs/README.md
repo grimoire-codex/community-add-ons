@@ -2,12 +2,14 @@
 
 Catalog content for a character sheet - the spells, classes, species, feats and
 backgrounds a character picks from. A sheet describes the *shape* of a spell;
-a pack supplies the spells.
+a pack supplies the spells. A pack can also carry reference material no
+character picks from - conditions, rules, monsters - by declaring those content
+types itself (see [A pack's own content types](#a-packs-own-content-types)).
 
 | Pack | For sheet | Licence | Entries |
 | --- | --- | --- | --- |
-| [`dnd-5e-srd`](dnd-5e-srd/) | `dnd-5e-2024` | CC BY 4.0 (SRD 5.2) | 1121 |
-| [`dnd-5e-srd-5-1`](dnd-5e-srd-5-1/) | `dnd-5e-2014` | CC BY 4.0 (SRD 5.1) | 1115 |
+| [`dnd-5e-srd`](dnd-5e-srd/) | `dnd-5e-2024` | CC BY 4.0 (SRD 5.2) | 1674 |
+| [`dnd-5e-srd-5-1`](dnd-5e-srd-5-1/) | `dnd-5e-2014` | CC BY 4.0 (SRD 5.1) | 1729 |
 | [`draw-steel-core`](draw-steel-core/) | `draw-steel` | Draw Steel Creator License | 1660 |
 | [`pf2e-player-core`](pf2e-player-core/) | `pathfinder-2e` | ORC | 1606 |
 
@@ -45,6 +47,10 @@ filtered on, what the one-line summary shows - and the pack fills it in.
 are dropped when the pack loads, so they are never stored, searched or read by a
 formula. Adding a property to a pack therefore usually means adding its
 declaration to the sheet in the same PR.
+
+Content no character picks from - conditions, rules, monsters - does not belong
+in the sheet. The pack declares those types itself, in its `_meta.json`; see
+[A pack's own content types](#a-packs-own-content-types).
 
 ### 3. Make the directory
 
@@ -87,9 +93,51 @@ content type it holds: `spell.json` holds entries of the sheet's `spell` type.
 | `license`, `license_url`, `attribution` | | The content's licence. `attribution` is shown verbatim and is **required** once `license` is set - the index build and the server's loader both refuse a pack without it |
 | `source` | | A short label every entry is tagged with, so "Fireball (srd)" is distinguishable from a table's own house version. Defaults to the `pack_id` |
 | `source_url` | | Where the content came from |
+| `content_types` | | Content types the pack declares for itself, for reference material no sheet picks from. See [A pack's own content types](#a-packs-own-content-types) |
 
 Validated by
 [`schema/content-pack.schema.json`](../schema/content-pack.schema.json).
+
+#### A pack's own content types
+
+A sheet declares the content a character picks from, and no more. A pack that
+also carries reference material - the conditions a spell points at, the rules
+glossary, the monsters a summoning spell or a Wild Shape draws on - declares
+those types in `_meta.json` under `content_types`. Each one is shaped exactly
+like a sheet's [content type](../docs/character-sheets.md#content-types), and is
+checked the same way:
+
+```json
+"content_types": {
+  "condition": {
+    "label": "Condition",
+    "label_plural": "Conditions",
+    "sort_default": ["name"],
+    "search_fields": ["name", "description"],
+    "compact_display": "{name}",
+    "fields": {
+      "name": { "type": "text", "label": "Name" },
+      "description": { "type": "textarea", "label": "Description" }
+    }
+  }
+}
+```
+
+and the entries go in `condition.json` beside the rest.
+
+- Grimoire merges the pack's types under its sheet's. **The sheet wins a name
+  clash**: if the sheet declares a type of the same name, its declaration shapes
+  the entries and the pack's is ignored, so a pack cannot reshape what a
+  character picks from.
+- Everything else about a content type holds: only declared properties are
+  kept, so declare every one an entry carries; prefer `text`, `number` and
+  `textarea` fields, with long prose in a `textarea` named `description`.
+- Grimoire shows these types, read-only, in a system's **Compendium** tab once an
+  admin or GM links the pack to a library system.
+- Older Grimoire releases ignore the key and store the entries as written, so
+  adding reference types to a published pack is safe.
+
+The two D&D SRD packs use it for their conditions, rules and monsters.
 
 ### 5. Write the content files
 
@@ -206,7 +254,8 @@ The 2024 pack's spells, class features, equipment and magic items are converted 
 [Open5e](https://github.com/open5e/open5e-api)'s SRD 5.2 data by
 `scripts/srd-5e/import_open5e.py`. Open5e expands a generic magic item into a
 copy per weapon or armour; the script folds those back into the one entry the
-SRD prints.
+SRD prints. Its conditions, rules and monsters come from the same data and are
+checked against the SRD 5.2.1 itself - see its [README](dnd-5e-srd/README.md).
 
 The Draw Steel pack is MCDM's text, converted from [Forge Steel](https://forgesteel.net/)'s
 data under the Draw Steel Creator License. Forge Steel's GPL-3.0 covers its code,

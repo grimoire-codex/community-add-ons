@@ -257,6 +257,10 @@
                 "flex": {
                   "type": "number"
                 },
+                "readonly": {
+                  "type": "boolean",
+                  "description": "Shown but not typed into, in the list and inside a <g-repeat> - a record the sheet writes itself. A view setting: the rest of the row, and adding, moving and removing rows, stay the player's. Needs a Grimoire release after 1.11.1; older ones ignore it."
+                },
                 "min": {
                   "type": "number"
                 },
@@ -280,6 +284,10 @@
             "additionalProperties": {
               "type": "object"
             }
+          },
+          "entry_note": {
+            "type": "string",
+            "description": "content_ref/content_list only. A formula shown beside each entry's name in the catalog browser, reading the candidate as `entry` beside the character's own names - e.g. entry.mastery. Text or a number is shown; an empty or failed result shows nothing. Needs a Grimoire release after 1.11.1; older ones ignore it."
           },
           "allow_freeform": {
             "type": "boolean",

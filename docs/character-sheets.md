@@ -151,6 +151,13 @@ for a select, `min`/`max` for a number, `default` for new rows, `default_from`
 to work the cell out from the sheet (see [below](#a-list-column-worked-out-per-row)),
 and `flex` for its relative width. Up to 20 columns, and 500 rows per character.
 
+`"readonly": true` shows a column's cells without letting the player type into
+them, in the list and inside a [`<g-repeat>`](#directives) - for a record the
+sheet writes itself, such as what a level gained gave. The rest of the row, and
+adding, moving and removing rows, stay the player's. It is a view setting, not
+a lock: what is written there is still saved. Needs a Grimoire release after
+1.11.1; older ones ignore it.
+
 A list stores an array of row objects keyed by column:
 `[{ "item": "Rope", "qty": 1, "mass": 1, "equipped": false }]`. The list
 functions - [`count_where`](#function-reference), `sum_where`, `column`,
@@ -176,6 +183,7 @@ it as missing.
 | `per_entry_fields` | The character's own notes on each pick - prepared, equipped, uses left. An object of ordinary field definitions, stored under `_per` |
 | `display_columns` | `content_list` only. Draws the list as a table of the entries' own properties: `["level", "range"]`, or `[{ "key": "level", "label": "Lvl" }]` |
 | `add_label`, `empty_text` | The add button's text, and what an empty list says |
+| `entry_note` | A [formula](#formulas) shown beside each entry's name in the catalog browser, for what the player picks by that the name does not say - a weapon's mastery, a feat's prerequisite. It reads the candidate as `entry` beside the character's own fields and computed values: `"len(entry.mastery) ? entry.mastery : ''"`. Text or a number is shown; an empty or failed result shows nothing. A property the entry lacks reads as `0`, so guard it with `len()` as here. Needs a Grimoire release after 1.11.1; older ones ignore it |
 | `on_pick` | `content_ref` only. Rules that run when the player picks. See [`on_pick`](#what-a-pick-does-on_pick) |
 
 The player's `_per` notes win over the entry's own values when a formula reads
@@ -530,11 +538,12 @@ a sibling `<id>.html` file (or name it with `layout_file`). It is real HTML with
 | --- | --- | --- |
 | `<g-field>` | `name`, `label`, `placeholder`, `variant`, `readonly`, `visible_if` | The field's real control. `label=""` hides the label; `label="…"` replaces it. `variant="compact"` draws a number as a plain box without the browser's spinner - for a narrow cell. `readonly` shows it without editing |
 | `<g-computed>` | `name`, `label`, `visible_if` | A calculated value with its label; the player can click it to override. `label=""` hides the label |
-| `<g-value>` | `name` | A value alone, as plain text - any field or computed value. A computed value, or a `text` or `number` field, can still be clicked to set |
+| `<g-value>` | `name`, `markdown` | A value alone, as plain text - any field or computed value. A computed value, or a `text` or `number` field, can still be clicked to set. With `markdown`, a text value is drawn as Markdown instead (lists, emphasis, tables, links), for display only: raw HTML stays text and an image shows as its description. An empty value, or one that is not text, draws nothing. `markdown` needs a Grimoire release after 1.11.1, which older ones refuse at install |
 | `<g-label>` | `name`, `text` | A field's label alone, or `text` in its place |
 | `<g-section>` | `title`, `name`, `visible_if` | A `<section class="gc-section">` with an optional `<h3>` title. `name` becomes `data-section="…"`, a styling hook |
 | `<g-if>` | `test` | Its contents, while the formula is true |
 | `<g-repeat>` | `over` | Its contents once per row of a `list` field. Inside, `<g-field name="qty">` is **that row's** `qty` cell, and formulas see the row's columns and `_index` |
+| `<g-order>`, `<g-order-item>` | `<g-order field>`, `<g-order-item key>` | Blocks the player drags into their own order - attacks drawn from several lists, say. Each row a `<g-repeat>` inside draws is one block, `<g-order-item key="unarmed">` is a fixed block, and a `<g-if>` that holds lends its blocks. The order is kept in `field`, a `text` or `textarea` field, as one key per line: a `<g-order-item>` by its `key`, a list row as `<list>:<first column's value>`, and a repeat of a key as `<key>#2`. A block the order does not know yet comes first. Each block gets a drag handle (mouse, pen, touch, or the arrow keys); a read-only sheet shows the order without handles. Style it through `.gc-order`, `.gc-order-block`, `.gc-order-handle` and `.gc-order-content`. A `<g-order>` may hold only `<g-repeat>`, `<g-order-item>` and `<g-if>`, and orders do not nest. Needs a Grimoire release after 1.11.1; older ones refuse it at install |
 | `<g-tabs>`, `<g-tab>` | `<g-tab title title_from visible_if>` | Pages - the second page of a printed sheet. Only the chosen tab is drawn. `title_from` is a formula naming the tab once it has a value - `<g-tab title="Squire" title_from="squire_name">` reads "Squire" until the squire is named, then the name. An empty result falls back to `title`, then to the page number; long titles are cut at 40 characters. `title_from` needs Grimoire 1.11.0 |
 | `<g-option>` | `field`, `value`, `label` | One checkbox for one option of multiselect `field`, so each box can sit where the printed sheet puts it - a proficiency dot beside its skill |
 | `<g-tier>` | `value`, `fields`, `labels`, `titles`, `label` | One dropdown for which rung of a ladder of multiselects holds `value`. `fields` lists the multiselects lowest rung first (`"skill_profs skill_expertise"`); `labels` is the short text shown closed and `titles` the full names in the list, both `\|`-separated, one more than the fields (the first is "none"). Choosing a rung adds `value` to every list up to it and removes it above |
